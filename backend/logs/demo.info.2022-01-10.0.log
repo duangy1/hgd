@@ -1,0 +1,168 @@
+2022-01-10 15:22:41.744 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 7016 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-01-10 15:22:41.749 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-01-10 15:22:48.863 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 8.842 seconds (JVM running for 13.538)
+2022-01-10 16:30:47.583 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo
+2022-01-10 16:30:47.705 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 16:30:50.343 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 16:30:50.360 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo LIMIT ?
+2022-01-10 16:30:50.361 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 16:30:50.446 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:34:41.472 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 42152 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-01-10 20:34:41.493 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-01-10 20:34:44.454 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 3.808 seconds (JVM running for 6.382)
+2022-01-10 20:47:13.562 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:47:13.583 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:47:16.382 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:47:16.383 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:47:16.384 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:47:16.417 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:47:42.999 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:47:43.000 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:47:43.095 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:47:43.109 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:47:43.110 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:47:43.112 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:47:56.629 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:47:56.629 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:47:56.783 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:47:56.784 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:47:56.784 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:47:56.786 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:49:37.608 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:49:37.609 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:49:37.748 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:49:37.749 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:49:37.749 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:49:37.751 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:49:44.091 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:49:44.092 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:49:44.099 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:49:44.100 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:49:44.100 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:49:44.103 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:50:18.286 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:50:18.286 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:50:18.291 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:50:18.292 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:50:18.292 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:50:18.294 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:50:27.430 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:50:27.430 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:50:27.459 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:50:27.460 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:50:27.460 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:50:27.462 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:52:00.557 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:52:00.558 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:52:00.651 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:52:00.652 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:52:00.653 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:52:00.656 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 20:53:58.201 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 20:53:58.201 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 20:53:58.334 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 20:53:58.335 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 20:53:58.335 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 20:53:58.394 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:01:35.927 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:01:35.928 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:01:36.207 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:01:36.208 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:01:36.208 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:01:36.210 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:01:42.340 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:01:42.340 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:01:42.570 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:01:42.570 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:01:42.570 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:01:42.572 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:01:43.281 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:01:43.282 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:01:43.288 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:01:43.289 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:01:43.290 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:01:43.292 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:01:44.056 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:01:44.056 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:01:44.065 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:01:44.066 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:01:44.066 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:01:44.103 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:01:54.014 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:01:54.014 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:01:54.020 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:01:54.022 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:01:54.022 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:01:54.024 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:01:58.638 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:01:58.639 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:01:58.804 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:01:58.806 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:01:58.806 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:01:58.809 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:02:15.108 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:02:15.108 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:02:15.246 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:02:15.247 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:02:15.248 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:02:15.250 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:02:29.819 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:02:29.820 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:02:29.824 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:02:29.824 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:02:29.825 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:02:29.876 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:22:43.118 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:22:43.119 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:22:44.391 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:22:44.423 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:22:44.423 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:22:44.425 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 21:44:05.191 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 49060 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-01-10 21:44:05.231 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-01-10 21:44:10.310 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 6.151 seconds (JVM running for 9.411)
+2022-01-10 21:47:30.878 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 21:47:30.902 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 21:47:32.340 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 21:47:32.342 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select gwas_id from trait_all LIMIT ?
+2022-01-10 21:47:32.343 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 21:47:32.345 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 22:01:09.974 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 42432 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-01-10 22:01:09.976 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-01-10 22:01:12.356 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 2.99 seconds (JVM running for 4.637)
+2022-01-10 22:01:16.866 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 22:01:16.890 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 22:01:17.819 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 22:01:17.821 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select id, gene_id, trait_id, trait_name, species_common_name, taxon_id, classification, create_time, last_update_time from trait_all LIMIT ?
+2022-01-10 22:01:17.822 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 22:01:18.128 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 22:01:23.706 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 22:01:23.706 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 22:01:24.288 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 22:01:24.289 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select id, gene_id, trait_id, trait_name, species_common_name, taxon_id, classification, create_time, last_update_time from trait_all LIMIT ?
+2022-01-10 22:01:24.289 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 22:01:24.296 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 22:01:47.792 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 22:01:47.793 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 22:01:48.082 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 22:01:48.083 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select id, gene_id, trait_id, trait_name, species_common_name, taxon_id, classification, create_time, last_update_time from trait_all LIMIT ?
+2022-01-10 22:01:48.084 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 22:01:48.186 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 22:02:29.586 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 22:02:29.586 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 22:02:29.592 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 22:02:29.593 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select id, gene_id, trait_id, trait_name, species_common_name, taxon_id, classification, create_time, last_update_time from trait_all LIMIT ?
+2022-01-10 22:02:29.593 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 22:02:29.628 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 22:02:45.767 [http-nio-9090-exec-8] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 22:02:45.767 [http-nio-9090-exec-8] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 22:02:45.772 [http-nio-9090-exec-8] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 22:02:45.772 [http-nio-9090-exec-8] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select id, gene_id, trait_id, trait_name, species_common_name, taxon_id, classification, create_time, last_update_time from trait_all LIMIT ?
+2022-01-10 22:02:45.772 [http-nio-9090-exec-8] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-10 22:02:45.776 [http-nio-9090-exec-8] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-10 22:03:09.173 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all
+2022-01-10 22:03:09.174 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-10 22:03:09.224 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-10 22:03:09.225 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select id, gene_id, trait_id, trait_name, species_common_name, taxon_id, classification, create_time, last_update_time from trait_all LIMIT ?, ?
+2022-01-10 22:03:09.225 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer), 10(Integer)
+2022-01-10 22:03:09.273 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10

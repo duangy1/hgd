@@ -1,0 +1,149 @@
+{"tree":[
+  {
+    "id": "1",
+    "label": "Plant Phenotype and Trait Ontology",
+    "traitID":"PPTO:0000002",
+    "Name":"flora trait",
+    "Synonyms":"plant trait",
+    "Definitions":"The plant trait.",
+    "SubClassOf":"",
+    "children": [{
+      "id": "4",
+      "label": "biochemical trait",
+      "traitID":"PPTO:0000004",
+      "Name":"biochemical trait",
+      "Synonyms":"plant trait",
+      "Definitions":"A plant trait (TO:0000387) which is a quality of a chemical entity (CHEBI:24431), a plant metabolite (CHEBI:76924), or a molecular function (GO:0003674), which occurs in a cellular component (GO:0005575), plant anatomical entity (PO:0025131) or during a plant structure development stage (PO:0009012).",
+      "SubClassOf":"flora trait"
+  },{
+      "id": "5",
+      "label": "biological process trait",
+      "traitID":"PPTO:0000008",
+      "Name":"biological process trait",
+      "Synonyms":"physiological process trait",
+      "Definitions":"A plant trait (TO:0000387) which is a process quality (PATO:0001236) of a biological process (GO:0008150) which occurs in a plant anatomical entity (PO:0025131), a cellular component (GO:0005575), or during a plant structure development stage (PO:0009012).",
+      "SubClassOf":"flora trait"
+  },{
+      "id": "6",
+      "label": "plant growth and development trait",
+      "traitID":"PPTO:0000006",
+      "Name":"plant growth and development trait",
+      "Synonyms":"plant trait",
+      "Definitions":"A plant trait (TO:0000387) which is the growth (GO:0048590) and development (GO:0032502) of a plant anatomical entity (PO:0025131) or a constituent cellular component (GO:0005575).",
+      "SubClassOf":"flora trait"
+    },{
+      "id": "7",
+      "label": "plant morphology trait",
+      "traitID":"PPTO:0000009",
+      "Name":"plant morphology trait",
+      "Synonyms":"plant structure trait | plant architecture trait",
+      "Definitions":"A plant trait (TO:0000387) which is a morphological quality of a plant anatomical entity (PO:0025131) or a constituent cellular component (GO:0005575) contained therein.",
+      "SubClassOf":"flora trait"
+    },{
+      "id": "8",
+      "label": "plant quality trait",
+      "traitID":"PPTO:0000005",
+      "Name":"plant quality trait",
+      "Synonyms":"plant trait",
+      "Definitions":"A plant trait (TO:0000387) that contributes to the overall utility, nutritional, or economic value of a plant, plant structure (PO:0009011) or plant product.",
+      "SubClassOf":"flora trait"
+    },{
+      "id": "9",
+      "label": "plant vigor trait",
+      "traitID":"PPTO:0000011",
+      "Name":"plant vigor trait",
+      "Synonyms":"plant vigour trait",
+      "Definitions":"A plant trait (TO:0000387) which is a measure of the active and/or healthy growth and development of a plant stucture (PO:0009011) or a population of plants.",
+      "SubClassOf":"flora trait"
+  },{
+      "id": "10",
+      "label": "sterility or fertility trait",
+      "traitID":"PPTO:0000012",
+      "Name":"sterility or fertility trait",
+      "Synonyms":"",
+      "Definitions":"",
+      "SubClassOf":"flora trait"
+  },{
+      "id": "11",
+      "label": "stress trait",
+      "traitID":"PPTO:0000014",
+      "Name":"stress trait",
+      "Synonyms":"stress susceptibility | stress resistance | crop damage | stress tolerance",
+      "Definitions":"",
+      "SubClassOf":"flora trait"
+  },{
+      "id": "12",
+      "label": "yield trait",
+      "traitID":"PPTO:0000010",
+      "Name":"yield trait",
+      "Synonyms":"YLD",
+      "Definitions":"A plant trait (TO:0000387) which is a harvestable product that is a plant anatomical entity (PO:0025131) or one or more constituent cellular components (GO:0005575) contained therein.",
+      "SubClassOf":"flora trait"
+  }]
+},{
+    "id": "2",
+    "label": "Animal Phenotype and Trait Ontology",
+    "traitID":"APTO:0000001",
+    "Name":"animal trait of livestock",
+    "Synonyms":"Animal trait",
+    "Definitions":"animal trait of livestock.",
+    "SubClassOf":"",
+    "children": [{
+      "id": "13",
+      "label": "animal health trait",
+      "traitID":"APTO:0000002",
+      "Name":"animal health trait",
+      "Synonyms":"plant trait",
+      "Definitions":"animal health trait.",
+      "SubClassOf":"animal trait of livestock"
+  },{
+      "id": "14",
+      "label": "animal welfare trait",
+      "traitID":"APTO:0000003",
+      "Name":"animal welfare trait",
+      "Synonyms":"",
+      "Definitions":"any measurable or observable characteristic related to the state of mental and physical health in which an animal is in harmony with its environment and as regards to its attempts to cope with its.",
+      "SubClassOf":"animal trait of livestock"
+  },{
+      "id": "15",
+      "label": "egg trait",
+      "traitID":"APTO:0000004",
+      "Name":"egg trait",
+      "Synonyms":"",
+      "Definitions":"any measurable or observable characteristics related to the egg laid by females of many different species and eaten by mankind for thousands of years.Bird and reptile eggs consist of a protective eggshell, albumen (egg white), and vitellus (egg yolk), con.",
+      "SubClassOf":"animal trait of livestock"
+    },{
+      "id": "16",
+      "label": "growth and meat production trait",
+      "traitID":"APTO:0000006",
+      "Name":"growth and meat production trait",
+      "Synonyms":"plant trait",
+      "Definitions":"any measurable or observable characteristics related to animal growth and meat production quantity and quality.",
+      "SubClassOf":"animal trait of livestock"
+    },{
+      "id": "17",
+      "label": "mammary gland and milk production trait",
+      "traitID":"APTO:0000007",
+      "Name":"mammary gland and milk production trait",
+      "Synonyms":"",
+      "Definitions":"any measurable or observable characteristic related to the mammary gland and milk production trait.",
+      "SubClassOf":"animal trait of livestock"
+    },{
+      "id": "18",
+      "label": "nutrition trait",
+      "traitID":"APTO:0000008",
+      "Name":"nutrition trait",
+      "Synonyms":"",
+      "Definitions":"any measurable or observable chararcteristic related to the set of functions by which the animal transforms feeds in nutrients and uses these latter for its maintenance and production.",
+      "SubClassOf":"animal trait of livestock"
+  },{
+      "id": "19",
+      "label": "reproduction trait",
+      "traitID":"APTO:0000009",
+      "Name":"reproduction trait",
+      "Synonyms":"plant trait",
+      "Definitions":"any measurable or observable characteristic of the organs associated with producing offspring.",
+      "SubClassOf":"animal trait of livestock"
+  }]
+}]
+}

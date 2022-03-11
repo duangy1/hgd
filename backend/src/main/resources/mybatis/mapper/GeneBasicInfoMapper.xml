@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.GeneBasicInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
+    <id column="gbi_id" jdbcType="INTEGER" property="gbiId" />
+    <result column="ensembl_gene_id" jdbcType="VARCHAR" property="ensemblGeneId" />
+    <result column="gene_synonym" jdbcType="VARCHAR" property="geneSynonym" />
+    <result column="gene_type" jdbcType="VARCHAR" property="geneType" />
+    <result column="gene_symbol" jdbcType="VARCHAR" property="geneSymbol" />
+    <result column="entrez_gene" jdbcType="VARCHAR" property="entrezGene" />
+    <result column="chromosom" jdbcType="VARCHAR" property="chromosom" />
+    <result column="gene_start" jdbcType="INTEGER" property="geneStart" />
+    <result column="gene_end" jdbcType="INTEGER" property="geneEnd" />
+    <result column="gene_source" jdbcType="VARCHAR" property="geneSource" />
+    <result column="gwas_gene_id" jdbcType="VARCHAR" property="gwasGeneId" />
+    <result column="jgi_gene_id" jdbcType="VARCHAR" property="jgiGeneId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
+    <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    gbi_id, ensembl_gene_id, gene_synonym, gene_type, gene_symbol, entrez_gene, chromosom, 
+    gene_start, gene_end, gene_source, gwas_gene_id, jgi_gene_id
+  </sql>
+  <sql id="Blob_Column_List">
+    gene_description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gene_basic_info
+    where gbi_id = #{gbiId,jdbcType=INTEGER}
+  </select>
+  <select id="allOrthoList" resultMap="BaseResultMap">
+    select * from gene_basic_info
+  </select>
+</mapper>

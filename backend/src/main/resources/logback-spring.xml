@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="log.path" value="logs" />
+    <!-- 彩色日志 -->
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+    <!-- Console 输出设置 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <!-- 按照每天生成日志文件 -->
+    <appender name="info-file"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch><!-- 如果命中ERROR就禁止这条日志 -->
+            <onMismatch>ACCEPT</onMismatch><!-- 如果没有命中就使用这条规则 -->
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${log.path}/demo.info.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <!--日志文件保留天数 maxHistory默认为0,表示不清理-->
+            <MaxHistory>0</MaxHistory>
+            <!--日志文件最大的大小-->
+            <MaxFileSize>50MB</MaxFileSize>
+            <!--每个文件最多100MB，保留15天的历史记录，但最多20GB-->
+            <!--<totalSizeCap>200GB</totalSizeCap>-->
+            <!--重启清理日志文件-->
+            <!--<cleanHistoryOnStart>true</cleanHistoryOnStart>-->
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度，%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <appender name="error-file"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- ThresholdFilter过滤低于指定阈值的事件。 对于等于或高于阈值的事件，ThresholdFilter将在调用其decision（）方法时响应NEUTRAL。 但是，将拒绝级别低于阈值的事件 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level><!-- 低于ERROR级别的日志（debug,info）将被拒绝，等于或者高于ERROR的级别将相应NEUTRAL -->
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${log.path}/demo.error.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <!--日志文件保留天数 maxHistory默认为0,表示不清理-->
+            <MaxHistory>0</MaxHistory>
+            <!--日志文件最大的大小-->
+            <MaxFileSize>50MB</MaxFileSize>
+            <!--每个文件最多100MB，保留15天的历史记录，但最多20GB-->
+            <!--<totalSizeCap>200GB</totalSizeCap>-->
+            <!--重启清理日志文件-->
+            <!--<cleanHistoryOnStart>true</cleanHistoryOnStart>-->
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度，%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <!-- 日志输出级别, configuration最多允许一个root，别的logger如果没有设置级别则从父级别root继承-->
+    <root level="info">
+        <appender-ref ref="console" />
+        <!--<appender-ref ref="info-file" />
+        <appender-ref ref="error-file" />-->
+    </root>
+    <!-- 指定项目中某个包，当有日志操作行为时的日志记录级别 -->
+    <!-- 级别依次为【从高到低】：FATAL > ERROR > WARN > INFO > DEBUG > TRACE  -->
+    <logger name="cn.ac.cncb.ngdc.syndb" level="info" additivity="false">
+        <appender-ref ref="info-file" />
+        <appender-ref ref="error-file" />
+    </logger>
+    <!--使用mybatis的时候，sql语句在debug级别下才会打印，而我们这里日志级别只配置了info，
+        所以想要查看sql语句的话，需要单独给mapper目录配置debug模式，代码如下，这样配置sql语句会打印，其他还是正常info级别 -->
+    <logger name="cn.ac.cncb.ngdc.syndb.mapper" level="debug" additivity="false">
+        <appender-ref ref="console" />
+        <appender-ref ref="info-file" />
+    </logger>
+</configuration>

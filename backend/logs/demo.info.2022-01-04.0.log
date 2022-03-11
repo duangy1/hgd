@@ -1,0 +1,51 @@
+2022-01-04 09:45:33.818 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 20264 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-01-04 09:45:33.824 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-01-04 09:45:36.827 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 3.854 seconds (JVM running for 5.676)
+2022-01-04 10:04:18.079 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo
+2022-01-04 10:04:18.107 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-04 10:04:19.760 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-04 10:04:19.764 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo LIMIT ?
+2022-01-04 10:04:19.765 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-04 10:04:19.774 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - <==      Total: 10
+2022-01-04 10:04:20.130 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo
+2022-01-04 10:04:20.130 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-04 10:04:20.136 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-04 10:04:20.137 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo LIMIT ?
+2022-01-04 10:04:20.137 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-04 10:04:20.145 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - <==      Total: 10
+2022-01-04 11:15:39.529 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo WHERE top_trait = ?
+2022-01-04 11:15:39.612 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==> Parameters: flora trait(String)
+2022-01-04 11:15:39.972 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo WHERE top_trait = ?
+2022-01-04 11:15:39.973 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==> Parameters: biological process trait(String)
+2022-01-04 11:15:40.886 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - <==      Total: 1
+2022-01-04 11:15:40.887 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - <==      Total: 1
+2022-01-04 11:15:40.899 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getInfoByTraitName - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo where top_trait = ? LIMIT ?
+2022-01-04 11:15:40.903 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getInfoByTraitName - ==> Parameters: biological process trait(String), 10(Integer)
+2022-01-04 11:15:40.958 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo WHERE top_trait = ?
+2022-01-04 11:15:40.960 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==> Parameters: flora trait(String)
+2022-01-04 11:15:41.021 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getInfoByTraitName - <==      Total: 10
+2022-01-04 11:15:41.049 [http-nio-9090-exec-6] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - <==      Total: 1
+2022-01-04 11:17:59.706 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo WHERE species IN (?, ?)
+2022-01-04 11:17:59.708 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==> Parameters: Chicken(String), Cattle(String)
+2022-01-04 11:17:59.799 [http-nio-9090-exec-9] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - <==      Total: 1
+2022-01-04 11:17:59.803 [http-nio-9090-exec-9] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==>  Preparing: select * from gwas_allinfo WHERE species IN ( ? , ? ) LIMIT ?
+2022-01-04 11:17:59.805 [http-nio-9090-exec-9] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==> Parameters: Chicken(String), Cattle(String), 10(Integer)
+2022-01-04 11:17:59.835 [http-nio-9090-exec-9] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - <==      Total: 10
+2022-01-04 11:18:03.723 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==>  Preparing: select count(0) from (select * from gwas_allinfo WHERE species = ? AND ((map_gene != "" )OR (report_gene != ""))) tmp_count
+2022-01-04 11:18:03.725 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==> Parameters: Chicken(String)
+2022-01-04 11:18:03.851 [http-nio-9090-exec-10] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - <==      Total: 1
+2022-01-04 11:18:03.854 [http-nio-9090-exec-10] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==>  Preparing: select * from gwas_allinfo WHERE species = ? AND ((map_gene != "" )OR (report_gene != "")) LIMIT ?
+2022-01-04 11:18:03.855 [http-nio-9090-exec-10] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==> Parameters: Chicken(String), 10(Integer)
+2022-01-04 11:18:03.891 [http-nio-9090-exec-10] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - <==      Total: 10
+2022-01-04 11:23:08.325 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo
+2022-01-04 11:23:08.327 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-04 11:23:08.482 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-04 11:23:08.486 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo LIMIT ?
+2022-01-04 11:23:08.487 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-04 11:23:08.498 [http-nio-9090-exec-2] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - <==      Total: 10
+2022-01-04 11:25:33.579 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo WHERE top_trait = ?
+2022-01-04 11:25:33.579 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - ==> Parameters: biochemical trait(String)
+2022-01-04 11:25:33.624 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.m.g.getInfoByTraitName_COUNT - <==      Total: 1
+2022-01-04 11:25:33.628 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getInfoByTraitName - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo where top_trait = ? LIMIT ?
+2022-01-04 11:25:33.629 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getInfoByTraitName - ==> Parameters: biochemical trait(String), 10(Integer)
+2022-01-04 11:25:33.644 [http-nio-9090-exec-4] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getInfoByTraitName - <==      Total: 10

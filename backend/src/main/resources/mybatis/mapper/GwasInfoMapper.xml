@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.GwasInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GwasInfo">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="varID" jdbcType="VARCHAR" property="varid" />
+    <result column="trait" jdbcType="VARCHAR" property="trait" />
+    <result column="species" jdbcType="VARCHAR" property="species" />
+    <result column="reference_version" jdbcType="VARCHAR" property="referenceVersion" />
+    <result column="var_position" jdbcType="VARCHAR" property="varPosition" />
+    <result column="pvalue" jdbcType="VARCHAR" property="pvalue" />
+    <result column="rvalue" jdbcType="VARCHAR" property="rvalue" />
+    <result column="map_gene" jdbcType="VARCHAR" property="mapGene" />
+    <result column="classification" jdbcType="VARCHAR" property="classification" />
+    <result column="top_trait" jdbcType="VARCHAR" property="topTrait" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GwasInfo">
+    <result column="report_gene" jdbcType="LONGVARCHAR" property="reportGene" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene
+  </sql>
+  <insert id="insert" parameterType="cn.ac.cncb.ngdc.syndb.entity.GwasInfo">
+    insert into gwas_allinfo (id, varID, trait, 
+      species, reference_version, var_position, 
+      pvalue, rvalue, map_gene, 
+      classification, top_trait, create_time, 
+      last_update_time, report_gene)
+    values (#{id,jdbcType=INTEGER}, #{varid,jdbcType=VARCHAR}, #{trait,jdbcType=VARCHAR}, 
+      #{species,jdbcType=VARCHAR}, #{referenceVersion,jdbcType=VARCHAR}, #{varPosition,jdbcType=VARCHAR}, 
+      #{pvalue,jdbcType=VARCHAR}, #{rvalue,jdbcType=VARCHAR}, #{mapGene,jdbcType=VARCHAR}, 
+      #{classification,jdbcType=VARCHAR}, #{topTrait,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{reportGene,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ac.cncb.ngdc.syndb.entity.GwasInfo">
+    insert into gwas_allinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="varid != null">
+        varID,
+      </if>
+      <if test="trait != null">
+        trait,
+      </if>
+      <if test="species != null">
+        species,
+      </if>
+      <if test="referenceVersion != null">
+        reference_version,
+      </if>
+      <if test="varPosition != null">
+        var_position,
+      </if>
+      <if test="pvalue != null">
+        pvalue,
+      </if>
+      <if test="rvalue != null">
+        rvalue,
+      </if>
+      <if test="mapGene != null">
+        map_gene,
+      </if>
+      <if test="classification != null">
+        classification,
+      </if>
+      <if test="topTrait != null">
+        top_trait,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+      <if test="reportGene != null">
+        report_gene,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="varid != null">
+        #{varid,jdbcType=VARCHAR},
+      </if>
+      <if test="trait != null">
+        #{trait,jdbcType=VARCHAR},
+      </if>
+      <if test="species != null">
+        #{species,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceVersion != null">
+        #{referenceVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="varPosition != null">
+        #{varPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="pvalue != null">
+        #{pvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="rvalue != null">
+        #{rvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="mapGene != null">
+        #{mapGene,jdbcType=VARCHAR},
+      </if>
+      <if test="classification != null">
+        #{classification,jdbcType=VARCHAR},
+      </if>
+      <if test="topTrait != null">
+        #{topTrait,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportGene != null">
+        #{reportGene,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectTraitBySpecies" resultMap="BaseResultMap">
+    select
+    <include refid="Blob_Column_List" />
+    from gwas_allinfo where species = #{species,jdbcType=VARCHAR}
+  </select>
+  <select id="biomedicalTrait" resultMap="BaseResultMap">
+    select
+    <include refid="Blob_Column_List" />
+    from gwas_allinfo
+  </select>
+<select id="getInfoByTraitName" resultMap="BaseResultMap">
+    select
+    <include refid="Blob_Column_List" />
+    from gwas_allinfo where top_trait = #{traitName,jdbcType=VARCHAR}
+</select>
+
+<!--  选择同源物中时，给出该同源物种的非空gene列表-->
+<!--  不选同源物种时，给出所选几个物种的全部列表-->
+<select id="getOrthoInfo" resultMap="ResultMapWithBLOBs">
+  select * from gwas_allinfo
+  <where>
+    <choose>
+      <when test="orthoSpecies != '' and orthoSpecies != 'None' ">
+        species = #{orthoSpecies} AND ((map_gene != "" )OR (report_gene != ""))
+      </when>
+      <otherwise>
+        <if test="speciesList!=null and speciesList.size !=0">
+          species IN
+          <foreach collection="speciesList" item="species"
+                   index="index" open="(" close=")" separator=",">
+            #{species}
+          </foreach>
+        </if>
+      </otherwise>
+    </choose>
+
+  </where>
+
+</select>
+</mapper>

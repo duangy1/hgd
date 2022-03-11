@@ -1,0 +1,13 @@
+2022-01-30 11:05:12.605 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 14872 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-01-30 11:05:12.610 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-01-30 11:05:18.546 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 7.297 seconds (JVM running for 12.506)
+2022-01-30 11:21:27.886 [http-nio-9401-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all 
+2022-01-30 11:21:27.917 [http-nio-9401-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-30 11:21:28.214 [http-nio-9401-exec-1] DEBUG c.a.c.n.s.m.trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-30 11:21:28.218 [http-nio-9401-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==>  Preparing: select * from trait_all LIMIT ? 
+2022-01-30 11:21:28.220 [http-nio-9401-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-30 11:21:28.260 [http-nio-9401-exec-1] DEBUG c.a.c.n.s.mapper.trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-01-30 11:25:35.282 [http-nio-9401-exec-3] DEBUG c.a.c.n.s.m.t.getInfoByTraitName_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all WHERE top_trait = ? 
+2022-01-30 11:25:35.283 [http-nio-9401-exec-3] DEBUG c.a.c.n.s.m.t.getInfoByTraitName_COUNT - ==> Parameters: sterility or fertility trait(String)
+2022-01-30 11:25:37.233 [http-nio-9401-exec-4] DEBUG c.a.c.n.s.m.t.getInfoByTraitName_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all WHERE top_trait = ? 
+2022-01-30 11:25:37.235 [http-nio-9401-exec-4] DEBUG c.a.c.n.s.m.t.getInfoByTraitName_COUNT - ==> Parameters: stress trait(String)

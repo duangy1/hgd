@@ -1,0 +1,3 @@
+2022-03-01 09:14:17.576 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 23400 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-03-01 09:14:17.582 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-03-01 09:14:22.095 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 6.27 seconds (JVM running for 10.716)

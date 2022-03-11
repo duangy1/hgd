@@ -1,0 +1,27 @@
+2022-01-03 14:51:48.572 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 25472 (F:\syndb\target\classes started by 光亚 in F:\syndb)
+2022-01-03 14:51:48.576 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-01-03 14:51:52.555 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 5.36 seconds (JVM running for 8.564)
+2022-01-03 14:59:21.172 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo
+2022-01-03 14:59:21.257 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-03 14:59:22.035 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-03 14:59:22.040 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo LIMIT ?
+2022-01-03 14:59:22.041 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-03 14:59:22.075 [http-nio-9090-exec-1] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - <==      Total: 10
+2022-01-03 15:07:53.546 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo WHERE species IN (?)
+2022-01-03 15:07:53.547 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==> Parameters: Cattle(String)
+2022-01-03 15:07:53.776 [http-nio-9090-exec-3] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - <==      Total: 1
+2022-01-03 15:07:53.779 [http-nio-9090-exec-3] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==>  Preparing: select * from gwas_allinfo WHERE species IN ( ? ) LIMIT ?
+2022-01-03 15:07:53.780 [http-nio-9090-exec-3] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==> Parameters: Cattle(String), 10(Integer)
+2022-01-03 15:07:53.814 [http-nio-9090-exec-3] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - <==      Total: 10
+2022-01-03 20:37:28.116 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM gwas_allinfo
+2022-01-03 20:37:28.240 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-01-03 20:37:29.696 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.m.gwasInfoMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-01-03 20:37:29.882 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==>  Preparing: select id, varID, trait, species, reference_version, var_position, pvalue, rvalue, map_gene, classification, last_update_time, report_gene from gwas_allinfo LIMIT ?
+2022-01-03 20:37:29.882 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-01-03 20:37:29.998 [http-nio-9090-exec-5] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.biomedicalTrait - <==      Total: 10
+2022-01-03 20:56:33.355 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==>  Preparing: select count(0) from (select * from gwas_allinfo WHERE species = ? AND ((map_gene != "" )OR (report_gene != ""))) tmp_count
+2022-01-03 20:56:33.518 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - ==> Parameters: Sheep(String)
+2022-01-03 20:56:33.962 [http-nio-9090-exec-7] DEBUG c.a.c.n.s.mapper.gwasInfoMapper.getOrthoInfo_COUNT - <==      Total: 1
+2022-01-03 20:56:33.963 [http-nio-9090-exec-7] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==>  Preparing: select * from gwas_allinfo WHERE species = ? AND ((map_gene != "" )OR (report_gene != "")) LIMIT ?
+2022-01-03 20:56:33.963 [http-nio-9090-exec-7] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - ==> Parameters: Sheep(String), 10(Integer)
+2022-01-03 20:56:34.041 [http-nio-9090-exec-7] DEBUG c.a.c.n.syndb.mapper.gwasInfoMapper.getOrthoInfo - <==      Total: 10

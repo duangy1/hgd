@@ -1,0 +1,86 @@
+{"tree":[
+{
+    "label": "HIGH",
+    "children": [{
+                "label":"frameshift_variant"
+            },{
+                "label":"splice_acceptor_variant"
+            },{
+                "label":"splice_donor_variant"
+            },{
+                "label":"start_lost"
+            },{
+                "label":"stop_gained"
+            },{
+                "label":"stop_lost"
+            },{
+                "label":"transcript_ablation"
+            },{
+                "label":"transcript_amplification"
+            }
+        
+    ]
+},{
+    "label": "MODERATE",
+    "children": [{"label":"incomplete_terminal_codon_variant"
+		},{
+			"label":"inframe_deletion"
+		},{
+			"label":"inframe_insertion"
+		},{
+			"label":"missense_variant"
+		},{
+			"label":"protein_altering_variant"
+		},{
+			"label":"regulatory_region_ablation"
+		}]
+    },{
+    "label": "LOW",
+    "children": [{
+			"label":"coding_sequence_variant"
+		},{
+			"label":"splice_region_variant"
+		},{
+			"label":"stop_retained_variant"
+		},{
+			"label":"synonymous_variant"}]
+    },{
+    "label": "MODIFIER",
+    "children": [{
+            "label":"3_prime_UTR_variant"
+        },{
+            "label":"5_prime_UTR_variant"
+        },{
+            "label":"downstream_gene_variant"
+        },{
+            "label":"feature_elongation"
+        },{
+            "label":"feature_truncation"
+        },{
+            "label":"coding_sequence_variant"
+        },{
+            "label":"intergenic_variant"
+        },{
+            "label":"intron_variant"
+        },{
+            "label":"mature_miRNA_variant"
+        },{
+            "label":"NMD_transcript_variant"
+        },{
+            "label":"non_coding_transcript_exon_variant"
+        },{
+            "label":"non_coding_transcript_variant"
+        },{
+            "label":"regulatory_region_amplification"
+        },{
+            "label":"regulatory_region_variant"
+        },{
+            "label":"TF_binding_site_variant"
+        },{
+            "label":"TFBS_ablation"
+        },{
+            "label":"TFBS_amplification"
+        },{
+            "label":"upstream_gene_variant"}]
+        }
+]}
