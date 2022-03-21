@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.SpeciesInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.SpeciesInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="taxon_id" jdbcType="VARCHAR" property="taxonId" />
+    <result column="latin_name" jdbcType="VARCHAR" property="latinName" />
+    <result column="common_name" jdbcType="VARCHAR" property="commonName" />
+    <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
+    <result column="species_type" jdbcType="VARCHAR" property="speciesType" />
+  </resultMap>
+
+  <select id="selectAllAnimals" resultMap="BaseResultMap">
+    select * from species where species_type=1 order by common_name
+  </select>
+
+
+  <select id="selectAllPlants" resultMap="BaseResultMap">
+    select * from species where species_type=2 order by common_name
+  </select>
+
+  <select id="selectOtherSpecies" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select * from species where 1=1
+    <if test="speciesType != null">
+      and species_type=#{speciesType}
+    </if>
+    <if test="taxon != null">
+      and taxon_id != #{taxon}
+    </if>
+
+  </select>
+
+  <select id="findSpeciesByTaxon" resultMap="BaseResultMap">
+    select * from species where taxon_id=#{taxonId}
+  </select>
+
+</mapper>

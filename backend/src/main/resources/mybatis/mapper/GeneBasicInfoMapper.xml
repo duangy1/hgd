@@ -14,6 +14,11 @@
     <result column="gene_source" jdbcType="VARCHAR" property="geneSource" />
     <result column="gwas_gene_id" jdbcType="VARCHAR" property="gwasGeneId" />
     <result column="jgi_gene_id" jdbcType="VARCHAR" property="jgiGeneId" />
+    <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbGeneId" />
+    <result column="taxon_id" property="taxonId" />
+    <result column="is_homolog"  property="isHomolog" />
+    <result column="taxon_name"  property="taxonName" />
+    <result column="species_type"  property="speciesType" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
@@ -35,5 +40,23 @@
   </select>
   <select id="allOrthoList" resultMap="BaseResultMap">
     select * from gene_basic_info
+  </select>
+
+  <select id="filterHomologGene" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select a.gbi_id,a.hdb_gene_id,a.ensembl_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id, b.latin_name as taxon_name,b.species_type from gene_basic_info a left join species b on a.taxon_id=b.taxon_id where 1=1
+    <if test="taxonList != null ">
+         and a.taxon_id in
+        <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+          #{taxon}
+        </foreach>
+      </if>
+    <if test="traitList != null ">
+       and a.hdb_gene_id in (select gene_id from trait_all where trait_id in
+      <foreach item="trait" index="index" collection="traitList"  open="(" separator="," close=")">
+        #{trait}
+      </foreach>
+      )
+    </if>
+    and a.is_homolog=1
   </select>
 </mapper>

@@ -3,6 +3,8 @@ package cn.ac.cncb.ngdc.syndb.mapper;
 import cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo;
 import com.github.pagehelper.Page;
 
+import java.util.Map;
+
 public interface GeneBasicInfoMapper {
     int insert(GeneBasicInfo record);
 
@@ -17,4 +19,6 @@ public interface GeneBasicInfoMapper {
     int updateByPrimaryKey(GeneBasicInfo record);
 
     Page<GeneBasicInfo> allOrthoList();
+
+    Page<GeneBasicInfo> filterHomologGene(Map param);
 }

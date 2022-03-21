@@ -1,5 +1,11 @@
 package cn.ac.cncb.ngdc.syndb.entity;
 
+import cn.ac.cncb.ngdc.syndb.bean.OrthoGeneBean;
+import lombok.Data;
+
+import java.util.List;
+
+@Data
 public class GeneBasicInfo {
     private Integer gbiId;
 
@@ -26,6 +32,18 @@ public class GeneBasicInfo {
     private String jgiGeneId;
 
     private String geneDescription;
+
+    private String hdbGeneId;
+    private int taxonId;
+    private int isHomolog;
+    private int speciesType;
+
+    private int traitCount;
+    private int GoCount;
+
+    private String taxonName;
+
+    private List<OrthoGeneBean> orthoGeneBeanList;
 
     public Integer getGbiId() {
         return gbiId;

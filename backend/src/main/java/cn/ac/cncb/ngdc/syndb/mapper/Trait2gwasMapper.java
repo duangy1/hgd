@@ -5,6 +5,7 @@ import cn.ac.cncb.ngdc.syndb.entity.Trait2gwas;
 import com.github.pagehelper.Page;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Trait2gwasMapper {
     int insert(Trait2gwas record);
@@ -29,5 +30,6 @@ public interface Trait2gwasMapper {
 
     Integer findGwasOrgidByTaxonId(int taxonId);
 
+    Integer selectTraitCountByGeneAndTaxon(Map param);
 
 }

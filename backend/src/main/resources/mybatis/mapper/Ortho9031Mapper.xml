@@ -13,7 +13,7 @@
     <result column="uniprot_id2" jdbcType="VARCHAR" property="protein2" />
     <result column="refseq_id2" jdbcType="VARCHAR" property="refseqId2" />
     <result column="gene_id2" jdbcType="VARCHAR" property="geneId2" />
-    <result column="ensembl_id2" jdbcType="VARCHAR" property="ensemblId2" />
+    <result column="ensemb_id2" jdbcType="VARCHAR" property="ensemblId2" />
 
     <result column="from_db" jdbcType="VARCHAR" property="fromdb" />
     <result column="db_evidence" jdbcType="VARCHAR" property="dbEvidence" />
@@ -70,6 +70,25 @@ where a.ensembl_gene_id=#{geneId} and c.taxon1=#{taxonId} and c.taxon2=#{taxonId
 
   <select id="findTraitNameByGene" resultType="String">
     select trait_name from trait_all where gene_id=#{geneid}
+  </select>
+
+  <select id="findOrthGeneByGivenGeneAndTaxon" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1
+    <if test="taxonList != null ">
+      and oall.tax_id2 in
+      <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+        #{taxon}
+      </foreach>
+    </if>
+    ) or (oim.uniprot_id=oall.uniprot_id2 and
+
+    <if test="taxonList != null ">
+      oall.tax_id1 in
+      <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+        #{taxon}
+      </foreach>
+    </if>
+    )) and oim.hdb_gene_id=#{geneId} and oim.taxon_id=#{taxonId}
   </select>
 
 </mapper>

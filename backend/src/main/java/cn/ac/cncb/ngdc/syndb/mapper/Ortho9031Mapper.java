@@ -4,6 +4,7 @@ import cn.ac.cncb.ngdc.syndb.entity.Ortho9031;
 import com.github.pagehelper.Page;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface Ortho9031Mapper {
@@ -25,4 +26,6 @@ public interface Ortho9031Mapper {
     List<Ortho9031> findOrthByTaxon2(int taxonId, String geneId,int taxonId2);
 
     List findTraitNameByGene(String geneid);
+
+    List<Ortho9031> findOrthGeneByGivenGeneAndTaxon(Map param);
 }

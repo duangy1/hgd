@@ -127,4 +127,9 @@
     select * from trait_all where taxon_id=#{querySpecies}
   </select>
 
+
+  <select id="selectTraitCountByGeneAndTaxon" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+      select count(distinct trait_id) from trait_all where gene_id=#{geneId} and taxon_id=#{taxonId}
+  </select>
+
 </mapper>
