@@ -50,56 +50,60 @@ public class BasicController {
 
     @RequestMapping(value="getTraitName", method=RequestMethod.GET)
     @ResponseBody
-    public List<TreeSelectBean> getAllTraitName(HttpServletRequest request){
+    public List<TreeSelectBean> getAllTraitName(Integer traitType,HttpServletRequest request){
         List<TreeSelectBean> treeSelectBeans = null;
+        treeSelectBeans = new ArrayList<TreeSelectBean>();
         Map map = new HashMap();
-        map.put("traitType",1);
+        if((traitType != null && traitType == 1) || traitType == null) {
+            map.put("traitType", 1);
 
-        //<TraitName> list = (List<TraitName> )traitNameService.selectList(map);
-        List<TraitName> list = (List<TraitName> )basicService.selectTraitNameList(map);
-        if(list != null ){
-            treeSelectBeans = new ArrayList<TreeSelectBean>();
-            List<TreeSelectBasicBean> treeSelectAnimal = new ArrayList<TreeSelectBasicBean>();
-            for(TraitName traitName: list){
-                TreeSelectBasicBean treeSelectBean = new TreeSelectBasicBean();
-                treeSelectBean.setId(traitName.getTraitId()+"");
-                treeSelectBean.setLabel(traitName.getTraitName());
+            //<TraitName> list = (List<TraitName> )traitNameService.selectList(map);
+            List<TraitName> list = (List<TraitName>) basicService.selectTraitNameList(map);
+            if (list != null) {
 
-                treeSelectAnimal.add(treeSelectBean);
+                List<TreeSelectBasicBean> treeSelectAnimal = new ArrayList<TreeSelectBasicBean>();
+                for (TraitName traitName : list) {
+                    TreeSelectBasicBean treeSelectBean = new TreeSelectBasicBean();
+                    treeSelectBean.setId(traitName.getTraitId() + "");
+                    treeSelectBean.setLabel(traitName.getTraitName());
+
+                    treeSelectAnimal.add(treeSelectBean);
+                }
+
+                TreeSelectBean treeSelectBean = new TreeSelectBean();
+                treeSelectBean.setId("animal");
+                treeSelectBean.setLabel("Animal");
+                treeSelectBean.setChildren(treeSelectAnimal);
+                treeSelectBeans.add(treeSelectBean);
+                System.out.println("trait size=" + list.size());
             }
-
-            TreeSelectBean treeSelectBean = new TreeSelectBean();
-            treeSelectBean.setId("animal");
-            treeSelectBean.setLabel("Animal");
-            treeSelectBean.setChildren(treeSelectAnimal);
-            treeSelectBeans.add(treeSelectBean);
-            System.out.println("trait size="+list.size());
         }
 
-        map.clear();
-        map.put("traitType",2);
+        if(traitType != null && traitType ==2 ) {
+            map.clear();
+            map.put("traitType", 2);
 
-        //<TraitName> list = (List<TraitName> )traitNameService.selectList(map);
-        list = (List<TraitName> )basicService.selectTraitNameList(map);
-        if(list != null ){
-            List<TreeSelectBasicBean> treeSelectAnimal = new ArrayList<TreeSelectBasicBean>();
-            for(TraitName traitName: list){
-                TreeSelectBasicBean treeSelectBean = new TreeSelectBasicBean();
-                treeSelectBean.setId(traitName.getTraitId()+"");
-                treeSelectBean.setLabel(traitName.getTraitName());
+            //<TraitName> list = (List<TraitName> )traitNameService.selectList(map);
+            List<TraitName>  list = (List<TraitName>) basicService.selectTraitNameList(map);
+            if (list != null) {
+                List<TreeSelectBasicBean> treeSelectAnimal = new ArrayList<TreeSelectBasicBean>();
+                for (TraitName traitName : list) {
+                    TreeSelectBasicBean treeSelectBean = new TreeSelectBasicBean();
+                    treeSelectBean.setId(traitName.getTraitId() + "");
+                    treeSelectBean.setLabel(traitName.getTraitName());
 
-                treeSelectAnimal.add(treeSelectBean);
+                    treeSelectAnimal.add(treeSelectBean);
+                }
+
+                TreeSelectBean treeSelectBean = new TreeSelectBean();
+                treeSelectBean.setId("plant");
+                treeSelectBean.setLabel("Plant");
+                treeSelectBean.setChildren(treeSelectAnimal);
+                treeSelectBeans.add(treeSelectBean);
+                System.out.println("trait size=" + list.size());
             }
 
-            TreeSelectBean treeSelectBean = new TreeSelectBean();
-            treeSelectBean.setId("plant");
-            treeSelectBean.setLabel("Plant");
-            treeSelectBean.setChildren(treeSelectAnimal);
-            treeSelectBeans.add(treeSelectBean);
-            System.out.println("trait size="+list.size());
         }
-
-
         return treeSelectBeans;
     }
 }

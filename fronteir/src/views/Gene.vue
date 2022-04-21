@@ -3,23 +3,28 @@
     <HeaderBar/>
      <Banner />
     <Navigator />
-    <div class="breadcrumb">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
+  
+     <el-breadcrumb separator-class="el-icon-arrow-right"  class="arrow-title">
             <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
             <el-breadcrumb-item>Homolog Gene</el-breadcrumb-item>
-        </el-breadcrumb>
-    </div>
+      </el-breadcrumb>
 
-    <el-row :gutter="20" style="padding-top:20px;padding-bottom:20px; padding-left:20px;">
-      <el-col :span="5">
-          <div class="grid-content">
-                    <el-card class="wrap-card" shadow="none">
-                       <div class="genefilter" style="padding-bottom:10px;">
+    <el-container style="border: 1px solid #eee;margin-top: 15px;">
+    
+<!--	<el-row :gutter="20" style="padding-top:20px;padding-bottom:20px; "> -->
+ <!--     <el-col :span="4"  style="background-color: aliceblue;"> -->         
+           <div class=" left" style="background-color: aliceblue;width:250px !important;">
+  
+                     <div class="genefilter" style=" padding-bottom:10px;width:250px !important;" align="left">
+                       <div style="padding-left:10px;padding-top:20px; padding-bottom:10px; font-size:20px !important; font-weight:bold;">
+                        <el-switch v-model="orgType"  active-text="Animals" inactive-text="Plants"  inactive-color="#ff4949" active-value="1" inactive-value="0" @change="selectOrganismType"></el-switch>
+                       </div>
                        <el-form ref="form" size="small" align="left">
                                <div class="filterheader"><i class="el-icon-caret-right"></i> Filter by species</div>
                                <div class="filtercontent">
-                               <div class="filtersubtitle">Animals</div>
-                               <div>
+                                <div v-if="orgType ==1 ">
+                                    <div class="filtersubtitle">Animals</div>
+                                 <div id="idOrgAnimal" >
                                   <el-select v-model="checkSpAnimalList" multiple placeholder="Please select" @change="selectAnimalChanged">
                                     <el-option
                                       v-for="item in animalsItem"
@@ -28,8 +33,10 @@
                                       :value="item.taxonId">
                                     </el-option>
                                   </el-select>
-                                </div>
-                               <div class="filtersubtitle">Plants</div>
+                                 </div>
+                                  </div>
+                                <div id="idOrgPlant" v-if="orgType == 0">
+                                 <div class="filtersubtitle" >Plants</div>
                                  <div>
                                  <el-select v-model="checkSpPlantList" multiple placeholder="Please select" @change="selectAnimalChanged">
                                     <el-option
@@ -41,22 +48,38 @@
                                    </el-select>
 
                                 </div>
+                               </div>
                              </div>
                              <div class="filterheader" style="padding-top:40px;"><i class="el-icon-caret-right"></i> Filter by trait</div>
-                             <div class="filtercontent">
-                              <treeselect
+                             <div class="filtercontent" v-if="orgType == 1">
+                              <treeselect 
                                 :multiple="true"
-                                :options="traitoptions"
+                                :options="traitAnimaloptions"
                                 :disable-branch-nodes="true"
                                 :open-on-click="true"
                                 :always-open="true"
                                 :flat="true"
                                 :append-to-body="false"
                                 placeholder="Select your favourite(s)..."
-                                 v-model="traitvalue"
-                                />
+                                 v-model="traitAnimalvalue"
+                                /> 
+                               
                               </div>
-
+                             <div class="filtercontent" style="" v-if="orgType == 0">
+                              <treeselect 
+                                 v-if="orgType == 0"
+                                :multiple="true"
+                                :options="traitPlantoptions"
+                                :disable-branch-nodes="true"
+                                :open-on-click="true"
+                                :always-open="true"
+                                :flat="true"
+                                :append-to-body="false"
+                                placeholder="Select your favourite(s)..."
+                                 v-model="traitPlantvalue"
+                                /> 
+                               
+                              </div>
                              <div style="padding-top:100px;" class="filterheader"><i class="el-icon-caret-right"></i> Filter by ortholog source</div>
                              <div class="filtercontent" style="padding-left:20px;">
                                  <div> <el-checkbox label="OMA group"></el-checkbox> </div>
@@ -67,14 +90,12 @@
                        </el-form>
 
                       </div>
-                    </el-card>
+
           </div>
-      </el-col>
-      <el-col :span="19" style="margin-left:0px; text-align:left;">
-        <div class="grid-content" style="margin-left:0px;">
 
-            <el-card class="wrap-card" shadow="none" style="margin-left:0px;padding:10px 10px;">
-
+     <!-- </el-col> -->
+    <!--  <el-col :span="19" style="margin-left:0px; text-align:left;"> -->
+        <div class="grid-content right tables" style="width: 98%; margin-left: 5%; margin-right:5%;">
 
                 <div >
                       <div style="margin-top:10px; margin-left:0px;padding-bottom:10px;float:left;">
@@ -94,8 +115,8 @@
 
 
                 <div style="clear:both;"></div>
-                <div  v-for="item in tableData" :key="item.gbiId">
-                    <div style="padding-bottom:5px;"><el-checkbox name="type"></el-checkbox>  <a href="" style="font-weight:bold; " v-if="item.geneSymbol !=null">{{item.geneSymbol}}</a> <a href="" style="font-weight:bold; " v-else>{{item.ensemblGeneId}}</a> ({{item.taxonName}})</div>
+                <div  v-for="item in tableData" :key="item.gbiId" style="text-align:left;">
+                    <div style="padding-bottom:5px;"><el-checkbox name="type"></el-checkbox>  <a href="" style="font-weight:bold; " v-if="item.showGeneName !=null">{{item.showGeneName}}</a> ({{item.taxonName}})</div>
                     <div style="padding-left:20px;">
                          <div style="padding-bottom:5px;font-size:14px;padding-top:5px;">{{item.geneDescription}}</div>
                         <div style="padding-bottom:5px;font-size:14px;padding-top:5px;"><b>Symobl:</b> {{item.geneSymbol}} </div>
@@ -103,7 +124,14 @@
                         <div style="padding-bottom:5px;font-size:14px;"><b>Synonym:</b> {{item.geneSynonym}} </div>
                         <div style="padding-bottom:5px;font-size:14px;"><b>BioType:</b> {{item.geneType}} </div>
                         <div style="padding-bottom:5px;font-size:14px;"><b>Ortholog Gene:</b></div>
-                        <div style="padding-bottom:5px;font-size:14px;"><span style="font-size:14px;padding-left:10px;" v-for="orthgene in item.orthoGeneBeanList" :key="orthgene.geneName"><a href="">{{orthgene.geneName}}</a> ({{orthgene.taxonName}})</span></div>
+                        <div style="padding-bottom:5px;font-size:14px;">
+					
+									<el-row :outer="20" v-for="orthgeneList in item.orthoGeneBeanList" :key="orthgeneList.index">
+										<el-col :span="6" style="font-size:14px;padding-left:10px;te" v-for="orthgene in orthgeneList" :key="orthgene.geneName"><a href="">{{orthgene.geneName}}</a> ({{orthgene.taxonName}})</el-col> 
+									</el-row>
+				
+			
+						</div>
                          <div style="padding-bottom:5px;font-size:14px;padding-top:10px;"><el-tag type="warning" size="small" v-if="item.traitCount >0"  ><a href="#">Trait {{item.traitCount}}</a></el-tag>&nbsp;&nbsp;<el-tag type="success" size="small"><a href="#">GO 5</a></el-tag></div>
                     </div>
                     <el-divider></el-divider>
@@ -122,14 +150,16 @@
                     </el-pagination>
 
              </div>
-             </el-card>
+
 
 
         </div>
-      </el-col>
+     <!-- </el-col> -->
 
-    </el-row>
-
+  <!--   </el-row> -->
+  
+  
+  </el-container>
 
 
 
@@ -137,6 +167,7 @@
     <FooterBar/>
 </div>
 </template>
+<style src="../assets/css/gene-detail.css" scoped></style>
 <style scoped>
 .filterheader{
     font-weight:bold;
@@ -155,13 +186,7 @@
     padding-left:10px;
     padding-right:10px;
 }
-.breadcrumb >>> .el-breadcrumb {
-    padding-top:15px;
-    padding-left:15px;
-    padding-bottom:10px;
-    font-size:14px !important;
-    border:1px solid #cccccc !important;
-}
+
 
 .grid-content >>> .el-pagination__total{
     font-weight: bold !important;
@@ -181,9 +206,7 @@
     color: inherit;
 }
 
-.breadcrumb >>> span {
-    font-size:14px !important;
-}
+
 /* .genefilter >>> .el-collapse-item__header.is-active{
 
 } */
@@ -215,6 +238,7 @@ import Banner from "@/components/banner.vue";
 import Treeselect from '@riophae/vue-treeselect'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+import { Loading } from 'element-ui';
 export default {
   name: 'Gene',
   components: {
@@ -227,8 +251,11 @@ export default {
  data(){
 
       return {
-         traitvalue:[],
-         traitoptions: [],
+         orgType: '1',
+         traitAnimalvalue:[],
+         traitAnimaloptions: [],
+         traitPlantvalue:[],
+         traitPlantoptions: [],
          animalsItem:[],
          plantsItem:[],
          checkSpAnimalList:[],
@@ -242,11 +269,83 @@ export default {
       }
     },
     watch:{
-        'traitvalue' : 'selectTraitFunc'
+        'Animalvalue' : 'selectTraitFunc',
+        'traitPlantvalue' : 'selectPlantTraitFunc'
     },
     methods: {
+        selectOrganismType(value){
+                             let animalselect = "";
+                   if(value == 1){
+                                    if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
+                                        for( var i =0 ; i<this.checkSpAnimalList.length;i++){
+
+                                            animalselect+= this.checkSpAnimalList[i]+",";
+                                        }
+                                       if(animalselect.length>0){
+                                          animalselect =animalselect.substring(0,animalselect.length-1);
+                                       }else{
+                                          animalselect="animal";
+                                          
+                                       }  
+                                    }
+                                   }else if(value ==0 ){
+                                    if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
+                                         for(let i =0 ; i<this.checkSpPlantList.length;i++){
+                                             animalselect+= this.checkSpPlantList[i]+",";
+                                          }
+                                    }
+
+                                       if(animalselect.length>0){
+                                          animalselect =animalselect.substring(0,animalselect.length-1);
+                                       }else{
+                                          animalselect="plant";
+                                          
+                                       }
+                                   }
+
+
+
+
+
+
+             let traitselect="";
+            if(value == 1){
+              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                     for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                             traitselect+= this.traitAnimalvalue[i]+",";
+                       }
+               }
+            }else if(value == 0){
+                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
+                    for( i =0 ; i< this.traitPlantvalue.length;i++){
+                      traitselect+= this.traitPlantvalue[i]+",";
+                    }
+                 }
+             }
+                        if(traitselect.length>0){
+                            traitselect =traitselect.substring(0,traitselect.length-1);
+                        }
+
+                         const axiosInstance1 = this.$axios.create({
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
+                            withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
+                          });
+                            axiosInstance1
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'length': 5}})
+                              .then(response => {
+                                  console.log(response)
+                                  this.tableData = response.data.data
+                                  this.totalSize = response.data.recordsTotal
+                                })
+                              .catch(error => {
+                                console.log(error)
+                                this.errored = true
+                              })
+                              .finally(() => this.loading = false)
+          console.log(value);
+        },
         selectAnimalChanged(value){
-            console.log("select animal changed="+value);
+            
             let animalselect = "";
             if(value != null && value.length>0){
                 for(var i =0 ; i<value.length;i++){
@@ -259,14 +358,22 @@ export default {
             }
 
             let traitselect="";
-            if(this.traitvalue != null && this.traitvalue.length>0){
-                            for( i =0 ; i< this.traitvalue.length;i++){
-                                traitselect+= this.traitvalue[i]+",";
-                            }
-            }
-            if(traitselect.length>0){
+            if(this.orgType == 1){
+              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                     for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                             traitselect+= this.traitAnimalvalue[i]+",";
+                       }
+               }
+            }else if(this.orgType == 0){
+                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
+                    for( i =0 ; i< this.traitPlantvalue.length;i++){
+                      traitselect+= this.traitPlantvalue[i]+",";
+                    }
+                 }
+             }
+              if(traitselect.length>0){
                 traitselect =traitselect.substring(0,traitselect.length-1);
-            }
+             }
 
              const axiosInstance1 = this.$axios.create({
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
@@ -288,26 +395,25 @@ export default {
 
 
         },
+
         selectTraitFunc(value){
-                         console.log("select trait value="+value);
+                       
                         let animalselect = "";
+
                         if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                             for( var i =0 ; i<this.checkSpAnimalList.length;i++){
 
-                                animalselect+= this.checkSpAnimalList[i]+",";
-                            }
-                        }
-
-                        if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
-                             for( i =0 ; i<this.checkSpPlantList.length;i++){
-                                 animalselect+= this.checkSpPlantList[i]+",";
-                              }
-                        }
+                                  animalselect+= this.checkSpAnimalList[i]+",";
+                             }
+                         }
 
 
                         if(animalselect.length>0){
                             animalselect =animalselect.substring(0,animalselect.length-1);
-                        }
+                        }else{
+                              animalselect="animal";
+                                          
+                         } 
 
 
 
@@ -342,37 +448,104 @@ export default {
 
         },
 
-
-        handleSizeChange(val) {
-
-
+        selectPlantTraitFunc(value){
+                        
                         let animalselect = "";
-                        if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
-                            for( var i =0 ; i<this.checkSpAnimalList.length;i++){
 
-                                animalselect+= this.checkSpAnimalList[i]+",";
-                            }
-                        }
-
-                        if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
-                             for( i =0 ; i<this.checkSpPlantList.length;i++){
-                                 animalselect+= this.checkSpPlantList[i]+",";
-                              }
-                        }
-
+                              if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
+                                 for( let i =0 ; i<this.checkSpPlantList.length;i++){
+                                     animalselect+= this.checkSpPlantList[i]+",";
+                                   }
+                               }
+                      
 
                         if(animalselect.length>0){
                             animalselect =animalselect.substring(0,animalselect.length-1);
-                        }
+                        }else{
+                              animalselect="plant";
+                                          
+                         } 
 
 
 
                         let traitselect="";
-                        if(this.traitvalue != null && this.traitvalue.length>0){
-                                        for( i =0 ; i< this.traitvalue.length;i++){
-                                            traitselect+= this.traitvalue[i]+",";
+                        if(value != null && value.length>0){
+                                        for( let i =0 ; i< value.length;i++){
+                                            traitselect+= value[i]+",";
                                         }
                         }
+                        if(traitselect.length>0){
+                            traitselect =traitselect.substring(0,traitselect.length-1);
+                        }
+
+                         const axiosInstance1 = this.$axios.create({
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
+                            withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
+                          });
+                            axiosInstance1
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect}})
+                              .then(response => {
+                                  console.log(response)
+                                  this.tableData = response.data.data
+                                  this.totalSize = response.data.recordsTotal
+                                })
+                              .catch(error => {
+                                console.log(error)
+                                this.errored = true
+                              })
+                              .finally(() => this.loading = false)
+
+
+
+        },
+
+        handleSizeChange(val) {
+
+
+                   let animalselect = "";
+                   if(this.orgType == 1){
+                                    if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
+                                        for( var i =0 ; i<this.checkSpAnimalList.length;i++){
+
+                                            animalselect+= this.checkSpAnimalList[i]+",";
+                                        }
+                                       if(animalselect.length>0){
+                                          animalselect =animalselect.substring(0,animalselect.length-1);
+                                       }else{
+                                          animalselect="animal";
+                                          
+                                       } 
+                                    }
+                                   }else if(this.orgType ==0 ){
+                                    if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
+                                         for(let i =0 ; i<this.checkSpPlantList.length;i++){
+                                             animalselect+= this.checkSpPlantList[i]+",";
+                                          }
+                                    }
+                                       if(animalselect.length>0){
+                                          animalselect =animalselect.substring(0,animalselect.length-1);
+                                       }else{
+                                          animalselect="plant";
+                                          
+                                       } 
+                                   }
+
+
+
+             let traitselect="";
+            if(this.orgType == 1){
+              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                     for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                             traitselect+= this.traitAnimalvalue[i]+",";
+                       }
+               }
+            }else if(this.orgType == 0){
+                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
+                    for( i =0 ; i< this.traitPlantvalue.length;i++){
+                      traitselect+= this.traitPlantvalue[i]+",";
+                    }
+                 }
+             }
                         if(traitselect.length>0){
                             traitselect =traitselect.substring(0,traitselect.length-1);
                         }
@@ -398,32 +571,51 @@ export default {
         handleCurrentChange(val) {
             console.log(`当前页: ${val}`);
                                   let animalselect = "";
+                                  if(this.orgType == 1){
                                     if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                                         for( var i =0 ; i<this.checkSpAnimalList.length;i++){
 
                                             animalselect+= this.checkSpAnimalList[i]+",";
                                         }
+                                       if(animalselect.length>0){
+                                          animalselect =animalselect.substring(0,animalselect.length-1);
+                                       }else{
+                                          animalselect="animal";
+                                          
+                                       } 
                                     }
-
+                                   }else if(this.orgType ==0 ){
                                     if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
-                                         for( i =0 ; i<this.checkSpPlantList.length;i++){
+                                         for(let i =0 ; i<this.checkSpPlantList.length;i++){
                                              animalselect+= this.checkSpPlantList[i]+",";
                                           }
                                     }
+                                       if(animalselect.length>0){
+                                          animalselect =animalselect.substring(0,animalselect.length-1);
+                                       }else{
+                                          animalselect="plant";
+                                          
+                                       } 
+                                   }
 
 
-                                    if(animalselect.length>0){
-                                        animalselect =animalselect.substring(0,animalselect.length-1);
-                                    }
 
 
+                                        let traitselect="";
+            if(this.orgType == 1){
+              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                     for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                             traitselect+= this.traitAnimalvalue[i]+",";
+                       }
+               }
+            }else if(this.orgType == 0){
+                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
+                    for( i =0 ; i< this.traitPlantvalue.length;i++){
+                      traitselect+= this.traitPlantvalue[i]+",";
+                    }
+                 }
+             }
 
-                                    let traitselect="";
-                                    if(this.traitvalue != null && this.traitvalue.length>0){
-                                                    for( i =0 ; i< this.traitvalue.length;i++){
-                                                        traitselect+= this.traitvalue[i]+",";
-                                                    }
-                                    }
                                     if(traitselect.length>0){
                                         traitselect =traitselect.substring(0,traitselect.length-1);
                                     }
@@ -451,9 +643,9 @@ export default {
       
   },
   mounted () {
+    let loadingService = Loading.service({fullscreen:true});
 
-
-
+  
     const axiosInstance = this.$axios.create({
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
     withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
@@ -486,14 +678,24 @@ export default {
        .get('http://localhost:9401/basic/getTraitName')
        .then(response => {
            console.log(response)
-           this.traitoptions = response.data
+           this.traitAnimaloptions= response.data
          })
        .catch(error => {
          console.log(error)
          this.errored = true
        })
        .finally(() => this.loading = false)
-
+ axiosInstance
+       .get('http://localhost:9401/basic/getTraitName',{params: {traitType: 2}})
+       .then(response => {
+           console.log(response)
+           this.traitPlantoptions= response.data
+         })
+       .catch(error => {
+         console.log(error)
+         this.errored = true
+       })
+       .finally(() => this.loading = false)
   axiosInstance
                    .get('http://localhost:9401/gene/filterHomolog')
                    .then(response => {
@@ -508,7 +710,9 @@ export default {
                    .finally(() => this.loading = false)
 
 
-
+		this.$nextTick(() => {
+			loadingService.close();
+		});
    }
 }
 </script>

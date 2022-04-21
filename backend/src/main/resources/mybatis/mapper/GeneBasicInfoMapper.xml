@@ -20,6 +20,7 @@
     <result column="is_homolog"  property="isHomolog" />
     <result column="taxon_name"  property="taxonName" />
     <result column="species_type"  property="speciesType" />
+    <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
@@ -49,7 +50,7 @@
   </select>
 
   <select id="filterHomologGene" parameterType="java.util.HashMap" resultMap="BaseResultMap">
-    select a.gbi_id,a.hdb_gene_id,a.ensembl_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id, b.latin_name as taxon_name,b.species_type from gene_basic_info a left join species b on a.taxon_id=b.taxon_id where 1=1
+    select a.gbi_id,a.hdb_gene_id,a.ensembl_gene_id,a.entrez_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id,a.gene_description,a.gwas_gene_id, b.latin_name as taxon_name,b.species_type from gene_basic_info a left join species b on a.taxon_id=b.taxon_id where 1=1
     <if test="taxonList != null ">
       and a.taxon_id in
       <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
@@ -78,6 +79,10 @@
   </select>
   <select id="traitInfoList" resultMap="TraitResultMap">
     select * from trait_name
+  </select>
+
+  <select id="selectGeneByHdbGeneId" resultMap="BaseResultMap">
+      select * from gene_basic_info where hdb_gene_id=#{hdbGeneId}
   </select>
 
 </mapper>

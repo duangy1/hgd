@@ -6,6 +6,7 @@ import cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo;
 import cn.ac.cncb.ngdc.syndb.entity.Ortho9031;
 import cn.ac.cncb.ngdc.syndb.entity.SpeciesInfo;
 import cn.ac.cncb.ngdc.syndb.service.OrthologGeneService;
+import cn.ac.cncb.ngdc.syndb.service.SpeciesService;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class OrthologGeneController {
 
     @Autowired
     private OrthologGeneService orthologGeneService;
+
+    @Autowired
+    private SpeciesService speciesService;
 
 
     @RequestMapping(value="filterHomolog", method= RequestMethod.GET)
@@ -47,9 +51,31 @@ public class OrthologGeneController {
                         talist.add(Integer.parseInt(str));
                     }
                 }
-            }else{
+            }else if(taxonids.equals("animal") == true){
+                List<SpeciesInfo> speciesInfos = null;
+
+                speciesInfos = speciesService.selectAllAnimals();
+                if(speciesInfos != null ){
+                    for(SpeciesInfo speciesInfo : speciesInfos){
+                        talist.add(Integer.parseInt(speciesInfo.getTaxonId()));
+                    }
+                }
+
+            }else if(taxonids.equals("plant") == true){
+                List<SpeciesInfo> speciesInfos = null;
+
+                speciesInfos = speciesService.selectAllPlants();
+                if(speciesInfos != null ){
+                    for(SpeciesInfo speciesInfo : speciesInfos){
+                        talist.add(Integer.parseInt(speciesInfo.getTaxonId()));
+                    }
+                }
+
+            }
+            else {
                 System.out.println("taxon------------"+taxonids);
                 talist.add(Integer.parseInt(taxonids));
+
             }
 
         }
@@ -64,12 +90,13 @@ public class OrthologGeneController {
                         traitlist.add(Integer.parseInt(str));
                     }
                 }
-            }else{
-                System.out.println("taxonids--------"+taxonids);
-                traitlist.add(Integer.parseInt(taxonids));
+            }
+            else{
+                System.out.println("traitids --------"+traitids);
+                traitlist.add(Integer.parseInt(traitids));
             }
 
-            System.out.println(taxonids);
+            System.out.println(traitids);
         }
 
         Map param = new HashMap();
@@ -90,18 +117,32 @@ public class OrthologGeneController {
                 int taxonId = geneBasicInfo.getTaxonId();
                 int speciesType = geneBasicInfo.getSpeciesType();
 
-                List<OrthoGeneBean> orthoGeneBeanList = orthologGeneService.getHomologGene(speciesType,geneid,taxonId);
+                List orthoGeneBeanList = orthologGeneService.getHomologGene(speciesType,geneid,taxonId);
                 if(orthoGeneBeanList != null) {
                     geneBasicInfo.setOrthoGeneBeanList(orthoGeneBeanList);
                 }
 
                 //here, select trait count, GO count for this gene
                 Map other = new HashMap();
-                other.put("geneId",geneid);
+                String gwasgeneid = geneBasicInfo.getGwasGeneId();
+                other.put("geneId",gwasgeneid);
                 other.put("taxonId",taxonId);
 
                 int traitcount =  orthologGeneService.selectTraitCountByGeneAndTaxon(other);
                 geneBasicInfo.setTraitCount(traitcount);
+
+                String gene="";
+                if(geneBasicInfo.getGeneSymbol() != null && geneBasicInfo.getGeneSymbol().length()>0){
+                    gene = geneBasicInfo.getGeneSymbol();
+                }else if(geneBasicInfo.getEnsemblGeneId() != null && geneBasicInfo.getEnsemblGeneId().length() >0 ){
+                    gene = geneBasicInfo.getEnsemblGeneId();
+                }else if(geneBasicInfo.getEntrezGene() != null && geneBasicInfo.getEntrezGene().length()>0){
+                    gene = geneBasicInfo.getEntrezGene();
+                }else {
+                    gene = geneBasicInfo.getHdbGeneId();
+                }
+
+                geneBasicInfo.setShowGeneName(gene);
 
             }
 

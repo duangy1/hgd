@@ -49,7 +49,17 @@ public class GeneBasicInfo {
 
     private String taxonName;
 
-    private List<OrthoGeneBean> orthoGeneBeanList;
+    private List orthoGeneBeanList;
+
+    private String showGeneName;
+
+    public String getShowGeneName() {
+        return showGeneName;
+    }
+
+    public void setShowGeneName(String showGeneName) {
+        this.showGeneName = showGeneName;
+    }
 
     public Integer getGbiId() {
         return gbiId;

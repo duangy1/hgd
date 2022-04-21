@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.OrthologGeneInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.OrthologGeneInfo">
+    <id column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="tax_id1" jdbcType="INTEGER" property="taxId1" />
+    <result column="uniprot_id1" jdbcType="VARCHAR" property="uniprotId1" />
+    <result column="ensembl_id1" jdbcType="VARCHAR" property="ensemblId1" />
+    <result column="refseq_id1" jdbcType="VARCHAR" property="refseqId1" />
+    <result column="tax_id2" jdbcType="INTEGER" property="taxId2" />
+    <result column="uniprot_id2" jdbcType="VARCHAR" property="uniprotId2" />
+    <result column="ensemb_id2" jdbcType="VARCHAR" property="ensembId2" />
+    <result column="refseq_id2" jdbcType="VARCHAR" property="refseqId2" />
+    <result column="from_db" jdbcType="VARCHAR" property="fromDb" />
+    <result column="db_evidence" jdbcType="VARCHAR" property="dbEvidence" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="hdb_gene_id1" jdbcType="LONGVARCHAR" property="hdbGeneId1" />
+    <result column="entrez_id1" jdbcType="LONGVARCHAR" property="entrezId1" />
+    <result column="hdb_gene_id2" jdbcType="LONGVARCHAR" property="hdbGeneId2" />
+    <result column="entrez_id2" jdbcType="LONGVARCHAR" property="entrezId2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oid, tax_id1, uniprot_id1, ensembl_id1, refseq_id1, tax_id2, uniprot_id2, ensemb_id2, 
+    refseq_id2, from_db, db_evidence, create_time, last_update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    hdb_gene_id1, entrez_id1, hdb_gene_id2, entrez_id2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ortholog_all64
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+
+  <select id="findOrthGeneByGivenGeneAndTaxon" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select * from ortholog_all64 oall where ((
+    <if test="taxonList != null ">
+      oall.tax_id2 in
+      <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+        #{taxon}
+      </foreach>
+    </if>
+    and oall.hdb_gene_id1=#{geneId} and oall.tax_id1=#{taxonId}
+    ) or (
+
+    <if test="taxonList != null ">
+      oall.tax_id1 in
+      <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+        #{taxon}
+      </foreach>
+
+    </if>
+    and oall.hdb_gene_id2=#{geneId} and oall.tax_id2=#{taxonId}
+    ))
+  </select>
+</mapper>

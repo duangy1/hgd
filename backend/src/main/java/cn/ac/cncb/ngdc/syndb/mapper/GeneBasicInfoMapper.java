@@ -32,5 +32,8 @@ public interface GeneBasicInfoMapper {
     List traitInfoList();
 
 
+    GeneBasicInfo selectGeneByHdbGeneId(String hgeneid);
+
+
 
 }
