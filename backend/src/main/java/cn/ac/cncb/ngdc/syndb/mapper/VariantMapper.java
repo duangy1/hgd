@@ -3,6 +3,8 @@ package cn.ac.cncb.ngdc.syndb.mapper;
 import cn.ac.cncb.ngdc.syndb.entity.variant;
 import com.github.pagehelper.Page;
 
+import java.util.List;
+
 public interface VariantMapper {
     int insert(variant record);
 
@@ -17,4 +19,6 @@ public interface VariantMapper {
     int updateByPrimaryKey(variant record);
 
     Page<variant> initPageVariant();
+
+    List<variant> voInfoOfGene(String geneName);
 }

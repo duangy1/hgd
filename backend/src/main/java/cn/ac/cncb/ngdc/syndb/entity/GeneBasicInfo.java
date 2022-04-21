@@ -11,6 +11,8 @@ public class GeneBasicInfo {
 
     private String ensemblGeneId;
 
+    private String refseqId;
+
     private String geneSynonym;
 
     private String geneType;
@@ -34,11 +36,15 @@ public class GeneBasicInfo {
     private String geneDescription;
 
     private String hdbGeneId;
+
     private int taxonId;
+
     private int isHomolog;
+
     private int speciesType;
 
     private int traitCount;
+
     private int GoCount;
 
     private String taxonName;

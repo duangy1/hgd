@@ -6,5 +6,4 @@ import lombok.Data;
 public class OrthoGeneBean {
     private String geneName;
     private String taxonName;
-
 }

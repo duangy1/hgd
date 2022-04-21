@@ -20,4 +20,8 @@ public class SpeciesService {
     public List<SpeciesInfo> selectAllPlants(){
         return speciesInfoMapper.selectAllPlants();
     }
+
+    public SpeciesInfo findSpeciesByTaxon(int taxid){
+        return speciesInfoMapper.findSpeciesByTaxon(taxid);
+    }
 }

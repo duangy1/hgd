@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.GoBasicTermMapper">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GoBasicTerm">
+    <id column="hdb_go_id" jdbcType="INTEGER" property="hdbGoId" />
+    <result column="go_annotations" jdbcType="VARCHAR" property="goAnnotations" />
+    <result column="depth" jdbcType="INTEGER" property="depth" />
+    <result column="go_id" jdbcType="VARCHAR" property="goId" />
+    <result column="go_term" jdbcType="VARCHAR" property="goTerm" />
+    <result column="top_class" jdbcType="VARCHAR" property="topClass" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GoBasicTerm">
+    <result column="definition" jdbcType="LONGVARCHAR" property="definition" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hdb_go_id, go_annotations, depth, go_id, go_term, top_class
+  </sql>
+
+  <sql id="Blob_Column_List">
+    definition
+  </sql>
+
+</mapper>

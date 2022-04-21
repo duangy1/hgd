@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.GeneGoInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneGoInfo">
+    <id column="go_id" jdbcType="INTEGER" property="goId" />
+    <result column="gene_id" jdbcType="VARCHAR" property="geneId" />
+    <result column="gene_name" jdbcType="VARCHAR" property="geneName" />
+    <result column="gene_synonym" jdbcType="VARCHAR" property="geneSynonym" />
+    <result column="go_term_accession" jdbcType="VARCHAR" property="goTermAccession" />
+    <result column="go_term_name" jdbcType="VARCHAR" property="goTermName" />
+    <result column="go_evidence_code" jdbcType="VARCHAR" property="goEvidenceCode" />
+    <result column="go_domain" jdbcType="VARCHAR" property="goDomain" />
+    <result column="goslim_goa_accession" jdbcType="VARCHAR" property="goslimGoaAccession" />
+    <result column="uniprot_gene_name" jdbcType="VARCHAR" property="uniprotGeneName" />
+    <result column="uniprot_gene_symbol" jdbcType="VARCHAR" property="uniprotGeneSymbol" />
+    <result column="hgnc_symbol" jdbcType="VARCHAR" property="hgncSymbol" />
+  </resultMap>
+  <resultMap id="GoBasicResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GoBasicTerm">
+    <id column="hdb_go_id" jdbcType="INTEGER" property="hdbGoId" />
+    <result column="go_annotations" jdbcType="VARCHAR" property="goAnnotations" />
+    <result column="depth" jdbcType="INTEGER" property="depth" />
+    <result column="go_id" jdbcType="VARCHAR" property="goId" />
+    <result column="go_term" jdbcType="VARCHAR" property="goTerm" />
+    <result column="top_class" jdbcType="VARCHAR" property="topClass" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="TraitResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneGoInfo">
+    <result column="go_term_definition" jdbcType="LONGVARCHAR" property="goTermDefinition" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    go_id, gene_id, gene_name, gene_synonym, go_term_accession, go_term_name, go_evidence_code, 
+    go_domain, goslim_goa_accession, uniprot_gene_name, uniprot_gene_symbol, hgnc_symbol
+  </sql>
+
+  <sql id="Blob_Column_List">
+    go_term_definition
+  </sql>
+
+  <select id="getGoInfo" resultMap="BaseResultMap">
+    select * from go_test where gene_id=#{ensid}
+  </select>
+
+  <select id="selectBasicGo" resultMap="GoBasicResultMap">
+    select * from go_terms
+  </select>
+
+  <select id="getGoNumbyGene" resultType="String">
+    select top_go_id,go_id,go_sum_num from gene_go_info where gene_id=#{ensid}
+  </select>
+</mapper>

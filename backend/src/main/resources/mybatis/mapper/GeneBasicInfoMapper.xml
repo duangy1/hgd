@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <id column="gbi_id" jdbcType="INTEGER" property="gbiId" />
     <result column="ensembl_gene_id" jdbcType="VARCHAR" property="ensemblGeneId" />
+    <result column="refseq_id" jdbcType="VARCHAR" property="refseqId" />
     <result column="gene_synonym" jdbcType="VARCHAR" property="geneSynonym" />
     <result column="gene_type" jdbcType="VARCHAR" property="geneType" />
     <result column="gene_symbol" jdbcType="VARCHAR" property="geneSymbol" />
@@ -23,6 +24,11 @@
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
   </resultMap>
+  <resultMap id="TraitResultMap" type="cn.ac.cncb.ngdc.syndb.entity.TraitBasicInfo">
+    <result column="trait_id" jdbcType="INTEGER" property="trait_id" />
+    <result column="trait_name" jdbcType="VARCHAR" property="trait_name" />
+    <result column="trait_type" jdbcType="INTEGER" property="trait_type" />
+  </resultMap>
   <sql id="Base_Column_List">
     gbi_id, ensembl_gene_id, gene_synonym, gene_type, gene_symbol, entrez_gene, chromosom, 
     gene_start, gene_end, gene_source, gwas_gene_id, jgi_gene_id
@@ -31,7 +37,7 @@
     gene_description
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -45,13 +51,13 @@
   <select id="filterHomologGene" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select a.gbi_id,a.hdb_gene_id,a.ensembl_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id, b.latin_name as taxon_name,b.species_type from gene_basic_info a left join species b on a.taxon_id=b.taxon_id where 1=1
     <if test="taxonList != null ">
-         and a.taxon_id in
-        <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
-          #{taxon}
-        </foreach>
-      </if>
+      and a.taxon_id in
+      <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+        #{taxon}
+      </foreach>
+    </if>
     <if test="traitList != null ">
-       and a.hdb_gene_id in (select gene_id from trait_all where trait_id in
+      and a.hdb_gene_id in (select gene_id from trait_all where trait_id in
       <foreach item="trait" index="index" collection="traitList"  open="(" separator="," close=")">
         #{trait}
       </foreach>
@@ -59,4 +65,19 @@
     </if>
     and a.is_homolog=1
   </select>
+
+  <select id="selectGene" resultMap="BaseResultMap">
+    select * from gene_basic_info  where entrez_gene=#{geneName}
+  </select>
+
+  <select id="selectGeneGoInfo" resultMap="BaseResultMap">
+    select * from go_test  where gene_id=#{geneName}
+  </select>
+  <select id="selectGeneVarInfo" resultMap="BaseResultMap">
+    select * from variation_all  where gene_id=#{geneName}
+  </select>
+  <select id="traitInfoList" resultMap="TraitResultMap">
+    select * from trait_name
+  </select>
+
 </mapper>

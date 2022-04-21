@@ -568,11 +568,7 @@ import qs from "qs";
 // // icons
 import yesIcon from "@/assets/img/icon/fangkuang.svg";
 import fullIcon from "@/assets/img/icon/huafu.svg";
-// import pantherIcon from "@/assets/img/icon/panther-logo.jpg";
-// import omaIcon from "@/assets/img/icon/oma-icon.jpg";
-// import inparanoidIcon from "@/assets/img/icon/inparanoid-icon.jpg";
-// import eggnogIcon from "@/assets/img/icon/eggnog-icon.png";
-// import hieranoidIcon from "@/assets/img/icon/hieranoid-logo.jpg";
+
 // import "@/assets/css/traits.css";
 export default {
   name: "Traits",

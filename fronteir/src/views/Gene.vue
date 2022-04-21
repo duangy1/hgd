@@ -163,7 +163,7 @@
     border:1px solid #cccccc !important;
 }
 
-.grid-content >> .el-pagination__total{
+.grid-content >>> .el-pagination__total{
     font-weight: bold !important;
     color: #985735 !important;
 }
@@ -184,9 +184,9 @@
 .breadcrumb >>> span {
     font-size:14px !important;
 }
-.genefilter >>> .el-collapse-item__header.is-active{
+/* .genefilter >>> .el-collapse-item__header.is-active{
 
-}
+} */
 >>> ul li span{
     font-size:14px !important;
 }

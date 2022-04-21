@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -66,5 +67,37 @@ public class OrthoService {
         }
         return ortholist;
     }
-
+    public List<Ortho9031> selectGeneOrthoInfo(String geneName){
+        List<Ortho9031> orthoList=ortho9031Mapper.selectGeneOrthoInfo(geneName);
+        for(Ortho9031 orthoItem : orthoList){
+            String dbevidence=orthoItem.getDbEvidence();
+            String fromdbinfo=orthoItem.getFromdb();
+            if(fromdbinfo != null && fromdbinfo.length() > 0){
+                if (fromdbinfo.contains("inparanoid")) {
+                    orthoItem.setInparanoid("1");
+                }
+            }
+            if(dbevidence != null && dbevidence.length() > 0) {
+                List<String> dbevidenceList = Arrays.asList(dbevidence.replaceAll("'","").split(","));
+                for(String item : dbevidenceList){
+                    String[] ltemlis=item.split(":");
+                    String dbName=ltemlis[0];
+                    String dbInfo=ltemlis[1];
+                    if(dbName.equals("panther")){
+                        orthoItem.setPanther(dbInfo);
+                    }else if(dbName.equals("eggnog")){
+                        orthoItem.setEggnog(dbInfo);
+                    }else if(dbName.equals("oma")){
+                        orthoItem.setOma(dbInfo);
+                    }else if(dbName.equals("hieranoid")){
+                        orthoItem.setHieranoid(dbInfo);
+                    }else if(dbName.equals("treefam")){
+                        orthoItem.setTreefam(dbInfo);
+                    }
+                }
+                orthoItem.setDbevidenceList(dbevidenceList);
+            }
+        }
+        return orthoList;
+    }
 }

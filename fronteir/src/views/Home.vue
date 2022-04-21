@@ -633,34 +633,7 @@
 </template>
 
 
-<style scoped>
-
-  @import "../assets/css/index.css";
-.egs a{
-  text-decoration: none;
-  color: #a6a9ad;
-}
-
-.module-card{
-  
-  color: #7f8081;
-  font-weight: bold;
-  font-size: 22px;
-  /* background-color: #e7cc90; */
-}
-.circleDiv{
-  border: 1px solid #e6c47b;
-  border-radius: 100%;
-  width: 120px;
-  background-color: #e6c47b;
-  margin: auto
-}
-.sppb-img-responsive{
-  width: 50px;
-  height: 50px;
-  margin-bottom: 20px;
-}
-</style>
+<style  src="../assets/css/index.css" scoped></style>
 <script>
 import Navigator from '@/components/navigator.vue';
 import FooterBar from '@/components/FooterBar.vue'
@@ -679,11 +652,5 @@ export default {
   methods:{
     
   },
-  // mounted(){
-  //   window.addEventListener('scroll', this.handleScroll, true);
-  // },
-  // destroyed() { //离开这个界面之后，删除滚动事件，不然容易除bug
-  //   window.removeEventListener('scroll', this.handleScroll)
-  // }
 }
 </script>

@@ -12,4 +12,6 @@ public interface SpeciesInfoMapper {
     public List<SpeciesInfo> selectOtherSpecies(Map param);
 
     public SpeciesInfo findSpeciesByTaxon (int taxonId);
+
+    List<SpeciesInfo> speciesInfoList();
 }

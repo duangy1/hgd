@@ -8,6 +8,7 @@
     <result column="var_name" jdbcType="VARCHAR" property="varName" />
     <result column="species_common_name" jdbcType="VARCHAR" property="speciesCommonName" />
     <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
+    <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.variant">
     <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
@@ -18,17 +19,13 @@
   <sql id="Blob_Column_List">
     snp_id
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from variation_all
-    where gsi_id = #{gsiId,jdbcType=INTEGER}
-  </select>
 
   <select id="initPageVariant" resultMap="BaseResultMap">
       select * from variation_all
+  </select>
+
+  <select id="voInfoOfGene" resultMap="BaseResultMap">
+    select * from variation_all where gene_id=#{geneName}
   </select>
 
 </mapper>

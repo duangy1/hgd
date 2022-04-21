@@ -1,8 +1,11 @@
 package cn.ac.cncb.ngdc.syndb.mapper;
 
 import cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo;
+import cn.ac.cncb.ngdc.syndb.entity.Ortho9031;
+import cn.ac.cncb.ngdc.syndb.entity.SpeciesInfo;
 import com.github.pagehelper.Page;
 
+import java.util.List;
 import java.util.Map;
 
 public interface GeneBasicInfoMapper {
@@ -21,4 +24,13 @@ public interface GeneBasicInfoMapper {
     Page<GeneBasicInfo> allOrthoList();
 
     Page<GeneBasicInfo> filterHomologGene(Map param);
+
+    List<GeneBasicInfo> selectGene(String geneName);
+
+    List<GeneBasicInfo> selectGeneGoInfo(String geneName);
+
+    List traitInfoList();
+
+
+
 }

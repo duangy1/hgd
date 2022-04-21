@@ -27,11 +27,13 @@
     <if test="taxon != null">
       and taxon_id != #{taxon}
     </if>
-
   </select>
 
   <select id="findSpeciesByTaxon" resultMap="BaseResultMap">
     select * from species where taxon_id=#{taxonId}
+  </select>
+  <select id="speciesInfoList" resultMap="BaseResultMap">
+    select * from species
   </select>
 
 </mapper>

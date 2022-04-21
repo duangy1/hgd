@@ -23,102 +23,19 @@
   <sql id="Blob_Column_List">
     gwas_id
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from trait_all
-    where id = #{id,jdbcType=INTEGER}
-  </select>
+
   <select id="findGwasOrgidByTaxonId" parameterType="java.lang.Integer" resultType="INTEGER">
     select gwas_orgid from species where taxon_id=#{taxonId}
   </select>
 
-
-  <insert id="insert" parameterType="cn.ac.cncb.ngdc.syndb.entity.Trait2gwas">
-    insert into trait_all (id, gene_id, trait_id, 
-      trait_name, species_common_name, taxon_id, 
-      classification, create_time, last_update_time, 
-      gwas_id)
-    values (#{id,jdbcType=INTEGER}, #{geneId,jdbcType=VARCHAR}, #{traitId,jdbcType=INTEGER}, 
-      #{traitName,jdbcType=VARCHAR}, #{speciesCommonName,jdbcType=VARCHAR}, #{taxonId,jdbcType=INTEGER}, 
-      #{classification,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
-      #{gwasId,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.ac.cncb.ngdc.syndb.entity.Trait2gwas">
-    insert into trait_all
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="geneId != null">
-        gene_id,
-      </if>
-      <if test="traitId != null">
-        trait_id,
-      </if>
-      <if test="traitName != null">
-        trait_name,
-      </if>
-      <if test="speciesCommonName != null">
-        species_common_name,
-      </if>
-      <if test="taxonId != null">
-        taxon_id,
-      </if>
-      <if test="classification != null">
-        classification,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="lastUpdateTime != null">
-        last_update_time,
-      </if>
-      <if test="gwasId != null">
-        gwas_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="geneId != null">
-        #{geneId,jdbcType=VARCHAR},
-      </if>
-      <if test="traitId != null">
-        #{traitId,jdbcType=INTEGER},
-      </if>
-      <if test="traitName != null">
-        #{traitName,jdbcType=VARCHAR},
-      </if>
-      <if test="speciesCommonName != null">
-        #{speciesCommonName,jdbcType=VARCHAR},
-      </if>
-      <if test="taxonId != null">
-        #{taxonId,jdbcType=INTEGER},
-      </if>
-      <if test="classification != null">
-        #{classification,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastUpdateTime != null">
-        #{lastUpdateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gwasId != null">
-        #{gwasId,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
   <select id="selectTraitBySpecies" resultMap="BaseResultMap">
     select * from trait_all where taxon_id = #{species}
   </select>
+
   <select id="biomedicalTrait" resultMap="BaseResultMap">
     select * from trait_all
   </select>
+
   <select id="getInfoByTraitName" resultMap="BaseResultMap">
     select * from trait_all where trait_name = #{traitName}
   </select>
@@ -126,7 +43,6 @@
   <select id="getOrthoInfo" resultMap="BaseResultMap">
     select * from trait_all where taxon_id=#{querySpecies}
   </select>
-
 
   <select id="selectTraitCountByGeneAndTaxon" parameterType="java.util.HashMap" resultType="java.lang.Integer">
       select count(distinct trait_id) from trait_all where gene_id=#{geneId} and taxon_id=#{taxonId}

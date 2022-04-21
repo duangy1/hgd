@@ -8,12 +8,14 @@
     <result column="ensembl_id1" jdbcType="VARCHAR" property="ensemblId1" />
     <result column="refseq_id1" jdbcType="VARCHAR" property="refseqId1" />
     <result column="gene_id1" jdbcType="VARCHAR" property="geneId1" />
+    <result column="entrez_id1" jdbcType="VARCHAR" property="entrezId1" />
 
     <result column="tax_id2" jdbcType="INTEGER" property="tax2" />
     <result column="uniprot_id2" jdbcType="VARCHAR" property="protein2" />
     <result column="refseq_id2" jdbcType="VARCHAR" property="refseqId2" />
     <result column="gene_id2" jdbcType="VARCHAR" property="geneId2" />
     <result column="ensemb_id2" jdbcType="VARCHAR" property="ensemblId2" />
+    <result column="entrez_id2" jdbcType="VARCHAR" property="entrezId2" />
 
     <result column="from_db" jdbcType="VARCHAR" property="fromdb" />
     <result column="db_evidence" jdbcType="VARCHAR" property="dbEvidence" />
@@ -64,7 +66,7 @@
 
   <select id="findOrthByTaxon2" resultMap="BaseResultMap">
     select c.taxon1,c.uniprot_id1,c.taxon2,c.uniprot_id2,c.db_evidence,c.from_db
-from gene_basic_info a inner join ortholog_id_mapping b on a.ensembl_gene_id=b.ensembl_gene_id inner join ortholog_all c on b.uniprot_id=c.uniprot_id1
+from gene_basic_info2 a inner join ortholog_id_mapping b on a.ensembl_gene_id=b.ensembl_gene_id inner join ortholog_all c on b.uniprot_id=c.uniprot_id1
 where a.ensembl_gene_id=#{geneId} and c.taxon1=#{taxonId} and c.taxon2=#{taxonId2}
   </select>
 
@@ -90,5 +92,7 @@ where a.ensembl_gene_id=#{geneId} and c.taxon1=#{taxonId} and c.taxon2=#{taxonId
     </if>
     )) and oim.hdb_gene_id=#{geneId} and oim.taxon_id=#{taxonId}
   </select>
-
+  <select id="selectGeneOrthoInfo" resultMap="BaseResultMap">
+    select * from ortholog_all64  where (entrez_id1=#{geneName} or entrez_id2=#{geneName} )
+  </select>
 </mapper>

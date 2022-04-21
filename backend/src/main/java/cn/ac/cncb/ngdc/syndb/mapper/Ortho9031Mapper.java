@@ -28,4 +28,5 @@ public interface Ortho9031Mapper {
     List findTraitNameByGene(String geneid);
 
     List<Ortho9031> findOrthGeneByGivenGeneAndTaxon(Map param);
+    List<Ortho9031> selectGeneOrthoInfo(String geneName);
 }

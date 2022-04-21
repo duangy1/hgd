@@ -48,6 +48,7 @@ public class OrthologGeneService {
         return speciesInfoMapper.findSpeciesByTaxon(taxonId);
     }
 
+
     public Integer selectTraitCountByGeneAndTaxon(Map param){
         return trait2gwasMapper.selectTraitCountByGeneAndTaxon(param);
     }

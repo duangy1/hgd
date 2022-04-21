@@ -34,7 +34,7 @@
 <!--        <table tableName="9031_ortho" domainObjectName="Ortho9031" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>-->
 <!--        <table tableName="gwas_allinfo" domainObjectName="gwasInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>-->
 <!--        <table tableName="trait_all" domainObjectName="trait2gwas" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>-->
-        <table tableName="gene_basic_info" domainObjectName="GeneBasicInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>
+        <table tableName="vo_term" domainObjectName="VOBasicTerm" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByPrimaryKey="false" enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>
 
 
 
