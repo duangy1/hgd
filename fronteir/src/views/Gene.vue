@@ -269,7 +269,7 @@ export default {
       }
     },
     watch:{
-        'Animalvalue' : 'selectTraitFunc',
+        'traitAnimalvalue' : 'selectTraitFunc',
         'traitPlantvalue' : 'selectPlantTraitFunc'
     },
     methods: {
