@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.GeneGoMapper">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneGo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="gene_id" jdbcType="VARCHAR" property="geneId" />
+    <result column="top_go_id" jdbcType="VARCHAR" property="topGoId" />
+    <result column="go_sum_num" jdbcType="INTEGER" property="goSumNum" />
+    <result column="species_common_name" jdbcType="VARCHAR" property="speciesCommonName" />
+    <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneGo">
+    <result column="go_id" jdbcType="LONGVARCHAR" property="goId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, gene_id, top_go_id, go_sum_num, species_common_name, taxon_id
+  </sql>
+  <sql id="Blob_Column_List">
+    go_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gene_go_animal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="goInfoOfGene" resultMap="BaseResultMap">
+    select * from gene_go_animal where gene_id=#{geneName}
+  </select>
+</mapper>
