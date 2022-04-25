@@ -7,4 +7,6 @@ import java.util.Map;
 
 public interface TraitNameMapper {
     List<TraitName> selectList(Map map);
+
+    List<TraitName> traitInfoList();
 }

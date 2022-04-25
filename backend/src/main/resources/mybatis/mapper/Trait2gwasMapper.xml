@@ -47,5 +47,7 @@
   <select id="selectTraitCountByGeneAndTaxon" parameterType="java.util.HashMap" resultType="java.lang.Integer">
       select count(distinct trait_id) from trait_all where gene_id=#{geneId} and taxon_id=#{taxonId}
   </select>
-
+  <select id="traitInfoByGeneList" resultMap="BaseResultMap">
+      select * from trait_all where gene_id=#{geneName}
+  </select>
 </mapper>

@@ -1,6 +1,7 @@
 package cn.ac.cncb.ngdc.syndb.mapper;
 
 import cn.ac.cncb.ngdc.syndb.entity.GeneGoInfo;
+import cn.ac.cncb.ngdc.syndb.entity.GoBasicTerm;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface GeneGoInfoMapper {
     int updateByPrimaryKey(GeneGoInfo record);
 
     List<GeneGoInfo> getGoInfo(String ensid);
-    List selectBasicGo();
+    List<GoBasicTerm> selectBasicGo();
 
     List<String> getGoNumbyGene(String ensid);
 }

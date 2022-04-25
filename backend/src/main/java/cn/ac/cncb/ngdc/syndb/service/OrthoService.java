@@ -72,6 +72,7 @@ public class OrthoService {
         for(Ortho9031 orthoItem : orthoList){
             String dbevidence=orthoItem.getDbEvidence();
             String fromdbinfo=orthoItem.getFromdb();
+
             if(fromdbinfo != null && fromdbinfo.length() > 0){
                 if (fromdbinfo.contains("inparanoid")) {
                     orthoItem.setInparanoid("1");
@@ -101,3 +102,5 @@ public class OrthoService {
         return orthoList;
     }
 }
+
+

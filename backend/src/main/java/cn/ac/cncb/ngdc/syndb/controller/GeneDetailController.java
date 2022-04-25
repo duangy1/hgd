@@ -41,36 +41,38 @@ public class GeneDetailController {
                 orthoitem.setProtein(orthoitem.getProtein2());
                 orthoitem.setSpecies(species2);
                 orthoitem.setEntrezId(orthoitem.getEntrezId2());
+                String hdbId=orthoitem.getHdbId2();
+                //            找对应的ensembl gene id
+                String ensgid=geneDetailService.selectEnsgIdByhdbId(hdbId);
+                orthoitem.setEnsemblId(ensgid);
+
             }else{
                 orthoitem.setTax(tax1);
                 orthoitem.setProtein(orthoitem.getProtein1());
                 orthoitem.setSpecies(species1);
                 orthoitem.setEntrezId(orthoitem.getEntrezId1());
+                String hdbId=orthoitem.getHdbId1();
+                //            找对应的ensembl gene id
+                String ensgid=geneDetailService.selectEnsgIdByhdbId(hdbId);
+                orthoitem.setEnsemblId(ensgid);
             }
         }
-//        if(filerList.size() >0){
-//            List listFilted=new ArrayList();
-//            listFilted=orthoList.stream().filter(item -> filerList.contains(""+item.getTax())).collect(Collectors.toList());
-//            orthoList=listFilted;
-//        };
-//        go必须要用ensembl来查询
-//        先给一个所有的go term，用来画样式图
-        List goBasicTermList=geneDetailService.selectBasicGo();
         InfoList.add(geneList);
         InfoList.add(orthoList);
-        InfoList.add(goBasicTermList);
+//        InfoList.add(goBasicTermList);
         return InfoList;
     };
 //   根据ensembl id获取对应的go信息
-    @RequestMapping(value = "/api/gene-detail-go/{ensid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/gene-detail-go", method = RequestMethod.GET)
     @ResponseBody
-    public List goInformation(@PathVariable("ensid") String ensid) {
-        List<GeneGoInfo> goInfoList = geneDetailService.getGoInfo(ensid);
-        List<String> numInfo=geneDetailService.getGoNumbyGene(ensid);
-        List resultList=new ArrayList();
-        resultList.add(goInfoList);
-        resultList.add(numInfo);
-        return resultList;
+    public List goInformation(@RequestParam String geneName,String classification) {
+//        List<GeneGoInfo> goInfoList = geneDetailService.getGoInfo(geneName);
+        List goBasicTermList=geneDetailService.selectBasicGo(geneName,classification);
+//        List<String> numInfo=geneDetailService.getGoNumbyGene(geneName);
+//        List resultList=new ArrayList();
+//        resultList.add(goInfoList);
+//        resultList.add(numInfo);
+        return goBasicTermList;
     }
     @RequestMapping(value = "/api/gene-detail-var", method = RequestMethod.GET)
     @ResponseBody
@@ -78,10 +80,11 @@ public class GeneDetailController {
         List voInfoList = geneDetailService.voInfoList(geneName);
         return voInfoList;
     }
+//    绘制热图所需trait数据
     @RequestMapping(value = "/api/gene-detail-trait", method = RequestMethod.GET)
     @ResponseBody
-    public List traitInformation() {
-        List traitInfoList = geneDetailService.traitInfoList();
+    public List traitInformation(@RequestParam String geneName) {
+        List traitInfoList = geneDetailService.traitInfoList(geneName);
         return traitInfoList;
     }
 //    filter选项所需要的物种列表获取
@@ -92,6 +95,6 @@ public class GeneDetailController {
         List speciesInfoList = geneDetailService.speciesInfoList();
         return speciesInfoList;
     }
-//    获取variant热图数据，
+//    获取variant的具体突变表格信息
 
 }

@@ -29,11 +29,9 @@ public interface GeneBasicInfoMapper {
 
     List<GeneBasicInfo> selectGeneGoInfo(String geneName);
 
-    List traitInfoList();
 
 
-    GeneBasicInfo selectGeneByHdbGeneId(String hgeneid);
+    GeneBasicInfo selectGeneByHdbGeneId(String gene);
 
-
-
+    String selectEnsgIdByhdbId(String hdbId);
 }

@@ -32,4 +32,5 @@ public interface Trait2gwasMapper {
 
     Integer selectTraitCountByGeneAndTaxon(Map param);
 
+    List<Trait2gwas> traitInfoByGeneList(String geneName);
 }

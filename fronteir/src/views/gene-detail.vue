@@ -59,26 +59,30 @@
     
     <div class="tables" style="overflow:hidden">
         <div class="left-tab" >
-            <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Informations</span></p>
-            <el-divider class="divider"></el-divider>
-            <!-- <h2 style="clear:left" class="h2-title">Gene Detail Information</h2> -->
-            <el-descriptions :column="1" class="descriptions" :size="size" >
-                <el-descriptions-item label="Ensembl Gene Id">{{geneBasicInfo.ensemblGeneId}}</el-descriptions-item>
-                <el-descriptions-item label="Entrez Gene Id">{{geneBasicInfo.entrezGene}}</el-descriptions-item>
-                <el-descriptions-item label="Entrez Gene Id">{{geneBasicInfo.refseqId}}</el-descriptions-item>
-                <el-descriptions-item label="Gene Synonym">{{geneBasicInfo.geneSynonym}}</el-descriptions-item>
-                <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
-                <el-descriptions-item label="Gene Symbol">{{geneBasicInfo.geneSymbol}}</el-descriptions-item>
-                <el-descriptions-item label="Chromosom">{{geneBasicInfo.chromosom}}</el-descriptions-item>
-                <el-descriptions-item label="Gene Start">{{geneBasicInfo.geneStart}}</el-descriptions-item>
-                <el-descriptions-item label="Gene End">{{geneBasicInfo.geneEnd}}</el-descriptions-item>
-                <el-descriptions-item label="Gene Description">{{geneBasicInfo.geneDescription}}</el-descriptions-item>
-            </el-descriptions>
-        
+            <el-card style="width:95%" shadow="none">
+                <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Informations</span></p> -->
+                
+                <!-- <el-divider class="divider"></el-divider> -->
+                <h2 class="b-info">Basic Information</h2>
+                <!-- <h2 style="clear:left" class="h2-title">Gene Detail Information</h2> -->
+                <el-descriptions :column="1" class="descriptions" :size="size" >
+                    <el-descriptions-item label="Ensembl Gene Id">{{geneBasicInfo.ensemblGeneId}}</el-descriptions-item>
+                    <el-descriptions-item label="Entrez Gene Id">{{geneBasicInfo.entrezGene}}</el-descriptions-item>
+                    <el-descriptions-item label="Entrez Gene Id">{{geneBasicInfo.refseqId}}</el-descriptions-item>
+                    <el-descriptions-item label="Gene Synonym">{{geneBasicInfo.geneSynonym}}</el-descriptions-item>
+                    <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
+                    <el-descriptions-item label="Gene Symbol">{{geneBasicInfo.geneSymbol}}</el-descriptions-item>
+                    <el-descriptions-item label="Species Name">{{geneBasicInfo.speciesName.commonName}}</el-descriptions-item>
+                    <el-descriptions-item label="Chromosom">{{geneBasicInfo.chromosom}}</el-descriptions-item>
+                    <el-descriptions-item label="Gene Start">{{geneBasicInfo.geneStart}}</el-descriptions-item>
+                    <el-descriptions-item label="Gene End">{{geneBasicInfo.geneEnd}}</el-descriptions-item>
+                    <el-descriptions-item label="Gene Description">{{geneBasicInfo.geneDescription}}</el-descriptions-item>
+                </el-descriptions>
+            </el-card>
         </div>
         <div class="info-div">
             <!-- <el-divider class="divider"></el-divider> -->
-            <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ortholog Informations</span></p>
+            <p class="p-ele top-p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ortholog Informations</span></p>
             <el-divider class="divider"></el-divider>
             <el-card style="padding:2%" shadow="none">
                 <div class="filt-div">
@@ -113,7 +117,10 @@
                     prop="species.taxonId"
                     label="Taxon Id">
                 </el-table-column>
-                
+                 <el-table-column
+                    prop="ensemblId"
+                    label="EnsemblId">
+                </el-table-column>
                 <el-table-column
                     prop="protein"
                     label="Protein">
@@ -141,32 +148,34 @@
                 
 
             </el-table>
-            <div id="item-pos-3">
-                <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ontology Annotations</span></p>
-                <el-divider class="divider"></el-divider>
-                <!-- 这里 -->
-                <el-card style="padding:2%" shadow="none">
-                    <!-- 提示信息不显示 -->
-                    
-                    <el-container direction="vertical" >
-                        <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
-                            <div><i class="el-icon-question question-icon"></i></div>
-                        </el-tooltip>
-                        <el-checkbox v-model="checked.go" style="float:left" class="compare-o-g" @change="compareOrthoGo(checked.go)">Compare Ortholog Genes</el-checkbox>
-                        <el-select v-model="form.species" multiple placeholder="Choose Species" class="filt-spe-select-go">
-                            <!-- <el-option label="Org1" value="shanghai"></el-option>
-                            <el-option label="Org2" value="beijing"></el-option> -->
-                            <el-option
-                                v-for="item in species"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-container>
-                </el-card>
-                <div id="svg-container"></div>
-            </div>
+            
+            <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ontology Annotations</span></p>
+            <el-divider class="divider"></el-divider>
+            <!-- 这里 -->
+            <el-card style="padding:2%" shadow="none">
+                <!-- 提示信息不显示 -->
+                
+                <el-container direction="vertical" >
+                    <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
+                        <div><i class="el-icon-question question-icon"></i></div>
+                    </el-tooltip>
+                    <el-checkbox v-model="checked.go" style="float:left" class="compare-o-g" @change="compareOrthoGo(checked.go)">Compare Ortholog Genes</el-checkbox>
+                    <el-select v-model="form.species" multiple placeholder="Choose Species" class="filt-spe-select-go">
+                        <!-- <el-option label="Org1" value="shanghai"></el-option>
+                        <el-option label="Org2" value="beijing"></el-option> -->
+                        <el-option
+                            v-for="item in species"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-container>
+            </el-card>
+            <div id="svg-container-go"></div>
+                <!-- <svg style="width:100%;height:380px" id="svgcontainer-go"></svg> -->
+            
+            
             <!-- <el-table
                 :data="goList"
                 class="info-table"
@@ -248,6 +257,64 @@
                     </el-container>
                 </el-card>
                 <div id="svg-container-var"></div>
+                <!-- 根据snplist取值的表 -->
+                 <el-table
+                :data="goList"
+                class="info-table"
+                v-loading="goloading"
+                :border="false"
+            >
+                <el-table-column
+                    prop="geneId"
+                    label="Gene Id"
+                >
+                </el-table-column>
+                <el-table-column
+                    prop="geneName"
+                    label="Gene Name"
+                >
+                </el-table-column>
+                <el-table-column
+                    prop="goDomain"
+                    label="Variant Domain">
+                </el-table-column>
+                <el-table-column
+                    prop="goEvidenceCode"
+                    label="Variant Evidence Code">
+                </el-table-column>
+                <el-table-column
+                    prop="goId"
+                    label="Variant Id">
+                </el-table-column>
+                <el-table-column
+                    prop="goTermAccession"
+                    label="Variant Accession">
+                </el-table-column>
+                <el-table-column
+                    prop="goTermDefinition"
+                    label="Variant Definition">
+                </el-table-column>
+                <el-table-column
+                    prop="goTermName"
+                    label="Variant Name">
+                </el-table-column>
+                <el-table-column
+                    prop="goslimGoaAccession"
+                    label="Variant slim">
+                </el-table-column>
+                <el-table-column
+                    prop="hgncSymbol"
+                    label="HGNC Symbol">
+                </el-table-column>
+                <el-table-column
+                    prop="uniprotGeneName"
+                    label="Uniprot Gene Name">
+                </el-table-column>
+                <el-table-column
+                    prop="uniprotGeneSymbol"
+                    label="Uniprot Gene Symbol">
+                </el-table-column>
+            </el-table>
             </div>
             <div id="item-pos-5">
                 <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Traits</span></p>
@@ -332,7 +399,8 @@ export default {
         checked:{"go":"","vo":"","trait":""},
         species:[],
         navBarFixed:"false",
-        tableHeight:800
+        tableHeight:800,
+        tooltip:""
         }
     },
 
@@ -357,7 +425,7 @@ export default {
           let filterOrtho=this.orthoInfo.filter(item=>{
               return  key.indexOf(""+item.tax) >-1
           })
-          console.log("filterOrtho:",filterOrtho);
+        //   console.log("filterOrtho:",filterOrtho);
           this.tableOrthoList=filterOrtho
 
       },
@@ -365,18 +433,69 @@ export default {
           console.log("detail");
       },
       compareOrthoGo(value){
-          console.log("compare ortho:",value);
+        console.log("compare ortho:",value);
+        //   取当前table的同源基因，循环查询对应的var数据，如果有的话，添加一行
+        let index=0;
+        for(let i=0;i<this.tableOrthoList.length;i++){
+            let orthoItem=this.tableOrthoList[i];
+            if(orthoItem.ensemblId!==null){
+                let speciesName=orthoItem.species.shortName
+                let classification=this.geneBasicInfo.speciesName.classification;
+                this.$axios.get("http://localhost:9401/api/gene-detail-go",{params: {'geneName': orthoItem.ensemblId,'classification':classification}})
+                .then(response=>{
+                    index += 1;
+                    let svgContainer=d3.select("#svgcontainer-go")
+                    let tooltip=d3.select("#tooltip")
+                    
+                    this.drawSubRectChart(response.data,svgContainer,"go",index,tooltip,speciesName,orthoItem.ensemblId)
+        })
+                
+                console.log("orthoItem.ensemblId:",orthoItem.ensemblId);
+        }
+        }
       },
       compareOrthoVar(value){
-          console.log("compare ortho:",value);
+        console.log("compare ortho:",value);
         //   取当前table的同源基因，循环查询对应的var数据，如果有的话，添加一行
-        //   for(let i=0;i<this.tableOrthoList.length;i++){
-        //       let orthoItem=this.tableOrthoList[i];
-        //         console.log("orthoItem:",orthoItem.entrezId);
-        //   }
+        let index=0;
+        for(let i=0;i<this.tableOrthoList.length;i++){
+              let orthoItem=this.tableOrthoList[i];
+              
+              if(orthoItem.ensemblId!==null){
+                let speciesName=orthoItem.species.shortName
+                this.$axios.get("http://localhost:9401/api/gene-detail-var",{params: {'geneName': orthoItem.ensemblId}})
+                .then(response=>{
+                    index += 1;
+                    let svgContainer=d3.select("#svgcontainer-var")
+                    let tooltip=d3.select("#tooltip")
+                    
+                    this.drawSubRectChart(response.data,svgContainer,"vo",index,tooltip,speciesName,orthoItem.ensemblId)
+        })
+                
+                console.log("orthoItem.ensemblId:",orthoItem.ensemblId);
+              }
+          }
       },
       compareOrthoTrait(value){
           console.log("compare ortho:",value);
+        //   取当前table的同源基因，循环查询对应的trait数据，如果有的话，添加一行
+        let index=0;
+        for(let i=0;i<this.tableOrthoList.length;i++){
+              let orthoItem=this.tableOrthoList[i];
+              
+              if(orthoItem.ensemblId!==null){
+                let speciesName=orthoItem.species.shortName
+                this.$axios.get("http://localhost:9401/api/gene-detail-trait",{params: {'geneName': orthoItem.ensemblId}})
+                .then(response=>{
+                    console.log("trait ortho response.data:",response.data);
+                    index += 1;
+                    let svgContainer=d3.select("#svgcontainer-trait")
+                    let tooltip=d3.select("#tooltip")
+                    
+                    this.drawSubRectChart(response.data,svgContainer,"trait",index,tooltip,speciesName,orthoItem.ensemblId)
+        })
+                }
+          }
       },
       getTableMaxHeight(){
         this.$nextTick(function () {
@@ -398,57 +517,12 @@ export default {
         this.navBarFixed = false;
       }
     },
-    drawGoRectChart(value,divName,dataclass){
-    let svg_height=280;
-    let svgContainer = d3.select(divName).append("svg").attr("width", "100%").attr("height", svg_height).attr('id', 'svgcontainer');
-    let rect_top=247;
-    let RECT_WIDTH=20;
-    let rect_height=20;
+    drawGoRectChart(value,svgContainer,dataclass,speciesName,geneName){
+    console.log("indexs:",value,svgContainer,dataclass,speciesName,geneName);
+    // let svg_height=280;
+    // let svgContainer = d3.select(divName).append("svg").attr("width", "100%").attr("height", svg_height).attr('id', 'svgcontainer');
     
-    for(let iii in value ){
-        let text_top=142;
-        let item=value[iii]
-        let group_text = svgContainer.append('g').attr("id", "text_group"+iii).attr("transform","translate("+(iii*22-88)+","+text_top+") rotate(-45)")
-        let gene_fontsize=14
-        let textgs = group_text.selectAll("text").data([item]).enter()
-        if(dataclass=='go'){
-            textgs.append("text")
-                .attr("fill", "black")
-                .attr("text-anchor", "start")
-                .attr("font-family", "sans-serif")
-                .attr("font-size", gene_fontsize)
-                .attr("x", "0")
-                .attr("y", text_top)
-                .text(d => {
-                    return  d.goAnnotations
-                })
-        }else if(dataclass=='vo'){
-             textgs.append("text")
-            .attr("fill", "black")
-            .attr("text-anchor", "start")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", gene_fontsize)
-            .attr("x", "0")
-            .attr("y", text_top)
-            .text(d => {
-                return  d.voAnnotaion
-            })
-        }else{
-             textgs.append("text")
-            .attr("fill", "black")
-            .attr("text-anchor", "start")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", gene_fontsize)
-            .attr("x", "0")
-            .attr("y", text_top)
-            .text(d => {
-                return  d.trait_name
-            })
-        }
-        }
-    
-
-    let group_total = svgContainer.append('g').attr("id", "group_total")
+    // 绘制文字部分
     let tooltip = d3.select('.tables')
         .append('div')
         .attr("id", "tooltip")
@@ -461,14 +535,73 @@ export default {
         .style('border-radius',"5%")
         .style('color','white')
         .style('background-color','black')
-        
+    for(let iii in value ){
+        let text_top=222;
+        let text_x=240;
+        let item=value[iii]
+        let group_text = svgContainer.append('g').attr("id", "text_group"+iii).attr("transform","translate("+(iii*22-88)+","+text_top+") rotate(-45)")
+        let gene_fontsize=14
+        let textgs = group_text.selectAll("text").data([item]).enter()
+        if(dataclass=='go'){
+            textgs.append("text")
+                .attr("fill", "black")
+                .attr("text-anchor", "start")
+                .attr("font-family", "sans-serif")
+                .attr("font-size", gene_fontsize)
+                .attr("x", text_x)
+                .attr("y", text_top)
+                .text(d => {
+                    return  d.goAnnotations
+                })
+        }else if(dataclass=='vo'){
+             textgs.append("text")
+            .attr("fill", "black")
+            .attr("text-anchor", "start")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", gene_fontsize)
+            .attr("x", text_x)
+            .attr("y", text_top)
+            .text(d => {
+                return  d.voAnnotaion
+            })
+        }else{
+             textgs.append("text")
+            .attr("fill", "black")
+            .attr("text-anchor", "start")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", gene_fontsize)
+            .attr("x", text_x)
+            .attr("y", text_top)
+            .text(d => {
+                return  d.traitName
+            })
+        }
+        }
+    // let speciesName=
+    // 绘制热图rect部分
+    this.drawSubRectChart(value,svgContainer,dataclass,0,tooltip,speciesName,geneName)
     
-    let rect_group = group_total.selectAll("rect")
-        .data(value)
-        .enter()
+    },
+    // 封装绘制rect方法
+    drawSubRectChart(value,svgContainer,dataclass,index,tooltip,speciesName,geneName){
+        let rect_top=217;
+        // console.log("speciesName:",speciesName);
+        let RECT_WIDTH=20;
+        let rect_height=20;
+        let PADDING=30;
+        svgContainer.attr('height',`${300+index*35}`)
+        let group_total = svgContainer.append('g').attr("id", "group_total").attr('transform',`translate(0,${PADDING*index})`)
+        
+        group_total.append('text')
+            .attr('x',0)
+            .attr('y',rect_top+rect_height/2+5)
+            .text(`${geneName}(${speciesName})`)
+        let rect_group = group_total.selectAll("rect")
+            .data(value)
+            .enter()
     rect_group.append('rect')
         .attr("x", (d, i) => {
-            let startRate = i*22
+            let startRate = 230+i*22
             return startRate
         })
         .attr("y", rect_top )
@@ -480,21 +613,25 @@ export default {
         .on("mousemove", function(d, i){
             let htmlInfo;   
             if( dataclass =="go"){
-                htmlInfo=`<p>Go Id: ${i.goId}</p>
+                htmlInfo=`<p>Variant Number: ${i.goNum>0?i.goNum:"-"}</p>
+            <p>Variant List: ${i.goList==null?"-":i.goList.slice(0,2)}${i.goList!==null&&i.goList.length>2?"...":""}</p>
+            <p>Go Id: ${i.goId}</p>
             <p>Go Term: ${i.goTerm}</p>
             <p>Go Classification: ${i.topClass}</p>
             <p>Go Definition: ${i.definition}</p>
             `
             }else if( dataclass =="vo"){
                  htmlInfo=`<p>Variant Number: ${i.snpNum>0?i.snpNum:"-"}</p>
-            <p>Variant List: ${i.snpList.length>0?"-":i.snpList.slice(0,2)}${i.snpList.length>2?"...":""}</p>
+            <p>Variant List: ${i.snpList==null?"-":i.snpList.slice(0,2)}${i.snpList!==null&&i.snpList.length>2?"...":""}</p>
             <p>Variant Annotaion: ${i.voAnnotaion}</p>
             <p>Variant Classification: ${i.voClassification}</p>
             
             `
             }else{
-                htmlInfo=`<p>Trait Id: ${i.trait_id}</p>
-            <p>Trait Name: ${i.trait_name}</p>
+                htmlInfo=`<p>Gwas Number: ${i.gwasNum>0?i.gwasNum:"-"}</p>
+            <p>Gwas List: ${i.gwasList==null?"-":i.gwasList.slice(0,2)}${i.gwasList!==null&&i.gwasList.length>2?"...":""}</p>
+            <p>Trait Id: ${i.traitId}</p>
+            <p>Trait Name: ${i.traitName}</p>
             `
             }
             tooltip.interrupt().style("display", "block").html(htmlInfo)
@@ -508,38 +645,43 @@ export default {
         .on('mouseout', function () {
             tooltip.style('display', 'none')
         })
-        .on("click", d=>{console.log(d);})
+        .on("click", (d,i)=>{
+            // this.$axios.get("",{params:{snpList:i.snpList}})
+            console.log("click:",d,i);})
         ;
 
-    
     },
     hiligtDbCols({rowIndex, columnIndex}){
         if(rowIndex===0 && columnIndex>=4){
             return "color: #fff;background-color:rgba(92,165,214,0.7) !important"
         }
-    }
+    },
+    // drawOrthoVar(dataList){
+    //     console.log("dataList:",dataList);
+    // }
   },
   mounted () {
+    
     //   跳转链接
     //   http://www.treefam.org/family/TF328386
-    const axiosInstance = this.$axios.create({
-    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
-    withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
-  });
-    axiosInstance
-      .get('http://localhost:9401/api/gene-detail',{params: {'geneName': "770642", 'taxonid': "9031"}})
+    
+    let geneName="770642"
+    this.$axios
+      .get('http://localhost:9401/api/gene-detail',{params: {'geneName': geneName, 'taxonid': "9031"}})
       .then(response => {
         this.loading=false;
         let genedetail = JSON.parse(JSON.stringify(response.data[0]));
         this.geneBasicInfo=genedetail[0];
+        console.log("geneBasicInfo:",this.geneBasicInfo);
         let orthoList = JSON.parse(JSON.stringify(response.data[1]));
-        this.goBsicList=response.data[2];
-        this.drawGoRectChart(response.data[2],"#svg-container","go");
+        // this.goBsicList=response.data[2];
+        // 绘制初始热图
+        let svg_height=480;
         this.tableData = genedetail;
         // 存储同源数据
         this.orthoInfo=orthoList;
         this.tableOrthoList=orthoList;
-
+        console.log("orthoList:",orthoList);
         //   将多个结果合并成一个
         if(genedetail.length>1){
             let obj=genedetail[0]
@@ -556,17 +698,32 @@ export default {
         
         // 根据ensemblid获取对应的go数据和var数据等
         // let ensid=this.geneBasicInfo.ensemblGeneId
-        let ensid="WBGene00000001"
-        this.$axios.get('http://localhost:9401/api/gene-detail-go/'+ensid).then(response=>{
+        // let ensid="WBGene00000001"
+        let geneName="ENSGALG00000023443"
+        let specName=this.geneBasicInfo.speciesName.shortName;
+        let classification=this.geneBasicInfo.speciesName.classification;
+        console.log("classification:",classification);
+        this.$axios.get('http://localhost:9401/api/gene-detail-go',{params: {'geneName': geneName,'classification':classification}}).then(response=>{
             this.goloading=false;
             this.goList=response.data
+            console.log("goList:",this.goList);
+            let svgContainer = d3.select("#svg-container-go").append("svg").attr("width", "100%").attr("height", svg_height).attr('id', 'svgcontainer-go');
+            this.drawGoRectChart(response.data,svgContainer,"go",specName,geneName)
         })
-        this.$axios.get('http://localhost:9401/api/gene-detail-var',{params: {'geneName': "ENSGALG00000023443"}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-var',{params: {'geneName': geneName}}).then(response=>{
             console.log("var response:",response.data);
-            this.drawGoRectChart(response.data,"#svg-container-var","vo")
+            let svg_height=480;
+            let svgContainer = d3.select("#svg-container-var").append("svg").attr("width", "100%").attr("height", svg_height).attr('id', 'svgcontainer-var');
+            // console.log("var response.data:",response.data);
+            this.drawGoRectChart(response.data,svgContainer,"vo",specName,geneName)
+            
         })
-        this.$axios.get('http://localhost:9401/api/gene-detail-trait').then(response=>{
-            this.drawGoRectChart(response.data,"#svg-container-trait","trait")
+        let traitGeneName="Os05g0556300"
+        this.$axios.get('http://localhost:9401/api/gene-detail-trait',{params: {'geneName': traitGeneName}}).then(response=>{
+            let svg_height=280;
+            let svgContainer = d3.select("#svg-container-trait").append("svg").attr("width", "100%").attr("height", svg_height).attr('id', 'svgcontainer-trait');
+            console.log("trait:",response.data);
+            this.drawGoRectChart(response.data,svgContainer,"trait",specName,geneName)
         })
         this.$axios.get('http://localhost:9401/api/species-list').then(response=>{
             console.log("species:",response.data);

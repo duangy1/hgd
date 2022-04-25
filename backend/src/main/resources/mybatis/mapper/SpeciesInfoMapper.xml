@@ -6,6 +6,8 @@
     <result column="taxon_id" jdbcType="VARCHAR" property="taxonId" />
     <result column="latin_name" jdbcType="VARCHAR" property="latinName" />
     <result column="common_name" jdbcType="VARCHAR" property="commonName" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="classification" jdbcType="VARCHAR" property="classification" />
     <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
     <result column="species_type" jdbcType="VARCHAR" property="speciesType" />
   </resultMap>

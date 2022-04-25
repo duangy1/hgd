@@ -16,4 +16,8 @@
     </if>
     order by trait_type
   </select>
+
+    <select id="traitInfoList" resultMap="BaseResultMap">
+        select * from trait_name
+    </select>
 </mapper>

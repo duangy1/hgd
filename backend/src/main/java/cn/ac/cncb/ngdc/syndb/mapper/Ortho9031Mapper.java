@@ -19,8 +19,6 @@ public interface Ortho9031Mapper {
     int updateByPrimaryKey(Ortho9031 record);
 
 
-
-
     List<Ortho9031> findOrthByTaxonAndGene(int taxonId, String geneId);
 
     List<Ortho9031> findOrthByTaxon2(int taxonId, String geneId,int taxonId2);
@@ -28,5 +26,6 @@ public interface Ortho9031Mapper {
     List findTraitNameByGene(String geneid);
 
     List<Ortho9031> findOrthGeneByGivenGeneAndTaxon(Map param);
+
     List<Ortho9031> selectGeneOrthoInfo(String geneName);
 }

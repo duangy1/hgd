@@ -10,6 +10,8 @@ import java.util.List;
 public class Ortho9031 {
     private Integer id;
 
+    private String hdbId1;
+
     private String protein1;
 
     private String ensemblId1;
@@ -23,6 +25,8 @@ public class Ortho9031 {
     private Integer tax1;
 
     private SpeciesInfo species1;
+
+    private String hdbId2;
 
     private String protein2;
 
