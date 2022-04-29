@@ -66,14 +66,10 @@ public class GeneDetailController {
     @RequestMapping(value = "/api/gene-detail-go", method = RequestMethod.GET)
     @ResponseBody
     public List goInformation(@RequestParam String geneName,String classification) {
-//        List<GeneGoInfo> goInfoList = geneDetailService.getGoInfo(geneName);
         List goBasicTermList=geneDetailService.selectBasicGo(geneName,classification);
-//        List<String> numInfo=geneDetailService.getGoNumbyGene(geneName);
-//        List resultList=new ArrayList();
-//        resultList.add(goInfoList);
-//        resultList.add(numInfo);
         return goBasicTermList;
     }
+
     @RequestMapping(value = "/api/gene-detail-var", method = RequestMethod.GET)
     @ResponseBody
     public List varInformation(@RequestParam String geneName) {

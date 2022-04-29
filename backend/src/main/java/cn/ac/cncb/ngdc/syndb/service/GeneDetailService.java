@@ -79,7 +79,12 @@ public class GeneDetailService {
                     String[] goIdList  = goInfoItem.getGoId().split(",");
                     Integer goNum = goIdList.length;
                     numSum += goNum;
-                    GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
+                    GoBasicTerm goItem=new GoBasicTerm();
+                    if(topGoId == null){
+                        goItem=goBasicInfoList.stream().filter(d -> d.getGoId().equals("otho")).findFirst().get();
+                    }else {
+                        goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
+                    };
                     goItem.setGoNum(goNum);
                     goItem.setGoList(goIdList);
                 }
@@ -101,7 +106,9 @@ public class GeneDetailService {
         List<variant> varInfoListOfGene= variantMapper.voInfoOfGene(geneName);
         List<VOBasicTerm> voInfoList= VOBasicTermMapper.voInfoList();
         Integer numSum=0;
+        String speciesName=new String();
         for(variant varInfoItem : varInfoListOfGene){
+            speciesName=varInfoItem.getSpeciesCommonName();
             String varName=varInfoItem.getVarName();
             String[] snpList=varInfoItem.getSnpId().split(",");
             Integer snpNum=snpList.length;
@@ -111,6 +118,10 @@ public class GeneDetailService {
             voItem.setSnpList(snpList);
         }
         for(VOBasicTerm basicTerm:voInfoList){
+            basicTerm.setSpecies(speciesName);
+//            根据species表得到查询vo具体条目的接口号
+            String dataSource=speciesInfoMapper.getDataSource(speciesName);
+            basicTerm.setDataSource(dataSource);
             if(basicTerm.getSnpNum() != null){
                 float opaNum= (float)basicTerm.getSnpNum()/numSum;
                 basicTerm.setOpacity(opaNum);

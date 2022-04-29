@@ -17,6 +17,7 @@ public class GoBasicTerm {
     private String topClass;
 
     private String definition;
+
     private float opacity;
 
     private Integer goNum;

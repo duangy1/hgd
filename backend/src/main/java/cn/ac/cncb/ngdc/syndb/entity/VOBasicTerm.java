@@ -15,4 +15,8 @@ public class VOBasicTerm {
     private Integer snpNum;
 
     private String[] snpList;
+
+    private String species;
+
+    private String dataSource;
 }

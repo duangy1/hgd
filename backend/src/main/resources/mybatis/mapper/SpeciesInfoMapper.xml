@@ -8,6 +8,7 @@
     <result column="common_name" jdbcType="VARCHAR" property="commonName" />
     <result column="short_name" jdbcType="VARCHAR" property="shortName" />
     <result column="classification" jdbcType="VARCHAR" property="classification" />
+    <result column="data_source" jdbcType="VARCHAR" property="dataSource" />
     <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
     <result column="species_type" jdbcType="VARCHAR" property="speciesType" />
   </resultMap>
@@ -37,5 +38,7 @@
   <select id="speciesInfoList" resultMap="BaseResultMap">
     select * from species
   </select>
-
+  <select id="getDataSource" resultType="String">
+    select data_source from species where common_name=#{speciesName}
+  </select>
 </mapper>

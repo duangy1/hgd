@@ -14,4 +14,6 @@ public interface SpeciesInfoMapper {
     public SpeciesInfo findSpeciesByTaxon (int taxonId);
 
     List<SpeciesInfo> speciesInfoList();
+
+    String getDataSource(String speciesName);
 }
