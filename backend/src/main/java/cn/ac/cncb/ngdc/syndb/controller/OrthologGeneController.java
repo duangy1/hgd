@@ -134,12 +134,16 @@ public class OrthologGeneController {
                 String gene="";
                 if(geneBasicInfo.getGeneSymbol() != null && geneBasicInfo.getGeneSymbol().length()>0){
                     gene = geneBasicInfo.getGeneSymbol();
+                    geneBasicInfo.setShowGeneType(1);
                 }else if(geneBasicInfo.getEnsemblGeneId() != null && geneBasicInfo.getEnsemblGeneId().length() >0 ){
                     gene = geneBasicInfo.getEnsemblGeneId();
+                    geneBasicInfo.setShowGeneType(2);
                 }else if(geneBasicInfo.getEntrezGene() != null && geneBasicInfo.getEntrezGene().length()>0){
                     gene = geneBasicInfo.getEntrezGene();
+                    geneBasicInfo.setShowGeneType(3);
                 }else {
                     gene = geneBasicInfo.getHdbGeneId();
+                    geneBasicInfo.setShowGeneType(4);
                 }
 
                 geneBasicInfo.setShowGeneName(gene);
