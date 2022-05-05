@@ -57,4 +57,6 @@ public class GeneBasicInfo {
 
     private String showGeneName;
 
+    private int showGeneType;
+
 }
