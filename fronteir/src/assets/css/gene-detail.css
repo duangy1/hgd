@@ -7,8 +7,9 @@
     /* margin-top: 3%; */
     font-size: 27px;
     /* display: flex; */
-    float: left;
-    margin-top: 2%;
+    /* float: left; */
+    margin-top: 1%;
+    margin: auto;
 }
 .tab-list{
     width: 18%;
@@ -19,10 +20,15 @@
     /* margin-left: 1%;
     margin-top: 2%; */
 }
+#item-pos-3{
+    padding-top: 3%;
+}
 .descriptions{
-    float: left;
+    /* float: left; */
     text-align: center;
-    padding-left: 3%;
+    width: 88%;
+    /* padding-left: 3%; */
+    margin-left: 19%;
     /* margin-left: 10%; */
 }
 .el-menu-item{
@@ -40,8 +46,9 @@
     font-size: 15px !important;
 }
 .tables{
-    width: 98%;
-    margin-left: 5%;
+    width: 85%;
+    margin: auto;
+    /* margin-left: 1%; */
 }
 .detail-info{
     font-size: 18px;
@@ -56,8 +63,10 @@
 }
 .info-table{
     /* margin: auto; */
-    margin-top: 2%;
-    width: 95%;
+    
+    width: 98%;
+    margin: auto;
+    /* margin-top: 60px; */
 }
 .h2-title{
     margin-top: 2%;
@@ -104,6 +113,7 @@
 *, *::before, *::after{
     box-sizing: border-box;
 }
+
 .style_pageCategory__1ur8P{
     font-size: .6rem;
     color: #6c757d;
@@ -130,22 +140,26 @@
 .p-ele{
     text-align: left;
     margin-top: 2%;
+    margin-left: 15px;
     /* line-height: 0px;
     margin-top: 10px; */
 }
-.top-p-ele{
-    margin-top: 33%;
-}
+/* .top-p-ele{
+    margin-top: 44%;
+} */
 .divider{
     margin-top: -5px;
 }
 .info-div{
-    margin-top: 5%;
     /* height: 38%; */
-    width: 100%;
+    
     box-sizing: border-box;
     height: calc(100% - 3rem);
 }
+#item-pos{
+    margin-left: 25px;
+}
+
 .el-table th>.cell{
     background-color: white !important;
     font-size: 16px !important;
@@ -153,6 +167,7 @@
 .filt-div-info{
     /* margin-top: 2%; */
     display: flex;
+    margin-left: 16px;
 }
 /* .filt-div-go{
     display: flex;
@@ -163,14 +178,17 @@
 }
 .compare-o-g{
     display: flex;
+    margin-left: 15px;
 }
 .filt-spe-select{
     width: 50%;
     float: left;
+    text-align: left;
+    margin-left: 1%;
 }
 #filter-search{
     float: left;
-    margin-left: 5%;
+    /* margin-left: 3%; */
 }
 .clear-btn{
     height: 40px;
@@ -202,11 +220,14 @@
     position:fixed;
     top:0;
     z-index:999;
-    width: 250px;
+    width: 240px;
 }
 
 .b-info {
     font-size: 25px;
     color: #0f5e7a;
     text-shadow: 1.5px 2.5px 3px #9b9b9b;
+}
+.filterBox{
+    /* width: 99%; */
 }

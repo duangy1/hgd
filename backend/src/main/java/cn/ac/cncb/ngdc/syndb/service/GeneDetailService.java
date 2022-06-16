@@ -26,10 +26,16 @@ public class GeneDetailService {
     TraitNameMapper traitNameMapper;
     @Resource
     GeneGoMapper geneGoMapper;
-    public List<GeneBasicInfo> selectGene(String geneName){
-        List<GeneBasicInfo> geneList=geneBasicInfoMapper.selectGene(geneName);
+    @Resource
+    ExpressionTermMapper expressionTermMapper;
+    @Resource
+    GeneExpressionMapper geneExpressionMapper;
+
+
+    public List<GeneBasicInfo> selectGene(String geneName,String taxonid){
+        List<GeneBasicInfo> geneList=geneBasicInfoMapper.selectGene(geneName,taxonid);
         GeneBasicInfo geneInfo=geneList.get(0);
-        SpeciesInfo speciesName=speciesInfoMapper.findSpeciesByTaxon(geneInfo.getTaxonId());
+        SpeciesInfo speciesName=speciesInfoMapper.findSpeciesByTaxon(taxonid);
         geneInfo.setSpeciesName(speciesName);
         String gene=new String();
         if(geneInfo != null ){
@@ -49,9 +55,9 @@ public class GeneDetailService {
     }
 
 //    根据传入hdbID找到对应的gbi信息
-    public String selectEnsgIdByhdbId(String hdbId){
-        String ensgid=geneBasicInfoMapper.selectEnsgIdByhdbId(hdbId);
-        return ensgid;
+    public GeneBasicInfo selectEnsgIdByhdbId(String hdbId){
+        GeneBasicInfo gbiInfo=geneBasicInfoMapper.selectEnsgIdByhdbId(hdbId);
+        return gbiInfo;
     }
 
     public List<GeneBasicInfo> selectGeneGoInfo(String geneName){
@@ -66,26 +72,31 @@ public class GeneDetailService {
 
     //获取绘制热图的go Ontology和基因注释信息
     public List selectBasicGo(String geneName,String classification){
+        if(classification=="others"){}
         String tableName="gene_go_"+classification;
         List<GeneGo> goGeneInfoList= geneGoMapper.goInfoOfGene(geneName,tableName);
 
-        List<GoBasicTerm> goBasicInfoList= geneGoInfoMapper.selectBasicGo();
+        List<GoBasicTerm> goBasicInfoList= geneGoInfoMapper.selectBasicGo(classification);
         Integer numSum=0;
-        if(goGeneInfoList.size()!= 0) {
+        if(goGeneInfoList.size() > 0) {
+//            循环查到的gene_go_info
             for (GeneGo goInfoItem : goGeneInfoList) {
                 String topGoId = goInfoItem.getTopGoId();
-
-                if(goInfoItem.getGoId()!= null){
-                    String[] goIdList  = goInfoItem.getGoId().split(",");
-                    Integer goNum = goIdList.length;
-                    numSum += goNum;
-                    GoBasicTerm goItem=new GoBasicTerm();
-                    if(topGoId == null){
-                        goItem=goBasicInfoList.stream().filter(d -> d.getGoId().equals("otho")).findFirst().get();
-                    }else {
-                        goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
-                    };
-                    goItem.setGoNum(goNum);
+                String goId=goInfoItem.getGoId();
+                if(topGoId != null && topGoId.length() != 0){
+                    String[] goIdList  = goId.split(",");
+                    Integer goSumNum=goInfoItem.getGoSumNum();
+                    numSum += goSumNum;
+//                    GoBasicTerm goItem=new GoBasicTerm();
+//                    if(topGoId == null){
+//                        goItem=goBasicInfoList.stream().filter(d -> d.getGoId().equals("otho")).findFirst().get();
+//                    }else {
+                    GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
+//                    };
+                    if(goItem==null){
+                        System.out.print("goItem:"+goItem);
+                    }
+                    goItem.setGoNum(goSumNum);
                     goItem.setGoList(goIdList);
                 }
             }
@@ -103,11 +114,11 @@ public class GeneDetailService {
 
 //获取绘制热图的variant Ontology和基因注释信息
     public List voInfoList(String geneName){
-        List<variant> varInfoListOfGene= variantMapper.voInfoOfGene(geneName);
+        List<Variant> varInfoListOfGene= variantMapper.voInfoOfGene(geneName);
         List<VOBasicTerm> voInfoList= VOBasicTermMapper.voInfoList();
         Integer numSum=0;
         String speciesName=new String();
-        for(variant varInfoItem : varInfoListOfGene){
+        for(Variant varInfoItem : varInfoListOfGene){
             speciesName=varInfoItem.getSpeciesCommonName();
             String varName=varInfoItem.getVarName();
             String[] snpList=varInfoItem.getSnpId().split(",");
@@ -120,7 +131,7 @@ public class GeneDetailService {
         for(VOBasicTerm basicTerm:voInfoList){
             basicTerm.setSpecies(speciesName);
 //            根据species表得到查询vo具体条目的接口号
-            String dataSource=speciesInfoMapper.getDataSource(speciesName);
+            String dataSource=speciesInfoMapper.getDataSourceByName(speciesName);
             basicTerm.setDataSource(dataSource);
             if(basicTerm.getSnpNum() != null){
                 float opaNum= (float)basicTerm.getSnpNum()/numSum;
@@ -157,9 +168,12 @@ public class GeneDetailService {
 
     }
 
-    public List<SpeciesOptionItem> speciesInfoList(){
-        List<SpeciesInfo> speciesInfoList=speciesInfoMapper.speciesInfoList();
+    public List<SpeciesOptionItem> speciesInfoList(String taxonId){
+        String classification=speciesInfoMapper.getClassificatoinByTax(taxonId);
+        System.out.print("classification"+classification);
+        List<SpeciesInfo> speciesInfoList=speciesInfoMapper.speciesInfoList(classification);
         List<SpeciesOptionItem> optionList=new ArrayList<SpeciesOptionItem>();
+//        返回一个包含commonname和taxid的list,整理成了前端需要的格式，属性label，value
         for (SpeciesInfo infoItem:speciesInfoList){
             SpeciesOptionItem optionItem=new SpeciesOptionItem();
             optionItem.setLabel(infoItem.getCommonName());
@@ -168,5 +182,36 @@ public class GeneDetailService {
         }
 
         return optionList;
+    }
+    public String getHdbIdByEnsId(String ensid){
+        return geneBasicInfoMapper.getHdbIdByEnsId(ensid);
+    }
+
+    //根据 gene id取绘制热图的trait相关信息
+    public List<ExpressionTerm> expressionInfoList(String geneName,String classification){
+        List<GeneExpression> expressionInfoByGeneList =geneExpressionMapper.expressionInfoByGeneList(geneName);
+        List<ExpressionTerm> expressionList= expressionTermMapper.expressionInfoList(classification);
+        Integer numSum=0;
+        for(GeneExpression expressionInfoItem : expressionInfoByGeneList){
+            String traitName=expressionInfoItem.getAnnotation();
+            String[] prjList=expressionInfoItem.getBioProjectId().split(",");
+            Integer gwasNum=prjList.length;
+            numSum += gwasNum;
+            ExpressionTerm expressionItem=expressionList.stream().filter(d->d.getEoAnnotation().equals(traitName)).findFirst().get();
+            expressionItem.setPrjNum(gwasNum);
+            expressionItem.setPrjList(prjList);
+            expressionItem.setGeneId(expressionInfoItem.getGeneId());
+            expressionItem.setTaxonId(expressionInfoItem.getTaxonId());
+        }
+        for(ExpressionTerm basicTerm:expressionList){
+            if(basicTerm.getPrjNum() != null){
+                float opaNum= (float)basicTerm.getPrjNum()/numSum;
+                basicTerm.setOpacity(opaNum);
+            }else{
+                basicTerm.setOpacity(0);
+            }
+        }
+        return  expressionList;
+
     }
 }

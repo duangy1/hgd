@@ -65,10 +65,17 @@
      select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=#{geneId} and oim.taxon_id=#{taxonId}
   </select>
 
+<!--  <select id="findOrthByTaxon2" resultMap="BaseResultMap">-->
+<!--    select c.taxon1,c.uniprot_id1,c.taxon2,c.uniprot_id2,c.db_evidence,c.from_db-->
+<!--from gene_basic_info2 a inner join ortholog_id_mapping b on a.ensembl_gene_id=b.ensembl_gene_id inner join ortholog_all c on b.uniprot_id=c.uniprot_id1-->
+<!--where a.ensembl_gene_id=#{geneId} and c.taxon1=#{taxonId} and c.taxon2=#{taxonId2}-->
+<!--  </select>-->
   <select id="findOrthByTaxon2" resultMap="BaseResultMap">
-    select c.taxon1,c.uniprot_id1,c.taxon2,c.uniprot_id2,c.db_evidence,c.from_db
-from gene_basic_info2 a inner join ortholog_id_mapping b on a.ensembl_gene_id=b.ensembl_gene_id inner join ortholog_all c on b.uniprot_id=c.uniprot_id1
-where a.ensembl_gene_id=#{geneId} and c.taxon1=#{taxonId} and c.taxon2=#{taxonId2}
+    select * from ortholog_all64 where
+    ((hdb_gene_id1=#{geneName} and tax_id1
+        in
+    (<foreach collection="list" item="item" separator=",">#{item}</foreach>)) or
+    (hdb_gene_id2=#{geneName} and tax_id2 in (<foreach collection="list" item="item" separator=",">#{item}</foreach>))
   </select>
 
   <select id="findTraitNameByGene" resultType="String">
@@ -94,6 +101,6 @@ where a.ensembl_gene_id=#{geneId} and c.taxon1=#{taxonId} and c.taxon2=#{taxonId
     )) and oim.hdb_gene_id=#{geneId} and oim.taxon_id=#{taxonId}
   </select>
   <select id="selectGeneOrthoInfo" resultMap="BaseResultMap">
-    select * from ortholog_all64  where (entrez_id1=#{geneName} or entrez_id2=#{geneName} )
+    select * from ortholog_all64  where (hdb_gene_id1=#{geneName} or hdb_gene_id2=#{geneName} )
   </select>
 </mapper>

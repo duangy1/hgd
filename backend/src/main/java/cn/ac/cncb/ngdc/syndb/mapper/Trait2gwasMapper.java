@@ -12,7 +12,7 @@ public interface Trait2gwasMapper {
 
     int insertSelective(Trait2gwas record);
 
-    Page<Trait2gwas> biomedicalTrait();
+    Page biomedicalTrait(String classification);
 
     Trait2gwas selectByPrimaryKey(Integer id);
 
@@ -22,15 +22,19 @@ public interface Trait2gwasMapper {
 
     int updateByPrimaryKey(Trait2gwas record);
 
-    Page<Trait2gwas> selectTraitBySpecies(String species);
+    Page<Trait2gwas> selectTraitBySpecies(String taxonid);
 
     Page<Trait2gwas> getInfoByTraitName(String traitName);
 
-    Page<Trait2gwas> getOrthoInfo(int querySpecies,int orthoSpecies, String traitName);
+    Page<Trait2gwas> getInfoByTraitId(String traitId);
+
+    Page<Trait2gwas> getOrthoInfo(String querySpecies,String traitId);
 
     Integer findGwasOrgidByTaxonId(int taxonId);
 
     Integer selectTraitCountByGeneAndTaxon(Map param);
 
-    List<Trait2gwas> traitInfoByGeneList(String geneName);
+    List traitInfoByGeneList(String geneName);
+
+
 }

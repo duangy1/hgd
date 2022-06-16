@@ -95,7 +95,7 @@
 
      <!-- </el-col> -->
     <!--  <el-col :span="19" style="margin-left:0px; text-align:left;"> -->
-        <div class="grid-content right tables" style="width: 98%; margin-left: 5%; margin-right:5%;">
+        <div class="grid-content right tables" style="width: 98%; margin-left: 5%; margin-right:5%;" v-loading="screenLoading">
 
                 <div >
                       <div style="margin-top:10px; margin-left:0px;padding-bottom:10px;float:left;">
@@ -116,7 +116,7 @@
 
                 <div style="clear:both;"></div>
                 <div  v-for="item in tableData" :key="item.gbiId" style="text-align:left;">
-                    <div style="padding-bottom:5px;"><el-checkbox name="type"></el-checkbox>  <a href="" style="font-weight:bold; " v-if="item.showGeneName !=null">{{item.showGeneName}}</a> ({{item.taxonName}})</div>
+                    <div style="padding-bottom:5px;"><el-checkbox name="type"></el-checkbox>  <a href="" style="font-weight:bold; " v-if="item.showGeneName !=null" @click="toDetailPage(item.hdbGeneId,item.taxonId)">{{item.showGeneName}}</a> ({{item.taxonName}})</div>
                     <div style="padding-left:20px;">
                          <div style="padding-bottom:5px;font-size:14px;padding-top:5px;">{{item.geneDescription}}</div>
                         <div style="padding-bottom:5px;font-size:14px;padding-top:5px;"><b>Symobl:</b> {{item.geneSymbol}} </div>
@@ -238,7 +238,7 @@ import Banner from "@/components/banner.vue";
 import Treeselect from '@riophae/vue-treeselect'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
-import { Loading } from 'element-ui';
+// import { Loading } from 'element-ui';
 export default {
   name: 'Gene',
   components: {
@@ -265,7 +265,8 @@ export default {
         tableData:[],
         multipleSelection: [],
         tabPosition: 'right',
-        loading:true
+        loading:true,
+        screenLoading:true
       }
     },
     watch:{
@@ -333,7 +334,7 @@ export default {
                             axiosInstance1
                               .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'length': 5}})
                               .then(response => {
-                                  console.log(response)
+                                  console.log("tableData:",response.data.data)
                                   this.tableData = response.data.data
                                   this.totalSize = response.data.recordsTotal
                                 })
@@ -639,11 +640,23 @@ export default {
       },
       handleChange(val) {
          console.log(val);
+      },
+      toDetailPage(hdbId,taxonId){
+        this.$router.push({
+          path: '/gene-detail',
+          query:{hdbId,taxonId}
+        })
       }
       
   },
   mounted () {
-    let loadingService = Loading.service({fullscreen:true});
+    // let loadingService = Loading.service({
+    //       lock: true,
+    //       text: 'Loading',
+    //       spinner: 'el-icon-loading',
+    //       background: 'rgba(0, 0, 0, 0.7)',
+    //       fullscreen:true
+    //     });
 
   
     const axiosInstance = this.$axios.create({
@@ -699,7 +712,7 @@ export default {
   axiosInstance
                    .get('http://localhost:9401/gene/filterHomolog')
                    .then(response => {
-                       console.log(response)
+                       console.log("this.tableData:",response)
                        this.tableData = response.data.data
                        this.totalSize = response.data.recordsTotal
                      })
@@ -707,12 +720,14 @@ export default {
                      console.log(error)
                      this.errored = true
                    })
-                   .finally(() => this.loading = false)
+                   .finally(() => {
+                     this.loading = false
+                    //  loadingService.close()
+                    this.screenLoading=false;
+                     })
 
-
-		this.$nextTick(() => {
-			loadingService.close();
-		});
+  
+	
    }
 }
 </script>

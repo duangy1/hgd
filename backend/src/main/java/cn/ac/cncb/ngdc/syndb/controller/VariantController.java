@@ -1,7 +1,11 @@
 package cn.ac.cncb.ngdc.syndb.controller;
 
 import cn.ac.cncb.ngdc.syndb.entity.DataTableResultInfo;
-import cn.ac.cncb.ngdc.syndb.entity.variant;
+import cn.ac.cncb.ngdc.syndb.entity.Ortho9031;
+import cn.ac.cncb.ngdc.syndb.entity.Variant;
+import cn.ac.cncb.ngdc.syndb.mapper.GeneBasicInfoMapper;
+import cn.ac.cncb.ngdc.syndb.service.GeneDetailService;
+import cn.ac.cncb.ngdc.syndb.service.OrthoService;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,13 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class VariantController {
     @Autowired
     VariantService variantService;
+    @Autowired
+    GeneDetailService geneDetailService;
+    @Autowired
+    OrthoService orthoService;
     @RequestMapping(value = "/api/variants", method = RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo initPageVariant(@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+    public DataTableResultInfo initPageVariant(String varname,String classification,String speciesName,
     @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
     @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
     @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
@@ -25,8 +35,17 @@ public class VariantController {
 //        if(pageNo == 1){
 //            pageNo = start/length+1;
 //        }
-        Page<variant> pageInfo=variantService.initPageVariant(pageNo,length);
+        Page<Variant> pageInfo=variantService.initPageVariant(varname,classification,pageNo,length,speciesName);
+        for(Variant variant : pageInfo){
+            int taxon = variant.getTaxonId();
+            String geneid = variant.getGeneId(); //拿到trait里使用的id，大多是ensemblid
+//                这hdb都是null
+//           根据查到的trait里的ensemblid找到对应的hdbid，然后去同源表里查对应的同源list
 
+            String hdbId= geneDetailService.getHdbIdByEnsId(geneid);
+            List<Ortho9031> ortholist =orthoService.selectGeneTraitOrthoInfo(hdbId,""+taxon);
+            variant.setOrthoList(ortholist);
+        }
         DataTableResultInfo dataTableResultInfo = new DataTableResultInfo();
         dataTableResultInfo.setData(pageInfo);
         dataTableResultInfo.setDraw(draw);
@@ -35,5 +54,43 @@ public class VariantController {
         dataTableResultInfo.setRecordsFiltered(pageInfo.getTotal());
 
         return dataTableResultInfo;};
+
+    @RequestMapping("/api/get-by-varName")
+    @ResponseBody
+    public DataTableResultInfo getInfoByTraitName(@RequestParam String varName,@RequestParam String species,
+                                                  @RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+                                                  @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
+                                                  @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
+                                                  @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
+    ){
+        if(pageNo == 1){
+            pageNo = start/length+1;
+        }
+        DataTableResultInfo dataTableResultInfo = new DataTableResultInfo();
+        Page<Variant> pageInfo = variantService.getInfoByVarNameAndSpecies(pageNo, length,varName,species);
+
+        if(pageInfo != null ){
+            for(Variant variant : pageInfo){
+                int taxon = variant.getTaxonId();
+                String geneid = variant.getGeneId(); // gwas gene id
+//                List<Ortho9031> ortholist =orthoService.findOrthByTaxonAndGene(taxon,geneid,classification);
+                String hdbId= geneDetailService.getHdbIdByEnsId(geneid);
+                List<Ortho9031> ortholist =orthoService.selectGeneTraitOrthoInfo(hdbId,""+taxon);
+//                Integer gwasOrgId=variantService.findGwasOrgidByTaxonId(taxon);
+//                if(ortholist != null ){
+                variant.setOrthoList(ortholist);
+//                }
+//                variant.setGwasOrgid(gwasOrgId);
+            }
+        }
+
+        dataTableResultInfo.setData(pageInfo);
+        dataTableResultInfo.setDraw(draw);
+        dataTableResultInfo.setLength(length);
+        dataTableResultInfo.setRecordsTotal(pageInfo.getTotal());
+        dataTableResultInfo.setRecordsFiltered(pageInfo.getTotal());
+        return dataTableResultInfo;
+    }
+
 
 }

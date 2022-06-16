@@ -5,8 +5,9 @@ import Traits from '../views/Traits.vue'
 import Species from '../views/Species.vue'
 import Gene from '../views/Gene.vue'
 import GeneDetail from '../views/gene-detail.vue'
-import dbDetail from '../views/db-detail.vue'
+import dbDetail from '../views/Db-detail.vue'
 import Variants from '../views/Variant.vue'
+import Statistics from '../views/Statistics.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/variants',
     name: 'Variants',
     component: Variants
+  },
+  {
+    path: '/statistics',
+    name: 'Statistics',
+    component: Statistics
   },
   // {
   //   path: '/about',

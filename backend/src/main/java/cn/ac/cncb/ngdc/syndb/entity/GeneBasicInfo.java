@@ -13,6 +13,8 @@ public class GeneBasicInfo {
 
     private String ensemblGeneId;
 
+    private String ensemblProteinId;
+
     private String refseqId;
 
     private String geneSynonym;

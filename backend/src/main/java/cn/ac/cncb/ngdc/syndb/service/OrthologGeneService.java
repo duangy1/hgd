@@ -49,7 +49,7 @@ public class OrthologGeneService {
         return speciesInfoMapper.selectOtherSpecies(param);
     }
 
-    public SpeciesInfo findSpeciesByTaxon(int taxonId){
+    public SpeciesInfo findSpeciesByTaxon(String taxonId){
         return speciesInfoMapper.findSpeciesByTaxon(taxonId);
     }
 
@@ -178,7 +178,7 @@ public class OrthologGeneService {
                         OrthoGeneBean orthoGeneBean = new OrthoGeneBean();
                         orthoGeneBean.setGeneName(gene);
 
-                        SpeciesInfo cursp = findSpeciesByTaxon(Integer.parseInt(taxon));
+                        SpeciesInfo cursp = findSpeciesByTaxon(taxon);
                         if(cursp != null ){
                             orthoGeneBean.setTaxonName(cursp.getLatinName());
                         }

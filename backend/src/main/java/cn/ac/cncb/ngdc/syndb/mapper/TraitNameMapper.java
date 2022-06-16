@@ -9,4 +9,6 @@ public interface TraitNameMapper {
     List<TraitName> selectList(Map map);
 
     List<TraitName> traitInfoList();
+
+    TraitName traitsItem(String classification);
 }

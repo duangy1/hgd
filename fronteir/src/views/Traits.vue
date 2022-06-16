@@ -3,485 +3,394 @@
     <HeaderBar />
     <Banner />
     <Navigator />
-    <div class="decorate-bar" @click="drawer = true" style="cursor:pointer"><a style="text-decoration: underline">Click to Show Trait Ontology</a></div>
+    
     <!-- 左侧树结构 -->
-        <el-drawer
-          :visible.sync="drawer"
-          :direction="direction"
-        >
-          <div class="tree-div">
-          <el-card shadow="none" class="tree-card" >
-          <el-input placeholder="输入关键字进行过滤" v-model="filterText">
-          </el-input>
+    <!-- 抽屉结构 -->
+    <el-drawer
+      :visible.sync="drawer"
+      :direction="direction"
+    >
+      <div class="tree-div">
+      <el-card shadow="none" class="tree-card" >
+      <el-input placeholder="Enter keywords to filter" v-model="filterText" class="filterInput"> 
+      </el-input>
 
-          <el-tree
-            style="margin-top: 15px"
-            class="filter-tree"
-            :data="treedata"
-            default-expand-all
-            :filter-node-method="filterNode"
-            icon-class="el-icon-s-management"
-            ref="tree"
-            :expand-on-click-node="false"
-            @node-click="getInfoByTrait"
-          >
-          </el-tree>
-          </el-card>
-        </div>
-        </el-drawer>
-    <el-tabs v-model="activeName" type="card"  style="width:95%;margin-left:3%;margin-top:2%">
-      <el-tab-pane label="plants" name="first">
-      <el-card shadow="none" class="tableCard" style="margin-top: 10px">
-      
-      <div class="trait-box trait-infoBox">
-        <div style="padding-left:3%">
-          <h2 class="trait-title">Trait Name : {{ traitName }} | ID: {{ traitID }}</h2
-          >
-          <h2 class="trait-def trait-title" v-if="traitDef != ''"
-            >Definition: {{ traitDef }}</h2
-          >
-        </div>
-      </div>
-      <div class="wraper page-component__scroll el-scrollbar">
-        
-        
-        <div class="trait-info">
-          
-  <!-- 使用中的表格 -->
-            <el-table
-              :data="traitData"
-              style="width: 100%;margin-top:3%;overflow:hidden;height:0"
-              class="trait-table"
-              row-key="id"
-              v-loading="loading"
-              ref="table"
-              height="200">
-              <el-table-column prop="traitName" label="Trait Name" fixed width="180px" style="background-color:white"></el-table-column>
-              <el-table-column  prop="geneId" label="Gene Id" width="170px" fixed>
-              </el-table-column>
-  <!-- 显示gwas数量的col -->
-              <!-- <el-table-column prop="gwasNum" label="Gwas Number">
-                <template scope="scope">
-                  <el-tooltip class="tooltip-item"  placement="bottom" effect="light">
-                    <div slot="content">Click to Show Detail<br/> Informations Below</div>
-                    <a style="color:rgb(70, 121, 187);cursor :pointer;" >{{ scope.row.gwasNum}}</a>
-                  </el-tooltip>
-                </template>
-              </el-table-column> -->
-              <!-- <el-table-column prop="taxonId" label="Taxon Id" fixed></el-table-column> -->
-              <el-table-column prop="speciesCommonName" label="Species" fixed></el-table-column>
-              <el-table-column prop="speciesCommonName" label="Species" style="text-align:center">
-                <el-table-column label="Goat" prop="Goat"
-                  class="imglink">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Goat"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Goat"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Pig" prop="Pig" width="180px">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Pig"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Pig"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Sheep" prop="Sheep">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Sheep"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Sheep"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Chicken" prop="Chicken">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Chicken"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Chicken"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Cattle" prop="Cattle">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Cattle"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Cattle"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-              </el-table-column>
-  
-            </el-table>
-            <el-pagination
-              class="trait-pag"
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-              :current-page="currentPage4"
-              :page-sizes="[10, 20, 50, 100]"
-              :page-size="10"
-              layout="total, sizes, prev, pager, next, jumper"
-              :total="totalSize"
-            >
-            </el-pagination>
-          
-        </div>
-        
-      </div>
-      <!-- gwas detail info表格 -->
-      <div class="gwasWrapper" v-if="showSubTableBox">
-        <div  class="gwasBox" style="padding-left:3%;margin-bottom:1.3%">
-          <h3 class="trait-title">Gwas Detai Information</h3>
-        </div>
-        <div id="subTableBox">
-            <el-card shadow="none" class="gwasDetailCard">
-              <el-table 
-                :data="gwasInfoData"
-                border
-                style="width: 100%;margin-top:3%;"
-                
-                id="subTable"
-                :row-style="{height: '0'}"
-                max-height="400"
-                v-loading="gwasLoading"
-              >
-                <el-table-column prop="varId" label="Var Id"></el-table-column>
-                <el-table-column prop="traitName" label="Trait Name"></el-table-column>
-                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
-              </el-table>
-            </el-card>
-        </div>
-      </div>
-      <!-- ortho Gene info表格 -->
-      <div class="gwasWrapper" v-if="showOrthoSubTable">
-        <div  class="gwasBox" style="padding-left:3%;margin-bottom:1.3%">
-          <h3 class="trait-title">Ortholog Gene Detai Information</h3>
-        </div>
-        <div id="subTableBox">
-            <el-card shadow="none" class="gwasDetailCard">
-              <el-table 
-                :data="orthoTableData"
-                border
-                style="width: 100%;margin-top:3%;"
-                
-                id="subTable"
-                :row-style="{height: '0'}"
-                max-height="400"
-                v-loading="orthoLoading"
-              >
-                <el-table-column prop="ensemblId1" label="ensemblId1"></el-table-column>
-                <el-table-column prop="geneId1" label="geneId1"></el-table-column>
-                <el-table-column prop="tax1" label="tax1"></el-table-column>
-                <el-table-column prop="protein1" label="protein1"></el-table-column>
-                <el-table-column prop="geneId1" label="geneId1"></el-table-column>
-                <el-table-column prop="geneId2" label="geneId2"></el-table-column>
-                <el-table-column prop="protein2" label="protein2"></el-table-column>
-                <el-table-column prop="tax2" label="tax2"></el-table-column>
-                <el-table-column prop="orthoTraitName" label="orthoTraitName"></el-table-column>
-              </el-table>
-            </el-card>
-        </div>
-      </div>
+      <el-tree
+        style="margin-top: 15px"
+        class="filter-tree"
+        :data="treedata"
+        default-expand-all
+        :filter-node-method="filterNode"
+        icon-class="el-icon-s-management"
+        ref="tree"
+        :expand-on-click-node="false"
+        @node-click="getInfoByTrait"
+      >
+      </el-tree>
       </el-card>
-      </el-tab-pane>
+    </div>
+    </el-drawer>
+    <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
+      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item>Traits</el-breadcrumb-item>
+    </el-breadcrumb>
+    <!-- 侧边栏按钮 -->
+  
+  <el-container style="border: 1px solid #eee;overflow: hidden;" id="trait-container">
+  <div style="margin-top:3%">
+   <el-button @click="buttonFunction()" ref="button" id="button"></el-button>
+    <div class="trait-box trait-infoBox">
+      <div style="padding-left:29px">
+        <h2 class="trait-title">Trait Name : {{ traitItem.traitName }} | ID: {{ traitItem.traitId }}</h2
+        >
+        <h2 class="trait-def trait-title" v-if="traitItem.traitDef != ''"
+          >Definition: {{ traitItem.definition }}</h2
+        >
+      </div>
+    </div>
+    </div>
+    <el-card shadow="none" class="border-card">
+    <el-tabs v-model="activeName" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
     <!-- 动物tab -->
-    <el-tab-pane label="animals" name="second">
-      <el-card shadow="none" class="tableCard" style="margin-top: 10px">
-      
-      <div class="trait-box trait-infoBox">
-        <div style="padding-left:3%">
-          <h2 class="trait-title">Trait Name : {{ traitName }} | ID: {{ traitID }}</h2
-          >
-          <h2 class="trait-def trait-title" v-if="traitDef != ''"
-            >Definition: {{ traitDef }}</h2
-          >
-        </div>
-      </div>
-      <div class="wraper page-component__scroll el-scrollbar">
-        <div class="trait-info">
-  <!-- 使用中的表格 -->
-            <el-table
-              :data="traitData"
-              style="width: 100%;margin-top:3%;overflow:hidden;height:0"
-              class="trait-table"
-              row-key="id"
-              v-loading="loading"
-              ref="table"
-              height="200">
-              <el-table-column prop="traitName" label="Trait Name" fixed width="180px" style="background-color:white"></el-table-column>
-              <el-table-column  prop="geneId" label="Gene Id" width="170px" fixed>
-              </el-table-column>
-  <!-- 显示gwas数量的col -->
-              <!-- <el-table-column prop="gwasNum" label="Gwas Number">
-                <template scope="scope">
-                  <el-tooltip class="tooltip-item"  placement="bottom" effect="light">
-                    <div slot="content">Click to Show Detail<br/> Informations Below</div>
-                    <a style="color:rgb(70, 121, 187);cursor :pointer;" >{{ scope.row.gwasNum}}</a>
-                  </el-tooltip>
-                </template>
-              </el-table-column> -->
-              <!-- <el-table-column prop="taxonId" label="Taxon Id" fixed></el-table-column> -->
-              <el-table-column prop="speciesCommonName" label="Species" fixed></el-table-column>
-              <el-table-column prop="speciesCommonName" label="Species" style="text-align:center">
-                <el-table-column label="Cotton" prop="cotton"
-                class="imglink">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["cotton"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["cotton"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Japanese apricot" prop="Japanese apricot" width="180px">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Japanese apricot"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Japanese apricot"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Maize" prop="Maize">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Maize"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Maize"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Rapeseed" prop="Rapeseed">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Rapeseed"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Rapeseed"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Rice" prop="Rice">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Rice"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Rice"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Sorghum" prop="Sorghum">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Sorghum"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Sorghum"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-                <el-table-column label="Soybean" prop="Soybean">
-                  <template slot-scope="scope" >
-                   <img
-                      :src="yesIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Soybean"] ==1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                    <img
-                      :src="fullIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='scope.row["Soybean"] ==2'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList)
-                    />
-                  </template>
-                </el-table-column>
-              </el-table-column>
-  
-            </el-table>
-            <el-pagination
-              class="trait-pag"
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-              :current-page="currentPage4"
-              :page-sizes="[10, 20, 50, 100]"
-              :page-size="10"
-              layout="total, sizes, prev, pager, next, jumper"
-              :total="totalSize"
-            >
-            </el-pagination>
-          
-        </div>
+    <el-tab-pane label="animal" name="first" >
+      <!-- <el-card shadow="none" class="tableCard" style="margin-top: 10px"> -->
+      <div>
+        <div>
+            <div class="filt-div">
+              <el-select v-model="form.querySpecies" placeholder="Query Species" style="float:left"> 
+                <el-option
+                  v-for="item in querySpeciesList"
+                  :key="item.id"
+                  :label="item.commonName"
+                  :value="item.taxonId">
+                </el-option>
+              </el-select>
+              <p style="float:left;margin-left:3%;vertical-align:middle;margin-top: 0.5%;font-family: 'Noto Sans', sans-serif;">Targer Species:</p>
+                <el-select v-model="form.orthoSpecies" multiple class="filt-spe-select">
+                    <!-- <el-option label="Org1" value="shanghai"></el-option>
+                    <el-option label="Org2" value="beijing"></el-option> -->
+                    <el-option
+                        v-for="(item,index) in speciesInfoList"
+                        :key="index.id"
+                        :label="item.commonName"
+                        :value="item.taxonId"
+                        >
+                    </el-option>
+                </el-select>
+                <el-button icon="el-icon-search" type="success" round  plain id="filter-search" @click="searchFilter(form,traitItem.traitId)"></el-button>
+                <el-button icon="el-icon-delete" type="primary" round  plain id="filter-search2" @click="clearFilter()"></el-button>
+            </div>
+          <!-- </el-card> -->
+          <div id="wrapper"  v-loading="loading">
+          <div class="trait-info">
+            
+      <!-- 使用中的trait表格 -->
+      <!-- <el-container style="width:100%;border: 1px solid darkgray;"> -->
         
+          <el-table
+            :data="traitData_animal"
+            class="trait-table"
+            row-key="id"
+            ref="table"
+            :header-cell-style="hiligtDbCols"
+          >
+            <el-table-column align="center" class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+            </el-table-column>
+            <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
+            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
+            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column align="center" :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_animal" :key="index"
+              class="imglink" height="100px">
+                  <template slot-scope="scope" >
+                  <img
+                      :src="orthoIcon"
+                      min-width="70"
+                      height="70"
+                      class="iconImg"
+                      v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
+                      style="cursor:pointer"
+                      @click=showOrthoInfoTable(scope.row.orthoList[scope.row.speciesListData.indexOf(index)])
+                    />
+                    <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
+                    <img
+                      :src="sameTraitIcon"
+                      min-width="70"
+                      height="70"
+                      class="iconImg"
+                      v-if='iconClass(scope.row,index)'
+                      style="cursor:pointer"
+                      @click=showGwasInfoTable(scope.row,index)
+                    />
+                  </template>
+              </el-table-column>
+            </el-table-column>
+          </el-table>
+      
+          <div style="position: absolute;float: left;padding-top: 0.7%;">
+          <div style="display: flex;">
+                    <img :src="orthoIcon"
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" />
+                      <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
+          </div>
+          <div style="display: flex;">
+                    <img :src="sameTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
+          </div>
+          </div>
+          <el-pagination
+          
+            class="trait-pag"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage4"
+            :page-sizes="[10, 20, 50, 100]"
+            :page-size="10"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="totalSize_animal"
+          >
+          </el-pagination>
+      <!-- </el-container> -->
       </div>
-      <!-- gwas detail info表格 -->
-      <div class="gwasWrapper" v-if="showSubTableBox">
-        <div  class="gwasBox" style="padding-left:3%;margin-bottom:1.3%">
-          <h3 class="trait-title">Gwas Detai Information</h3>
+</div>
+
+    <!-- 同源表格 -->
+    <!-- <el-card shadow="none" class="sub-table-card"> -->
+      
+      <div class="sub-trait-box " v-if="showOrthoSubTable">
+      <el-divider></el-divider>
+          <div class="title-box">
+            <h2 class="trait-sub-title">Ortholog Gene Detai Information</h2>
+          </div>
+      </div>
+      <!-- <div id="wrapper"> -->
+          <div class="trait-info">
+            <el-table
+              :data="orthoTableData"
+              class="info-table"
+              v-loading="orthoLoading"
+              v-if="showOrthoSubTable"
+              :border="false"
+              fixed
+          >
+              <el-table-column
+                  prop="species1.commonName"
+                  label="Species">
+              </el-table-column>
+              <el-table-column
+                  prop="species1.taxonId"
+                  label="Taxon Id1">
+              </el-table-column>
+              <el-table-column
+                  prop="ensemblId1"
+                  label="Ensembl Id">
+              </el-table-column>
+              
+              <el-table-column
+                  prop="protein1"
+                  label="Protein1">
+              </el-table-column>
+              <el-table-column
+                  prop="species2.commonName"
+                  label="Species2">
+              </el-table-column>
+              <el-table-column
+                  prop="species2.taxonId"
+                  label="Taxon Id2">
+              </el-table-column>
+              <el-table-column
+                  prop="protein2"
+                  label="Protein2">
+              </el-table-column>
+              <el-table-column
+              prop="entrezId"
+              label="Entrez Id">
+              </el-table-column>
+            </el-table>
+          </div>
+
+      <!-- </div> -->
+    <!-- </el-card> -->
+
+      <!-- gwas 表格 -->
+    <!-- <el-card shadow="none"  class="sub-table-card"> -->
+       
+      <div class="sub-trait-box" v-if="showSubTableBox">
+        <div  class="title-box" >
+          <h3 class="trait-sub-title">Gwas Detail Information</h3>
         </div>
-        <div id="subTableBox">
+        <div id="trait-info">
+            <!-- <el-card shadow="none" class="gwasDetailCard"> -->
+              <el-table 
+                :data="gwasInfoData"
+                id="subTable"
+                :row-style="{height: '0'}"
+                max-height="400"
+                v-loading="gwasLoading"
+              >
+                <el-table-column prop="varId" label="Var Id"></el-table-column>
+                <el-table-column prop="traitName" label="Trait Name"></el-table-column>
+                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
+                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
+                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
+              </el-table>
+            <!-- </el-card> -->
+        </div>
+      </div>
+    <!-- </el-card> -->
+      </div>
+      </div>
+      <!-- </div> -->
+      <!-- </el-card> -->
+    </el-tab-pane>
+     <!-- 植物tab -->
+    <el-tab-pane label="plant" name="second">
+      <div class="filt-div">
+          <el-select v-model="form.querySpecies" placeholder="Query Species" style="float:left"> 
+            <el-option
+              v-for="item in querySpeciesList"
+              :key="item.id"
+              :label="item.commonName"
+              :value="item.taxonId">
+            </el-option>
+          </el-select>
+          <p style="float:left;margin-left:3%;vertical-align:middle;margin-top: 0.5%;font-family: 'Noto Sans', sans-serif;">Targer Species:</p>
+            <el-select v-model="form.orthoSpecies" multiple class="filt-spe-select">
+                <!-- <el-option label="Org1" value="shanghai"></el-option>
+                <el-option label="Org2" value="beijing"></el-option> -->
+                <el-option
+                    v-for="(item,index) in speciesInfoList"
+                    :key="index.id"
+                    :label="item.commonName"
+                    :value="item.taxonId"
+                    >
+                </el-option>
+            </el-select>
+            <el-button icon="el-icon-search" type="success" round  plain id="filter-search" @click="searchFilter(form,traitItem.traitId)"></el-button>
+            <el-button icon="el-icon-delete" type="primary" round  plain id="filter-search2" @click="clearFilter()"></el-button>
+          </div>
+      <!-- <div class="wraper"> -->
+        
+      <div class="trait-info">
+   <!-- 使用中的表格 -->
+        <el-table
+            :data="traitData_plant"
+            
+            class="trait-table"
+            row-key="id"
+            v-loading="loading"
+            ref="table"
+            :header-cell-style="hiligtDbCols"
+          >
+            <el-table-column class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column  prop="geneId" label="Gene Id" width="220px" fixed>
+            </el-table-column>
+            <el-table-column prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
+            <el-table-column prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
+            <el-table-column prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
+              class="imglink" height="100px">
+                  <template slot-scope="scope" >
+                  <img
+                      :src="orthoIcon"
+                      min-width="70"
+                      height="70"
+                      class="iconImg"
+                      v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
+                      style="cursor:pointer"
+                      @click=showOrthoInfoTable(scope.row.orthoList[scope.row.speciesListData.indexOf(index)])
+                    />
+                    <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
+                    <img
+                      :src="sameTraitIcon"
+                      min-width="70"
+                      height="70"
+                      class="iconImg"
+                      v-if='iconClass(scope.row,index)'
+                      style="cursor:pointer"
+                      @click=showGwasInfoTable(scope.row,index)
+                    />
+                  </template>
+              </el-table-column>
+            </el-table-column>
+          </el-table>
+        <div style="position: absolute;float: left;padding-top: 0.7%;">
+        <div style="display: flex;">
+                  <img :src="orthoIcon"
+                    style="margin-right: 6px;min-width=70px;height=70px;"
+                    class="iconImg" />
+                    <div style="color:dimgray">This icon represent the gene has homolog gene informations here.</div>
+        </div>
+        <div style="display: flex;">
+                  <img :src="sameTraitIcon"   
+                    style="margin-right: 6px;min-width=70px;height=70px;"
+                    class="iconImg" /><div style="color:dimgray">This icon represent the gene's homolog gene here have a same trait annotation.</div>  
+        </div>
+        </div>
+        <el-pagination
+          class="trait-pag"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage4"
+          :page-sizes="[10, 20, 50, 100]"
+          :page-size="10"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="totalSize_plant"
+        >
+        </el-pagination>
+        <div class="sub-trait-box " v-if="showOrthoSubTable">
+      <el-divider style="padding-top:5px"></el-divider>
+          <div class="title-box">
+            <h2 class="trait-sub-title">Ortholog Gene Detai Information</h2>
+          </div>
+      </div>
+    <!-- 同源表格 -->
+          <el-table
+            :data="orthoTableData"
+            class="info-table"
+            v-loading="orthoLoading"
+            v-if="showOrthoSubTable"
+            :border="false"
+        >
+            <el-table-column
+                prop="species.commonName"
+                label="Species"
+                width="180px">
+            </el-table-column>
+            <el-table-column
+                prop="species.taxonId"
+                label="Taxon Id">
+            </el-table-column>
+            <el-table-column
+                prop="gbiInfo.ensemblGeneId"
+                label="Ensembl Id">
+            </el-table-column>
+            <el-table-column
+                prop="gbiInfo.geneSymbol"
+                label="Gene Symbol">
+            </el-table-column>
+            <el-table-column
+                prop="protein"
+                label="Protein">
+            </el-table-column>
+            
+            <el-table-column
+            prop="entrezId"
+            label="Entrez Id">
+            </el-table-column>
+          </el-table>
+    <!-- gwas detail info表格 -->
+      <div class="sub-trait-box" v-if="showSubTableBox">
+        <div  class="title-box" style="padding-left:1.5%;margin-bottom:1.3%">
+          <h3 class="trait-sub-title">Gwas Detai Information</h3>
+        </div>
+        <div id="trait-info">
             <el-card shadow="none" class="gwasDetailCard">
               <el-table 
                 :data="gwasInfoData"
-                border
                 style="width: 100%;margin-top:3%;"
-                
                 id="subTable"
                 :row-style="{height: '0'}"
                 max-height="400"
@@ -496,43 +405,22 @@
             </el-card>
         </div>
       </div>
-      <!-- ortho Gene info表格 -->
-      <div class="gwasWrapper" v-if="showOrthoSubTable">
-        <div  class="gwasBox" style="padding-left:3%;margin-bottom:1.3%">
-          <h3 class="trait-title">Ortholog Gene Detai Information</h3>
-        </div>
-        <div id="subTableBox">
-            <el-card shadow="none" class="gwasDetailCard">
-              <el-table 
-                :data="orthoTableData"
-                border
-                style="width: 100%;margin-top:3%;"
-                id="subTable"
-                :row-style="{height: '0'}"
-                max-height="400"
-                v-loading="orthoLoading"
-              >
-                <el-table-column prop="ensemblId1" label="ensemblId1"></el-table-column>
-                <el-table-column prop="geneId1" label="geneId1"></el-table-column>
-                <el-table-column prop="tax1" label="tax1"></el-table-column>
-                <el-table-column prop="protein1" label="protein1"></el-table-column>
-                <el-table-column prop="geneId1" label="geneId1"></el-table-column>
-                <el-table-column prop="geneId2" label="geneId2"></el-table-column>
-                <el-table-column prop="protein2" label="protein2"></el-table-column>
-                <el-table-column prop="tax2" label="tax2"></el-table-column>
-                <el-table-column prop="orthoTraitName" label="orthoTraitName"></el-table-column>
-              </el-table>
-            </el-card>
-        </div>
       </div>
-      </el-card>
+    <!-- </div> -->
+     
+     
+      <!-- </el-card> -->
     </el-tab-pane>
+    
+    
     </el-tabs>
+    </el-card>
+    </el-container>
     <FooterBar />
     <template>
-    <el-backtop
+     <el-backtop
       :bottom="100"
-      style="z-index: 999"
+      style="z-index: 999;"
       class="backTop"
     >
       <div
@@ -540,15 +428,16 @@
            {
             height: 100%;
             width: 100%;
-            background-color: #f2f5f6;
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
             text-align: center;
             line-height: 40px;
             color: #1989fa;
+            border-radius: 50%;
+            background-color: white;
           }
         "
       >
-        UP
+      <i class="el-icon-caret-top"></i>
       </div>
     </el-backtop>
     </template>
@@ -564,10 +453,10 @@ import traitOntology from "@/assets/static/traitOntology.json";
 import Banner from "@/components/banner.vue";
 import FooterBar from "@/components/FooterBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
-import qs from "qs";
+// import qs from "qs";
 // // icons
-import yesIcon from "@/assets/img/icon/fangkuang.svg";
-import fullIcon from "@/assets/img/icon/huafu.svg";
+import sameTraitIcon from "@/assets/img/icon/star.svg";
+import orthoIcon from "@/assets/img/icon/huafu.svg";
 
 // import "@/assets/css/traits.css";
 export default {
@@ -586,86 +475,30 @@ export default {
   },
   data() {
     return {
-     yesIcon,
-     fullIcon,
+      sameTraitIcon,
+      orthoIcon,
       filterText: "",
       treedata: traitOntology.tree,
       showSubTableBox:false,
       gwasLoading:true,
       orthoLoading:true,
       activeName: 'first',
-      options: [],
       drawer:false,
       direction:"ltr",
-      species:[
-        {
-        label:"Plant",
-        options:[{
-            value:"3635",
-            label:"Cotton",
-            disabled:false
-          },{
-            value:"102107",
-            label:"Japanese apricot",
-            disabled:false
-          },{
-            value:"4577",
-            label:"Maize",
-            disabled:false
-          },{
-            value:"3708",
-            label:"Rapeseed",
-            disabled:false
-          },{
-            value:"4530",
-            label:"Rice",
-            disabled:false
-          },{
-            value:"4558",
-            label:"Sorghum",
-            disabled:false
-          },{
-            value:"3847",
-            label:"Soybean",
-            disabled:false
-          }]
-        },
-        {
-        label:"animal",
-        options:[{
-            value:"9925",
-            label:"Goat",
-            disabled:false
-          },{
-            value:"9823",
-            label:"Pig",
-            disabled:false
-          },{
-            value:"9940",
-            label:"Sheep",
-            disabled:false
-          },{
-            value:"9031",
-            label:"Chicken",
-            disabled:false
-          },{
-            value:"9913",
-            label:"Cattle",
-            disabled:false
-          }]
-        }],
-      traitData: [],
+      speciesList_animal:[],
+      speciesList_plant:[],
+      speciesInfoList:[],
+      traitData_animal: [],
+      traitData_plant:[],
       orthoTableData: [],
       value: "",
-      traitID: "PPTO:0000002",
-      traitDef: "The plant trait.",
-      traitName: "flora trait",
+      traitItem:"",
       currentPage4: 1,
-      totalSize: 0,
+      totalSize_animal: 0,
+      totalSize_plant: 0,
       form: {
         querySpecies:"",
         orthoSpecies: "",
-        traitName: "",
       },
       tableSize: 10,
       showOrthoGene: true,
@@ -674,6 +507,11 @@ export default {
       otrhoGeneData:[],
       loading:true,
       showOrthoSubTable:false,
+      classification:"animal",
+      navBarFixed:"false",
+      showTraitSameIcon:false,
+      querySpeciesList:[],
+      querySpecies:""
     };
   },
 
@@ -687,140 +525,81 @@ export default {
         this.$refs.multipleTable.clearSelection();
       }
     },
-    handleSizeChange(val) {
+    changeClass(tab, event){
+        this.speciesList=[];
+        this.speciesInfoList=[];
+        // this.loading = true;
+        this.showOrthoSubTable=false;
+        console.log("value:",tab, event);
+        console.log(tab.label);
+        this.classification=tab.label;
+        this.$axios.get("http://localhost:9401/api/traits-item",{params: {classification: this.classification=="animal"?1:2}}).then(response=>{
+          console.log("traitsItem:",response);
+          this.traitItem=response.data
+      })
+      // this.loading=false;
+    //   this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': this.classification}})
+    //   .then((response) => {
+    //       this.totalSize = response.data.recordsTotal;
+    //       this.loading = false;
+    //       console.log("response:",response.data);
+    //       this.traitData=response.data.data;
+    //       if(this.traitData.length>0){
+    //         for(let traitData of this.traitData){
+    //           // 增加一个属性保存物种的index，用来显示表格里的icon
+    //           traitData.speciesListData=[]
+    //           if(traitData.orthoList){
+    //             for(let item of traitData.orthoList){
+    //               let speciesName=item.species.commonName
+    //               if(this.speciesList.indexOf(speciesName)==-1){
+    //                 this.speciesList.push(speciesName);
+    //                 this.speciesInfoList.push(item.species)
+    //               }
+    //               traitData.speciesListData.push(this.speciesList.indexOf(speciesName));
+    //             }
+    //           }
+    //         }
+    //       }
+    // })
+    },
+
+
+    handleSizeChange(val){
       this.loading = true;
       this.tableSize = val;
-      {
-    const axiosInstance = this.$axios.create({
-      headers: {
-        "Content-Type": 'application/x-www-form-urlencoded;charset="utf-8"',
-      }, // 设置传输内容的类型和编码
-      withCredentials: true, // 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
-    });
-    axiosInstance
-      .get("http://localhost:9401/api/traits?length=" + val)
+      this.$axios.get("http://localhost:9401/api/traits?length=" + val)
       .then((response) => {
-        this.traitData = [];
+        this.traitData = response.data.data;
         this.totalSize = response.data.recordsTotal;
-        // let plant2Name={"3635":"Cotton","102107":"Japanese apricot","4577":"Maize","3708":"Rapeseed","4530":"Rice","4558":"Sorghum","3847":"Soybean"}
-        // let animal2Name={"9925":"Goat","9823":"Pig","9940":"Sheep","9031":"Chicken","9913":"Cattle"}
-        for(let item of response.data.data){
-          item.gwasNum=item.gwasId.split(",").length;
-          for(let orthoitem of item.orthoList){
-            if(orthoitem.tax2=="3635"){
-              item["cotton"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["cotton"]=2
-              }
-            }else if(orthoitem.tax2=="102107"){
-              item["Japanese apricot"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Japanese apricot"]=2
-              }
-            }else if(orthoitem.tax2=="4577"){
-              item["Maize"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Maize"]=2
-              }
-            }else if(orthoitem.tax2=="3708"){
-              item["Rapeseed"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Rapeseed"]=2
-              }
-            }else if(orthoitem.tax2=="3708"){
-              item["Rice"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Rice"]=2
-              }
-            }else if(orthoitem.tax2=="4558"){
-              item["Sorghum"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Sorghum"]=2
-              }
-            }else if(orthoitem.tax2=="3847"){
-              item["Soybean"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Soybean"]=2
-              }
-          }
-        }
-        this.traitData.push(item)
-        console.log("traitData:",this.traitData);
-      }})
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
+        console.log("response:",response.data);
       })
-      .finally(() => (this.loading = false));
-  }
-
     },
     handleCurrentChange(val) {
       this.loading=true;
       this.currentPage4 = val;
-    {
-    const axiosInstance = this.$axios.create({
-      headers: {
-        "Content-Type": 'application/x-www-form-urlencoded;charset="utf-8"',
-      }, // 设置传输内容的类型和编码
-      withCredentials: true, // 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
-    });
-    axiosInstance
-      .get("http://localhost:9401/api/traits?pageNo="+val+"&length="+this.tableSize)
+      console.log(this.classification);
+      this.$axios.get("http://localhost:9401/api/traits?pageNo="+val+"&length="+this.tableSize,{params:{'classification':this.classification}})
       .then((response) => {
-        this.traitData = [];
+        this.traitData = response.data.data;
         this.totalSize = response.data.recordsTotal;
-        // let plant2Name={"3635":"Cotton","102107":"Japanese apricot","4577":"Maize","3708":"Rapeseed","4530":"Rice","4558":"Sorghum","3847":"Soybean"}
-        // let animal2Name={"9925":"Goat","9823":"Pig","9940":"Sheep","9031":"Chicken","9913":"Cattle"}
-        for(let item of response.data.data){
-          item.gwasNum=item.gwasId.split(",").length;
-          for(let orthoitem of item.orthoList){
-            if(orthoitem.tax2=="3635"){
-              item["cotton"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["cotton"]=2
+        console.log("response:",response);       
+        for(let item of this.traitData){
+        item.speciesListData=[]
+            if(item.orthoList){
+              for(let item of item.orthoList){
+                let speciesName=item.species.commonName
+                if(this.speciesList.indexOf(speciesName)==-1){
+                  this.speciesList.push(speciesName);
+                  this.speciesInfoList.push(item.species)
+                }
+                item.speciesListData.push(this.speciesList.indexOf(speciesName));
               }
-            }else if(orthoitem.tax2=="102107"){
-              item["Japanese apricot"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Japanese apricot"]=2
-              }
-            }else if(orthoitem.tax2=="4577"){
-              item["Maize"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Maize"]=2
-              }
-            }else if(orthoitem.tax2=="3708"){
-              item["Rapeseed"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Rapeseed"]=2
-              }
-            }else if(orthoitem.tax2=="3708"){
-              item["Rice"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Rice"]=2
-              }
-            }else if(orthoitem.tax2=="4558"){
-              item["Sorghum"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Sorghum"]=2
-              }
-            }else if(orthoitem.tax2=="3847"){
-              item["Soybean"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Soybean"]=2
-              }
-          }
+            }
         }
-        this.traitData.push(item)
-        console.log("traitData:",this.traitData);
-      }})
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
+
+        this.loading=false;
       })
-      .finally(() => (this.loading = false));
-  }
+  
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
@@ -832,13 +611,13 @@ export default {
     getInfoByTrait(value, data) {
       this.loading=true;
       data.checked = true;
-      this.traitID = value.traitID;
-      this.traitDef = value.Definitions;
-      this.traitName = value.Name;
-      this.form.traitName = value.Name;
+      // this.traitID = value.traitID;
+      // this.traitDef = value.Definitions;
+      // this.traitName = value.Name;
+      this.traitItem=value;
+      // this.form.traitName = value.Name;
 
-      this.$axios
-        .get(
+      this.$axios.get(
           "http://localhost:9401/api/traits/get-by-trait-name/" +
             value.Name +
             "?pageNo=" +
@@ -849,147 +628,162 @@ export default {
         .then((response) => {
           this.loading=false;
           this.traitData = response.data.data;
-          // this.traitData.gwasNum=this.traitData.gwasId.split(',').length
           this.totalSize = response.data.recordsTotal;
           for(let item of this.traitData){
-            console.log("item.fromdb:",item);
             item.gwasNum=item.gwasId.split(",").length;
-            for(let orthoitem of item.orthoList){orthoitem.fromdb=orthoitem.fromdb.split(',')}
           }
+          this.loading = false
         })
-        .catch(function (error) {
-          console.log(error);
-        })
-        .finally(() => (this.loading = false));
     },
     
-   
-    async sendRequest() {
-      let formData = this.form;
-      console.log("formData:",formData);
-      this.loading=true;
-      let data = await this.$axios({
-        //这里的 this.$http 就是axios 因为 我在vue原型上，挂载axios的时候，把axios改名为$http 了。
-        url: "http://localhost:9401/api/traits/ortho-data", //请求路径（接口）
-        method: "POST", //请求方式
-        headers: { "content-type": "application/x-www-form-urlencoded" }, // 请求头，发送FormData格式的数据，必须是 这种请求头。
-        data: qs.stringify(formData), //发送请求要传的FormData参数。必须用 qs.stringify（）序列化一下。
-      });
-      this.loading=false;
-      this.traitData = data.data.data;
-      this.totalSize = data.data.recordsTotal;
-      console.log("this.traitData:",this.traitData);
-
-       for(let item of this.traitData){
-          item.gwasNum=item.gwasId.split(",").length;
-          for(let orthoitem of item.orthoList){orthoitem.fromdb=orthoitem.fromdb.split(',')}
-        }
-     
-    },
-    // 先注释掉显示gwas子表的功能，这一块放在gene信息里面
-    // getGwasDetail(gwasidInfo){
-    //   this.showSubTableBox = true;
-    //   this.gwasLoading=true;
-    //   // 向gwas发送请求，请求gwas库中的数据渲染详细信息的表格
-    //   // http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId=240,239&organismId=19&offset=0&pagesize=10&total=10
-    //   let organismid=gwasidInfo.gwasOrgid;
-    //   let gwasids=gwasidInfo.gwasId
-    //   this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasids+"&organismId="+organismid+"&offset=0&pagesize=10&total=10")
-    //   .then(function (response) {
-    //     this.gwasInfoData=response.data
-    //     // this.$("#subTableBox").attr('top')
-    //     this.gwasLoading=false;
-        
-    //   }.bind(this))
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    // },
-    
-  //   checkSpeClass(val){
-  //     // 判断所选择的物种是动物还是植物
-  //     let plant=["3635","102107","4577","3708","4530","4558","3847"]
-  //     this.form.orthoSpecies =""
-  //     // 如果非植物就认为是动物
-  //     // let animal=["9925","9823","9940","9031","9913"]
-  //     if(plant.indexOf(val)!=-1){
-  //       this.options=this.species[0].options
-  //     }else{
-  //       this.options=this.species[1].options
-  //     }
-  //     this.options.filter(item=>{if(item.value==val){item.disabled=true}else{item.disabled=false}})
-  // },
   showOrthoInfoTable(orthoList){
     this.showOrthoSubTable = true;
+    this.showSubTableBox=false;
     this.orthoLoading=false;
-    this.orthoTableData=orthoList;
+    this.orthoTableData=[orthoList];
+  },
+  // watchScroll() {
+  //     var scrollTop =
+  //       window.pageYOffset ||
+  //       document.documentElement.scrollTop ||
+  //       document.body.scrollTop;
+  //     //  当滚动超过 288 时，实现吸顶效果
+  //     if (scrollTop > 288) {
+  //       this.navBarFixed = true;
+  //     } else {
+  //       this.navBarFixed = false;
+  //     }
+  // },
+  // 表格高度自适应
+  // getTableMaxHeight(){
+  //     this.$nextTick(function () {
+  //     let box = document.querySelector(".trait-info").attributes
+  //     let box_clientHeight = box[0].ownerElement.clientHeight;
+  //     this.tableHeight = box_clientHeight - 100;
+  //   })
+  // },
+  buttonFunction(){
+    this.drawer = true;
+   },
+  showGwasInfoTable(rowValue,index){
+    // scope.row.gwasId,scope.row.taxonId,scope.row.orthoList[scope.row.speciesListData.indexOf(index)]
+    console.log("row value:",rowValue);
+    let gwasid=rowValue.gwasId
+    let taxid=rowValue.gwasOrgid
+    let orthoList=rowValue.orthoList[rowValue.speciesListData.indexOf(index)]
+    this.showSubTableBox=true;
+    console.log("gwasid,taxid:",gwasid,taxid);
+    this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid+"&organismId="+taxid+"&offset=0&pagesize=10&total=10")
+    .then(response=>{
+      console.log("gwas response:",response);
+      this.gwasInfoData=response.data
+      this.gwasLoading=false;
+    })
+    this.showOrthoSubTable = true;
+    this.orthoLoading=false;
+    this.orthoTableData=[orthoList];
     console.log(orthoList);
-  }
+   },
+    hiligtDbCols({rowIndex}){
+      if(rowIndex===1){
+          return "writing-mode: vertical-lr; !important;text-align:right"
+      }
+      
+    },
+    iconClass(data,index){
+      let classFT=data.speciesListData.indexOf(index)>-1?data.orthoList[data.speciesListData.indexOf(index)].orthoTraitName.indexOf(data.traitName)>-1:false
+      return classFT
+    },
+    // dealSpeName(itemName){
+    //   let name=itemName.length>13?itemName.slice(0,13)+"...":itemName;
+    //   return name
+    // }
+    searchFilter(value,traitId){
+      this.$axios.get("http://localhost:9401/api/traits/ortho-data",{params:{"orthoSpecies":value.orthoSpecies,"querySpecies":value.querySpecies,"traitId":traitId}})
+      .then(response=>{
+          console.log("searchFilter:",response);
+      })
+      // console.log(value,traitName);
+    }
   },
   
+
   mounted() {
-    const axiosInstance = this.$axios.create({
-      headers: {
-        "Content-Type": 'application/x-www-form-urlencoded;charset="utf-8"',
-      }, // 设置传输内容的类型和编码
-      withCredentials: true, // 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
-    });
-    axiosInstance
-      .get("http://localhost:9401/api/traits")
+    this.loading = true;
+    this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': 'animal'}})
       .then((response) => {
-        this.traitData = [];
-        this.totalSize = response.data.recordsTotal;
-        // let plant2Name={"3635":"Cotton","102107":"Japanese apricot","4577":"Maize","3708":"Rapeseed","4530":"Rice","4558":"Sorghum","3847":"Soybean"}
-        // let animal2Name={"9925":"Goat","9823":"Pig","9940":"Sheep","9031":"Chicken","9913":"Cattle"}
-        for(let item of response.data.data){
-          item.gwasNum=item.gwasId.split(",").length;
-          for(let orthoitem of item.orthoList){
-            // orthoitem.fromdb=orthoitem.fromdb.split(',')
-            if(orthoitem.tax2=="3635"){
-              item["cotton"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["cotton"]=2
+        this.totalSize_animal = response.data.recordsTotal;
+        console.log("response:",response.data);
+        this.traitData_animal=response.data.data;
+        if(this.traitData_animal.length>0){
+          for(let traitData of this.traitData_animal){
+            // 增加一个属性保存物种的index，用来显示表格里的icon
+            traitData.speciesListData=[]
+            if(traitData.orthoList){
+              for(let item of traitData.orthoList){
+                let speciesName=item.species.commonName
+                if(this.speciesList_animal.indexOf(speciesName)==-1){
+                  this.speciesList_animal.push(speciesName);
+                  this.speciesInfoList.push(item.species)
+                }
+                traitData.speciesListData.push(this.speciesList_animal.indexOf(speciesName));
               }
-            }else if(orthoitem.tax2=="102107"){
-              item["Japanese apricot"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Japanese apricot"]=2
-              }
-            }else if(orthoitem.tax2=="4577"){
-              item["Maize"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Maize"]=2
-              }
-            }else if(orthoitem.tax2=="3708"){
-              item["Rapeseed"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Rapeseed"]=2
-              }
-            }else if(orthoitem.tax2=="3708"){
-              item["Rice"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Rice"]=2
-              }
-            }else if(orthoitem.tax2=="4558"){
-              item["Sorghum"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Sorghum"]=2
-              }
-            }else if(orthoitem.tax2=="3847"){
-              item["Soybean"]=1
-              if (orthoitem.orthoTraitName==item.traitName){
-                  item["Soybean"]=2
-              }
+            }
           }
         }
-        this.traitData.push(item)
-        console.log("traitData:",this.traitData);
-      }})
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      })
-      .finally(() => (this.loading = false));
-  },
-};
+       
+        console.log("this.traitData:",this.traitData);
+  }).finally(()=>{
+      this.loading = false;
+  })
+
+   this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': 'plant'}})
+      .then((response) => {
+        this.totalSize_plant = response.data.recordsTotal;
+        console.log("response:",response.data);
+        this.traitData_plant=response.data.data;
+        if(this.traitData_plant.length>0){
+          for(let traitData of this.traitData_plant){
+            // 增加一个属性保存物种的index，用来显示表格里的icon
+            traitData.speciesListData=[]
+            if(traitData.orthoList){
+              for(let item of traitData.orthoList){
+                let speciesName=item.species.commonName
+                if(this.speciesList_plant.indexOf(speciesName)==-1){
+                  this.speciesList_plant.push(speciesName);
+                  this.speciesInfoList.push(item.species)
+                }
+                traitData.speciesListData.push(this.speciesList_plant.indexOf(speciesName));
+              }
+            }
+          }
+        }
+        console.log("this.traitData:",this.traitData);
+  })
+    
+
+
+
+
+
+
+    window.addEventListener("scroll", this.watchScroll);
+    // this.getTableMaxHeight(); 
+    // let _this = this;
+    // window.onresize = function () {//用于使表格高度自适应的方法  
+    // _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
+    // }
+    this.$axios.get('http://localhost:9401/basic/getSpecies',{params: {speciesType: this.classification=="animal"?1:2}})
+    .then(response=>{
+      this.querySpeciesList=response.data;
+      console.log("speciesdata:",response.data);
+    })
+    this.$axios.get("http://localhost:9401/api/traits-item",{params: {classification: this.classification=="animal"?1:2}}).then(response=>{
+      console.log("traitsItem:",response);
+      this.traitItem=response.data
+    })
+    
+  }
+}
+
 </script>

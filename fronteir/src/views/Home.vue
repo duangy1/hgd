@@ -1,234 +1,294 @@
 <template>
   <div class="hello">
       <HeaderBar />
-      <div id="bgimg-div">
+      <Banner />
+      <!-- <div id="bgimg-div">
       </div>
-      
+       -->
       <div class="flex-yc">
         <Navigator />
         <div class="eles-container">
-          <div class="db-introduce">
+          <!-- <div class="db-introduce">
             <h1 class="db-title">Homolog gene Database</h1>
             <p class="db-info">HDB integrated  homolog gene with traits, SNPs, expression for housed animals and plants from public resources.</p>
-          </div>
+          </div> -->
           
           <div class="search-box" >
-            <el-input prefix-icon="el-icon-search"  placeholder="请输入内容"></el-input>
-            <el-button class="search-button">Search</el-button>
+            <el-select :popper-append-to-body="false" placeholder="HDB" style="float:left;height: 50px !important;"> 
+                <el-option
+                  v-for="item in dataClass"
+                  :key="item.id"
+                  :label="item"
+                  :value="item"
+                  >
+                </el-option>
+            </el-select>
+            <el-input size="large" prefix-icon="el-icon-search"  placeholder="Enter query..." style="float:left;width: 100%;" ></el-input>
+            <el-button class="search-button" size="medium" type="primary">Search</el-button>
             
           </div>
           <div class="egs">
-            <a href="#" class="example-txt">eg:</a>
+            <a href="#" class="example-txt">e.g:</a>
             
             <el-link type="info" class="eg-ele">Gallus;</el-link>
+            <el-link type="info" class="eg-ele">Chicken;</el-link>
             <el-link type="info" class="eg-ele">P18660;</el-link>
-            <el-link type="info" class="eg-ele">ENSGALG00000008542;</el-link>
             
+            <el-link type="info" class="eg-ele">FBpp0081737;</el-link>
+            <el-link type="info" class="eg-ele">ENSGALG00000008542;</el-link>
           </div>
         </div>
       </div>
     <div class="2ndpagebox">
-    
-  <section id="section-id-1633053288840" class="sppb-section">
-      <div class="sppb-row-container">
-        <div class="sppb-row">
-          <div class="sppb-col-md-12" id="column-wrap-id-1633053288839">
-            <div id="column-id-1633053288839" class="sppb-column">
-              <div class="sppb-column-addons">
-                <div id="section-id-1633053288869" class="sppb-section">
-                  <div class="sppb-container-inner">
-                    <div class="sppb-row">
-                      <div class="sppb-col-md-3 sppb-col-sm-6"
-                        id="column-wrap-id-1633053288870">
-                        <div id="column-id-1633053288870"
-                          class="sppb-column">
-                          <div class="sppb-column-addons">
-                            <div id="sppb-addon-wrapper-1633053288880"
-                              class="sppb-addon-wrapper">
-                              <div id="sppb-addon-1633053288880"
-                                class="clearfix ">
-                                <div
-                                  class="sppb-addon sppb-addon-feature  ">
-                                  <div
-                                    class="sppb-addon-content sppb-text-left">
-                                    <span
-                                      class="sppb-img-container"><img
-                                        class="sppb-img-responsive"
-                                        src="../assets/img/043-plant.png"
-                                        alt="01Gardening Courses"
-                                        loading="lazy"></span>
-                                    <div
-                                      class="sppb-media-content">
-                                      <h3
-                                        class="sppb-addon-title sppb-feature-box-title">
-                                        <a href="#"><span
-                                            class="number">01</span>Multiple Resources</a>
-                                      </h3>
-                                      <div
-                                        class="sppb-addon-text">
-                                        Curated datas from inparanoid,hieranoid,OMA,eggNog,
-                                        Treefam,Panther database.
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div id="sppb-addon-wrapper-1633314185898"
-                              class="sppb-addon-wrapper">
-                              <div id="sppb-addon-1633314185898"
-                                class="sppb-hidden-md sppb-hidden-lg clearfix ">
-                                <div
-                                  class="sppb-empty-space  clearfix">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="sppb-col-md-3 sppb-col-sm-6"
-                        id="column-wrap-id-1633053288873">
-                        <div id="column-id-1633053288873"
-                          class="sppb-column">
-                          <div class="sppb-column-addons">
-                            <div id="sppb-addon-wrapper-1633054382873"
-                              class="sppb-addon-wrapper">
-                              <div id="sppb-addon-1633054382873"
-                                class="clearfix ">
-                                <div
-                                  class="sppb-addon sppb-addon-feature  ">
-                                  <div
-                                    class="sppb-addon-content sppb-text-left">
-                                    <span
-                                      class="sppb-img-container"><img
-                                        class="sppb-img-responsive"
-                                        src="../assets/img/011-lawnmower.png"
-                                        alt="02Eco-Friendly Utilities"
-                                        loading="lazy"></span>
-                                    <div
-                                      class="sppb-media-content">
-                                      <h3
-                                        class="sppb-addon-title sppb-feature-box-title">
-                                        <a href="#"><span
-                                            class="number">02</span>User-Friendly
-                                          </a>
-                                      </h3>
-                                      <div
-                                        class="sppb-addon-text">
-                                        Multiple GUI surface to facilitate your use.
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div id="sppb-addon-wrapper-1633314185903"
-                              class="sppb-addon-wrapper">
-                              <div id="sppb-addon-1633314185903"
-                                class="sppb-hidden-md sppb-hidden-lg clearfix ">
-                                <div
-                                  class="sppb-empty-space  clearfix">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="sppb-col-md-3 sppb-col-sm-6"
-                        id="column-wrap-id-1633053288874">
-                        <div id="column-id-1633053288874"
-                          class="sppb-column">
-                          <div class="sppb-column-addons">
-                            <div id="sppb-addon-wrapper-1633054382878"
-                              class="sppb-addon-wrapper">
-                              <div id="sppb-addon-1633054382878"
-                                class="clearfix ">
-                                <div
-                                  class="sppb-addon sppb-addon-feature  ">
-                                  <div
-                                    class="sppb-addon-content sppb-text-left">
-                                    <span
-                                      class="sppb-img-container"><img
-                                        class="sppb-img-responsive"
-                                        src="../assets/img/032-delivery-truck.png"
-                                        alt="03Global Crop Transport"
-                                        loading="lazy"></span>
-                                    <div
-                                      class="sppb-media-content">
-                                      <h3
-                                        class="sppb-addon-title sppb-feature-box-title">
-                                        <a href="#"><span
-                                            class="number">03</span>Benchmark
-                                          </a>
-                                      </h3>
-                                      <div
-                                        class="sppb-addon-text">
-                                        Definite the Benchmark to see the differences between different methods.
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div id="sppb-addon-wrapper-1633314185908"
-                              class="sppb-addon-wrapper">
-                              <div id="sppb-addon-1633314185908"
-                                class="sppb-hidden-md sppb-hidden-lg sppb-hidden-sm clearfix ">
-                                <div
-                                  class="sppb-empty-space  clearfix">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="sppb-col-md-3 sppb-col-sm-6"
-                        id="column-wrap-id-1633053288875">
-                        <div id="column-id-1633053288875"
-                          class="sppb-column">
-                          <div class="sppb-column-addons">
-                            <div id="sppb-addon-wrapper-1633054382883"
-                              class="sppb-addon-wrapper">
-                              <div id="sppb-addon-1633054382883"
-                                class="clearfix ">
-                                <div
-                                  class="sppb-addon sppb-addon-feature  ">
-                                  <div
-                                    class="sppb-addon-content sppb-text-left">
-                                    <span
-                                      class="sppb-img-container"><img
-                                        class="sppb-img-responsive"
-                                        src="../assets/img/018-raining.png"
-                                        alt="04Irrigation Techniques"
-                                        loading="lazy"></span>
-                                    <div
-                                      class="sppb-media-content">
-                                      <h3
-                                        class="sppb-addon-title sppb-feature-box-title">
-                                        <a href="#"><span
-                                            class="number">04</span>Visulization Tool
-                                          </a>
-                                      </h3>
-                                      <div
-                                        class="sppb-addon-text">
-                                        We developed the tool of multispecies homologous gene visualization.
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- 特色物种介绍 -->
+<section class="engineer-area ptb-100">
+  
+  
+<!-- <el-tabs v-model="activeName" @tab-click="handleClick" >
+  <el-tab-pane label="Animals" name="first"> -->
+    <div class="species-show">
+    <div class="section-title">
+        <h3 class="feature-species">Feature Species</h3>
+    </div>
+    <div class="container">
+      <div class="engineer-slider owl-theme owl-carousel">
+
+      <div class="engineer-item">
+        <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer">
+        <div class="engineer-bottom">
+          <h4>Homo sapines</h4>
         </div>
       </div>
+
+      <div class="engineer-item">
+        <img src="../assets/img/species/Rattus_norvegicus.svg" alt="Engineer">
+        <div class="engineer-bottom">
+          <h4>Rattus norvegicus</h4>
+          <!-- <span>Head Engineer</span> -->
+        </div>
+      </div>
+
+      <div class="engineer-item">
+        <img src="../assets/img/species/Bos_taurus.svg" alt="Engineer">
+        <div class="engineer-bottom">
+          <h4>Bos taurus</h4>
+          <!-- <span>Head Engineer</span> -->
+        </div>
+      </div>
+
+      <div class="engineer-item">
+      <img src="../assets/img/species/Canis_lupus_familiaris.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Canis lupus familiaris</h4>
+      <!-- <span>Head Engineer</span> -->
+      </div>
+      </div>
+      <div class="engineer-item">
+      <img src="../assets/img/species/Capra_hircus.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Capra hircus</h4>
+      <!-- <span>Automobile Engineer</span> -->
+      </div>
+      </div>
+
+      <div class="engineer-item">
+      <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Danio rerio</h4>
+      </div>
+      </div>
+     
+      <div class="engineer-item">
+      <img src="../assets/img/species/Gallus_gallus.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Gallus gallus</h4>
+      </div>
+      </div>
+       <div class="engineer-item">
+      <img src="../assets/img/species/Brassica_napus.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Brassica napus</h4>
+      </div>
+      </div>
+      
+      <div class="engineer-item">
+      <img src="../assets/img/species/Glycine_max.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Glycine max</h4>
+      </div>
+      </div>
+      <div class="engineer-item">
+      <img src="../assets/img/species/Gossypium_hirsutum.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Gossypium hirsutum</h4>
+      </div>
+      </div>
+
+      </div>
+    </div>
+    <!-- <div class="container-1">
+      <div class="engineer-slider owl-theme owl-carousel">
+      <div class="engineer-item">
+      <img src="../assets/img/species/Arabidopsis_thaliana.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Arabidopsis thaliana</h4>
+      </div>
+      </div>
+      <div class="engineer-item">
+      <img src="../assets/img/species/Brassica_napus.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Brassica napus</h4>
+      </div>
+      </div>
+      
+      <div class="engineer-item">
+      <img src="../assets/img/species/Glycine_max.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Glycine max</h4>
+      </div>
+      </div>
+      <div class="engineer-item">
+      <img src="../assets/img/species/Gossypium_hirsutum.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Gossypium hirsutum</h4>
+      </div>
+      </div>
+      
+      <div class="engineer-item">
+      <img src="../assets/img/species/Oryza_sativa.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Oryza sativa</h4>
+      </div>
+      </div> -->
+      
+
+<!-- 
+      <div class="engineer-item">
+      <img src="../assets/img/species/Macaca_mulatta.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Macaca mulatta</h4>
+      </div>
+      </div> -->
+      <!-- </div>
+    
+    </div> -->
+     <div class="section-title">
+        <a href="http://localhost:9405/species" style="text-decoration:none"><h5 class="full-list">...More</h5></a>
+    </div>
+    </div>
+  
+  <!-- </el-tab-pane> -->
+  <!-- <el-tab-pane label="Plants" name="second">
+      <div class="container">
+      <div class="engineer-slider owl-theme owl-carousel">
+      <div class="engineer-item">
+      <img src="../assets/img/species/Arabidopsis_thaliana.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Arabidopsis thaliana</h4>
+      </div>
+      </div>
+      <div class="engineer-item">
+      <img src="../assets/img/species/Brassica_napus.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Brassica napus</h4>
+      </div>
+      </div>
+      
+      <div class="engineer-item">
+      <img src="../assets/img/species/Glycine_max.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Glycine max</h4>
+      </div>
+      </div>
+      <div class="engineer-item">
+      <img src="../assets/img/species/Gossypium_hirsutum.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Gossypium hirsutum</h4>
+      </div>
+      </div>
+      
+      <div class="engineer-item">
+      <img src="../assets/img/species/Oryza_sativa.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Oryza sativa</h4>
+      </div>
+      </div>
+      </div>
+      </div>
+    
+  </el-tab-pane> -->
+  <!-- <el-tab-pane label="Models" name="third">
+     <div class="container">
+      <div class="engineer-slider owl-theme owl-carousel">
+      <div class="engineer-item">
+      <img src="../assets/img/species/Arabidopsis_thaliana.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Arabidopsis thaliana</h4>
+      </div>
+      </div>
+      
+      <div class="engineer-item">
+      <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Danio rerio</h4>
+      </div>
+      </div>
+      <div class="engineer-item">
+      <img src="../assets/img/species/Drosophila_melanogaster.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Drosophila melanogaster</h4>
+      </div>
+      </div>
+      
+      <div class="engineer-item">
+      <img src="../assets/img/species/Macaca_mulatta.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Macaca mulatta</h4>
+      </div>
+      </div>
+
+      <div class="engineer-item">
+      <img src="../assets/img/species/Caenorhabditis_elegans.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Caenorhabditis elegans</h4>
+      </div>
+      </div>
+
+
+      </div>
+      </div>
+    
+  </el-tab-pane>
+</el-tabs> -->
+    <!-- <div class="section-title">
+        <a class="list"><h4 class="full-species">View Full List</h4></a>
+  </div> -->
+</section>
+    <!-- 特征介绍 -->
+    <section id="section-id-1633053288840" class="sppb-section">
+      <div class="row">
+							<div class="col-md-4">
+								<div class="service">
+									<i class="fa fa-clipboard"></i>
+									<h2>Multiple Resources</h2>
+									<p>Curated datas from inparanoid,hieranoid,OMA,eggNog,Treefam,Panther database.</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="service">
+									<i class="fa fa-archive"></i>
+									<h2>Various Annotations</h2>
+									<p>Integrated NGDC multiple gene annotation data.</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="service">
+									<i class="fa fa-users"></i>
+									<h2>User-Friendly</h2>
+									<p>Multiple GUI surface to facilitate your use.</p>
+								</div>
+							</div>
+						</div>
     </section>
     <section id="section-id-1633135858321" class="sppb-section">
       <div class="sppb-row-container">
@@ -236,95 +296,7 @@
           <div class="sppb-col-md-12" id="column-wrap-id-1633135858011">
             <div id="column-id-1633135858011" class="sppb-column">
               <div class="sppb-column-addons">
-              <div id="section-id-1633135858012"
-                class="sppb-section sppb-section-content-center">
-                <div class="sppb-container-inner">
-                  <div class="sppb-row sppb-align-center">
-                    <div class="sppb-col-md-6"
-                      id="column-wrap-id-1633135858013">
-                      <div id="column-id-1633135858013"
-                        class="sppb-column">
-                        <div class="sppb-column-addons">
-                          <div id="sppb-addon-wrapper-1633135858014"
-                            class="sppb-addon-wrapper">
-                            <div id="sppb-addon-1633135858014"
-                              class="clearfix ">
-                              <div
-                                class="sppb-addon sppb-addon-text-block sppb-text-left ">
-                                <h6
-                                  class="sppb-addon-title">
-                                  Latest News</h6>
-                                <div
-                                  class="sppb-addon-content">
-                                  <h2>Read All The
-                                    Information You
-                                    Need For Your
-                                    Research</h2>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div id="sppb-addon-wrapper-1633314186025"
-                            class="sppb-addon-wrapper">
-                            <div id="sppb-addon-1633314186025"
-                              class="sppb-hidden-md sppb-hidden-lg clearfix ">
-                              <div
-                                class="sppb-empty-space  clearfix">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="sppb-col-md-6"
-                      id="column-wrap-id-1633135858015">
-                      <div id="column-id-1633135858015"
-                        class="sppb-column">
-                        <div class="sppb-column-addons">
-                          <div id="sppb-addon-wrapper-1633135858016"
-                            class="sppb-addon-wrapper">
-                            <div id="sppb-addon-1633135858016"
-                              class="clearfix ">
-                              <div
-                                class="sppb-addon sppb-addon-feature  ">
-                                <div
-                                  class="sppb-addon-content sppb-text-left">
-                                  <span
-                                    class="sppb-img-container"><img
-                                      class="sppb-img-responsive"
-                                      src="../assets/img/saomiao.png"
-                                      alt=""
-                                      loading="lazy"></span>
-                                  <div
-                                    class="sppb-media-content">
-                                    <div
-                                      class="sppb-addon-text">
-                                      Donec
-                                      eleifend,
-                                      metus
-                                      gravida
-                                      lacinia
-                                      consequat,
-                                      ante justo
-                                      suscipit
-                                      ipsum, et
-                                      vehicula
-                                      magna odio
-                                      vitae ante.
-                                      Vestibulum
-                                      sapien.
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               <div id="sppb-addon-wrapper-1633309203379"
                 class="sppb-addon-wrapper">
                 <div id="sppb-addon-1633309203379"
@@ -333,7 +305,7 @@
                   <div class="sppb-addon sppb-addon-articles ">
                     <div class="sppb-addon-content">
                       <div class="sppb-row">
-                        <div class="sppb-col-md-4">
+                        <div class="sppb-col-md-4" id="left-mofule">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
                               href="http://localhost:9405/gene"
@@ -355,7 +327,7 @@
                               </div>
                               </a>
                               <h3><a href="http://localhost:9405/gene"
-                                  itemprop="url">Variations,Go And Expression Of Gene.</a></h3>
+                                  itemprop="url">Variations,Go And Expression Of Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
                                 Suspendisse ut mattis
@@ -430,7 +402,7 @@
                               </div>
                               </a>
                               <h3><a href="http://localhost:9405/variants"
-                                  itemprop="url">The Variations Related With Ortholog Gene Info</a></h3>
+                                  itemprop="url">The Variations Related With Homolog Gene Info</a></h3>
                               <div
                                 class="sppb-article-introtext">
                                 Suspendisse ut mattis
@@ -444,7 +416,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="sppb-col-md-4">
+                        <div class="sppb-col-md-4" id="left-mofule">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
                               href="http://localhost:9405/species"
@@ -464,15 +436,12 @@
                                   itemprop="datePublished">04
                                 </span>
                                   <span
-                                  class="sppb-meta-category">Species</span>
+                                  class="sppb-meta-category">Expression</span>
                                
                               </div>
                                </a>
                               <h3><a href="http://localhost:9405/species"
-                                  itemprop="url">All
-                                  You Need To Know
-                                  About The Species
-                                  Informations</a></h3>
+                                  itemprop="url">The Expression Related With Homolog Gene Info</a></h3>
                               <div
                                 class="sppb-article-introtext">
                                 Suspendisse ut mattis
@@ -504,11 +473,12 @@
                                   class="sppb-meta-date"
                                   itemprop="datePublished">05
                                   </span><span
-                                  class="sppb-meta-category">Benchmark</span>
+                                  class="sppb-meta-category">Species</span>
                               </div>
                               </a>
                               <h3><a href="javascript:;"
-                                  itemprop="url">See The Differences Between different Methods Clearly</a></h3>
+                                  itemprop="url">Homolog
+                                  Informations About The Species </a></h3>
                               <div
                                 class="sppb-article-introtext">
                                 Suspendisse ut mattis
@@ -522,7 +492,7 @@
                             </div>
                           </div>
                         </div>
-                        <!-- <div class="sppb-col-md-4">
+                        <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
                               href="javascript:;"
@@ -542,7 +512,7 @@
                                   class="sppb-meta-category">Mapper</span>
                               </div>
                               <h3><a href="javascript:;"
-                                  itemprop="url">Annotate Your Sequence With Our Methods</a></h3>
+                                  itemprop="url">Annotate Your Sequence With Our Defined Methods</a></h3>
                               <div
                                 class="sppb-article-introtext">
                                 Suspendisse ut mattis
@@ -555,8 +525,8 @@
                                 More</a>
                             </div>
                           </div>
-                        </div> -->
-                        <div class="sppb-col-md-4">
+                        </div>
+                        <!-- <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
                               href="javascript:;"
@@ -591,7 +561,7 @@
                                 More</a>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -606,7 +576,7 @@
     <template>
     <el-backtop
       :bottom="100"
-      style="z-index: 999"
+      style="z-index: 999;"
       class="backTop"
     >
       <div
@@ -614,15 +584,16 @@
            {
             height: 100%;
             width: 100%;
-            background-color: #f2f5f6;
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
             text-align: center;
             line-height: 40px;
             color: #1989fa;
+            border-radius: 50%;
+            background-color: white;
           }
         "
       >
-        UP
+      <i class="el-icon-caret-top"></i>
       </div>
     </el-backtop>
     </template>
@@ -634,22 +605,32 @@
 
 
 <style  src="../assets/css/index.css" scoped></style>
+<style  src="../assets/css/font-awesome.css" scoped></style>
 <script>
 import Navigator from '@/components/navigator.vue';
-import FooterBar from '@/components/FooterBar.vue'
-import HeaderBar from '@/components/HeaderBar.vue'
+import FooterBar from '@/components/FooterBar.vue';
+import HeaderBar from '@/components/HeaderBar.vue';
+import Banner from "@/components/banner.vue";
+// import animate from "@/assets/js/animate.js"
 export default {
   name: 'Home',
   components: {
     Navigator,
     FooterBar,
-    HeaderBar
+    HeaderBar,
+    Banner
 },data(){
   return{
-    showModule:false
+    showModule:false,
+    dataClass:[
+      "species",
+      "Ensembl Gene Id"
+    ],
+    activeName: 'first'
   }
 },
   methods:{
+    // animate:animate()
     
   },
 }

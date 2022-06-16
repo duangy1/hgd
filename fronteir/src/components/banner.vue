@@ -23,12 +23,14 @@ export default {
   padding: 0 !important;
   /* background-attachment: fixed; */
   position: relative;
-  margin-top: -22px;
+  margin-top: -35px;
 }
 .module-title{
   text-align: left;
   font-weight: 500;
-  padding-top:3%;
-  padding-left: 5%;
+  color: rgb(222, 222, 222);
+  padding-top:55px;
+  padding-left: 1.4%;
+  font-size: 45px;
 }
 </style>

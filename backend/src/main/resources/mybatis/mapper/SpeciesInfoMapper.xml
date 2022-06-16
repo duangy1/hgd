@@ -8,9 +8,15 @@
     <result column="common_name" jdbcType="VARCHAR" property="commonName" />
     <result column="short_name" jdbcType="VARCHAR" property="shortName" />
     <result column="classification" jdbcType="VARCHAR" property="classification" />
-    <result column="data_source" jdbcType="VARCHAR" property="dataSource" />
     <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
     <result column="species_type" jdbcType="VARCHAR" property="speciesType" />
+  </resultMap>
+
+  <resultMap id="HeatmapResultMap" type="cn.ac.cncb.ngdc.syndb.entity.SpeciesHeatmap">
+    <result column="common_name" jdbcType="VARCHAR" property="commonName" />
+    <result column="species_statistics" jdbcType="VARCHAR" property="speciesStatistic" />
+    <result column="taxon_id" jdbcType="VARCHAR" property="taxonId" />
+    <result column="hdb_stat_id" jdbcType="VARCHAR" property="hdbStatId" />
   </resultMap>
 
   <select id="selectAllAnimals" resultMap="BaseResultMap">
@@ -36,9 +42,29 @@
     select * from species where taxon_id=#{taxonId}
   </select>
   <select id="speciesInfoList" resultMap="BaseResultMap">
-    select * from species
+    select * from species where classification=#{classification} and has_homolog=1
   </select>
   <select id="getDataSource" resultType="String">
+    select data_source from species where taxon_id=#{taxonid}
+  </select>
+  <select id="getDataSourceByName" resultType="String">
     select data_source from species where common_name=#{speciesName}
   </select>
+  <select id="getClassificatoinByTax" resultType="String">
+    select classification from species where taxon_id=#{taxid}
+  </select>
+  <select id="selectAllSpecies" resultMap="BaseResultMap">
+    select * from species where has_homolog=1
+  </select>
+  <select id="speciesNameList" resultType="String">
+    select common_name from species where has_homolog=1
+  </select>
+  <select id="speciesHeatmap" resultMap="HeatmapResultMap">
+    select * from species_statistic
+  </select>
+
+  <select id="speciesNameListforTrait" resultMap="BaseResultMap">
+    select * from species where species_type=#{speciesType} and data_source is not null order by common_name
+  </select>
+
 </mapper>

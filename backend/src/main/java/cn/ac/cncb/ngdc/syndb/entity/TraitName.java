@@ -10,6 +10,8 @@ public class TraitName {
 
     private int traitType;
 
+    private String definition;
+
     private float opacity;
 
     private Integer gwasNum;

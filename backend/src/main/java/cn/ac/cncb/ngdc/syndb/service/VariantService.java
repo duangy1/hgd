@@ -1,6 +1,7 @@
 package cn.ac.cncb.ngdc.syndb.service;
 
-import cn.ac.cncb.ngdc.syndb.entity.variant;
+import cn.ac.cncb.ngdc.syndb.entity.Variant;
+import cn.ac.cncb.ngdc.syndb.mapper.SpeciesInfoMapper;
 import cn.ac.cncb.ngdc.syndb.mapper.VariantMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -12,8 +13,22 @@ import javax.annotation.Resource;
 public class VariantService {
     @Resource
     private VariantMapper variantMapper;
-    public Page<variant> initPageVariant(int pageNo, int pageSize) {
+    @Resource
+    private SpeciesInfoMapper speciesInfoMapper;
+
+    public Page<Variant> initPageVariant(String varname,String classification, int pageNo, int pageSize,String speciesName) {
         PageHelper.startPage(pageNo, pageSize,true); //line 1
-        return variantMapper.initPageVariant();
+        Page<Variant> varList=  variantMapper.initPageVariant(varname,classification,speciesName);
+        for(Variant varItem :varList){
+            Integer speciesTaxon=varItem.getTaxonId();
+            String dataSource=speciesInfoMapper.getDataSource(speciesTaxon);
+            varItem.setDataSource(dataSource);
+        }
+        return varList;
     }
+    public Page<Variant> getInfoByVarNameAndSpecies(Integer pageNo, int pageSize, String varName,String speciesName) {
+        PageHelper.startPage(pageNo, pageSize,true); //line 1
+        return variantMapper.getInfoByVarNameAndSpecies(varName,speciesName);
+    }
+
 }

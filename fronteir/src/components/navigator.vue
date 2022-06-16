@@ -12,27 +12,28 @@
       <el-submenu index="2" text-color="#FFFFFF" >
         <template slot="title"><i class="el-icon-menu"></i>Browse</template>
         <el-menu-item index="/gene" >Ortholog Gene</el-menu-item>
-        <el-menu-item index="/gene-detail">Gene</el-menu-item>
+        <!-- <el-menu-item index="/gene-detail">Gene</el-menu-item> -->
         <el-menu-item index="/traits" >Traits</el-menu-item>
         <el-menu-item index="/variants" >Variants</el-menu-item>
+        <el-menu-item index="/expression" >Expression</el-menu-item>
         <el-menu-item index="/species" >Species</el-menu-item>
       </el-submenu>
-      <el-menu-item index="3">
+      <el-menu-item index="documentation">
         <i class="el-icon-document"></i>
-        <span slot="title">Tools</span>
+        <span slot="title">Documentation</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="downloads">
         <i class="el-icon-download"></i>
         <span slot="title">Downloads</span>
       </el-menu-item>
-      <el-menu-item index="5">
+      <el-menu-item index="statistics">
         <i class="el-icon-setting"></i>
         <span slot="title">Statistics</span>
       </el-menu-item>
-      <el-menu-item index="6">
+      <!-- <el-menu-item index="6">
         <i class="el-icon-document"></i>
-        <span slot="title">Contact Us</span>
-      </el-menu-item>
+        <span slot="title">Contact</span>
+      </el-menu-item> -->
       </el-menu>
   </div>
 </template>
@@ -46,6 +47,7 @@
 }
 .el-menu--horizontal>.el-submenu .el-submenu__title{
   height: 50px;
+  line-height: 50px;
   
 }
 .el-menu{
@@ -79,6 +81,7 @@
 }
 .el-menu--horizontal>.el-menu-item{
   height: 50px;
+  line-height: 50px;
 }
 
 .navModule{

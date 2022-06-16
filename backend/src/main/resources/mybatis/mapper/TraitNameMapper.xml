@@ -5,6 +5,7 @@
     <id column="trait_id" jdbcType="INTEGER" property="traitId" />
     <result column="trait_name" jdbcType="VARCHAR" property="traitName" />
     <result column="trait_type" jdbcType="VARCHAR" property="traitType" />
+    <result column="definition" jdbcType="LONGVARCHAR" property="definition" />
   </resultMap>
 
 
@@ -20,4 +21,8 @@
     <select id="traitInfoList" resultMap="BaseResultMap">
         select * from trait_name
     </select>
+
+    <select id="traitsItem" resultMap="BaseResultMap">
+      select * from trait_name where trait_type=#{classification} limit 0,1
+  </select>
 </mapper>

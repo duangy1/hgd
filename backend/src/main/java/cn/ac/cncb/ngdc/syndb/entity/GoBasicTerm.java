@@ -23,4 +23,6 @@ public class GoBasicTerm {
     private Integer goNum;
 
     private String[] goList;
+
+    private String classification;
 }

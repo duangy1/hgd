@@ -1,24 +1,30 @@
 package cn.ac.cncb.ngdc.syndb.mapper;
 
-import cn.ac.cncb.ngdc.syndb.entity.variant;
+import cn.ac.cncb.ngdc.syndb.entity.Variant;
 import com.github.pagehelper.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface VariantMapper {
-    int insert(variant record);
+    int insert(Variant record);
 
-    int insertSelective(variant record);
+    int insertSelective(Variant record);
 
-    variant selectByPrimaryKey(Integer gsiId);
+    Variant selectByPrimaryKey(Integer gsiId);
 
-    int updateByPrimaryKeySelective(variant record);
+    int updateByPrimaryKeySelective(Variant record);
 
-    int updateByPrimaryKeyWithBLOBs(variant record);
+    int updateByPrimaryKeyWithBLOBs(Variant record);
 
-    int updateByPrimaryKey(variant record);
+    int updateByPrimaryKey(Variant record);
 
-    Page<variant> initPageVariant();
+    Page<Variant> initPageVariant(String varname,String classification,String speciesName);
 
-    List<variant> voInfoOfGene(String geneName);
+    List<Variant> voInfoOfGene(String geneName);
+
+    List varTypeByGene(String geneName);
+
+    Page<Variant> getInfoByVarNameAndSpecies(String varName,String  speciesName);
+
 }

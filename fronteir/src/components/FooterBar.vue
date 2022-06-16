@@ -159,7 +159,7 @@ export default {
   padding-left: 0;
 }
 .bigd-row {
-  margin-left: 10%;
+    padding: 0 15px 10px 15px;
 }
 .footerBox{
   text-align: left;

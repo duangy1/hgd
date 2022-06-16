@@ -4,10 +4,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en'
 import router from './router'
-
-// import axios from 'axios'
+import * as echarts from 'echarts';
+import axios from 'axios'
 // import VueAxios from 'vue-axios'
-var axios=require("axios")
+// var axios=require("axios")
 
 axios.defaults.withCredentials = true
 
@@ -15,6 +15,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI, { locale });
 
 Vue.prototype.$axios = axios;
+Vue.prototype.$echarts = echarts;
 
 new Vue({
   router,

@@ -4,11 +4,12 @@
   <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <id column="gbi_id" jdbcType="INTEGER" property="gbiId" />
     <result column="ensembl_gene_id" jdbcType="VARCHAR" property="ensemblGeneId" />
+    <result column="ensembl_protein_id" jdbcType="VARCHAR" property="ensemblProteinId" />
     <result column="refseq_id" jdbcType="VARCHAR" property="refseqId" />
     <result column="gene_synonym" jdbcType="VARCHAR" property="geneSynonym" />
     <result column="gene_type" jdbcType="VARCHAR" property="geneType" />
     <result column="gene_symbol" jdbcType="VARCHAR" property="geneSymbol" />
-    <result column="entrez_gene" jdbcType="VARCHAR" property="entrezGene" />
+    <result column="entrez_gene_id" jdbcType="VARCHAR" property="entrezGene" />
     <result column="chromosom" jdbcType="VARCHAR" property="chromosom" />
     <result column="gene_start" jdbcType="INTEGER" property="geneStart" />
     <result column="gene_end" jdbcType="INTEGER" property="geneEnd" />
@@ -25,13 +26,13 @@
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
   </resultMap>
-  <resultMap id="TraitResultMap" type="cn.ac.cncb.ngdc.syndb.entity.TraitBasicInfo">
+  <resultMap id="TraitResultMap" type="cn.ac.cncb.ngdc.syndb.entity.TraitName">
     <result column="trait_id" jdbcType="INTEGER" property="trait_id" />
     <result column="trait_name" jdbcType="VARCHAR" property="trait_name" />
     <result column="trait_type" jdbcType="INTEGER" property="trait_type" />
   </resultMap>
   <sql id="Base_Column_List">
-    gbi_id, ensembl_gene_id, gene_synonym, gene_type, gene_symbol, entrez_gene, chromosom, 
+    gbi_id, ensembl_gene_id, ensembl_protein_id,gene_synonym, gene_type, gene_symbol, entrez_gene, chromosom,
     gene_start, gene_end, gene_source, gwas_gene_id, jgi_gene_id
   </sql>
   <sql id="Blob_Column_List">
@@ -42,11 +43,11 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from gene_basic_info
+    from gene_basic_info_copy1
     where gbi_id = #{gbiId,jdbcType=INTEGER}
   </select>
   <select id="allOrthoList" resultMap="BaseResultMap">
-    select * from gene_basic_info
+    select * from gene_basic_info_copy1
   </select>
 
   <select id="filterHomologGene" parameterType="java.util.HashMap" resultMap="BaseResultMap">
@@ -68,7 +69,7 @@
   </select>
 
   <select id="selectGene" resultMap="BaseResultMap">
-    select * from gene_basic_info  where entrez_gene=#{geneName}
+    select * from gene_basic_info  where hdb_gene_id=#{geneName} and taxon_id=#{taxonid}
   </select>
 
   <select id="selectGeneGoInfo" resultMap="BaseResultMap">
@@ -80,7 +81,7 @@
   <select id="traitInfoList" resultMap="TraitResultMap">
     select * from trait_name
   </select>
-  <select id="selectEnsgIdByhdbId" resultType="String">
+  <select id="selectEnsgIdByhdbId" resultMap="BaseResultMap">
     select ensembl_gene_id from gene_basic_info where hdb_gene_id=#{hdbId}
   </select>
 
@@ -88,4 +89,11 @@
       select * from gene_basic_info where hdb_gene_id=#{hdbGeneId}
   </select>
 
+  <select id="getHdbIdByEnsId" resultType="String">
+      select hdb_gene_id from gene_basic_info where ensembl_gene_id=#{ensId} limit 0,1
+  </select>
+
+  <select id="getEnsGidByEnspId" resultType="String">
+      select ensembl_gene_id from gene_basic_info_copy1 where ensembl_protein_id=#{enspId} limit 0,1
+  </select>
 </mapper>

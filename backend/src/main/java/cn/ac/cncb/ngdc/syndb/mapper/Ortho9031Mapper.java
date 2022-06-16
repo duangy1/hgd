@@ -21,7 +21,7 @@ public interface Ortho9031Mapper {
 
     List<Ortho9031> findOrthByTaxonAndGene(int taxonId, String geneId);
 
-    List<Ortho9031> findOrthByTaxon2(int taxonId, String geneId,int taxonId2);
+    List<Ortho9031> findOrthByTaxon2(String geneId,List taxonId2);
 
     List findTraitNameByGene(String geneid);
 

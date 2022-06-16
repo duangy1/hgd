@@ -5,6 +5,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="gene_id" jdbcType="VARCHAR" property="geneId" />
     <result column="trait_id" jdbcType="INTEGER" property="traitId" />
+    <result column="entrez_id" jdbcType="INTEGER" property="entrezID" />
+    <result column="gene_symbol" jdbcType="VARCHAR" property="geneSymbol" />
     <result column="trait_name" jdbcType="VARCHAR" property="traitName" />
     <result column="species_common_name" jdbcType="VARCHAR" property="speciesCommonName" />
     <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
@@ -29,25 +31,31 @@
   </select>
 
   <select id="selectTraitBySpecies" resultMap="BaseResultMap">
-    select * from trait_all where taxon_id = #{species}
+    select * from trait_all_copy1 where taxon_id = #{species}
   </select>
 
   <select id="biomedicalTrait" resultMap="BaseResultMap">
-    select * from trait_all
+    select * from trait_all_copy1 where classification=#{classification}
   </select>
 
   <select id="getInfoByTraitName" resultMap="BaseResultMap">
-    select * from trait_all where trait_name = #{traitName}
+    select * from trait_all_copy1 where trait_name = #{traitName}
+  </select>
+
+  <select id="getInfoByTraitId" resultMap="BaseResultMap">
+    select * from trait_all_copy1 where trait_id = #{traitId}
   </select>
 
   <select id="getOrthoInfo" resultMap="BaseResultMap">
-    select * from trait_all where taxon_id=#{querySpecies}
+    select * from trait_all_copy1 where taxon_id=#{querySpecies} and trait_id=#{traitId}
   </select>
 
   <select id="selectTraitCountByGeneAndTaxon" parameterType="java.util.HashMap" resultType="java.lang.Integer">
-      select count(distinct trait_id) from trait_all where gene_id=#{geneId} and taxon_id=#{taxonId}
+      select count(distinct trait_id) from trait_all_copy1 where gene_id=#{geneId} and taxon_id=#{taxonId}
   </select>
-  <select id="traitInfoByGeneList" resultMap="BaseResultMap">
-      select * from trait_all where gene_id=#{geneName}
+  <select id="traitInfoByGeneList" resultType="java.lang.String">
+      select trait_name from trait_all_copy1 where gene_id=#{geneName}
   </select>
+
+
 </mapper>

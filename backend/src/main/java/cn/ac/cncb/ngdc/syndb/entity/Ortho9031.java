@@ -22,7 +22,9 @@ public class Ortho9031 {
 
     private String geneId1;
 
-    private Integer tax1;
+    private String geneSymbol;
+
+    private String tax1;
 
     private SpeciesInfo species1;
 
@@ -38,30 +40,48 @@ public class Ortho9031 {
 
     private String geneId2;
 
-    private Integer tax2;
+    private String tax2;
 
     private SpeciesInfo species2;
 
     private String protein;
+
     private String ensemblId;
+
     private String entrezId;
+
     private String geneId;
-    private Integer tax;
+
+    private String tax;
+
     private SpeciesInfo species;
 
     private String fromdb;
+
     private String dbEvidence;
+
     private String panther;
+
     private String treefam;
+
     private String oma;
+
     private String eggnog;
+
     private String hieranoid;
+
     private String inparanoid;
+
     private List dbevidenceList;
+
+    private GeneBasicInfo gbiInfo;
+
 
     private Date createTime;
 
     private Date lastUpdateTime;
 
     private List orthoTraitName;
+
+    private List orthoVarName;
 }

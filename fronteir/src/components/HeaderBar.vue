@@ -101,6 +101,24 @@ export default {
   margin-bottom: 0;
   width: 100%;
 }
+.bigd-navbar-brand{
+  float: left;
+  padding: 5px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 30px;
+}
+.bigd-navbar-brand>img{
+  height: 22px;
+  padding-top: 8%;
+}
+.bigd-navbar-header{
+  float: left;
+}
+.bigd-navbar-right{
+  padding-bottom: 5px;
+  font-size: 14px;
+}
 
 /* .imgLayout {
   height: 100%;

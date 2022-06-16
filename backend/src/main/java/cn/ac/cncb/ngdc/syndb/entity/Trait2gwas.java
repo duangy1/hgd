@@ -18,6 +18,10 @@ public class Trait2gwas {
 
     private Integer taxonId;
 
+    private Integer entrezID;
+
+    private String geneSymbol;
+
     private String classification;
 
     private Date createTime;

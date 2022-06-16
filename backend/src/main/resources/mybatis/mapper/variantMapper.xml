@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.ac.cncb.ngdc.syndb.mapper.VariantMapper">
-  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.variant">
+  <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.Variant">
     <id column="gsi_id" jdbcType="INTEGER" property="gsiId" />
     <result column="gene_id" jdbcType="VARCHAR" property="geneId" />
     <result column="var_id" jdbcType="INTEGER" property="varId" />
@@ -9,8 +9,9 @@
     <result column="species_common_name" jdbcType="VARCHAR" property="speciesCommonName" />
     <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
     <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
+    <result column="classification" jdbcType="VARCHAR" property="classification" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.variant">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.Variant">
     <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -21,11 +22,25 @@
   </sql>
 
   <select id="initPageVariant" resultMap="BaseResultMap">
-      select * from variation_all
+      select * from variation_all where var_name=#{varname} and classification=#{classification}
+    <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
+      and species_common_name = #{speciesName}
+    </if>
   </select>
 
   <select id="voInfoOfGene" resultMap="BaseResultMap">
     select * from variation_all where gene_id=#{geneName}
+  </select>
+
+  <select id="varTypeByGene" resultType="java.lang.String">
+      select var_name from variation_all where gene_id=#{geneName}
+  </select>
+
+  <select id="getInfoByVarNameAndSpecies" resultMap="BaseResultMap">
+    select * from variation_all where var_name=#{varName}
+    <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
+      and species_common_name = #{speciesName}
+    </if>
   </select>
 
 </mapper>
