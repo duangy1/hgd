@@ -23,11 +23,11 @@ public class GeneDetailController {
     @RequestMapping(value = "/api/gene-detail", method = RequestMethod.GET)
     @ResponseBody
     @CrossOrigin
-    public List geneInformation( String geneName,String taxonid){
+    public List geneInformation( String hdbid,String taxonid){
 //        现在为查entrez gene
         List InfoList = new ArrayList();
-        List<GeneBasicInfo> geneList=geneDetailService.selectGene(geneName,taxonid);
-        List<Ortho9031> orthoList=orthoService.selectGeneOrthoInfo(geneName);
+        List<GeneBasicInfo> geneList=geneDetailService.selectGene(hdbid,taxonid);
+        List<Ortho9031> orthoList=orthoService.selectGeneOrthoInfo(hdbid);
         if(geneList!=null) {
             for (Ortho9031 orthoitem : orthoList) {
                 String tax1 = orthoitem.getTax1();
@@ -41,8 +41,6 @@ public class GeneDetailController {
                     orthoitem.setTax(tax2);
                     orthoitem.setProtein(orthoitem.getProtein2());
                     orthoitem.setSpecies(species2);
-
-                    orthoitem.setEntrezId(orthoitem.getEntrezId2());
                     String hdbId = orthoitem.getHdbId2();
                     //            找对应的ensembl gene id
                     GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbId);
@@ -51,7 +49,6 @@ public class GeneDetailController {
                     orthoitem.setTax(tax1);
                     orthoitem.setProtein(orthoitem.getProtein1());
                     orthoitem.setSpecies(species1);
-                    orthoitem.setEntrezId(orthoitem.getEntrezId1());
                     String hdbId = orthoitem.getHdbId1();
                     //            找对应的ensembl gene id
                     GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbId);
@@ -67,6 +64,7 @@ public class GeneDetailController {
     @RequestMapping(value = "/api/gene-detail-go", method = RequestMethod.GET)
     @ResponseBody
     public List goInformation(@RequestParam String geneName,@RequestParam String classification) {
+        if(classification.equals("others")){classification="animal";}
         List goBasicTermList=geneDetailService.selectBasicGo(geneName,classification);
         return goBasicTermList;
     }

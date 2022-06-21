@@ -32,8 +32,8 @@ public class GeneDetailService {
     GeneExpressionMapper geneExpressionMapper;
 
 
-    public List<GeneBasicInfo> selectGene(String geneName,String taxonid){
-        List<GeneBasicInfo> geneList=geneBasicInfoMapper.selectGene(geneName,taxonid);
+    public List<GeneBasicInfo> selectGene(String hdbid,String taxonid){
+        List<GeneBasicInfo> geneList=geneBasicInfoMapper.selectGene(hdbid,taxonid);
         GeneBasicInfo geneInfo=geneList.get(0);
         SpeciesInfo speciesName=speciesInfoMapper.findSpeciesByTaxon(taxonid);
         geneInfo.setSpeciesName(speciesName);
@@ -72,7 +72,7 @@ public class GeneDetailService {
 
     //获取绘制热图的go Ontology和基因注释信息
     public List selectBasicGo(String geneName,String classification){
-        if(classification=="others"){}
+        if(classification.equals("others")){classification="animal";}
         String tableName="gene_go_"+classification;
         List<GeneGo> goGeneInfoList= geneGoMapper.goInfoOfGene(geneName,tableName);
 

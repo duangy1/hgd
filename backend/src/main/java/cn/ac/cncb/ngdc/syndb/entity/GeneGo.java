@@ -2,6 +2,8 @@ package cn.ac.cncb.ngdc.syndb.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class GeneGo {
     private Integer id;
@@ -16,6 +18,10 @@ public class GeneGo {
 
     private Integer taxonId;
 
+    private List ortholist;
+
     private String goId;
+
+    private String hdbId;
 
 }

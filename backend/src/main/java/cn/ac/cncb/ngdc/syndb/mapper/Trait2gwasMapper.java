@@ -12,7 +12,7 @@ public interface Trait2gwasMapper {
 
     int insertSelective(Trait2gwas record);
 
-    Page biomedicalTrait(String classification);
+    Page<Trait2gwas> biomedicalTrait(int traitId,String classification,String speciesName);
 
     Trait2gwas selectByPrimaryKey(Integer id);
 
@@ -34,7 +34,7 @@ public interface Trait2gwasMapper {
 
     Integer selectTraitCountByGeneAndTaxon(Map param);
 
-    List traitInfoByGeneList(String geneName);
+    List traitInfoByGeneList(String hdbid);
 
 
 }

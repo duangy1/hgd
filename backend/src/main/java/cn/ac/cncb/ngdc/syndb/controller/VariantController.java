@@ -2,6 +2,7 @@ package cn.ac.cncb.ngdc.syndb.controller;
 
 import cn.ac.cncb.ngdc.syndb.entity.DataTableResultInfo;
 import cn.ac.cncb.ngdc.syndb.entity.Ortho9031;
+import cn.ac.cncb.ngdc.syndb.entity.ProductResultDTO;
 import cn.ac.cncb.ngdc.syndb.entity.Variant;
 import cn.ac.cncb.ngdc.syndb.mapper.GeneBasicInfoMapper;
 import cn.ac.cncb.ngdc.syndb.service.GeneDetailService;
@@ -32,18 +33,11 @@ public class VariantController {
     @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
     @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
     ){
-//        if(pageNo == 1){
-//            pageNo = start/length+1;
-//        }
         Page<Variant> pageInfo=variantService.initPageVariant(varname,classification,pageNo,length,speciesName);
         for(Variant variant : pageInfo){
             int taxon = variant.getTaxonId();
-            String geneid = variant.getGeneId(); //拿到trait里使用的id，大多是ensemblid
-//                这hdb都是null
-//           根据查到的trait里的ensemblid找到对应的hdbid，然后去同源表里查对应的同源list
-
-            String hdbId= geneDetailService.getHdbIdByEnsId(geneid);
-            List<Ortho9031> ortholist =orthoService.selectGeneTraitOrthoInfo(hdbId,""+taxon);
+            String hdbId=variant.getHdbid();
+            List<Ortho9031> ortholist =orthoService.selectGeneVarOrthoInfo(hdbId,""+taxon);
             variant.setOrthoList(ortholist);
         }
         DataTableResultInfo dataTableResultInfo = new DataTableResultInfo();
@@ -75,9 +69,10 @@ public class VariantController {
                 String geneid = variant.getGeneId(); // gwas gene id
 //                List<Ortho9031> ortholist =orthoService.findOrthByTaxonAndGene(taxon,geneid,classification);
                 String hdbId= geneDetailService.getHdbIdByEnsId(geneid);
-                List<Ortho9031> ortholist =orthoService.selectGeneTraitOrthoInfo(hdbId,""+taxon);
+                ProductResultDTO resultList =orthoService.selectGeneTraitOrthoInfo(hdbId,""+taxon);
 //                Integer gwasOrgId=variantService.findGwasOrgidByTaxonId(taxon);
 //                if(ortholist != null ){
+                List<Ortho9031> ortholist=resultList.getOrthoList();
                 variant.setOrthoList(ortholist);
 //                }
 //                variant.setGwasOrgid(gwasOrgId);

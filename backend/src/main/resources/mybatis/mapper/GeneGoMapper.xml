@@ -21,4 +21,13 @@
   <select id="goInfoOfGene" resultMap="BaseResultMap">
     select * from ${tableName} where gene_id=#{geneName}
   </select>
+
+  <select id="initPageGo" resultMap="BaseResultMap">
+    select gene_id,hdb_gene_id,top_go_id,go_id,go_sum_num,species_common_name,taxon_id from ${tableName} where top_go_id=#{topGoid}
+    <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
+      and taxon_id=#{taxonid}
+    </if>
+  </select>
+
+
 </mapper>

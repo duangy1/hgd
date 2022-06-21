@@ -10,6 +10,7 @@
     <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
     <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
     <result column="classification" jdbcType="VARCHAR" property="classification" />
+    <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbid" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.Variant">
     <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
@@ -22,7 +23,7 @@
   </sql>
 
   <select id="initPageVariant" resultMap="BaseResultMap">
-      select * from variation_all where var_name=#{varname} and classification=#{classification}
+    select gene_id,hdb_gene_id,var_id,var_name,species_common_name,taxon_id,classification,snp_id,(select data_source from species where taxon_id=variation_all.taxon_id) as data_source from variation_all where classification=#{classification} and var_name=#{varname}
     <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
       and species_common_name = #{speciesName}
     </if>

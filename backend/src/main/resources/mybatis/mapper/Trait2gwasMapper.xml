@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.Trait2gwas">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="gene_id" jdbcType="VARCHAR" property="geneId" />
+    <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbId" />
     <result column="trait_id" jdbcType="INTEGER" property="traitId" />
     <result column="entrez_id" jdbcType="INTEGER" property="entrezID" />
     <result column="gene_symbol" jdbcType="VARCHAR" property="geneSymbol" />
@@ -14,6 +15,7 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
     <result column="gwas_id" jdbcType="LONGVARCHAR" property="gwasId" />
+    <result column="gwas_orgid" jdbcType="INTEGER" property="gwasOrgid" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.Trait2gwas">
     <result column="gwas_id" jdbcType="LONGVARCHAR" property="gwasId" />
@@ -35,7 +37,10 @@
   </select>
 
   <select id="biomedicalTrait" resultMap="BaseResultMap">
-    select * from trait_all_copy1 where classification=#{classification}
+    select gene_id,hdb_gene_id,trait_id,entrez_id,trait_name,species_common_name,taxon_id,classification,gwas_id,(select gwas_orgid from species where taxon_id=trait_all_copy1.taxon_id) as gwas_orgid from trait_all_copy1 where classification=#{classification} and trait_id=#{traitId}
+    <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
+      and species_common_name = #{speciesName}
+    </if>
   </select>
 
   <select id="getInfoByTraitName" resultMap="BaseResultMap">
@@ -54,7 +59,7 @@
       select count(distinct trait_id) from trait_all_copy1 where gene_id=#{geneId} and taxon_id=#{taxonId}
   </select>
   <select id="traitInfoByGeneList" resultType="java.lang.String">
-      select trait_name from trait_all_copy1 where gene_id=#{geneName}
+      select trait_name from trait_all_copy1 where hdb_gene_id=#{hdbid}
   </select>
 
 

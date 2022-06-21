@@ -19,11 +19,6 @@ public class VariantService {
     public Page<Variant> initPageVariant(String varname,String classification, int pageNo, int pageSize,String speciesName) {
         PageHelper.startPage(pageNo, pageSize,true); //line 1
         Page<Variant> varList=  variantMapper.initPageVariant(varname,classification,speciesName);
-        for(Variant varItem :varList){
-            Integer speciesTaxon=varItem.getTaxonId();
-            String dataSource=speciesInfoMapper.getDataSource(speciesTaxon);
-            varItem.setDataSource(dataSource);
-        }
         return varList;
     }
     public Page<Variant> getInfoByVarNameAndSpecies(Integer pageNo, int pageSize, String varName,String speciesName) {

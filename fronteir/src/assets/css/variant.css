@@ -14,23 +14,3 @@
 .el-table .cell{
   text-align: center !important;
 }
-#filterCol{
-  float: right;
-  margin-top: 10px;
-}
-.el-popover{
-  display: grid !important;
-}
-.el-popper{
-  display: grid !important;
-}
-.choose-col-button{
-  width: 70px;
-  height: 26px;
-  text-align: center;
-  line-height: 1px;
-  float: right;
-}
-.checkbox-box{
-  display: grid !important;
-}

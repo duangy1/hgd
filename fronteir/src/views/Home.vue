@@ -47,18 +47,25 @@
 <!-- <el-tabs v-model="activeName" @tab-click="handleClick" >
   <el-tab-pane label="Animals" name="first"> -->
     <div class="species-show">
-    <div class="section-title">
+    <!-- <div class="section-title">
         <h3 class="feature-species">Feature Species</h3>
-    </div>
+    </div> -->
     <div class="container">
       <div class="engineer-slider owl-theme owl-carousel">
 
-      <div class="engineer-item">
+      <!-- <div class="engineer-item">
         <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer">
         <div class="engineer-bottom">
           <h4>Homo sapines</h4>
         </div>
+      </div> -->
+      <!-- <div class="engineer-item">
+      <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Danio rerio</h4>
       </div>
+      </div> -->
+
 
       <div class="engineer-item">
         <img src="../assets/img/species/Rattus_norvegicus.svg" alt="Engineer">
@@ -72,38 +79,30 @@
         <img src="../assets/img/species/Bos_taurus.svg" alt="Engineer">
         <div class="engineer-bottom">
           <h4>Bos taurus</h4>
-          <!-- <span>Head Engineer</span> -->
         </div>
       </div>
 
-      <div class="engineer-item">
+      <!-- <div class="engineer-item">
       <img src="../assets/img/species/Canis_lupus_familiaris.svg" alt="Engineer">
       <div class="engineer-bottom">
       <h4>Canis lupus familiaris</h4>
-      <!-- <span>Head Engineer</span> -->
       </div>
-      </div>
-      <div class="engineer-item">
+      </div> -->
+      <!-- <div class="engineer-item">
       <img src="../assets/img/species/Capra_hircus.svg" alt="Engineer">
       <div class="engineer-bottom">
       <h4>Capra hircus</h4>
-      <!-- <span>Automobile Engineer</span> -->
       </div>
-      </div>
+      </div> -->
 
-      <div class="engineer-item">
+      <!-- <div class="engineer-item">
       <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
       <div class="engineer-bottom">
       <h4>Danio rerio</h4>
       </div>
       </div>
-     
-      <div class="engineer-item">
-      <img src="../assets/img/species/Gallus_gallus.svg" alt="Engineer">
-      <div class="engineer-bottom">
-      <h4>Gallus gallus</h4>
-      </div>
-      </div>
+      -->
+      
        <div class="engineer-item">
       <img src="../assets/img/species/Brassica_napus.svg" alt="Engineer">
       <div class="engineer-bottom">
@@ -123,6 +122,24 @@
       <h4>Gossypium hirsutum</h4>
       </div>
       </div>
+
+      <div class="engineer-item">
+      <img src="../assets/img/species/Saccharomyces_cerevisiae.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Saccharomyces Cerevisiae</h4>
+      </div>
+      </div>
+
+      <!-- <div class="engineer-item">
+      <img src="../assets/img/species/Caenorhabditis_elegans.svg" alt="Engineer">
+      <div class="engineer-bottom">
+      <h4>Caenorhabditis elegans</h4>
+      </div>
+      </div> -->
+
+      
+
+
 
       </div>
     </div>
@@ -419,7 +436,7 @@
                         <div class="sppb-col-md-4" id="left-mofule">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="http://localhost:9405/species"
+                              href="http://localhost:9405/expression"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
                                 src="../assets/img/blog4.jpg"
@@ -428,7 +445,7 @@
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="http://localhost:9405/species">
+                              <a href="http://localhost:9405/expression">
                               <div class="article-meta">
                                 
                                 <span
@@ -440,7 +457,7 @@
                                
                               </div>
                                </a>
-                              <h3><a href="http://localhost:9405/species"
+                              <h3><a href="http://localhost:9405/expression"
                                   itemprop="url">The Expression Related With Homolog Gene Info</a></h3>
                               <div
                                 class="sppb-article-introtext">
@@ -449,53 +466,17 @@
                                 ligula nunc, elementum.
                               </div><a
                                 class="sppb-readmore"
-                                href="http://localhost:9405/species"
+                                href="http://localhost:9405/expression"
                                 itemprop="url">Read
                                 More</a>
                             </div>
                           </div>
                         </div>
+                        
                         <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="javascript:;"
-                              itemprop="url"><img
-                                class="sppb-img-responsive"
-                                src="../assets/img/blog5.jpg"
-                                alt="How To Plant Your Favorite Tree In The Best Pot"
-                                itemprop="thumbnailUrl"
-                                loading="lazy"></a>
-                            <div
-                              class="sppb-article-info-wrap">
-                              <a href="javascript:;">
-                              <div class="article-meta">
-                                <span
-                                  class="sppb-meta-date"
-                                  itemprop="datePublished">05
-                                  </span><span
-                                  class="sppb-meta-category">Species</span>
-                              </div>
-                              </a>
-                              <h3><a href="javascript:;"
-                                  itemprop="url">Homolog
-                                  Informations About The Species </a></h3>
-                              <div
-                                class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
-                              </div><a
-                                class="sppb-readmore"
-                                href="javascript:;"
-                                itemprop="url">Read
-                                More</a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="sppb-col-md-4">
-                          <div class="sppb-addon-article"><a
-                              class="sppb-article-img-wrap"
-                              href="javascript:;"
+                              href="http://localhost:9405/go"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
                                 src="../assets/img/blog5.jpg"
@@ -509,10 +490,10 @@
                                   class="sppb-meta-date"
                                   itemprop="datePublished">05
                                   </span><span
-                                  class="sppb-meta-category">Mapper</span>
+                                  class="sppb-meta-category">Gene Ontology</span>
                               </div>
-                              <h3><a href="javascript:;"
-                                  itemprop="url">Annotate Your Sequence With Our Defined Methods</a></h3>
+                              <h3><a href="http://localhost:9405/go"
+                                  itemprop="url">The Gene Ontology Related With Homolog Gene Info</a></h3>
                               <div
                                 class="sppb-article-introtext">
                                 Suspendisse ut mattis
@@ -520,12 +501,51 @@
                                 ligula nunc, elementum.
                               </div><a
                                 class="sppb-readmore"
-                                href="javascript:;"
+                                href="http://localhost:9405/go"
                                 itemprop="url">Read
                                 More</a>
                             </div>
                           </div>
                         </div>
+
+                        <div class="sppb-col-md-4">
+                          <div class="sppb-addon-article"><a
+                              class="sppb-article-img-wrap"
+                              href="http://localhost:9405/species"
+                              itemprop="url"><img
+                                class="sppb-img-responsive"
+                                src="../assets/img/blog5.jpg"
+                                alt="How To Plant Your Favorite Tree In The Best Pot"
+                                itemprop="thumbnailUrl"
+                                loading="lazy"></a>
+                            <div
+                              class="sppb-article-info-wrap">
+                              <a href="http://localhost:9405/species">
+                              <div class="article-meta">
+                                <span
+                                  class="sppb-meta-date"
+                                  itemprop="datePublished">06
+                                  </span><span
+                                  class="sppb-meta-category">Species</span>
+                              </div>
+                              </a>
+                              <h3><a href="http://localhost:9405/species"
+                                  itemprop="url">Homolog
+                                  Informations About The Species </a></h3>
+                              <div
+                                class="sppb-article-introtext">
+                                Suspendisse ut mattis
+                                nibh, nec porttitor orci
+                                ligula nunc, elementum.
+                              </div><a
+                                class="sppb-readmore"
+                                href="http://localhost:9405/species"
+                                itemprop="url">Read
+                                More</a>
+                            </div>
+                          </div>
+                        </div>
+
                         <!-- <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"

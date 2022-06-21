@@ -38,7 +38,10 @@
   
   <el-container style="border: 1px solid #eee;overflow: hidden;" id="trait-container">
   <div style="margin-top:3%">
+  <div class="button-wrapper">
    <el-button @click="buttonFunction()" ref="button" id="button"></el-button>
+   <!-- <div class="button-text">Trait Ontology</div> -->
+  </div>
     <div class="trait-box trait-infoBox">
       <div style="padding-left:29px">
         <h2 class="trait-title">Trait Name : {{ traitItem.traitName }} | ID: {{ traitItem.traitId }}</h2
@@ -52,36 +55,45 @@
     <el-card shadow="none" class="border-card">
     <el-tabs v-model="activeName" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
     <!-- 动物tab -->
-    <el-tab-pane label="animal" name="first" >
+    <el-tab-pane label="Animal" name="animal" >
       <!-- <el-card shadow="none" class="tableCard" style="margin-top: 10px"> -->
       <div>
         <div>
             <div class="filt-div">
-              <el-select v-model="form.querySpecies" placeholder="Query Species" style="float:left"> 
-                <el-option
-                  v-for="item in querySpeciesList"
-                  :key="item.id"
-                  :label="item.commonName"
-                  :value="item.taxonId">
-                </el-option>
-              </el-select>
-              <p style="float:left;margin-left:3%;vertical-align:middle;margin-top: 0.5%;font-family: 'Noto Sans', sans-serif;">Targer Species:</p>
-                <el-select v-model="form.orthoSpecies" multiple class="filt-spe-select">
-                    <!-- <el-option label="Org1" value="shanghai"></el-option>
-                    <el-option label="Org2" value="beijing"></el-option> -->
+                <el-select v-model="form.querySpecies" class="filt-spe-select">
                     <el-option
-                        v-for="(item,index) in speciesInfoList"
+                        v-for="(item,index) in querySpeciesList_animal"
                         :key="index.id"
                         :label="item.commonName"
-                        :value="item.taxonId"
+                        :value="item.commonName"
                         >
                     </el-option>
                 </el-select>
-                <el-button icon="el-icon-search" type="success" round  plain id="filter-search" @click="searchFilter(form,traitItem.traitId)"></el-button>
-                <el-button icon="el-icon-delete" type="primary" round  plain id="filter-search2" @click="clearFilter()"></el-button>
+                <el-button icon="el-icon-search" type="success"  plain id="filter-search" @click="searchFilter()">Search</el-button>
+                <el-button icon="el-icon-delete" type="primary"  plain id="filter-search2" @click="clearFilter()">Clear</el-button>
+
+
+                <el-popover
+                  placement="bottom-end"
+                  width="200"
+                  trigger="manual"
+                  class="popbox"
+                  v-model="visible_1">
+                    <div class="checkbox-box">
+                      <el-checkbox v-for="item of speciesList_animal_1" :key="item.commonName" :label="item.commonName" class="chooseColBox" ref="one" v-model="item.checked"></el-checkbox>
+                    </div>
+                    <div class="botton-wrapper">
+                      <el-button size="mini" type="primary"  @click="confirmbutton" class="choose-col-button">confirm</el-button>
+                      <el-button size="mini" type="text" plain @click="visible_1 = false" class="choose-col-button">cancel</el-button>
+                    </div>
+                  <el-button slot="reference" icon="el-icon-s-grid" type="primary" plain id="filterCol" @click="visible_1 = !visible_1" :disabled="speciesList_animal_1.length==0"></el-button>
+                </el-popover>
+
+
+
             </div>
           <!-- </el-card> -->
-          <div id="wrapper"  v-loading="loading">
+          <div id="wrapper"  >
           <div class="trait-info">
             
       <!-- 使用中的trait表格 -->
@@ -93,6 +105,7 @@
             row-key="id"
             ref="table"
             :header-cell-style="hiligtDbCols"
+            v-loading="loading_animal"
           >
             <el-table-column align="center" class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
@@ -100,30 +113,40 @@
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
-            <el-table-column align="center" :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_animal" :key="index"
-              class="imglink" height="100px">
-                  <template slot-scope="scope" >
+            <template v-for="(item,index) in speciesList_animal_1">
+              <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
+                <template slot-scope="scope" >
                   <img
-                      :src="orthoIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList[scope.row.speciesListData.indexOf(index)])
-                    />
-                    <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
-                    <img
-                      :src="sameTraitIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='iconClass(scope.row,index)'
-                      style="cursor:pointer"
-                      @click=showGwasInfoTable(scope.row,index)
-                    />
-                  </template>
+                    :src="orthoIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showOrthoInfoTable(scope.row,index)
+                  />
+                  <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
+                  <img
+                    :src="sameTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData1.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
+                  <img
+                    :src="singleTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData2.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
+                </template>
               </el-table-column>
+            </template>
             </el-table-column>
           </el-table>
       
@@ -135,10 +158,16 @@
                       <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
           </div>
           <div style="display: flex;">
+                    <img :src="singleTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+          </div>
+          <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has same trait annotation.</div>  
           </div>
+          
           </div>
           <el-pagination
           
@@ -160,7 +189,7 @@
     <!-- <el-card shadow="none" class="sub-table-card"> -->
       
       <div class="sub-trait-box " v-if="showOrthoSubTable">
-      <el-divider></el-divider>
+      <el-divider class="divider"></el-divider>
           <div class="title-box">
             <h2 class="trait-sub-title">Ortholog Gene Detai Information</h2>
           </div>
@@ -176,7 +205,7 @@
               fixed
           >
               <el-table-column
-                  prop="species1.commonName"
+                  prop="commonName1"
                   label="Species">
               </el-table-column>
               <el-table-column
@@ -193,7 +222,7 @@
                   label="Protein1">
               </el-table-column>
               <el-table-column
-                  prop="species2.commonName"
+                  prop="commonName2"
                   label="Species2">
               </el-table-column>
               <el-table-column
@@ -246,31 +275,38 @@
       <!-- </el-card> -->
     </el-tab-pane>
      <!-- 植物tab -->
-    <el-tab-pane label="plant" name="second">
+    <el-tab-pane label="Plant" name="plant">
       <div class="filt-div">
-          <el-select v-model="form.querySpecies" placeholder="Query Species" style="float:left"> 
-            <el-option
-              v-for="item in querySpeciesList"
-              :key="item.id"
-              :label="item.commonName"
-              :value="item.taxonId">
-            </el-option>
-          </el-select>
-          <p style="float:left;margin-left:3%;vertical-align:middle;margin-top: 0.5%;font-family: 'Noto Sans', sans-serif;">Targer Species:</p>
-            <el-select v-model="form.orthoSpecies" multiple class="filt-spe-select">
-                <!-- <el-option label="Org1" value="shanghai"></el-option>
-                <el-option label="Org2" value="beijing"></el-option> -->
+            <el-select v-model="form.querySpecies" class="filt-spe-select">
                 <el-option
-                    v-for="(item,index) in speciesInfoList"
+                    v-for="(item,index) in querySpeciesList_plant"
                     :key="index.id"
                     :label="item.commonName"
-                    :value="item.taxonId"
+                    :value="item.commonName"
                     >
                 </el-option>
             </el-select>
-            <el-button icon="el-icon-search" type="success" round  plain id="filter-search" @click="searchFilter(form,traitItem.traitId)"></el-button>
-            <el-button icon="el-icon-delete" type="primary" round  plain id="filter-search2" @click="clearFilter()"></el-button>
-          </div>
+            <el-button icon="el-icon-search" type="success" plain id="filter-search" @click="searchFilter()">Search</el-button>
+            <el-button icon="el-icon-delete" type="primary" plain id="filter-search2" @click="clearFilter()">Clear</el-button>
+
+            <el-popover
+              placement="bottom-end"
+              width="200"
+              trigger="manual"
+              class="popbox"
+              v-model="visible">
+                <div class="checkbox-box">
+                  <el-checkbox v-for="item of speciesList_plant_1" :key="item.commonName" :label="item.commonName" class="chooseColBox" ref="one" v-model="item.checked"></el-checkbox>
+                <!-- <el-checkbox  class="chooseColBox" @change="chooseall" ref="all">Choose All</el-checkbox> -->
+                </div>
+                <div class="botton-wrapper">
+                  <el-button size="mini" type="primary"  @click="confirmbutton" class="choose-col-button">confirm</el-button>
+                  <el-button size="mini" type="text" plain @click="visible = false" class="choose-col-button">cancel</el-button>
+                </div>
+                <el-button slot="reference" icon="el-icon-s-grid" type="primary" plain id="filterCol" @click="visible = !visible" :disabled="speciesList_plant_1.length==0"></el-button>
+              </el-popover>
+
+      </div>
       <!-- <div class="wraper"> -->
         
       <div class="trait-info">
@@ -280,18 +316,20 @@
             
             class="trait-table"
             row-key="id"
-            v-loading="loading"
+            v-loading="loading_plant"
             ref="table"
             :header-cell-style="hiligtDbCols"
           >
-            <el-table-column class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
-            <el-table-column  prop="geneId" label="Gene Id" width="220px" fixed>
+            <el-table-column align="center" class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
             </el-table-column>
-            <el-table-column prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
-            <el-table-column prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
-            <el-table-column prop="speciesCommonName" label="Ortholog Species Name">
-            <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
-              class="imglink" height="100px">
+            <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
+            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
+            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <template v-for="(item,index) in speciesList_plant_1">
+              <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
+            <!-- <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
+              class="imglink" height="100px"> -->
                   <template slot-scope="scope" >
                   <img
                       :src="orthoIcon"
@@ -300,7 +338,7 @@
                       class="iconImg"
                       v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
                       style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList[scope.row.speciesListData.indexOf(index)])
+                      @click=showOrthoInfoTable(scope.row,index)
                     />
                     <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
                     <img
@@ -314,6 +352,7 @@
                     />
                   </template>
               </el-table-column>
+            </template>
             </el-table-column>
           </el-table>
         <div style="position: absolute;float: left;padding-top: 0.7%;">
@@ -321,12 +360,12 @@
                   <img :src="orthoIcon"
                     style="margin-right: 6px;min-width=70px;height=70px;"
                     class="iconImg" />
-                    <div style="color:dimgray">This icon represent the gene has homolog gene informations here.</div>
+                    <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
         </div>
         <div style="display: flex;">
                   <img :src="sameTraitIcon"   
                     style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" /><div style="color:dimgray">This icon represent the gene's homolog gene here have a same trait annotation.</div>  
+                    class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
         </div>
         </div>
         <el-pagination
@@ -457,7 +496,7 @@ import HeaderBar from "@/components/HeaderBar.vue";
 // // icons
 import sameTraitIcon from "@/assets/img/icon/star.svg";
 import orthoIcon from "@/assets/img/icon/huafu.svg";
-
+import singleTraitIcon from "@/assets/img/icon/orange.svg";
 // import "@/assets/css/traits.css";
 export default {
   name: "Traits",
@@ -477,129 +516,88 @@ export default {
     return {
       sameTraitIcon,
       orthoIcon,
+      singleTraitIcon,
+      visible:false,
+      visible_1:false,
       filterText: "",
       treedata: traitOntology.tree,
       showSubTableBox:false,
       gwasLoading:true,
       orthoLoading:true,
-      activeName: 'first',
+      activeName: 'animal',
       drawer:false,
       direction:"ltr",
+       // 保存同源物种，用于表格生成列
       speciesList_animal:[],
       speciesList_plant:[],
-      speciesInfoList:[],
+       // 保存同源物种obj，用于动态选择列
+      speciesList_animal_1:[],
+      speciesList_plant_1:[],
       traitData_animal: [],
       traitData_plant:[],
       orthoTableData: [],
       value: "",
-      traitItem:"",
+      traitItem:{
+        traitName:"growth and meat production trait",
+        traitId:"APTO:0000006",
+        traitDefID:"8971",
+        definition:"any measurable or observable characteristics related to animal growth and meat production quantity and quality",
+        classification:"animal"
+      },
       currentPage4: 1,
       totalSize_animal: 0,
       totalSize_plant: 0,
       form: {
         querySpecies:"",
-        orthoSpecies: "",
       },
-      tableSize: 10,
-      showOrthoGene: true,
-      notShow: false,
+      pageSize: 10,
       gwasInfoData:[],
-      otrhoGeneData:[],
       loading:true,
+      loading_animal:true,
+      loading_plant:true,
       showOrthoSubTable:false,
       classification:"animal",
       navBarFixed:"false",
       showTraitSameIcon:false,
+       // 从接口获取所有有trait数据的物种，用于物种选择，提交search
+      querySpeciesList_animal:[],
+      querySpeciesList_plant:[],
       querySpeciesList:[],
-      querySpecies:""
     };
   },
 
   methods: {
-    toggleSelection(rows) {
-      if (rows) {
-        rows.forEach((row) => {
-          this.$refs.multipleTable.toggleRowSelection(row);
-        });
-      } else {
-        this.$refs.multipleTable.clearSelection();
-      }
-    },
-    changeClass(tab, event){
+   
+    changeClass(tab){
         this.speciesList=[];
-        this.speciesInfoList=[];
         // this.loading = true;
         this.showOrthoSubTable=false;
-        console.log("value:",tab, event);
-        console.log(tab.label);
+        this.showGwasInfoTable=false;
         this.classification=tab.label;
-        this.$axios.get("http://localhost:9401/api/traits-item",{params: {classification: this.classification=="animal"?1:2}}).then(response=>{
-          console.log("traitsItem:",response);
-          this.traitItem=response.data
-      })
-      // this.loading=false;
-    //   this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': this.classification}})
-    //   .then((response) => {
-    //       this.totalSize = response.data.recordsTotal;
-    //       this.loading = false;
-    //       console.log("response:",response.data);
-    //       this.traitData=response.data.data;
-    //       if(this.traitData.length>0){
-    //         for(let traitData of this.traitData){
-    //           // 增加一个属性保存物种的index，用来显示表格里的icon
-    //           traitData.speciesListData=[]
-    //           if(traitData.orthoList){
-    //             for(let item of traitData.orthoList){
-    //               let speciesName=item.species.commonName
-    //               if(this.speciesList.indexOf(speciesName)==-1){
-    //                 this.speciesList.push(speciesName);
-    //                 this.speciesInfoList.push(item.species)
-    //               }
-    //               traitData.speciesListData.push(this.speciesList.indexOf(speciesName));
-    //             }
-    //           }
-    //         }
-    //       }
-    // })
+        this.$refs['table'].doLayout();
     },
 
-
+    confirmbutton(){
+    this.visible_1 = false;
+    this.visible = false;
+    this.$refs.table.doLayout();
+   },
     handleSizeChange(val){
       this.loading = true;
-      this.tableSize = val;
-      this.$axios.get("http://localhost:9401/api/traits?length=" + val)
-      .then((response) => {
-        this.traitData = response.data.data;
-        this.totalSize = response.data.recordsTotal;
-        console.log("response:",response.data);
-      })
+      this.pageSize = val;
+      this.getTraitData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,1,this.form.querySpecies)
     },
     handleCurrentChange(val) {
-      this.loading=true;
+      if(this.classification=="animal"){
+        this.loading_animal=true;
+        // traitId,classification,pagesize,pagenum,speciesName
+        this.getTraitData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,val,this.form.querySpecies)
+      }else{
+        this.loading_plant=true;
+        this.getTraitData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,val,this.form.querySpecies)
+      }
       this.currentPage4 = val;
-      console.log(this.classification);
-      this.$axios.get("http://localhost:9401/api/traits?pageNo="+val+"&length="+this.tableSize,{params:{'classification':this.classification}})
-      .then((response) => {
-        this.traitData = response.data.data;
-        this.totalSize = response.data.recordsTotal;
-        console.log("response:",response);       
-        for(let item of this.traitData){
-        item.speciesListData=[]
-            if(item.orthoList){
-              for(let item of item.orthoList){
-                let speciesName=item.species.commonName
-                if(this.speciesList.indexOf(speciesName)==-1){
-                  this.speciesList.push(speciesName);
-                  this.speciesInfoList.push(item.species)
-                }
-                item.speciesListData.push(this.speciesList.indexOf(speciesName));
-              }
-            }
-        }
 
-        this.loading=false;
-      })
-  
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
@@ -609,70 +607,77 @@ export default {
       return data.label.indexOf(value) !== -1;
     },
     getInfoByTrait(value, data) {
-      this.loading=true;
-      data.checked = true;
-      // this.traitID = value.traitID;
-      // this.traitDef = value.Definitions;
-      // this.traitName = value.Name;
-      this.traitItem=value;
-      // this.form.traitName = value.Name;
+      this.traitItem.traitName=value.Name;
+      this.traitItem.traitId=value.traitID;
+      this.traitItem.traitDefID=value.traitDefID;
+      this.traitItem.definition=value.Definitions;
+      this.traitItem.classification=value.classification;
+      if(value.classification=="animal"){
+        this.loading_animal=true;
+        this.getTraitData(value.traitDefID,value.classification,this.pageSize,1,this.form.querySpecies);
 
-      this.$axios.get(
-          "http://localhost:9401/api/traits/get-by-trait-name/" +
-            value.Name +
-            "?pageNo=" +
-            this.currentPage4 +
-            "&length=" +
-            this.tableSize
-        )
-        .then((response) => {
-          this.loading=false;
-          this.traitData = response.data.data;
-          this.totalSize = response.data.recordsTotal;
-          for(let item of this.traitData){
-            item.gwasNum=item.gwasId.split(",").length;
-          }
-          this.loading = false
-        })
+      }else{
+        this.loading_plant=true;
+        this.getTraitData(value.traitDefID,value.classification,this.pageSize,1,this.form.querySpecies)
+
+      }
+      data.checked = true;
+      
+      this.activeName=value.classification;
+      this.classification=value.classification;
+
+
     },
     
-  showOrthoInfoTable(orthoList){
+  showOrthoInfoTable(rowData,index){
+    // console.log("rowData,index:",rowData,index);
+    // rowData.orthoList[rowData.speciesListData.indexOf(index)];
+    let ortholist=[];
+    rowData.speciesListData.forEach((id,idx)=>{
+      if(id==index){
+        ortholist.push(rowData.orthoList[idx])
+    }})
+    // console.log("index list:",ortholist);
+
+    // rowData.
     this.showOrthoSubTable = true;
     this.showSubTableBox=false;
     this.orthoLoading=false;
-    this.orthoTableData=[orthoList];
+    this.orthoTableData=ortholist;
+    console.log(this.orthoTableData);
+    // 应该发送请求去genebasicinfo查具体的基因相关信息
+
   },
-  // watchScroll() {
-  //     var scrollTop =
-  //       window.pageYOffset ||
-  //       document.documentElement.scrollTop ||
-  //       document.body.scrollTop;
-  //     //  当滚动超过 288 时，实现吸顶效果
-  //     if (scrollTop > 288) {
-  //       this.navBarFixed = true;
-  //     } else {
-  //       this.navBarFixed = false;
-  //     }
-  // },
+ 
   // 表格高度自适应
-  // getTableMaxHeight(){
-  //     this.$nextTick(function () {
-  //     let box = document.querySelector(".trait-info").attributes
-  //     let box_clientHeight = box[0].ownerElement.clientHeight;
-  //     this.tableHeight = box_clientHeight - 100;
-  //   })
-  // },
+  getTableMaxHeight(){
+      this.$nextTick(function () {
+      let box = document.querySelector(".trait-info").attributes
+      let box_clientHeight = box[0].ownerElement.clientHeight;
+      this.tableHeight = box_clientHeight - 100;
+    })
+  },
   buttonFunction(){
     this.drawer = true;
    },
   showGwasInfoTable(rowValue,index){
-    // scope.row.gwasId,scope.row.taxonId,scope.row.orthoList[scope.row.speciesListData.indexOf(index)]
-    console.log("row value:",rowValue);
+    console.log("rowValue,index:",rowValue,index);
+    this.showOrthoInfoTable(rowValue,index)
+  // 获取当前数据点的gwasid，需要修改后端逻辑，得到gwasid
+
+    // let ortholist=[];
+    rowValue.speciesListData.forEach((id,idx)=>{
+      if(id==index){
+        let item=rowValue.orthoList[idx]
+        console.log("item:",item);
+        // ortholist.push(rowValue.orthoList[idx])
+        // item.
+    }})
     let gwasid=rowValue.gwasId
-    let taxid=rowValue.gwasOrgid
-    let orthoList=rowValue.orthoList[rowValue.speciesListData.indexOf(index)]
+    let taxid=rowValue.gwasOrgid;
+    rowValue.orthoList
+    // let orthoList=rowValue.orthoList[rowValue.speciesListData.indexOf(index)]
     this.showSubTableBox=true;
-    console.log("gwasid,taxid:",gwasid,taxid);
     this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid+"&organismId="+taxid+"&offset=0&pagesize=10&total=10")
     .then(response=>{
       console.log("gwas response:",response);
@@ -680,9 +685,9 @@ export default {
       this.gwasLoading=false;
     })
     this.showOrthoSubTable = true;
-    this.orthoLoading=false;
-    this.orthoTableData=[orthoList];
-    console.log(orthoList);
+    // this.orthoLoading=false;
+    // this.orthoTableData=[orthoList];
+    // console.log(orthoList);
    },
     hiligtDbCols({rowIndex}){
       if(rowIndex===1){
@@ -691,81 +696,163 @@ export default {
       
     },
     iconClass(data,index){
-      let classFT=data.speciesListData.indexOf(index)>-1?data.orthoList[data.speciesListData.indexOf(index)].orthoTraitName.indexOf(data.traitName)>-1:false
-      return classFT
+      // if(data.speciesListData.indexOf(index)>-1){
+        data.speciesListData.forEach((id,idx)=>{
+          // console.log("id,index:",id,index);
+          if(id==index){
+            
+            if( data.orthoList[idx].traitName!=null ){
+              // console.log("data.orthoList[idx]:",data.orthoList[idx].traitName,data.traitName);
+              let traitlist=data.orthoList[idx].traitName.split(",")
+              if(traitlist.indexOf(data.traitName)>-1){
+                console.log(1,"idx:",idx,"species:",data.orthoList[idx],"trait data:",data.traitName);
+                console.log("data.orthoList[idx]:",data.orthoList[idx].traitName,data.traitName);
+                return 1;
+              }else{
+                console.log(2);
+                console.log("data.orthoList[idx]:",data.orthoList[idx],data.traitName);
+              return 2;
+            }
+          }else{
+            return false
+          }
+          }else{
+            return false
+          }
+        })
+      // }
     },
-    // dealSpeName(itemName){
-    //   let name=itemName.length>13?itemName.slice(0,13)+"...":itemName;
-    //   return name
-    // }
-    searchFilter(value,traitId){
-      this.$axios.get("http://localhost:9401/api/traits/ortho-data",{params:{"orthoSpecies":value.orthoSpecies,"querySpecies":value.querySpecies,"traitId":traitId}})
-      .then(response=>{
-          console.log("searchFilter:",response);
-      })
-      // console.log(value,traitName);
+   
+    searchFilter(){
+      if(this.classification=="animal"){
+        this.loading_animal=true;
+      }else{
+        this.loading_plant=true;
+      }
+      this.getTraitData(this.traitItem.traitDefID,this.classification,this.pageSize,1,this.form.querySpecies)
+
+    }, 
+    clearFilter(){
+      if(this.classification=="animal"){
+        this.loading_animal=true;
+      }else{
+        this.loading_plant=true;
+      }
+      this.getTraitData(this.traitItem.traitDefID,"animal")
+      this.getTraitData(this.traitItem.traitDefID,"plant")
+      this.form.querySpecies=""
+    },
+    async showTableIcon(data,classss){
+      
+      if(classss == "plant"){
+        this.speciesList_plant=[];
+        this.speciesList_plant_1=[];
+        if(data.length>0){
+          for(let varData of data){
+            // 增加一个属性保存物种的index，用来显示表格里的icon
+            varData.speciesListData=[];
+            // 增加一个属性，保存显示有trait数据的情况
+            varData.traitListData1=[];
+            varData.traitListData2=[];
+            if(varData.orthoList){
+              for(let item of varData.orthoList){
+                let speciesName=item.species.commonName
+                if(this.speciesList_plant.indexOf(speciesName)==-1){
+                  this.speciesList_plant.push(speciesName);
+                  item.species.checked=true;
+                  this.speciesList_plant_1.push(item.species);
+                }
+                varData.speciesListData.push(this.speciesList_plant.indexOf(speciesName));
+                if(item.traitName !== null){
+                  varData.traitListData2.push(this.speciesList_plant.indexOf(speciesName))
+                  if(item.traitName==varData.traitName){
+                      varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
+                  }
+                }
+              }
+            }
+          }
+          this.$refs['table'].doLayout();
+        }
+    }else{
+      this.speciesList_animal=[];
+      
+      console.log("this.speciesList_plant:",this.speciesList_plant);
+      this.speciesList_animal_1=[];
+        if(data.length>0){
+          for(let varData of data){
+            // 增加一个属性保存物种的index，用来显示表格里的icon
+            varData.speciesListData=[];
+            varData.traitListData1=[];
+            varData.traitListData2=[];
+            if(varData.orthoList){
+              for(let item of varData.orthoList){
+                let speciesName=item.species.commonName;
+                if(this.speciesList_animal.indexOf(speciesName)==-1){
+                  this.speciesList_animal.push(speciesName);
+                  item.species.checked=true;
+                  this.speciesList_animal_1.push(item.species);
+                }
+                varData.speciesListData.push(this.speciesList_animal.indexOf(speciesName));
+                if(item.traitName !== null){
+                  // 有trait但不相同
+                   varData.traitListData2.push(this.speciesList_animal.indexOf(speciesName))
+                  if(item.traitName==varData.traitName){
+                    // 有相同trait
+                      varData.traitListData1.push(this.speciesList_animal.indexOf(speciesName))
+                  }
+                }
+              }
+            }
+          }
+        }
     }
+    return Promise.resolve(data);
+    },
+    // 主要获取数据的方法
+    // 根据动植物分开获取
+    async getTraitData(traitId,classification,pagesize,pagenum,speciesName){
+      console.log("params:",traitId,classification,pagesize,pagenum,speciesName);
+      this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': classification,'traitId':traitId,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
+      .then((response) => {
+        console.log("response:",response);
+        if(classification=="animal"){
+          this.totalSize_animal = response.data.recordsTotal;
+          // this.speciesList_animal=response.data.data[0].headerList;
+          this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_animal=res;this.loading_animal=false;});
+        
+        }else{
+          this.totalSize_plant = response.data.recordsTotal;
+          // this.speciesList_plant=response.data.data[0].headerList;
+          this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_plant=res; this.loading_plant=false;});
+        }
+
+      })
+      .finally(()=>{ return Promise.resolve()})
+   
+    },
+    // 根据当前classification判断获取动物或植物列表
+    getSpecies(speciesType){
+      this.$axios.get('http://localhost:9401/api/species-trait',{params: {speciesType: speciesType}})
+        .then(response=>{
+          // 2是植物，1是动物
+          if(speciesType==2){
+            this.querySpeciesList_plant=response.data;
+          }else{
+            this.querySpeciesList_animal=response.data;
+          }
+      })
+    },
+
   },
   
 
   mounted() {
-    this.loading = true;
-    this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': 'animal'}})
-      .then((response) => {
-        this.totalSize_animal = response.data.recordsTotal;
-        console.log("response:",response.data);
-        this.traitData_animal=response.data.data;
-        if(this.traitData_animal.length>0){
-          for(let traitData of this.traitData_animal){
-            // 增加一个属性保存物种的index，用来显示表格里的icon
-            traitData.speciesListData=[]
-            if(traitData.orthoList){
-              for(let item of traitData.orthoList){
-                let speciesName=item.species.commonName
-                if(this.speciesList_animal.indexOf(speciesName)==-1){
-                  this.speciesList_animal.push(speciesName);
-                  this.speciesInfoList.push(item.species)
-                }
-                traitData.speciesListData.push(this.speciesList_animal.indexOf(speciesName));
-              }
-            }
-          }
-        }
-       
-        console.log("this.traitData:",this.traitData);
-  }).finally(()=>{
-      this.loading = false;
-  })
-
-   this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': 'plant'}})
-      .then((response) => {
-        this.totalSize_plant = response.data.recordsTotal;
-        console.log("response:",response.data);
-        this.traitData_plant=response.data.data;
-        if(this.traitData_plant.length>0){
-          for(let traitData of this.traitData_plant){
-            // 增加一个属性保存物种的index，用来显示表格里的icon
-            traitData.speciesListData=[]
-            if(traitData.orthoList){
-              for(let item of traitData.orthoList){
-                let speciesName=item.species.commonName
-                if(this.speciesList_plant.indexOf(speciesName)==-1){
-                  this.speciesList_plant.push(speciesName);
-                  this.speciesInfoList.push(item.species)
-                }
-                traitData.speciesListData.push(this.speciesList_plant.indexOf(speciesName));
-              }
-            }
-          }
-        }
-        console.log("this.traitData:",this.traitData);
-  })
-    
-
-
-
-
-
+    this.loading_animal = true;
+    this.loading_plant=true;
+ 
+    this.getTraitData(this.traitItem.traitDefID,"animal");
+    this.getTraitData(this.traitItem.traitDefID,"plant");
 
     window.addEventListener("scroll", this.watchScroll);
     // this.getTableMaxHeight(); 
@@ -773,15 +860,16 @@ export default {
     // window.onresize = function () {//用于使表格高度自适应的方法  
     // _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
     // }
-    this.$axios.get('http://localhost:9401/basic/getSpecies',{params: {speciesType: this.classification=="animal"?1:2}})
-    .then(response=>{
-      this.querySpeciesList=response.data;
-      console.log("speciesdata:",response.data);
-    })
-    this.$axios.get("http://localhost:9401/api/traits-item",{params: {classification: this.classification=="animal"?1:2}}).then(response=>{
-      console.log("traitsItem:",response);
-      this.traitItem=response.data
-    })
+   // 获取动植物名称列表，用于下拉选择框
+    this.getSpecies(2)
+    this.getSpecies(1)
+    
+     window.addEventListener("scroll", this.watchScroll);
+      this.getTableMaxHeight(); 
+      let _this = this;
+      window.onresize = function () {//用于使表格高度自适应的方法  
+      _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
+    }
     
   }
 }

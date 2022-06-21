@@ -38,6 +38,12 @@ public class SpeciesController {
         return result;
     }
 
+    @RequestMapping(value = "/api/species-var", method = RequestMethod.GET)
+    @ResponseBody
+    public List speciesNameListforVar(Integer speciesType){
+        List speciesNamelist=speciesService.speciesNameListforVar(speciesType);
+        return speciesNamelist;
+    }
     @RequestMapping(value = "/api/species-trait", method = RequestMethod.GET)
     @ResponseBody
     public List speciesNameListforTrait(Integer speciesType){

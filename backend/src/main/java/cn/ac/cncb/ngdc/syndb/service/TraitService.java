@@ -20,10 +20,10 @@ public class TraitService {
     @Resource
     private TraitNameMapper traitNameMapper;
 
-    public Page<Trait2gwas> biomedicalTrait(String classification,int pageNo, int pageSize) {
+    public Page<Trait2gwas> biomedicalTrait(int traitId,String classification,int pageNo, int pageSize,String speciesName) {
 
         PageHelper.startPage(pageNo, pageSize,true); //line 1
-        return trait2gwasMapper.biomedicalTrait(classification);
+        return trait2gwasMapper.biomedicalTrait(traitId,classification,speciesName);
     }
 
     public Page<Trait2gwas> selectTraitBySpecies(int pageNo, int pageSize, String taxonid) {
@@ -53,7 +53,7 @@ public class TraitService {
         return  trait2gwasMapper.findGwasOrgidByTaxonId(taxonId);
     }
 
-    public TraitName traitsItem(String classification){
-        return traitNameMapper.traitsItem(classification);
+    public TraitName traitsItem(String traitID){
+        return traitNameMapper.traitsItem(traitID);
     };
 }

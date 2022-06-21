@@ -23,6 +23,8 @@ public interface SpeciesInfoMapper {
     List<SpeciesInfo> selectAllSpecies();
 
 //    List<String> speciesNameList(String classification);
+    List<SpeciesInfo> speciesNameListforVar(Integer speciesType);
+
     List<SpeciesInfo> speciesNameListforTrait(Integer speciesType);
 
     String getDataSource(Integer txonid);

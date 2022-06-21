@@ -1,13 +1,24 @@
 <template>
     <div class="banner-box">
-      <h1 class="module-title">Homolog Gene Database</h1>
+      <div style="float:left;background-color: white;border-radius: 50%;width: 100px;height: 100px;margin-top: 30px;margin-right: 20px;margin-left: 10px;">
+       <img :src="logo"  style="width:150px;height:150px;margin-top: -18px;margin-left: -18px;" />
+      </div>
+      
+      <div class="wrapper">
+        <div class="module-title">Homolog Gene Database</div>
+        <div class="subtitle">A data portal of homolog genes across multiple species</div>
+      </div>
     </div>
 </template>
 
 <script>
-
+import logo from "@/assets/img/icon/logo.png";
 export default {
   name: 'Banner',
+  data(){
+    return {logo
+    }
+  }
 
 }
 </script>
@@ -24,13 +35,26 @@ export default {
   /* background-attachment: fixed; */
   position: relative;
   margin-top: -35px;
+  display: table;
 }
 .module-title{
   text-align: left;
-  font-weight: 500;
-  color: rgb(222, 222, 222);
-  padding-top:55px;
-  padding-left: 1.4%;
-  font-size: 45px;
+  font-weight: 700;
+  /* color: rgb(222, 222, 222); */
+  /* color: rgb(232, 232, 232); */
+  padding-top:18px;
+  /* padding-left: 1.4%; */
+  /* font-size: 50px; */
+  color: #f2f2f2;
+  font-size: 42px;
+}
+.subtitle{
+  font-size: 23px;
+  color: #fefefe;
+  text-align: left;
+}
+.wrapper{
+  margin-top: 25px;
+  /* margin-left: 10px; */
 }
 </style>

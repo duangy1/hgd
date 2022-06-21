@@ -10,5 +10,5 @@ public interface TraitNameMapper {
 
     List<TraitName> traitInfoList();
 
-    TraitName traitsItem(String classification);
+    TraitName traitsItem(String traitID);
 }

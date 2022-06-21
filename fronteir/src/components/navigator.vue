@@ -4,6 +4,7 @@
         mode="horizontal"
         router
         background-color="rgba(0, 23, 55,1)"
+        text-color="white"
       >
       <el-menu-item index="/" >
         <i class="el-icon-location"></i>
@@ -11,11 +12,12 @@
       </el-menu-item>
       <el-submenu index="2" text-color="#FFFFFF" >
         <template slot="title"><i class="el-icon-menu"></i>Browse</template>
-        <el-menu-item index="/gene" >Ortholog Gene</el-menu-item>
+        <el-menu-item index="/gene" >Homolog Gene</el-menu-item>
         <!-- <el-menu-item index="/gene-detail">Gene</el-menu-item> -->
         <el-menu-item index="/traits" >Traits</el-menu-item>
         <el-menu-item index="/variants" >Variants</el-menu-item>
         <el-menu-item index="/expression" >Expression</el-menu-item>
+        <el-menu-item index="/go" >Gene Ontology</el-menu-item>
         <el-menu-item index="/species" >Species</el-menu-item>
       </el-submenu>
       <el-menu-item index="documentation">
@@ -70,8 +72,12 @@
   color: white !important;
   background-color: rgb(0, 23, 55) !important;
 }
+.el-submenu__title:hover{
+  color: white !important;
+  background-color: rgb(89, 116, 154) !important;
+}
 .el-menu-item:hover{
-  background-color: rgb(0, 23, 55) !important;
+  background-color: rgb(89, 116, 154) !important;
 }
 .browse div{
    color: white !important;

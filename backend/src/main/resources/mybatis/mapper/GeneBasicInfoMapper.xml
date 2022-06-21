@@ -86,11 +86,11 @@
   </select>
 
   <select id="selectGeneByHdbGeneId" resultMap="BaseResultMap">
-      select * from gene_basic_info where hdb_gene_id=#{hdbGeneId}
+      select * from gene_basic_info_1 where hdb_gene_id=#{hdbGeneId}
   </select>
 
   <select id="getHdbIdByEnsId" resultType="String">
-      select hdb_gene_id from gene_basic_info where ensembl_gene_id=#{ensId} limit 0,1
+      select hdb_gene_id from gene_basic_info_1 where ensembl_gene_id=#{ensId} limit 0,1
   </select>
 
   <select id="getEnsGidByEnspId" resultType="String">

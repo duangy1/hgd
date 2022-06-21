@@ -8,6 +8,10 @@ import GeneDetail from '../views/gene-detail.vue'
 import dbDetail from '../views/Db-detail.vue'
 import Variants from '../views/Variant.vue'
 import Statistics from '../views/Statistics.vue'
+import Downloads from '../views/Downloads.vue'
+import Documentation from '../views/Documentation.vue'
+import Expression from '../views/Expression.vue'
+import Go from '../views/Go.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +55,26 @@ const routes = [
     path: '/statistics',
     name: 'Statistics',
     component: Statistics
+  },
+  {
+    path: '/downloads',
+    name: 'Downloads',
+    component: Downloads
+  },
+  {
+    path: '/expression',
+    name: 'Expression',
+    component: Expression
+  },
+  {
+    path: '/go',
+    name: 'Go',
+    component: Go
+  },
+  {
+    path: '/documentation',
+    name: 'Documentation',
+    component: Documentation
   },
   // {
   //   path: '/about',

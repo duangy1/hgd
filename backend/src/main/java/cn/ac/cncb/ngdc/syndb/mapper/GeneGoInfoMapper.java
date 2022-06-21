@@ -1,7 +1,9 @@
 package cn.ac.cncb.ngdc.syndb.mapper;
 
+import cn.ac.cncb.ngdc.syndb.entity.GeneGo;
 import cn.ac.cncb.ngdc.syndb.entity.GeneGoInfo;
 import cn.ac.cncb.ngdc.syndb.entity.GoBasicTerm;
+import com.github.pagehelper.Page;
 
 import java.util.List;
 
@@ -22,4 +24,7 @@ public interface GeneGoInfoMapper {
     List<GoBasicTerm> selectBasicGo(String classification);
 
     List<String> getGoNumbyGene(String ensid);
+
+
+
 }

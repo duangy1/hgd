@@ -7,6 +7,7 @@
     <result column="depth" jdbcType="INTEGER" property="depth" />
     <result column="go_id" jdbcType="VARCHAR" property="goId" />
     <result column="go_term" jdbcType="VARCHAR" property="goTerm" />
+    <result column="definition" jdbcType="VARCHAR" property="definition" />
     <result column="top_class" jdbcType="VARCHAR" property="topClass" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GoBasicTerm">
@@ -19,5 +20,8 @@
   <sql id="Blob_Column_List">
     definition
   </sql>
+  <select id="initPageGoTerms" resultMap="BaseResultMap">
+    select * from go_terms_copy1 where classification="plant"
+  </select>
 
 </mapper>

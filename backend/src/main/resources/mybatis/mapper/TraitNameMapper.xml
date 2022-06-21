@@ -23,6 +23,6 @@
     </select>
 
     <select id="traitsItem" resultMap="BaseResultMap">
-      select * from trait_name where trait_type=#{classification} limit 0,1
+      select * from trait_name where trait_id=#{traitID}
   </select>
 </mapper>

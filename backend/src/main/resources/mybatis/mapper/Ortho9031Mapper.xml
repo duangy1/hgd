@@ -10,6 +10,13 @@
     <result column="refseq_id1" jdbcType="VARCHAR" property="refseqId1" />
     <result column="gene_id1" jdbcType="VARCHAR" property="geneId1" />
     <result column="entrez_id1" jdbcType="VARCHAR" property="entrezId1" />
+    <result column="common_name1" jdbcType="VARCHAR" property="commonName1" />
+    <result column="classification1" jdbcType="VARCHAR" property="classification1" />
+    <result column="data_source1" jdbcType="VARCHAR" property="dataSource1" />
+    <result column="trait_name1" jdbcType="VARCHAR" property="traitName1" />
+    <result column="gwas_id1" jdbcType="VARCHAR" property="gwasId1" />
+    <result column="var_name1" jdbcType="VARCHAR" property="varName1" />
+
     <result column="hdb_gene_id2" jdbcType="VARCHAR" property="hdbId2" />
     <result column="tax_id2" jdbcType="INTEGER" property="tax2" />
     <result column="uniprot_id2" jdbcType="VARCHAR" property="protein2" />
@@ -17,6 +24,13 @@
     <result column="gene_id2" jdbcType="VARCHAR" property="geneId2" />
     <result column="ensemb_id2" jdbcType="VARCHAR" property="ensemblId2" />
     <result column="entrez_id2" jdbcType="VARCHAR" property="entrezId2" />
+    <result column="common_name2" jdbcType="VARCHAR" property="commonName2" />
+    <result column="classification2" jdbcType="VARCHAR" property="classification2" />
+    <result column="data_source2" jdbcType="VARCHAR" property="dataSource2" />
+    <result column="trait_name2" jdbcType="VARCHAR" property="traitName2" />
+    <result column="gwas_id2" jdbcType="VARCHAR" property="gwasId2" />
+    <result column="var_name2" jdbcType="VARCHAR" property="varName2" />
+    <result column="var_name" jdbcType="VARCHAR" property="varName" />
 
     <result column="from_db" jdbcType="VARCHAR" property="fromdb" />
     <result column="db_evidence" jdbcType="VARCHAR" property="dbEvidence" />
@@ -24,6 +38,23 @@
     <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
   </resultMap>
 
+
+  <resultMap id="GoResultMap" type="cn.ac.cncb.ngdc.syndb.entity.OrthoGo">
+    <result column="hdb_gene_id1" jdbcType="VARCHAR" property="hdbId1" />
+    <result column="tax_id1" jdbcType="INTEGER" property="tax1" />
+    <result column="uniprot_id1" jdbcType="VARCHAR" property="protein1" />
+    <result column="ensembl_id1" jdbcType="VARCHAR" property="ensemblId1" />
+    <result column="common_name1" jdbcType="VARCHAR" property="commonName1" />
+    <result column="classification1" jdbcType="VARCHAR" property="classification1" />
+    <result column="go_name1" jdbcType="VARCHAR" property="goName1" />
+    <result column="hdb_gene_id2" jdbcType="VARCHAR" property="hdbId2" />
+    <result column="tax_id2" jdbcType="INTEGER" property="tax2" />
+    <result column="uniprot_id2" jdbcType="VARCHAR" property="protein2" />
+    <result column="ensemb_id2" jdbcType="VARCHAR" property="ensemblId2" />
+    <result column="common_name2" jdbcType="VARCHAR" property="commonName2" />
+    <result column="classification2" jdbcType="VARCHAR" property="classification2" />
+    <result column="go_name1" jdbcType="VARCHAR" property="goName1" />
+  </resultMap>
   <sql id="Base_Column_List">
     id, protein1, refseqId1, gene_id1, tax1, protein2, refseqId2, gene_id2, tax2, dbinfo, create_time,
     last_update_time
@@ -100,7 +131,22 @@
     </if>
     )) and oim.hdb_gene_id=#{geneId} and oim.taxon_id=#{taxonId}
   </select>
-  <select id="selectGeneOrthoInfo" resultMap="BaseResultMap">
-    select * from ortholog_all64  where (hdb_gene_id1=#{geneName} or hdb_gene_id2=#{geneName} )
-  </select>
+<!--  <select id="selectGeneOrthoInfo" resultMap="BaseResultMap">-->
+<!--    select * from ortholog_all64_1  where (hdb_gene_id1 like #{hdbid} or hdb_gene_id2 like #{hdbid} )-->
+<!--  </select>-->
+<!--  <select id="selectGeneOrthoInfo" resultMap="BaseResultMap">&ndash;&gt;-->
+<!--     select tax_id1,tax_id2,(select trait_name from trait_all_copy1 where hdb_gene_id=hdb_gene_id1) as trait_name1,(select trait_name from trait_all_copy1 where hdb_gene_id=hdb_gene_id2)as trait_name2 from ortholog_all64_1 where (hdb_gene_id1 like #{hdbid} or hdb_gene_id2 like #{hdbid} )-->
+<!--  </select>-->
+<select id="selectGeneOrthoInfo" resultMap="BaseResultMap">
+    select a.common_name as common_name1,a.classification as classification1,tax_id1,(select group_concat(trait_name)  from trait_all_copy1 where hdb_gene_id=hdb_gene_id1 ) as trait_name1,tax_id2,b.common_name as common_name2,b.classification as classification2, (select group_concat(trait_name) from trait_all_copy1 where hdb_gene_id=hdb_gene_id2 ) as trait_name2 from ortholog_all64_1 inner join (select common_name,classification,data_source,taxon_id from species ) as a on a.taxon_id=ortholog_all64_1.tax_id1 inner join (select common_name,classification,data_source,taxon_id from species) as b on b.taxon_id=tax_id2 where (hdb_gene_id1 like #{hdbid} or hdb_gene_id2 like #{hdbid} )
+</select>
+
+<select id="selectGeneVarOrthoInfo" resultMap="BaseResultMap">
+  select a.common_name as common_name1,a.classification as classification1,a.data_source as data_source1,tax_id1,(select group_concat(var_name) from variation_all where hdb_gene_id=hdb_gene_id1) as var_name1,tax_id2,b.common_name as common_name2,b.classification as classification2,b.data_source as data_source2, (select group_concat(var_name) from variation_all where hdb_gene_id=hdb_gene_id2)as var_name2 from ortholog_all64_1 inner join (select common_name,classification,data_source,taxon_id from species ) as a on a.taxon_id=ortholog_all64_1.tax_id1 inner join (select common_name,classification,data_source,taxon_id from species) as b on b.taxon_id=tax_id2 where (hdb_gene_id1 like #{hdbid} or hdb_gene_id2 like #{hdbid} )
+</select>
+
+<select id="selectGeneGoOrthoInfo" resultMap="GoResultMap">
+    select a.common_name as common_name1,a.classification as classification1,tax_id1,(select go_annotation from ${tableName} where hdb_gene_id=hdb_gene_id1) as go_name1,tax_id2,b.common_name as common_name2,b.classification as classification2, (select go_annotation from ${tableName} where hdb_gene_id=hdb_gene_id2)as go_name2 from ortholog_all64_1 inner join (select common_name,classification,taxon_id from species ) as a on a.taxon_id=ortholog_all64_1.tax_id1 inner join (select common_name,classification,data_source,taxon_id from species) as b on b.taxon_id=tax_id2 where (hdb_gene_id1 like #{hdbid} or hdb_gene_id2 like #{hdbid} )
+</select>
+
 </mapper>

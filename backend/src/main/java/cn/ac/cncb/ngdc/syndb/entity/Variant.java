@@ -14,6 +14,8 @@ public class Variant {
 
     private String varName;
 
+    private String hdbid;
+
     private String speciesCommonName;
 
     private List orthoList;

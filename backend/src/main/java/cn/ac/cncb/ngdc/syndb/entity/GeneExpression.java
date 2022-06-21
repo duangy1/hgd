@@ -2,6 +2,8 @@ package cn.ac.cncb.ngdc.syndb.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class GeneExpression {
     private Integer geiId;
@@ -15,5 +17,9 @@ public class GeneExpression {
     private String bioProjectId;
 
     private String[] prjList;
+
+    private List ortholist;
+
+    private String hdbId;
 
 }

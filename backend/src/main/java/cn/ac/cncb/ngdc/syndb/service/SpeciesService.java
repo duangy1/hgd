@@ -48,7 +48,10 @@ public class SpeciesService {
     }
 
 //只返回有trait数据的物种
-    public List<SpeciesInfo> speciesNameListforTrait(Integer speciesType){
-    return speciesInfoMapper.speciesNameListforTrait(speciesType);
+    public List<SpeciesInfo> speciesNameListforVar(Integer speciesType){
+        return speciesInfoMapper.speciesNameListforVar(speciesType);
 }
+    public List<SpeciesInfo> speciesNameListforTrait(Integer speciesType){
+        return speciesInfoMapper.speciesNameListforTrait(speciesType);
+    }
 }

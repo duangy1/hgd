@@ -16,17 +16,21 @@ public class Ortho9031 {
 
     private String ensemblId1;
 
-    private String entrezId1;
-
-    private String refseqId1;
-
-    private String geneId1;
-
-    private String geneSymbol;
-
     private String tax1;
 
     private SpeciesInfo species1;
+
+    private String commonName1;
+
+    private String dataSource1;
+
+    private String classification1;
+
+    private String traitName1;
+
+    private String varName1;
+
+    private String gwasId1;
 
     private String hdbId2;
 
@@ -34,27 +38,41 @@ public class Ortho9031 {
 
     private String ensemblId2;
 
-    private String entrezId2;
-
-    private String refseqId2;
-
-    private String geneId2;
-
     private String tax2;
 
     private SpeciesInfo species2;
+
+    private String commonName2;
+
+    private String dataSource2;
+
+    private String classification2;
+
+    private String traitName2;
+
+    private String varName2;
+
+    private String gwasId2;
 
     private String protein;
 
     private String ensemblId;
 
-    private String entrezId;
-
-    private String geneId;
-
     private String tax;
 
     private SpeciesInfo species;
+
+    private String commonName;
+
+    private String dataSource;
+
+    private String classification;
+
+    private String traitName;
+
+    private String gwasId;
+
+    private String varName;
 
     private String fromdb;
 

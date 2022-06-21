@@ -3,10 +3,14 @@
   margin-top: 1.5%;
   margin-left: 3%;
   float: right;
+  margin-bottom: 1px;
 }
 .submitButton {
   margin-left: 7%;
   width: 13%;
+}
+.divider{
+  margin-top: 55px;
 }
 
 .selectBox {
@@ -360,8 +364,17 @@ span{
 #tab-second{
   font-size: 16px;
 }
+.button-wrapper{
+  display: flex;
+}
+.button-text{
+  text-align: left;
+  position: absolute;
+  top: 308px;
+  left: 68px;
+}
 .arrow-title{
-  height: 30px;
+  height: 24px;
   vertical-align: middle;
   padding-top: 15px;
   padding-left: 15px;
@@ -435,4 +448,25 @@ span{
 }
 .el-drawer__header{
   margin-bottom: 2px !important; 
+}
+
+#filterCol{
+  float: right;
+  margin-top: 10px;
+}
+.el-popover{
+  display: grid !important;
+}
+.el-popper{
+  display: grid !important;
+}
+.choose-col-button{
+  width: 70px;
+  height: 26px;
+  text-align: center;
+  line-height: 1px;
+  float: right;
+}
+.checkbox-box{
+  display: grid !important;
 }

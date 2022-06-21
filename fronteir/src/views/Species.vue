@@ -3,104 +3,108 @@
     <HeaderBar />
     <Banner />
     <Navigator /> 
-    <div class="wrapper-species-1">
-      <div>
-        <h2 class="trait-title title-species">Species List</h2>
-      </div>
-      <div class="wrapper-species">
-      <el-card style="width:70%;border-top: 2px solid rgb(64, 158, 255)!important;">
-        <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="currentPage"
-            :page-sizes="[10, 30,100]"
-            :page-size="pageSize"
-            layout="sizes,total,pager,prev,next"
-            style="text-align: left;margin-left:6%"
-            :total="totalSize">
-        </el-pagination>
-          <el-table
-          :data="speciesTableData"
-          style="width:86%;margin:auto;margin-bottom: 1%;"
-          v-loading="speciesLoading">
-          <el-table-column>
-            <template>
-              <img
-                  min-width="70"
-                  height="70"
-                  class="iconImg"
-                />
-              </template>
-          </el-table-column>
-          <el-table-column prop="latinName" label="Latin Name"></el-table-column>
-          <el-table-column prop="commonName" label="Common Name"></el-table-column>
-          <el-table-column prop="taxonId" label="Ncbi Taxon Id"></el-table-column>
-          <!-- <el-table-column prop="latinName" label="Latin Name"></el-table-column>
-          <el-table-column prop="latinName" label="Latin Name"></el-table-column>
-          <el-table-column prop="latinName" label="Latin Name"></el-table-column> -->
+    <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
+      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item>Species</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-container style="border: 1px solid #eee;overflow: hidden;">
+      <div class="wrapper-species-1">
+        <div>
+          <h2 class="trait-title title-species">Species List</h2>
+        </div>
+        <div class="wrapper-species">
+        <el-card style="width:70%;border-top: 2px solid rgb(64, 158, 255)!important;">
+          <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page.sync="currentPage"
+              :page-sizes="[10, 30,100]"
+              :page-size="pageSize"
+              layout="sizes,total,pager,prev,next"
+              style="text-align: left;margin-left:6%"
+              :total="totalSize">
+          </el-pagination>
+            <el-table
+            :data="speciesTableData"
+            style="width:86%;margin:auto;"
+            v-loading="speciesLoading">
+            <!-- <el-table-column>
+              <template>
+                <img
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                  />
+                </template>
+            </el-table-column> -->
+            <el-table-column prop="latinName" label="Latin Name"></el-table-column>
+            <el-table-column prop="commonName" label="Common Name"></el-table-column>
+            <el-table-column prop="taxonId" label="Ncbi Taxon Id"></el-table-column>
+            <!-- <el-table-column prop="latinName" label="Latin Name"></el-table-column>
+            <el-table-column prop="latinName" label="Latin Name"></el-table-column>
+            <el-table-column prop="latinName" label="Latin Name"></el-table-column> -->
 
-          </el-table>
-      </el-card>
-      <el-card style="width:30%;border-top: 2px solid rgb(64, 158, 255)!important;margin-left:2%;">
-        <div id="chart-div" style="width:300px;height:300px;"></div>
-      </el-card>
-    </div>
-    <div class="trait-box">
-      <div>
-        <h2 class="trait-title title-species">Homolog Statistics Between Species</h2>
+            </el-table>
+        </el-card>
+        <el-card style="width:30%;border-top: 2px solid rgb(64, 158, 255)!important;margin-left:2%;">
+          <div id="chart-div" style="width:300px;height:500px;"></div>
+        </el-card>
       </div>
-    
-      <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;margin-top: 1%;">
-        <div id="chart-heatmap" style="width:100%;height:800px"></div>
-      </el-card>
-      <!-- 详细信息表，去掉，点击直接跳转ortholog info -->
-      <!-- <div>
-        <h2 class="trait-title title-species">Homolog Information Between Species</h2>
-      </div>
-      <el-table
-        class="info-table-1"
-        :border="false"
-        fixed
-      >
-          <el-table-column
-              prop="species1.commonName"
-              label="Species">
-          </el-table-column>
-          <el-table-column
-              prop="species1.taxonId"
-              label="Taxon Id1">
-          </el-table-column>
-          <el-table-column
-              prop="ensemblId1"
-              label="Ensembl Id">
-          </el-table-column>
-          
-          <el-table-column
-              prop="protein1"
-              label="Protein1">
-          </el-table-column>
-          <el-table-column
-              prop="species2.commonName"
-              label="Species2">
-          </el-table-column>
-          <el-table-column
-              prop="species2.taxonId"
-              label="Taxon Id2">
-          </el-table-column>
-          <el-table-column
-              prop="protein2"
-              label="Protein2">
-          </el-table-column>
-          <el-table-column
-          prop="entrezId"
-          label="Entrez Id">
-          </el-table-column>
-      </el-table> -->
-    </div>
-    </div> 
-    <div >
+      <div class="trait-box">
+        <div>
+          <h2 class="trait-title title-species">Homolog Statistics Between Species</h2>
+        </div>
       
-    </div>
+        <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;margin-top: 1%;">
+          <div id="chart-heatmap" style="width:100%;height:800px"></div>
+        </el-card>
+        <!-- 详细信息表，去掉，点击直接跳转ortholog info -->
+        <!-- <div>
+          <h2 class="trait-title title-species">Homolog Information Between Species</h2>
+        </div>
+        <el-table
+          class="info-table-1"
+          :border="false"
+          fixed
+        >
+            <el-table-column
+                prop="species1.commonName"
+                label="Species">
+            </el-table-column>
+            <el-table-column
+                prop="species1.taxonId"
+                label="Taxon Id1">
+            </el-table-column>
+            <el-table-column
+                prop="ensemblId1"
+                label="Ensembl Id">
+            </el-table-column>
+            
+            <el-table-column
+                prop="protein1"
+                label="Protein1">
+            </el-table-column>
+            <el-table-column
+                prop="species2.commonName"
+                label="Species2">
+            </el-table-column>
+            <el-table-column
+                prop="species2.taxonId"
+                label="Taxon Id2">
+            </el-table-column>
+            <el-table-column
+                prop="protein2"
+                label="Protein2">
+            </el-table-column>
+            <el-table-column
+            prop="entrezId"
+            label="Entrez Id">
+            </el-table-column>
+        </el-table> -->
+      </div>
+      </div> 
+    
+    </el-container>
   <FooterBar />
    <el-backtop
       :bottom="100"
@@ -136,6 +140,7 @@ import Navigator from '@/components/navigator.vue';
 import FooterBar from '@/components/FooterBar.vue'
 import HeaderBar from '../components/HeaderBar.vue'
 import Banner from "@/components/banner.vue";
+import heatmapData from '@/assets/static/statistic.json';
 
 export default {
   name: 'Species',
@@ -245,7 +250,7 @@ export default {
         },
         series: [
           {
-            name: data,
+            name: heatmapData,
             type: 'heatmap',
             data: data,
             // label: {
@@ -274,11 +279,15 @@ export default {
       var option;
 
       option = {
+        title: {
+          text: "Species Statistic",
+          subtext: 'The number of homolog gene on each trait ontology term'
+        },
         tooltip: {
           trigger: 'item'
         },
         legend: {
-          top: '2%',
+          top: '12%',
           left: 'center'
         },
         series: [
@@ -306,7 +315,7 @@ export default {
             labelLine: {
               show: false
             },
-            data: this.speciesCount
+            data: this.speciesCount,
           }
         ]
       };

@@ -8,6 +8,8 @@ public class SpeciesInfo {
 
     private String taxonId;
 
+    private String checked;
+
     private String commonName;
 
     private String shortName;

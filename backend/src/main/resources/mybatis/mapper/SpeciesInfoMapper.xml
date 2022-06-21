@@ -64,6 +64,10 @@
   </select>
 
   <select id="speciesNameListforTrait" resultMap="BaseResultMap">
+    select * from species where species_type=#{speciesType} and gwas_orgid is not null order by common_name
+  </select>
+
+  <select id="speciesNameListforVar" resultMap="BaseResultMap">
     select * from species where species_type=#{speciesType} and data_source is not null order by common_name
   </select>
 

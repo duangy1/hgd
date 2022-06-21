@@ -911,7 +911,7 @@ export default {
     this.$axios
     // 获取gene basic info的接口，目前是查询entrez id
     // 返回两个list数据，0是gbiinfo，1是ortholist
-      .get('http://localhost:9401/api/gene-detail',{params: {'geneName': geneName, 'taxonid': taxonId}})
+      .get('http://localhost:9401/api/gene-detail',{params: {'hdbid': geneName, 'taxonid': taxonId}})
       .then(response => {
         this.loading=false;
         let genedetail = JSON.parse(JSON.stringify(response.data[0]));
