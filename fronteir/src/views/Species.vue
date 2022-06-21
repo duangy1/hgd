@@ -140,7 +140,7 @@ import Navigator from '@/components/navigator.vue';
 import FooterBar from '@/components/FooterBar.vue'
 import HeaderBar from '../components/HeaderBar.vue'
 import Banner from "@/components/banner.vue";
-import heatmapData from '@/assets/static/statistic.json';
+import heatmapData from '@/assets/static/heatmap-statistic.json';
 
 export default {
   name: 'Species',
@@ -153,7 +153,7 @@ export default {
   data(){
       return {
         speciesData:"",
-        heatmap:{speciesName:[],value:[]},
+        heatmapData,
         speciesTableData:[],
         currentPage:1,
         totalSize:0,
@@ -168,7 +168,6 @@ export default {
     
   methods:{
     handleSizeChange(val){
-      console.log("val:",val);
       this.pageSize=val;
       this.speciesTableData=this.speciesData.slice(0,val)
     },
@@ -177,48 +176,26 @@ export default {
       var myChart = this.$echarts.init(chartDom);
       var option;
 
-      // prettier-ignore
-      const speciesName = this.heatmap.speciesName;
-      // prettier-ignore
-      // const days = this.heatmap.speciesName;
-      // prettier-ignor e
-      // [y,x,value]=>[x,y,value]
-      let data = this.heatmap.value
-          .map(function (item) {
-          return [item[1], item[0], item[2] || '-'];
+      const speciesName = this.heatmapData[0];
+
+      let data =[];
+      this.heatmapData[1]
+        .forEach(function (item,index1) {
+          let list2=item.speciesStatistic.split(",");
+          for(let index2=0;index2< list2.length;index2++){
+            let num=list2[index2]
+            // [x,y,value]
+            let valitem=[index1, Number(index2), Number(num) || '-'];
+            data.push(valitem);
+        }
       });
-      // let seriesData=this.heatmap.speciesName
-      //     .map((item,index)=> {
-      //     let length=this.heatmap.speciesName.length
-      //     let num=index*length
-      //     let name=this.heatmap.speciesName[length-index]
-      //     let itemdata={
-      //       name: name,
-      //       type: 'heatmap',
-      //       data: data.slice(num,length+num),
-      //       label: {
-      //         show: false,
-      //         formatter: function (params) {
-      //             return params.data[0]
-      //          }
-      //       },
-      //       emphasis: {
-      //         itemStyle: {
-      //           shadowBlur: 10,
-      //           shadowColor: 'rgba(0, 0, 0, 0.5)'
-      //         }
-      //       }
-      //     }
-      //     return itemdata;
-      // });
-      // console.log("seriesData:",seriesData);
-      // Homolog Records  要确认是记录数还是基因数还是蛋白数
+      
       option = {
         tooltip: {
           position: 'top',
           formatter:  (p)=> {
-            console.log("p:",p);
-            return speciesName[p.data[0]] + ' - ' + speciesName[p.data[1]]+' </br> ' +"Homolog Records : "+p.data[2];
+            // console.log("p:",p);
+            return speciesName[p.data[0]] + ' - ' + speciesName[p.data[1]]+' </br> ' +"Homolog Protein Pairs : "+p.data[2];
           }
         },
         grid: {
@@ -242,11 +219,11 @@ export default {
         },
         visualMap: {
           min: 0,
-          max: 50000,
+          max: 80000,
           calculable: true,
-          orient: 'horizontal',
-          left: "center",
-          bottom: '2%'
+          orient: 'vertical',
+          left: "93%",
+          bottom: '60%'
         },
         series: [
           {
@@ -323,7 +300,6 @@ export default {
       myChart.on('click',params=>{
         let paramclass;
         if(params.name=="Animals"){
-        console.log(params);
           paramclass="animal"
         }else if(params.name=="Plants"){
           paramclass="plant"
@@ -334,7 +310,6 @@ export default {
      getSpeciesByClass(paramclass){
       this.$axios.get("http://localhost:9401/api/species-by-class",{params:{'classification' : paramclass}})
        .then(response=>{
-          console.log("species:",response);
           this.speciesData=response.data;
           this.totalSize=response.data.length;
           this.speciesTableData=this.speciesData.slice(0,this.pageSize);
@@ -357,30 +332,31 @@ export default {
     }
   },
   mounted(){
+    // 获取上方物种饼图和表格的数据
     this.$axios.get("http://localhost:9401/api/species-all").then(response=>{
-      console.log("species:",response);
       this.speciesData=response.data;
       this.totalSize=response.data.length;
       this.speciesTableData=this.speciesData.slice(0,this.pageSize)
     }).finally(()=>{
       this.speciesLoading=false
     })
-     this.$axios.get("http://localhost:9401/api/speciesname-all").then(response=>{
-      console.log("species:",response);
-      // 返回值data两个列表，一个是speciesName,一个是obj包含value等信息
-      this.heatmap.speciesName=response.data[0];
-      for(let index1 in response.data[1]){
-        let item=response.data[1][index1];
-        let list=item.speciesStatistic.split(",");
-        for(let index2 in list){
-          let valitem=[Number(index2),Number(index1),Number(list[index2])]
-          this.heatmap.value.push(valitem);
-        }
-      }
-      this.echartsHeatMap()
-    })
+    // 接口获取heatmap数据
+    //  this.$axios.get("http://localhost:9401/api/speciesname-all").then(response=>{
+    //   console.log("species:",response);
+    //   // 返回值data两个列表，一个是speciesName,一个是obj包含value等信息
+      // this.heatmap.speciesName=response.data[0];
+      // for(let index1 in response.data[1]){
+      //   let item=response.data[1][index1];
+      //   let list=item.speciesStatistic.split(",");
+      //   for(let index2 in list){
+      //     let valitem=[Number(index2),Number(index1),Number(list[index2])]
+      //     this.heatmap.value.push(valitem);
+      //   }
+      // }
+      
+    // })
     this.echartsDraw()
-    
+    this.echartsHeatMap()
   }
   
 }

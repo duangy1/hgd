@@ -103,7 +103,7 @@
             :header-cell-style="hiligtDbCols"
             v-loading="loading_animal"
           >
-            <el-table-column align="center" class="titleCell" prop="expName" label="Variant Name" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
@@ -256,7 +256,7 @@
                 v-loading="gwasLoading"
               >
                 <el-table-column prop="varId" label="Var Id"></el-table-column>
-                <el-table-column prop="expName" label="Variant Name"></el-table-column>
+                <el-table-column prop="annotation" label="Expression Name"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
                 <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
                 <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
@@ -316,7 +316,7 @@
             ref="table"
             :header-cell-style="hiligtDbCols"
           >
-            <el-table-column align="center" class="titleCell" prop="expName" label="Variant Name" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
@@ -432,7 +432,7 @@
                 v-loading="gwasLoading"
               >
                 <el-table-column align="center" prop="varId" label="Var Id"></el-table-column>
-                <el-table-column align="center" prop="expName" label="Variant Name"></el-table-column>
+                <el-table-column align="center" prop="annotation" label="Expression Name"></el-table-column>
                 <el-table-column align="center" prop="speciesCommonName" label="Species"></el-table-column>
                 <el-table-column align="center" prop="pmid" label="Pubmed Id"></el-table-column>
                 <el-table-column align="center" prop="pvalue" label="Pvalue"></el-table-column>

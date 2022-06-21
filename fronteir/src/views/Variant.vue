@@ -32,7 +32,7 @@
     </el-drawer>
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
       <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
-      <el-breadcrumb-item>Traits</el-breadcrumb-item>
+      <el-breadcrumb-item>Variant</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 侧边栏按钮 -->
   
