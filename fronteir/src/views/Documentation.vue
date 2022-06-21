@@ -1,0 +1,299 @@
+<template>
+  <div>
+    <HeaderBar />
+    <Banner />
+    <Navigator />
+    <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
+      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item>Documentation</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-card style="width:96%;border-top: 2px solid rgb(64, 158, 255)!important;margin: auto;">
+    
+        <div >
+            <div style="font-size:18px;text-align:left;padding:10px 20px;font-weight: 700;">Documentation</div>
+        <!-- <div class="container"> -->
+            <div class="wrapper-box">
+                <el-container>
+                    <el-aside width="250px" style="overflow: hidden;">
+                        <!-- <img src="../assets/img/arrow1.png" style="width:100%;vertical-align:top;margin:10px 0;"> -->
+                        <el-menu
+                            default-active="2"
+                            style="text-align: left;"
+                            width="100%"
+                            :class="navBarFixed == true ? 'navBarWrap' :''"
+                            @select="selectMenu">
+                        <el-menu-item index="1">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Introduction</span>
+                        </el-menu-item>
+                        <el-menu-item index="2">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Data</span>
+                        </el-menu-item>
+                        <el-menu-item index="3">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Homolog Gene</span>
+                        </el-menu-item>
+                        
+                        
+                        <el-menu-item index="4">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Trait</span>
+                        </el-menu-item>
+                        <el-menu-item index="5">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Variant</span>
+                        </el-menu-item>
+                        <el-menu-item index="6">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Expression</span>
+                        </el-menu-item>
+                        <el-menu-item index="7">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Gene Ontology</span>
+                        </el-menu-item>
+                        <el-menu-item index="8">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Gene Detail Information</span>
+                        </el-menu-item>
+                        <el-menu-item index="9">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Search</span>
+                        </el-menu-item>
+                        <el-menu-item index="10">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">Download</span>
+                        </el-menu-item>
+                    </el-menu>
+                    </el-aside>
+                    <el-main>
+                        <div class="section-1" id="item-pos-1">
+                            <div class="section-titile">
+                                1.What is Homolog Gene Database?
+                            </div>
+                            <div class="section-info">
+                                Homolog Gene Database (HDB) is an integrated homolog gene database from public homolog database for domestic animals, plants and model organisms. Currently, there are 16 domestic animals ,16 domestic plants and 3 model organisms, which housed xxxxx homolog protein pairs in all. The homolog gene information from 5 public data sources are housed including OMA, eggnog, . At the same time, gene annotated information are widely collected and integrated from NDGC databases including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HDB.
+                            </div>
+                        </div>
+                        <div class="section section-2" id="item-pos-2">
+                            <div class="section-titile">
+                                2.Data Browse
+                            </div>
+                            <div class="section-info">
+                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HDB.
+                            </div>
+                        </div>
+                        <div class="section section-1" id="item-pos-3">
+                            
+                            <div class="section-titile">
+                                2.1 Homolog Gene Browse
+                            </div>
+                            <div class="section-info">
+                                Users can browse the whole homolog gene list in the homolog gene page (Figure 1). The basic information of homolog gene including gene name, organism, gene description, gene symbol, gene synonym, biotype and the ortholog gene list for other organisms of this gene. The statistics number of annotated information including trait, go are provided as well.<br/><br/>
+                                Users can filter the homolog gene list by species, trait and so on. Users can download the homolog gene by several formats including txt, csv.<br/><br/>
+                                Click the gene name will open a detail information which described in section 2.6.<br/><br/>
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-1.png" class="img"/>
+                            </div>
+                        </div>
+                        <div class="section section-1" id="item-pos-4">
+                            <div class="section-titile">
+                                2.2 Trait Browse
+                            </div>
+                            <div class="section-info">
+                                The trait information from GWAS database in NGDC are integrated. HDB collects xxxxx trait with gene information of xxxx animals and xxxx plants from GWAS. After mapped to the homolog gene in HDB, user can browse the trait information for multiple organisms at the same time. <br /><br />
+                                Users can choose the trait term from the trait ontology on the left panel. Then a gene list for the chosen trait will be shown as follows (Figure2). A basic information including trait id, name, definition for the trait term will be shown in the upper page. The table column for the trait gene list including trait name, species common name, taxon id and common name of multiple organism. The blue square in the organism’s column means this organism has homolog gene with query gene of given trait. The green square means this organism has homolog gene with the same trait of the query gene of given trait. <br /><br />
+                                Click the colored square, two more detailed tables with homolog gene and GWAS trait information will be shown separately.<br /><br />
+                                Users can filter the shown organism from the organism check list.
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-2.png" class="img"/>
+                            </div>
+                        </div>
+                        <div class="section section-1" id="item-pos-5">
+                            <div class="section-titile">
+                                2.3 Variation Browse
+                            </div>
+                            <div class="section-info">
+                                The variation information from GVM database in NGDC are integrated. HDB collects xxxxx variations with ensembl VEP annotated information of xxxx animals and xxxx plants from GVM. After mapped to the homolog gene in HDB, user can browse the variation information with VEP annotated in gene for multiple organisms at the same time. <br/><br/>
+                                Users can choose the term from the variation ontology on the left panel. Then a gene list for the chosen VEP annotated will be shown as follows (Figure3). A basic information including trait id, name, definition for the variation will be shown in the upper page. The table column for the VEP annotated gene list including VEP annotated consequence type, species common name, taxon id and common name of multiple organism. The blue square in organism’s column means this organism has homolog gene with query gene of given VEP annotated term. The green square means this organism has homolog gene with the same VEP annotated term of the query gene of given term.<br/><br/> 
+                                Click the colored square, two more detailed tables with homolog gene and GVM variation information will be shown separately.<br/><br/>
+                                Users can filter the shown organism from the organism check list.
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-3.png" class="img"/>
+                            </div>
+                        </div>
+                        <div class="section section-1" id="item-pos-6">
+                            <div class="section-titile">
+                                2.4 Expression Browse
+                            </div>
+                            <div class="section-info">
+                                HDB integrates gene expression from GEN database in NGDC. HDB houses xxxxx gene expression profile of xxxx animals and xxxx plants from GEN. After mapped to the homolog gene in HDB, user can browse the expression information for multiple organisms at the same time. <br/><br/>
+                                Users can choose the expression term mainly biological context which defined by GEN from the ontology on the left panel. Then a gene list for the chosen expression term will be shown as follows (Figure4). The table column for the expression gene list including expression term, species common name, taxon id and common name of multiple organism. The blue square in organism’s column means this organism has homolog gene with query gene of given expression context. The green square means this organism has homolog gene with the same context of the query gene of given context term.<br/><br/> 
+                                Click the colored square, two more detailed tables with homolog gene and GEN expression profile information will be shown separately.<br/><br/>
+                                Users can filter the shown organism from the organism check list.
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-3.png" class="img"/>
+                            </div>
+                        </div>
+                        <div class="section section-1">
+                            <div class="section-titile" id="item-pos-7">
+                                2.5 Gene Ontology Browse
+                            </div>
+                            <div class="section-info">
+                                The gene ontology information from Ensembl are integrated. HDB collects xxxxx gene with gene ontology information for xxxx animals and xxxx plants from Ensembl. After mapped to the homolog gene in HDB, user can browse the gene ontology information for multiple organisms at the same time. <br/><br/>
+                                Users can choose the GO term from the ontology on the left panel. Then a gene list for the chosen GO term will be shown as follows (Figure5). The table column for the GO annotated gene list including GO name, species common name, taxon id and common name of multiple organism. The blue square in organism’s column means this organism has homolog gene with query gene of given GO term. The green square means this organism has homolog gene with the same GO term of the query gene of given GO term. <br/><br/>
+                                Click the colored square, two more detailed tables with homolog gene and GO information will be shown separately.<br/><br/>
+                                Users can filter the shown organism from the organism check list.
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-4.png" class="img"/>
+                            </div>
+                        </div>
+                        <div class="section section-1">
+                            <div class="section-titile" id="item-pos-8">
+                                2.6 Gene Detail Information
+                            </div>
+                            <div class="section-info">
+                                The gene detail information contains 7 parts to describe a homolog gene including gene basic information, ortholog gene, GO annotation, Variants, Trait, Expression and Genome Browse (Figure 6).<br/><br/>
+                                The gene basic information mainly collected from Ensembl and Uniprot, which provides information including gene symbol, gene synonym, gene type, species name, position, gene description and external id from other database such as entrez id, refseq id and so on.<br/><br/>
+                                The ortholog gene list shows the ortholog genes in other organisms. The table column includes species, taxon id, ensembl id, gene symbol, protein, entrez id and the integrated homolog information from Pather, TreeFam, Eggnog, OMA, Inparanold, Haranold. Users can filter the organism from the search box.<br/><br/>
+                                The gene ontology describes the GO annotated information for this gene by several colored squares under each GO term. The color is normalized by the GO annotated number. When hover on the square, the annotated GO term number will be shown. When click on, a table list including the annotated information will be shown. When check on the Compared Ortholog Gene, the GO annotated information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
+                                The variants describe the variation annotated information for this gene by several colored squares under each VEP term (Sequence Ontology). The color is normalized by the VEP annotated variation number. When hover on the square, the annotated variation number will be shown. When click on, a table list including the variation information will be shown. When check on the Compared Ortholog Gene, the variation annotated information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
+                                The trait describes the trait information for this gene by several colored squares under each trait term. The color is normalized by the trait number. When hover on the square, the trait number will be shown. When click on, a table list including the trait information will be shown. When check on the Compared Ortholog Gene, the trait information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
+                                The expression describes the expression information for this gene by several colored squares under each expression term. The color is normalized by the bioproject number. When hover on the square, the bioproject number will be shown. When click on, a table list including the expression value information in tissue will be shown. When check on the Compared Ortholog Gene, the expression information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
+                                The Genome Browse visualize the gene information of each organism.
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-6.png" class="img"/>
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-7.png" class="img"/>
+                            </div>
+                        </div>
+                         <div class="section section-1">
+                            <div class="section-titile" id="item-pos-9">
+                                3.Search
+                            </div>
+                            <div class="section-info">
+                                User can search homolog gene by gene name, ensemble gene id, ensemble protein name, uniport protein name, Entrez id and so on (Figure7). A homolog gene list will be shown as below.
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-4.png" class="img"/>
+                            </div>
+                        </div>
+                         <div class="section section-1">
+                            <div class="section-titile" id="item-pos-10">
+                                4.Download
+                            </div>
+                            <div class="section-info">
+                                HDB provide the homolog protein, trait, variation, expression information for each organism to download (Figure 8).
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-4.png" class="img"/>
+                            </div>
+                        </div>
+                    </el-main>
+                </el-container>
+            
+            </div>
+        </div>
+        <div>
+
+           
+        </div>
+    </el-card>
+    <template>
+    <el-backtop
+      :bottom="100"
+      style="z-index: 999;"
+      class="backTop"
+    >
+      <div
+        style="
+           {
+            height: 100%;
+            width: 100%;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            line-height: 40px;
+            color: #1989fa;
+            border-radius: 50%;
+            background-color: white;
+          }
+        "
+      >
+      <i class="el-icon-caret-top"></i>
+      </div>
+    </el-backtop>
+    </template>
+    <FooterBar />
+  </div>
+</template>
+
+<style src="../assets/css/documentation.css" scoped></style>
+<script>
+import Navigator from "@/components/navigator.vue";
+import Banner from "@/components/banner.vue";
+import FooterBar from "@/components/FooterBar.vue";
+import HeaderBar from "@/components/HeaderBar.vue";
+export default {
+  name: 'Documentation',
+  components: {
+    Navigator,
+    FooterBar,
+    HeaderBar,
+    Banner,
+    
+  },
+  data() {
+      return {
+        tableData: [{
+          date: '2016-05-02',
+          name: 'Human_Homolog_protein.gz',
+          address: '12.3M'
+        }, {
+          date: '2016-05-04',
+          name: 'Cattle_Homolog_protein.gz',
+          address: '12.1M'
+        }, {
+          date: '2016-05-01',
+          name: 'Sheep_Homolog_protein.gz',
+          address: '11.3M'
+        }, {
+          date: '2016-05-03',
+          name: 'Chicken_Homolog_protein.gz',
+          address: '12.3M'
+        }],
+        navBarFixed:false
+      }
+    },
+    methods:{
+        selectMenu(key){
+            const target = document.querySelector("#item-pos-"+key)
+            target.scrollIntoView({ behavior: 'smooth' })
+            // scrollTo() 把内容滚动到指定的坐标。减去导航高度的目的：导航用定位固定在顶部，如果不减去，导航栏会遮挡一部分内容
+            window.scrollTo(0, target.offsetTop)
+        },
+        watchScroll() {
+            var scrollTop =
+                window.pageYOffset ||
+                document.documentElement.scrollTop ||
+                document.body.scrollTop;
+            //  当滚动超过 288 时，实现吸顶效果
+            if (scrollTop > 328) {
+                this.navBarFixed = true;
+            } else {
+                this.navBarFixed = false;
+            }
+        },
+    },
+    mounted(){
+        window.addEventListener("scroll", this.watchScroll);
+    }
+
+}
+</script>

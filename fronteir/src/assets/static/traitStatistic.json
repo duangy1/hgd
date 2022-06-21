@@ -1,0 +1,46 @@
+
+
+{
+	"status": 200,
+	"errno": 200,
+	"msg": "获取同源间统计数据",
+	"data": [
+		{
+			"common_name": "cattle",
+			"title_list": ["cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+			
+		},
+		{
+            "common_name": "cattle",
+			"title_list": ["growth and meat production trait","animal welfare trait","mammary gland and milk production trait","animal health trait","nutrition trait","reproduction trait","biochemical trait","plant quality trait","plant growth and development trait","biological process trait","plant morphology trait","yield trait","plant vigor trait","sterility or fertility trait","stress trait"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+		},
+        {
+            "common_name": "chicken",
+			"title_list": ["cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+		},{
+            "common_name": "chicken",
+			"title_list": ["cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+		},{
+            "common_name": "goat",
+			"title_list": ["cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+		},{
+            "common_name": "goat",
+			"title_list": ["cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+		},{
+            "common_name": "sheep",
+			"title_list": ["cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+		},{
+            "common_name": "sheep",
+			"title_list": ["cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat","cattle","sheep","goat"],
+			"gene_number_list": [1123,1123,1111,1112,41,456,2356,12,57]
+		}
+	]
+}
+   

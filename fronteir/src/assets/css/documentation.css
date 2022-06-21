@@ -1,0 +1,51 @@
+.arrow-title{
+    height: 24px;
+    vertical-align: middle;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-weight: 700;
+  }
+  .el-menu-item{
+    background-color: rgb(255, 255, 255) !important;
+    color: #55a1e9 !important;
+    font-size: 16px !important;
+}
+ .el-menu-item:hover{
+    background-color: rgb(177, 177, 177) !important;
+    color: #55a1e9 !important;
+    font-size: 16px !important;
+}
+ /deep/.el-card__body{
+    padding: 0px !important;
+}
+.section-titile{
+    text-align: left;
+    color: #00b5ad;
+    font-size: 1.28571429em;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-weight: 700;
+}
+.section-info{
+    text-align: justify!important;
+    font-family: Arial,serif;
+    line-height: 1.4285em;
+    font-size: 18px;
+    margin-top: 5px;
+}
+.section{
+    margin-top: 40px;
+}
+.section-img{
+    width: 90%;
+    margin:15px auto ;
+
+}
+.img{
+    width: 95%;
+}
+.navBarWrap {
+    position:fixed;
+    top:0;
+    z-index:999;
+    width: 250px;
+}

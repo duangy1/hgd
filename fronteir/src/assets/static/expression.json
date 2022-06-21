@@ -1,0 +1,154 @@
+{"tree":[
+    {
+        "label": "Animal Tissue",
+        "disabled":true,
+        "children": [{
+                        "label":"Cardiovascular system"
+                    },{
+                        "label":"Endocrine system"
+                    },{
+                        "label":"Gastrointestinal system"
+                    },{
+                        "label":"Hematopoietic system"
+                    },{
+                        "label":"Immune system"
+                    },{
+                        "label":"Integumentary system"
+                    },{
+                        "label":"Muscular system"
+                    },{
+                        "label":"Musculoskeletal system"
+                    },{
+                        "label":"Nervous system"
+                    },{
+                        "label":"Reproductive system"
+                    },{
+                        "label":"Respiratory system"
+                    },{
+                        "label":"Urinary system"
+                    },{
+                        "label":"Urogenital system"
+                    }
+            
+        ]
+    },{
+        "label": "Human Disease",
+        "children": [ {
+                    "label":"Cardiovascular system disease"
+                },{
+                    "label":"Endocrine system disease"
+                },{
+                    "label":"Gastrointestinal system disease"
+                },{
+                    "label":"Hematopoietic system disease"
+                },{
+                    "label":"Immune system disease"
+                },{
+                    "label":"Integumentary system disease"
+                },{
+                    "label":"Musculoskeletal system disease"
+                },{
+                    "label":"Nervous system disease"
+                },{
+                    "label":"Reproductive system disease"
+                },{
+                    "label":"Respiratory system disease"
+                },{
+                    "label":"Thoracic disease"
+                },{
+                    "label":"Urinary system disease"
+        }]
+        },{
+        "label": "Baseline",
+        "children": [{
+            "label":"Yes"
+        },{
+            "label":"No"
+            }]
+        },
+        {
+        "label": "Baseline",
+        "children": [{
+                    "label":"Yes"
+                },{
+                    "label":"No"
+                }]
+        },
+        {
+            "label": "Environmental",
+            "children": [{
+                "label":"Abiotic stress"
+            },{
+                "label":"Biotic stress"
+            },{
+                "label":"Ecological exposure"
+            }]
+        },
+        {
+            "label": "Genetic",
+            "children": [{
+                "label":"Evolution"
+            },{
+                "label":"Hybridization and polyploidization"
+            },{
+                "label":"Isogenic population"
+            },{
+                "label":"Micro-evolution"
+            },{
+                "label":"Mutation"
+            },{
+                "label":"Natural variation"
+            }]
+        },
+        {
+            "label": "Phenotypic",
+            "children": [{
+                "label":"Aging"
+            },{
+                "label":"Biochemical trait"
+            },{
+                "label":"Disease"
+            },{
+                "label":"Gender"
+            },{
+                "label":"Growth and development trait"
+            },{
+                "label":"Infection"
+            },{
+                "label":"Pain"
+            },{
+                "label":"Quality trait"
+            },{
+                "label":"Stress trait"
+            },{
+                "label":"Yield trait"
+            }]
+        },
+        {
+            "label": "Spatial",
+            "children": [{
+                "label":"Cell line"
+            },{
+                "label":"Cell type"
+            },{
+                "label":"Organism"
+            },{
+                "label":"Organoid"
+            },{
+                "label":"Tissue"
+            }]
+        },
+        {
+            "label": "Temporal",
+            "children": [{
+                "label":"Age"
+            },{
+                "label":"Circadian"
+            },{
+                "label":"Development"
+            },{
+                "label":"Time series"
+            }]
+        }
+    ]}
+    

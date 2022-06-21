@@ -1,0 +1,16 @@
+.wrapper-species-1{
+    width:92%;
+    margin: auto;
+    /* margin-top:2% */
+  }
+  .wrapper-species{
+    display: flex;
+    margin: auto;
+    margin-top:1%
+}
+.arrow-title{
+  height: 24px;
+  vertical-align: middle;
+  padding-top: 15px;
+  padding-left: 15px;
+}

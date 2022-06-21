@@ -1,0 +1,6001 @@
+{
+    "tableData": [{
+      "id":1,
+      "name":"Human",
+      "data":[{
+        "subid":1,
+        "species": "Human",
+        "name": "Human_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Human",
+        "name": "Human_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Human",
+        "name": "Human_GiantPanda_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Human",
+        "name": "Human_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Human",
+        "name": "Human_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Human",
+        "name": "Human_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Human",
+        "name": "Human_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Human",
+        "name": "Human_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Human",
+        "name": "Human_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Human",
+        "name": "Human_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Human",
+        "name": "Human_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Human",
+        "name": "Human_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Human",
+        "name": "Human_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Human",
+        "name": "Human_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Human",
+        "name": "Human_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Human",
+        "name": "Human_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Human",
+        "name": "Human_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Human",
+        "name": "Human_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Human",
+        "name": "Human_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Human",
+        "name": "Human_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Human",
+        "name": "Human_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Human",
+        "name": "Human_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Human",
+        "name": "Human_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Human",
+        "name": "Human_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Human",
+        "name": "Human_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Human",
+        "name": "Human_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Human",
+        "name": "Human_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Human",
+        "name": "Human_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Human",
+        "name": "Human_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Human",
+        "name": "Human_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Human",
+        "name": "Human_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Human",
+        "name": "Human_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Human",
+        "name": "Human_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Human",
+        "name": "Human_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Human",
+        "name": "Human_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Human",
+        "name": "Human_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }],
+      "Chicken":[{
+        "subid":1,
+        "species": "Chicken",
+        "name": "Chicken_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Chicken",
+        "name": "Chicken_Human_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Chicken",
+        "name": "Chicken_GiantPanda_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Chicken",
+        "name": "Chicken_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Chicken",
+        "name": "Chicken_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Chicken",
+        "name": "Chicken_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Chicken",
+        "name": "Chicken_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Chicken",
+        "name": "Chicken_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Chicken",
+        "name": "Chicken_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Chicken",
+        "name": "Chicken_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Chicken",
+        "name": "Chicken_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Chicken",
+        "name": "Chicken_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Chicken",
+        "name": "Chicken_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Chicken",
+        "name": "Chicken_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Chicken",
+        "name": "Chicken_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Chicken",
+        "name": "Chicken_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Chicken",
+        "name": "Chicken_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Chicken",
+        "name": "Chicken_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Chicken",
+        "name": "Chicken_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Chicken",
+        "name": "Chicken_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Chicken",
+        "name": "Chicken_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Chicken",
+        "name": "Chicken_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Chicken",
+        "name": "Chicken_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Chicken",
+        "name": "Chicken_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Chicken",
+        "name": "Chicken_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Chicken",
+        "name": "Chicken_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Chicken",
+        "name": "Chicken_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Chicken",
+        "name": "Chicken_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Chicken",
+        "name": "Chicken_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Chicken",
+        "name": "Chicken_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Chicken",
+        "name": "Chicken_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Chicken",
+        "name": "Chicken_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Chicken",
+        "name": "Chicken_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Chicken",
+        "name": "Chicken_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Chicken",
+        "name": "Chicken_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Chicken",
+        "name": "Chicken_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":2,
+      "name":"Giant panda",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":3,
+      "name":"Cattle",
+      "data":[{
+        "subid":1,
+        "species": "Cattle",
+        "name": "Cattle_Human_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Cattle",
+        "name": "Cattle_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Cattle",
+        "name": "Cattle_GiantPanda_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Cattle",
+        "name": "Cattle_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Cattle",
+        "name": "Cattle_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Cattle",
+        "name": "Cattle_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Cattle",
+        "name": "Cattle_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Cattle",
+        "name": "Cattle_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Cattle",
+        "name": "Cattle_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Cattle",
+        "name": "Cattle_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Cattle",
+        "name": "Cattle_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Cattle",
+        "name": "Cattle_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Cattle",
+        "name": "Cattle_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Cattle",
+        "name": "Cattle_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Cattle",
+        "name": "Cattle_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Cattle",
+        "name": "Cattle_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Cattle",
+        "name": "Cattle_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Cattle",
+        "name": "Cattle_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Cattle",
+        "name": "Cattle_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Cattle",
+        "name": "Cattle_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Cattle",
+        "name": "Cattle_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Cattle",
+        "name": "Cattle_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Cattle",
+        "name": "Cattle_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Cattle",
+        "name": "Cattle_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Cattle",
+        "name": "Cattle_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Cattle",
+        "name": "Cattle_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Cattle",
+        "name": "Cattle_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Cattle",
+        "name": "Cattle_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Cattle",
+        "name": "Cattle_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Cattle",
+        "name": "Cattle_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Cattle",
+        "name": "Cattle_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Cattle",
+        "name": "Cattle_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Cattle",
+        "name": "Cattle_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Cattle",
+        "name": "Cattle_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Cattle",
+        "name": "Cattle_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Cattle",
+        "name": "Cattle_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":4,
+      "name":"Dog",
+      "data":[{
+        "subid":1,
+        "species": "Dog",
+        "name": "Dog_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Dog",
+        "name": "Dog_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Dog",
+        "name": "Dog_GiantPanda_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Dog",
+        "name": "Dog_Human_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Dog",
+        "name": "Dog_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Dog",
+        "name": "Dog_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Dog",
+        "name": "Dog_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Dog",
+        "name": "Dog_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Dog",
+        "name": "Dog_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Dog",
+        "name": "Dog_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Dog",
+        "name": "Dog_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Dog",
+        "name": "Dog_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Dog",
+        "name": "Dog_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Dog",
+        "name": "Dog_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Dog",
+        "name": "Dog_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Dog",
+        "name": "Dog_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Dog",
+        "name": "Dog_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Dog",
+        "name": "Dog_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Dog",
+        "name": "Dog_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Dog",
+        "name": "Dog_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Dog",
+        "name": "Dog_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Dog",
+        "name": "Dog_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Dog",
+        "name": "Dog_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Dog",
+        "name": "Dog_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Dog",
+        "name": "Dog_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Dog",
+        "name": "Dog_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Dog",
+        "name": "Dog_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Dog",
+        "name": "Dog_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Dog",
+        "name": "Dog_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Dog",
+        "name": "Dog_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Dog",
+        "name": "Dog_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Dog",
+        "name": "Dog_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Dog",
+        "name": "Dog_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Dog",
+        "name": "Dog_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Dog",
+        "name": "Dog_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Dog",
+        "name": "Dog_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Cat",
+        "name": "Cat_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Cat",
+        "name": "Cat_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Cat",
+        "name": "Cat_GiantPanda_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Cat",
+        "name": "Cat_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Cat",
+        "name": "Cat_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Cat",
+        "name": "Cat_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Cat",
+        "name": "Cat_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Cat",
+        "name": "Cat_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Cat",
+        "name": "Cat_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Cat",
+        "name": "Cat_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Cat",
+        "name": "Cat_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Cat",
+        "name": "Cat_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Cat",
+        "name": "Cat_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Cat",
+        "name": "Cat_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Cat",
+        "name": "Cat_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Cat",
+        "name": "Cat_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Cat",
+        "name": "Cat_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Cat",
+        "name": "Cat_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Cat",
+        "name": "Cat_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Cat",
+        "name": "Cat_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Cat",
+        "name": "Cat_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Cat",
+        "name": "Cat_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Cat",
+        "name": "Cat_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Cat",
+        "name": "Cat_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Cat",
+        "name": "Cat_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Cat",
+        "name": "Cat_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Cat",
+        "name": "Cat_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Cat",
+        "name": "Cat_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Cat",
+        "name": "Cat_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Cat",
+        "name": "Cat_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Cat",
+        "name": "Cat_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Cat",
+        "name": "Cat_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Cat",
+        "name": "Cat_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Cat",
+        "name": "Cat_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Cat",
+        "name": "Cat_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Cat",
+        "name": "Cat_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":7,
+      "name":"Pig",
+      "data":[{
+        "subid":1,
+        "species": "Pig",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Pig",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Pig",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Pig",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Pig",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Pig",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Pig",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Pig",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Pig",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Pig",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Pig",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Pig",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Pig",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Pig",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Pig",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Pig",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Pig",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Pig",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Pig",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Pig",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Pig",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Pig",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Pig",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Pig",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Pig",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Pig",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Pig",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Pig",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Pig",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Pig",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Pig",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Pig",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Pig",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Pig",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Pig",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Pig",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":8,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":9,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":10,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":11,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":12,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":13,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":14,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":15,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":16,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":17,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":18,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":19,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]},
+      {
+      "id":6,
+      "name":"Cat",
+      "data":[{
+        "subid":1,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cattle_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":2,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chicken_Homolog_protein.gz",
+        "filesize": "12.1M"
+      }, {
+        "subid":3,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Human_Homolog_protein.gz",
+        "filesize": "11.3M"
+      }, {
+        "subid":4,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Dog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":5,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Horse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":6,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":7,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pig_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":8,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Silkworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":9,
+        "species": "Giant Panda",
+        "name": "GiantPanda_HoneyBee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":10,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Turkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":11,
+        "species": "Giant Panda",
+        "name": "GiantPanda_ThaleCress_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":12,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Roundworm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":13,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Zebrafish_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":14,
+        "species": "Giant Panda",
+        "name": "GiantPanda_FruitFly_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":15,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Mouse_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":16,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":17,
+        "species": "Giant Panda",
+        "name": "GiantPanda_TropicalClawedFrog_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":18,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Ecoli_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":19,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BrewerYeast_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":20,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rapeseed_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":21,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Pepper_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":22,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cucumber_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":23,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cotton_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":24,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Cassava_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":25,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Rice_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":26,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Soybean_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":27,
+        "species": "Giant Panda",
+        "name": "GiantPanda_DatePalm_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }
+      , {
+        "subid":28,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Poplor_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":29,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Tomato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":30,
+        "specie0s": "Giant Panda",
+        "name": "GiantPanda_Sorghum_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":31,
+        "species": "Giant Panda",
+        "name": "GiantPanda_BreadWheat_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":32,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Grape_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":33,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Maize_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":34,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Potato_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":35,
+        "species": "Giant Panda",
+        "name": "GiantPanda_RhesusMonkey_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }, {
+        "subid":36,
+        "species": "Giant Panda",
+        "name": "GiantPanda_Chimpanzee_Homolog_protein.gz",
+        "filesize": "12.3M"
+      }]
+    
+  }],
+  "traitData":[{
+    "id":1,
+    "name":"Human",
+    "data":[
+      {
+        "subid":1,
+        "name": "Human_Trait_Homolog.gz",
+        "filesize": "12.3M"
+      },
+      {
+        "subid":2,
+        "name": "Human_Trait_Homolog.gz",
+        "filesize": "12.3M"
+      }
+    ]
+  },{
+    "id":2,
+    "name":"Chicken",
+    "data":[
+      {
+        "subid":1,
+        "name": "Chicken_Trait_Homolog.gz",
+        "filesize": "12.3M"
+      },
+      {
+        "subid":2,
+        "name": "Chicken_Trait_Homolog.gz",
+        "filesize": "12.3M"
+      }
+    ]
+  }],
+  "varData":[{
+    "id":1,
+    "name":"Human",
+    "data":[
+      {
+        "subid":1,
+        "name": "Human_Variant_Homolog.gz",
+        "filesize": "12.3M"
+      },
+      {
+        "subid":2,
+        "name": "Human_Variant_Homolog.gz",
+        "filesize": "12.3M"
+      }
+    ]
+  }],
+  "goData":[{
+    "id":1,
+    "name":"Human",
+    "data":[
+      {
+        "subid":1,
+        "name": "Human_GeneOntology_Homolog.gz",
+        "filesize": "12.3M"
+      },
+      {
+        "subid":2,
+        "name": "Human_GeneOntology_Homolog.gz",
+        "filesize": "12.3M"
+      }
+    ]
+  }],
+  "expData":[{
+    "id":1,
+    "name":"Human",
+    "data":[
+      {
+        "subid":1,
+        "name": "Human_Expression_Homolog.gz",
+        "filesize": "12.3M"
+      },
+      {
+        "subid":2,
+        "name": "Human_Expression_Homolog.gz",
+        "filesize": "12.3M"
+      }
+    ]
+  }]
+}

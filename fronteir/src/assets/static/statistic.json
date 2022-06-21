@@ -1,0 +1,66 @@
+{"tableData":[{
+    "dataclass": "Total Homolog Protein",
+    "protein number": "959,181"
+  },{
+    "dataclass": "Total Homolog Protein Pairs",
+    "protein number": "23,399,653"
+  },{
+    "dataclass": "Data Source",
+    "protein number": "EggNog,Oma,Panther,Treefam,Hieranoid,Inparanois,Ensembl,Uniprot,NCBI"
+  }],
+  "tableDataAnnotat":[{
+    "dataclass": "Total Homolog Gene With Traits Annotaion",
+    "protein number": "13,209"
+  }, {
+    "dataclass": "Total Homolog Gene With Variant Annotaion",
+    "protein number": "120,852"
+  }, {
+    "dataclass": "Total Homolog Gene With Gene Ontology Annotaion",
+    "protein number": "10,234"
+  }, {
+    "dataclass": "Total Homolog Gene With Expression Annotaion",
+    "protein number": "403,711"
+  }],
+  "barData": {
+"trait2species":{
+    "title":"The Number of Homolog Gene With Trait Annotation On Each Species",
+    "data":[238,217,7163,104,154,5333],
+    "xaxis":["Cattle","Chicken","Maize","Pig","Rapeseed","Rice"]
+},
+"trait2homologGene":{
+    "title":"The Number of Homolog Gene On Each Trait Annotation",
+    "data":[7767, 1630, 1396, 1327, 810, 757, 523, 497, 204, 174, 82, 54, 49, 30, 17],
+    "xaxis":["plant morphology trait","plant growth and development trait","stress trait","biochemical trait","plant vigor trait","biological process trait","plant quality trait","yield trait","animal welfare trait","mammary gland and milk production trait","animal health trait","reproduction trait","growth and meat production trait","sterility or fertility trait","nutrition trait"]
+},
+"var2species":{
+    "title":"The Number of Homolog Gene With Variant Annotation On Each Species",
+    "data":[13412, 11059 , 18269, 16747, 17437, 18903, 14618, 7205, 3153,49],
+    "xaxis":["Chicken","Giant panda","Cattle","Horse","Cat","Human","Pig","Rapeseed","Tomato","Grape"]
+},
+"var2homologGene":{
+    "title":"The Number of Homolog Gene On Each Variant Annotation",
+    "data":[110942,103363,69722,66409,52348,9662,5922,5669,4544,3468,2611,1965,1959,940,915,355,62],
+    "xaxis":["synonymous_variant","missense_variant","splice_region_variant","3_prime_UTR_variant","5_prime_UTR_variant","stop_gained","frameshift_variant","splice_donor_variant","splice_acceptor_variant","inframe_deletion","inframe_insertion","start_lost","coding_sequence_variant","stop_retained_variant","stop_lost","protein_altering_variant","incomplete_terminal_codon_variant"]
+},
+"go2species":{
+    "title":"The Number of Homolog Gene With Gene Ontology Annotation On Each Species",
+    "data":[33971,20300,15506,37453,22971,18212,23259,4145,19385,21944,23524,16718,49,25022,9679,10733,3747,10268,21120],
+    "xaxis":["Brassica napus","Capsicum annuum","Cucumis sativus","Glycine max","Manihot esculenta","Oryza sativa Japonica Group","Populus trichocarpa","Solanum lycopersicum","Solanum tuberosum","Sorghum bicolor","Thale cress","Triticum aestivum","Vitis vinifera","Zea mays","Celegans","Fruitfly","Saccharomyces cerevisiae","Xenopus","Zebrafish"]
+},
+"go2homologGene":{
+    "title":"The Number of Homolog Gene On Each Gene Ontology Annotation",
+    "data":[39578,32482,29799,26538,21364,14230,14136,8279,7237,3859,3150,1074,729,654,290,113,97,16],
+    "xaxis":["metal ion binding","protein-containing complex","catalytic activity","response to stimulus","DNA binding","DNA-binding transcription factor activity","RNA binding","carbohydrate metabolic process","lipid metabolic process","cytoskeleton","extracellular region","cell differentiation","plasma membrane","endoplasmic reticulum","nucleus","cytosol","extracellular region","Golgi apparatus"]
+},
+"expression2species":{
+    "title":"The Number of Homolog Gene With Expression Ontology Annotation On Each Species",
+    "data":[23469,197,20296,15171,49695,18851,11163,19753,15463,21628,18980,8384,20621,19062,21331,11170,13533,30195,24041,2403,15883,22366],
+    "xaxis":["Bread wheat","Brewer's yeast","Cattle","Chicken","Cotton","Dog","Fruit fly","Human","Maize","Mouse","Pig","Rapeseed","Rat","Rhesus monkey","Rice","Roundworm","Sorghum","Soybean","Thale cress","Tomato","Tropical clawed frog","Zebrafish"]
+},
+"expression2homologGene":{
+    "title":"The Number of Homolog Gene On Each Expression Ontology Annotation",
+    "data":[183443,19747,19747,197,84806,53769,19747,19753,41381,45372,185023,30916,21331,38604,19747,23469,96437,19753,100038,51526,30916,19747,36794,99909,19747,19747,19747,19753,74995,35467,38598,19753,97723,138798,55220,19747,181355,253,19745,19747,30195,79628,19753,53775,19753,80522,19747,143541,403458,38602,19628,330434,30195],
+    "xaxis":["Abiotic stress","Age","Aging","Biochemical trait","Biotic stress","Cardiovascular system","Cardiovascular system disease","Cell line","Cell type","Circadian","Development","Disease","Ecological exposure","Endocrine system","Endocrine system disease","Evolution","Gastrointestinal system","Gastrointestinal system disease","Gender","Growth and development trait","Hematopoietic system","Hematopoietic system disease","Hybridization and polyploidization","Immune system","Immune system disease","Infection","Integumentary system","Integumentary system disease","Isogenic population","Muscular system","Musculoskeletal system","Musculoskeletal system disease","Mutation","Natural variation","Nervous system","Nervous system disease","No","Organism","Organoid","Pain","Quality trait","Reproductive system","Reproductive system disease","Respiratory system","Respiratory system disease","Stress trait","Thoracic disease","Time series","Tissue","Urinary system","Urinary system disease","Yes","Yield trait"]
+}
+}
+}
