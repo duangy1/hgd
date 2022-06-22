@@ -106,7 +106,7 @@
             <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
             </el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
+            <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
             <template v-for="(item,index) in speciesList_animal_1">
@@ -319,7 +319,7 @@
             <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
             </el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
+            <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
             <template v-for="(item,index) in speciesList_plant_1">
@@ -826,7 +826,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(speciesType){
-      this.$axios.get('http://localhost:9401/api/species-var',{params: {speciesType: speciesType}})
+      this.$axios.get('http://localhost:9401/api/species-exp',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType==2){

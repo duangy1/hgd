@@ -62,7 +62,7 @@
                         v-for="(item,index) in querySpeciesList_animal"
                         :key="index.id"
                         :label="item.commonName"
-                        :value="item.commonName"
+                        :value="item.taxonId"
                         >
                     </el-option>
                 </el-select>
@@ -77,7 +77,7 @@
                   class="popbox"
                   v-model="visible_1">
                     <div class="checkbox-box">
-                      <el-checkbox v-for="item of speciesList_animal_1" :key="item.id" :label="item.commonName" class="chooseColBox" ref="one" v-model="item.checked"></el-checkbox>
+                      <el-checkbox v-for="item of speciesList_animal_1" :key="item.commonName" :label="item.commonName" class="chooseColBox" ref="one" v-model="item.checked"></el-checkbox>
                     </div>
                     <div class="botton-wrapper">
                       <el-button size="mini" type="primary"  @click="confirmbutton" class="choose-col-button">confirm</el-button>
@@ -104,14 +104,15 @@
             :header-cell-style="hiligtDbCols"
             v-loading="loading_animal"
           >
-            <el-table-column align="center" class="titleCell" prop="topGoId" label="Go Annotation Id" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="goName" label="Gene Ontology" fixed width="250px"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="topGoId" label="Go Id" fixed width="120px"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
             </el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
-            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
+            <el-table-column align="center" prop="speciesCommonName" label="Species Name"  fixed width="150px" ></el-table-column>
+            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="100px" fixed></el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
             <template v-for="(item,index) in speciesList_animal_1">
-              <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.id">
+              <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
                   <template slot-scope="scope" >
                     <img
                     :src="orthoIcon"
@@ -194,40 +195,36 @@
               v-if="showOrthoSubTable"
               :border="false"
               fixed
+              max-height="500px"
           >
-              <el-table-column
-                  prop="species1.commonName"
-                  label="Species">
-              </el-table-column>
-              <el-table-column
-                  prop="species1.taxonId"
-                  label="Taxon Id1">
-              </el-table-column>
-              <el-table-column
-                  prop="ensemblId1"
-                  label="Ensembl Id">
-              </el-table-column>
-              
-              <el-table-column
-                  prop="protein1"
-                  label="Protein1">
-              </el-table-column>
-              <el-table-column
-                  prop="species2.commonName"
-                  label="Species2">
-              </el-table-column>
-              <el-table-column
-                  prop="species2.taxonId"
-                  label="Taxon Id2">
-              </el-table-column>
-              <el-table-column
-                  prop="protein2"
-                  label="Protein2">
-              </el-table-column>
-              <el-table-column
-              prop="entrezId"
-              label="Entrez Id">
-              </el-table-column>
+            <el-table-column
+                prop="commonName1"
+                label="Species1"
+                width="180px">
+            </el-table-column>
+            <el-table-column
+                prop="tax1"
+                label="Taxon Id1">
+            </el-table-column>
+            <el-table-column
+                prop="hdbId1"
+                label="Protein Id1">
+            </el-table-column>
+            
+            <el-table-column
+                prop="commonName2"
+                label="Species2"
+                width="180px">
+            </el-table-column>
+            <el-table-column
+                prop="tax2"
+                label="Taxon Id1">
+            </el-table-column>
+            <el-table-column
+                prop="hdbId2"
+                label="Protein Id1">
+            </el-table-column>
+            
             </el-table>
           </div>
 
@@ -247,14 +244,15 @@
                 :data="gwasInfoData"
                 id="subTable"
                 :row-style="{height: '0'}"
-                max-height="400"
                 v-loading="gwasLoading"
+                max-height="500px"
               >
-                <el-table-column prop="varId" label="Var Id"></el-table-column>
-                <el-table-column prop="topGoId" label="Go Annotation Id"></el-table-column>
+                <el-table-column prop="geneId" label="Gene Id"></el-table-column>
+                <el-table-column prop="goName" label="Go Name"></el-table-column>
+                <el-table-column prop="goId" label="Detail Go Id"></el-table-column>
+                <el-table-column prop="topGoId" label="Go Id"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
+                <el-table-column prop="taxonId" label="Taxon Id"></el-table-column>
               </el-table>
             <!-- </el-card> -->
         </div>
@@ -273,7 +271,7 @@
                     v-for="(item,index) in querySpeciesList_plant"
                     :key="index.id"
                     :label="item.commonName"
-                    :value="item.commonName"
+                    :value="item.taxonId"
                     >
                 </el-option>
             </el-select>
@@ -287,7 +285,7 @@
               class="popbox"
               v-model="visible">
                 <div class="checkbox-box">
-                  <el-checkbox v-for="item of speciesList_plant_1" :key="item.id" :label="item.commonName" class="chooseColBox" ref="one" v-model="item.checked"></el-checkbox>
+                  <el-checkbox v-for="item of speciesList_plant_1" :key="item.commonName" :label="item.commonName" class="chooseColBox" ref="one" v-model="item.checked"></el-checkbox>
                 <!-- <el-checkbox  class="chooseColBox" @change="chooseall" ref="all">Choose All</el-checkbox> -->
                 </div>
                 <div class="botton-wrapper">
@@ -311,14 +309,15 @@
             ref="table"
             :header-cell-style="hiligtDbCols"
           >
-            <el-table-column align="center" class="titleCell" prop="topGoId" label="Go Annotation Id" fixed width="280px" style="background-color:white"></el-table-column>
+           <el-table-column align="center" class="titleCell" prop="goName" label="Gene Ontology" fixed width="250px"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="topGoId" label="Go Id" fixed width="120px"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
             </el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
-            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
+            <el-table-column align="center" prop="speciesCommonName" label="Species Name"  fixed width="150px" ></el-table-column>
+            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="100px" fixed></el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
             <template v-for="(item,index) in speciesList_plant_1">
-              <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.id">
+              <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
             <!-- <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
               class="imglink" height="100px"> -->
                   <template slot-scope="scope" >
@@ -392,33 +391,36 @@
             v-loading="orthoLoading"
             v-if="showOrthoSubTable"
             :border="false"
+            max-height="500px"
         >
             <el-table-column
-                prop="species.commonName"
-                label="Species"
+                prop="commonName1"
+                label="Species1"
                 width="180px">
             </el-table-column>
             <el-table-column
-                prop="species.taxonId"
-                label="Taxon Id">
+                prop="tax1"
+                label="Taxon Id1">
             </el-table-column>
             <el-table-column
-                prop="gbiInfo.ensemblGeneId"
-                label="Ensembl Id">
-            </el-table-column>
-            <el-table-column
-                prop="gbiInfo.geneSymbol"
-                label="Gene Symbol">
-            </el-table-column>
-            <el-table-column
-                prop="protein"
-                label="Protein">
+                prop="hdbId1"
+                label="Protein Id1">
             </el-table-column>
             
             <el-table-column
-            prop="entrezId"
-            label="Entrez Id">
+                prop="commonName2"
+                label="Species2"
+                width="180px">
             </el-table-column>
+            <el-table-column
+                prop="tax2"
+                label="Taxon Id1">
+            </el-table-column>
+            <el-table-column
+                prop="hdbId2"
+                label="Protein Id1">
+            </el-table-column>
+            
           </el-table>
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
@@ -432,14 +434,15 @@
                 style="width: 100%;margin-top:3%;"
                 id="subTable"
                 :row-style="{height: '0'}"
-                max-height="400"
                 v-loading="gwasLoading"
+                max-height="500px"
               >
-                <el-table-column prop="varId" label="Var Id"></el-table-column>
-                <el-table-column prop="traitName" label="Trait Name"></el-table-column>
+                <el-table-column prop="geneId" label="Gene Id"></el-table-column>
+                <el-table-column prop="goName" label="Go Name"></el-table-column>
+                <el-table-column prop="goId" label="Detail Go Id"></el-table-column>
+                <el-table-column prop="topGoId" label="Go Id"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
+                <el-table-column prop="taxonId" label="Taxon Id"></el-table-column>
               </el-table>
             </el-card>
         </div>
@@ -496,6 +499,7 @@ import HeaderBar from "@/components/HeaderBar.vue";
 // import qs from "qs";
 // // icons
 import sameTraitIcon from "@/assets/img/icon/star.svg";
+import singleTraitIcon from "@/assets/img/icon/orange.svg";
 import orthoIcon from "@/assets/img/icon/huafu.svg";
 
 // import "@/assets/css/traits.css";
@@ -516,6 +520,7 @@ export default {
   data() {
     return {
       sameTraitIcon,
+      singleTraitIcon,
       orthoIcon,
       visible:false,
       visible_1:false,
@@ -571,7 +576,7 @@ export default {
         this.speciesList=[];
         // this.loading = true;
         this.showOrthoSubTable=false;
-        this.showGwasInfoTable=false;
+        this.showSubTableBox=false;
         this.classification=tab.label;
         this.$refs['table'].doLayout();
     },
@@ -584,7 +589,7 @@ export default {
     handleSizeChange(val){
       this.loading = true;
       this.pageSize = val;
-      this.getGoData(this.traitItem.traitId,this.traitItem.classification,this.pageSize,1,this.form.querySpecies)
+      this.getGoData(this.traitItem.traitId,this.classification,this.pageSize,1,this.form.querySpecies)
     },
     handleCurrentChange(val) {
       if(this.classification=="animal"){
@@ -593,7 +598,7 @@ export default {
         this.loading_plant=true;}
       this.currentPage4 = val;
 
-      this.getGoData(this.traitItem.traitId,this.traitItem.classification,this.pageSize,val,this.form.querySpecies)
+      this.getGoData(this.traitItem.traitId,this.classification,this.pageSize,val,this.form.querySpecies)
 
     },
     handleSelectionChange(val) {
@@ -604,18 +609,18 @@ export default {
       return data.label.indexOf(value) !== -1;
     },
     getInfoByTrait(value, data) {
-      this.traitItem.traitName=value.Name;
-      this.traitItem.traitId=value.traitID;
-      this.traitItem.traitDefID=value.traitDefID;
-      this.traitItem.definition=value.Definitions;
-      this.traitItem.classification=value.classification;
-      if(value.classification=="animal"){
+      console.log("value, data:",value, data);
+      this.traitItem.traitName=value.label;
+      this.traitItem.traitId=value.goId;
+      this.traitItem.definition=value.definition;
+      this.traitItem.classification=value.topClass;
+      if(this.classification=="animal"){
         this.loading_animal=true;
-        this.getGoData(value.traitDefID,value.classification,this.pageSize,1,this.form.querySpecies)
+        this.getGoData(value.goId,this.classification,this.pageSize,1,this.form.querySpecies)
 
       }else{
         this.loading_plant=true;
-        this.getGoData(value.traitDefID,value.classification,this.pageSize,1,this.form.querySpecies)
+        this.getGoData(value.goId,this.classification,this.pageSize,1,this.form.querySpecies)
 
       }
       data.checked = true;
@@ -625,7 +630,7 @@ export default {
       //   this.traitItem=response.data
       // })
       // console.log("params:",this.traitItem.traitDefId,value.traitDefID,this.classification,this.pageSize,1,this.form.querySpecies);
-      this.activeName=value.classification;
+      // this.activeName=value.classification;
 
 
 
@@ -649,11 +654,22 @@ export default {
       //   })
     },
     
-  showOrthoInfoTable(orthoList){
+  showOrthoInfoTable(rowdata,index){
+    // console.log("orthoList:",orthoList);
     this.showOrthoSubTable = true;
     this.showSubTableBox=false;
     this.orthoLoading=false;
-    this.orthoTableData=[orthoList];
+    
+
+    let ortholist=[];
+    rowdata.speciesListData.forEach((id,idx)=>{
+    if(id==index){
+        let item=rowdata.ortholist[idx]
+        ortholist.push(item)
+    }})
+
+    this.orthoTableData=ortholist;
+    console.log("ortholist:",ortholist);
   },
  
   // 表格高度自适应
@@ -668,21 +684,37 @@ export default {
     this.drawer = true;
    },
   showGwasInfoTable(rowValue,index){
+    
     // scope.row.gwasId,scope.row.taxonId,scope.row.orthoList[scope.row.speciesListData.indexOf(index)]
-    let gwasid=rowValue.gwasId
-    let taxid=rowValue.gwasOrgid
-    let orthoList=rowValue.ortholist[rowValue.speciesListData.indexOf(index)]
+    // let gwasid=rowValue.gwasId
+    // let taxid=rowValue.gwasOrgid
+    // let orthoList=rowValue.ortholist[rowValue.speciesListData.indexOf(index)]
+    // console.log(rowValue,index);
+    let ortholist=[];
+    let hdblist=[rowValue.hdbId]
+    rowValue.speciesListData.forEach((id,idx)=>{
+    if(id==index){
+        let item=rowValue.ortholist[idx]
+        ortholist.push(item)
+        hdblist.push(item.hdbId)
+    }})
+    this.orthoTableData=ortholist;
+    // console.log(rowValue,index,ortholist);
     this.showSubTableBox=true;
-    this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid+"&organismId="+taxid+"&offset=0&pagesize=10&total=10")
-    .then(response=>{
-      console.log("gwas response:",response);
-      this.gwasInfoData=response.data
-      this.gwasLoading=false;
+    this.gwasInfoData=[];
+    hdblist.forEach(hdbid=>{
+      this.$axios.get("http://localhost:9401/api/gene-go",{params:{'hdbid': hdbid}})
+        .then(response=>{
+          console.log("gwas response:",response);
+          this.gwasInfoData=this.gwasInfoData.concat(response.data);
+          this.gwasLoading=false;
+        })
     })
+    
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
-    this.orthoTableData=[orthoList];
-    console.log(orthoList);
+    this.orthoTableData=ortholist;
+    // console.log(ortholist);
    },
     hiligtDbCols({rowIndex}){
       if(rowIndex===1){
@@ -732,19 +764,23 @@ export default {
             if(varData.ortholist){
               for(let item of varData.ortholist){
                 let speciesName=item.commonName
-                if(this.speciesList_plant.indexOf(speciesName)==-1){
+                let indexoftablecell=this.speciesList_plant.indexOf(speciesName)
+                if(indexoftablecell==-1){
                   this.speciesList_plant.push(speciesName);
                   item.species.checked=true;
                   this.speciesList_plant_1.push(item.species);
                 }
-                varData.speciesListData.push(this.speciesList_plant.indexOf(speciesName));
+                indexoftablecell=this.speciesList_plant.indexOf(speciesName)
+                varData.speciesListData.push(indexoftablecell);
                 if(item.goName !== null){
-                  varData.traitListData2.push(this.speciesList_plant.indexOf(speciesName))
+                  // 同源数据包含注释信息
+                  varData.traitListData2.push(indexoftablecell);
                   let orthogoNamelist=item.goName.split(',');
                   let vardataNamelist=varData.goName.split(',');
                   for(let name of vardataNamelist){
                     if(orthogoNamelist.indexOf(name)>-1){
-                        varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
+                      // 包含相同的注释信息
+                        varData.traitListData1.push(indexoftablecell);
                     }
                   }
                   // if(item.goName==varData.traitName){
@@ -774,14 +810,15 @@ export default {
                   item.species.checked=true;
                   this.speciesList_animal_1.push(item.species);
                 }
-                varData.speciesListData.push(this.speciesList_animal.indexOf(speciesName));
+                let indexoftablecell=this.speciesList_animal.indexOf(speciesName)
+                varData.speciesListData.push(indexoftablecell);
                 if(item.goName !== null){
-                  varData.traitListData2.push(this.speciesList_plant.indexOf(speciesName))
+                  varData.traitListData2.push(indexoftablecell)
                   let orthogoNamelist=item.goName.split(',');
                   let vardataNamelist=varData.goName.split(',');
                   for(let name of vardataNamelist){
                     if(orthogoNamelist.indexOf(name)>-1){
-                        varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
+                        varData.traitListData1.push(indexoftablecell)
                     }
                   }
                   // if(item.goName==varData.traitName){
@@ -817,7 +854,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(speciesType){
-      this.$axios.get('http://localhost:9401/api/species-trait',{params: {speciesType: speciesType}})
+      this.$axios.get('http://localhost:9401/api/species-go',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType==2){
@@ -827,17 +864,6 @@ export default {
           }
       })
     },
-    // getTraitItem(){
-    //   this.$axios.get("http://localhost:9401/api/traits-item",{params: {classification: this.classification=="animal"?1:2}}).then(response=>{
-    //   console.log("traitsItem:",response);
-    //   this.traitItem=response.data
-    // })
-    // }
-    async fn(){
-      this.getGoData(this.traitItem.traitId,"animal").then(()=>{this.loading_animal=false;})
-      this.getGoData(this.traitItem.traitId,"plant").then(()=>{this.loading_plant=false;})
-      // await Promise.all([Pa,Pb]).then(()=>{this.loading=false;})
-   }
 
   },
   
