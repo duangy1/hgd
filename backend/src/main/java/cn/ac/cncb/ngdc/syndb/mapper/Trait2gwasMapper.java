@@ -1,6 +1,7 @@
 package cn.ac.cncb.ngdc.syndb.mapper;
 
 //import cn.ac.cncb.ngdc.syndb.entity.gwasInfo;
+import cn.ac.cncb.ngdc.syndb.entity.HdbGwas;
 import cn.ac.cncb.ngdc.syndb.entity.Trait2gwas;
 import com.github.pagehelper.Page;
 
@@ -36,5 +37,5 @@ public interface Trait2gwasMapper {
 
     List traitInfoByGeneList(String hdbid);
 
-
+    HdbGwas getGwasInfoByhdbid(String hdbId);
 }

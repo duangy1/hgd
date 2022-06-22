@@ -10,7 +10,7 @@
     <el-container style="border: 1px solid #eee;overflow: hidden;">
     <div class="wrapper-species-1">
     
-    <div class="wrapper-species">
+    <div >
     <!-- <el-card style="width:50%;border-top: 2px solid rgb(64, 158, 255)!important;">
       <div id="chart-trait2homolog-0" style="width:100%;height:450px;"></div>
     </el-card>

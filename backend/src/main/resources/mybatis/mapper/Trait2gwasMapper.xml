@@ -20,6 +20,11 @@
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.Trait2gwas">
     <result column="gwas_id" jdbcType="LONGVARCHAR" property="gwasId" />
   </resultMap>
+
+  <resultMap id="hdbGwasResultMap" type="cn.ac.cncb.ngdc.syndb.entity.HdbGwas">
+    <result column="gwas_id" jdbcType="VARCHAR" property="gwasId" />
+    <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
+  </resultMap>
   <sql id="Base_Column_List">
     id, gene_id, trait_id, trait_name, species_common_name, taxon_id,classification,
     create_time, last_update_time
@@ -62,5 +67,8 @@
       select trait_name from trait_all_copy1 where hdb_gene_id=#{hdbid}
   </select>
 
+  <select id="getGwasInfoByhdbid" resultMap="hdbGwasResultMap">
+    select GROUP_CONCAT(a.gwas_id) as gwas_id,b.gwas_orgid from trait_all_copy1 a inner join species b on a.taxon_id = b.taxon_id where a.hdb_gene_id =#{hdbId}
+  </select>
 
 </mapper>

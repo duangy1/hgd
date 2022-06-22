@@ -8,10 +8,10 @@
       <el-breadcrumb-item>Downloads</el-breadcrumb-item>
     </el-breadcrumb>
     <el-container style="border: 1px solid #eee;overflow: hidden;">
-        <div style="margin-top:3%;width:96%;margin: auto;">
+        <div style="width:92%;margin: auto;">
         <!-- <div class="container"> -->
           <div class="wrapper-box">
-            <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;margin-top: 1%;">
+            <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;">
            
           
               <el-container>

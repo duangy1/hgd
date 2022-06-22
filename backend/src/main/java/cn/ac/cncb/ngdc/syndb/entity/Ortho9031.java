@@ -64,6 +64,8 @@ public class Ortho9031 {
 
     private String commonName;
 
+    private String hdbId;
+
     private String dataSource;
 
     private String classification;

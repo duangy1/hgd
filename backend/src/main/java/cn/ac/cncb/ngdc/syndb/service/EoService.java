@@ -19,11 +19,10 @@ public class EoService {
     @Resource
     private ExpressionTermMapper expressionTermMapper;
 
-    public Page<GeneExpression> initPageEo(String topGoid, String tableName, int pageNo, int pageSize, String taxonid) {
+    public Page<GeneExpression> initPageEo(String expName, int pageNo, int pageSize, String taxonid) {
 
         PageHelper.startPage(pageNo, pageSize,true); //line 1
-        System.out.print("topGoid,tableName,taxonid:"+topGoid+","+tableName+","+taxonid);
-        Page<GeneExpression> resultList=geneExpressionMapper.initPageEo(topGoid,tableName,taxonid);
+        Page<GeneExpression> resultList=geneExpressionMapper.initPageEo(expName,taxonid);
         return resultList;
     }
 

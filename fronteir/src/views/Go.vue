@@ -114,25 +114,34 @@
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.id">
                   <template slot-scope="scope" >
                     <img
-                        :src="orthoIcon"
-                        min-width="70"
-                        height="70"
-                        class="iconImg"
-                        v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
-                        style="cursor:pointer"
-                        @click=showOrthoInfoTable(scope.row.orthoList[scope.row.speciesListData.indexOf(index)])
-                      />
-                      <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
-                      <img
-                        :src="sameTraitIcon"
-                        min-width="70"
-                        height="70"
-                        class="iconImg"
-                        v-if='iconClass(scope.row,index)'
-                        style="cursor:pointer"
-                        @click=showGwasInfoTable(scope.row,index)
-                      />
-                    </template>
+                    :src="orthoIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.speciesListData.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showOrthoInfoTable(scope.row,index)
+                  />
+                  <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
+                  <img
+                    :src="sameTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData1.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
+                  <img
+                    :src="singleTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData2.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
+                  </template>
                 </el-table-column>
               </template>
             </el-table-column>
@@ -314,24 +323,33 @@
               class="imglink" height="100px"> -->
                   <template slot-scope="scope" >
                   <img
-                      :src="orthoIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row.orthoList[scope.row.speciesListData.indexOf(index)])
-                    />
-                    <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
-                    <img
-                      :src="sameTraitIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='iconClass(scope.row,index)'
-                      style="cursor:pointer"
-                      @click=showGwasInfoTable(scope.row,index)
-                    />
+                    :src="orthoIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.speciesListData.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showOrthoInfoTable(scope.row,index)
+                  />
+                  <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
+                  <img
+                    :src="sameTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData1.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
+                  <img
+                    :src="singleTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData2.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
                   </template>
               </el-table-column>
             </template>
@@ -566,7 +584,7 @@ export default {
     handleSizeChange(val){
       this.loading = true;
       this.pageSize = val;
-      this.getGoData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,1,this.form.querySpecies)
+      this.getGoData(this.traitItem.traitId,this.traitItem.classification,this.pageSize,1,this.form.querySpecies)
     },
     handleCurrentChange(val) {
       if(this.classification=="animal"){
@@ -575,7 +593,7 @@ export default {
         this.loading_plant=true;}
       this.currentPage4 = val;
 
-      this.getGoData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,val,this.form.querySpecies)
+      this.getGoData(this.traitItem.traitId,this.traitItem.classification,this.pageSize,val,this.form.querySpecies)
 
     },
     handleSelectionChange(val) {
@@ -653,7 +671,7 @@ export default {
     // scope.row.gwasId,scope.row.taxonId,scope.row.orthoList[scope.row.speciesListData.indexOf(index)]
     let gwasid=rowValue.gwasId
     let taxid=rowValue.gwasOrgid
-    let orthoList=rowValue.orthoList[rowValue.speciesListData.indexOf(index)]
+    let orthoList=rowValue.ortholist[rowValue.speciesListData.indexOf(index)]
     this.showSubTableBox=true;
     this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid+"&organismId="+taxid+"&offset=0&pagesize=10&total=10")
     .then(response=>{
@@ -673,7 +691,7 @@ export default {
       
     },
     iconClass(data,index){
-      let classFT=data.speciesListData.indexOf(index)>-1?data.orthoList[data.speciesListData.indexOf(index)].orthoTraitName.indexOf(data.traitName)>-1:false
+      let classFT=data.speciesListData.indexOf(index)>-1?data.ortholist[data.speciesListData.indexOf(index)].orthoTraitName.indexOf(data.traitName)>-1:false
       return classFT
     },
    
@@ -687,7 +705,7 @@ export default {
       }else{
         this.loading_plant=true;
       }
-      this.getGoData(this.traitItem.traitDefID,this.classification,this.pageSize,1,this.form.querySpecies)
+      this.getGoData(this.traitItem.traitId,this.classification,this.pageSize,1,this.form.querySpecies)
 
     },
     clearFilter(){
@@ -696,8 +714,8 @@ export default {
       }else{
         this.loading_plant=true;
       }
-      this.getGoData(this.traitItem.traitDefID,"animal");
-      this.getGoData(this.traitItem.traitDefID,"plant");
+      this.getGoData(this.traitItem.traitId,"animal");
+      this.getGoData(this.traitItem.traitId,"plant");
       this.form.querySpecies=""
     },
     async showTableIcon(data,classss){
@@ -708,15 +726,31 @@ export default {
           for(let varData of data){
             // 增加一个属性保存物种的index，用来显示表格里的icon
             varData.speciesListData=[];
-            if(varData.orthoList){
-              for(let item of varData.orthoList){
-                let speciesName=item.species.commonName
+            // 增加一个属性，保存显示有trait数据的情况
+            varData.traitListData1=[];
+            varData.traitListData2=[];
+            if(varData.ortholist){
+              for(let item of varData.ortholist){
+                let speciesName=item.commonName
                 if(this.speciesList_plant.indexOf(speciesName)==-1){
                   this.speciesList_plant.push(speciesName);
                   item.species.checked=true;
                   this.speciesList_plant_1.push(item.species);
                 }
                 varData.speciesListData.push(this.speciesList_plant.indexOf(speciesName));
+                if(item.goName !== null){
+                  varData.traitListData2.push(this.speciesList_plant.indexOf(speciesName))
+                  let orthogoNamelist=item.goName.split(',');
+                  let vardataNamelist=varData.goName.split(',');
+                  for(let name of vardataNamelist){
+                    if(orthogoNamelist.indexOf(name)>-1){
+                        varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
+                    }
+                  }
+                  // if(item.goName==varData.traitName){
+                  //     varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
+                  // }
+                }
               }
             }
           }
@@ -729,15 +763,31 @@ export default {
           for(let varData of data){
             // 增加一个属性保存物种的index，用来显示表格里的icon
             varData.speciesListData=[];
-            if(varData.orthoList){
-              for(let item of varData.orthoList){
-                let speciesName=item.species.commonName;
+            // 增加一个属性，保存显示有trait数据的情况
+            varData.traitListData1=[];
+            varData.traitListData2=[];
+            if(varData.ortholist){
+              for(let item of varData.ortholist){
+                let speciesName=item.commonName;
                 if(this.speciesList_animal.indexOf(speciesName)==-1){
                   this.speciesList_animal.push(speciesName);
                   item.species.checked=true;
                   this.speciesList_animal_1.push(item.species);
                 }
                 varData.speciesListData.push(this.speciesList_animal.indexOf(speciesName));
+                if(item.goName !== null){
+                  varData.traitListData2.push(this.speciesList_plant.indexOf(speciesName))
+                  let orthogoNamelist=item.goName.split(',');
+                  let vardataNamelist=varData.goName.split(',');
+                  for(let name of vardataNamelist){
+                    if(orthogoNamelist.indexOf(name)>-1){
+                        varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
+                    }
+                  }
+                  // if(item.goName==varData.traitName){
+                  //     varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
+                  // }
+                }
               }
             }
           }
@@ -747,17 +797,18 @@ export default {
     },
     // 主要获取数据的方法
     // 根据动植物分开获取
-    async getGoData(traitId,classification,pagesize,pagenum,speciesName){
-      console.log("params:",traitId,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://localhost:9401/api/godata",{params:{'topGoid':traitId,'classification':classification,'taxonid':speciesName,'length':pagesize,'pageNo':pagenum}})
+    async getGoData(goName,classification,pagesize,pagenum,speciesName){
+      console.log("params:",goName,classification,pagesize,pagenum,speciesName);
+      this.$axios.get("http://localhost:9401/api/godata",{params:{'topGoid':goName,'classification':classification,'taxonid':speciesName,'length':pagesize,'pageNo':pagenum}})
       .then((response) => {
+        console.log("response:",response);
         if(classification=="animal"){
           this.totalSize_animal = response.data.recordsTotal;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_animal=res;this.loading_animal=false;});
         
         }else{
           this.totalSize_plant = response.data.recordsTotal;
-          this.traitData_plant =this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_plant=res; this.loading_plant=false;});
+          this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_plant=res; this.loading_plant=false;});
         }
 
       })
@@ -783,8 +834,8 @@ export default {
     // })
     // }
     async fn(){
-      this.getGoData(this.traitItem.traitDefID,"animal").then(()=>{this.loading_animal=false;})
-      this.getGoData(this.traitItem.traitDefID,"plant").then(()=>{this.loading_plant=false;})
+      this.getGoData(this.traitItem.traitId,"animal").then(()=>{this.loading_animal=false;})
+      this.getGoData(this.traitItem.traitId,"plant").then(()=>{this.loading_plant=false;})
       // await Promise.all([Pa,Pb]).then(()=>{this.loading=false;})
    }
 

@@ -32,7 +32,7 @@ public interface Ortho9031Mapper {
 
     List<Ortho9031> selectGeneVarOrthoInfo(String hdbid);
 
-    List<OrthoGo> selectGeneGoOrthoInfo(String hdbid, String tableName);
+    List<OrthoGo> selectGeneGoOrthoInfo(String hdbid);
 
-    List<Ortho9031> selectGeneEoOrthoInfo(String hdbid,String tableName);
+    List<OrthoGo> selectGeneEoOrthoInfo(String hdbid,String expName);
 }

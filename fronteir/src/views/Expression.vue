@@ -327,25 +327,34 @@
             <!-- <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
               class="imglink" height="100px"> -->
                   <template slot-scope="scope" >
+                   <img
+                    :src="orthoIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.speciesListData.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showOrthoInfoTable(scope.row,index)
+                  />
+                  <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
                   <img
-                      :src="orthoIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
-                      style="cursor:pointer"
-                      @click=showOrthoInfoTable(scope.row,index)
-                    />
-                    <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
-                    <img
-                      :src="sameTraitIcon"
-                      min-width="70"
-                      height="70"
-                      class="iconImg"
-                      v-if='iconClass(scope.row,index)'
-                      style="cursor:pointer"
-                      @click=showGwasInfoTable(scope.row,index)
-                    />
+                    :src="sameTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData1.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
+                  <img
+                    :src="singleTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData2.indexOf(index)>-1'
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
                   </template>
               </el-table-column>
             </template>
@@ -544,7 +553,6 @@ export default {
       },
       pageSize: 10,
       gwasInfoData:[],
-      loading:true,
       loading_animal:true,
       loading_plant:true,
       showOrthoSubTable:false,
@@ -575,7 +583,8 @@ export default {
     this.$refs.table.doLayout();
    },
     handleSizeChange(val){
-      this.loading = true;
+      // this.loading = true;
+      if(this.classification=="animal"){this.loading_animal=true;}else{this.loading_plant=true}
       this.pageSize = val;
       this.getTraitData(this.expItem.expName,this.classification,this.pageSize,1,this.form.querySpecies)
     },
@@ -618,7 +627,7 @@ export default {
     let ortholist=[];
     rowData.speciesListData.forEach((id,idx)=>{
       if(id==index){
-        ortholist.push(rowData.orthoList[idx])
+        ortholist.push(rowData.ortholist[idx])
     }})
     // console.log("index list:",ortholist);
 
@@ -651,14 +660,14 @@ export default {
     // let ortholist=[];
     rowValue.speciesListData.forEach((id,idx)=>{
       if(id==index){
-        let item=rowValue.orthoList[idx]
+        let item=rowValue.ortholist[idx]
         console.log("item:",item);
         // ortholist.push(rowValue.orthoList[idx])
         // item.
     }})
     let gwasid=rowValue.gwasId
     let taxid=rowValue.gwasOrgid;
-    rowValue.orthoList
+    // rowValue.orthoList
     // let orthoList=rowValue.orthoList[rowValue.speciesListData.indexOf(index)]
     this.showSubTableBox=true;
     this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid+"&organismId="+taxid+"&offset=0&pagesize=10&total=10")
@@ -678,33 +687,33 @@ export default {
       }
       
     },
-    iconClass(data,index){
-      // if(data.speciesListData.indexOf(index)>-1){
-        data.speciesListData.forEach((id,idx)=>{
-          // console.log("id,index:",id,index);
-          if(id==index){
+    // iconClass(data,index){
+    //   // if(data.speciesListData.indexOf(index)>-1){
+    //     data.speciesListData.forEach((id,idx)=>{
+    //       // console.log("id,index:",id,index);
+    //       if(id==index){
             
-            if( data.orthoList[idx].expName!=null ){
-              // console.log("data.orthoList[idx]:",data.orthoList[idx].expName,data.expName);
-              let traitlist=data.orthoList[idx].expName.split(",")
-              if(traitlist.indexOf(data.expName)>-1){
-                console.log(1,"idx:",idx,"species:",data.orthoList[idx],"trait data:",data.expName);
-                console.log("data.orthoList[idx]:",data.orthoList[idx].expName,data.expName);
-                return 1;
-              }else{
-                console.log(2);
-                console.log("data.orthoList[idx]:",data.orthoList[idx],data.expName);
-              return 2;
-            }
-          }else{
-            return false
-          }
-          }else{
-            return false
-          }
-        })
-      // }
-    },
+    //         if( data.ortholist[idx].eoName!=null ){
+    //           // console.log("data.orthoList[idx]:",data.orthoList[idx].expName,data.expName);
+    //           let traitlist=data.ortholist[idx].eoName.split(",")
+    //           if(traitlist.indexOf(data.annotation)>-1){
+    //             console.log(1,"idx:",idx,"species:",data.ortholist[idx],"trait data:",data.annotation);
+    //             console.log("data.orthoList[idx]:",data.ortholist[idx].eoName,data.annotation);
+    //             return 1;
+    //           }else{
+    //             console.log(2);
+    //             console.log("data.orthoList[idx]:",data.ortholist[idx],data.annotation);
+    //           return 2;
+    //         }
+    //       }else{
+    //         return false
+    //       }
+    //       }else{
+    //         return false
+    //       }
+    //     })
+    //   // }
+    // },
    
     searchFilter(){
       if(this.classification=="animal"){
@@ -737,8 +746,8 @@ export default {
             // 增加一个属性，保存显示有trait数据的情况
             varData.traitListData1=[];
             varData.traitListData2=[];
-            if(varData.orthoList){
-              for(let item of varData.orthoList){
+            if(varData.ortholist){
+              for(let item of varData.ortholist){
                 let speciesName=item.species.commonName
                 if(this.speciesList_plant.indexOf(speciesName)==-1){
                   this.speciesList_plant.push(speciesName);
@@ -746,10 +755,10 @@ export default {
                   this.speciesList_plant_1.push(item.species);
                 }
                 varData.speciesListData.push(this.speciesList_plant.indexOf(speciesName));
-                if(item.expName !== null){
+                if(item.annotation !== null){
                   varData.traitListData2.push(this.speciesList_plant.indexOf(speciesName))
-                  let varlist=item.expName.split(',')
-                  if(varlist.indexOf( varData.expName)>-1){
+                  let varlist=item.eoName.split(',')
+                  if(varlist.indexOf( varData.annotation)>-1){
                       varData.traitListData1.push(this.speciesList_plant.indexOf(speciesName))
                   }
                 }
@@ -758,10 +767,9 @@ export default {
           }
           this.$refs['table'].doLayout();
         }
+        
     }else{
       this.speciesList_animal=[];
-      
-      console.log("this.speciesList_plant:",this.speciesList_plant);
       this.speciesList_animal_1=[];
         if(data.length>0){
           for(let varData of data){
@@ -769,8 +777,8 @@ export default {
             varData.speciesListData=[];
             varData.traitListData1=[];
             varData.traitListData2=[];
-            if(varData.orthoList){
-              for(let item of varData.orthoList){
+            if(varData.ortholist){
+              for(let item of varData.ortholist){
                 let speciesName=item.species.commonName;
                 if(this.speciesList_animal.indexOf(speciesName)==-1){
                   this.speciesList_animal.push(speciesName);
@@ -778,11 +786,11 @@ export default {
                   this.speciesList_animal_1.push(item.species);
                 }
                 varData.speciesListData.push(this.speciesList_animal.indexOf(speciesName));
-                if(item.expName !== null){
+                if(item.eoName !== null){
                   // 有trait但不相同
                    varData.traitListData2.push(this.speciesList_animal.indexOf(speciesName))
-                  let varlist=item.expName.split(',')
-                  if(varlist.indexOf( varData.expName)>-1){
+                  let varlist=item.eoName.split(',')
+                  if(varlist.indexOf( varData.annotation)>-1){
                     // 有相同trait
                       varData.traitListData1.push(this.speciesList_animal.indexOf(speciesName))
                   }
@@ -798,7 +806,7 @@ export default {
     // 根据动植物分开获取
     async getTraitData(expName,classification,pagesize,pagenum,speciesName){
       console.log("params:",expName,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://localhost:9401/api/expression-data",{params:{'classification': classification,'expName':expName,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
+      this.$axios.get("http://localhost:9401/api/expression-data",{params:{'classification': classification,'expName':expName,'length':pagesize,'pageNo':pagenum,'taxonid':speciesName}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -840,11 +848,6 @@ export default {
     this.getTraitData(this.expItem.expName,"plant");
 
     window.addEventListener("scroll", this.watchScroll);
-    // this.getTableMaxHeight(); 
-    // let _this = this;
-    // window.onresize = function () {//用于使表格高度自适应的方法  
-    // _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
-    // }
    // 获取动植物名称列表，用于下拉选择框
     this.getSpecies(2)
     this.getSpecies(1)

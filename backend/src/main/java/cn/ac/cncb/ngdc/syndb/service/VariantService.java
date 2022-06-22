@@ -26,4 +26,6 @@ public class VariantService {
         return variantMapper.getInfoByVarNameAndSpecies(varName,speciesName);
     }
 
+    public String getSnpidByhdbid(String hdbid){return variantMapper.getSnpidByhdbid(hdbid);};
+
 }

@@ -57,7 +57,7 @@
     select * from species where has_homolog=1
   </select>
   <select id="speciesNameList" resultType="String">
-    select common_name from species where has_homolog=1
+    select common_name from species_statistic where has_homolog=1
   </select>
   <select id="speciesHeatmap" resultMap="HeatmapResultMap">
     select * from species_statistic

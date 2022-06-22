@@ -7,7 +7,7 @@
       <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
       <el-breadcrumb-item>Documentation</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-card style="width:96%;border-top: 2px solid rgb(64, 158, 255)!important;margin: auto;">
+    <el-card style="width:92%;border-top: 2px solid rgb(64, 158, 255)!important;margin: auto;">
     
         <div >
             <div style="font-size:18px;text-align:left;padding:10px 20px;font-weight: 700;">Documentation</div>
