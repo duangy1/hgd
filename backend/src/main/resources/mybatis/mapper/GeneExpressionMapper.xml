@@ -8,6 +8,7 @@
     <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
     <result column="bio_project_id" jdbcType="LONGVARCHAR" property="bioProjectId" />
     <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbId" />
+    <result column="common_name" jdbcType="VARCHAR" property="commonName" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneExpression">
     <result column="bio_project_id" jdbcType="LONGVARCHAR" property="bioProjectId" />

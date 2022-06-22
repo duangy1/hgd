@@ -50,4 +50,16 @@ public class SpeciesController {
         List speciesNamelist=speciesService.speciesNameListforTrait(speciesType);
         return speciesNamelist;
     }
+    @RequestMapping(value = "/api/species-go", method = RequestMethod.GET)
+    @ResponseBody
+    public List speciesNameListforGo(Integer speciesType){
+        List speciesNamelist=speciesService.speciesNameListforGo(speciesType);
+        return speciesNamelist;
+    }
+    @RequestMapping(value = "/api/species-exp", method = RequestMethod.GET)
+    @ResponseBody
+    public List speciesNameListforExp(Integer speciesType){
+        List speciesNamelist=speciesService.speciesNameListforExp(speciesType);
+        return speciesNamelist;
+    }
 }

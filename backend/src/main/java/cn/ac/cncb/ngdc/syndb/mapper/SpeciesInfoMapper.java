@@ -27,6 +27,10 @@ public interface SpeciesInfoMapper {
 
     List<SpeciesInfo> speciesNameListforTrait(Integer speciesType);
 
+    List<SpeciesInfo> speciesNameListforGo(Integer speciesType);
+
+    List<SpeciesInfo> speciesNameListforExp(Integer speciesType);
+
     String getDataSource(Integer txonid);
 
     String getDataSourceByName(String speciesName);

@@ -26,4 +26,6 @@ public class GeneGo {
 
     private String hdbId;
 
+    private String classification;
+
 }

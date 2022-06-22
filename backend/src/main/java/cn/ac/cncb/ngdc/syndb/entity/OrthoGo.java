@@ -47,6 +47,8 @@ public class OrthoGo {
 
     private String tax;
 
+    private String hdbId;
+
     private SpeciesInfo species;
 
     private String commonName;

@@ -71,4 +71,12 @@
     select * from species where species_type=#{speciesType} and data_source is not null order by common_name
   </select>
 
+  <select id="speciesNameListforGo" resultMap="BaseResultMap">
+    select * from species where species_type=#{speciesType} and has_go is not null order by common_name
+  </select>
+
+  <select id="speciesNameListforExp" resultMap="BaseResultMap">
+    select * from species where species_type=#{speciesType} and has_exp is not null order by common_name
+  </select>
+
 </mapper>

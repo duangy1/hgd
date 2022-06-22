@@ -11,6 +11,7 @@
     <result column="go_id" jdbcType="VARCHAR" property="goId" />
     <result column="go_annotation" jdbcType="VARCHAR" property="goName" />
     <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbId" />
+    <result column="classification" jdbcType="VARCHAR" property="classification" />
   </resultMap>
 
   <sql id="Base_Column_List">
@@ -21,15 +22,17 @@
   </sql>
 
   <select id="goInfoOfGene" resultMap="BaseResultMap">
-    select * from ${tableName} where gene_id=#{geneName}
+    select * from gene_go_all where gene_id=#{geneName}
   </select>
 
   <select id="initPageGo" resultMap="BaseResultMap">
-    select * from gene_go_all where top_go_id=#{topGoid}
+    select * from gene_go_all where top_go_id=#{topGoid} and classification=#{classification}
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
       and taxon_id = #{taxonid}
     </if>
   </select>
-
+  <select id="getGoByHdbTaxon" resultMap="BaseResultMap">
+    select * from gene_go_all where hdb_gene_id=#{hdbid}
+  </select>
 
 </mapper>

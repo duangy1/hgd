@@ -54,4 +54,12 @@ public class SpeciesService {
     public List<SpeciesInfo> speciesNameListforTrait(Integer speciesType){
         return speciesInfoMapper.speciesNameListforTrait(speciesType);
     }
+
+    public List<SpeciesInfo> speciesNameListforGo(Integer speciesType){
+        return speciesInfoMapper.speciesNameListforGo(speciesType);
+    }
+
+    public List<SpeciesInfo> speciesNameListforExp(Integer speciesType){
+        return speciesInfoMapper.speciesNameListforExp(speciesType);
+    }
 }

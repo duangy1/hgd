@@ -69,13 +69,11 @@ public class VariantController {
                 String geneid = variant.getGeneId(); // gwas gene id
 //                List<Ortho9031> ortholist =orthoService.findOrthByTaxonAndGene(taxon,geneid,classification);
                 String hdbId= geneDetailService.getHdbIdByEnsId(geneid);
-                ProductResultDTO resultList =orthoService.selectGeneTraitOrthoInfo(hdbId,""+taxon);
-//                Integer gwasOrgId=variantService.findGwasOrgidByTaxonId(taxon);
-//                if(ortholist != null ){
-                List<Ortho9031> ortholist=resultList.getOrthoList();
-                variant.setOrthoList(ortholist);
-//                }
-//                variant.setGwasOrgid(gwasOrgId);
+                if(hdbId != null && !hdbId.trim().equals("")) {
+                    ProductResultDTO resultList = orthoService.selectGeneTraitOrthoInfo(hdbId, "" + taxon);
+                    List<Ortho9031> ortholist = resultList.getOrthoList();
+                    variant.setOrthoList(ortholist);
+                }
             }
         }
 

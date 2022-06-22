@@ -21,7 +21,7 @@
     definition
   </sql>
   <select id="initPageGoTerms" resultMap="BaseResultMap">
-    select * from go_terms_copy1 where classification="plant"
+    select * from go_terms_1
   </select>
 
 </mapper>

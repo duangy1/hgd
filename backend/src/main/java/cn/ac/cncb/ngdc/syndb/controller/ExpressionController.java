@@ -40,8 +40,10 @@ public class ExpressionController {
         for(GeneExpression eodata : pageInfo){
             int taxon = eodata.getTaxonId();
             String hdbId=eodata.getHdbId();
-            List<OrthoGo> ortholist =orthoService.selectGeneEoOrthoInfo(hdbId,""+taxon,expName);
-            eodata.setOrtholist(ortholist);
+            if(hdbId != null && !hdbId.trim().equals("")) {
+                List<OrthoGo> ortholist = orthoService.selectGeneEoOrthoInfo(hdbId, "" + taxon, expName);
+                eodata.setOrtholist(ortholist);
+            }
         }
         DataTableResultInfo dataTableResultInfo = new DataTableResultInfo();
         dataTableResultInfo.setData(pageInfo);

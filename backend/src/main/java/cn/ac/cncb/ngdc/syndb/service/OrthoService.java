@@ -201,7 +201,6 @@ public class OrthoService {
     public List<OrthoGo> selectGeneGoOrthoInfo(String hdbid,String taxonid) {
         List<OrthoGo> orthoList = ortho9031Mapper.selectGeneGoOrthoInfo(hdbid);
         for (OrthoGo orthoitem : orthoList) {
-
             String tax2 = orthoitem.getTax2();
             String tax1 = orthoitem.getTax1();
 //            在第一位，取第二位值，否则相反
@@ -210,6 +209,7 @@ public class OrthoService {
                 species2.setCommonName(orthoitem.getCommonName2());
                 species2.setClassification(orthoitem.getClassification2());
                 orthoitem.setTax(tax2);
+                orthoitem.setHdbId(orthoitem.getHdbId2());
                 orthoitem.setCommonName(orthoitem.getCommonName2());
                 orthoitem.setGoName(orthoitem.getGoName2());
                 orthoitem.setSpecies(species2);
@@ -220,6 +220,7 @@ public class OrthoService {
                 species1.setCommonName(orthoitem.getCommonName1());
                 species1.setClassification(orthoitem.getClassification1());
                 orthoitem.setTax(tax1);
+                orthoitem.setHdbId(orthoitem.getHdbId1());
                 orthoitem.setCommonName(orthoitem.getCommonName1());
                 orthoitem.setGoName(orthoitem.getGoName1());
                 orthoitem.setSpecies(species1);

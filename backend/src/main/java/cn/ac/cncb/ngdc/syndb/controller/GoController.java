@@ -30,12 +30,14 @@ public class GoController {
 //            pageNo = start/length+1;
 //        }
         System.out.print("params:"+topGoid+","+classification+","+taxonid);
-        Page<GeneGo> pageInfo= goService.initPageGo(topGoid,pageNo,length,taxonid);
+        Page<GeneGo> pageInfo= goService.initPageGo(topGoid,classification,pageNo,length,taxonid);
         for(GeneGo godata : pageInfo){
             int taxon = godata.getTaxonId();
-            String hdbId=godata.getHdbId();
-            List<OrthoGo> ortholist =orthoService.selectGeneGoOrthoInfo(hdbId,""+taxon);
-            godata.setOrtholist(ortholist);
+            String hdbid=godata.getHdbId();
+            if(hdbid != null && !hdbid.trim().equals("")) {
+                List<OrthoGo> ortholist = orthoService.selectGeneGoOrthoInfo(hdbid, "" + taxon);
+                godata.setOrtholist(ortholist);
+            }
         }
         DataTableResultInfo dataTableResultInfo = new DataTableResultInfo();
         dataTableResultInfo.setData(pageInfo);
@@ -49,5 +51,11 @@ public class GoController {
     @ResponseBody
     public List<GoBasicTerm> initPageGoTerms(){
         return goService.initPageGoTerms();
+    }
+
+    @RequestMapping(value = "/api/gene-go", method = RequestMethod.GET)
+    @ResponseBody
+    public List<GoBasicTerm> getGoByHdbTaxon(String hdbid){
+        return goService.getGoByHdbTaxon(hdbid);
     }
 }

@@ -22,4 +22,6 @@ public class GeneExpression {
 
     private String hdbId;
 
+    private String commonName;
+
 }
