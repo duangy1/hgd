@@ -1,9 +1,6 @@
 package cn.ac.cncb.ngdc.syndb.controller;
 
 import cn.ac.cncb.ngdc.syndb.entity.*;
-//import cn.ac.cncb.ngdc.syndb.entity.gwasInfo;
-import cn.ac.cncb.ngdc.syndb.mapper.GeneBasicInfoMapper;
-import cn.ac.cncb.ngdc.syndb.mapper.GeneGoInfoMapper;
 import cn.ac.cncb.ngdc.syndb.service.GeneDetailService;
 import cn.ac.cncb.ngdc.syndb.service.OrthoService;
 import cn.ac.cncb.ngdc.syndb.service.SpeciesService;
@@ -76,5 +73,13 @@ public class TraitController {
 
         TraitName traitName = traitService.traitsItem(traitID);
         return  traitName;
+    }
+
+//根据hdbid获取gwas接口所需的gwas_orgid和gwas_id
+    @RequestMapping(value = "/api/traits-gwas-info", method = RequestMethod.GET)
+    @ResponseBody
+    public HdbGwas getGwasInfoByhdbid(String hdbId){
+        HdbGwas hdbGwas = traitService.getGwasInfoByhdbid(hdbId);
+        return  hdbGwas;
     }
 }

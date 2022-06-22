@@ -21,6 +21,8 @@ public class OrthoGo {
 
     private String goName1;
 
+    private String eoName1;
+
     private String hdbId2;
 
     private String protein2;
@@ -37,6 +39,8 @@ public class OrthoGo {
 
     private String goName2;
 
+    private String eoName2;
+
     private String protein;
 
     private String ensemblId;
@@ -52,4 +56,6 @@ public class OrthoGo {
     private GeneBasicInfo gbiInfo;
 
     private String goName;
+
+    private String eoName;
 }

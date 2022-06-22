@@ -11,6 +11,7 @@
     <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
     <result column="classification" jdbcType="VARCHAR" property="classification" />
     <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbid" />
+    <result column="data_source" jdbcType="VARCHAR" property="dataSource" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.Variant">
     <result column="snp_id" jdbcType="LONGVARCHAR" property="snpId" />
@@ -43,5 +44,7 @@
       and species_common_name = #{speciesName}
     </if>
   </select>
-
+  <select id="getSnpidByhdbid" resultType="java.lang.String">
+    select snp_id from variation_all where hdb_gene_id=#{hdbid}
+  </select>
 </mapper>

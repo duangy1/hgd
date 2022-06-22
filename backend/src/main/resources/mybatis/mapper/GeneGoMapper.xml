@@ -8,7 +8,9 @@
     <result column="go_sum_num" jdbcType="INTEGER" property="goSumNum" />
     <result column="species_common_name" jdbcType="VARCHAR" property="speciesCommonName" />
     <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
-    <result column="go_id" jdbcType="LONGVARCHAR" property="goId" />
+    <result column="go_id" jdbcType="VARCHAR" property="goId" />
+    <result column="go_annotation" jdbcType="VARCHAR" property="goName" />
+    <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbId" />
   </resultMap>
 
   <sql id="Base_Column_List">
@@ -23,9 +25,9 @@
   </select>
 
   <select id="initPageGo" resultMap="BaseResultMap">
-    select gene_id,hdb_gene_id,top_go_id,go_id,go_sum_num,species_common_name,taxon_id from ${tableName} where top_go_id=#{topGoid}
+    select * from gene_go_all where top_go_id=#{topGoid}
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
-      and taxon_id=#{taxonid}
+      and taxon_id = #{taxonid}
     </if>
   </select>
 

@@ -11,7 +11,7 @@ public interface GeneGoMapper {
 
     List<GeneGo> goInfoOfGene(String geneName, String tableName);
 
-    Page<GeneGo> initPageGo(String topGoid, String tableName, String taxonid);
+    Page<GeneGo> initPageGo(String topGoid, String taxonid);
 
 
 }

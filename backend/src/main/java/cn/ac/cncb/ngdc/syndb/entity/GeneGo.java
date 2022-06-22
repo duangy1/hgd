@@ -22,6 +22,8 @@ public class GeneGo {
 
     private String goId;
 
+    private String goName;
+
     private String hdbId;
 
 }

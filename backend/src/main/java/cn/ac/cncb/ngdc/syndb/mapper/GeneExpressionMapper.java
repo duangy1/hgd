@@ -10,5 +10,5 @@ public interface GeneExpressionMapper {
 
     List<GeneExpression> expressionInfoByGeneList(String geneName);
 
-    Page<GeneExpression> initPageEo(String topGoid, String tableName, String taxonid);
+    Page<GeneExpression> initPageEo(String expName, String taxonid);
 }
