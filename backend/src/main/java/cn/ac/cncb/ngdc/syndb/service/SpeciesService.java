@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SpeciesService {
@@ -16,6 +17,14 @@ public class SpeciesService {
 
     public List<SpeciesInfo> selectAllAnimals(){
         return speciesInfoMapper.selectAllAnimals();
+    }
+
+    public List<SpeciesInfo> selectAllHomologOrganism(){
+        return speciesInfoMapper.selectAllHomologOrganism(null);
+    }
+
+    public List<SpeciesInfo> selectOtherSpecies(Map param){
+        return speciesInfoMapper.selectOtherSpecies(param);
     }
 
     public List<SpeciesInfo> selectAllPlants(){
@@ -62,4 +71,6 @@ public class SpeciesService {
     public List<SpeciesInfo> speciesNameListforExp(Integer speciesType){
         return speciesInfoMapper.speciesNameListforExp(speciesType);
     }
+
+
 }

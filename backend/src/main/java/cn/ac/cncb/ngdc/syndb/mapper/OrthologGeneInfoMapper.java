@@ -10,4 +10,11 @@ public interface OrthologGeneInfoMapper {
     OrthologGeneInfo selectByPrimaryKey(Integer oid);
 
     List<OrthologGeneInfo> findOrthGeneByGivenGeneAndTaxon(Map param);
+
+    List<OrthologGeneInfo> findOrthGeneByGivenGeneAndTaxonModify(Map param);
+
+
+    int selectExpCountByGeneAndTaxon(Map param);
+
+    int selectVarCountByGeneAndTaxon(Map param);
 }

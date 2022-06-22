@@ -16,14 +16,12 @@
            <div class=" left" style="background-color: aliceblue;width:250px !important;">
   
                      <div class="genefilter" style=" padding-bottom:10px;width:250px !important;" align="left">
-                       <div style="padding-left:10px;padding-top:20px; padding-bottom:10px; font-size:20px !important; font-weight:bold;">
-                        <el-switch v-model="orgType"  active-text="Animals" inactive-text="Plants"  inactive-color="#ff4949" active-value="1" inactive-value="0" @change="selectOrganismType"></el-switch>
-                       </div>
+                       
                        <el-form ref="form" size="small" align="left">
-                               <div class="filterheader"><i class="el-icon-caret-right"></i> Filter by species</div>
+                               <div class="filterheader"><i class="el-icon-caret-right"></i> Filter by Species</div>
                                <div class="filtercontent">
-                                <div v-if="orgType ==1 ">
-                                    <div class="filtersubtitle">Animals</div>
+                               
+                                   
                                  <div id="idOrgAnimal" >
                                   <el-select v-model="checkSpAnimalList" multiple placeholder="Please select" @change="selectAnimalChanged">
                                     <el-option
@@ -34,24 +32,10 @@
                                     </el-option>
                                   </el-select>
                                  </div>
-                                  </div>
-                                <div id="idOrgPlant" v-if="orgType == 0">
-                                 <div class="filtersubtitle" >Plants</div>
-                                 <div>
-                                 <el-select v-model="checkSpPlantList" multiple placeholder="Please select" @change="selectAnimalChanged">
-                                    <el-option
-                                             v-for="item in plantsItem"
-                                             :key="item.taxonId"
-                                             :label="item.commonName"
-                                             :value="item.taxonId">
-                                    </el-option>
-                                   </el-select>
-
-                                </div>
-                               </div>
-                             </div>
-                             <div class="filterheader" style="padding-top:40px;"><i class="el-icon-caret-right"></i> Filter by trait</div>
-                             <div class="filtercontent" v-if="orgType == 1">
+                              </div>
+                             
+                             <div class="filterheader" style="padding-top:20px;"><i class="el-icon-caret-right"></i> Filter by Trait</div>
+                             <div class="filtercontent" >
                               <treeselect 
                                 :multiple="true"
                                 :options="traitAnimaloptions"
@@ -65,28 +49,50 @@
                                 /> 
                                
                               </div>
-                             <div class="filtercontent" style="" v-if="orgType == 0">
-                              <treeselect 
-                                 v-if="orgType == 0"
+                             
+                             <div class="filterheader" style="padding-top:90px;"><i class="el-icon-caret-right"></i> Filter by GO</div>
+                             <div class="filtercontent" >
+                                <treeselect 
                                 :multiple="true"
-                                :options="traitPlantoptions"
+                                :options="gooptions"
                                 :disable-branch-nodes="true"
                                 :open-on-click="true"
                                 :always-open="true"
                                 :flat="true"
                                 :append-to-body="false"
                                 placeholder="Select your favourite(s)..."
-                                 v-model="traitPlantvalue"
+                                 v-model="govalue"
                                 /> 
-                               
-                              </div>
-                             <div style="padding-top:100px;" class="filterheader"><i class="el-icon-caret-right"></i> Filter by ortholog source</div>
-                             <div class="filtercontent" style="padding-left:20px;">
-                                 <div> <el-checkbox label="OMA group"></el-checkbox> </div>
-                                 <div><el-checkbox label="treefam"></el-checkbox></div>
-                                 <div><el-checkbox label="eggnog"></el-checkbox></div>
                              </div>
 
+                            <div class="filterheader" style="padding-top:80px;"><i class="el-icon-caret-right"></i> Filter by Varation</div>
+                             <div class="filtercontent" >
+                                <treeselect 
+                                :multiple="true"
+                                :options="variantoptions"
+                                :disable-branch-nodes="true"
+                                :open-on-click="true"
+                                :always-open="true"
+                                :flat="true"
+                                :append-to-body="false"
+                                placeholder="Select your favourite(s)..."
+                                 v-model="variantvalue"
+                                /> 
+                             </div>
+                             <div class="filterheader" style="padding-top:150px;"><i class="el-icon-caret-right"></i> Filter by Expression</div>
+                             <div class="filtercontent" >
+                                <treeselect 
+                                :multiple="true"
+                                :options="expoptions"
+                                :disable-branch-nodes="true"
+                                :open-on-click="true"
+                                :always-open="true"
+                                :flat="true"
+                                :append-to-body="false"
+                                placeholder="Select your favourite(s)..."
+                                 v-model="expvalue"
+                                /> 
+                             </div>
                        </el-form>
 
                       </div>
@@ -123,16 +129,16 @@
 
                         <div style="padding-bottom:5px;font-size:14px;"><b>Synonym:</b> {{item.geneSynonym}} </div>
                         <div style="padding-bottom:5px;font-size:14px;"><b>BioType:</b> {{item.geneType}} </div>
-                        <div style="padding-bottom:5px;font-size:14px;"><b>Ortholog Gene:</b></div>
+                        <div style="padding-bottom:5px;font-size:14px;"><b>Homolog Gene:</b></div>
                         <div style="padding-bottom:5px;font-size:14px;">
-					
-									<el-row :outer="20" v-for="orthgeneList in item.orthoGeneBeanList" :key="orthgeneList.index">
-										<el-col :span="6" style="font-size:14px;padding-left:10px;te" v-for="orthgene in orthgeneList" :key="orthgene.geneName"><a href="">{{orthgene.geneName}}</a> ({{orthgene.taxonName}})</el-col> 
-									</el-row>
-				
-			
-						</div>
-                         <div style="padding-bottom:5px;font-size:14px;padding-top:10px;"><el-tag type="warning" size="small" v-if="item.traitCount >0"  ><a href="#">Trait {{item.traitCount}}</a></el-tag>&nbsp;&nbsp;<el-tag type="success" size="small"><a href="#">GO 5</a></el-tag></div>
+                        
+                                    <el-row :outer="20" v-for="orthgeneList in item.orthoGeneBeanList" :key="orthgeneList.index">
+                                        <el-col :span="8" style="font-size:14px;padding-left:10px;padding-top:5px;" v-for="orthgene in orthgeneList" :key="orthgene.hdbGeneId"><a href="" @click="toDetailPage(orthgene.hdbGeneId,orthgene.taxonId)">{{orthgene.geneName}}</a> ({{orthgene.taxonName}})</el-col> 
+                                    </el-row>
+                        
+                        
+                        </div>
+                         <div style="padding-bottom:5px;font-size:14px;padding-top:10px;"><el-tag type="warning" size="small" v-if="item.traitCount >0"  ><a href="#">Trait {{item.traitCount}}</a></el-tag>&nbsp;&nbsp;<el-tag type="success" size="small" v-if="item.varCount >0"><a href="#">Varation {{item.varCount}}</a></el-tag>&nbsp;&nbsp;<el-tag type="success" size="small" v-if="item.expCount >0"><a href="#">Expression {{item.expCount}}</a></el-tag></div>
                     </div>
                     <el-divider></el-divider>
                 </div>
@@ -251,16 +257,17 @@ export default {
  data(){
 
       return {
-         orgType: '1',
-         traitAnimalvalue:[],
-         traitAnimaloptions: [],
-         traitPlantvalue:[],
-         traitPlantoptions: [],
-         animalsItem:[],
-         plantsItem:[],
-         checkSpAnimalList:[],
-         checkSpPlantList:[],
-         activeNames: ['1','2','3'],
+        traitAnimalvalue:[],
+        traitAnimaloptions: [],
+        gooptions:[],
+        govalue:[],
+        variantoptions:[],
+        variantvalue:[],
+        expoptions:[],
+        expvalue:[],
+        animalsItem:[],
+        checkSpAnimalList:[],
+        activeNames: ['1','2','3'],
         totalSize:10,
         tableData:[],
         multipleSelection: [],
@@ -271,82 +278,12 @@ export default {
     },
     watch:{
         'traitAnimalvalue' : 'selectTraitFunc',
-        'traitPlantvalue' : 'selectPlantTraitFunc'
+		'govalue' : 'selectGoFunc',
+		'variantvalue' : 'selectVariantFunc',
+		'expvalue' : 'selectExpFunc'
     },
     methods: {
-        selectOrganismType(value){
-                             let animalselect = "";
-                   if(value == 1){
-                                    if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
-                                        for( var i =0 ; i<this.checkSpAnimalList.length;i++){
-
-                                            animalselect+= this.checkSpAnimalList[i]+",";
-                                        }
-                                       if(animalselect.length>0){
-                                          animalselect =animalselect.substring(0,animalselect.length-1);
-                                       }else{
-                                          animalselect="animal";
-                                          
-                                       }  
-                                    }
-                                   }else if(value ==0 ){
-                                    if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
-                                         for(let i =0 ; i<this.checkSpPlantList.length;i++){
-                                             animalselect+= this.checkSpPlantList[i]+",";
-                                          }
-                                    }
-
-                                       if(animalselect.length>0){
-                                          animalselect =animalselect.substring(0,animalselect.length-1);
-                                       }else{
-                                          animalselect="plant";
-                                          
-                                       }
-                                   }
-
-
-
-
-
-
-             let traitselect="";
-            if(value == 1){
-              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
-                     for( i =0 ; i< this.traitAnimalvalue.length;i++){
-                             traitselect+= this.traitAnimalvalue[i]+",";
-                       }
-               }
-            }else if(value == 0){
-                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
-                    for( i =0 ; i< this.traitPlantvalue.length;i++){
-                      traitselect+= this.traitPlantvalue[i]+",";
-                    }
-                 }
-             }
-                        if(traitselect.length>0){
-                            traitselect =traitselect.substring(0,traitselect.length-1);
-                        }
-
-                         const axiosInstance1 = this.$axios.create({
-                            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
-                            withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
-                          });
-                            axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'length': 5}})
-                              .then(response => {
-                                  console.log("tableData:",response.data.data)
-                                  this.tableData = response.data.data
-                                  this.totalSize = response.data.recordsTotal
-                                })
-                              .catch(error => {
-                                console.log(error)
-                                this.errored = true
-                              })
-                              .finally(() => this.loading = false)
-          console.log(value);
-        },
-        selectAnimalChanged(value){
-            
+        selectAnimalChanged(value){          
             let animalselect = "";
             if(value != null && value.length>0){
                 for(var i =0 ; i<value.length;i++){
@@ -359,29 +296,57 @@ export default {
             }
 
             let traitselect="";
-            if(this.orgType == 1){
-              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
-                     for( i =0 ; i< this.traitAnimalvalue.length;i++){
-                             traitselect+= this.traitAnimalvalue[i]+",";
-                       }
-               }
-            }else if(this.orgType == 0){
-                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
-                    for( i =0 ; i< this.traitPlantvalue.length;i++){
-                      traitselect+= this.traitPlantvalue[i]+",";
-                    }
-                 }
+           
+            if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                   for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                        traitselect+= this.traitAnimalvalue[i]+",";
+                   }
              }
+            
               if(traitselect.length>0){
                 traitselect =traitselect.substring(0,traitselect.length-1);
              }
+
+						let goselect="";
+                        if(this.govalue != null && this.govalue.length>0){
+                              for( i =0 ; i< this.govalue.length;i++){
+                                     goselect+= this.govalue[i]+",";
+                                 }
+                       }
+            
+                       if(goselect.length>0){
+                             goselect =goselect.substring(0,goselect.length-1);
+                        }
+                        let varselect="";
+                        if(this.variantvalue != null && this.variantvalue.length>0){
+                              for( i =0 ; i< this.variantvalue.length;i++){
+                                     varselect+= this.variantvalue[i]+",";
+                                 }
+                       }
+            
+                       if(varselect.length>0){
+                             varselect =varselect.substring(0,varselect.length-1);
+                        }                       
+                        let expselect="";
+                        if(this.expvalue != null && this.expvalue.length>0){
+                              for( i =0 ; i< this.expvalue.length;i++){
+                                     expselect+= this.expvalue[i]+",";
+                                 }
+                       }
+            
+                       if(expselect.length>0){
+                             expselect =expselect.substring(0,expselect.length-1);
+                        }                        
+                        
+
+
 
              const axiosInstance1 = this.$axios.create({
                 headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                 withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
               });
                 axiosInstance1
-                  .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect}})
+                  .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect}})
                   .then(response => {
                       console.log(response)
                       this.tableData = response.data.data
@@ -400,24 +365,15 @@ export default {
         selectTraitFunc(value){
                        
                         let animalselect = "";
-
                         if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                             for( var i =0 ; i<this.checkSpAnimalList.length;i++){
-
                                   animalselect+= this.checkSpAnimalList[i]+",";
                              }
                          }
-
-
                         if(animalselect.length>0){
                             animalselect =animalselect.substring(0,animalselect.length-1);
-                        }else{
-                              animalselect="animal";
-                                          
-                         } 
-
-
-
+                        } 
+                        
                         let traitselect="";
                         if(value != null && value.length>0){
                                         for( i =0 ; i< value.length;i++){
@@ -425,15 +381,46 @@ export default {
                                         }
                         }
                         if(traitselect.length>0){
-                            traitselect =traitselect.substring(0,traitselect.length-1);
+                          traitselect =traitselect.substring(0,traitselect.length-1);
                         }
+                        let goselect="";
+                        if(this.govalue != null && this.govalue.length>0){
+                              for( i =0 ; i< this.govalue.length;i++){
+                                     goselect+= this.govalue[i]+",";
+                                 }
+                       }
+            
+                       if(goselect.length>0){
+                             goselect =goselect.substring(0,goselect.length-1);
+                        }
+                        let varselect="";
+                        if(this.variantvalue != null && this.variantvalue.length>0){
+                              for( i =0 ; i< this.variantvalue.length;i++){
+                                     varselect+= this.variantvalue[i]+",";
+                                 }
+                       }
+            
+                       if(varselect.length>0){
+                             varselect =varselect.substring(0,varselect.length-1);
+                        }                       
+                        let expselect="";
+                        if(this.expvalue != null && this.expvalue.length>0){
+                              for( i =0 ; i< this.expvalue.length;i++){
+                                     expselect+= this.expvalue[i]+",";
+                                 }
+                       }
+            
+                       if(expselect.length>0){
+                             expselect =expselect.substring(0,expselect.length-1);
+                        }                        
+                        
 
                          const axiosInstance1 = this.$axios.create({
                             headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect}})
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -445,46 +432,65 @@ export default {
                               })
                               .finally(() => this.loading = false)
 
-
-
         },
-
-        selectPlantTraitFunc(value){
-                        
+        selectGoFunc(value){
                         let animalselect = "";
-
-                              if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
-                                 for( let i =0 ; i<this.checkSpPlantList.length;i++){
-                                     animalselect+= this.checkSpPlantList[i]+",";
-                                   }
-                               }
-                      
-
+                        if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
+                            for( var i =0 ; i<this.checkSpAnimalList.length;i++){
+                                  animalselect+= this.checkSpAnimalList[i]+",";
+                             }
+                         }
                         if(animalselect.length>0){
                             animalselect =animalselect.substring(0,animalselect.length-1);
-                        }else{
-                              animalselect="plant";
-                                          
-                         } 
-
-
-
+                        } 
+                        
                         let traitselect="";
-                        if(value != null && value.length>0){
-                                        for( let i =0 ; i< value.length;i++){
-                                            traitselect+= value[i]+",";
+                        if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                                        for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                                            traitselect+= this.traitAnimalvalue[i]+",";
                                         }
                         }
                         if(traitselect.length>0){
-                            traitselect =traitselect.substring(0,traitselect.length-1);
+                          traitselect =traitselect.substring(0,traitselect.length-1);
                         }
+                        let goselect="";
+                        if(value != null && value.length>0){
+                              for( i =0 ; i< value.length;i++){
+                                     goselect+= value[i]+",";
+                                 }
+                       }
+            
+                       if(goselect.length>0){
+                             goselect =goselect.substring(0,goselect.length-1);
+                        }
+                        let varselect="";
+                        if(this.variantvalue != null && this.variantvalue.length>0){
+                              for( i =0 ; i< this.variantvalue.length;i++){
+                                     varselect+= this.variantvalue[i]+",";
+                                 }
+                       }
+            
+                       if(varselect.length>0){
+                             varselect =varselect.substring(0,varselect.length-1);
+                        }                       
+                        let expselect="";
+                        if(this.expvalue != null && this.expvalue.length>0){
+                              for( i =0 ; i< this.expvalue.length;i++){
+                                     expselect+= this.expvalue[i]+",";
+                                 }
+                       }
+            
+                       if(expselect.length>0){
+                             expselect =expselect.substring(0,expselect.length-1);
+                        }                        
+                        
 
                          const axiosInstance1 = this.$axios.create({
                             headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect}})
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -495,68 +501,208 @@ export default {
                                 this.errored = true
                               })
                               .finally(() => this.loading = false)
-
-
-
+              
+              
         },
-
-        handleSizeChange(val) {
-
-
-                   let animalselect = "";
-                   if(this.orgType == 1){
-                                    if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
-                                        for( var i =0 ; i<this.checkSpAnimalList.length;i++){
-
-                                            animalselect+= this.checkSpAnimalList[i]+",";
+        selectVariantFunc(value){
+                        let animalselect = "";
+                        if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
+                            for( var i =0 ; i<this.checkSpAnimalList.length;i++){
+                                  animalselect+= this.checkSpAnimalList[i]+",";
+                             }
+                         }
+                        if(animalselect.length>0){
+                            animalselect =animalselect.substring(0,animalselect.length-1);
+                        } 
+                        
+                        let traitselect="";
+                        if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                                        for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                                            traitselect+= this.traitAnimalvalue[i]+",";
                                         }
-                                       if(animalselect.length>0){
-                                          animalselect =animalselect.substring(0,animalselect.length-1);
-                                       }else{
-                                          animalselect="animal";
-                                          
-                                       } 
-                                    }
-                                   }else if(this.orgType ==0 ){
-                                    if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
-                                         for(let i =0 ; i<this.checkSpPlantList.length;i++){
-                                             animalselect+= this.checkSpPlantList[i]+",";
-                                          }
-                                    }
-                                       if(animalselect.length>0){
-                                          animalselect =animalselect.substring(0,animalselect.length-1);
-                                       }else{
-                                          animalselect="plant";
-                                          
-                                       } 
-                                   }
+                        }
+                        if(traitselect.length>0){
+                          traitselect =traitselect.substring(0,traitselect.length-1);
+                        }
+                        let goselect="";
+                        if(this.govalue != null && this.govalue.length>0){
+                              for( i =0 ; i< this.govalue.length;i++){
+                                     goselect+= this.govalue[i]+",";
+                                 }
+                       }
+            
+                       if(goselect.length>0){
+                             goselect =goselect.substring(0,goselect.length-1);
+                        }
+                        let varselect="";
+                        if(value != null && value.length>0){
+                              for( i =0 ; i< value.length;i++){
+                                     varselect+= value[i]+",";
+                                 }
+                       }
+            
+                       if(varselect.length>0){
+                             varselect =varselect.substring(0,varselect.length-1);
+                        }                       
+                        let expselect="";
+                        if(this.expvalue != null && this.expvalue.length>0){
+                              for( i =0 ; i< this.expvalue.length;i++){
+                                     expselect+= this.expvalue[i]+",";
+                                 }
+                       }
+            
+                       if(expselect.length>0){
+                             expselect =expselect.substring(0,expselect.length-1);
+                        }                        
+                        
 
+                         const axiosInstance1 = this.$axios.create({
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
+                            withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
+                          });
+                            axiosInstance1
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .then(response => {
+                                  console.log(response)
+                                  this.tableData = response.data.data
+                                  this.totalSize = response.data.recordsTotal
+                                })
+                              .catch(error => {
+                                console.log(error)
+                                this.errored = true
+                              })
+                              .finally(() => this.loading = false)
+        },
+        selectExpFunc(value){
+                        let animalselect = "";
+                        if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
+                            for( var i =0 ; i<this.checkSpAnimalList.length;i++){
+                                  animalselect+= this.checkSpAnimalList[i]+",";
+                             }
+                         }
+                        if(animalselect.length>0){
+                            animalselect =animalselect.substring(0,animalselect.length-1);
+                        } 
+                        
+                        let traitselect="";
+                        if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+                                        for( i =0 ; i< this.traitAnimalvalue.length;i++){
+                                            traitselect+= this.traitAnimalvalue[i]+",";
+                                        }
+                        }
+                        if(traitselect.length>0){
+                          traitselect =traitselect.substring(0,traitselect.length-1);
+                        }
+                        let goselect="";
+                        if(this.govalue != null && this.govalue.length>0){
+                              for( i =0 ; i< this.govalue.length;i++){
+                                     goselect+= this.govalue[i]+",";
+                                 }
+                       }
+            
+                       if(goselect.length>0){
+                             goselect =goselect.substring(0,goselect.length-1);
+                        }
+                        let varselect="";
+                        if(this.variantvalue != null && this.variantvalue.length>0){
+                              for( i =0 ; i< this.variantvalue.length;i++){
+                                     varselect+= this.variantvalue[i]+",";
+                                 }
+                       }
+            
+                       if(varselect.length>0){
+                             varselect =varselect.substring(0,varselect.length-1);
+                        }                       
+                        let expselect="";
+                        if(value != null && value.length>0){
+                              for( i =0 ; i< value.length;i++){
+                                     expselect+= value[i]+",";
+                                 }
+                       }
+            
+                       if(expselect.length>0){
+                             expselect =expselect.substring(0,expselect.length-1);
+                        }                        
+                        
+
+                         const axiosInstance1 = this.$axios.create({
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
+                            withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
+                          });
+                            axiosInstance1
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .then(response => {
+                                  console.log(response)
+                                  this.tableData = response.data.data
+                                  this.totalSize = response.data.recordsTotal
+                                })
+                              .catch(error => {
+                                console.log(error)
+                                this.errored = true
+                              })
+                              .finally(() => this.loading = false)
+        },
+        handleSizeChange(val) {
+                     let animalselect = "";         
+                    if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
+                              for( var i =0 ; i<this.checkSpAnimalList.length;i++){
+
+                                 animalselect+= this.checkSpAnimalList[i]+",";
+                             }
+                             if(animalselect.length>0){
+                                          animalselect =animalselect.substring(0,animalselect.length-1);
+                              }
+                   }
+                                   
 
 
              let traitselect="";
-            if(this.orgType == 1){
-              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+          
+             if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
                      for( i =0 ; i< this.traitAnimalvalue.length;i++){
                              traitselect+= this.traitAnimalvalue[i]+",";
                        }
                }
-            }else if(this.orgType == 0){
-                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
-                    for( i =0 ; i< this.traitPlantvalue.length;i++){
-                      traitselect+= this.traitPlantvalue[i]+",";
-                    }
-                 }
-             }
+            
                         if(traitselect.length>0){
                             traitselect =traitselect.substring(0,traitselect.length-1);
                         }
-
+                       let goselect="";
+                        if(this.govalue != null && this.govalue.length>0){
+                              for( i =0 ; i< this.govalue.length;i++){
+                                     goselect+= this.govalue[i]+",";
+                                 }
+                       }
+            
+                       if(goselect.length>0){
+                             goselect =goselect.substring(0,goselect.length-1);
+                        }
+                        let varselect="";
+                        if(this.variantvalue != null && this.variantvalue.length>0){
+                              for( i =0 ; i< this.variantvalue.length;i++){
+                                     varselect+= this.variantvalue[i]+",";
+                                 }
+                       }
+            
+                       if(varselect.length>0){
+                             varselect =varselect.substring(0,varselect.length-1);
+                        }                       
+                        let expselect="";
+                        if(this.expvalue != null && this.expvalue.length>0){
+                              for( i =0 ; i< this.expvalue.length;i++){
+                                     expselect+= this.expvalue[i]+",";
+                                 }
+                       }
+            
+                       if(expselect.length>0){
+                             expselect =expselect.substring(0,expselect.length-1);
+                        }           
                          const axiosInstance1 = this.$axios.create({
                             headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'length': val}})
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect, 'length': val}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -572,7 +718,7 @@ export default {
         handleCurrentChange(val) {
             console.log(`当前页: ${val}`);
                                   let animalselect = "";
-                                  if(this.orgType == 1){
+                               
                                     if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                                         for( var i =0 ; i<this.checkSpAnimalList.length;i++){
 
@@ -580,53 +726,63 @@ export default {
                                         }
                                        if(animalselect.length>0){
                                           animalselect =animalselect.substring(0,animalselect.length-1);
-                                       }else{
-                                          animalselect="animal";
-                                          
-                                       } 
+                                       }
                                     }
-                                   }else if(this.orgType ==0 ){
-                                    if(this.checkSpPlantList != null && this.checkSpPlantList.length>0){
-                                         for(let i =0 ; i<this.checkSpPlantList.length;i++){
-                                             animalselect+= this.checkSpPlantList[i]+",";
-                                          }
-                                    }
-                                       if(animalselect.length>0){
-                                          animalselect =animalselect.substring(0,animalselect.length-1);
-                                       }else{
-                                          animalselect="plant";
-                                          
-                                       } 
-                                   }
+                                   
 
 
 
 
-                                        let traitselect="";
-            if(this.orgType == 1){
-              if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
+            let traitselect="";
+          
+             if(this.traitAnimalvalue != null && this.traitAnimalvalue.length>0){
                      for( i =0 ; i< this.traitAnimalvalue.length;i++){
                              traitselect+= this.traitAnimalvalue[i]+",";
                        }
-               }
-            }else if(this.orgType == 0){
-                 if(this.traitPlantvalue != null && this.traitPlantvalue.length>0){
-                    for( i =0 ; i< this.traitPlantvalue.length;i++){
-                      traitselect+= this.traitPlantvalue[i]+",";
-                    }
-                 }
              }
-
-                                    if(traitselect.length>0){
-                                        traitselect =traitselect.substring(0,traitselect.length-1);
-                                    }
+              if(traitselect.length>0){
+                  traitselect =traitselect.substring(0,traitselect.length-1);
+             }
+           
+                       let goselect="";
+                        if(this.govalue != null && this.govalue.length>0){
+                              for( i =0 ; i< this.govalue.length;i++){
+                                     goselect+= this.govalue[i]+",";
+                                 }
+                       }
+            
+                       if(goselect.length>0){
+                             goselect =goselect.substring(0,goselect.length-1);
+                        }
+                        let varselect="";
+                        if(this.variantvalue != null && this.variantvalue.length>0){
+                              for( i =0 ; i< this.variantvalue.length;i++){
+                                     varselect+= this.variantvalue[i]+",";
+                                 }
+                       }
+            
+                       if(varselect.length>0){
+                             varselect =varselect.substring(0,varselect.length-1);
+                        }                       
+                        let expselect="";
+                        if(this.expvalue != null && this.expvalue.length>0){
+                              for( i =0 ; i< this.expvalue.length;i++){
+                                     expselect+= this.expvalue[i]+",";
+                                 }
+                       }
+            
+                       if(expselect.length>0){
+                             expselect =expselect.substring(0,expselect.length-1);
+                        } 
+              
+              
 
                                      const axiosInstance1 = this.$axios.create({
                                         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                                         withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                                       });
                                         axiosInstance1
-                                          .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'pageNo': val}})
+                                          .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,  'pageNo': val}})
                                           .then(response => {
                                               console.log(response)
                                               this.tableData = response.data.data
@@ -664,7 +820,7 @@ export default {
     withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
   });
     axiosInstance
-      .get('http://localhost:9401/basic/getSpecies',{params: {speciesType: 1}})
+      .get('http://localhost:9401/basic/getSpeciesModify',{params: {speciesType: 1}})
       .then(response => {
           console.log(response)
           this.animalsItem = response.data
@@ -675,34 +831,11 @@ export default {
       })
       .finally(() => this.loading = false)
 
- axiosInstance
-      .get('http://localhost:9401/basic/getSpecies',{params: {speciesType: 2}})
-      .then(response => {
-          console.log(response)
-          this.plantsItem = response.data
-        })
-      .catch(error => {
-        console.log(error)
-        this.errored = true
-      })
-      .finally(() => this.loading = false)
 
  axiosInstance
        .get('http://localhost:9401/basic/getTraitName')
        .then(response => {
-           console.log(response)
            this.traitAnimaloptions= response.data
-         })
-       .catch(error => {
-         console.log(error)
-         this.errored = true
-       })
-       .finally(() => this.loading = false)
- axiosInstance
-       .get('http://localhost:9401/basic/getTraitName',{params: {traitType: 2}})
-       .then(response => {
-           console.log(response)
-           this.traitPlantoptions= response.data
          })
        .catch(error => {
          console.log(error)
@@ -726,8 +859,34 @@ export default {
                     this.screenLoading=false;
                      })
 
-  
-	
+  axiosInstance
+                   .get('http://localhost:9401/basic/getVoTerm')
+                   .then(response => {
+                       this.variantoptions= response.data
+                     })
+                   .catch(error => {
+                     console.log(error)
+                     this.errored = true
+                   })
+                   .finally(() => {
+                     this.loading = false
+                    //  loadingService.close()
+                    this.screenLoading=false;
+                     })
+axiosInstance
+                   .get('http://localhost:9401/basic/getExpressionTerm')
+                   .then(response => {
+                       this.expoptions= response.data
+                     })
+                   .catch(error => {
+                     console.log(error)
+                     this.errored = true
+                   })
+                   .finally(() => {
+                     this.loading = false
+                    //  loadingService.close()
+						this.screenLoading=false;
+                     })
    }
 }
 </script>

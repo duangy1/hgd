@@ -33,7 +33,7 @@ public class OrthologGeneController {
 
     @RequestMapping(value="filterHomolog", method= RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo browseOrthologGene(String taxonids, String traitids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+    public DataTableResultInfo browseOrthologGene(String taxonids, String traitids,String goids,String variantids,String expids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
                                                   @RequestParam(value = "length", required = false, defaultValue = "5") Integer length,
                                                   @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                                   @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo){
@@ -51,26 +51,6 @@ public class OrthologGeneController {
                         talist.add(Integer.parseInt(str));
                     }
                 }
-            }else if(taxonids.equals("animal") == true){
-                List<SpeciesInfo> speciesInfos = null;
-
-                speciesInfos = speciesService.selectAllAnimals();
-                if(speciesInfos != null ){
-                    for(SpeciesInfo speciesInfo : speciesInfos){
-                        talist.add(Integer.parseInt(speciesInfo.getTaxonId()));
-                    }
-                }
-
-            }else if(taxonids.equals("plant") == true){
-                List<SpeciesInfo> speciesInfos = null;
-
-                speciesInfos = speciesService.selectAllPlants();
-                if(speciesInfos != null ){
-                    for(SpeciesInfo speciesInfo : speciesInfos){
-                        talist.add(Integer.parseInt(speciesInfo.getTaxonId()));
-                    }
-                }
-
             }
             else {
                 System.out.println("taxon------------"+taxonids);
@@ -99,6 +79,61 @@ public class OrthologGeneController {
             System.out.println(traitids);
         }
 
+        ArrayList variantlist = new ArrayList();
+        if(variantids != null && variantids.length()>0){
+            if(variantids.indexOf(",")>-1){
+                String [] taxons = variantids.split("\\,");
+                if(taxons != null && taxons.length>0){
+                    for(String str : taxons){
+                        variantlist.add(str);
+                    }
+                }
+            }
+            else{
+                System.out.println("variantlist --------"+variantids);
+                variantlist.add(variantids);
+            }
+
+            System.out.println(variantids);
+        }
+
+        ArrayList explist = new ArrayList();
+        if(expids != null && expids.length()>0){
+            if(expids.indexOf(",")>-1){
+                String [] taxons = expids.split("\\,");
+                if(taxons != null && taxons.length>0){
+                    for(String str : taxons){
+                        explist.add(str);
+                    }
+                }
+            }
+            else{
+                System.out.println("expids --------"+expids);
+                explist.add(expids);
+            }
+
+            System.out.println(variantids);
+        }
+
+        ArrayList golist = new ArrayList();
+        if(goids != null && goids.length()>0){
+            if(goids.indexOf(",")>-1){
+                String [] taxons = goids.split("\\,");
+                if(taxons != null && taxons.length>0){
+                    for(String str : taxons){
+                        golist.add(str);
+                    }
+                }
+            }
+            else{
+                System.out.println("goids --------"+goids);
+                explist.add(goids);
+            }
+
+            System.out.println(goids);
+        }
+
+
         Map param = new HashMap();
         if(talist.size()>0){
             param.put("taxonList",talist);
@@ -107,6 +142,19 @@ public class OrthologGeneController {
         if(traitlist.size()>0){
             param.put("traitList",traitlist);
         }
+
+        if(variantlist.size() > 0 ){
+            param.put("variantlist",variantlist);
+        }
+
+        if(explist.size() >0 ){
+            param.put("explist",explist);
+        }
+
+        if(golist.size() >0 ){
+            param.put("golist",golist);
+        }
+
 
         Page<GeneBasicInfo> pageInfo = orthologGeneService.filterHomologGene(pageNo,length,param);
         if(pageInfo != null && pageInfo.size()>0){
@@ -124,12 +172,19 @@ public class OrthologGeneController {
 
                 //here, select trait count, GO count for this gene
                 Map other = new HashMap();
-                String gwasgeneid = geneBasicInfo.getGwasGeneId();
+                String gwasgeneid = geneBasicInfo.getHdbGeneId();
                 other.put("geneId",gwasgeneid);
                 other.put("taxonId",taxonId);
 
                 int traitcount =  orthologGeneService.selectTraitCountByGeneAndTaxon(other);
                 geneBasicInfo.setTraitCount(traitcount);
+
+                //here, select expression count
+                int expcount = orthologGeneService.selectExpCountByGeneAndTaxon(other);
+                geneBasicInfo.setExpCount(expcount);
+                //
+                int varcount = orthologGeneService.selectVarCountByGeneAndTaxon(other);
+                geneBasicInfo.setVarCount(varcount);
 
                 String gene="";
                 if(geneBasicInfo.getGeneSymbol() != null && geneBasicInfo.getGeneSymbol().length()>0){
@@ -150,10 +205,7 @@ public class OrthologGeneController {
 
             }
 
-
-
         }
-
 
         result = new DataTableResultInfo();
         result.setData(pageInfo);
