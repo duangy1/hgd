@@ -10,6 +10,8 @@ public interface SpeciesInfoMapper {
     public List<SpeciesInfo> selectAllAnimals();
     public List<SpeciesInfo> selectAllPlants();
 
+    public List<SpeciesInfo> selectAllHomologOrganism(Map apram);
+
     public List<SpeciesInfo> selectOtherSpecies(Map param);
 
     public SpeciesInfo findSpeciesByTaxon (String taxonId);

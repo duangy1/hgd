@@ -37,6 +37,45 @@ public class OrthologGeneInfo {
 
     private String entrezId2;
 
+    private String geneSymbol1;
+    private String geneSymbol2;
+
+    private String latinName1;
+    private String latinName2;
+
+
+    public String getLatinName1() {
+        return latinName1;
+    }
+
+    public void setLatinName1(String latinName1) {
+        this.latinName1 = latinName1;
+    }
+
+    public String getLatinName2() {
+        return latinName2;
+    }
+
+    public void setLatinName2(String latinName2) {
+        this.latinName2 = latinName2;
+    }
+
+    public String getGeneSymbol1() {
+        return geneSymbol1;
+    }
+
+    public void setGeneSymbol1(String geneSymbol1) {
+        this.geneSymbol1 = geneSymbol1;
+    }
+
+    public String getGeneSymbol2() {
+        return geneSymbol2;
+    }
+
+    public void setGeneSymbol2(String geneSymbol2) {
+        this.geneSymbol2 = geneSymbol2;
+    }
+
     public String getHdbGeneId1() {
         return hdbGeneId1;
     }

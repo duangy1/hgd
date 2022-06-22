@@ -20,12 +20,16 @@
   </resultMap>
 
   <select id="selectAllAnimals" resultMap="BaseResultMap">
-    select * from species where species_type=1 order by common_name
+    select * from species where species_type=1 and has_homolog=1 order by common_name
   </select>
 
 
   <select id="selectAllPlants" resultMap="BaseResultMap">
-    select * from species where species_type=2 order by common_name
+    select * from species where species_type=2 and has_homolog=1 order by common_name
+  </select>
+
+  <select id="selectAllHomologOrganism" resultMap="BaseResultMap">
+    select * from species where has_homolog=1 order by common_name
   </select>
 
   <select id="selectOtherSpecies" parameterType="java.util.HashMap" resultMap="BaseResultMap">
@@ -36,6 +40,7 @@
     <if test="taxon != null">
       and taxon_id != #{taxon}
     </if>
+    and has_homolog=1
   </select>
 
   <select id="findSpeciesByTaxon" resultMap="BaseResultMap">

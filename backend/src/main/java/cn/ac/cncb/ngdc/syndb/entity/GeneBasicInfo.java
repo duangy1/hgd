@@ -61,4 +61,12 @@ public class GeneBasicInfo {
 
     private int showGeneType;
 
+    private String latinName;
+
+    private String varGeneId;
+    private String expGeneId;
+
+    private int varCount;
+    private int expCount;
+
 }
