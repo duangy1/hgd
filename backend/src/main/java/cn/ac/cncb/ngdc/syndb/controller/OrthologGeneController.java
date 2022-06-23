@@ -31,9 +31,12 @@ public class OrthologGeneController {
     private SpeciesService speciesService;
 
 
+
+
+
     @RequestMapping(value="filterHomolog", method= RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo browseOrthologGene(String taxonids, String traitids,String goids,String variantids,String expids,String orthtaxids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+    public DataTableResultInfo browseOrthologGene(int type,String keyword,String taxonids, String traitids,String goids,String variantids,String expids,String orthtaxids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
                                                   @RequestParam(value = "length", required = false, defaultValue = "5") Integer length,
                                                   @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                                   @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo){
@@ -41,6 +44,9 @@ public class OrthologGeneController {
             pageNo = start/length+1;
         }
         DataTableResultInfo result = null;
+
+
+
 
         ArrayList talist = new ArrayList();
         if(taxonids != null && taxonids.length()>0){
@@ -170,6 +176,44 @@ public class OrthologGeneController {
 
         if(golist.size() >0 ){
             param.put("golist",golist);
+        }
+        System.out.println("=====type======="+type);
+        if(type>0){
+            if(type==1){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("species", keyword);
+                }
+            }else if(type==2){//gene symbol
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("symbol", keyword);
+                }
+            }else if(type==3){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("ensgene", keyword);
+                }
+            }else if(type==4){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("enspro", keyword);
+                }
+            }else if(type==5){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("entrez", keyword);
+                }
+            }else if(type==6){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("uniprot", keyword);
+                }
+            }else if(type==7){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("biotype", keyword);
+                }
+            }else if(type==8){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("allfield", keyword);
+                }
+            }
+
+
         }
 
 
