@@ -647,17 +647,16 @@ export default {
       return data.label.indexOf(value) !== -1;
     },
     getInfoByTrait(value, data) {
+      console.log("value, data:",value, data);
       this.varItem.varName=value.label;
-      if(value.classification=="animal"){
-        this.loading_animal=true;
-        this.getTraitData(value.label,this.classification,this.pageSize,1,this.form.querySpecies);
-
-      }else{
-        this.loading_plant=true;
-        this.getTraitData(value.label,this.classification,this.pageSize,1,this.form.querySpecies)
-
-      }
+      this.loading_animal=true;
+      this.loading_plant=true;
+      this.getTraitData(value.label,"animal",this.pageSize,1,this.form.querySpecies)
+      this.getTraitData(value.label,"plant",this.pageSize,1,this.form.querySpecies)
+      this.currentPage4=1;
       data.checked = true;
+      this.showSubTableBox=false;
+      this.showOrthoSubTable=false;
     },
     
   showOrthoInfoTable(rowData,index){
@@ -693,52 +692,78 @@ export default {
    },
   showGwasInfoTable(rowValue,index){
     console.log("rowValue,index:",rowValue,index);
-    // this.showOrthoInfoTable(rowValue,index)
-  // 获取当前数据点的gwasid，需要修改后端逻辑，得到gwasid
     this.showSubTableBox=true;
     let ortholist=[];
+    let hdblist=[rowValue.snpId]
     rowValue.speciesListData.forEach((id,idx)=>{
       if(id==index){
         let item=rowValue.orthoList[idx]
         ortholist.push(item)
+        hdblist.push(item.snpId)
     }})
     
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
     this.orthoTableData=ortholist;
-    // 左侧基因的接口数据
-    let snpId1 = rowValue.snpId;
-    let dataSource1=rowValue.dataSource
+
+    this.gwasInfoData=[];
+    let dataSource=rowValue.dataSource;
     let BASEPATH;
-    if(dataSource1.length!==0){
-      if(dataSource1.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
-      else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
-      // let snpAll=i.snpList.join(',')
-      let PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
-      if(snpId1.length>0){
-          this.getVarData(PATH)
+    if(dataSource.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
+    else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+
+    hdblist.forEach(snpId=>{
+      let PATH=BASEPATH+dataSource+"&snplist="+snpId;
+      if(snpId.length>0){
+        this.$axios.get(PATH).then(response=>{
+          this.varLoading=false;
+          if(response.data.snp.length){this.gwasInfoData=this.gwasInfoData.concat(response.data.snp);}else{this.gwasInfoData.push(response.data.snp);}
+        })
       }
-    }
-// 右侧基因接口数据
-// 有问题，明天看看
-   ortholist.forEach((item)=>{
-    let dataSource2=item.dataSource;
-    let hdbid=item.hdbId;
-    this.$axios.get("http://localhost:9401/api/var-snpid",{params:{'hdbId': hdbid}}).then(res=>{
-        console.log("res:",res);
-        if(res.data.length !==0){
-          let BASEPATH;
-          let snpId2=res.data;
-          this.gwasLoading=true;
-          if(dataSource2.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="
-          }else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
-          let PATH=BASEPATH+dataSource2+"&snplist="+snpId2;
-          if(snpId2.length>0){
-            this.getVarData(PATH)
-          }
-        }
-      })
-   })
+      for(let item of this.gwasInfoData){
+          let pos=item.chrom+":"+item.position;
+          let allele=item.refallele+"/"+item.allele;
+          let maf=item.maf+":"+item.maffreq.slice(0,7);
+          let classsnp=item.snpClassId=="7"?"SNP":"-"
+          item.position=pos;
+          item.allele=allele;
+          item.maf=maf;
+          item.snpClassId=classsnp;
+      }
+    })
+    // 左侧基因的接口数据
+//     let snpId1 = rowValue.snpId;
+//     let dataSource1=rowValue.dataSource
+//     let BASEPATH;
+//     if(dataSource1.length!==0){
+//       if(dataSource1.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
+//       else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+//       // let snpAll=i.snpList.join(',')
+//       let PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
+//       if(snpId1.length>0){
+//           this.getVarData(PATH)
+//       }
+//     }
+// // 右侧基因接口数据
+// // 有问题，明天看看
+//    ortholist.forEach((item)=>{
+//     let dataSource2=item.dataSource;
+//     let hdbid=item.hdbId;
+//     this.$axios.get("http://localhost:9401/api/var-snpid",{params:{'hdbId': hdbid}}).then(res=>{
+//         console.log("res:",res);
+//         if(res.data.length !==0){
+//           let BASEPATH;
+//           let snpId2=res.data;
+//           this.gwasLoading=true;
+//           if(dataSource2.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="
+//           }else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+//           let PATH=BASEPATH+dataSource2+"&snplist="+snpId2;
+//           if(snpId2.length>0){
+//             this.getVarData(PATH)
+//           }
+//         }
+//       })
+//    })
     
     
    },

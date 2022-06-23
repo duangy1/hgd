@@ -155,7 +155,7 @@
   </select>
 
   <select id="selectGeneEoOrthoInfo" resultMap="GoResultMap">
-    select a.common_name as common_name1,a.classification as classification1,tax_id1,(select GROUP_CONCAT(annotation) from gene_expression where hdb_gene_id=hdb_gene_id1) as eo_name1,tax_id2,b.common_name as common_name2,b.classification as classification2, (select GROUP_CONCAT(annotation) from gene_expression where hdb_gene_id=hdb_gene_id2)as eo_name2 from ortholog_all64_1 inner join (select common_name,classification,taxon_id from species ) as a on a.taxon_id=ortholog_all64_1.tax_id1 inner join (select common_name,classification,taxon_id from species) as b on b.taxon_id=tax_id2 where (hdb_gene_id1 like #{hdbid} or hdb_gene_id2 like #{hdbid} )
+    select a.common_name as common_name1,a.classification as classification1,tax_id1,(select GROUP_CONCAT(annotation) from gene_expression where hdb_gene_id=hdb_gene_id1) as eo_name1,tax_id2,b.common_name as common_name2,b.classification as classification2, (select GROUP_CONCAT(annotation) from gene_expression where hdb_gene_id=hdb_gene_id2)as eo_name2,hdb_gene_id1,hdb_gene_id2 from ortholog_all64_1 inner join (select common_name,classification,taxon_id from species ) as a on a.taxon_id=ortholog_all64_1.tax_id1 inner join (select common_name,classification,taxon_id from species) as b on b.taxon_id=tax_id2 where (hdb_gene_id1 like #{hdbid} or hdb_gene_id2 like #{hdbid} )
   </select>
 
 </mapper>

@@ -19,10 +19,10 @@ public class EoService {
     @Resource
     private ExpressionTermMapper expressionTermMapper;
 
-    public Page<GeneExpression> initPageEo(String expName, int pageNo, int pageSize, String taxonid) {
+    public Page<GeneExpression> initPageEo(String expName,String classification, int pageNo, int pageSize, String taxonid) {
 
         PageHelper.startPage(pageNo, pageSize,true); //line 1
-        Page<GeneExpression> resultList=geneExpressionMapper.initPageEo(expName,taxonid);
+        Page<GeneExpression> resultList=geneExpressionMapper.initPageEo(expName,classification,taxonid);
         return resultList;
     }
 
@@ -30,5 +30,8 @@ public class EoService {
         return expressionTermMapper.initPageEoTerms();
     }
 
+    public List<GeneExpression> expressionGene(String hdbid){
+        return geneExpressionMapper.expressionGene(hdbid);
+    }
 
 }

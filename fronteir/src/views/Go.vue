@@ -50,7 +50,7 @@
     </div>
     </div>
     <el-card shadow="none" class="border-card">
-    <el-tabs v-model="activeName" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
+    <el-tabs v-model="classification" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
     <!-- 动物tab -->
     <el-tab-pane label="Animal" name="animal" >
       <!-- <el-card shadow="none" class="tableCard" style="margin-top: 10px"> -->
@@ -156,10 +156,16 @@
                       <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
           </div>
           <div style="display: flex;">
+                    <img :src="singleTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+          </div>
+          <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
                       class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
           </div>
+         
           </div>
           <el-pagination
           
@@ -362,10 +368,16 @@
                     <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
         </div>
         <div style="display: flex;">
+                    <img :src="singleTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+          </div>
+        <div style="display: flex;">
                   <img :src="sameTraitIcon"   
                     style="margin-right: 6px;min-width=70px;height=70px;"
                     class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
         </div>
+        
         </div>
         <el-pagination
           class="trait-pag"
@@ -437,12 +449,12 @@
                 v-loading="gwasLoading"
                 max-height="500px"
               >
-                <el-table-column prop="geneId" label="Gene Id"></el-table-column>
-                <el-table-column prop="goName" label="Go Name"></el-table-column>
-                <el-table-column prop="goId" label="Detail Go Id"></el-table-column>
-                <el-table-column prop="topGoId" label="Go Id"></el-table-column>
-                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="taxonId" label="Taxon Id"></el-table-column>
+                <el-table-column align="center" prop="geneId" label="Gene Id"></el-table-column>
+                <el-table-column align="center" prop="goName" label="Go Name"></el-table-column>
+                <el-table-column align="center" prop="goId" label="Detail Go Id"></el-table-column>
+                <el-table-column align="center" prop="topGoId" label="Go Id"></el-table-column>
+                <el-table-column align="center" prop="speciesCommonName" label="Species"></el-table-column>
+                <el-table-column align="center" prop="taxonId" label="Taxon Id"></el-table-column>
               </el-table>
             </el-card>
         </div>
@@ -529,7 +541,6 @@ export default {
       showSubTableBox:false,
       gwasLoading:true,
       orthoLoading:true,
-      activeName: 'animal',
       drawer:false,
       direction:"ltr",
        // 保存同源物种，用于表格生成列
@@ -572,13 +583,13 @@ export default {
 
   methods: {
    
-    changeClass(tab){
+    changeClass(){
         this.speciesList=[];
         // this.loading = true;
         this.showOrthoSubTable=false;
         this.showSubTableBox=false;
-        this.classification=tab.label;
         this.$refs['table'].doLayout();
+        this.form.querySpecies='';
     },
 
     confirmbutton(){
@@ -592,6 +603,7 @@ export default {
       this.getGoData(this.traitItem.traitId,this.classification,this.pageSize,1,this.form.querySpecies)
     },
     handleCurrentChange(val) {
+      console.log("this.classification:",this.classification);
       if(this.classification=="animal"){
         this.loading_animal=true;
       }else{
@@ -614,44 +626,20 @@ export default {
       this.traitItem.traitId=value.goId;
       this.traitItem.definition=value.definition;
       this.traitItem.classification=value.topClass;
-      if(this.classification=="animal"){
+      // if(this.classification=="animal"){
         this.loading_animal=true;
-        this.getGoData(value.goId,this.classification,this.pageSize,1,this.form.querySpecies)
+        this.getGoData(value.goId,"animal",this.pageSize,1,this.form.querySpecies)
 
-      }else{
+      // }else{
         this.loading_plant=true;
-        this.getGoData(value.goId,this.classification,this.pageSize,1,this.form.querySpecies)
+        this.getGoData(value.goId,"plant",this.pageSize,1,this.form.querySpecies)
 
-      }
+      // }
+      this.currentPage4=1;
       data.checked = true;
-      // this.traitItem=value;
-      // this.$axios.get("http://localhost:9401/api/traits-item",{params: {traitID: value.traitDefID}}).then(response=>{
-      //   console.log("traitsItem:",response);
-      //   this.traitItem=response.data
-      // })
-      // console.log("params:",this.traitItem.traitDefId,value.traitDefID,this.classification,this.pageSize,1,this.form.querySpecies);
-      // this.activeName=value.classification;
-
-
-
-
-      // this.$axios.get(
-      //     "http://localhost:9401/api/traits/get-by-trait-name/" +
-      //       value.Name +
-      //       "?pageNo=" +
-      //       this.currentPage4 +
-      //       "&length=" +
-      //       this.pageSize
-      //   )
-      //   .then((response) => {
-      //     this.loading=false;
-      //     this.traitData = response.data.data;
-      //     this.totalSize = response.data.recordsTotal;
-      //     for(let item of this.traitData){
-      //       item.gwasNum=item.gwasId.split(",").length;
-      //     }
-      //     this.loading = false
-      //   })
+      this.showSubTableBox=false;
+      this.showOrthoSubTable=false;
+     
     },
     
   showOrthoInfoTable(rowdata,index){

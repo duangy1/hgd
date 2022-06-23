@@ -1,9 +1,6 @@
 package cn.ac.cncb.ngdc.syndb.controller;
 
-import cn.ac.cncb.ngdc.syndb.entity.DataTableResultInfo;
-import cn.ac.cncb.ngdc.syndb.entity.GeneExpression;
-import cn.ac.cncb.ngdc.syndb.entity.Ortho9031;
-import cn.ac.cncb.ngdc.syndb.entity.OrthoGo;
+import cn.ac.cncb.ngdc.syndb.entity.*;
 import cn.ac.cncb.ngdc.syndb.service.EoService;
 import cn.ac.cncb.ngdc.syndb.service.OrthoService;
 import com.github.pagehelper.Page;
@@ -35,7 +32,7 @@ public class ExpressionController {
 //            pageNo = start/length+1;
 //        }
         System.out.print("params:"+expName+","+classification+","+taxonid);
-        Page<GeneExpression> pageInfo= eoService.initPageEo(expName,pageNo,length,taxonid);
+        Page<GeneExpression> pageInfo= eoService.initPageEo(expName,classification,pageNo,length,taxonid);
         System.out.print("pageInfo:"+pageInfo);
         for(GeneExpression eodata : pageInfo){
             int taxon = eodata.getTaxonId();
@@ -53,4 +50,10 @@ public class ExpressionController {
         dataTableResultInfo.setRecordsFiltered(pageInfo.getTotal());
 
         return dataTableResultInfo;};
+
+    @RequestMapping(value = "/api/expression-gene", method = RequestMethod.GET)
+    @ResponseBody
+    public List<GeneExpression> expressionGene(String hdbId){
+        return eoService.expressionGene(hdbId);
+    }
 }

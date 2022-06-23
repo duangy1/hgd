@@ -11,4 +11,6 @@ public interface ExpressionTermMapper {
     List<ExpressionTerm> expressionInfoList(@Param(value="classification") String classification);
 
     List<ExpressionTerm> initPageEoTerms();
+
+
 }

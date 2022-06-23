@@ -53,7 +53,7 @@
     </div>
     </div>
     <el-card shadow="none" class="border-card">
-    <el-tabs v-model="activeName" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
+    <el-tabs v-model="classification" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
     <!-- 动物tab -->
     <el-tab-pane label="Animal" name="animal" >
       <!-- <el-card shadow="none" class="tableCard" style="margin-top: 10px"> -->
@@ -212,10 +212,7 @@
                   prop="tax1"
                   label="Taxon Id1">
               </el-table-column>
-              <el-table-column
-                  prop="ensemblId1"
-                  label="Ensembl Id">
-              </el-table-column>
+            
               
               <el-table-column
                   prop="hdbId1"
@@ -233,10 +230,7 @@
                   prop="hdbId2"
                   label="Protein2">
               </el-table-column>
-              <el-table-column
-              prop="entrezId"
-              label="Entrez Id">
-              </el-table-column>
+              
             </el-table>
           </div>
 
@@ -402,10 +396,7 @@
                   prop="tax1"
                   label="Taxon Id1">
               </el-table-column>
-              <el-table-column
-                  prop="ensemblId1"
-                  label="Ensembl Id">
-              </el-table-column>
+             
               
               <el-table-column
                   prop="hdbId1"
@@ -423,10 +414,7 @@
                   prop="hdbId2"
                   label="Protein2">
               </el-table-column>
-              <el-table-column
-              prop="entrezId"
-              label="Entrez Id">
-              </el-table-column>
+              
           </el-table>
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
@@ -532,7 +520,6 @@ export default {
       showSubTableBox:false,
       gwasLoading:true,
       orthoLoading:true,
-      activeName: 'animal',
       drawer:false,
       direction:"ltr",
        // 保存同源物种，用于表格生成列
@@ -576,14 +563,12 @@ export default {
 
   methods: {
    
-    changeClass(tab){
+    changeClass(){
         this.speciesList=[];
-        // this.loading = true;
         this.showOrthoSubTable=false;
-        
         this.showSubTableBox=false;
-        this.classification=tab.label;
         this.$refs['table'].doLayout();
+        this.form.querySpecies='';
     },
 
     confirmbutton(){
@@ -631,11 +616,9 @@ export default {
         this.getTraitData(value.traitDefID,value.classification,this.pageSize,1,this.form.querySpecies)
 
       }
+      this.currentPage4=1;
       data.checked = true;
-      
-      this.activeName=value.classification;
       this.classification=value.classification;
-
 
     },
     
@@ -679,10 +662,8 @@ export default {
     rowValue.speciesListData.forEach((id,idx)=>{
     if(id==index){
         let item=rowValue.orthoList[idx]
-        
         console.log("item:",item);
         ortholist.push(item)
-        // item.
     }})
     
     this.showOrthoSubTable = true;

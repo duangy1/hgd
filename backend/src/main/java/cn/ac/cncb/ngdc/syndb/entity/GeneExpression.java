@@ -24,4 +24,6 @@ public class GeneExpression {
 
     private String commonName;
 
+    private String classification;
+
 }

@@ -49,7 +49,7 @@
     </div>
     </div>
     <el-card shadow="none" class="border-card">
-    <el-tabs v-model="activeName" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
+    <el-tabs v-model="classification" style="margin-top:10px;margin-bottom: 1%;" @tab-click="changeClass">
     <!-- 动物tab -->
     <el-tab-pane label="Animal" name="animal" >
       <!-- <el-card shadow="none" class="tableCard" style="margin-top: 10px"> -->
@@ -61,7 +61,7 @@
                         v-for="(item,index) in querySpeciesList_animal"
                         :key="index.id"
                         :label="item.commonName"
-                        :value="item.commonName"
+                        :value="item.taxonId"
                         >
                     </el-option>
                 </el-select>
@@ -205,16 +205,12 @@
                   label="Species">
               </el-table-column>
               <el-table-column
-                  prop="species1.taxonId"
+                  prop="tax1"
                   label="Taxon Id1">
-              </el-table-column>
-              <el-table-column
-                  prop="ensemblId1"
-                  label="Ensembl Id">
               </el-table-column>
               
               <el-table-column
-                  prop="protein1"
+                  prop="hdbId1"
                   label="Protein1">
               </el-table-column>
               <el-table-column
@@ -222,16 +218,12 @@
                   label="Species2">
               </el-table-column>
               <el-table-column
-                  prop="species2.taxonId"
+                  prop="tax2"
                   label="Taxon Id2">
               </el-table-column>
               <el-table-column
-                  prop="protein2"
+                  prop="hdbId2"
                   label="Protein2">
-              </el-table-column>
-              <el-table-column
-              prop="entrezId"
-              label="Entrez Id">
               </el-table-column>
             </el-table>
           </div>
@@ -244,7 +236,7 @@
        
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" >
-          <h3 class="trait-sub-title">Gwas Detail Information</h3>
+          <h3 class="trait-sub-title">Expression Detail Information</h3>
         </div>
         <div id="trait-info">
             <!-- <el-card shadow="none" class="gwasDetailCard"> -->
@@ -255,11 +247,11 @@
                 max-height="400"
                 v-loading="gwasLoading"
               >
-                <el-table-column prop="varId" label="Var Id"></el-table-column>
-                <el-table-column prop="annotation" label="Expression Name"></el-table-column>
-                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
+                <el-table-column align="center" prop="geneId" label="Gene Id"></el-table-column>
+                <el-table-column align="center" prop="annotation" label="Expression Name"></el-table-column>
+                <el-table-column align="center" prop="bioProjectId" label="Bioproject Id"></el-table-column>
+                <el-table-column align="center" prop="commonName" label="Species"></el-table-column>
+                <el-table-column align="center" prop="taxonId" label="Taxon Id"></el-table-column>
               </el-table>
             <!-- </el-card> -->
         </div>
@@ -278,7 +270,7 @@
                     v-for="(item,index) in querySpeciesList_plant"
                     :key="index.id"
                     :label="item.commonName"
-                    :value="item.commonName"
+                    :value="item.taxonId"
                     >
                 </el-option>
             </el-select>
@@ -367,6 +359,11 @@
                     class="iconImg" />
                     <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
         </div>
+         <div style="display: flex;">
+                    <img :src="singleTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+          </div>
         <div style="display: flex;">
                   <img :src="sameTraitIcon"   
                     style="margin-right: 6px;min-width=70px;height=70px;"
@@ -399,36 +396,35 @@
             :border="false"
         >
             <el-table-column
-                prop="species.commonName"
-                label="Species"
-                width="180px">
-            </el-table-column>
-            <el-table-column
-                prop="species.taxonId"
-                label="Taxon Id">
-            </el-table-column>
-            <el-table-column
-                prop="gbiInfo.ensemblGeneId"
-                label="Ensembl Id">
-            </el-table-column>
-            <el-table-column
-                prop="gbiInfo.geneSymbol"
-                label="Gene Symbol">
-            </el-table-column>
-            <el-table-column
-                prop="protein"
-                label="Protein">
-            </el-table-column>
-            
-            <el-table-column
-            prop="entrezId"
-            label="Entrez Id">
-            </el-table-column>
+                  prop="commonName1"
+                  label="Species">
+              </el-table-column>
+              <el-table-column
+                  prop="tax1"
+                  label="Taxon Id1">
+              </el-table-column>
+              
+              <el-table-column
+                  prop="hdbId1"
+                  label="Protein1">
+              </el-table-column>
+              <el-table-column
+                  prop="commonName2"
+                  label="Species2">
+              </el-table-column>
+              <el-table-column
+                  prop="tax2"
+                  label="Taxon Id2">
+              </el-table-column>
+              <el-table-column
+                  prop="hdbId2"
+                  label="Protein2">
+              </el-table-column>
           </el-table>
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" style="padding-left:1.5%;margin-bottom:1.3%">
-          <h3 class="trait-sub-title">Gwas Detai Information</h3>
+          <h3 class="trait-sub-title">Expression Detai Information</h3>
         </div>
         <div id="trait-info">
             <el-card shadow="none" class="gwasDetailCard">
@@ -440,11 +436,11 @@
                 max-height="400"
                 v-loading="gwasLoading"
               >
-                <el-table-column align="center" prop="varId" label="Var Id"></el-table-column>
+                <el-table-column align="center" prop="geneId" label="Var Id"></el-table-column>
                 <el-table-column align="center" prop="annotation" label="Expression Name"></el-table-column>
+                <el-table-column align="center" prop="bioProjectId" label="Bioproject Id"></el-table-column>
                 <el-table-column align="center" prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column align="center" prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column align="center" prop="pvalue" label="Pvalue"></el-table-column>
+                <el-table-column align="center" prop="taxonId" label="Taxon Id"></el-table-column>
               </el-table>
             </el-card>
         </div>
@@ -529,7 +525,6 @@ export default {
       showSubTableBox:false,
       gwasLoading:true,
       orthoLoading:true,
-      activeName: 'animal',
       drawer:false,
       direction:"ltr",
        // 保存同源物种，用于表格生成列
@@ -568,13 +563,11 @@ export default {
 
   methods: {
    
-    changeClass(tab){
-        this.speciesList=[];
-        // this.loading = true;
+    changeClass(){
         this.showOrthoSubTable=false;
-        this.showGwasInfoTable=false;
-        this.classification=tab.label;
+        this.showSubTableBox=false;
         this.$refs['table'].doLayout();
+        this.form.querySpecies='';
     },
 
     confirmbutton(){
@@ -609,16 +602,15 @@ export default {
     },
     getInfoByTrait(value, data) {
       this.expItem.expName=value.label;
-      if(value.classification=="animal"){
-        this.loading_animal=true;
-        this.getTraitData(value.label,this.classification,this.pageSize,1,this.form.querySpecies);
-
-      }else{
-        this.loading_plant=true;
-        this.getTraitData(value.label,this.classification,this.pageSize,1,this.form.querySpecies)
-
-      }
+      this.loading_animal=true;
+      this.getTraitData(value.label,"animal",this.pageSize,1,this.form.querySpecies);
+      this.loading_plant=true;
+      this.getTraitData(value.label,"plant",this.pageSize,1,this.form.querySpecies)
+      
+      this.currentPage4=1;
       data.checked = true;
+      this.showSubTableBox=false;
+      this.showOrthoSubTable=false;
     },
     
   showOrthoInfoTable(rowData,index){
@@ -654,32 +646,30 @@ export default {
    },
   showGwasInfoTable(rowValue,index){
     console.log("rowValue,index:",rowValue,index);
-    this.showOrthoInfoTable(rowValue,index)
-  // 获取当前数据点的gwasid，需要修改后端逻辑，得到gwasid
 
-    // let ortholist=[];
+    let ortholist=[];
+    let hdblist=[rowValue.hdbId]
     rowValue.speciesListData.forEach((id,idx)=>{
       if(id==index){
         let item=rowValue.ortholist[idx]
         console.log("item:",item);
-        // ortholist.push(rowValue.orthoList[idx])
-        // item.
+        ortholist.push(item)
+        hdblist.push(item.hdbId)
     }})
-    let gwasid=rowValue.gwasId
-    let taxid=rowValue.gwasOrgid;
-    // rowValue.orthoList
-    // let orthoList=rowValue.orthoList[rowValue.speciesListData.indexOf(index)]
+    this.orthoTableData=ortholist;
+    this.orthoLoading=false;
     this.showSubTableBox=true;
-    this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid+"&organismId="+taxid+"&offset=0&pagesize=10&total=10")
-    .then(response=>{
-      console.log("gwas response:",response);
-      this.gwasInfoData=response.data
-      this.gwasLoading=false;
+    this.gwasInfoData=[];
+    hdblist.forEach(hdbid=>{
+      this.$axios.get("http://localhost:9401/api/expression-gene",{params:{'hdbId': hdbid}})
+      .then(response=>{
+        console.log("gwas response:",response);
+        this.gwasInfoData=this.gwasInfoData.concat(response.data);
+        this.gwasLoading=false;
+      })
     })
     this.showOrthoSubTable = true;
-    // this.orthoLoading=false;
-    // this.orthoTableData=[orthoList];
-    // console.log(orthoList);
+
    },
     hiligtDbCols({rowIndex}){
       if(rowIndex===1){
@@ -687,33 +677,7 @@ export default {
       }
       
     },
-    // iconClass(data,index){
-    //   // if(data.speciesListData.indexOf(index)>-1){
-    //     data.speciesListData.forEach((id,idx)=>{
-    //       // console.log("id,index:",id,index);
-    //       if(id==index){
-            
-    //         if( data.ortholist[idx].eoName!=null ){
-    //           // console.log("data.orthoList[idx]:",data.orthoList[idx].expName,data.expName);
-    //           let traitlist=data.ortholist[idx].eoName.split(",")
-    //           if(traitlist.indexOf(data.annotation)>-1){
-    //             console.log(1,"idx:",idx,"species:",data.ortholist[idx],"trait data:",data.annotation);
-    //             console.log("data.orthoList[idx]:",data.ortholist[idx].eoName,data.annotation);
-    //             return 1;
-    //           }else{
-    //             console.log(2);
-    //             console.log("data.orthoList[idx]:",data.ortholist[idx],data.annotation);
-    //           return 2;
-    //         }
-    //       }else{
-    //         return false
-    //       }
-    //       }else{
-    //         return false
-    //       }
-    //     })
-    //   // }
-    // },
+ 
    
     searchFilter(){
       if(this.classification=="animal"){
@@ -811,12 +775,10 @@ export default {
         console.log("response:",response);
         if(classification=="animal"){
           this.totalSize_animal = response.data.recordsTotal;
-          // this.speciesList_animal=response.data.data[0].headerList;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_animal=res;this.loading_animal=false;});
         
         }else{
           this.totalSize_plant = response.data.recordsTotal;
-          // this.speciesList_plant=response.data.data[0].headerList;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_plant=res; this.loading_plant=false;});
         }
 

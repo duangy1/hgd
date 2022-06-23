@@ -9,6 +9,7 @@
     <result column="bio_project_id" jdbcType="LONGVARCHAR" property="bioProjectId" />
     <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbId" />
     <result column="common_name" jdbcType="VARCHAR" property="commonName" />
+    <result column="classification" jdbcType="VARCHAR" property="classification" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneExpression">
     <result column="bio_project_id" jdbcType="LONGVARCHAR" property="bioProjectId" />
@@ -31,9 +32,12 @@
     select gene_id,annotation,taxon_id,bio_project_id,hdb_gene_id from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where gene_id=#{geneName}
   </select>
   <select id="initPageEo" resultMap="BaseResultMap">
-    select * from gene_expression where annotation=#{expName}
+    select * from gene_expression where annotation=#{expName} and classification=#{classification}
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
       and taxon_id = #{taxonid}
     </if>
+  </select>
+  <select id="expressionGene" resultMap="BaseResultMap">
+      select * from gene_expression where hdb_gene_id=#{hdbid}
   </select>
 </mapper>
