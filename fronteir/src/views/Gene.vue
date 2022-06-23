@@ -18,7 +18,10 @@
                      <div class="genefilter" style=" padding-bottom:10px;width:250px !important;" align="left">
                        
                        <el-form ref="form" size="small" align="left">
-                               <div class="filterheader"><i class="el-icon-caret-right"></i> Filter by Species</div>
+                               
+								
+							<div style="padding-top:10px;padding-left:10px;padding-botton:10px;"><el-button type="primary" size="small" @click="reset()">Clear</el-button></div>
+							<div class="filterheader"><i class="el-icon-caret-right"></i> Filter by Species</div>
                                <div class="filtercontent">
                                
                                    
@@ -132,6 +135,8 @@
 
 
                 <div style="clear:both;"></div>
+				<div style="text-align:left;padding-bottom:10px;"><el-tag v-for="tag in tags" :key="tag.name" closable :type="info" @close="closeTag(tag)"> {{tag.name}}</el-tag></div>
+				<div v-if="totalSize > 0">
                 <div align="left" style="padding-bottom:10px;"><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><b>Check All</b></el-checkbox></div> 
 				<el-checkbox-group  v-model="checkedHomolog" @change="handleCheckedHomologChange">
                 <div  v-for="item in tableData" :key="item.gbiId" style="text-align:left;">
@@ -156,6 +161,13 @@
                     <el-divider></el-divider>
                 </div>
 			</el-checkbox-group>
+			
+			</div>
+			<div v-else style="height:920px;text-align:left;">
+				<div style="padding-top:10px;padding-left:10px;">
+					No results.
+				</div>
+			</div>
             <div style="margin-top:10px; margin-left:0px;">
                     <el-pagination
                       @size-change="handleSizeChange"
@@ -270,6 +282,7 @@ export default {
  data(){
 
       return {
+		tags:[],
         checkAll:false,
 		checkedHomolog:[],
         traitAnimalvalue:[],
@@ -299,6 +312,16 @@ export default {
 		'expvalue' : 'selectExpFunc'
     },
     methods: {
+		closeTag(tag){
+			let index = this.tags.indexOf(tag);
+			this.tags.splice(index,1);
+			window.location.href="/gene";
+		},
+		reset(){
+			this.$router.push({
+				path: '/gene'
+			})
+		},
 		downloadTxt(){
 			console.log("download txt");
 			let traitselect="";
@@ -411,7 +434,20 @@ export default {
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
-                        
+                        var type= this.$route.query.taxid2;
+						if(type == null){
+							type=-1;
+						}
+			
+			
+						var keyword=this.$route.query.keyword;
+						if(keyword != null && keyword.length >0 ){
+							
+							if(type == null){
+								type=8;
+
+							}
+						}	
 
 
 
@@ -420,7 +456,7 @@ export default {
                 withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
               });
                 axiosInstance1
-                  .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                  .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                   .then(response => {
                       console.log(response)
                       this.tableData = response.data.data
@@ -487,14 +523,27 @@ export default {
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
-                        
+						var type= this.$route.query.taxid2;
+						if(type == null){
+							type=-1;
+						}
+			
+			
+						var keyword=this.$route.query.keyword;
+						if(keyword != null && keyword.length >0 ){
+							
+							if(type == null){
+								type=8;
+
+							}
+						}		
 
                          const axiosInstance1 = this.$axios.create({
                             headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -629,13 +678,26 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
                         
+						var type= this.$route.query.taxid2;
+						if(type == null){
+							type=-1;
+						}
+			
+			
+						var keyword=this.$route.query.keyword;
+						if(keyword != null && keyword.length >0 ){
+							
+							if(type == null){
+								type=8;
 
+							}
+						}		
                          const axiosInstance1 = this.$axios.create({
                             headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -696,7 +758,22 @@ export default {
             
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
-                        }                        
+                        }    
+
+						var type= this.$route.query.taxid2;
+						if(type == null){
+							type=-1;
+						}
+			
+			
+						var keyword=this.$route.query.keyword;
+						if(keyword != null && keyword.length >0 ){
+							
+							if(type == null){
+								type=8;
+
+							}
+						}							
                         
 
                          const axiosInstance1 = this.$axios.create({
@@ -704,7 +781,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -782,13 +859,27 @@ export default {
             
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
-                        }           
+                        }  
+						var type= this.$route.query.taxid2;
+						if(type == null){
+							type=-1;
+						}
+			
+			
+						var keyword=this.$route.query.keyword;
+						if(keyword != null && keyword.length >0 ){
+							
+							if(type == null){
+								type=8;
+
+							}
+						}						
                          const axiosInstance1 = this.$axios.create({
                             headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids, 'length': val}})
+                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword, 'length': val}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -871,14 +962,27 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         } 
               
-              
+						var type= this.$route.query.taxid2;
+						if(type == null){
+							type=-1;
+						}
+			
+			
+						var keyword=this.$route.query.keyword;
+						if(keyword != null && keyword.length >0 ){
+							
+							if(type == null){
+								type=8;
+
+							}
+						}
 
                                      const axiosInstance1 = this.$axios.create({
                                         headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                                         withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                                       });
                                         axiosInstance1
-                                          .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,  'pageNo': val}})
+                                          .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword,  'pageNo': val}})
                                           .then(response => {
                                               console.log(response)
                                               this.tableData = response.data.data
@@ -920,12 +1024,31 @@ export default {
 	if(taxonid != null && taxonid.length >0 ){
 		console.log(taxonid);
 		params['taxonids'] = taxonid;
+		this.tags.push({'name':taxonid});
 	}
 
 	var taxonid2 = this.$route.query.taxid2;
 	if(taxonid2 != null && taxonid2.length >0 ){
 		console.log(taxonid2);
 		params['orthtaxids'] = taxonid2;
+		this.tags.push({'name':taxonid2});
+	}
+	
+	var type= this.$route.query.taxid2;
+	if(type != null && type.length >0 ){
+		params['type'] = type;
+	}else{
+		params['type'] = -1;
+	}
+	
+	var keyword=this.$route.query.keyword;
+	if(keyword != null && keyword.length >0 ){
+		params['keyword'] = keyword;
+		this.tags.push({'name':keyword});
+		if(type == null){
+			type=8;
+			params['type'] = type;
+		}
 	}
 
   
