@@ -1,11 +1,9 @@
 package cn.ac.cncb.ngdc.syndb.service;
 
 import cn.ac.cncb.ngdc.syndb.entity.ExpressionTerm;
+import cn.ac.cncb.ngdc.syndb.entity.GoBasicTerm;
 import cn.ac.cncb.ngdc.syndb.entity.VOBasicTerm;
-import cn.ac.cncb.ngdc.syndb.mapper.BasicMapper;
-import cn.ac.cncb.ngdc.syndb.mapper.ExpressionTermMapper;
-import cn.ac.cncb.ngdc.syndb.mapper.TraitNameMapper;
-import cn.ac.cncb.ngdc.syndb.mapper.VOBasicTermMapper;
+import cn.ac.cncb.ngdc.syndb.mapper.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +27,9 @@ public class BasicService  {
     @Resource
     ExpressionTermMapper expressionTermMapper;
 
+    @Resource
+    GoBasicTermMapper goBasicTermMapper;
+
     public List selectTraitNameList(Object param) {
         return traitNameMapper.selectList((Map) param);
     }
@@ -39,5 +40,9 @@ public class BasicService  {
 
     public List<ExpressionTerm> expressionInfoList(@Param(value="classification") String classification){
         return expressionTermMapper.expressionInfoList(classification);
+    }
+
+    public List<GoBasicTerm> getGoTerms(){
+        return goBasicTermMapper.initPageGoTerms();
     }
 }

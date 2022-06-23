@@ -2,10 +2,7 @@ package cn.ac.cncb.ngdc.syndb.controller;
 
 import cn.ac.cncb.ngdc.syndb.bean.TreeSelectBasicBean;
 import cn.ac.cncb.ngdc.syndb.bean.TreeSelectBean;
-import cn.ac.cncb.ngdc.syndb.entity.ExpressionTerm;
-import cn.ac.cncb.ngdc.syndb.entity.SpeciesInfo;
-import cn.ac.cncb.ngdc.syndb.entity.TraitName;
-import cn.ac.cncb.ngdc.syndb.entity.VOBasicTerm;
+import cn.ac.cncb.ngdc.syndb.entity.*;
 import cn.ac.cncb.ngdc.syndb.service.BasicService;
 import cn.ac.cncb.ngdc.syndb.service.SpeciesService;
 import cn.ac.cncb.ngdc.syndb.service.TraitNameService;
@@ -318,6 +315,27 @@ public class BasicController {
         return treeSelectBeans;
     }
 
+
+    @RequestMapping(value="getGOTerm", method=RequestMethod.GET)
+    @ResponseBody
+    public List<TreeSelectBasicBean> getAllGOTerm(HttpServletRequest request){
+        List<TreeSelectBasicBean> treeSelectBeans = null;
+        treeSelectBeans = new ArrayList<TreeSelectBasicBean>();
+
+        List<GoBasicTerm> goTermList = basicService.getGoTerms();
+        if(goTermList != null && goTermList.size() >0 ){
+
+            for(GoBasicTerm goBasicTerm : goTermList){
+                TreeSelectBasicBean treeSelectBean = new TreeSelectBasicBean();
+                treeSelectBean.setId(goBasicTerm.getGoId()+ "");
+                treeSelectBean.setLabel(goBasicTerm.getGoAnnotations());
+
+                treeSelectBeans.add(treeSelectBean);
+            }
+        }
+
+        return treeSelectBeans;
+    }
 
 
 }

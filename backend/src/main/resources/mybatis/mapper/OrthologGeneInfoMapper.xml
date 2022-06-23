@@ -99,7 +99,9 @@
     select count(*) from variation_all where hdb_gene_id=#{geneId} and taxon_id=#{taxonId}
   </select>
 
-
+  <select id="selectGOCountByGeneAndTaxon" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+    select count(*) from gene_go_all where hdb_gene_id=#{geneId} and taxon_id=#{taxonId}
+  </select>
 
 
 </mapper>

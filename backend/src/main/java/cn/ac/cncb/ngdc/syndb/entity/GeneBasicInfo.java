@@ -51,7 +51,7 @@ public class GeneBasicInfo {
 
     private int traitCount;
 
-    private int GoCount;
+    private int goCount;
 
     private String taxonName;
 
@@ -68,5 +68,6 @@ public class GeneBasicInfo {
 
     private int varCount;
     private int expCount;
+
 
 }

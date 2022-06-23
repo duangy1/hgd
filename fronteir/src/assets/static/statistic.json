@@ -44,8 +44,8 @@
 },
 "go2species":{
     "title":"The Number of Homolog Gene With Gene Ontology Annotation On Each Species",
-    "data":[33971,20300,15506,37453,22971,18212,23259,4145,19385,21944,23524,16718,49,25022,9679,10733,3747,10268,21120],
-    "xaxis":["Brassica napus","Capsicum annuum","Cucumis sativus","Glycine max","Manihot esculenta","Oryza sativa Japonica Group","Populus trichocarpa","Solanum lycopersicum","Solanum tuberosum","Sorghum bicolor","Thale cress","Triticum aestivum","Vitis vinifera","Zea mays","Celegans","Fruitfly","Saccharomyces cerevisiae","Xenopus","Zebrafish"]
+    "data":[9766,3485,14993,6784,11171,17222,11901,8280,49,14853,17136,14407,17487,10410,15969,10277,18231,14869,25682,16115,17034,29047,18271,2956,8859,19944,15338],
+    "xaxis":["Bread wheat","Brewer's yeast","Cat","Celegans","Chicken","chimpanzee","Cucumber","Fruitfly","Grape","Horse","human","Macaca mulatta","Manihot esculenta","Mouse","Pepper","Pig","Poplor","Potato","Rapeseed","Rat","Sorghum","Soybean","Tair","Tomato","Xenopus","Zea mays","Zebrafish"]
 },
 "go2homologGene":{
     "title":"The Number of Homolog Gene On Each Gene Ontology Annotation",

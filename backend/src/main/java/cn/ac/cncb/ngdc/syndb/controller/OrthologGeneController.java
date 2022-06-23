@@ -33,7 +33,7 @@ public class OrthologGeneController {
 
     @RequestMapping(value="filterHomolog", method= RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo browseOrthologGene(String taxonids, String traitids,String goids,String variantids,String expids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+    public DataTableResultInfo browseOrthologGene(String taxonids, String traitids,String goids,String variantids,String expids,String orthtaxids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
                                                   @RequestParam(value = "length", required = false, defaultValue = "5") Integer length,
                                                   @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                                   @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo){
@@ -127,10 +127,27 @@ public class OrthologGeneController {
             }
             else{
                 System.out.println("goids --------"+goids);
-                explist.add(goids);
+                golist.add(goids);
             }
 
             System.out.println(goids);
+        }
+
+
+        List orthtaxonlist = new ArrayList();
+        if(orthtaxids != null && orthtaxids.length() >0 ){
+            if(orthtaxids.indexOf(",")>-1){
+                String [] taxons = orthtaxids.split("\\,");
+                if(taxons != null && taxons.length>0){
+                    for(String str : taxons){
+                        orthtaxonlist.add(str);
+                    }
+                }
+            }
+            else{
+                System.out.println("orthtaxids --------"+orthtaxids);
+                orthtaxonlist.add(orthtaxids);
+            }
         }
 
 
@@ -156,6 +173,8 @@ public class OrthologGeneController {
         }
 
 
+
+
         Page<GeneBasicInfo> pageInfo = orthologGeneService.filterHomologGene(pageNo,length,param);
         if(pageInfo != null && pageInfo.size()>0){
 
@@ -165,7 +184,22 @@ public class OrthologGeneController {
                 int taxonId = geneBasicInfo.getTaxonId();
                 int speciesType = geneBasicInfo.getSpeciesType();
 
-                List orthoGeneBeanList = orthologGeneService.getHomologGene(speciesType,geneid,taxonId);
+                String gene="";
+                if(geneBasicInfo.getGeneSymbol() != null && geneBasicInfo.getGeneSymbol().length()>0){
+                    gene = geneBasicInfo.getGeneSymbol();
+                    geneBasicInfo.setShowGeneType(1);
+                }else if(geneBasicInfo.getEnsemblGeneId() != null && geneBasicInfo.getEnsemblGeneId().length() >0 ){
+                    gene = geneBasicInfo.getEnsemblGeneId();
+                    geneBasicInfo.setShowGeneType(2);
+                }else if(geneBasicInfo.getEntrezGene() != null && geneBasicInfo.getEntrezGene().length()>0){
+                    gene = geneBasicInfo.getEntrezGene();
+                    geneBasicInfo.setShowGeneType(3);
+                }else {
+                    gene = geneBasicInfo.getHdbGeneId();
+                    geneBasicInfo.setShowGeneType(4);
+                }
+
+                List orthoGeneBeanList = orthologGeneService.getHomologGene(speciesType,geneid,gene,taxonId,orthtaxonlist);
                 if(orthoGeneBeanList != null) {
                     geneBasicInfo.setOrthoGeneBeanList(orthoGeneBeanList);
                 }
@@ -186,20 +220,11 @@ public class OrthologGeneController {
                 int varcount = orthologGeneService.selectVarCountByGeneAndTaxon(other);
                 geneBasicInfo.setVarCount(varcount);
 
-                String gene="";
-                if(geneBasicInfo.getGeneSymbol() != null && geneBasicInfo.getGeneSymbol().length()>0){
-                    gene = geneBasicInfo.getGeneSymbol();
-                    geneBasicInfo.setShowGeneType(1);
-                }else if(geneBasicInfo.getEnsemblGeneId() != null && geneBasicInfo.getEnsemblGeneId().length() >0 ){
-                    gene = geneBasicInfo.getEnsemblGeneId();
-                    geneBasicInfo.setShowGeneType(2);
-                }else if(geneBasicInfo.getEntrezGene() != null && geneBasicInfo.getEntrezGene().length()>0){
-                    gene = geneBasicInfo.getEntrezGene();
-                    geneBasicInfo.setShowGeneType(3);
-                }else {
-                    gene = geneBasicInfo.getHdbGeneId();
-                    geneBasicInfo.setShowGeneType(4);
-                }
+                //
+                int goCount = orthologGeneService.selectGOCountByGeneAndTaxon(other);
+                geneBasicInfo.setGoCount(goCount);
+
+
 
                 geneBasicInfo.setShowGeneName(gene);
 

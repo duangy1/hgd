@@ -323,7 +323,18 @@ export default {
       //     this.totalSize=response.data.length;
       //     this.speciesTableData=this.speciesData.slice(0,this.pageSize);
       // })
-      console.log("paramclass:",paramclass);
+		
+		var index1 = paramclass.data[0];//x
+		var index2 = paramclass.data[1];//y
+		console.log(index1+","+index2);
+	
+		console.log("paramclass:",paramclass);
+		var taxid1=this.heatmapData[1][index1].taxonId;
+		var taxid2=this.heatmapData[1][index2].taxonId;
+		this.$router.push({
+          path: '/gene',
+          query:{taxid1,taxid2}
+        })
     },
     handleCurrentChange(){
       let num1=(this.currentPage>0?this.currentPage-1:0)*this.pageSize;

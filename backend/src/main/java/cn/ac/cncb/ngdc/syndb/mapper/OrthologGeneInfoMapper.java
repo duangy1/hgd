@@ -17,4 +17,6 @@ public interface OrthologGeneInfoMapper {
     int selectExpCountByGeneAndTaxon(Map param);
 
     int selectVarCountByGeneAndTaxon(Map param);
+
+    int selectGOCountByGeneAndTaxon(Map param);
 }

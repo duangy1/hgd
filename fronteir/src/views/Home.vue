@@ -13,7 +13,7 @@
             <p class="db-info">HDB integrated  homolog gene with traits, SNPs, expression for housed animals and plants from public resources.</p>
           </div> -->
           
-          <div class="search-box" >
+          <div class="search-box" style="padding-top:40px;">
             <el-select :popper-append-to-body="false" placeholder="HDB" style="float:left;height: 50px !important;"> 
                 <el-option
                   v-for="item in dataClass"
@@ -51,13 +51,14 @@
         <h3 class="feature-species">Feature Species</h3>
     </div> -->
     <div class="container">
-      <div class="engineer-slider owl-theme owl-carousel">
+      <div class="engineer-slider owl-theme owl-carousel" style="padding-top:30px;">
 
       <!-- <div class="engineer-item">
-        <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer">
+		<a href="/gene?taxonid=9606"> <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer">
         <div class="engineer-bottom">
           <h4>Homo sapines</h4>
         </div>
+		</a>
       </div> -->
       <!-- <div class="engineer-item">
       <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
@@ -68,18 +69,18 @@
 
 
       <div class="engineer-item">
-        <img src="../assets/img/species/Rattus_norvegicus.svg" alt="Engineer">
+        <a href="/gene?taxid1=9913"><img src="../assets/img/species/cattle.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
-          <h4>Rattus norvegicus</h4>
-          <!-- <span>Head Engineer</span> -->
-        </div>
+          <h4><i>Bos taurus</i></h4>
+        </div></a>
       </div>
 
       <div class="engineer-item">
-        <img src="../assets/img/species/Bos_taurus.svg" alt="Engineer">
+       <a href="/gene?taxid1=9031"><img src="../assets/img/species/chicken.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
-          <h4>Bos taurus</h4>
+          <h4><i>Gallus gallus</i></h4>
         </div>
+		</a>
       </div>
 
       <!-- <div class="engineer-item">
@@ -96,42 +97,42 @@
       </div> -->
 
       <!-- <div class="engineer-item">
-      <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
+      <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer" >
       <div class="engineer-bottom">
       <h4>Danio rerio</h4>
       </div>
       </div>
       -->
       
-       <div class="engineer-item">
-      <img src="../assets/img/species/Brassica_napus.svg" alt="Engineer">
+      <div class="engineer-item">
+      <a href="/gene?taxid1=9823"><img src="../assets/img/species/pig.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
-      <h4>Brassica napus</h4>
-      </div>
+      <h4><i>Sus scrofa</i></h4>
+      </div></a>
       </div>
       
       <div class="engineer-item">
-      <img src="../assets/img/species/Glycine_max.svg" alt="Engineer">
+      <a href="/gene?taxid1=4530"><img src="../assets/img/species/rice.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
-      <h4>Glycine max</h4>
-      </div>
+      <h4><i>Oryza sativa</i></h4>
+      </div></a>
       </div>
       <div class="engineer-item">
-      <img src="../assets/img/species/Gossypium_hirsutum.svg" alt="Engineer">
+      <a href="/gene?taxid1=4577"><img src="../assets/img/species/maize.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
-      <h4>Gossypium hirsutum</h4>
-      </div>
+      <h4><i>Zea mays</i></h4>
+      </div></a>
       </div>
 
       <div class="engineer-item">
-      <img src="../assets/img/species/Saccharomyces_cerevisiae.svg" alt="Engineer">
+      <a href="/gene?taxid1=3708"><img src="../assets/img/species/rapseed.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
-      <h4>Saccharomyces Cerevisiae</h4>
-      </div>
+      <h4><i>Brassica napus</i></h4>
+      </div></a>
       </div>
 
       <!-- <div class="engineer-item">
-      <img src="../assets/img/species/Caenorhabditis_elegans.svg" alt="Engineer">
+      <img src="../assets/img/species/Caenorhabditis_elegans.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4>Caenorhabditis elegans</h4>
       </div>
