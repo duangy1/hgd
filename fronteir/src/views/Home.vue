@@ -39,7 +39,7 @@
             <a href="#" class="example-txt">e.g.&nbsp;</a>
             
             <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Gallus">Gallus;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Chicken">Pig;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Pig">Pig;</el-link>
             <el-link type="info" class="eg-ele" href="/gene?type=2&keyword=GRK3">GRK3;</el-link>     
             <el-link type="info" class="eg-ele" href="/gene?type=3&keyword=ENSGALG00000000011">ENSGALG00000000011;</el-link>
 			<el-link type="info" class="eg-ele" href="/gene?type=4&keyword=ENSGALP00000000096">ENSGALP00000000096;</el-link>
