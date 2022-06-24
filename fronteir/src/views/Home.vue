@@ -12,30 +12,40 @@
             <h1 class="db-title">Homolog gene Database</h1>
             <p class="db-info">HDB integrated  homolog gene with traits, SNPs, expression for housed animals and plants from public resources.</p>
           </div> -->
-          
+          <el-form :inline="true" :form="searchForm"  >
           <div class="search-box" style="padding-top:40px;">
-            <el-select :popper-append-to-body="false" placeholder="HDB" style="float:left;height: 50px !important;"> 
+			
+            <el-form-item>
+			<el-select v-model="searchForm.type" :popper-append-to-body="false" placeholder="HGD" style="float:left;height: 50px !important;text-align:left;width:200px !important;"> 
                 <el-option
                   v-for="item in dataClass"
-                  :key="item.id"
-                  :label="item"
-                  :value="item"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
                   >
                 </el-option>
             </el-select>
-            <el-input size="large" prefix-icon="el-icon-search"  placeholder="Enter query..." style="float:left;width: 100%;" ></el-input>
-            <el-button class="search-button" size="medium" type="primary">Search</el-button>
-            
+			</el-form-item>
+			<el-form-item>
+				<el-input  v-model="searchForm.keyword" prefix-icon="el-icon-search"  placeholder="Enter query..." style="float:left;width: 400px;" ></el-input>
+			</el-form-item>
+			<el-form-item>
+				<el-button class="search-button"   type="primary" size="small" @click="onSubmit">Search</el-button>
+			</el-form-item>
+           
           </div>
+		</el-form>
           <div class="egs">
-            <a href="#" class="example-txt">e.g:</a>
+            <a href="#" class="example-txt">e.g.&nbsp;</a>
             
-            <el-link type="info" class="eg-ele">Gallus;</el-link>
-            <el-link type="info" class="eg-ele">Chicken;</el-link>
-            <el-link type="info" class="eg-ele">P18660;</el-link>
-            
-            <el-link type="info" class="eg-ele">FBpp0081737;</el-link>
-            <el-link type="info" class="eg-ele">ENSGALG00000008542;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Gallus">Gallus;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Pig">Pig;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=2&keyword=GRK3">GRK3;</el-link>     
+            <el-link type="info" class="eg-ele" href="/gene?type=3&keyword=ENSGALG00000000011">ENSGALG00000000011;</el-link>
+			<el-link type="info" class="eg-ele" href="/gene?type=4&keyword=ENSGALP00000000096">ENSGALP00000000096;</el-link>
+			<el-link type="info" class="eg-ele" href="/gene?type=5&keyword=101750305">101750305;</el-link>
+			<el-link type="info" class="eg-ele" href="/gene?type=6&keyword=101750305">F1NMX3;</el-link>
+			<el-link type="info" class="eg-ele" href="/gene?type=7&keyword=101750305">protein_coding;</el-link>
           </div>
         </div>
       </div>
@@ -644,15 +654,33 @@ export default {
   return{
     showModule:false,
     dataClass:[
-      "species",
-      "Ensembl Gene Id"
+		{value:'1',label:'Organism'},
+		{value:'2',label:'Gene Symbol/Synonym'},
+		{value:'3',label:'Ensembl Gene'},
+		{value:'4',label:'Ensembl Protein'},
+		{value:'5',label:'Entrez Gene'},
+		{value:'6',label:'Uniprot Id'},
+		{value:'7',label:'BioType'},
+		{value:'8',label:'All Fields'}
     ],
+	searchForm:{
+		type:'',
+		keyword:''
+	},
     activeName: 'first'
   }
 },
   methods:{
     // animate:animate()
-    
+    onSubmit(){
+		var type=this.searchForm.type;
+		var keyword=this.searchForm.keyword;
+		this.$router.push({
+          path: '/gene',
+          query:{type,keyword}
+        })
+		
+	}
   },
 }
 </script>

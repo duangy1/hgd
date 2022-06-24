@@ -58,6 +58,39 @@
     select a.gbi_id,a.hdb_gene_id,a.ensembl_gene_id,a.entrez_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id,
     a.gene_description,a.gwas_gene_id,b.latin_name as taxon_name,b.species_type from gene_basic_info_1 a left join species b
     on a.taxon_id=b.taxon_id where 1=1
+    <if test="species != null">
+      and ( (b.latin_name like concat('%',#{species},'%') ) or (b.common_name like concat('%',#{species},'%') )  )
+    </if>
+    <if test="symbol != null">
+      and ( (a.gene_symbol like concat('%',#{symbol},'%') ) or (a.gene_synonym like concat('%',#{symbol},'%') ) )
+    </if>
+    <if test="ensgene != null">
+      and a.ensembl_gene_id like concat('%',#{ensgene},'%')
+    </if>
+    <if test="enspro != null">
+      and a.enspro_id like concat('%',#{enspro},'%')
+    </if>
+    <if test="entrez != null">
+      and a.entrez_gene_id like concat('%',#{entrez},'%')
+    </if>
+    <if test="uniprot != null">
+      and a.uniprot_id like concat('%',#{uniprot},'%')
+    </if>
+    <if test="biotype != null">
+      and a.gene_type like concat('%',#{biotype},'%')
+    </if>
+    <if test="allfield != null">
+      and ( (a.gene_type like concat('%',#{allfield},'%'))
+      or (a.gene_type like concat('%',#{allfield},'%'))
+      or (a.uniprot_id like concat('%',#{allfield},'%') )
+      or (a.entrez_gene_id like concat('%',#{allfield},'%'))
+      or (a.enspro_id like concat('%',#{allfield},'%'))
+      or (a.ensembl_gene_id like concat('%',#{allfield},'%'))
+      or ((a.gene_symbol like concat('%',#{allfield},'%') ) or (a.gene_synonym like concat('%',#{allfield},'%') ) )
+      or ((b.latin_name like concat('%',#{allfield},'%') ) or (b.common_name like concat('%',#{allfield},'%') ) )
+      )
+    </if>
+
     <if test="hdbgeneList != null">
         and a.hdb_gene_id in
       <foreach item="hdbgene" index="index" collection="hdbgeneList"  open="(" separator="," close=")">
