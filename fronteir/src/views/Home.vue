@@ -336,106 +336,141 @@
                         <div class="sppb-col-md-4" id="left-mofule">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="http://localhost:9405/gene"
+                              href="/gene"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
                                 src="../assets/img/blog1.jpg"
-                                alt="Top 5 Things That You Need To Have In Your Garden"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="http://localhost:9405/gene">
+                              <a href="/species">
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
-                                  itemprop="datePublished">01
+                                  itemprop="datePublished">
                                   </span><span
-                                  class="sppb-meta-category">Gene</span>
+                                  class="sppb-meta-category">Species</span>
                               </div>
                               </a>
-                              <h3><a href="http://localhost:9405/gene"
-                                  itemprop="url">Variations,Go And Expression Of Gene</a></h3>
+                              <h3><a href="/species"
+                                  itemprop="url">Homolog Pairs Heatmap</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
+                                <p>16 animals</p>
+								<p>16 plants</p>
+								<p>5 other organism</p>
                               </div><a
                                 class="sppb-readmore"
-                                href="http://localhost:9405/gene"
+                                href="/documentation"
                                 itemprop="url">Read
                                 More</a>
                             </div>
                           </div>
                         </div>
                         
-                        <div class="sppb-col-md-4">
+						<div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="http://localhost:9405/traits"
+                              href="/gene"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog2.jpg"
-                                alt="The Best Tools Needed For Setting Up Your Plant"
+                                src="../assets/img/blog5.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="http://localhost:9405/traits">
+                              <a href="/gene">
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
-                                  itemprop="datePublished">02
+                                  itemprop="datePublished">
                                   </span><span
-                                  class="sppb-meta-category">Traits</span>
+                                  class="sppb-meta-category">Gene</span>
                               </div>
                               </a>
-                              <h3><a href="http://localhost:9405/traits"
-                                  itemprop="url">The
-                                  Traits Related With
-                                  Ortholog Gene Info</a></h3>
+                              <h3><a href="/gene"
+                                  itemprop="url">Homolog Gene Browse</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
+								<p>&nbsp;</p>
+								<p>37 species</p>
+                                <p>23,399,653 Homolog Protein Pairs</p>
                               </div><a
                                 class="sppb-readmore"
-                                href="http://localhost:9405/traits"
+                                href="/documentation"
                                 itemprop="url">Read
                                 More</a>
                             </div>
                           </div>
                         </div>
+						
+						
                         <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="http://localhost:9405/variants"
+                              href="/traits"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog3.jpg"
-                                alt="Main Rules: Landscape Design And What You See"
+                                src="../assets/img/blog2.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="http://localhost:9405/variants">
+                              <a href="/traits">
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
-                                  itemprop="datePublished">03
+                                  itemprop="datePublished">
+                                  </span><span
+                                  class="sppb-meta-category">Traits</span>
+                              </div>
+                              </a>
+                              <h3><a href="/traits"
+                                  itemprop="url">
+                                  Traits Associated with Homolog Gene</a></h3>
+                              <div
+                                class="sppb-article-introtext">
+                                <p>6 species</p>
+								<p>15 trait ontology term</p>
+								<p>13,209 homolog gene</p>
+                              </div><a
+                                class="sppb-readmore"
+                                href="/documentation"
+                                itemprop="url">Read
+                                More</a>
+                            </div>
+                          </div>
+                        </div>
+                        
+						
+						<div class="sppb-col-md-4">
+                          <div class="sppb-addon-article"><a
+                              class="sppb-article-img-wrap"
+                              href="/variants"
+                              itemprop="url"><img
+                                class="sppb-img-responsive"
+                                src="../assets/img/blog3.jpg"
+                                itemprop="thumbnailUrl"
+                                loading="lazy"></a>
+                            <div
+                              class="sppb-article-info-wrap">
+                              <a href="/variants">
+                              <div class="article-meta">
+                                <span
+                                  class="sppb-meta-date"
+                                  itemprop="datePublished">
                                   </span><span
                                   class="sppb-meta-category">Variation</span>
                               </div>
                               </a>
-                              <h3><a href="http://localhost:9405/variants"
-                                  itemprop="url">The Variations Related With Homolog Gene Info</a></h3>
+                              <h3><a href="/variants"
+                                  itemprop="url">Variations Related with Homolog Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
+                                <p>11 species</p>
+								<p>18 sequence ontology term</p>
+								<p>146,621 homolog gene</p>
                               </div><a
                                 class="sppb-readmore"
                                 href="javascript:;"
@@ -447,37 +482,36 @@
                         <div class="sppb-col-md-4" id="left-mofule">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="http://localhost:9405/expression"
+                              href="/expression"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
                                 src="../assets/img/blog4.jpg"
-                                alt="All You Need To Know About The Latest Trends"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="http://localhost:9405/expression">
+                              <a href="/expression">
                               <div class="article-meta">
                                 
                                 <span
                                   class="sppb-meta-date"
-                                  itemprop="datePublished">04
+                                  itemprop="datePublished">
                                 </span>
                                   <span
                                   class="sppb-meta-category">Expression</span>
                                
                               </div>
                                </a>
-                              <h3><a href="http://localhost:9405/expression"
-                                  itemprop="url">The Expression Related With Homolog Gene Info</a></h3>
+                              <h3><a href="/expression"
+                                  itemprop="url">Expression Related with Homolog Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
+                                <p>22 species</p>
+								<p>55 expression ontology term</p>
+								<p>403,655 homolog gene</p>
                               </div><a
                                 class="sppb-readmore"
-                                href="http://localhost:9405/expression"
+                                href="/documentation"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -487,11 +521,10 @@
                         <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="http://localhost:9405/go"
+                              href="/go"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
                                 src="../assets/img/blog5.jpg"
-                                alt="Main Rules: Landscape Design And What You See"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
@@ -499,100 +532,27 @@
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
-                                  itemprop="datePublished">05
+                                  itemprop="datePublished">
                                   </span><span
                                   class="sppb-meta-category">Gene Ontology</span>
                               </div>
-                              <h3><a href="http://localhost:9405/go"
-                                  itemprop="url">The Gene Ontology Related With Homolog Gene Info</a></h3>
+                              <h3><a href="/go"
+                                  itemprop="url">Gene Ontology Related with Homolog Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
+                               <p>28 species</p>
+								<p>58 gene ontology term</p>
+								<p>384,684 homolog gene</p>
                               </div><a
                                 class="sppb-readmore"
-                                href="http://localhost:9405/go"
+                                href="/documentation"
                                 itemprop="url">Read
                                 More</a>
                             </div>
                           </div>
                         </div>
 
-                        <div class="sppb-col-md-4">
-                          <div class="sppb-addon-article"><a
-                              class="sppb-article-img-wrap"
-                              href="http://localhost:9405/species"
-                              itemprop="url"><img
-                                class="sppb-img-responsive"
-                                src="../assets/img/blog5.jpg"
-                                alt="How To Plant Your Favorite Tree In The Best Pot"
-                                itemprop="thumbnailUrl"
-                                loading="lazy"></a>
-                            <div
-                              class="sppb-article-info-wrap">
-                              <a href="http://localhost:9405/species">
-                              <div class="article-meta">
-                                <span
-                                  class="sppb-meta-date"
-                                  itemprop="datePublished">06
-                                  </span><span
-                                  class="sppb-meta-category">Species</span>
-                              </div>
-                              </a>
-                              <h3><a href="http://localhost:9405/species"
-                                  itemprop="url">Homolog
-                                  Informations About The Species </a></h3>
-                              <div
-                                class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
-                              </div><a
-                                class="sppb-readmore"
-                                href="http://localhost:9405/species"
-                                itemprop="url">Read
-                                More</a>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- <div class="sppb-col-md-4">
-                          <div class="sppb-addon-article"><a
-                              class="sppb-article-img-wrap"
-                              href="javascript:;"
-                              itemprop="url"><img
-                                class="sppb-img-responsive"
-                                src="../assets/img/blog6.jpg"
-                                alt="The Connetion Between Soul And Outside Garden"
-                                itemprop="thumbnailUrl"
-                                loading="lazy"></a>
-                            <div
-                              class="sppb-article-info-wrap">
-                              <a href="javascript:;">
-                              <div class="article-meta">
-                                <span
-                                  class="sppb-meta-date"
-                                  itemprop="datePublished">06
-                                  </span><span
-                                  class="sppb-meta-category">Visualization</span>
-                              </div>
-                              </a>
-                              <h3><a href="javascript:;"
-                                  itemprop="url">See Visualizations Of The Ortholog Gene In Multiple Species</a></h3>
-                              <div
-                                class="sppb-article-introtext">
-                                Suspendisse ut mattis
-                                nibh, nec porttitor orci
-                                ligula nunc, elementum.
-                              </div><a
-                                class="sppb-readmore"
-                                href="javascript:;"
-                                itemprop="url">Read
-                                More</a>
-                            </div>
-                          </div>
-                        </div> -->
+                       
                       </div>
                     </div>
                   </div>

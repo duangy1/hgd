@@ -72,7 +72,7 @@
                                 1.What is Homolog Gene Database?
                             </div>
                             <div class="section-info">
-                                Homolog Gene Database (HDB) is an integrated homolog gene database from public homolog database for domestic animals, plants and model organisms. Currently, there are 16 domestic animals ,16 domestic plants and 3 model organisms, which housed xxxxx homolog protein pairs in all. The homolog gene information from 5 public data sources are housed including OMA, eggnog, . At the same time, gene annotated information are widely collected and integrated from NDGC databases including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HDB.
+                                Homolog Gene Database (HGD) is an integrated homolog gene database from public homolog database for domestic animals, plants and model organisms. Currently, there are 16 domestic animals ,16 domestic plants and 5 model organisms, which housed 23,399,653 homolog protein pairs in all. The homolog gene information from 5 public data sources are housed including EggNog,Oma,Panther,Treefam,Hieranoid,Inparanoid. At the same time, gene annotated information are widely collected and integrated from NDGC databases including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HGD.
                             </div>
                         </div>
                         <div class="section section-2" id="item-pos-2">
@@ -80,7 +80,7 @@
                                 2.Data Browse
                             </div>
                             <div class="section-info">
-                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HDB.
+                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HGD.
                             </div>
                         </div>
                         <div class="section section-1" id="item-pos-3">
@@ -102,7 +102,7 @@
                                 2.2 Trait Browse
                             </div>
                             <div class="section-info">
-                                The trait information from GWAS database in NGDC are integrated. HDB collects xxxxx trait with gene information of xxxx animals and xxxx plants from GWAS. After mapped to the homolog gene in HDB, user can browse the trait information for multiple organisms at the same time. <br /><br />
+                                The trait information from GWAS database in NGDC are integrated. HGD collects 26,023 trait ontology with gene annotation of 6 animals and 5 plants from GWAS. After mapped to the homolog gene in HGD, user can browse the trait information for multiple organisms at the same time. <br /><br />
                                 Users can choose the trait term from the trait ontology on the left panel. Then a gene list for the chosen trait will be shown as follows (Figure2). A basic information including trait id, name, definition for the trait term will be shown in the upper page. The table column for the trait gene list including trait name, species common name, taxon id and common name of multiple organism. The blue square in the organism’s column means this organism has homolog gene with query gene of given trait. The green square means this organism has homolog gene with the same trait of the query gene of given trait. <br /><br />
                                 Click the colored square, two more detailed tables with homolog gene and GWAS trait information will be shown separately.<br /><br />
                                 Users can filter the shown organism from the organism check list.
@@ -116,7 +116,7 @@
                                 2.3 Variation Browse
                             </div>
                             <div class="section-info">
-                                The variation information from GVM database in NGDC are integrated. HDB collects xxxxx variations with ensembl VEP annotated information of xxxx animals and xxxx plants from GVM. After mapped to the homolog gene in HDB, user can browse the variation information with VEP annotated in gene for multiple organisms at the same time. <br/><br/>
+                                The variation information from GVM database in NGDC are integrated. HGD collects 1,694,958 variations with ensembl VEP annotated information of 10 animals and 13 plants from GVM. After mapped to the homolog gene in HGD, user can browse the variation information with VEP annotated in gene for multiple organisms at the same time. <br/><br/>
                                 Users can choose the term from the variation ontology on the left panel. Then a gene list for the chosen VEP annotated will be shown as follows (Figure3). A basic information including trait id, name, definition for the variation will be shown in the upper page. The table column for the VEP annotated gene list including VEP annotated consequence type, species common name, taxon id and common name of multiple organism. The blue square in organism’s column means this organism has homolog gene with query gene of given VEP annotated term. The green square means this organism has homolog gene with the same VEP annotated term of the query gene of given term.<br/><br/> 
                                 Click the colored square, two more detailed tables with homolog gene and GVM variation information will be shown separately.<br/><br/>
                                 Users can filter the shown organism from the organism check list.
@@ -130,7 +130,7 @@
                                 2.4 Expression Browse
                             </div>
                             <div class="section-info">
-                                HDB integrates gene expression from GEN database in NGDC. HDB houses xxxxx gene expression profile of xxxx animals and xxxx plants from GEN. After mapped to the homolog gene in HDB, user can browse the expression information for multiple organisms at the same time. <br/><br/>
+                                HGD integrates gene expression from GEN database in NGDC. HGD houses 8,541,271 gene with expression ontology of 25 organisms from GEN. After mapped to the homolog gene in HGD, user can browse the expression information for multiple organisms at the same time. <br/><br/>
                                 Users can choose the expression term mainly biological context which defined by GEN from the ontology on the left panel. Then a gene list for the chosen expression term will be shown as follows (Figure4). The table column for the expression gene list including expression term, species common name, taxon id and common name of multiple organism. The blue square in organism’s column means this organism has homolog gene with query gene of given expression context. The green square means this organism has homolog gene with the same context of the query gene of given context term.<br/><br/> 
                                 Click the colored square, two more detailed tables with homolog gene and GEN expression profile information will be shown separately.<br/><br/>
                                 Users can filter the shown organism from the organism check list.
@@ -144,7 +144,7 @@
                                 2.5 Gene Ontology Browse
                             </div>
                             <div class="section-info">
-                                The gene ontology information from Ensembl are integrated. HDB collects xxxxx gene with gene ontology information for xxxx animals and xxxx plants from Ensembl. After mapped to the homolog gene in HDB, user can browse the gene ontology information for multiple organisms at the same time. <br/><br/>
+                                The gene ontology information from Ensembl are integrated. HGD collects 4,538,549 gene with gene ontology information for 37 organisms from Ensembl. After mapped to the homolog gene in HGD, user can browse the gene ontology information for multiple organisms at the same time. <br/><br/>
                                 Users can choose the GO term from the ontology on the left panel. Then a gene list for the chosen GO term will be shown as follows (Figure5). The table column for the GO annotated gene list including GO name, species common name, taxon id and common name of multiple organism. The blue square in organism’s column means this organism has homolog gene with query gene of given GO term. The green square means this organism has homolog gene with the same GO term of the query gene of given GO term. <br/><br/>
                                 Click the colored square, two more detailed tables with homolog gene and GO information will be shown separately.<br/><br/>
                                 Users can filter the shown organism from the organism check list.
@@ -190,7 +190,7 @@
                                 4.Download
                             </div>
                             <div class="section-info">
-                                HDB provide the homolog protein, trait, variation, expression information for each organism to download (Figure 8).
+                                HGD provide the homolog protein, trait, variation, expression information for each organism to download (Figure 8).
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-4.png" class="img"/>

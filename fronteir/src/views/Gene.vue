@@ -142,11 +142,13 @@
                 <div  v-for="item in tableData" :key="item.gbiId" style="text-align:left;">
                     <div style="padding-bottom:5px;"><el-checkbox :label="item.hdbGeneId"><a href="" style="font-weight:bold; " v-if="item.showGeneName !=null" @click="toDetailPage(item.hdbGeneId,item.taxonId)">{{item.showGeneName}}</a> (<i>{{item.taxonName}}</i>) </el-checkbox></div>
                     <div style="padding-left:20px;">
-                                         <div style="padding-bottom:5px;font-size:14px;padding-top:5px;">{{item.geneDescription}}</div>
-                        <div style="padding-bottom:5px;font-size:14px;padding-top:5px;"><b>Symobl:</b> {{item.geneSymbol}} </div>
-
-                        <div style="padding-bottom:5px;font-size:14px;"><b>Synonym:</b> {{item.geneSynonym}} </div>
+                        <div style="padding-bottom:5px;font-size:14px;padding-top:5px;">{{item.geneDescription}}</div>
+                        <div style="padding-bottom:5px;font-size:14px;padding-top:5px;" v-if="item.geneSymbol !=null"><b>Symobl:</b> {{item.geneSymbol}} </div>
+						<div style="padding-bottom:5px;font-size:14px;padding-top:5px;" v-if="item.uniprotId"><b>Uniprot:</b> <a :href="'https://www.uniprot.org/uniprot/'+item.uniprotId"  target="_blank">{{item.uniprotId}}</a></div>
+						<div style="padding-bottom:5px;font-size:14px;padding-top:5px;" v-if="item.ensemblProteinId"><b>Ensembl Protein:</b> <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+item.ensemblProteinId+';site=ensembl'" target="_blank">{{item.ensemblProteinId}}</a> </div>
+                        <div style="padding-bottom:5px;font-size:14px;" v-if="item.geneSynonym != null"><b>Synonym:</b> {{item.geneSynonym}} </div>
                         <div style="padding-bottom:5px;font-size:14px;"><b>BioType:</b> {{item.geneType}} </div>
+						
                         <div style="padding-bottom:5px;font-size:14px;"><b>Homolog Gene:</b></div>
                         <div style="padding-bottom:5px;font-size:14px;">
                         
