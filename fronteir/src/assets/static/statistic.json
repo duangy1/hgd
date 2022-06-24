@@ -13,13 +13,13 @@
     "protein number": "13,209"
   }, {
     "dataclass": "Total Homolog Gene With Variant Annotaion",
-    "protein number": "120,852"
+    "protein number": "146,621"
   }, {
     "dataclass": "Total Homolog Gene With Gene Ontology Annotaion",
-    "protein number": "10,234"
+    "protein number": "384,684"
   }, {
     "dataclass": "Total Homolog Gene With Expression Annotaion",
-    "protein number": "403,711"
+    "protein number": "403,655"
   }],
   "barData": {
 "trait2species":{
@@ -34,8 +34,8 @@
 },
 "var2species":{
     "title":"The Number of Homolog Gene With Variant Annotation On Each Species",
-    "data":[13412, 11059 , 18269, 16747, 17437, 18903, 14618, 7205, 3153,49],
-    "xaxis":["Chicken","Giant panda","Cattle","Horse","Cat","Human","Pig","Rapeseed","Tomato","Grape"]
+    "data":[17437,18269,13412,49,16747,18903,11059,14618,25769,7205,3153],
+    "xaxis":["Cat","Cattle","Chicken","Grape","Horse","Human","Panda","Pig","Poplar","Rapeseed","Tomato"]
 },
 "var2homologGene":{
     "title":"The Number of Homolog Gene On Each Variant Annotation",
@@ -44,8 +44,8 @@
 },
 "go2species":{
     "title":"The Number of Homolog Gene With Gene Ontology Annotation On Each Species",
-    "data":[9766,3485,14993,6784,11171,17222,11901,8280,49,14853,17136,14407,17487,10410,15969,10277,18231,14869,25682,16115,17034,29047,18271,2956,8859,19944,15338],
-    "xaxis":["Bread wheat","Brewer's yeast","Cat","Celegans","Chicken","chimpanzee","Cucumber","Fruitfly","Grape","Horse","human","Macaca mulatta","Manihot esculenta","Mouse","Pepper","Pig","Poplor","Potato","Rapeseed","Rat","Sorghum","Soybean","Tair","Tomato","Xenopus","Zea mays","Zebrafish"]
+    "data":[9766,3485,17487,14993,11171,17222,11901,8280,49,14853,17136,10410,15969,10277,18231,14869,25682,16115,14407,14148,6784,17034,29047,18271,2956,8859,19944,15338],
+    "xaxis":["Bread wheat","Brewer's yeast","Cassava","Cat","Chicken","chimpanzee","Cucumber","Fruitfly","Grape","Horse","Human","Mouse","Pepper","Pig","Poplor","Potato","Rapeseed","Rat","Rhesus monkey","Rice","Roundworm","Sorghum","Soybean","Thale cress","Tomato","Tropical clawed frog","Zea mays","Zebrafish"]
 },
 "go2homologGene":{
     "title":"The Number of Homolog Gene On Each Gene Ontology Annotation",
