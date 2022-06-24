@@ -12,6 +12,7 @@ public class GeneBasicInfo {
     private String hdbId;
 
     private String geneid;
+    private String uniprotId;
 
     private String ensemblGeneId;
 
