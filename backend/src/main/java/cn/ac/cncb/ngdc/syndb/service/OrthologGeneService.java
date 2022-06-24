@@ -50,6 +50,10 @@ public class OrthologGeneService {
         return orthologGeneInfoMapper.findOrthGeneByGivenGeneAndTaxonModify(param);
     }
 
+    public List<OrthologGeneInfo> findOrthGeneByGivenGeneAndTaxonModify2(Map param){
+        return orthologGeneInfoMapper.findOrthGeneByGivenGeneAndTaxonModify2(param);
+    }
+
     public List<Ortho9031> findOrthGeneByGivenGeneAndTaxon(Map param){
         return ortho9031Mapper.findOrthGeneByGivenGeneAndTaxon(param);
     }

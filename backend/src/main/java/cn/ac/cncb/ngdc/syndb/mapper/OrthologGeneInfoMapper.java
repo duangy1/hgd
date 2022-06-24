@@ -13,6 +13,7 @@ public interface OrthologGeneInfoMapper {
 
     List<OrthologGeneInfo> findOrthGeneByGivenGeneAndTaxonModify(Map param);
 
+    List<OrthologGeneInfo> findOrthGeneByGivenGeneAndTaxonModify2(Map param);
 
     int selectExpCountByGeneAndTaxon(Map param);
 

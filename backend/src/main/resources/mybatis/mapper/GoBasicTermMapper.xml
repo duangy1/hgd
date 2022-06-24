@@ -21,7 +21,7 @@
     definition
   </sql>
   <select id="initPageGoTerms" resultMap="BaseResultMap">
-    select * from go_terms_1
+    select * from go_terms_1 order by top_class desc
   </select>
 
 </mapper>

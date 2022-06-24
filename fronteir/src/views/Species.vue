@@ -2,7 +2,7 @@
 <div class="table-container">
     <HeaderBar />
     <Banner />
-    <Navigator /> 
+    <!-- <Navigator />  -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
       <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
       <el-breadcrumb-item>Species</el-breadcrumb-item>
@@ -27,7 +27,8 @@
             <el-table
             :data="speciesTableData"
             style="width:86%;margin:auto;"
-            v-loading="speciesLoading">
+            v-loading="speciesLoading"
+            empty-text="-">
             <!-- <el-table-column>
               <template>
                 <img
@@ -40,10 +41,10 @@
             <el-table-column prop="latinName" label="Latin Name"></el-table-column>
             <el-table-column prop="commonName" label="Common Name"></el-table-column>
             <el-table-column prop="taxonId" label="Ncbi Taxon Id"></el-table-column>
-            <!-- <el-table-column prop="latinName" label="Latin Name"></el-table-column>
-            <el-table-column prop="latinName" label="Latin Name"></el-table-column>
-            <el-table-column prop="latinName" label="Latin Name"></el-table-column> -->
-
+            <el-table-column prop="traitGeneNum" label="Trait homolog gene number"></el-table-column>
+            <el-table-column prop="varGeneNum" label="Variant homolog gene number"></el-table-column>
+            <el-table-column prop="expGeneNum" label="Expression homolog gene number"></el-table-column>
+            <el-table-column prop="goGeneNum" label="Gene ontology homolog gene number"></el-table-column>
             </el-table>
         </el-card>
         <el-card style="width:30%;border-top: 2px solid rgb(64, 158, 255)!important;margin-left:2%;">
@@ -135,7 +136,7 @@
 <script>
 // @ is an alias to /src
 // import Subnav from '@/components/sub-nav.vue'
-import Navigator from '@/components/navigator.vue';
+// import Navigator from '@/components/navigator.vue';
 // import "@/assets/css/traits.css";
 import FooterBar from '@/components/FooterBar.vue'
 import HeaderBar from '../components/HeaderBar.vue'
@@ -145,7 +146,7 @@ import heatmapData from '@/assets/static/heatmap-statistic.json';
 export default {
   name: 'Species',
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner

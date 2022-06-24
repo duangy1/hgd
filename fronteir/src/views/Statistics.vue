@@ -2,7 +2,7 @@
 <div class="table-container">
     <HeaderBar />
     <Banner />
-    <Navigator /> 
+    <!-- <Navigator />  -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
       <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
       <el-breadcrumb-item>Statistics</el-breadcrumb-item>
@@ -153,7 +153,7 @@
 <script>
 // @ is an alias to /src
 // import Subnav from '@/components/sub-nav.vue'
-import Navigator from '@/components/navigator.vue';
+// import Navigator from '@/components/navigator.vue';
 // import "@/assets/css/traits.css";
 import FooterBar from '@/components/FooterBar.vue'
 import HeaderBar from '../components/HeaderBar.vue'
@@ -164,7 +164,7 @@ import statisticData from '@/assets/static/statistic.json';
 export default {
   name: 'Species',
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner

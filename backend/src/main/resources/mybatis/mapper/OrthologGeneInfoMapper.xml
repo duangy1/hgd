@@ -23,6 +23,8 @@
     <result column="gene_symbol2" jdbcType="VARCHAR" property="geneSymbol2" />
     <result column="latin_name1" jdbcType="VARCHAR" property="latinName1" />
     <result column="latin_name2" jdbcType="VARCHAR" property="latinName2" />
+    <result column="common_name1" jdbcType="VARCHAR" property="commonName1" />
+    <result column="common_name2" jdbcType="VARCHAR" property="commonName2" />
   </resultMap>
   <sql id="Base_Column_List">
     oid, tax_id1, uniprot_id1, ensembl_id1, refseq_id1, tax_id2, uniprot_id2, ensemb_id2, 
@@ -88,6 +90,14 @@
 
     </if>
     ))
+  </select>
+  <select id="findOrthGeneByGivenGeneAndTaxonModify2" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select hdb_gene_id1, db_evidence,tax_id1,(select common_name from species where species.taxon_id=tax_id1) as common_name1,c.gene_symbol as gene_symbol1,
+    c.ensembl_gene_id as ensembl_id1,c.entrez_gene_id as entrez_id1,  hdb_gene_id2, tax_id2,(select common_name from species
+    where species.taxon_id=tax_id2) as common_name2,  d.gene_symbol as gene_symbol2,d.ensembl_gene_id as ensembl_id2,d.entrez_gene_id as entrez_id2
+    from ortholog_all64_1 b
+    inner join gene_basic_info_1 c on c.hdb_gene_id=b.hdb_gene_id1 INNER JOIN  gene_basic_info_1 d on d.hdb_gene_id = b.hdb_gene_id2  where ((
+    b.hdb_gene_id1=#{geneId})or (b.hdb_gene_id2=#{geneId}))
   </select>
 
 

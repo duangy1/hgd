@@ -9,7 +9,7 @@ import java.util.List;
 public interface GeneGoMapper {
     GeneGo selectByPrimaryKey(Integer id);
 
-    List<GeneGo> goInfoOfGene(String geneName);
+    List<GeneGo> goInfoOfGene(String hdbId);
 
     Page<GeneGo> initPageGo(String topGoid,String classification, String taxonid);
 
