@@ -8,13 +8,19 @@
         <div class="module-title">Homolog Gene Database</div>
         <div class="subtitle">A data portal of homolog genes across multiple species</div>
       </div>
+      <Navigator />
     </div>
+    
 </template>
 
 <script>
 import logo from "@/assets/img/icon/logo.png";
+import Navigator from '@/components/navigator.vue';
 export default {
   name: 'Banner',
+  components: {
+    Navigator
+  },
   data(){
     return {logo
     }
@@ -24,9 +30,9 @@ export default {
 </script>
 <style scoped>
 .banner-box{
-  background-image: url("../assets/img/banner.jpg");
+  background-image: url("../assets/img/banner-2.png");
   color: white;
-  height: 160px;
+  height: 200px;
   width: 100%;
   background-repeat: no-repeat;
   background-position: right;
@@ -36,6 +42,7 @@ export default {
   position: relative;
   margin-top: -35px;
   display: table;
+  /* opacity: 0; */
 }
 .module-title{
   text-align: left;

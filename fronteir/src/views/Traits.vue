@@ -655,9 +655,7 @@ export default {
    },
   showGwasInfoTable(rowValue,index){
     console.log("rowValue,index:",rowValue,index);
-    // this.showOrthoInfoTable(rowValue,index)
-  // 获取当前数据点的gwasid，需要修改后端逻辑，得到gwasid
-
+    // 获取当前位置，两物种间同源数据
     let ortholist=[];
     rowValue.speciesListData.forEach((id,idx)=>{
     if(id==index){
@@ -669,12 +667,12 @@ export default {
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
     this.orthoTableData=ortholist;
-    console.log("ortholist:",ortholist);
+    this.showSubTableBox=true;
+    
     // 左侧基因的接口数据
     let gwasid1=rowValue.gwasId
     let taxid1=rowValue.gwasOrgid;
     // 左侧基因请求接口
-    this.showSubTableBox=true;
     this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10")
     .then(response=>{
       console.log("gwas response:",response);
@@ -682,9 +680,8 @@ export default {
       this.gwasLoading=false;
     })
     // 右侧基因数据
-    // let hdblist=[];
+    // 循环当前同源数据，请求后端得到接口所需要的参数
     ortholist.forEach((item)=>{
-      // hdblist.push(item.hdbId)
       let hdbid=item.hdbId;
       // let topTrait=item.traitName;
       console.log("item.hdbId:",item.hdbId);

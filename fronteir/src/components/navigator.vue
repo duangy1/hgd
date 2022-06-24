@@ -3,22 +3,24 @@
       <el-menu
         mode="horizontal"
         router
-        background-color="rgba(0, 23, 55,1)"
+        width="100%"
+        background-color="rgba(12, 100, 182,0.1)"
         text-color="white"
+        style="font-size:18px;height: 50px;"
       >
       <el-menu-item index="/" >
         <i class="el-icon-location"></i>
         <span slot="title">Home</span>
       </el-menu-item>
-      <el-submenu index="2" text-color="#FFFFFF" >
+      <el-submenu index="2"  >
         <template slot="title"><i class="el-icon-menu"></i>Browse</template>
-        <el-menu-item index="/gene" >Homolog Gene</el-menu-item>
+        <el-menu-item index="/gene" class="submenu">Homolog Gene</el-menu-item>
         <!-- <el-menu-item index="/gene-detail">Gene</el-menu-item> -->
-        <el-menu-item index="/traits" >Traits</el-menu-item>
-        <el-menu-item index="/variants" >Variants</el-menu-item>
-        <el-menu-item index="/expression" >Expression</el-menu-item>
-        <el-menu-item index="/go" >Gene Ontology</el-menu-item>
-        <el-menu-item index="/species" >Species</el-menu-item>
+        <el-menu-item index="/traits" class="submenu">Traits</el-menu-item>
+        <el-menu-item index="/variants" class="submenu">Variants</el-menu-item>
+        <el-menu-item index="/expression" class="submenu">Expression</el-menu-item>
+        <el-menu-item index="/go" class="submenu">Gene Ontology</el-menu-item>
+        <el-menu-item index="/species" class="submenu">Species</el-menu-item>
       </el-submenu>
       <el-menu-item index="documentation">
         <i class="el-icon-document"></i>
@@ -42,57 +44,65 @@
 <style>
 
 
-.navigator-div{
-  /* background-color: rgb(84, 92, 100); */
+/* .navigator-div{
   height: 50px;
   background-color: rgb(0, 23, 55,1) !important;
+} */
+.navigator-div{
+  padding-bottom: 0;
+  position: absolute !important;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
 }
 .el-menu--horizontal>.el-submenu .el-submenu__title{
   height: 50px;
   line-height: 50px;
-  
+  font-size: 16px !important;
+  background-color: rgba(12, 100, 182,0) !important;
 }
 .el-menu{
   display: block !important;
 }
 .el-menu-item{
-  color: white !important;
-  background-color: rgba(0, 23, 55,1) !important;
+  font-size: 16px !important;
+  background-color: rgba(12, 100, 182,0) !important;
+  height: 50px !important;
+  line-height: 50px !important;
 }
-.el-menu-item .is-active{
+.el-menu-item > i{
   color: white !important;
-  background-color: rgba(0, 23, 55,0.7) !important;
 }
+
 
 .el-submenu__title{
-  color: white !important;
-  background-color: rgb(0, 23, 55) !important;
-}
-  .el-submenu__title .is-active{
-  color: white !important;
-  background-color: rgb(0, 23, 55) !important;
-}
-.el-submenu__title:hover{
-  color: white !important;
-  background-color: rgb(89, 116, 154) !important;
-}
-.el-menu-item:hover{
-  background-color: rgb(89, 116, 154) !important;
-}
-.browse div{
-   color: white !important;
- }
-.el-icon-menu{
-  color: white !important;
-}
-.el-menu--horizontal>.el-menu-item{
-  height: 50px;
-  line-height: 50px;
+  font-size: 16px !important;
+  background-color: rgb(121,169,215,0) !important;
+  height: 50px !important;
+  line-height: 50px !important;
 }
 
-.navModule{
-  color: white !important;
+.submenu{
+  font-size: 16px !important;
+  background-color: rgb(99,176,233) !important;
+  height: 36px !important;
+  line-height: 36px !important;
 }
+.el-submenu__title > i{
+ color: white !important;
+}
+
+.el-menu-item:hover{
+  color: white !important;
+  background-color: rgba(121,169,215) !important;
+}
+
+.el-submenu__title:hover{
+  color: white !important;
+  background-color: rgba(121,169,215) !important;
+}
+
+
 </style>
 <script lang="ts">
 export default {

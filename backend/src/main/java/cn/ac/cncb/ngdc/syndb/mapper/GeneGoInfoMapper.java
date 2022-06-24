@@ -21,7 +21,7 @@ public interface GeneGoInfoMapper {
     int updateByPrimaryKey(GeneGoInfo record);
 
     List<GeneGoInfo> getGoInfo(String ensid);
-    List<GoBasicTerm> selectBasicGo(String classification);
+    List<GoBasicTerm> selectBasicGo();
 
     List<String> getGoNumbyGene(String ensid);
 

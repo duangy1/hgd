@@ -2,7 +2,7 @@
   <div>
     <HeaderBar />
     <Banner />
-    <Navigator />
+    <!-- <Navigator /> -->
     
     <!-- 左侧树结构 -->
     <!-- 抽屉结构 -->
@@ -488,7 +488,7 @@
 
 <script>
 // @ is an alias to /src
-import Navigator from "@/components/navigator.vue";
+// import Navigator from "@/components/navigator.vue";
 import expOntology from "@/assets/static/expression.json";
 import Banner from "@/components/banner.vue";
 import FooterBar from "@/components/FooterBar.vue";
@@ -502,7 +502,7 @@ import singleTraitIcon from "@/assets/img/icon/orange.svg";
 export default {
   name: "Traits",
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner,
@@ -606,7 +606,7 @@ export default {
       this.getTraitData(value.label,"animal",this.pageSize,1,this.form.querySpecies);
       this.loading_plant=true;
       this.getTraitData(value.label,"plant",this.pageSize,1,this.form.querySpecies)
-      
+
       this.currentPage4=1;
       data.checked = true;
       this.showSubTableBox=false;

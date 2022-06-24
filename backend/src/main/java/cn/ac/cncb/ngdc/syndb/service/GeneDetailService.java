@@ -71,12 +71,12 @@ public class GeneDetailService {
     public List<String> getGoNumbyGene(String ensid){ return geneGoInfoMapper.getGoNumbyGene(ensid);}
 
     //获取绘制热图的go Ontology和基因注释信息
-    public List selectBasicGo(String geneName,String classification){
-        if(classification.equals("others")){classification="animal";}
-        String tableName="gene_go_"+classification;
-        List<GeneGo> goGeneInfoList= geneGoMapper.goInfoOfGene(geneName,tableName);
+    public List selectBasicGo(String hdbid){
+//        if(classification.equals("others")){classification="animal";}
+//        String tableName="gene_go_"+classification;
+        List<GeneGo> goGeneInfoList= geneGoMapper.goInfoOfGene(hdbid);
 
-        List<GoBasicTerm> goBasicInfoList= geneGoInfoMapper.selectBasicGo(classification);
+        List<GoBasicTerm> goBasicInfoList= geneGoInfoMapper.selectBasicGo();
         Integer numSum=0;
         if(goGeneInfoList.size() > 0) {
 //            循环查到的gene_go_info

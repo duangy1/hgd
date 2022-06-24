@@ -22,7 +22,7 @@
   </sql>
 
   <select id="goInfoOfGene" resultMap="BaseResultMap">
-    select * from gene_go_all where gene_id=#{geneName}
+    select * from gene_go_all where hdb_gene_id=#{geneName}
   </select>
 
   <select id="initPageGo" resultMap="BaseResultMap">

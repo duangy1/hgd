@@ -244,7 +244,7 @@
        
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" >
-          <h3 class="trait-sub-title">Gwas Detail Information</h3>
+          <h3 class="trait-sub-title">Variant Detail Information</h3>
         </div>
         <div id="trait-info">
             <!-- <el-card shadow="none" class="gwasDetailCard"> -->
@@ -255,6 +255,11 @@
                 max-height="400"
                 v-loading="gwasLoading"
               >
+              <el-table-column
+                    prop="gene.genename"
+                    label="Gene Id"
+                    align="center">
+                </el-table-column>
                 <el-table-column
                     prop="rsnpId"
                     label="Var Id"
@@ -296,11 +301,7 @@
                     width="120px"
                     align="center">
                 </el-table-column>
-                <el-table-column
-                    prop="gene.genename"
-                    label="Gene Id"
-                    align="center">
-                </el-table-column>
+                
               </el-table>
             <!-- </el-card> -->
         </div>
@@ -467,7 +468,7 @@
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" style="padding-left:1.5%;margin-bottom:1.3%">
-          <h3 class="trait-sub-title">Gwas Detai Information</h3>
+          <h3 class="trait-sub-title">Variant Detai Information</h3>
         </div>
         <div id="trait-info">
             <el-card shadow="none" class="gwasDetailCard">
@@ -479,6 +480,7 @@
                 max-height="400"
                 v-loading="gwasLoading"
               >
+                <el-table-column align="center" prop="geneName" label="Gene Id"></el-table-column>
                 <el-table-column align="center" prop="varId" label="Var Id"></el-table-column>
                 <el-table-column align="center" prop="varName" label="Variant Name"></el-table-column>
                 <el-table-column align="center" prop="speciesCommonName" label="Species"></el-table-column>
@@ -610,9 +612,8 @@ export default {
    
     changeClass(tab){
         this.speciesList=[];
-        // this.loading = true;
         this.showOrthoSubTable=false;
-        this.showGwasInfoTable=false;
+        this.showSubTableBox=false;
         this.classification=tab.label;
         this.$refs['table'].doLayout();
     },
@@ -692,78 +693,56 @@ export default {
    },
   showGwasInfoTable(rowValue,index){
     console.log("rowValue,index:",rowValue,index);
-    this.showSubTableBox=true;
     let ortholist=[];
-    let hdblist=[rowValue.snpId]
     rowValue.speciesListData.forEach((id,idx)=>{
-      if(id==index){
+    if(id==index){
         let item=rowValue.orthoList[idx]
         ortholist.push(item)
-        hdblist.push(item.snpId)
     }})
     
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
     this.orthoTableData=ortholist;
+    this.showSubTableBox=true;
 
-    this.gwasInfoData=[];
-    let dataSource=rowValue.dataSource;
-    let BASEPATH;
-    if(dataSource.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
-    else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
-
-    hdblist.forEach(snpId=>{
-      let PATH=BASEPATH+dataSource+"&snplist="+snpId;
-      if(snpId.length>0){
-        this.$axios.get(PATH).then(response=>{
-          this.varLoading=false;
-          if(response.data.snp.length){this.gwasInfoData=this.gwasInfoData.concat(response.data.snp);}else{this.gwasInfoData.push(response.data.snp);}
-        })
-      }
-      for(let item of this.gwasInfoData){
-          let pos=item.chrom+":"+item.position;
-          let allele=item.refallele+"/"+item.allele;
-          let maf=item.maf+":"+item.maffreq.slice(0,7);
-          let classsnp=item.snpClassId=="7"?"SNP":"-"
-          item.position=pos;
-          item.allele=allele;
-          item.maf=maf;
-          item.snpClassId=classsnp;
-      }
-    })
     // 左侧基因的接口数据
-//     let snpId1 = rowValue.snpId;
-//     let dataSource1=rowValue.dataSource
-//     let BASEPATH;
-//     if(dataSource1.length!==0){
-//       if(dataSource1.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
-//       else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
-//       // let snpAll=i.snpList.join(',')
-//       let PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
-//       if(snpId1.length>0){
-//           this.getVarData(PATH)
-//       }
-//     }
-// // 右侧基因接口数据
-// // 有问题，明天看看
-//    ortholist.forEach((item)=>{
-//     let dataSource2=item.dataSource;
-//     let hdbid=item.hdbId;
-//     this.$axios.get("http://localhost:9401/api/var-snpid",{params:{'hdbId': hdbid}}).then(res=>{
-//         console.log("res:",res);
-//         if(res.data.length !==0){
-//           let BASEPATH;
-//           let snpId2=res.data;
-//           this.gwasLoading=true;
-//           if(dataSource2.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="
-//           }else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
-//           let PATH=BASEPATH+dataSource2+"&snplist="+snpId2;
-//           if(snpId2.length>0){
-//             this.getVarData(PATH)
-//           }
-//         }
-//       })
-//    })
+    let snpId1 = rowValue.snpId;
+    let dataSource1=rowValue.dataSource
+    let BASEPATH;
+    this.gwasInfoData=[];
+    if(dataSource1.length!==0){
+      if(dataSource1.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
+      else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+      // let snpAll=i.snpList.join(',')
+      let PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
+      if(snpId1.length>0){
+          this.getVarData(PATH)
+      }
+    }
+    // 右侧基因接口数据
+    // 有问题，明天看看
+   ortholist.forEach((item)=>{
+    let dataSource2=item.dataSource;
+    let hdbid=item.hdbId;
+    let varId=item.varId;
+    if(dataSource2.length>0){
+      this.$axios.get("http://localhost:9401/api/var-snpid",{params:{'hdbId': hdbid,"varId":varId}}).then(res=>{
+          console.log("res:",res);
+          if(res.data.length !==0){
+            let BASEPATH;
+            let snpId2=res.data;
+            this.gwasLoading=true;
+            if(dataSource2.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="
+            }else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+            let PATH=BASEPATH+dataSource2+"&snplist="+snpId2;
+            if(snpId2.length>0){
+              this.getVarData(PATH)
+            }
+          }
+        })
+    }
+   })
+ 
     
     
    },
@@ -771,20 +750,34 @@ export default {
     this.$axios.get(PATH).then(response=>{
       this.gwasLoading=false;
       console.log("getvardata res:",response);
-        this.gwasInfoData=response.data.snp;
+      
+        // this.gwasInfoData=response.data.snp;
         this.varLoading=false;
-          if(response.data.snp.length){this.gwasInfoData=this.gwasInfoData.concat(response.data.snp);}else{this.gwasInfoData.push(response.data.snp);}
-          console.log("this.gwasInfoData:",this.gwasInfoData);
-          for(let item of this.gwasInfoData){
-              let pos=item.chrom+":"+item.position;
-              let allele=item.refallele+"/"+item.allele;
-              let maf=item.maf+":"+item.maffreq.slice(0,7);
-              let classsnp=item.snpClassId=="7"?"SNP":"-"
-              item.position=pos;
-              item.allele=allele;
-              item.maf=maf;
-              item.snpClassId=classsnp;
+        if(response.data.snp.length){
+          console.log("(response.data.snp.length:",response.data.snp.length);
+          this.gwasInfoData=this.gwasInfoData.concat(response.data.snp);
+        }else{
+          console.log("(response.data.snp.length:",response.data.snp.length);
+          this.gwasInfoData.push(response.data.snp);
+        }
+        console.log("this.gwasInfoData:",this.gwasInfoData);
+        for(let item of this.gwasInfoData){
+            let pos=item.chrom+":"+item.position;
+            let allele=item.refallele+"/"+item.allele;
+            let maf=item.maf+":"+item.maffreq.slice(0,7);
+            let classsnp=item.snpClassId=="7"?"SNP":"-"
+            item.position=pos;
+            item.allele=allele;
+            item.maf=maf;
+            item.snpClassId=classsnp;
+            if(item.gene.length>1){
+              let name=[]
+              item.gene.forEach(item=>{
+                name.push(item.genename)
+              })
+              item.gene.genename=name.join(',')
           }
+        }
       })
    },
     hiligtDbCols({rowIndex}){

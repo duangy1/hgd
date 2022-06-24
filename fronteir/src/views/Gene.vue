@@ -2,7 +2,7 @@
 <div class="table-container">
     <HeaderBar/>
      <Banner />
-    <Navigator />
+    <!-- <Navigator /> -->
   
      <el-breadcrumb separator-class="el-icon-arrow-right"  class="arrow-title">
             <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
@@ -250,7 +250,7 @@
 
 <script>
 
-import Navigator from '@/components/navigator.vue';
+// import Navigator from '@/components/navigator.vue';
 import FooterBar from '@/components/FooterBar.vue';
 import HeaderBar from '@/components/HeaderBar.vue';
 import Banner from "@/components/banner.vue";
@@ -261,7 +261,7 @@ import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 export default {
   name: 'Gene',
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner,

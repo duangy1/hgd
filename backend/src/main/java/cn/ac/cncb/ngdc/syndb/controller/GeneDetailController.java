@@ -23,11 +23,11 @@ public class GeneDetailController {
     @RequestMapping(value = "/api/gene-detail", method = RequestMethod.GET)
     @ResponseBody
     @CrossOrigin
-    public List geneInformation( String hdbid,String taxonid){
+    public List geneInformation( String hdbId,String taxonid){
 //        现在为查entrez gene
         List InfoList = new ArrayList();
-        List<GeneBasicInfo> geneList=geneDetailService.selectGene(hdbid,taxonid);
-        List<Ortho9031> orthoList=orthoService.selectGeneOrthoInfo(hdbid);
+        List<GeneBasicInfo> geneList=geneDetailService.selectGene(hdbId,taxonid);
+        List<Ortho9031> orthoList=orthoService.selectGeneOrthoInfo(hdbId);
         if(geneList!=null) {
             for (Ortho9031 orthoitem : orthoList) {
                 String tax1 = orthoitem.getTax1();
@@ -41,17 +41,17 @@ public class GeneDetailController {
                     orthoitem.setTax(tax2);
                     orthoitem.setProtein(orthoitem.getProtein2());
                     orthoitem.setSpecies(species2);
-                    String hdbId = orthoitem.getHdbId2();
+                    String hdbid = orthoitem.getHdbId2();
                     //            找对应的ensembl gene id
-                    GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbId);
+                    GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbid);
                     orthoitem.setGbiInfo(gbiInfo);
                 } else {
                     orthoitem.setTax(tax1);
                     orthoitem.setProtein(orthoitem.getProtein1());
                     orthoitem.setSpecies(species1);
-                    String hdbId = orthoitem.getHdbId1();
+                    String hdbid = orthoitem.getHdbId1();
                     //            找对应的ensembl gene id
-                    GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbId);
+                    GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbid);
                     orthoitem.setGbiInfo(gbiInfo);
                 }
             }
@@ -63,9 +63,9 @@ public class GeneDetailController {
 //   根据ensembl id获取对应的go信息
     @RequestMapping(value = "/api/gene-detail-go", method = RequestMethod.GET)
     @ResponseBody
-    public List goInformation(@RequestParam String geneName,@RequestParam String classification) {
-        if(classification.equals("others")){classification="animal";}
-        List goBasicTermList=geneDetailService.selectBasicGo(geneName,classification);
+    public List goInformation(@RequestParam String hdbId) {
+//        if(classification.equals("others")){classification="animal";}
+        List goBasicTermList=geneDetailService.selectBasicGo(hdbId);
         return goBasicTermList;
     }
 

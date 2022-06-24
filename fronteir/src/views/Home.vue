@@ -6,7 +6,7 @@
       </div>
        -->
       <div class="flex-yc">
-        <Navigator />
+        <!-- <Navigator /> -->
         <div class="eles-container">
           <!-- <div class="db-introduce">
             <h1 class="db-title">Homolog gene Database</h1>
@@ -628,7 +628,7 @@
 <style  src="../assets/css/index.css" scoped></style>
 <style  src="../assets/css/font-awesome.css" scoped></style>
 <script>
-import Navigator from '@/components/navigator.vue';
+// import Navigator from '@/components/navigator.vue';
 import FooterBar from '@/components/FooterBar.vue';
 import HeaderBar from '@/components/HeaderBar.vue';
 import Banner from "@/components/banner.vue";
@@ -636,7 +636,7 @@ import Banner from "@/components/banner.vue";
 export default {
   name: 'Home',
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner

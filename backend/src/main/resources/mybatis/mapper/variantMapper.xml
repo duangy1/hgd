@@ -45,6 +45,6 @@
     </if>
   </select>
   <select id="getSnpidByhdbid" resultType="java.lang.String">
-    select snp_id from variation_all where hdb_gene_id=#{hdbid}
+    select snp_id from variation_all where hdb_gene_id=#{hdbid} and var_id=#{varId}
   </select>
 </mapper>

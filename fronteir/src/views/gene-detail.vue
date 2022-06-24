@@ -2,7 +2,7 @@
 <div class="table-container" onscroll="menuScroll()">
     <HeaderBar />
     <Banner />
-    <Navigator />   
+    <!-- <Navigator />    -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
         <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
         <el-breadcrumb-item>Homolog Gene</el-breadcrumb-item>
@@ -443,7 +443,7 @@
     <template>
     <el-backtop
       :bottom="100"
-      style="z-index: 999"
+      style="z-index: 999;"
       class="backTop"
     >
       <div
@@ -451,15 +451,16 @@
            {
             height: 100%;
             width: 100%;
-            background-color: #f2f5f6;
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
             text-align: center;
             line-height: 40px;
             color: #1989fa;
+            border-radius: 50%;
+            background-color: white;
           }
         "
       >
-        UP
+      <i class="el-icon-caret-top"></i>
       </div>
     </el-backtop>
     </template>
@@ -471,7 +472,7 @@
 // @ is an alias to /src
 import HeaderBar from '@/components/HeaderBar.vue';
 import FooterBar from '@/components/FooterBar.vue';
-import Navigator from '@/components/navigator.vue';
+// import Navigator from '@/components/navigator.vue';
 import Banner from "@/components/banner.vue";
 // import pantherIcon from "@/assets/img/icon/P.svg";
 // import omaIcon from "@/assets/img/icon/M.svg";
@@ -485,7 +486,7 @@ import * as d3 from 'd3';
 export default {
   name: 'GeneDetail',
   components: {
-    Navigator,
+    // Navigator,
     Banner,
     HeaderBar,
     FooterBar,
