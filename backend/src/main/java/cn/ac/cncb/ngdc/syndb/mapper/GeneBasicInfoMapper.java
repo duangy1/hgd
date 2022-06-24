@@ -25,7 +25,7 @@ public interface GeneBasicInfoMapper {
 
     Page<GeneBasicInfo> filterHomologGene(Map param);
 
-    List<GeneBasicInfo> selectGene(String geneName,String taxonid);
+    List<GeneBasicInfo> selectGene(String hdbId,String taxonid);
 
     List<GeneBasicInfo> selectGeneGoInfo(String geneName);
 
@@ -36,6 +36,8 @@ public interface GeneBasicInfoMapper {
     GeneBasicInfo selectEnsgIdByhdbId(String hdbId);
 
     String getHdbIdByEnsId(String ensId);
+
+    String geneDetailGeneOrthoInfo(String hdbId);
 
 // 在gbi表中查询ensembl_p_id获取对应的ensembl_g_id
     String getEnsGidByEnspId(String enspId);

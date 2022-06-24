@@ -60,46 +60,48 @@
         <div class="info-div">
             <div class="basic-info" id="item-pos-1" >
             <!-- <el-card style="width:99%;margin: auto;" shadow="none"> -->
-                <h2 class="b-info">Gene Basic Information</h2>
-                <el-descriptions :column="2" class="descriptions" :size="size"  v-if="JSON.stringify(geneBasicInfo) !=='{}'">
-                    <el-descriptions-item label="Ensembl Gene Id"><a :href="'https://ensemblgenomes.org/search/?query='+geneBasicInfo.ensemblGeneId">{{geneBasicInfo.ensemblGeneId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
-                    <el-descriptions-item label="Entrez Gene Id"><a :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
-                    <el-descriptions-item label="Refseq Id"><a :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
-                    <el-descriptions-item label="Gene Synonym">{{geneBasicInfo.geneSynonym}}</el-descriptions-item>
-                    <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
-                    <el-descriptions-item label="Gene Symbol">{{geneBasicInfo.geneSymbol}}</el-descriptions-item>
-                    <el-descriptions-item label="Species Name">{{geneBasicInfo.speciesName.commonName}}</el-descriptions-item>
-                    <el-descriptions-item label="Chromosom">{{geneBasicInfo.chromosom}}</el-descriptions-item>
-                    <el-descriptions-item label="Gene Start">{{geneBasicInfo.geneStart}}</el-descriptions-item>
-                    <el-descriptions-item label="Gene End">{{geneBasicInfo.geneEnd}}</el-descriptions-item>
-                    <el-descriptions-item label="Gene Description">{{geneBasicInfo.geneDescription}}</el-descriptions-item>
-                </el-descriptions>
-            <!-- </el-card> -->
+                <!-- <h2 class="b-info">Gene Basic Information</h2> -->
+                <div class="trait-box trait-infoBox">
+                    <h3 class="trait-title">Gene Basic Information</h3>
+                </div>
+                <el-card class="card-border">
+                    <el-descriptions :column="3" class="descriptions" :size="size"  v-if="JSON.stringify(geneBasicInfo) !=='{}'">
+                        <el-descriptions-item label="Ensembl Gene Id"><a :href="'https://ensemblgenomes.org/search/?query='+geneBasicInfo.ensemblGeneId">{{geneBasicInfo.ensemblGeneId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
+                        <el-descriptions-item label="Entrez Gene Id"><a :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
+                        <el-descriptions-item label="Refseq Id"><a :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
+                        <el-descriptions-item label="Gene Synonym">{{geneBasicInfo.geneSynonym}}</el-descriptions-item>
+                        <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
+                        <el-descriptions-item label="Gene Symbol">{{geneBasicInfo.geneSymbol}}</el-descriptions-item>
+                        <el-descriptions-item label="Species Name">{{geneBasicInfo.speciesName.commonName}}</el-descriptions-item>
+                        <el-descriptions-item label="Chromosom">{{geneBasicInfo.chromosom}}</el-descriptions-item>
+                        <el-descriptions-item label="Gene Start">{{geneBasicInfo.geneStart}}</el-descriptions-item>
+                        <el-descriptions-item label="Gene End">{{geneBasicInfo.geneEnd}}</el-descriptions-item>
+                        <el-descriptions-item label="Gene Description">{{geneBasicInfo.geneDescription}}</el-descriptions-item>
+                    </el-descriptions>
+                </el-card>
         </div>
-        <el-divider></el-divider>
+        <!-- <el-divider></el-divider> -->
         <div id="item-pos-2">
-            <div class="p-ele top-p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ortholog Informations</span></div>
-            <!-- <el-card style="padding:2%" shadow="none"> -->
-            <!-- <div class="info-div">
-                <div class="basic-info" id="item-pos-1" >
-                    <h2 class="b-info">Gene Ortholog Informations</h2>
+            <!-- <div class="p-ele top-p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ortholog Informations</span></div> -->
+            <div class="trait-box trait-infoBox">
+                <h3 class="trait-title">Gene Ortholog Informations</h3>
             </div>
-        </div> -->
-        <div class="filt-div">
-            <el-select v-model="form.species.ortho" multiple placeholder="Choose Species" class="filt-spe-select">
-                <!-- <el-option label="Org1" value="shanghai"></el-option>
-                <el-option label="Org2" value="beijing"></el-option> -->
-                <el-option
-                    v-for="item in species"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                    >
-                </el-option>
-            </el-select>
-            <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="searchFilter(form.species.ortho)"></el-button>
-            <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearFilter()"></el-button>
-        </div>
+            <el-card class="card-border">
+                <div class="filt-div">
+                    <el-select v-model="form.species.ortho" multiple placeholder="Choose Species" class="filt-spe-select">
+                        <!-- <el-option label="Org1" value="shanghai"></el-option>
+                        <el-option label="Org2" value="beijing"></el-option> -->
+                        <el-option
+                            v-for="item in species"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                            >
+                        </el-option>
+                    </el-select>
+                    <el-button icon="el-icon-search"  type="success"  plain id="filter-search" @click="searchFilter(form.species.ortho)">Search</el-button>
+                    <el-button icon="el-icon-delete"  type="primary"  plain id="filter-search" @click="clearFilter()">Clear</el-button>
+                </div>
                 <!-- </el-card> -->
             <el-table
                 :data="tableOrthoList"
@@ -156,41 +158,43 @@
                 
 
             </el-table>
-            
+            </el-card>
         </div>
         <div id="item-pos-3">
-            <el-divider class="divider"></el-divider>
-            <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ontology Annotations</span></p>
-    <!-- 这里 -->
-    <!-- <el-card style="padding:2%" shadow="none"> -->
+            <!-- <el-divider class="divider"></el-divider> -->
+            <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ontology Annotations</span></p> -->
+            <div class="trait-box trait-infoBox">
+                    <h3 class="trait-title">Gene Ontology Annotations</h3>
+            </div>
         <!-- 提示信息不显示 -->
-        
-    <!-- <el-container direction="vertical" > -->
-    <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
-        <div><i class="el-icon-question question-icon"></i></div>
-    </el-tooltip>
-                    
-    <div class="filt-div">
-        <el-checkbox v-model="checked.go" style="float:left" class="filt-spe-select" :disabled="waitResponse.go">Compare Ortholog Genes</el-checkbox>
-        <el-select v-model="form.species.go" multiple placeholder="Show All Species" class="filt-spe-select">
-            <!-- <el-option label="Org1" value="shanghai"></el-option>
-            <el-option label="Org2" value="beijing"></el-option> -->
-            <el-option
-                v-for="item in species"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-                >
-            </el-option>
-        </el-select>
-        <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="compareOrthoGo(form.species.go)"></el-button>
-        <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearOrthoGo()"></el-button>
-    </div>
-    <div class="filt-div"></div>
-    <!-- </el-container> -->
-        
-    <!-- </el-card> -->
-    <div id="svg-container-go"></div>
+    <el-card class="card-border">
+        <!-- <el-container direction="vertical" > -->
+        <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
+            <div><i class="el-icon-question question-icon"></i></div>
+        </el-tooltip>
+                        
+        <div class="filt-div">
+            <el-checkbox v-model="checked.go" style="float:left" class="filt-spe-select" :disabled="waitResponse.go">Compare Ortholog Genes</el-checkbox>
+            <el-select v-model="form.species.go" multiple placeholder="Show All Species" class="filt-spe-select">
+                <!-- <el-option label="Org1" value="shanghai"></el-option>
+                <el-option label="Org2" value="beijing"></el-option> -->
+                <el-option
+                    v-for="item in species"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                    >
+                </el-option>
+            </el-select>
+            <el-button icon="el-icon-search"  type="success"  plain id="filter-search" @click="compareOrthoGo(form.species.go)">Search</el-button>
+            <el-button icon="el-icon-delete"  type="primary"  plain id="filter-search" @click="clearOrthoGo()">Clear</el-button>
+        </div>
+        <div class="filt-div"></div>
+        <!-- </el-container> -->
+            
+        <!-- </el-card> -->
+        <div id="svg-container-go"></div>
+    </el-card>
                     <!-- <svg style="width:100%;height:380px" id="svgcontainer-go"></svg> -->
                 
                 
@@ -253,16 +257,16 @@
             </el-table> -->
         </div>
         <div id="item-pos-4">
-            <el-divider class="divider"></el-divider>
+            <!-- <el-divider class="divider"></el-divider> -->
 
-                <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Variant</span></p>
-                <!-- <el-card style="padding:2%" shadow="none"> -->
-                    <!-- 提示信息不显示 -->
-                    
-                    <!-- <el-container direction="vertical" > -->
-                        <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
-                            <div><i class="el-icon-question question-icon"></i></div>
-                        </el-tooltip>
+                <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Variant</span></p> -->
+            <div class="trait-box trait-infoBox">
+                <h3 class="trait-title">Variant</h3>
+            </div>
+            <el-card class="card-border">
+                <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
+                    <div><i class="el-icon-question question-icon"></i></div>
+                </el-tooltip>
                 <div class="filt-div">
                 <el-checkbox v-model="checked.var" style="float:left" class="filt-spe-select" :disabled="waitResponse.var">Compare Ortholog Genes</el-checkbox>
                 <el-select v-model="form.species.var" multiple placeholder="Show All Species" class="filt-spe-select">
@@ -279,11 +283,11 @@
                 <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="compareOrthoVar(form.species.go)"></el-button>
                 <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearOrthoVar()"></el-button>
                 </div>
-                <!-- </el-container> -->
-                <!-- </el-card> -->
+                    <!-- </el-container> -->
+                    <!-- </el-card> -->
                 <div id="svg-container-var"></div>
                 <!-- 根据snplist取值的表 -->
-                 <el-table
+            <el-table
                 :data="varList"
                 class="info-table"
                 v-loading="goloading"
@@ -370,42 +374,52 @@
                     label="Gene Id">
                 </el-table-column>
             </el-table>
+            </el-card>
         </div>
         <div id="item-pos-5">
-                <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Traits</span></p>
-                <el-divider class="divider"></el-divider>
+                <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Traits</span></p> -->
+            <div class="trait-box trait-infoBox">
+                <h3 class="trait-title">Traits</h3>
+            </div>
+                <!-- <el-divider class="divider"></el-divider> -->
                 <!-- <h1 style="text-align:left;font-weight:500;color:darkgray">Traits Informations</h1> -->
                 <!-- <el-card style="padding:2%" shadow="none"> -->
                     <!-- 提示信息不显示 -->
                     
                     <!-- <el-container direction="vertical" > -->
-                        <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
-                            <div><i class="el-icon-question question-icon"></i></div>
-                        </el-tooltip>
-                <div class="filt-div">
-                <el-checkbox v-model="checked.trait" style="float:left" class="filt-spe-select" :disabled="waitResponse.trait">Compare Ortholog Genes</el-checkbox>
-                <el-select v-model="form.species.trait" multiple placeholder="Show All Species" class="filt-spe-select">
-                    <!-- <el-option label="Org1" value="shanghai"></el-option>
-                    <el-option label="Org2" value="beijing"></el-option> -->
-                    <el-option
-                        v-for="item in species"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                        >
-                    </el-option>
-                </el-select>
-                <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="compareOrthoTrait(form.species.go)"></el-button>
-                <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearOrthoTrait()"></el-button>
-                </div>
+            <el-card class="card-border">
+            <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
+                <div><i class="el-icon-question question-icon"></i></div>
+            </el-tooltip>
+            <div class="filt-div">
+            <el-checkbox v-model="checked.trait" style="float:left" class="filt-spe-select" :disabled="waitResponse.trait">Compare Ortholog Genes</el-checkbox>
+            <el-select v-model="form.species.trait" multiple placeholder="Show All Species" class="filt-spe-select">
+                <!-- <el-option label="Org1" value="shanghai"></el-option>
+                <el-option label="Org2" value="beijing"></el-option> -->
+                <el-option
+                    v-for="item in species"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                    >
+                </el-option>
+            </el-select>
+            <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="compareOrthoTrait(form.species.go)"></el-button>
+            <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearOrthoTrait()"></el-button>
+            </div>
 
-                    <!-- </el-container> -->
-                <!-- </el-card> -->
-                <div id="svg-container-trait"></div>
+                <!-- </el-container> -->
+            <!-- </el-card> -->
+            <div id="svg-container-trait"></div>
+            </el-card>
         </div>
         <div id="item-pos-6">
-            <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Expression</span></p>
-            <el-divider class="divider"></el-divider>
+            <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Expression</span></p> -->
+            <!-- <el-divider class="divider"></el-divider> -->
+            <div class="trait-box trait-infoBox">
+                    <h3 class="trait-title">Expression</h3>
+            </div>
+            <el-card class="card-border">
             <!-- <h1 style="text-align:left;font-weight:500;color:darkgray">Expression Informations</h1> -->
              <!-- <el-card style="padding:2%" shadow="none"> -->
                     <!-- 提示信息不显示 -->
@@ -434,6 +448,7 @@
                     <!-- </el-container> -->
                 <!-- </el-card> -->
             <div id="svg-container-expression"></div>
+            </el-card>
         </div>
         </div>
     </div>
@@ -900,7 +915,7 @@ export default {
     //     background: 'rgba(0, 0, 0, 0.7)',
     //     fullscreen:true
     // });
-    let geneName = this.$route.query.hdbId;
+    let hdbId = this.$route.query.hdbId;
     // 查询go，var，trait需要ensembl gene id
     let taxonId=this.$route.query.taxonId;
     let ensemblGeneId;
@@ -912,14 +927,14 @@ export default {
     this.$axios
     // 获取gene basic info的接口，目前是查询entrez id
     // 返回两个list数据，0是gbiinfo，1是ortholist
-      .get('http://localhost:9401/api/gene-detail',{params: {'hdbid': geneName, 'taxonid': taxonId}})
+      .get('http://localhost:9401/api/gene-detail',{params: {'hdbId': hdbId, 'taxonid': taxonId}})
       .then(response => {
         this.loading=false;
-        let genedetail = JSON.parse(JSON.stringify(response.data[0]));
+        let genedetail = response.data[0];
         this.geneBasicInfo=genedetail[0];
         console.log("geneBasicInfo:",this.geneBasicInfo);
         ensemblGeneId=this.geneBasicInfo.ensemblGeneId;
-        let orthoList = JSON.parse(JSON.stringify(response.data[1]));
+        let orthoList = response.data[1];
         // this.goBsicList=response.data[2];
         // 绘制初始热图
     //    geneSymbol=genedetail[0].geneSymbol;
@@ -951,7 +966,7 @@ export default {
         this.classification=this.geneBasicInfo.speciesName.classification;
         
         // console.log("classification:",classification);
-        this.$axios.get('http://localhost:9401/api/gene-detail-go',{params: {'geneName': ensemblGeneId,'classification':this.classification}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-go',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
             this.goloading=false;
             this.goList=response.data
             console.log("goList:",this.goList);
@@ -960,7 +975,7 @@ export default {
             this.drawGoRectChart(response.data,svgContainer,"go",specName,ensemblGeneId)
             }
         })
-        this.$axios.get('http://localhost:9401/api/gene-detail-var',{params: {'geneName': ensemblGeneId}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-var',{params: {'hdbId': hdbId}}).then(response=>{
             console.log("var response:",response.data);
             if(response.data.length>0){
             let svgContainer = d3.select("#svg-container-var").append("svg").attr("width", "96%").attr("height", svg_height).attr('id', 'svgcontainer-var');
@@ -969,7 +984,7 @@ export default {
             }
         })
         // let traitGeneName="Os05g0556300"
-        this.$axios.get('http://localhost:9401/api/gene-detail-trait',{params: {'geneName': ensemblGeneId}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-trait',{params: {'hdbId': hdbId}}).then(response=>{
             let svgContainer = d3.select("#svg-container-trait").append("svg").attr("width", "96%").attr("height", svg_height).attr('id', 'svgcontainer-trait');
             console.log("trait:",response.data);
             if(response.data.length>0){
@@ -980,7 +995,7 @@ export default {
             console.log("species:",response.data);
             this.species=response.data
         })
-        this.$axios.get('http://localhost:9401/api/gene-detail-expression',{params: {'geneName': ensemblGeneId,'classification':this.classification}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-expression',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
             let svgContainer = d3.select("#svg-container-expression").append("svg").attr("width", "96%").attr("height", svg_height).attr('id', 'svgcontainer-expression');
             console.log("expression:",response.data);
             // this.species=response.data

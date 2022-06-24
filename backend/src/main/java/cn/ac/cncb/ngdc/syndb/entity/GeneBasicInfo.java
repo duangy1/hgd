@@ -9,6 +9,8 @@ import java.util.List;
 public class GeneBasicInfo {
     private Integer gbiId;
 
+    private String hdbId;
+
     private String geneid;
 
     private String ensemblGeneId;

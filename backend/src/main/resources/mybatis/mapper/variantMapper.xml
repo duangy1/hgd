@@ -31,7 +31,7 @@
   </select>
 
   <select id="voInfoOfGene" resultMap="BaseResultMap">
-    select * from variation_all where gene_id=#{geneName}
+    select * from variation_all where hdb_gene_id=#{hdbId}
   </select>
 
   <select id="varTypeByGene" resultType="java.lang.String">

@@ -31,20 +31,25 @@ public class GeneDetailController {
         if(geneList!=null) {
             for (Ortho9031 orthoitem : orthoList) {
                 String tax1 = orthoitem.getTax1();
-                SpeciesInfo species1 = speciesService.findSpeciesByTaxon(tax1);
-                orthoitem.setSpecies1(species1);
+//                SpeciesInfo species1 = speciesService.findSpeciesByTaxon(tax1);
+
                 String tax2 = orthoitem.getTax2();
-                SpeciesInfo species2 = speciesService.findSpeciesByTaxon(tax2);
-                orthoitem.setSpecies2(species2);
+//                SpeciesInfo species2 = speciesService.findSpeciesByTaxon(tax2);
+//                orthoitem.setSpecies2(species2);
+                SpeciesInfo species1 = new SpeciesInfo();
                 //            在第一位，取第二位值，否则相反
                 if (taxonid.equals("" + tax1)) {
                     orthoitem.setTax(tax2);
                     orthoitem.setProtein(orthoitem.getProtein2());
-                    orthoitem.setSpecies(species2);
+//                    orthoitem.setSpecies(species2);
                     String hdbid = orthoitem.getHdbId2();
                     //            找对应的ensembl gene id
                     GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbid);
                     orthoitem.setGbiInfo(gbiInfo);
+                    orthoitem.setCommonName(orthoitem.getCommonName2());
+
+                    species1.setCommonName(orthoitem.getCommonName2());
+                    orthoitem.setSpecies(species1);
                 } else {
                     orthoitem.setTax(tax1);
                     orthoitem.setProtein(orthoitem.getProtein1());
@@ -53,6 +58,7 @@ public class GeneDetailController {
                     //            找对应的ensembl gene id
                     GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbid);
                     orthoitem.setGbiInfo(gbiInfo);
+                    orthoitem.setCommonName(orthoitem.getCommonName1());
                 }
             }
         }
@@ -71,15 +77,15 @@ public class GeneDetailController {
 
     @RequestMapping(value = "/api/gene-detail-var", method = RequestMethod.GET)
     @ResponseBody
-    public List varInformation(@RequestParam String geneName) {
-        List voInfoList = geneDetailService.voInfoList(geneName);
+    public List varInformation(@RequestParam String hdbId) {
+        List voInfoList = geneDetailService.voInfoList(hdbId);
         return voInfoList;
     }
 //    绘制热图所需trait数据
     @RequestMapping(value = "/api/gene-detail-trait", method = RequestMethod.GET)
     @ResponseBody
-    public List traitInformation(@RequestParam String geneName) {
-        List traitInfoList = geneDetailService.traitInfoList(geneName);
+    public List traitInformation(@RequestParam String hdbId) {
+        List traitInfoList = geneDetailService.traitInfoList(hdbId);
         return traitInfoList;
     }
 //    filter选项所需要的物种列表获取
@@ -93,8 +99,8 @@ public class GeneDetailController {
 //    表达
     @RequestMapping(value = "/api/gene-detail-expression", method = RequestMethod.GET)
     @ResponseBody
-    public List expressionInformation(@RequestParam String geneName,@RequestParam String classification) {
-        List<ExpressionTerm> expressionInfoList = geneDetailService.expressionInfoList(geneName,classification);
+    public List expressionInformation(@RequestParam String hdbId,@RequestParam String classification) {
+        List<ExpressionTerm> expressionInfoList = geneDetailService.expressionInfoList(hdbId,classification);
         return expressionInfoList;
     }
 

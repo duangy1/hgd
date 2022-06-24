@@ -29,7 +29,7 @@
     where gei_id = #{geiId,jdbcType=INTEGER}
   </select>
   <select id="expressionInfoByGeneList" resultMap="BaseResultMap">
-    select gene_id,annotation,taxon_id,bio_project_id,hdb_gene_id from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where gene_id=#{geneName}
+    select gene_id,annotation,gene_expression.taxon_id,bio_project_id,gene_expression.hdb_gene_id from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where hdb_gene_id=#{hdbId}
   </select>
   <select id="initPageEo" resultMap="BaseResultMap">
     select * from gene_expression where annotation=#{expName} and classification=#{classification}

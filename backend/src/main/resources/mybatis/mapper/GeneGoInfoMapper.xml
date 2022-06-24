@@ -42,7 +42,7 @@
   </select>
 
   <select id="selectBasicGo" resultMap="GoBasicResultMap">
-    select * from go_terms_1 where
+    select * from go_terms_1
   </select>
 
   <select id="getGoNumbyGene" resultType="String">

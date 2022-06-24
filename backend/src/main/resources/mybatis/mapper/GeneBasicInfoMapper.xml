@@ -24,6 +24,7 @@
     <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
     <result column="var_gene_id"  property="varGeneId" />
     <result column="exp_gene_id"  property="expGeneId" />
+    <result column="hdb_gene_id"  property="hdbId" />
 
 
   </resultMap>
@@ -136,7 +137,7 @@
   </select>
 
   <select id="selectGene" resultMap="BaseResultMap">
-    select * from gene_basic_info  where hdb_gene_id=#{geneName} and taxon_id=#{taxonid}
+    select * from gene_basic_info_1  where hdb_gene_id=#{hdbId} and taxon_id=#{taxonid}
   </select>
 
   <select id="selectGeneGoInfo" resultMap="BaseResultMap">

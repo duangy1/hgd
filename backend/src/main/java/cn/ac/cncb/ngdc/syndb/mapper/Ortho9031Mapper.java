@@ -28,7 +28,9 @@ public interface Ortho9031Mapper {
 
     List<Ortho9031> findOrthGeneByGivenGeneAndTaxon(Map param);
 
-    List<Ortho9031> selectGeneOrthoInfo(String hdbid);
+    List<Ortho9031> selectGeneOrthoInfo(String hdbId);
+
+    List<Ortho9031> geneDetailGeneOrthoInfo(String hdbId);
 
     List<Ortho9031> selectGeneVarOrthoInfo(String hdbid);
 

@@ -14,9 +14,9 @@
           </div> -->
           <el-form :inline="true" :form="searchForm"  >
           <div class="search-box" style="padding-top:40px;">
-			
+            <div style="margin:auto">
             <el-form-item>
-			<el-select v-model="searchForm.type" :popper-append-to-body="false" placeholder="HGD" style="float:left;height: 50px !important;text-align:left;width:200px !important;"> 
+			<el-select v-model="searchForm.type" :popper-append-to-body="false" placeholder="HGD" class="select"> 
                 <el-option
                   v-for="item in dataClass"
                   :key="item.value"
@@ -30,9 +30,9 @@
 				<el-input  v-model="searchForm.keyword" prefix-icon="el-icon-search"  placeholder="Enter query..." style="float:left;width: 400px;" ></el-input>
 			</el-form-item>
 			<el-form-item>
-				<el-button class="search-button"   type="primary" size="small" @click="onSubmit">Search</el-button>
+				<el-button class="search-button"   type="primary" size="medium" @click="onSubmit">Search</el-button>
 			</el-form-item>
-           
+           </div>
           </div>
 		</el-form>
           <div class="egs">
@@ -42,10 +42,10 @@
             <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Pig">Pig;</el-link>
             <el-link type="info" class="eg-ele" href="/gene?type=2&keyword=GRK3">GRK3;</el-link>     
             <el-link type="info" class="eg-ele" href="/gene?type=3&keyword=ENSGALG00000000011">ENSGALG00000000011;</el-link>
-			<el-link type="info" class="eg-ele" href="/gene?type=4&keyword=ENSGALP00000000096">ENSGALP00000000096;</el-link>
-			<el-link type="info" class="eg-ele" href="/gene?type=5&keyword=101750305">101750305;</el-link>
-			<el-link type="info" class="eg-ele" href="/gene?type=6&keyword=101750305">F1NMX3;</el-link>
-			<el-link type="info" class="eg-ele" href="/gene?type=7&keyword=101750305">protein_coding;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=4&keyword=ENSGALP00000000096">ENSGALP00000000096;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=5&keyword=101750305">101750305;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=6&keyword=101750305">F1NMX3;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=7&keyword=101750305">protein_coding;</el-link>
           </div>
         </div>
       </div>

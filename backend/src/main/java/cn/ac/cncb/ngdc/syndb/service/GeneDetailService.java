@@ -32,8 +32,8 @@ public class GeneDetailService {
     GeneExpressionMapper geneExpressionMapper;
 
 
-    public List<GeneBasicInfo> selectGene(String hdbid,String taxonid){
-        List<GeneBasicInfo> geneList=geneBasicInfoMapper.selectGene(hdbid,taxonid);
+    public List<GeneBasicInfo> selectGene(String hdbId,String taxonid){
+        List<GeneBasicInfo> geneList=geneBasicInfoMapper.selectGene(hdbId,taxonid);
         GeneBasicInfo geneInfo=geneList.get(0);
         SpeciesInfo speciesName=speciesInfoMapper.findSpeciesByTaxon(taxonid);
         geneInfo.setSpeciesName(speciesName);
@@ -113,8 +113,8 @@ public class GeneDetailService {
     }
 
 //获取绘制热图的variant Ontology和基因注释信息
-    public List voInfoList(String geneName){
-        List<Variant> varInfoListOfGene= variantMapper.voInfoOfGene(geneName);
+    public List voInfoList(String hdbId){
+        List<Variant> varInfoListOfGene= variantMapper.voInfoOfGene(hdbId);
         List<VOBasicTerm> voInfoList= VOBasicTermMapper.voInfoList();
         Integer numSum=0;
         String speciesName=new String();
@@ -143,8 +143,8 @@ public class GeneDetailService {
         return  voInfoList;
     }
 //根据 gene id取绘制热图的trait相关信息
-    public List<TraitName> traitInfoList(String geneName){
-        List<Trait2gwas> traitInfoByGeneList =trait2gwasMapper.traitInfoByGeneList(geneName);
+    public List<TraitName> traitInfoList(String hdbId){
+        List<Trait2gwas> traitInfoByGeneList =trait2gwasMapper.traitInfoByGeneList(hdbId);
         List<TraitName> traitList= traitNameMapper.traitInfoList();
         Integer numSum=0;
         for(Trait2gwas traitInfoItem : traitInfoByGeneList){
@@ -188,8 +188,8 @@ public class GeneDetailService {
     }
 
     //根据 gene id取绘制热图的trait相关信息
-    public List<ExpressionTerm> expressionInfoList(String geneName,String classification){
-        List<GeneExpression> expressionInfoByGeneList =geneExpressionMapper.expressionInfoByGeneList(geneName);
+    public List<ExpressionTerm> expressionInfoList(String hdbId,String classification){
+        List<GeneExpression> expressionInfoByGeneList =geneExpressionMapper.expressionInfoByGeneList(hdbId);
         List<ExpressionTerm> expressionList= expressionTermMapper.expressionInfoList(classification);
         Integer numSum=0;
         for(GeneExpression expressionInfoItem : expressionInfoByGeneList){

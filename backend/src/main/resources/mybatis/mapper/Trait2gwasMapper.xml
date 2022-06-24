@@ -64,7 +64,7 @@
       select count(distinct trait_id) from trait_all_copy1 where hdb_gene_id=#{geneId} and taxon_id=#{taxonId}
   </select>
   <select id="traitInfoByGeneList" resultType="java.lang.String">
-      select trait_name from trait_all_copy1 where hdb_gene_id=#{hdbid}
+      select trait_name from trait_all_copy1 where hdb_gene_id=#{hdbId}
   </select>
 
   <select id="getGwasInfoByhdbid" resultMap="hdbGwasResultMap">

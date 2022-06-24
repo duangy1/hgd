@@ -35,7 +35,7 @@ public interface Trait2gwasMapper {
 
     Integer selectTraitCountByGeneAndTaxon(Map param);
 
-    List traitInfoByGeneList(String hdbid);
+    List traitInfoByGeneList(String hdbId);
 
     HdbGwas getGwasInfoByhdbid(String hdbId);
 }

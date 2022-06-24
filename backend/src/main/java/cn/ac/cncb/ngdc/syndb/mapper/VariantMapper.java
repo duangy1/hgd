@@ -21,7 +21,7 @@ public interface VariantMapper {
 
     Page<Variant> initPageVariant(String varname,String classification,String speciesName);
 
-    List<Variant> voInfoOfGene(String geneName);
+    List<Variant> voInfoOfGene(String hdbId);
 
     List varTypeByGene(String geneName);
 

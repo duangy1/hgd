@@ -71,8 +71,8 @@ public class OrthoService {
 //    从trait_all表返回的trait数据
 //    循环trait数据，找到对应的同源list
 //    循环同源list，找到同源基因对应的trait
-    public List<Ortho9031> selectGeneOrthoInfo(String hdbid){
-        List<Ortho9031> orthoList=ortho9031Mapper.selectGeneOrthoInfo(hdbid);
+    public List<Ortho9031> selectGeneOrthoInfo(String hdbId){
+        List<Ortho9031> orthoList=ortho9031Mapper.geneDetailGeneOrthoInfo(hdbId);
         for(Ortho9031 orthoItem : orthoList){
             String dbevidence=orthoItem.getDbEvidence();
             String fromdbinfo=orthoItem.getFromdb();
