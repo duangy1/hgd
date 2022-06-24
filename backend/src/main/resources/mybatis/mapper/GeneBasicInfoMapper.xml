@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <id column="gbi_id" jdbcType="INTEGER" property="gbiId" />
     <result column="ensembl_gene_id" jdbcType="VARCHAR" property="ensemblGeneId" />
+    <result column="uniprot_id" property="uniprotId" />
     <result column="enspro_id" jdbcType="VARCHAR" property="ensemblProteinId" />
     <result column="refseq_id" jdbcType="VARCHAR" property="refseqId" />
     <result column="gene_synonym" jdbcType="VARCHAR" property="geneSynonym" />
@@ -56,7 +57,7 @@
   </select>
 
   <select id="filterHomologGene" parameterType="java.util.HashMap" resultMap="BaseResultMap">
-    select a.gbi_id,a.hdb_gene_id,a.ensembl_gene_id,a.entrez_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id,
+    select a.gbi_id,a.uniprot_id,a.enspro_id,a.hdb_gene_id,a.ensembl_gene_id,a.entrez_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id,
     a.gene_description,a.gwas_gene_id,b.latin_name as taxon_name,b.species_type from gene_basic_info_1 a left join species b
     on a.taxon_id=b.taxon_id where 1=1
     <if test="species != null">
