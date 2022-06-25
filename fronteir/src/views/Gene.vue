@@ -46,7 +46,9 @@
                                 :open-on-click="true"
                                 :always-open="true"
                                 :flat="true"
-                                :append-to-body="false"
+								:zIndex="1"
+								openDirection="bottom"
+                                :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
                                  v-model="traitAnimalvalue"
                                 /> 
@@ -62,7 +64,9 @@
                                 :open-on-click="true"
                                 :always-open="true"
                                 :flat="true"
-                                :append-to-body="false"
+								:zIndex="1"
+								openDirection="bottom"
+                                :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
                                  v-model="govalue"
                                 /> 
@@ -77,7 +81,8 @@
                                 :open-on-click="true"
                                 :always-open="true"
                                 :flat="true"
-                                :append-to-body="false"
+								openDirection="bottom"
+                                :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
                                  v-model="variantvalue"
                                 /> 
@@ -91,7 +96,8 @@
                                 :open-on-click="true"
                                 :always-open="true"
                                 :flat="true"
-                                :append-to-body="false"
+								openDirection="bottom"
+                                :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
                                  v-model="expvalue"
                                 /> 
@@ -320,6 +326,11 @@ export default {
 			window.location.href="/gene";
 		},
 		reset(){
+			this.checkSpAnimalList=[];
+			this.traitAnimalvalue=[];
+			this.govalue=[];
+			this.variantvalue=[];
+			this.expvalue=[];
 			this.$router.push({
 				path: '/gene'
 			})
