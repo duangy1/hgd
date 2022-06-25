@@ -107,6 +107,11 @@
             <el-table-column align="center" class="titleCell" prop="goName" label="Gene Ontology" fixed width="250px"></el-table-column>
             <el-table-column align="center" class="titleCell" prop="topGoId" label="Go Id" fixed width="120px"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+              <template slot-scope="scope">
+                <a :href="'/gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
+                    {{ scope.row.geneId }}
+                </a>
+              </template>
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name"  fixed width="150px" ></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="100px" fixed></el-table-column>
@@ -204,32 +209,36 @@
               max-height="500px"
           >
             <el-table-column
-                prop="commonName1"
-                label="Species1"
-                width="180px">
-            </el-table-column>
-            <el-table-column
-                prop="tax1"
-                label="Taxon Id1">
-            </el-table-column>
-            <el-table-column
-                prop="hdbId1"
-                label="Protein Id1">
-            </el-table-column>
-            
-            <el-table-column
-                prop="commonName2"
-                label="Species2"
-                width="180px">
-            </el-table-column>
-            <el-table-column
-                prop="tax2"
-                label="Taxon Id1">
-            </el-table-column>
-            <el-table-column
-                prop="hdbId2"
-                label="Protein Id1">
-            </el-table-column>
+                  prop="commonName"
+                  label="Species"
+                  align="center">
+              </el-table-column>
+              <el-table-column
+                  prop="tax"
+                  label="Taxon Id1"
+                  align="center">
+              </el-table-column>
+              <el-table-column
+                  prop="ensemblGeneId"
+                  label="Ensembl Id"
+                  align="center">
+              </el-table-column>
+               <el-table-column
+                prop="geneSymbol"
+                label="Gene Symbol"
+                align="center">
+              </el-table-column>
+              <el-table-column
+                  prop="hdbId"
+                  label="Protein Id"
+                  align="center">
+                  <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
+                
+                    <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
+                        {{ scope.row.hdbId }}
+                    </a>
+                  </template>
+              </el-table-column>
             
             </el-table>
           </div>
@@ -242,7 +251,7 @@
        
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" >
-          <h3 class="trait-sub-title">Gwas Detail Information</h3>
+          <h3 class="trait-sub-title">Go Detail Information</h3>
         </div>
         <div id="trait-info">
             <!-- <el-card shadow="none" class="gwasDetailCard"> -->
@@ -253,12 +262,18 @@
                 v-loading="gwasLoading"
                 max-height="500px"
               >
-                <el-table-column prop="geneId" label="Gene Id"></el-table-column>
-                <el-table-column prop="goName" label="Go Name"></el-table-column>
-                <el-table-column prop="goId" label="Detail Go Id"></el-table-column>
-                <el-table-column prop="topGoId" label="Go Id"></el-table-column>
-                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="taxonId" label="Taxon Id"></el-table-column>
+                <el-table-column prop="geneId" label="Gene Id" align="center">
+                  <template slot-scope="scope">
+                    <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.geneId+';site=ensembl'" target='_blank' >
+                        {{ scope.row.geneId }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="goName" label="Go Name" align="center"></el-table-column>
+                <el-table-column prop="topGoId" label="Go Id" align="center"></el-table-column>
+                <el-table-column prop="goId" label="Sub Go Id" align="center"></el-table-column>
+                <el-table-column prop="speciesCommonName" label="Species" align="center"></el-table-column>
+                <el-table-column prop="taxonId" label="Taxon Id" align="center"></el-table-column>
               </el-table>
             <!-- </el-card> -->
         </div>
@@ -406,38 +421,37 @@
             max-height="500px"
         >
             <el-table-column
-                prop="commonName1"
-                label="Species1"
-                width="180px">
-            </el-table-column>
-            <el-table-column
-                prop="tax1"
-                label="Taxon Id1">
-            </el-table-column>
-            <el-table-column
-                prop="hdbId1"
-                label="Protein Id1">
-            </el-table-column>
-            
-            <el-table-column
-                prop="commonName2"
-                label="Species2"
-                width="180px">
-            </el-table-column>
-            <el-table-column
-                prop="tax2"
-                label="Taxon Id1">
-            </el-table-column>
-            <el-table-column
-                prop="hdbId2"
-                label="Protein Id1">
-            </el-table-column>
+                  prop="commonName"
+                  label="Species">
+              </el-table-column>
+              <el-table-column
+                  prop="tax"
+                  label="Taxon Id1">
+              </el-table-column>
+              <el-table-column
+                  prop="ensemblGeneId"
+                  label="Ensembl Id">
+              </el-table-column>
+               <el-table-column
+                prop="geneSymbol"
+                label="Gene Symbol">
+              </el-table-column>
+              <el-table-column
+                  prop="hdbId"
+                  label="Protein Id">
+                  <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
+                
+                    <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
+                        {{ scope.row.hdbId }}
+                    </a>
+                  </template>
+              </el-table-column>
             
           </el-table>
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" style="padding-left:1.5%;margin-bottom:1.3%">
-          <h3 class="trait-sub-title">Gwas Detai Information</h3>
+          <h3 class="trait-sub-title">GO Detail Information</h3>
         </div>
         <div id="trait-info">
             <el-card shadow="none" class="gwasDetailCard">
@@ -449,12 +463,18 @@
                 v-loading="gwasLoading"
                 max-height="500px"
               >
-                <el-table-column align="center" prop="geneId" label="Gene Id"></el-table-column>
-                <el-table-column align="center" prop="goName" label="Go Name"></el-table-column>
-                <el-table-column align="center" prop="goId" label="Detail Go Id"></el-table-column>
-                <el-table-column align="center" prop="topGoId" label="Go Id"></el-table-column>
-                <el-table-column align="center" prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column align="center" prop="taxonId" label="Taxon Id"></el-table-column>
+                <el-table-column prop="geneId" label="Gene Id">
+                  <template slot-scope="scope">
+                    <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.geneId+';site=ensembl'" target='_blank' >
+                        {{ scope.row.geneId }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="goName" label="Go Name"></el-table-column>
+                <el-table-column prop="topGoId" label="Go Id"></el-table-column>
+                <el-table-column prop="goId" label="Sub Go Id"></el-table-column>
+                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
+                <el-table-column prop="taxonId" label="Taxon Id"></el-table-column>
               </el-table>
             </el-card>
         </div>
@@ -655,8 +675,18 @@ export default {
         let item=rowdata.ortholist[idx]
         ortholist.push(item)
     }})
-
-    this.orthoTableData=ortholist;
+    this.orthoTableData=[]
+    ortholist.forEach(item=>{
+      let hdbid=item.hdbId;
+      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+        console.log("gene res:",res);
+        item.ensemblGeneId=res.data.ensemblGeneId;
+        item.geneSymbol=res.data.geneSymbol
+        this.orthoTableData.push(item)
+        this.orthoLoading=false;
+      })
+    })
+    // this.orthoTableData=ortholist;
     console.log("ortholist:",ortholist);
   },
  

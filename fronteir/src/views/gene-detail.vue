@@ -66,9 +66,9 @@
                 </div>
                 <el-card class="card-border">
                     <el-descriptions :column="3" class="descriptions" :size="size"  v-if="JSON.stringify(geneBasicInfo) !=='{}'">
-                        <el-descriptions-item label="Ensembl Gene Id"><a :href="'https://ensemblgenomes.org/search/?query='+geneBasicInfo.ensemblGeneId">{{geneBasicInfo.ensemblGeneId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
-                        <el-descriptions-item label="Entrez Gene Id"><a :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
-                        <el-descriptions-item label="Refseq Id"><a :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
+                        <el-descriptions-item label="Ensembl Gene Id"><a target="_blank" :href="'https://ensemblgenomes.org/search/?query='+geneBasicInfo.ensemblGeneId">{{geneBasicInfo.ensemblGeneId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
+                        <el-descriptions-item label="Entrez Gene Id"><a target="_blank" :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
+                        <el-descriptions-item label="Refseq Id"><a target="_blank" :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
                         <el-descriptions-item label="Gene Synonym">{{geneBasicInfo.geneSynonym}}</el-descriptions-item>
                         <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
                         <el-descriptions-item label="Gene Symbol">{{geneBasicInfo.geneSymbol}}</el-descriptions-item>
@@ -84,7 +84,7 @@
         <div id="item-pos-2">
             <!-- <div class="p-ele top-p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ortholog Informations</span></div> -->
             <div class="var-box var-infoBox">
-                <h3 class="var-title">Gene Ortholog Informations</h3>
+                <h3 class="var-title">Gene Homolog Informations</h3>
             </div>
             <el-card class="card-border">
                 <div class="filt-div">
@@ -115,9 +115,24 @@
                     <el-table-column prop="commonName" label="Species" ></el-table-column>
                     <el-table-column prop="taxId" label="Taxon Id"></el-table-column>
                     <el-table-column prop="ensembId" label="Ensembl Id"  ></el-table-column>
-                    <el-table-column prop="entrezId" label="Entrez Id"></el-table-column>
+                    <el-table-column prop="entrezId" label="Entrez Id">
+                        <template slot-scope="scope">
+                            <a :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+scope.row.entrezId" target='_blank' >
+                                {{ scope.row.entrezId }}
+                            </a>
+                        </template>
+                    </el-table-column>
                     <el-table-column prop="geneSymbol" label="Gene Symbol"></el-table-column>
-                    <el-table-column prop="hdbGeneId" label="Protein"></el-table-column>
+                    <el-table-column prop="hdbGeneId" label="Protein">
+                        <template slot-scope="scope" >
+                            <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbGeneId" target='_blank' v-if="scope.row.hdbGeneId.slice(0,2)!=='EN'">
+                                {{ scope.row.hdbGeneId }}
+                            </a>
+                            <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.hdbGeneId+';site=ensembl'" target='_blank' v-if="scope.row.hdbGeneId.slice(0,2)=='EN'">
+                                {{ scope.row.hdbGeneId }}
+                            </a>
+                        </template>
+                    </el-table-column>
                     <el-table-column  label="Data Source" align="center">
                         <template slot-scope="scope">
                             <el-popover
@@ -193,11 +208,12 @@
             max-height="500px"
             v-if="showGoTable"
             >
-            <el-table-column prop="goId" label="Detail Go Id"></el-table-column>
-            <el-table-column prop="goAnnotations" label="Go Name"></el-table-column>
-            <el-table-column prop="goList" label="Go Id"></el-table-column>
-            <el-table-column prop="definition" label="Gene Id"></el-table-column>
-            <el-table-column prop="topClass" label="Species"></el-table-column>
+            <el-table-column prop="goId" label="Go Id" align="center" width="130px"></el-table-column>
+            <el-table-column prop="goAnnotations" label="Go Name" align="center"></el-table-column>
+            <el-table-column prop="topClass" label="Go classification" align="center" width="150px"></el-table-column>
+            <el-table-column prop="goList" label="Sub Go Id" align="center" ></el-table-column>
+            <el-table-column prop="definition" label="Go Definition" align="center"></el-table-column>
+            
                 
         </el-table>
     </el-card>
@@ -208,7 +224,7 @@
 
                 <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Variant</span></p> -->
             <div class="var-box var-infoBox">
-                <h3 class="var-title">Variant</h3>
+                <h3 class="var-title">Variants</h3>
             </div>
             <el-card class="card-border">
                 <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
@@ -237,89 +253,66 @@
             <el-table
                 :data="varList"
                 class="info-table"
-                v-loading="goloading"
+                v-loading="varLoading"
                 :border="false"
                 v-if="showVarInfoTable"
             >
                 <el-table-column
+                    prop="gene.genename"
+                    label="Gene Id"
+                    align="center"
+                    width="150px">
+                </el-table-column>
+                <el-table-column
                     prop="rsnpId"
-                    label="Var Id">
+                    label="Var Id"
+                    width="120px"
+                    align="center">
                 </el-table-column>
                 <el-table-column
                     prop="position"
-                    label="Position">
+                    label="Position"
+                    width="120px"
+                    align="center">
                 </el-table-column>
                 <el-table-column
                     prop="allele"
                     label="Allele"
+                    width="80px"
+                    align="center"
                 >
                 </el-table-column>
-                <!-- <el-table-column
-                    prop="chrom"
-                    label="Chromosom"
-                >
-                </el-table-column> -->
+               
 
                 <el-table-column
                     prop="maf"
-                    label="Maf">
+                    label="Maf"
+                    width="120px"
+                    align="center">
                 </el-table-column>
-                <!-- <el-table-column
-                    prop="maffreq"
-                    label="Maf Frequency">
-                </el-table-column> -->
-                <!-- <el-table-column
-                    prop="omimFlag"
-                    label="Omim Flag">
-                </el-table-column>
-                <el-table-column
-                    prop="pharamFlag"
-                    label="Pharam Flag">
-                </el-table-column> -->
-
-                <!-- <el-table-column
-                    prop="refallele"
-                    label="Ref Allele">
-                </el-table-column> -->
-                <!-- <el-table-column
-                    prop="refsnpname"
-                    label="Ref Snp Name">
-                </el-table-column> -->
-                <!-- <el-table-column
-                    prop="rowcount"
-                    label="Row Count">
-                </el-table-column> -->
-                <!-- <el-table-column
-                    prop="rsid"
-                    label="Rsid">
-                </el-table-column> -->
+              
 
                 <el-table-column
                     prop="snpClassId"
-                    label="Class">
+                    label="Class"
+                    width="80px"
+                    align="center">
                 </el-table-column>
-                <!-- <el-table-column
-                    prop="snpEnd"
-                    label="Snp End">
-                </el-table-column> -->
-                <!-- <el-table-column
-                    prop="snpStart"
-                    label="Snp Position">
-                </el-table-column> -->
-
+               
                 <el-table-column
                     prop="gene.conseqtype"
-                    label="Consequence Type/Effect">
+                    label="Consequence Type/Effect"
+                    
+                    align="center">
                 </el-table-column>
                 <el-table-column
                     prop="gene.genealias"
                     label="Gene Symbol"
-                    width="120px">
+                    align="center"
+                    width="120px"
+                   >
                 </el-table-column>
-                <el-table-column
-                    prop="gene.genename"
-                    label="Gene Id">
-                </el-table-column>
+                
             </el-table>
             </el-card>
         </div>
@@ -358,6 +351,13 @@
                 <!-- </el-container> -->
             <!-- </el-card> -->
             <div id="svg-container-trait"></div>
+            <el-table :data="traitData" class="info-table"  v-loading="goloading" :border="false" v-if="showTraitTable">
+                <el-table-column  prop="traitName" label="Trait Name" align="center"></el-table-column>
+                <el-table-column  prop="traitId" label="Trait Id" width="80px" align="center"></el-table-column>
+                <el-table-column  prop="definition" label="Trait Definition" align="center"></el-table-column>
+                <el-table-column  prop="gwasList" label="Gwas Id" align="center"></el-table-column>
+                
+            </el-table>
             </el-card>
         </div>
         <div id="item-pos-6">
@@ -394,7 +394,21 @@
                 <div id="svg-container-expression"></div>
 
                 <el-table :data="expTabledata"  class="info-table"  v-loading="goloading" :border="false" v-if="showExpInfoTable">
-                    <el-table-column  prop="projectId" label="Bioproject Id"></el-table-column>
+                <!-- 这里有问题，还没解决取gen物种id -->
+                    <el-table-column  prop="geneId" label="Gene Id">
+                        <template slot-scope="scope">
+                            <a :href="'https://ngdc.cncb.ac.cn/gen/gene/31/'+scope.row.geneId">
+                                {{ scope.row.geneId }}
+                            </a>
+                        </template>
+                    </el-table-column>
+                    <el-table-column  prop="projectId" label="Bioproject Id">
+                        <template slot-scope="scope">
+                            <a :href="'https://ngdc.cncb.ac.cn/gen/project/accession/'+scope.row.projectId">
+                                {{ scope.row.projectId }}
+                            </a>
+                        </template>
+                    </el-table-column>
                     <el-table-column  prop="tissue" label="Tissue"></el-table-column>
                     <el-table-column  prop="expAvg" label="Average Tpm"></el-table-column>
                 </el-table>
@@ -458,7 +472,7 @@ export default {
         geneBasicInfo:{},
         orthoInfo:[],
         tableOrthoList:[],
-        goList:[],
+        // goList:[],
         varList:[],
         loading:true,
         goloading:true,
@@ -479,7 +493,9 @@ export default {
         showGoTable:false,
         goInfoData:[],
         expTabledata:[],
-        showExpInfoTable:false
+        showExpInfoTable:false,
+        traitData:[],
+        showTraitTable:false
         }
     },
 
@@ -540,6 +556,8 @@ export default {
             this.showVarInfoTable=false;
         }else if(key=='go'){
             this.showGoTable=false;
+        }else if(key=='expression'){
+            this.showExpInfoTable=false;
         }
         this.waitResponse[key]=false;
         this.form.species[key]="";
@@ -789,8 +807,8 @@ export default {
             }else if( dataclass =="var"){
                  htmlInfo=`<div>Variant Number: ${i.snpNum>0?i.snpNum:"-"}</div>
             <div>Variant List: ${i.snpList==null?"-":i.snpList.slice(0,2)}${i.snpList!==null&&i.snpList.length>2?"...":""}</div>
-            <div>Variant Annotaion: ${i.voAnnotaion}</div>
-            <div>Variant Classification: ${i.voClassification}</div>
+            <div>Consequence Type: ${i.voAnnotaion}</div>
+            <div>Effect: ${i.voClassification}</div>
 
             `
             }else if( dataclass =="expression"){
@@ -821,6 +839,7 @@ export default {
             // let classification=this.geneBasicInfo.speciesName.classification;
             console.log("d,i:",d,i);
             if(dataclass=="var"){
+                this.varLoading=true;
                 let dataSource=i.dataSource;
                 let BASEPATH;
                 if(dataSource.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
@@ -845,13 +864,19 @@ export default {
                             item.maf=maf;
                             item.snpClassId=classsnp;
                         }
+                        this.varLoading=false;
                     })
                 }
             }else if(dataclass=="go"){
+                i.goList=i.goList.join(",")
                 this.goInfoData=[i]
+                // this.goInfoData.goList=listgo
                 this.showGoTable=true;
             }else if(dataclass=="trait"){
                 console.log("i.snpList:",i.snpList);
+                this.showTraitTable=true;
+                i.gwasList=i.gwasList.join(",")
+                this.traitData=[i]
             }else if(dataclass=="expression"){
                 console.log("i.snpList:",i.snpList);
                 if(i.prjList.length>0){
@@ -878,11 +903,12 @@ export default {
                             }
                         }
                         for(let tissueName in tissue){
-                            let expAvg=expNum/sampleNum
+                            let expAvg=(expNum/sampleNum).toFixed(4)
                             let item={
                                 "projectId":keyaa,
                                 "tissue":tissueName,
-                                "expAvg":expAvg
+                                "expAvg":expAvg,
+                                "geneId":i.geneId
                             }
                             expTabledata.push(item)
                             
@@ -1020,7 +1046,7 @@ export default {
         this.$axios.get('http://localhost:9401/api/gene-detail-go-1',{params: {'hdbId': hdbId}}).then(response=>{
             if(response.data.length>0){
                 this.goloading=false;
-                this.goList=response.data
+                // this.goList=response.data
                 console.log("goList:",this.goList);
                 if(response.data.length>0){
                 let svgContainer = d3.select("#svg-container-go").append("svg").attr("width", "98%").attr("height", svg_height+60).attr('id', 'svgcontainer-go');

@@ -150,12 +150,9 @@
   <select id="traitInfoList" resultMap="TraitResultMap">
     select * from trait_name
   </select>
-  <select id="selectEnsgIdByhdbId" resultMap="BaseResultMap">
-    select ensembl_gene_id from gene_basic_info where hdb_gene_id=#{hdbId}
-  </select>
 
   <select id="selectGeneByHdbGeneId" resultMap="BaseResultMap">
-      select * from gene_basic_info_1 where hdb_gene_id=#{hdbGeneId}
+      select * from gene_basic_info_1 where hdb_gene_id=#{hdbId} limit 0,1
   </select>
 
   <select id="getHdbIdByEnsId" resultType="String">

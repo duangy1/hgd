@@ -109,6 +109,12 @@
           >
             <el-table-column align="center" class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+              <template slot-scope="scope">
+                
+                <a :href="'/gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId" target='_blank'>
+                    {{ scope.row.geneId }}
+                </a>
+              </template>
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
@@ -121,26 +127,26 @@
                     min-width="70"
                     height="70"
                     class="iconImg"
-                    v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
+                    v-if='scope.row.speciesListData.indexOf(index)>-1'
                     style="cursor:pointer !important"
                     @click=showOrthoInfoTable(scope.row,index)
                   />
                   <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
                   <img
+                    :src="singleTraitIcon"
+                    min-width="70"
+                    height="70"
+                    class="iconImg"
+                    v-if='scope.row.traitListData2.indexOf(index)>-1 '
+                    style="cursor:pointer !important"
+                    @click=showGwasInfoTable(scope.row,index)
+                  />
+                   <img
                     :src="sameTraitIcon"
                     min-width="70"
                     height="70"
                     class="iconImg"
                     v-if='scope.row.traitListData1.indexOf(index)>-1'
-                    style="cursor:pointer !important"
-                    @click=showGwasInfoTable(scope.row,index)
-                  />
-                  <img
-                    :src="singleTraitIcon"
-                    min-width="70"
-                    height="70"
-                    class="iconImg"
-                    v-if='scope.row.traitListData2.indexOf(index)>-1'
                     style="cursor:pointer !important"
                     @click=showGwasInfoTable(scope.row,index)
                   />
@@ -155,17 +161,17 @@
                     <img :src="orthoIcon"
                       style="margin-right: 6px;min-width=70px;height=70px;"
                       class="iconImg" />
-                      <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
+                      <div class="note-info">This icon represents the gene has homolog gene informations here.</div>
           </div>
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has trait annotation.</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has same trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has same trait annotation.</div>  
           </div>
           
           </div>
@@ -191,7 +197,7 @@
       <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider class="divider"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detai Information</h2>
+            <h2 class="trait-sub-title">Ortholog Gene Detail Information</h2>
           </div>
       </div>
       <!-- <div id="wrapper"> -->
@@ -205,31 +211,31 @@
               fixed
           >
              <el-table-column
-                  prop="commonName1"
-                  label="Species">
-              </el-table-column>
+                prop="commonName"
+                label="Species">
+            </el-table-column>
+            <el-table-column
+                prop="tax"
+                label="Taxon Id1">
+            </el-table-column>
+            <el-table-column
+                prop="ensemblGeneId"
+                label="Ensembl Id">
+            </el-table-column>
               <el-table-column
-                  prop="tax1"
-                  label="Taxon Id1">
-              </el-table-column>
-            
+              prop="geneSymbol"
+              label="Gene Symbol">
+            </el-table-column>
+            <el-table-column
+                prop="hdbId"
+                label="Protein Id">
+                <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
               
-              <el-table-column
-                  prop="hdbId1"
-                  label="Protein1">
-              </el-table-column>
-              <el-table-column
-                  prop="commonName2"
-                  label="Species2">
-              </el-table-column>
-              <el-table-column
-                  prop="tax2"
-                  label="Taxon Id2">
-              </el-table-column>
-              <el-table-column
-                  prop="hdbId2"
-                  label="Protein2">
-              </el-table-column>
+                  <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
+                      {{ scope.row.hdbId }}
+                  </a>
+                </template>
+            </el-table-column>
               
             </el-table>
           </div>
@@ -242,7 +248,7 @@
        
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" >
-          <h3 class="trait-sub-title">Variant Detail Information</h3>
+          <h3 class="trait-sub-title">Gwas Detail Information</h3>
         </div>
         <div id="trait-info">
             <!-- <el-card shadow="none" class="gwasDetailCard"> -->
@@ -253,12 +259,24 @@
                 max-height="400"
                 v-loading="gwasLoading"
               >
-                <el-table-column prop="varId" label="Var Id"></el-table-column>
-                <el-table-column prop="traitName" label="Var Id"></el-table-column>
-                <el-table-column prop="traitName" label="Trait Name"></el-table-column>
-                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
+                <el-table-column prop="topTrait" label="Trait Name" align="center"></el-table-column>
+                <el-table-column prop="varId" label="Var Id" align="center">
+                  <template slot-scope="scope">
+                    <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.varId+'&chrom='+scope.row.chrom+'&position='+scope.row.endPos+'&orgId='+scope.row.orgId" target='_blank'>
+                      {{ scope.row.varId }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="traitName" label="Sub Trait Name" align="center"></el-table-column>
+                <el-table-column prop="speciesCommonName" label="Species" align="center"></el-table-column>
+                <el-table-column prop="pmid" label="Pubmed Id" align="center">
+                  <template slot-scope="scope">
+                    <a v-bind:href="'https://pubmed.ncbi.nlm.nih.gov/'+scope.row.pmid" target='_blank'>
+                      {{ scope.row.pmid }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="pvalue" label="Pvalue" align="center"></el-table-column>
               </el-table>
             <!-- </el-card> -->
         </div>
@@ -336,6 +354,15 @@
                       @click=showOrthoInfoTable(scope.row,index)
                     />
                     <!--这个v-if，先判断在当前的cell内有数值，然后再判断值 -->
+                     <img
+                      :src="singleTraitIcon"
+                      min-width="70"
+                      height="70"
+                      class="iconImg"
+                      v-if='scope.row.traitListData2.indexOf(index)>-1'
+                      style="cursor:pointer !important"
+                      @click=showGwasInfoTable(scope.row,index)
+                    />
                     <img
                       :src="sameTraitIcon"
                       min-width="70"
@@ -345,6 +372,7 @@
                       style="cursor:pointer"
                       @click=showGwasInfoTable(scope.row,index)
                     />
+                    
                   </template>
               </el-table-column>
             </template>
@@ -355,12 +383,17 @@
                   <img :src="orthoIcon"
                     style="margin-right: 6px;min-width=70px;height=70px;"
                     class="iconImg" />
-                    <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
+                    <div class="note-info">This icon represents the gene has homolog gene informations here.</div>
         </div>
+        <div style="display: flex;">
+                    <img :src="singleTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has trait annotation.</div>  
+          </div>
         <div style="display: flex;">
                   <img :src="sameTraitIcon"   
                     style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
+                    class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has a same trait annotation.</div>  
         </div>
         </div>
         <el-pagination
@@ -377,7 +410,7 @@
         <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider style="padding-top:5px"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detai Information</h2>
+            <h2 class="trait-sub-title">Ortholog Gene Detail Information</h2>
           </div>
       </div>
     <!-- 同源表格 -->
@@ -388,38 +421,38 @@
             v-if="showOrthoSubTable"
             :border="false"
         >
+           <el-table-column
+                prop="commonName"
+                label="Species">
+            </el-table-column>
             <el-table-column
-                  prop="commonName1"
-                  label="Species">
-              </el-table-column>
+                prop="tax"
+                label="Taxon Id1">
+            </el-table-column>
+            <el-table-column
+                prop="ensemblGeneId"
+                label="Ensembl Id">
+            </el-table-column>
               <el-table-column
-                  prop="tax1"
-                  label="Taxon Id1">
-              </el-table-column>
-             
+              prop="geneSymbol"
+              label="Gene Symbol">
+            </el-table-column>
+            <el-table-column
+                prop="hdbId"
+                label="Protein Id">
+                <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
               
-              <el-table-column
-                  prop="hdbId1"
-                  label="Protein1">
-              </el-table-column>
-              <el-table-column
-                  prop="commonName2"
-                  label="Species2">
-              </el-table-column>
-              <el-table-column
-                  prop="tax2"
-                  label="Taxon Id2">
-              </el-table-column>
-              <el-table-column
-                  prop="hdbId2"
-                  label="Protein2">
-              </el-table-column>
+                  <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
+                      {{ scope.row.hdbId }}
+                  </a>
+                </template>
+            </el-table-column>
               
           </el-table>
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" style="padding-left:1.5%;margin-bottom:1.3%">
-          <h3 class="trait-sub-title">Gwas Detai Information</h3>
+          <h3 class="trait-sub-title">Gwas Detail Information</h3>
         </div>
         <div id="trait-info">
             <el-card shadow="none" class="gwasDetailCard">
@@ -431,11 +464,24 @@
                 max-height="400"
                 v-loading="gwasLoading"
               >
-                <el-table-column prop="varId" label="Var Id"></el-table-column>
-                <el-table-column prop="traitName" label="Trait Name"></el-table-column>
-                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
+                <el-table-column prop="topTrait" label="Trait Name" align="center"></el-table-column>
+                <el-table-column prop="varId" label="Var Id" align="center">
+                  <template slot-scope="scope">
+                    <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.varId+'&chrom='+scope.row.chrom+'&position='+scope.row.endPos+'&orgId='+scope.row.orgId" target='_blank'>
+                      {{ scope.row.varId }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="traitName" label="Sub Trait Name" align="center"></el-table-column>
+                <el-table-column prop="speciesCommonName" label="Species" align="center"></el-table-column>
+                <el-table-column prop="pmid" label="Pubmed Id" align="center">
+                  <template slot-scope="scope">
+                    <a v-bind:href="'https://pubmed.ncbi.nlm.nih.gov/'+scope.row.pmid" target='_blank'>
+                      {{ scope.row.pmid }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="pvalue" label="Pvalue" align="center"></el-table-column>
               </el-table>
             </el-card>
         </div>
@@ -636,7 +682,20 @@ export default {
     this.showOrthoSubTable = true;
     this.showSubTableBox=false;
     this.orthoLoading=false;
-    this.orthoTableData=ortholist;
+
+   this.orthoTableData=[]
+    ortholist.forEach(item=>{
+      let hdbid=item.hdbId;
+      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+        console.log("gene res:",res);
+        item.ensemblGeneId=res.data.ensemblGeneId;
+        item.geneSymbol=res.data.geneSymbol
+        this.orthoTableData.push(item)
+        this.orthoLoading=false;
+      })
+    })
+
+    // this.orthoTableData=ortholist;
     console.log(this.orthoTableData);
     // 应该发送请求去genebasicinfo查具体的基因相关信息
 
@@ -668,16 +727,22 @@ export default {
     this.orthoLoading=false;
     this.orthoTableData=ortholist;
     this.showSubTableBox=true;
-    
+    this.gwasLoading=true;
     // 左侧基因的接口数据
     let gwasid1=rowValue.gwasId
     let taxid1=rowValue.gwasOrgid;
+    
     // 左侧基因请求接口
     this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10")
     .then(response=>{
       console.log("gwas response:",response);
-      this.gwasInfoData=response.data
-      this.gwasLoading=false;
+      let datalist=response.data;
+      for(let item of datalist){
+        item.topTrait=rowValue.traitName;
+      }
+      this.gwasInfoData=datalist; 
+      this.gwasInfoData.topTrait=rowValue.traitName;
+      
     })
     // 右侧基因数据
     // 循环当前同源数据，请求后端得到接口所需要的参数
@@ -690,19 +755,75 @@ export default {
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
           let taxid2=res.data.gwasOrgid;
-          this.gwasLoading=true;
           this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
             .then(response=>{
               console.log("gwas response22:",response);
-              this.gwasInfoData=this.gwasInfoData.concat(response.data)
-              this.gwasLoading=false;
+              let datalist=response.data;
+              if(datalist.length>0){
+                for(let idata of datalist){
+                  idata.topTrait=item.traitName;
+                }
+                // let data=response.data;
+                // data.topTrait=item.traitName;
+                this.gwasInfoData=this.gwasInfoData.concat(datalist)
+                this.gwasLoading=false;
+                console.log("this.gwasInfoData:",this.gwasInfoData);
+              }
           })
         }
       })
+      
     })
+    
     // this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbid': hdblist}}).then(res=>{
     //     console.log("res:",res);
     // })
+   },
+   showSingleGwasInfoTable(rowValue,index){
+    console.log("rowValue,index:",rowValue,index);
+    // 获取当前位置，两物种间同源数据
+    let ortholist=[];
+    rowValue.speciesListData.forEach((id,idx)=>{
+    if(id==index){
+        let item=rowValue.orthoList[idx]
+        console.log("item:",item);
+        ortholist.push(item)
+    }})
+    
+    this.showOrthoSubTable = true;
+    this.orthoLoading=false;
+    this.orthoTableData=ortholist;
+    this.showSubTableBox=true;
+    this.gwasLoading=true;
+   this.gwasInfoData=[];
+    // 右侧基因数据
+    // 循环当前同源数据，请求后端得到接口所需要的参数
+    ortholist.forEach((item)=>{
+      let hdbid=item.hdbId;
+      // let topTrait=item.traitName;
+      console.log("item.hdbId:",item.hdbId);
+      this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
+        console.log("res:",res);
+        if(res.data.length !==0){
+          let gwasid2=res.data.gwasId;
+          let taxid2=res.data.gwasOrgid;
+          this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
+            .then(response=>{
+              console.log("gwas response22:",response);
+              let datalist=response.data;
+              for(let idata of datalist){
+                idata.topTrait=item.traitName;
+              }
+              // let data=response.data;
+              // data.topTrait=item.traitName;
+              this.gwasInfoData=this.gwasInfoData.concat(datalist)
+              this.gwasLoading=false;
+              console.log("this.gwasInfoData:",this.gwasInfoData);
+          })
+        }
+      })
+      
+    })
    },
     hiligtDbCols({rowIndex}){
       if(rowIndex===1){

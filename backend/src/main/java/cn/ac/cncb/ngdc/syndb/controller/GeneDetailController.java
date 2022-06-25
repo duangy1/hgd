@@ -118,4 +118,11 @@ public class GeneDetailController {
         return expressionInfoList;
     }
 
+    @RequestMapping(value = "/api/gene-detail-ortho", method = RequestMethod.GET)
+    @ResponseBody
+    public GeneBasicInfo orthoinfoList(@RequestParam String hdbId) {
+        GeneBasicInfo orthoList=geneDetailService.selectGeneByHdbGeneId(hdbId);
+        return orthoList;
+    }
+
 }

@@ -70,31 +70,33 @@
       <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;">
       <div>
           <div>
-            <h2 class="trait-title title-species">Traits Statistics</h2>
+            <h2 class="trait-title title-species font-title" >Traits Statistics</h2>
           </div>
-          <div id="chart-trait2homolog-0" style="width:50%;height:300px;float: left;"></div>
-          <div id="chart-trait2homolog-1" style="width:50%;height:300px;float: left;"></div>
+          <div id="chart-trait2homolog-0" class="chartsLayout section-titile"></div>
+
+          <div id="chart-trait2homolog-1" class="chartsLayout section-titile"></div>
+
         </div>
         <div>
           <div>
-            <h2 class="trait-title title-species">Variant Statistics</h2>
+            <h2 class="trait-title title-species font-title">Variant Statistics</h2>
           </div>
-          <div id="chart-trait2homolog-2" style="width:50%;height:300px;float: left;"></div>
-          <div id="chart-trait2homolog-3" style="width:50%;height:300px;float: left;"></div>
+          <div id="chart-trait2homolog-2" class="chartsLayout section-titile"></div>
+          <div id="chart-trait2homolog-3" class="chartsLayout section-titile"></div>
         </div>
         <div>
           <div>
-            <h2 class="trait-title title-species">Gene Ontology Statistics</h2>
+            <h2 class="trait-title title-species font-title">Gene Ontology Statistics</h2>
           </div>
-          <div id="chart-trait2homolog-4" style="width:50%;height:300px;float: left;"></div>
-          <div id="chart-trait2homolog-5" style="width:50%;height:300px;float: left;"></div>
+          <div id="chart-trait2homolog-4" class="chartsLayout section-titile"></div>
+          <div id="chart-trait2homolog-5" class="chartsLayout section-titile"></div>
         </div>
         <div>
           <div>
-            <h2 class="trait-title title-species">Expression Statistics</h2>
+            <h2 class="trait-title title-species font-title">Expression Statistics</h2>
           </div>
-          <div id="chart-trait2homolog-6" style="width:50%;height:300px;float: left;"></div>
-          <div id="chart-trait2homolog-7" style="width:50%;height:300px;float: left;"></div>
+          <div id="chart-trait2homolog-6" class="chartsLayout section-titile" ></div>
+          <div id="chart-trait2homolog-7" class="chartsLayout section-titile"></div>
         </div>
 
         <!-- <div>
@@ -149,12 +151,23 @@
     padding: 5px;
     display: inline;
   }
+.font-title{
+  font-size: 1.5em;
+  font-weight: bolder;
+
+}
+.chartsLayout{
+width:70%;
+  height:450px;
+  margin-left: 15%;
+  margin-right: 15%
+
+
+}
+
 </style>
 <script>
 // @ is an alias to /src
-// import Subnav from '@/components/sub-nav.vue'
-// import Navigator from '@/components/navigator.vue';
-// import "@/assets/css/traits.css";
 import FooterBar from '@/components/FooterBar.vue'
 import HeaderBar from '../components/HeaderBar.vue'
 import Banner from "@/components/banner.vue";
@@ -174,7 +187,8 @@ export default {
         speciesCount:[{ value: 16, name: 'Animals' },
         { value: 16, name: 'Plants' },
         { value: 5, name: 'Others' }],
-        statisticData
+        statisticData,
+
       }
     },
     
@@ -238,7 +252,7 @@ export default {
     //     this.getSpeciesByClass(paramclass)
     // });
     // },
-     trait2speciesBar(domid,data){
+     trait2speciesBar(domid,data,height1){
       var chartDom = document.getElementById(domid);
       var myChart = this.$echarts.init(chartDom);
       var option;
@@ -257,7 +271,7 @@ export default {
               interval:0,//使x轴横坐标全部显示
               textStyle: {//x轴字体样式
                 // color: "rgba(219,225,255,1)",
-                margin: 15
+                margin: 0
               },
               rotate:30,
             },
@@ -271,12 +285,16 @@ export default {
             data: data.data,
             type: 'bar',
             top:'10%',
-            left:'center'
+            left:'center',
           }
           
         ],
+        grid:{
+           y2:height1
+        }
         
-        
+
+
       };
 
       option && myChart.setOption(option);
@@ -398,9 +416,10 @@ export default {
         let item=statisticData.barData[index]
         console.log("item:",item);
         // console.log("item:",item);
-        this.trait2speciesBar('chart-trait2homolog-'+i,item);
+        let heigth = [120,120,120,120,120,220,120,120,]
+        this.trait2speciesBar('chart-trait2homolog-'+i,item,heigth[i]);
         i+=1;
-
+        console.log(i)
       }
    
 

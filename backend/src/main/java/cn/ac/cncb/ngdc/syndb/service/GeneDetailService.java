@@ -87,12 +87,7 @@ public class GeneDetailService {
                     String[] goIdList  = goId.split(",");
                     Integer goSumNum=goInfoItem.getGoSumNum();
                     numSum += goSumNum;
-//                    GoBasicTerm goItem=new GoBasicTerm();
-//                    if(topGoId == null){
-//                        goItem=goBasicInfoList.stream().filter(d -> d.getGoId().equals("otho")).findFirst().get();
-//                    }else {
                     GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
-//                    };
                     if(goItem==null){
                         System.out.print("goItem:"+goItem);
                     }
@@ -130,7 +125,6 @@ public class GeneDetailService {
             String dataSource = varInfoListOfGene.get(0).getDataSource();
 
             for(Variant varInfoItem : varInfoListOfGene){
-    //            speciesName=varInfoItem.getSpeciesCommonName();
                 String varName=varInfoItem.getVarName();
                 String[] snpList=varInfoItem.getSnpId().split(",");
                 Integer snpNum=snpList.length;
@@ -171,41 +165,29 @@ public class GeneDetailService {
         Integer numSum=0;
 
 //            循环查到的gene_go_info
-            for (GeneGo goInfoItem : goGeneInfoList) {
-                String topGoId = goInfoItem.getTopGoId();
-                String goId=goInfoItem.getGoId();
-                if(topGoId != null && topGoId.length() != 0){
-                    String[] goIdList  = goId.split(",");
-                    Integer goSumNum=goInfoItem.getGoSumNum();
-                    numSum += goSumNum;
-//                    GoBasicTerm goItem=new GoBasicTerm();
-//                    if(topGoId == null){
-//                        goItem=goBasicInfoList.stream().filter(d -> d.getGoId().equals("otho")).findFirst().get();
-//                    }else {
-                    GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
-//                    };
-                    if(goItem==null){
-                        System.out.print("goItem:"+goItem);
-                    }
-                    goItem.setGoNum(goSumNum);
-                    goItem.setGoList(goIdList);
-                }
+        for (GeneGo goInfoItem : goGeneInfoList) {
+            String topGoId = goInfoItem.getTopGoId();
+            String goId=goInfoItem.getGoId();
+            String[] goIdList  = goId.split(",");
+            Integer goSumNum=goInfoItem.getGoSumNum();
+            numSum += goSumNum;
+            GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
+            if(goItem==null){
+                System.out.print("goItem:"+goItem);
             }
+            goItem.setGoNum(goSumNum);
+            goItem.setGoList(goIdList);
+        }
 
-            System.out.print("numSum:"+numSum+","+"hdbId:"+hdbId);
-            if(numSum>0) {
-                for (GoBasicTerm basicTerm : goBasicInfoList) {
-                    if (basicTerm.getGoNum() != null) {
-                        float opaNum = (float) basicTerm.getGoNum() / numSum;
-                        basicTerm.setOpacity(opaNum);
-                    } else {
-                        basicTerm.setOpacity(0);
-                    }
-                }
-                return goBasicInfoList;
-            }else{
-                return null;
+        for (GoBasicTerm basicTerm : goBasicInfoList) {
+            if (basicTerm.getGoNum() != null) {
+                float opaNum = (float) basicTerm.getGoNum() / numSum;
+                basicTerm.setOpacity(opaNum);
+            } else {
+                basicTerm.setOpacity(0);
             }
+        }
+        return goBasicInfoList;
 
     }
 
@@ -220,6 +202,7 @@ public class GeneDetailService {
         for(Variant varInfoItem : varInfoListOfGene){
 //            speciesName=varInfoItem.getSpeciesCommonName();
             String varName=varInfoItem.getVarName();
+            dataSource=varInfoItem.getDataSource();
             String[] snpList=varInfoItem.getSnpId().split(",");
             Integer snpNum=snpList.length;
             numSum += snpNum;
@@ -382,5 +365,9 @@ public class GeneDetailService {
         }
         return  expressionList;
 
+    }
+
+    public GeneBasicInfo selectGeneByHdbGeneId(String hdbId){
+        return geneBasicInfoMapper.selectGeneByHdbGeneId(hdbId);
     }
 }

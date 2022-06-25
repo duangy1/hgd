@@ -32,7 +32,7 @@
     select gene_id,annotation,gene_expression.taxon_id,bio_project_id,gene_expression.hdb_gene_id from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where hdb_gene_id=#{hdbId}
   </select>
   <select id="initPageEo" resultMap="BaseResultMap">
-    select * from gene_expression where annotation=#{expName} and classification=#{classification}
+    select * from gene_expression where annotation=#{expName} and classification=#{classification} and hdb_gene_id !="" and hdb_gene_id is not null
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
       and taxon_id = #{taxonid}
     </if>

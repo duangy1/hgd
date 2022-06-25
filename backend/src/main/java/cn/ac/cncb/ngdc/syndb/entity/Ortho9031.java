@@ -54,6 +54,12 @@ public class Ortho9031 {
 
     private String gwasId2;
 
+    private String gwasOrgId2;
+
+    private String gwasOrgId1;
+
+    private String gwasOrgId;
+
     private String protein;
 
     private String ensemblId;

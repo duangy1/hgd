@@ -88,8 +88,8 @@ public class VariantController {
     //根据hdbid获取var接口所需的snpid
     @RequestMapping(value = "/api/var-snpid", method = RequestMethod.GET)
     @ResponseBody
-    public String getGwasInfoByhdbid(String hdbId,int varId){
-        String hdbGwas = variantService.getSnpidByhdbid(hdbId,varId);
+    public String getGwasInfoByhdbid(String hdbId,String varName){
+        String hdbGwas = variantService.getSnpidByhdbid(hdbId,varName);
         return  hdbGwas;
     }
 }

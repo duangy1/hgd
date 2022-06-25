@@ -357,9 +357,16 @@
                                   itemprop="url">Homolog Pairs Heatmap</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                <p>16 animals</p>
-								<p>16 plants</p>
-								<p>5 other organism</p>
+                                <div class="wraper-num">
+                                  <div id="num" class="speciesNum">{{speciesNum}}</div><div class="speciesNum1"><i class="fa fa-paw" style="font-size: 30px;"></i> SPECIES</div> 
+                                </div>
+                                <!-- <div class="wraper-num">
+                                <div id="num" class="speciesNum">{{speciesNum}}</div> <div class="speciesNum1">Plants  </div>
+                                </div>
+                                <div class="wraper-num">
+                                <div id="numother" class="speciesNum">{{speciesNumOther}}</div> <div class="speciesNum1">Other organism  </div>
+                                </div> -->
+                               
                               </div><a
                                 class="sppb-readmore"
                                 href="/documentation"
@@ -393,9 +400,11 @@
                                   itemprop="url">Homolog Gene Browse</a></h3>
                               <div
                                 class="sppb-article-introtext">
-								<p>&nbsp;</p>
-								<p>37 species</p>
-                                <p>23,399,653 Homolog Protein Pairs</p>
+								<!-- <p>37 species</p> -->
+                <div class="wraper-num">
+                  <div id="num" class="speciesNum">{{ProteinNum}}</div><div class="speciesNum1"> <i class="fa fa-clipboard" style="font-size:30px"></i>  HOMOLOG PROTEIN PAIRS</div> 
+                </div>
+                                <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
                                 class="sppb-readmore"
                                 href="/documentation"
@@ -623,6 +632,9 @@ export default {
 		{value:'7',label:'BioType'},
 		{value:'8',label:'All Fields'}
     ],
+  speciesNum:0,
+  speciesNumOther:0,
+  ProteinNum:0,
 	searchForm:{
 		type:'',
 		keyword:''
@@ -640,7 +652,38 @@ export default {
           query:{type,keyword}
         })
 		
-	}
+	},
+  numAdd(yuanshu,re){
+      yuanshu = yuanshu + 1 //数据变化的间隔
+      document.getElementById("num").innerText = yuanshu
+      if(yuanshu == re){ //检验数值是否到达数据的数值
+        window.numStop()
+    }
   },
+  numStop(){ //停止计时器
+      window.clearInterval(this.numAdd)
+    }
+  },
+  mounted(){
+    var yuanshu = 16//数据变化前的初始数值
+    let homoProteinNum=23399653
+    // const re = 50 //获取到的数据
+    // let otherNum=5
+    setInterval(()=>{
+      if(this.speciesNum<yuanshu){
+        this.speciesNum+=1
+      }
+      // if(this.speciesNumOther<otherNum){
+      //   this.speciesNumOther+=1
+      // }
+       if(this.ProteinNum<homoProteinNum){
+        this.ProteinNum+=270006
+      }else{
+        this.ProteinNum=homoProteinNum
+      }
+    },30)
+    
+      
+  }
 }
 </script>

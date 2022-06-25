@@ -28,4 +28,5 @@ public class Variant {
 
     private String dataSource;
 
+    private String gwasOrgId;
 }

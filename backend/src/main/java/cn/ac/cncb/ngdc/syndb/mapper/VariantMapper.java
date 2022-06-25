@@ -27,5 +27,5 @@ public interface VariantMapper {
 
     Page<Variant> getInfoByVarNameAndSpecies(String varName,String  speciesName);
 
-    String getSnpidByhdbid(String hdbid,int varId);
+    String getSnpidByhdbid(String hdbid,String varName);
 }

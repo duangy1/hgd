@@ -43,7 +43,7 @@
    <!-- <div class="button-text">Trait Ontology</div> -->
   </div>
     <div class="trait-box trait-infoBox">
-      <div style="padding-left:29px">
+      <div style="padding-left:29px;margin-top: -15px;">
         <h2 class="trait-title">Expression System : {{ expItem.expName }} </h2>
       </div>
     </div>
@@ -105,6 +105,11 @@
           >
             <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+              <template slot-scope="scope">
+                <a :href="'/gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
+                    {{ scope.row.geneId }}
+                </a>
+              </template>
             </el-table-column>
             <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
@@ -201,29 +206,37 @@
               fixed
           >
               <el-table-column
-                  prop="commonName1"
-                  label="Species">
+                  prop="commonName"
+                  label="Species"
+                  align="center">
               </el-table-column>
               <el-table-column
-                  prop="tax1"
-                  label="Taxon Id1">
-              </el-table-column>
-              
-              <el-table-column
-                  prop="hdbId1"
-                  label="Protein1">
+                  prop="tax"
+                  label="Taxon Id1"
+                  align="center">
               </el-table-column>
               <el-table-column
-                  prop="commonName2"
-                  label="Species2">
+                  prop="ensemblGeneId"
+                  label="Ensembl Id"
+                  align="center">
+              </el-table-column>
+               <el-table-column
+                prop="geneSymbol"
+                label="Gene Symbol"
+                align="center">
               </el-table-column>
               <el-table-column
-                  prop="tax2"
-                  label="Taxon Id2">
-              </el-table-column>
-              <el-table-column
-                  prop="hdbId2"
-                  label="Protein2">
+                  prop="hdbId"
+                  label="Protein Id"
+                  align="center">
+                  <template slot-scope="scope">
+                    <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank' v-if="scope.row.hdbId.slice(0,2)!=='EN'">
+                        {{ scope.row.hdbId }}
+                    </a>
+                    <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.hdbId+';site=ensembl'" target='_blank' v-if="scope.row.hdbId.slice(0,2)=='EN'">
+                        {{ scope.row.hdbId }}
+                    </a>
+                  </template>
               </el-table-column>
             </el-table>
           </div>
@@ -310,6 +323,11 @@
           >
             <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+              <template slot-scope="scope">
+                <a :href="'/gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
+                    {{ scope.row.geneId }}
+                </a>
+              </template>
             </el-table-column>
             <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
@@ -396,29 +414,35 @@
             :border="false"
         >
             <el-table-column
-                  prop="commonName1"
-                  label="Species">
+                  prop="commonName"
+                  label="Species"
+                  align="center">
               </el-table-column>
               <el-table-column
-                  prop="tax1"
-                  label="Taxon Id1">
-              </el-table-column>
-              
-              <el-table-column
-                  prop="hdbId1"
-                  label="Protein1">
+                  prop="tax"
+                  label="Taxon Id1"
+                  align="center">
               </el-table-column>
               <el-table-column
-                  prop="commonName2"
-                  label="Species2">
+                  prop="ensemblGeneId"
+                  label="Ensembl Id"
+                  align="center">
+              </el-table-column>
+               <el-table-column
+                prop="geneSymbol"
+                label="Gene Symbol"
+                align="center">
               </el-table-column>
               <el-table-column
-                  prop="tax2"
-                  label="Taxon Id2">
-              </el-table-column>
-              <el-table-column
-                  prop="hdbId2"
-                  label="Protein2">
+                  prop="hdbId"
+                  label="Protein Id"
+                  align="center">
+                  <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
+                
+                    <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
+                        {{ scope.row.hdbId }}
+                    </a>
+                  </template>
               </el-table-column>
           </el-table>
     <!-- gwas detail info表格 -->
@@ -627,8 +651,19 @@ export default {
     this.showOrthoSubTable = true;
     this.showSubTableBox=false;
     this.orthoLoading=false;
-    this.orthoTableData=ortholist;
-    console.log(this.orthoTableData);
+    this.orthoTableData=[]
+    ortholist.forEach(item=>{
+      let hdbid=item.hdbId;
+      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+        console.log("gene res:",res);
+        item.ensemblGeneId=res.data.ensemblGeneId;
+        item.geneSymbol=res.data.geneSymbol
+        this.orthoTableData.push(item)
+        this.orthoLoading=false;
+      })
+    })
+    // this.orthoTableData=ortholist;
+    console.log("orthoTableData:",this.orthoTableData);
     // 应该发送请求去genebasicinfo查具体的基因相关信息
 
   },
