@@ -23,4 +23,12 @@ public class SpeciesInfo {
     private int gwasOrgid;
 
     private int speciesType;
+
+    private int traitGeneNum;
+
+    private int varGeneNum;
+
+    private int expGeneNum;
+
+    private int goGeneNum;
 }

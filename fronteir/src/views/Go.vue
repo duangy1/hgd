@@ -2,7 +2,7 @@
   <div>
     <HeaderBar />
     <Banner />
-    <Navigator />
+    <!-- <Navigator /> -->
     
     <!-- 左侧树结构 -->
     <!-- 抽屉结构 -->
@@ -40,7 +40,7 @@
   <div style="margin-top:3%">
    <el-button @click="buttonFunction()" ref="button" id="button"></el-button>
     <div class="trait-box trait-infoBox">
-      <div style="padding-left:29px">
+      <div style="padding-left:29px;margin-top: -15px;">
         <h2 class="trait-title">Gene Ontology Annotation : {{ traitItem.traitName }} | ID: {{ traitItem.traitId }}</h2
         >
         <h2 class="trait-def trait-title" v-if="traitItem.traitDef != ''"
@@ -502,7 +502,7 @@
 
 <script>
 // @ is an alias to /src
-import Navigator from "@/components/navigator.vue";
+// import Navigator from "@/components/navigator.vue";
 // import traitOntology from "@/assets/static/traitOntology.json";
 import geneOntology from "@/assets/static/geneOntology.json";
 import Banner from "@/components/banner.vue";
@@ -518,7 +518,7 @@ import orthoIcon from "@/assets/img/icon/huafu.svg";
 export default {
   name: "Traits",
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner,

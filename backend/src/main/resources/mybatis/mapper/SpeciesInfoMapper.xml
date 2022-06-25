@@ -10,6 +10,10 @@
     <result column="classification" jdbcType="VARCHAR" property="classification" />
     <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
     <result column="species_type" jdbcType="VARCHAR" property="speciesType" />
+    <result column="homo_gene_trait" jdbcType="INTEGER" property="traitGeneNum" />
+    <result column="homo_gene_variant" jdbcType="INTEGER" property="varGeneNum" />
+    <result column="homo_gene_exp" jdbcType="INTEGER" property="expGeneNum" />
+    <result column="homo_gene_go" jdbcType="INTEGER" property="goGeneNum" />
   </resultMap>
 
   <resultMap id="HeatmapResultMap" type="cn.ac.cncb.ngdc.syndb.entity.SpeciesHeatmap">

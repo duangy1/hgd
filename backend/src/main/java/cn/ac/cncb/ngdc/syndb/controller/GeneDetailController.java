@@ -3,13 +3,16 @@ package cn.ac.cncb.ngdc.syndb.controller;
 import cn.ac.cncb.ngdc.syndb.entity.*;
 import cn.ac.cncb.ngdc.syndb.service.GeneDetailService;
 import cn.ac.cncb.ngdc.syndb.service.OrthoService;
+import cn.ac.cncb.ngdc.syndb.service.OrthologGeneService;
 import cn.ac.cncb.ngdc.syndb.service.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -20,6 +23,9 @@ public class GeneDetailController {
     OrthoService orthoService;
     @Autowired
     SpeciesService speciesService;
+    @Autowired
+    OrthologGeneService orthologGeneService;
+
     @RequestMapping(value = "/api/gene-detail", method = RequestMethod.GET)
     @ResponseBody
     @CrossOrigin
@@ -27,41 +33,22 @@ public class GeneDetailController {
 //        现在为查entrez gene
         List InfoList = new ArrayList();
         List<GeneBasicInfo> geneList=geneDetailService.selectGene(hdbId,taxonid);
-        List<Ortho9031> orthoList=orthoService.selectGeneOrthoInfo(hdbId);
-        if(geneList!=null) {
-            for (Ortho9031 orthoitem : orthoList) {
-                String tax1 = orthoitem.getTax1();
-//                SpeciesInfo species1 = speciesService.findSpeciesByTaxon(tax1);
-
-                String tax2 = orthoitem.getTax2();
-//                SpeciesInfo species2 = speciesService.findSpeciesByTaxon(tax2);
-//                orthoitem.setSpecies2(species2);
-                SpeciesInfo species1 = new SpeciesInfo();
-                //            在第一位，取第二位值，否则相反
-                if (taxonid.equals("" + tax1)) {
-                    orthoitem.setTax(tax2);
-                    orthoitem.setProtein(orthoitem.getProtein2());
-//                    orthoitem.setSpecies(species2);
-                    String hdbid = orthoitem.getHdbId2();
-                    //            找对应的ensembl gene id
-                    GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbid);
-                    orthoitem.setGbiInfo(gbiInfo);
-                    orthoitem.setCommonName(orthoitem.getCommonName2());
-
-                    species1.setCommonName(orthoitem.getCommonName2());
-                    orthoitem.setSpecies(species1);
-                } else {
-                    orthoitem.setTax(tax1);
-                    orthoitem.setProtein(orthoitem.getProtein1());
-                    orthoitem.setSpecies(species1);
-                    String hdbid = orthoitem.getHdbId1();
-                    //            找对应的ensembl gene id
-                    GeneBasicInfo gbiInfo = geneDetailService.selectEnsgIdByhdbId(hdbid);
-                    orthoitem.setGbiInfo(gbiInfo);
-                    orthoitem.setCommonName(orthoitem.getCommonName1());
-                }
+        Map param = new HashMap();
+        param.put("geneId",hdbId);
+        List<OrthologGeneInfo> orthoList=orthologGeneService.findOrthGeneByGivenGeneAndTaxonModify2(param);
+//        List<Ortho9031> orthoList=orthoService.selectGeneOrthoInfo(hdbId);
+//        if(geneList!=null) {
+        for (OrthologGeneInfo orthoitem : orthoList) {
+            int tax1 = orthoitem.getTaxId1();
+//            int tax2 = orthoitem.getTaxId2();
+//            查询的taxonid和第一位相同，则第二位是同源数据
+            if (taxonid.equals("" + tax1)) {
+                orthoitem.setOrthoPosition(2);
+            } else {
+                orthoitem.setOrthoPosition(1);
             }
         }
+//        }
         InfoList.add(geneList);
         InfoList.add(orthoList);
         return InfoList;
@@ -81,11 +68,32 @@ public class GeneDetailController {
         List voInfoList = geneDetailService.voInfoList(hdbId);
         return voInfoList;
     }
+    //   根据ensembl id获取对应的go信息
+    @RequestMapping(value = "/api/gene-detail-go-1", method = RequestMethod.GET)
+    @ResponseBody
+    public List goInformation1(@RequestParam String hdbId) {
+//        if(classification.equals("others")){classification="animal";}
+        List goBasicTermList=geneDetailService.selectBasicGo1(hdbId);
+        return goBasicTermList;
+    }
+
+    @RequestMapping(value = "/api/gene-detail-var-1", method = RequestMethod.GET)
+    @ResponseBody
+    public List varInformation1(@RequestParam String hdbId) {
+        List voInfoList = geneDetailService.voInfoList1(hdbId);
+        return voInfoList;
+    }
 //    绘制热图所需trait数据
     @RequestMapping(value = "/api/gene-detail-trait", method = RequestMethod.GET)
     @ResponseBody
     public List traitInformation(@RequestParam String hdbId) {
         List traitInfoList = geneDetailService.traitInfoList(hdbId);
+        return traitInfoList;
+    }
+    @RequestMapping(value = "/api/gene-detail-trait-1", method = RequestMethod.GET)
+    @ResponseBody
+    public List traitInformation1(@RequestParam String hdbId) {
+        List traitInfoList = geneDetailService.traitInfoList1(hdbId);
         return traitInfoList;
     }
 //    filter选项所需要的物种列表获取
@@ -101,6 +109,12 @@ public class GeneDetailController {
     @ResponseBody
     public List expressionInformation(@RequestParam String hdbId,@RequestParam String classification) {
         List<ExpressionTerm> expressionInfoList = geneDetailService.expressionInfoList(hdbId,classification);
+        return expressionInfoList;
+    }
+    @RequestMapping(value = "/api/gene-detail-expression-1", method = RequestMethod.GET)
+    @ResponseBody
+    public List expressionInformation1(@RequestParam String hdbId,@RequestParam String classification) {
+        List<ExpressionTerm> expressionInfoList = geneDetailService.expressionInfoList1(hdbId,classification);
         return expressionInfoList;
     }
 

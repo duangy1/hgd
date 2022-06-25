@@ -31,7 +31,7 @@
   </select>
 
   <select id="voInfoOfGene" resultMap="BaseResultMap">
-    select * from variation_all where hdb_gene_id=#{hdbId}
+    select * from variation_all inner join (select data_source,taxon_id from species) as a on variation_all.taxon_id=a.taxon_id where hdb_gene_id=#{hdbId}
   </select>
 
   <select id="varTypeByGene" resultType="java.lang.String">

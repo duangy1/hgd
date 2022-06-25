@@ -8,12 +8,12 @@
         <el-breadcrumb-item>Homolog Gene</el-breadcrumb-item>
         <el-breadcrumb-item>Gene Detail</el-breadcrumb-item>
     </el-breadcrumb>
-    
+
     <el-container style="border: 1px solid #eee;margin-top: 15px;">
         <el-aside width="240px" style="background-color: aliceblue;overflow-y: auto;">
             <!-- <img src="../assets/img/arrow1.png" style="width:100%;vertical-align:top;margin:10px 0;"> -->
             <el-menu
-                default-active="2"
+                default-active="1"
                 :class="navBarFixed == true ? 'navBarWrap' :''"
                 background-color="#545c64"
                 text-color="#fff"
@@ -33,8 +33,8 @@
                 <i class="el-icon-chat-line-square"></i>
                 <span slot="title">GO Annotations</span>
             </el-menu-item>
-            
-            
+
+
             <el-menu-item index="4">
                 <i class="el-icon-chat-line-square"></i>
                 <span slot="title">Variants</span>
@@ -47,22 +47,22 @@
                 <i class="el-icon-chat-line-square"></i>
                 <span slot="title">Expression</span>
             </el-menu-item>
-            <el-menu-item index="7">
+            <!-- <el-menu-item index="7">
                 <i class="el-icon-chat-line-square"></i>
                 <span slot="title">Sequence Viewer</span>
-            </el-menu-item>
+            </el-menu-item> -->
         </el-menu>
         </el-aside>
          <!-- </div> -->
-    
+
     <div class="tables" style="overflow:hidden" v-loading="fullLoading">
-        
+
         <div class="info-div">
             <div class="basic-info" id="item-pos-1" >
             <!-- <el-card style="width:99%;margin: auto;" shadow="none"> -->
                 <!-- <h2 class="b-info">Gene Basic Information</h2> -->
-                <div class="trait-box trait-infoBox">
-                    <h3 class="trait-title">Gene Basic Information</h3>
+                <div class="var-box var-infoBox">
+                    <h3 class="var-title">Gene Basic Information</h3>
                 </div>
                 <el-card class="card-border">
                     <el-descriptions :column="3" class="descriptions" :size="size"  v-if="JSON.stringify(geneBasicInfo) !=='{}'">
@@ -83,8 +83,8 @@
         <!-- <el-divider></el-divider> -->
         <div id="item-pos-2">
             <!-- <div class="p-ele top-p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ortholog Informations</span></div> -->
-            <div class="trait-box trait-infoBox">
-                <h3 class="trait-title">Gene Ortholog Informations</h3>
+            <div class="var-box var-infoBox">
+                <h3 class="var-title">Gene Ortholog Informations</h3>
             </div>
             <el-card class="card-border">
                 <div class="filt-div">
@@ -109,38 +109,37 @@
                 v-loading="loading"
                 :max-height="tableHeight"
                 :border="false"
-                :header-cell-style="hiligtDbCols"
-            >
-                <el-table-column
-                    prop="species.commonName"
-                    label="Species"
-                    width="180px">
-                </el-table-column>
-                <el-table-column
-                    prop="species.taxonId"
-                    label="Taxon Id">
-                </el-table-column>
-                <el-table-column
-                    prop="gbiInfo.ensemblGeneId"
-                    label="Ensembl Id"
-                    width="200px">
-                </el-table-column>
-                <el-table-column
-                    prop="gbiInfo.geneSymbol"
-                    label="Gene Symbol"
-                    width="120px">
-                </el-table-column>
-                <el-table-column
-                    prop="protein"
-                    label="Protein"
-                    width="200px">
-                </el-table-column>
-                
-                <el-table-column
-                prop="entrezId"
-                label="Entrez Id">
-                </el-table-column>
-            
+                >
+                <!-- <el-table-column> -->
+                    <!-- <template slot-scope="scope"> -->
+                    <el-table-column prop="commonName" label="Species" ></el-table-column>
+                    <el-table-column prop="taxId" label="Taxon Id"></el-table-column>
+                    <el-table-column prop="ensembId" label="Ensembl Id"  ></el-table-column>
+                    <el-table-column prop="entrezId" label="Entrez Id"></el-table-column>
+                    <el-table-column prop="geneSymbol" label="Gene Symbol"></el-table-column>
+                    <el-table-column prop="hdbGeneId" label="Protein"></el-table-column>
+                    <el-table-column  label="Data Source" align="center">
+                        <template slot-scope="scope">
+                            <el-popover
+                                placement="top"
+                                title="Data Source"
+                                width="200"
+                                trigger="hover"
+                                :content="scope.row.dbEvidence">
+                                <i class="el-icon-s-order" slot="reference"></i>
+                            </el-popover>
+                            
+                        </template>
+                    </el-table-column>
+                    <!-- <el-table-column prop="commonName2" label="Species" width="180px" ></el-table-column>
+                    <el-table-column prop="taxId2" label="Taxon Id" ></el-table-column>
+                    <el-table-column prop="ensemblId2" label="Ensembl Id" width="200px" ></el-table-column>
+                    <el-table-column prop="entrezId2" label="Entrez Id" ></el-table-column>
+                    <el-table-column prop="geneSymbol2" label="Gene Symbol" width="120px"></el-table-column>
+                    <el-table-column prop="hdbGeneId2" label="Protein" width="200px" ></el-table-column> -->
+                    <!-- </template> -->
+                <!-- </el-table-column> -->
+
                 <!-- dbevidence列，现在按库拆了 -->
                 <!-- <el-table-column
                     prop="dbevidenceList"
@@ -149,13 +148,6 @@
                         <p v-for="(item,index) of scope.row.dbevidenceList" :key="index">{{item}}</p>
                     </template>
                 </el-table-column> -->
-                <el-table-column  prop="panther" label="Panther"></el-table-column>
-                <el-table-column prop="treefam" label="Treefam"></el-table-column>
-                <el-table-column  prop="eggnog"  label="Eggnog"></el-table-column>
-                <el-table-column prop="oma" label="Oma"></el-table-column>
-                <el-table-column prop="inparanoid" label="Inparanoid"></el-table-column>
-                <el-table-column prop="hieranoid" label="Hieranoid"></el-table-column>
-                
 
             </el-table>
             </el-card>
@@ -163,8 +155,8 @@
         <div id="item-pos-3">
             <!-- <el-divider class="divider"></el-divider> -->
             <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Gene Ontology Annotations</span></p> -->
-            <div class="trait-box trait-infoBox">
-                    <h3 class="trait-title">Gene Ontology Annotations</h3>
+            <div class="var-box var-infoBox">
+                    <h3 class="var-title">Gene Ontology Annotations</h3>
             </div>
         <!-- 提示信息不显示 -->
     <el-card class="card-border">
@@ -172,96 +164,51 @@
         <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
             <div><i class="el-icon-question question-icon"></i></div>
         </el-tooltip>
-                        
+
         <div class="filt-div">
             <el-checkbox v-model="checked.go" style="float:left" class="filt-spe-select" :disabled="waitResponse.go">Compare Ortholog Genes</el-checkbox>
-            <el-select v-model="form.species.go" multiple placeholder="Show All Species" class="filt-spe-select">
-                <!-- <el-option label="Org1" value="shanghai"></el-option>
-                <el-option label="Org2" value="beijing"></el-option> -->
-                <el-option
-                    v-for="item in species"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                    >
-                </el-option>
-            </el-select>
-            <el-button icon="el-icon-search"  type="success"  plain id="filter-search" @click="compareOrthoGo(form.species.go)">Search</el-button>
-            <el-button icon="el-icon-delete"  type="primary"  plain id="filter-search" @click="clearOrthoGo()">Clear</el-button>
+                <el-select v-model="form.species.go" multiple placeholder="Show All Species" class="filt-spe-select">
+                    <!-- <el-option label="Org1" value="shanghai"></el-option>
+                    <el-option label="Org2" value="beijing"></el-option> -->
+                    <el-option
+                        v-for="item in species"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                        >
+                    </el-option>
+                </el-select>
+            
+                <el-button icon="el-icon-search"  type="success"  plain id="filter-search" @click="compareOrthoGo(form.species.go)">Search</el-button>
+                <el-button icon="el-icon-delete"  type="primary"  plain id="filter-search" @click="clearOrthoGo()">Clear</el-button>
         </div>
         <div class="filt-div"></div>
         <!-- </el-container> -->
-            
+
         <!-- </el-card> -->
         <div id="svg-container-go"></div>
-    </el-card>
-                    <!-- <svg style="width:100%;height:380px" id="svgcontainer-go"></svg> -->
-                
-                
-                <!-- <el-table
-                :data="goList"
-                class="info-table"
-                v-loading="goloading"
-                :border="false"
+        <el-table 
+            :data="goInfoData"
+            id="subTable"
+            max-height="500px"
+            v-if="showGoTable"
             >
-                <el-table-column
-                    prop="geneId"
-                    label="Gene Id"
-                >
-                </el-table-column>
-                <el-table-column
-                    prop="geneName"
-                    label="Gene Name"
-                >
-                </el-table-column>
-                <el-table-column
-                    prop="goDomain"
-                    label="GO Domain">
-                </el-table-column>
-                <el-table-column
-                    prop="goEvidenceCode"
-                    label="Go Evidence Code">
-                </el-table-column>
-                <el-table-column
-                    prop="goId"
-                    label="GO Id">
-                </el-table-column>
-                <el-table-column
-                    prop="goTermAccession"
-                    label="GO Term Accession">
-                </el-table-column>
-                <el-table-column
-                    prop="goTermDefinition"
-                    label="GO Term Definition">
-                </el-table-column>
-                <el-table-column
-                    prop="goTermName"
-                    label="GO Term Name">
-                </el-table-column>
-                <el-table-column
-                    prop="goslimGoaAccession"
-                    label="GO slim GoaAccession">
-                </el-table-column>
-                <el-table-column
-                    prop="hgncSymbol"
-                    label="HGNC Symbol">
-                </el-table-column>
-                <el-table-column
-                    prop="uniprotGeneName"
-                    label="Uniprot Gene Name">
-                </el-table-column>
-                <el-table-column
-                    prop="uniprotGeneSymbol"
-                    label="Uniprot Gene Symbol">
-                </el-table-column>
-            </el-table> -->
+            <el-table-column prop="goId" label="Detail Go Id"></el-table-column>
+            <el-table-column prop="goAnnotations" label="Go Name"></el-table-column>
+            <el-table-column prop="goList" label="Go Id"></el-table-column>
+            <el-table-column prop="definition" label="Gene Id"></el-table-column>
+            <el-table-column prop="topClass" label="Species"></el-table-column>
+                
+        </el-table>
+    </el-card>
+                   
         </div>
         <div id="item-pos-4">
             <!-- <el-divider class="divider"></el-divider> -->
 
                 <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Variant</span></p> -->
-            <div class="trait-box trait-infoBox">
-                <h3 class="trait-title">Variant</h3>
+            <div class="var-box var-infoBox">
+                <h3 class="var-title">Variant</h3>
             </div>
             <el-card class="card-border">
                 <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
@@ -280,8 +227,8 @@
                         >
                     </el-option>
                 </el-select>
-                <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="compareOrthoVar(form.species.go)"></el-button>
-                <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearOrthoVar()"></el-button>
+                <el-button icon="el-icon-search"  type="success"  plain id="filter-search" @click="compareOrthoVar(form.species.var)">Search</el-button>
+                <el-button icon="el-icon-delete"  type="primary"  plain id="filter-search" @click="clearOrthoVar()">Clear</el-button>
                 </div>
                     <!-- </el-container> -->
                     <!-- </el-card> -->
@@ -312,7 +259,7 @@
                     label="Chromosom"
                 >
                 </el-table-column> -->
-                
+
                 <el-table-column
                     prop="maf"
                     label="Maf">
@@ -329,7 +276,7 @@
                     prop="pharamFlag"
                     label="Pharam Flag">
                 </el-table-column> -->
-                
+
                 <!-- <el-table-column
                     prop="refallele"
                     label="Ref Allele">
@@ -346,7 +293,7 @@
                     prop="rsid"
                     label="Rsid">
                 </el-table-column> -->
-                
+
                 <el-table-column
                     prop="snpClassId"
                     label="Class">
@@ -359,7 +306,7 @@
                     prop="snpStart"
                     label="Snp Position">
                 </el-table-column> -->
-                
+
                 <el-table-column
                     prop="gene.conseqtype"
                     label="Consequence Type/Effect">
@@ -378,14 +325,14 @@
         </div>
         <div id="item-pos-5">
                 <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Traits</span></p> -->
-            <div class="trait-box trait-infoBox">
-                <h3 class="trait-title">Traits</h3>
+            <div class="var-box var-infoBox var-box var-infoBox">
+                <h3 class="var-title">Traits</h3>
             </div>
                 <!-- <el-divider class="divider"></el-divider> -->
                 <!-- <h1 style="text-align:left;font-weight:500;color:darkgray">Traits Informations</h1> -->
                 <!-- <el-card style="padding:2%" shadow="none"> -->
                     <!-- 提示信息不显示 -->
-                    
+
                     <!-- <el-container direction="vertical" > -->
             <el-card class="card-border">
             <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
@@ -404,8 +351,8 @@
                     >
                 </el-option>
             </el-select>
-            <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="compareOrthoTrait(form.species.go)"></el-button>
-            <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearOrthoTrait()"></el-button>
+            <el-button icon="el-icon-search"  type="success" plain id="filter-search" @click="compareOrthoTrait(form.species.trait)">Search</el-button>
+            <el-button icon="el-icon-delete"  type="primary" plain id="filter-search" @click="clearOrthoTrait()">Clear</el-button>
             </div>
 
                 <!-- </el-container> -->
@@ -416,14 +363,14 @@
         <div id="item-pos-6">
             <!-- <p class="p-ele"><span class="style_categoryLabel__3AJmg style_gene__1pSX1 style_pageCategory__1ur8P" >Expression</span></p> -->
             <!-- <el-divider class="divider"></el-divider> -->
-            <div class="trait-box trait-infoBox">
-                    <h3 class="trait-title">Expression</h3>
+            <div class="var-box var-infoBox">
+                    <h3 class=" var-title">Expression</h3>
             </div>
             <el-card class="card-border">
             <!-- <h1 style="text-align:left;font-weight:500;color:darkgray">Expression Informations</h1> -->
              <!-- <el-card style="padding:2%" shadow="none"> -->
                     <!-- 提示信息不显示 -->
-                    
+
                     <!-- <el-container direction="vertical" > -->
                         <el-tooltip content="Bottom center" placement="hieranoid" effect="light">
                             <div><i class="el-icon-question question-icon"></i></div>
@@ -441,13 +388,16 @@
                         >
                     </el-option>
                 </el-select>
-                <el-button icon="el-icon-search"  type="success" round  plain id="filter-search" @click="compareOrthoExpre(form.species.go)"></el-button>
-                <el-button icon="el-icon-delete"  type="primary" round  plain id="filter-search" @click="clearOrthoExpre()"></el-button>
+                <el-button icon="el-icon-search"  type="success" plain id="filter-search" @click="compareOrthoExpre(form.species.expression)">Search</el-button>
+                <el-button icon="el-icon-delete"  type="primary" plain id="filter-search" @click="clearOrthoExpre()">Clear</el-button>
                 </div>
+                <div id="svg-container-expression"></div>
 
-                    <!-- </el-container> -->
-                <!-- </el-card> -->
-            <div id="svg-container-expression"></div>
+                <el-table :data="expTabledata"  class="info-table"  v-loading="goloading" :border="false" v-if="showExpInfoTable">
+                    <el-table-column  prop="projectId" label="Bioproject Id"></el-table-column>
+                    <el-table-column  prop="tissue" label="Tissue"></el-table-column>
+                    <el-table-column  prop="expAvg" label="Average Tpm"></el-table-column>
+                </el-table>
             </el-card>
         </div>
         </div>
@@ -487,14 +437,7 @@
 // @ is an alias to /src
 import HeaderBar from '@/components/HeaderBar.vue';
 import FooterBar from '@/components/FooterBar.vue';
-// import Navigator from '@/components/navigator.vue';
 import Banner from "@/components/banner.vue";
-// import pantherIcon from "@/assets/img/icon/P.svg";
-// import omaIcon from "@/assets/img/icon/M.svg";
-// import inparanoidIcon from "@/assets/img/icon/ii.svg";
-// import eggnogIcon from "@/assets/img/icon/eee.svg";
-// import hieranoidIcon from "@/assets/img/icon/H.svg";
-// import treefamIcon from "@/assets/img/icon/t.svg";
 import linkIcon from "@/assets/img/icon/link-icon-4.svg";
 import * as d3 from 'd3';
 // import { Loading } from 'element-ui';
@@ -505,7 +448,7 @@ export default {
     Banner,
     HeaderBar,
     FooterBar,
-    
+
   },
   data(){
       return {
@@ -525,14 +468,18 @@ export default {
         checked:{"go":"","var":"","trait":"","expression":""},
         species:[],
         navBarFixed:"false",
-        tableHeight:800,
+        tableHeight:700,
         tooltip:"",
         showVarInfoTable:false,
         waitResponse:{"go":false,"var":false,"trait":false,"expression":false},
         clicked:{"go":false,"var":false,"trait":false,"expression":false},
         classification:"",
         windowSize:3,
-        fullLoading:true
+        fullLoading:true,
+        showGoTable:false,
+        goInfoData:[],
+        expTabledata:[],
+        showExpInfoTable:false
         }
     },
 
@@ -545,8 +492,8 @@ export default {
         window.scrollTo(0, target.offsetTop)
       },
       searchFilter(key){
-          let filterOrtho=this.orthoInfo.filter(item=>{
-              return  key.indexOf(""+item.tax) >-1
+          let filterOrtho=this.tableOrthoList.filter(item=>{
+              return  key.indexOf(""+item.taxId) >-1
           })
         //   console.log("filterOrtho:",filterOrtho);
           this.tableOrthoList=filterOrtho
@@ -563,7 +510,7 @@ export default {
       },
       compareOrthoVar(filtSpecies){
         this.compareFuntion('var',filtSpecies)
-        
+
       },
       clearOrthoVar(){
         this.cleatFunction('var')
@@ -581,20 +528,29 @@ export default {
         this.cleatFunction('expression')
       },
       cleatFunction(key){
+
         this.checked[key]=false;
         this.clicked[key]=false;
         let svgContainer=d3.select("#svgcontainer-"+key)
-        d3.selectAll("#group_total").remove()
-        svgContainer.attr('height','300')
+        d3.selectAll("#group_total_"+key).remove()
+        if(key=='go'){svgContainer.attr('height','400')}else{
+            svgContainer.attr('height','300')
+        }
+        if(key=='var'){
+            this.showVarInfoTable=false;
+        }else if(key=='go'){
+            this.showGoTable=false;
+        }
         this.waitResponse[key]=false;
         this.form.species[key]="";
       },
     //   点击show button 调用的函数
       compareFuntion(key,filtSpecies){
+        console.log("key,filtSpecies:",key,filtSpecies);
         let filterOrtho;
         if(filtSpecies.length>0){
             filterOrtho=this.orthoInfo.filter(item=>{
-                return  filtSpecies.indexOf(""+item.tax) >-1
+                return  filtSpecies.indexOf(""+item.taxId) >-1
             })
         }else{
             filterOrtho=this.orthoInfo;
@@ -605,23 +561,40 @@ export default {
         this.waitResponse[key]=true;
         //   取当前table的同源基因，循环查询对应的数据，如果有的话，添加一行
         let index=0;
+        console.log("filterOrtho:",filterOrtho);
+        let num=0;
         for(let i=0;i<filterOrtho.length;i++){
-              let orthoItem=filterOrtho[i];
-              let classification=orthoItem.species.classification;
-              if(orthoItem.gbiInfo!=null){
-                let ensID=orthoItem.gbiInfo.ensemblGeneId;
-                let speciesName=orthoItem.species.shortName
-                this.$axios.get("http://localhost:9401/api/gene-detail-"+key,{params: {'geneName': ensID,"classification":classification}})
-                .then(response=>{
+            let orthoItem=filterOrtho[i];
+            //   let classification=orthoItem.species.classification;
+            //   if(orthoItem.gbiInfo!=null){
+            let hdbId=orthoItem.hdbGeneId;
+            let symbol=orthoItem.geneSymbol!=="-"?orthoItem.geneSymbol:orthoItem.ensembId;
+            let speciesName=orthoItem.commonName.slice(0,3)
+            let params= {'hdbId': hdbId}
+            if(key=="expression"){params= {'hdbId': hdbId,'classification':this.classification}}
+            this.$axios.get("http://localhost:9401/api/gene-detail-"+key,{params})
+            .then(response=>{
+                if(response.data.length>0){
+                    num+=response.data.length;
+                    console.log("go data:",response.data,"symbol:",symbol);
                     index += 1;
                     let svgContainer=d3.select("#svgcontainer-"+key)
                     let tooltip=d3.select("#tooltip")
                     console.log("response.data:",response.data);
-                    this.drawSubRectChart(response.data,svgContainer,key,index,tooltip,speciesName, ensID)
-        })
+                    this.drawSubRectChart(response.data,svgContainer,key,index,tooltip,speciesName, symbol)
+                }
                 
-              }
-          }}
+            })
+
+            //   }
+          }
+          setTimeout(() => {
+            if(num==0){
+                this.$message('No Annotation Data Here');
+            }
+          }, 1000);
+          
+        }
       },
       getTableMaxHeight(){
         this.$nextTick(function () {
@@ -644,6 +617,7 @@ export default {
     },
     drawGoRectChart(value,svgContainer,dataclass,speciesName,geneName){
     let rectHeight=18;
+    geneName=geneName.length>10?geneName.slice(0,10)+"..":geneName;
     // 绘制文字部分
     let tooltip = d3.select('.tables')
         .append('div')
@@ -667,11 +641,11 @@ export default {
         top_class=value[0].topClass;
     }else if(dataclass=="expression"){top_class=value[0].eoClassification}
     for(let iii in value ){
-        let text_top=220;
-        let text_x=215;
+        let text_top=170;
+        let text_x=95;
         if(dataclass=="go"){text_top+=25;text_x-=25}
         let item=value[iii]
-        
+
         let G_PADDING=rectHeight;
         // 不同分类间的间隔
         if(dataclass=="var"){
@@ -697,8 +671,8 @@ export default {
                 .attr("y", text_top)
                 .text(d => {
                     let txtfile=d.goAnnotations
-                    if(d.goAnnotations.length>58){
-                        txtfile=d.goAnnotations.slice(0,58)+"..."
+                    if(d.goAnnotations.length>40){
+                        txtfile=d.goAnnotations.slice(0,40)+"..."
                     }
                     return  txtfile
                 })
@@ -741,7 +715,7 @@ export default {
     // let speciesName=
     // 绘制热图rect部分
     this.drawSubRectChart(value,svgContainer,dataclass,0,tooltip,speciesName,geneName,rectHeight)
-    
+
     },
     // 封装绘制rect方法
     drawSubRectChart(value,svgContainer,dataclass,index,tooltip,speciesName,geneName){
@@ -753,22 +727,24 @@ export default {
         let PADDING=rectHeight;
         let oriSvgHeight=300;
         if(dataclass=="go"){oriSvgHeight=400}
-        svgContainer.attr('height',`${oriSvgHeight+index*15}`)
+        svgContainer.attr('height',`${oriSvgHeight+index*17}`)
         let group_total;
         if(index==0){
             group_total = svgContainer.append('g').attr("id", "group_total_0").attr('transform',`translate(0,${PADDING*index})`)
         }else{
-            group_total = svgContainer.append('g').attr("id", "group_total").attr('transform',`translate(0,${PADDING*index})`)
+            group_total = svgContainer.append('g').attr("id", "group_total_"+dataclass).attr('transform',`translate(0,${PADDING*index})`)
         }
+        let gene_fontsize=12
         group_total.append('text')
             .attr('x',0)
             .attr('y',rect_top+rectHeight/2+5)
+            .attr("font-size", gene_fontsize)
             .text(`${geneName}(${speciesName})`)
         let rect_group = group_total.selectAll("rect")
             .data(value)
             .enter()
         let RECT_PADDING=rectHeight;
-        let RECT_x=228;
+        let RECT_x=110;
         // 判断绘图时的数据类别，不同类别间隔开
         let top_class;
         let class_count=0;
@@ -799,14 +775,14 @@ export default {
         .attr("height", rectHeight )
         .attr("fill", d=>"rgba(141,192,252,"+(d.opacity+0.03)+")")
         .attr('stroke',"darkgray")
-        .attr('cursor',d=>d.snpNum>0?'pointer':'')
+        .attr('cursor',d=>d.opacity>0?'pointer':'')
         .on("mousemove", function(d, i){
-            let htmlInfo;   
+            let htmlInfo;
             if( dataclass =="go"){
-                htmlInfo=`<div><strong>Gwas Number: </strong>${i.goNum>0?i.goNum:"-"}</div>
-            <div><strong>Gwas List: </strong>${i.goList==null?"-":i.goList.slice(0,2)}${i.goList!==null&&i.goList.length>2?"...":""}</div>
-            <div><strong>Go Id: </strong>${i.goId}</div>
-            <div><strong>Go Term: </strong>${i.goTerm}</div>
+                htmlInfo=`<div><strong>GO Annotation Number: </strong>${i.goNum>0?i.goNum:"-"}</div>
+            <div><strong>GO Id: </strong>${i.goId}</div>
+            <div><strong>Annotate Subclass GO Id: </strong>${i.goList==null?"-":i.goList.slice(0,2)}${i.goList!==null&&i.goList.length>2?"...":""}</div>
+            <div><strong>Go Term: </strong>${i.goAnnotations}</div>
             <div><strong>Go Classification: </strong>${i.topClass}</div>
             <div><strong>Go Definition: </strong>${i.definition}</div>
             `
@@ -815,7 +791,7 @@ export default {
             <div>Variant List: ${i.snpList==null?"-":i.snpList.slice(0,2)}${i.snpList!==null&&i.snpList.length>2?"...":""}</div>
             <div>Variant Annotaion: ${i.voAnnotaion}</div>
             <div>Variant Classification: ${i.voClassification}</div>
-            
+
             `
             }else if( dataclass =="expression"){
                 htmlInfo=`<div>Expression Number: ${i.prjNum>0?i.prjNum:"-"}</div>
@@ -871,21 +847,52 @@ export default {
                         }
                     })
                 }
-                }else if(dataclass=="go"){
-                        console.log("i.snpList:",i.snpList);
-                }else if(dataclass=="trait"){
-                    console.log("i.snpList:",i.snpList);
-                }else if(dataclass=="expression"){
-                    console.log("i.snpList:",i.snpList);
-                    if(i.prjList.length>0){
-                    let prjlist=i.prjList.join(',')
-                    console.log(i.taxonId);
-                    let PATH="https://ngdc.cncb.ac.cn/gen/api/json/gene/expressions?taxonomyId="+i.taxonId+"&accession="+i.geneId+"&bioProjectId="+prjlist
-                    this.$axios.get(PATH).then(response=>{
-                        console.log("expression response:",response.data.result.expressionProfiles);
-                        // this.showVarInfoTable=true;
-                    })
-                }
+            }else if(dataclass=="go"){
+                this.goInfoData=[i]
+                this.showGoTable=true;
+            }else if(dataclass=="trait"){
+                console.log("i.snpList:",i.snpList);
+            }else if(dataclass=="expression"){
+                console.log("i.snpList:",i.snpList);
+                if(i.prjList.length>0){
+                let prjlist=i.prjList.join(',')
+                console.log(i.taxonId);
+                let PATH="https://ngdc.cncb.ac.cn/gen/api/json/gene/expressions?taxonomyId="+i.taxonId+"&accession="+i.geneId+"&bioProjectId="+prjlist
+                this.$axios.get(PATH).then(response=>{
+                    console.log("expression response:",response.data.result.expressionProfiles);
+                    let expdata=response.data.result.expressionProfiles;
+                    let expTabledata=[];
+                    for(let keyaa in expdata ){
+                        let prjList=expdata[keyaa]
+                        let expNum=0;
+                        let sampleNum=0;
+                        let tissue={};
+                        for(let item of prjList){
+                            sampleNum += 1;
+                            expNum += item.tpm;
+                            let itemTissue=item.tissue
+                            if(Object.keys(tissue).indexOf(itemTissue) == -1 ){
+                                tissue[itemTissue]=[expNum]
+                            }else{
+                                tissue[itemTissue].push(expNum)
+                            }
+                        }
+                        for(let tissueName in tissue){
+                            let expAvg=expNum/sampleNum
+                            let item={
+                                "projectId":keyaa,
+                                "tissue":tissueName,
+                                "expAvg":expAvg
+                            }
+                            expTabledata.push(item)
+                            
+                        }
+                    }
+                    this.expTabledata=expTabledata;
+                    console.log("tissue:",expTabledata);
+                    this.showExpInfoTable=true;
+                })
+            }
     }
     })},
     hiligtDbCols({rowIndex, columnIndex}){
@@ -922,7 +929,7 @@ export default {
     // let geneSymbol;
     //   跳转链接
     //   http://www.treefam.org/family/TF328386
-    
+
     // let geneName="770642"
     this.$axios
     // 获取gene basic info的接口，目前是查询entrez id
@@ -940,8 +947,51 @@ export default {
     //    geneSymbol=genedetail[0].geneSymbol;
         this.tableData = genedetail;
         // 存储同源数据
-        this.orthoInfo=orthoList;
-        this.tableOrthoList=orthoList;
+        
+        
+        let ortho=[]
+        for(let item of  orthoList){
+            if(item.orthoPosition==1){
+                let commonName = item.commonName1?item.commonName1:"-";
+                let ensembId = item.ensembId1?item.ensembId1:"-";
+                let entrezId=item.entrezId1?item.entrezId1:"-";
+                let geneSymbol=item.geneSymbol1?item.geneSymbol1:"-";
+                let hdbGeneId=item.hdbGeneId1?item.hdbGeneId1:"-";
+                let taxId=item.taxId1?item.taxId1:"-"
+                let dbEvidence=item.dbEvidence
+                let orthoitem={
+                    "commonName":commonName,
+                    "ensembId":ensembId,
+                    "entrezId":entrezId,
+                    "geneSymbol":geneSymbol,
+                    "hdbGeneId":hdbGeneId,
+                    "taxId":taxId,
+                    "dbEvidence":dbEvidence
+                }
+                ortho.push(orthoitem)
+            }else{
+                let commonName = item.commonName2?item.commonName2:"-";
+                let ensembId = item.ensembId2?item.ensembId2:"-";
+                let entrezId=item.entrezId2?item.entrezId2:"-";
+                let geneSymbol=item.geneSymbol2?item.geneSymbol2:"-";
+                let hdbGeneId=item.hdbGeneId2?item.hdbGeneId2:"-";
+                let taxId=item.taxId2?item.taxId2:"-"
+                let dbEvidence=item.dbEvidence
+                let orthoitem={
+                    "commonName":commonName,
+                    "ensembId":ensembId,
+                    "entrezId":entrezId,
+                    "geneSymbol":geneSymbol,
+                    "hdbGeneId":hdbGeneId,
+                    "taxId":taxId,
+                    "dbEvidence":dbEvidence
+                }
+                ortho.push(orthoitem)
+            }
+        }
+        this.tableOrthoList=ortho;
+        this.orthoInfo=ortho;
+        console.log("ortho:",ortho);
         console.log("orthoList:",orthoList);
         //   将多个结果合并成一个
         if(genedetail.length>1){
@@ -956,47 +1006,50 @@ export default {
         }
             this.geneBasicInfo=obj
         }
-        
+
 
     }).finally(()=>{
         this.fullLoading=false;
         let svg_height=480;
         // let geneName="ENSGALG00000023443"
         let specName=this.geneBasicInfo.speciesName.shortName;
+        let symbol=this.geneBasicInfo.geneSymbol;
         this.classification=this.geneBasicInfo.speciesName.classification;
-        
+
         // console.log("classification:",classification);
-        this.$axios.get('http://localhost:9401/api/gene-detail-go',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
-            this.goloading=false;
-            this.goList=response.data
-            console.log("goList:",this.goList);
+        this.$axios.get('http://localhost:9401/api/gene-detail-go-1',{params: {'hdbId': hdbId}}).then(response=>{
             if(response.data.length>0){
-            let svgContainer = d3.select("#svg-container-go").append("svg").attr("width", "96%").attr("height", svg_height+60).attr('id', 'svgcontainer-go');
-            this.drawGoRectChart(response.data,svgContainer,"go",specName,ensemblGeneId)
+                this.goloading=false;
+                this.goList=response.data
+                console.log("goList:",this.goList);
+                if(response.data.length>0){
+                let svgContainer = d3.select("#svg-container-go").append("svg").attr("width", "98%").attr("height", svg_height+60).attr('id', 'svgcontainer-go');
+                this.drawGoRectChart(response.data,svgContainer,"go",specName,symbol)
+                }
             }
         })
-        this.$axios.get('http://localhost:9401/api/gene-detail-var',{params: {'hdbId': hdbId}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-var-1',{params: {'hdbId': hdbId}}).then(response=>{
             console.log("var response:",response.data);
             if(response.data.length>0){
-            let svgContainer = d3.select("#svg-container-var").append("svg").attr("width", "96%").attr("height", svg_height).attr('id', 'svgcontainer-var');
+            let svgContainer = d3.select("#svg-container-var").append("svg").attr("width", "98%").attr("height", svg_height).attr('id', 'svgcontainer-var');
             // console.log("var response.data:",response.data);
-            this.drawGoRectChart(response.data,svgContainer,"var",specName,ensemblGeneId)
+            this.drawGoRectChart(response.data,svgContainer,"var",specName,symbol)
             }
         })
         // let traitGeneName="Os05g0556300"
-        this.$axios.get('http://localhost:9401/api/gene-detail-trait',{params: {'hdbId': hdbId}}).then(response=>{
-            let svgContainer = d3.select("#svg-container-trait").append("svg").attr("width", "96%").attr("height", svg_height).attr('id', 'svgcontainer-trait');
+        this.$axios.get('http://localhost:9401/api/gene-detail-trait-1',{params: {'hdbId': hdbId}}).then(response=>{
+            let svgContainer = d3.select("#svg-container-trait").append("svg").attr("width", "98%").attr("height", svg_height).attr('id', 'svgcontainer-trait');
             console.log("trait:",response.data);
             if(response.data.length>0){
-                this.drawGoRectChart(response.data,svgContainer,"trait",specName,ensemblGeneId)
+                this.drawGoRectChart(response.data,svgContainer,"trait",specName,symbol)
             }
         })
         this.$axios.get('http://localhost:9401/api/species-list',{params: {'taxonId': ""+taxonId}}).then(response=>{
             console.log("species:",response.data);
             this.species=response.data
         })
-        this.$axios.get('http://localhost:9401/api/gene-detail-expression',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
-            let svgContainer = d3.select("#svg-container-expression").append("svg").attr("width", "96%").attr("height", svg_height).attr('id', 'svgcontainer-expression');
+        this.$axios.get('http://localhost:9401/api/gene-detail-expression-1',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
+            let svgContainer = d3.select("#svg-container-expression").append("svg").attr("width", "98%").attr("height", svg_height).attr('id', 'svgcontainer-expression');
             console.log("expression:",response.data);
             // this.species=response.data
             if(response.data.length>0){
@@ -1004,15 +1057,15 @@ export default {
             }
         })
     })
-        
-    
+
+
     window.addEventListener("scroll", this.watchScroll);
-    this.getTableMaxHeight(); 
-    let _this = this;
-    window.onresize = function () {//用于使表格高度自适应的方法  
-        _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
-    }
+    // this.getTableMaxHeight();
+    // let _this = this;
+    // window.onresize = function () {//用于使表格高度自适应的方法
+    //     _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
+    // }
   },
-  
+
 }
 </script>

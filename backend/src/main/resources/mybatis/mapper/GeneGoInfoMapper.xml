@@ -23,6 +23,7 @@
     <result column="go_term" jdbcType="VARCHAR" property="goTerm" />
     <result column="top_class" jdbcType="VARCHAR" property="topClass" />
     <result column="classification" jdbcType="VARCHAR" property="classification" />
+    <result column="definition" jdbcType="VARCHAR" property="definition" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="TraitResultMap" type="cn.ac.cncb.ngdc.syndb.entity.GeneGoInfo">
     <result column="go_term_definition" jdbcType="LONGVARCHAR" property="goTermDefinition" />
@@ -42,7 +43,7 @@
   </select>
 
   <select id="selectBasicGo" resultMap="GoBasicResultMap">
-    select * from go_terms_1
+    select * from go_terms_1 order by top_class desc
   </select>
 
   <select id="getGoNumbyGene" resultType="String">

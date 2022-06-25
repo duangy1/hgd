@@ -2,7 +2,7 @@
   <div>
     <HeaderBar />
     <Banner />
-    <Navigator />
+    <!-- <Navigator /> -->
     
     <!-- 左侧树结构 -->
     <!-- 抽屉结构 -->
@@ -43,7 +43,7 @@
    <!-- <div class="button-text">Trait Ontology</div> -->
   </div>
     <div class="trait-box trait-infoBox">
-      <div style="padding-left:29px">
+      <div style="padding-left:29px;margin-top: -15px;">
         <h2 class="trait-title">Trait Name : {{ traitItem.traitName }} | ID: {{ traitItem.traitId }}</h2
         >
         <h2 class="trait-def trait-title" v-if="traitItem.traitDef != ''"
@@ -483,7 +483,7 @@
 
 <script>
 // @ is an alias to /src
-import Navigator from "@/components/navigator.vue";
+// import Navigator from "@/components/navigator.vue";
 import traitOntology from "@/assets/static/traitOntology.json";
 import Banner from "@/components/banner.vue";
 import FooterBar from "@/components/FooterBar.vue";
@@ -497,7 +497,7 @@ import singleTraitIcon from "@/assets/img/icon/orange.svg";
 export default {
   name: "Traits",
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner,
