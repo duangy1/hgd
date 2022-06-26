@@ -26,7 +26,7 @@
           </el-pagination>
             <el-table
             :data="speciesTableData"
-            style="width:86%;margin:auto;"
+            style="width:100%;margin:auto;"
             v-loading="speciesLoading"
             empty-text="-">
             <!-- <el-table-column>
@@ -38,14 +38,19 @@
                   />
                 </template>
             </el-table-column> -->
-            <el-table-column prop="latinName" label="Latin Name"></el-table-column>
+            <el-table-column prop="latinName" label="Organism">
+			<template slot-scope="scope">
+				<i>{{scope.row.latinName}}</i>
+			</template> 
+			</el-table-column>
             <el-table-column prop="commonName" label="Common Name"></el-table-column>
             <el-table-column prop="taxonId" label="Ncbi Taxon Id"></el-table-column>
-            <el-table-column prop="traitGeneNum" label="Trait homolog gene number"></el-table-column>
-            <el-table-column prop="varGeneNum" label="Variant homolog gene number"></el-table-column>
-            <el-table-column prop="expGeneNum" label="Expression homolog gene number"></el-table-column>
-            <el-table-column prop="goGeneNum" label="Gene ontology homolog gene number"></el-table-column>
+            <el-table-column prop="traitGeneNum" label="#Trait"></el-table-column>
+            <el-table-column prop="varGeneNum" label="#Variant"></el-table-column>
+            <el-table-column prop="expGeneNum" label="#Expression"></el-table-column>
+            <el-table-column prop="goGeneNum" label="#GO"></el-table-column>
             </el-table>
+			<div style="text-align:left;padding-top:10px;font-size:14px;">Note: # represents the number of homolog gene</div>
         </el-card>
         <el-card style="width:30%;border-top: 2px solid rgb(64, 158, 255)!important;margin-left:2%;">
           <div id="chart-div" style="width:300px;height:500px;"></div>
@@ -309,7 +314,7 @@ export default {
     });
     },
      getSpeciesByClass(paramclass){
-      this.$axios.get("http://localhost:9401/api/species-by-class",{params:{'classification' : paramclass}})
+      this.$axios.get("http://192.168.164.93:9401/api/species-by-class",{params:{'classification' : paramclass}})
        .then(response=>{
           this.speciesData=response.data;
           this.totalSize=response.data.length;
@@ -317,7 +322,7 @@ export default {
       })
     },
     getHomologBetweenSpecies(paramclass){
-      // this.$axios.get("http://localhost:9401/api/species-by-class",{params:{'classification' : paramclass}})
+      // this.$axios.get("http://192.168.164.93:9401/api/species-by-class",{params:{'classification' : paramclass}})
       //  .then(response=>{
       //     console.log("species:",response);
       //     this.speciesData=response.data;
@@ -345,7 +350,7 @@ export default {
   },
   mounted(){
     // 获取上方物种饼图和表格的数据
-    this.$axios.get("http://localhost:9401/api/species-all").then(response=>{
+    this.$axios.get("http://192.168.164.93:9401/api/species-all").then(response=>{
       this.speciesData=response.data;
       this.totalSize=response.data.length;
       this.speciesTableData=this.speciesData.slice(0,this.pageSize)
@@ -353,7 +358,7 @@ export default {
       this.speciesLoading=false
     })
     // 接口获取heatmap数据
-    //  this.$axios.get("http://localhost:9401/api/speciesname-all").then(response=>{
+    //  this.$axios.get("http://192.168.164.93:9401/api/speciesname-all").then(response=>{
     //   console.log("species:",response);
     //   // 返回值data两个列表，一个是speciesName,一个是obj包含value等信息
       // this.heatmap.speciesName=response.data[0];
