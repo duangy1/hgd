@@ -30,6 +30,7 @@
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
       and taxon_id = #{taxonid}
     </if>
+    and hdb_gene_id !="" and hdb_gene_id is not null
   </select>
   <select id="getGoByHdbTaxon" resultMap="BaseResultMap">
     select * from gene_go_all where hdb_gene_id=#{hdbid}

@@ -691,7 +691,7 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -727,7 +727,7 @@ export default {
     this.orthoTableData=[];
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
         this.orthoTableData.push(item)
@@ -765,7 +765,7 @@ export default {
     let PATH;
     console.log("gwasOrgId:",gwasOrgId);
     if(dataSource2.length>0){
-      this.$axios.get("http://localhost:9401/api/var-snpid",{params:{'hdbId': hdbid,"varName":varName}}).then(res=>{
+      this.$axios.get("http://192.168.164.93:9401/api/var-snpid",{params:{'hdbId': hdbid,"varName":varName}}).then(res=>{
           console.log("res:",res);
           if(res.data.length !==0){
             let BASEPATH;
@@ -955,7 +955,7 @@ export default {
     // 根据动植物分开获取
     async getTraitData(varname,classification,pagesize,pagenum,speciesName){
       console.log("params:",varname,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://localhost:9401/api/variants",{params:{'classification': classification,'varname':varname,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
+      this.$axios.get("http://192.168.164.93:9401/api/variants",{params:{'classification': classification,'varname':varname,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -975,7 +975,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(speciesType){
-      this.$axios.get('http://localhost:9401/api/species-var',{params: {speciesType: speciesType}})
+      this.$axios.get('http://192.168.164.93:9401/api/species-var',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType==2){

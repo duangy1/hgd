@@ -49,3 +49,22 @@
     z-index:999;
     width: 250px;
 }
+#section-4{
+    width: 33%;
+    overflow: hidden;
+    /* height: ; */
+    float: left;
+    height: 50px;
+}
+#section-5{
+    width: 33%;
+    overflow: hidden;
+    /* height: ; */
+    float: left;
+    height: 50px;
+}
+.figure{
+    color: darkgray;
+    margin-top: 10px;
+    font-style:italic;
+}

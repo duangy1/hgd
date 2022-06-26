@@ -20,6 +20,8 @@ public class ExpressionTerm {
 
     private String[] prjList;
 
+    private Integer genOrgid;
+
     private String classification;
 
 }

@@ -8,6 +8,7 @@
     <result column="taxon_id" jdbcType="INTEGER" property="taxonId" />
     <result column="bio_project_id" jdbcType="LONGVARCHAR" property="bioProjectId" />
     <result column="hdb_gene_id" jdbcType="VARCHAR" property="hdbId" />
+    <result column="gen_orgid" jdbcType="VARCHAR" property="genOrgId" />
     <result column="common_name" jdbcType="VARCHAR" property="commonName" />
     <result column="classification" jdbcType="VARCHAR" property="classification" />
   </resultMap>
@@ -29,7 +30,7 @@
     where gei_id = #{geiId,jdbcType=INTEGER}
   </select>
   <select id="expressionInfoByGeneList" resultMap="BaseResultMap">
-    select gene_id,annotation,gene_expression.taxon_id,bio_project_id,gene_expression.hdb_gene_id from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where hdb_gene_id=#{hdbId}
+    select gene_id,gen_orgid,annotation,gene_expression.taxon_id,bio_project_id,gene_expression.hdb_gene_id from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where hdb_gene_id=#{hdbId}
   </select>
   <select id="initPageEo" resultMap="BaseResultMap">
     select * from gene_expression where annotation=#{expName} and classification=#{classification} and hdb_gene_id !="" and hdb_gene_id is not null
