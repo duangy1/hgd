@@ -6,20 +6,20 @@
     "protein number": "23,399,653"
   },{
     "dataclass": "Data Source",
-    "protein number": "EggNog,Oma,Panther,Treefam,Hieranoid,Inparanois,Ensembl,Uniprot,NCBI"
+    "protein number": "EggNog,Oma,Panther,Treefam,Hieranoid,Inparanoid,Ensembl,Uniprot,NCBI"
   }],
   "tableDataAnnotat":[{
     "dataclass": "Total Homolog Gene With Traits Annotaion",
     "protein number": "13,209"
   }, {
     "dataclass": "Total Homolog Gene With Variant Annotaion",
-    "protein number": "120,852"
+    "protein number": "146,621"
   }, {
     "dataclass": "Total Homolog Gene With Gene Ontology Annotaion",
-    "protein number": "10,234"
+    "protein number": "384,684"
   }, {
     "dataclass": "Total Homolog Gene With Expression Annotaion",
-    "protein number": "403,711"
+    "protein number": "403,655"
   }],
   "barData": {
 "trait2species":{
