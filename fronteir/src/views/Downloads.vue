@@ -2,7 +2,7 @@
   <div>
     <HeaderBar/>
     <Banner/>
-    <Navigator/>
+    <!-- <Navigator/> -->
     <el-breadcrumb class="arrow-title" separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
       <el-breadcrumb-item>Downloads</el-breadcrumb-item>
@@ -51,7 +51,7 @@
               <el-main>
                 <div v-for="item of tableData" v-show="show.a" id="section-1" :key="item.id"
                      class="div-speciesfile" >
-                  <el-descriptions :column="4" :size="size" :title=item.name border class="margin-top">
+                  <el-descriptions :column="3" :size="size" :title=item.name border class="margin-top">
                     <!-- <template slot="extra">
                        <el-button type="primary" size="small">操作</el-button>
                      </template> -->
@@ -65,7 +65,7 @@
 
                 <div v-for="item of traitData" v-show="show.b" id="section-2" :key="item.id"
                      class="div-speciesfile Filelayout" >
-                  <el-descriptions :column="4" :size="size"  border class="margin-top">
+                  <el-descriptions :column="3" :size="size"  border class="margin-top">
                     <!-- <template slot="extra">
                         <el-button type="primary" size="small">操作</el-button>
                       </template> -->
@@ -78,7 +78,7 @@
                 </div>
                 <div v-for="item of varData" v-show="show.c" id="section-3" :key="item.id"
                      class="div-speciesfile Filelayout">
-                  <el-descriptions :column="4" :size="size" border class="margin-top">
+                  <el-descriptions :column="3" :size="size" border class="margin-top">
                     <!-- <template slot="extra">
                         <el-button type="primary" size="small">操作</el-button>
                       </template> -->
@@ -91,7 +91,7 @@
                 </div>
                 <div v-for="item of goData" v-show="show.d" id="section-4" :key="item.id"
                      class="div-speciesfile Filelayout">
-                  <el-descriptions :column="4" :size="size"  border class="margin-top">
+                  <el-descriptions :size="size"  :column="3"  border >
                     <!-- <template slot="extra">
                         <el-button type="primary" size="small">操作</el-button>
                       </template> -->
@@ -104,7 +104,7 @@
                 </div>
                 <div v-for="item of expData" v-show="show.e" id="section-5" :key="item.id"
                      class="div-speciesfile Filelayout">
-                  <el-descriptions :column="4" :size="size" border class="margin-top">
+                  <el-descriptions :column="3" :size="size" border class="margin-top">
                     <!-- <template slot="extra">
                         <el-button type="primary" size="small">操作</el-button>
                       </template> -->
@@ -155,14 +155,10 @@
 
 <style scoped src="../assets/css/download.css"></style>
 <style scoped src="../assets/css/documentation.css"></style>
-<style>
+<style scoped>
 .download {
   text-decoration: none;
   font-size:15px;
-a:hower {
-  color: #55a1e9;
-}
-
 }
 .Filelayout{
   width: 25%;
@@ -174,7 +170,7 @@ a:hower {
 
 
 <script>
-import Navigator from "@/components/navigator.vue";
+// import Navigator from "@/components/navigator.vue";
 import Banner from "@/components/banner.vue";
 import FooterBar from "@/components/FooterBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
@@ -183,7 +179,7 @@ import fileInfo from "@/assets/static/download.json";
 export default {
   name: 'Downloads',
   components: {
-    Navigator,
+    // Navigator,
     FooterBar,
     HeaderBar,
     Banner,
@@ -197,6 +193,8 @@ export default {
       goData: fileInfo.goData,
       expData: fileInfo.expData,
       tabPosition: 'left',
+      size:"",
+      size2:"medium",
       show: {
         a: true,
         b: false,

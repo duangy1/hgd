@@ -111,7 +111,7 @@
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
               <template slot-scope="scope">
                 
-                <a :href="'/gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId" target='_blank'>
+                <a :href="'/gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
                     {{ scope.row.geneId }}
                 </a>
               </template>
@@ -378,7 +378,7 @@
             </template>
             </el-table-column>
           </el-table>
-        <div style="position: absolute;float: left;padding-top: 0.7%;">
+        <div style="position: absolute;float: left;margin-top: 0.7%;padding-bottom: 1%;">
         <div style="display: flex;">
                   <img :src="orthoIcon"
                     style="margin-right: 6px;min-width=70px;height=70px;"
@@ -686,7 +686,7 @@ export default {
    this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -722,10 +722,22 @@ export default {
         console.log("item:",item);
         ortholist.push(item)
     }})
+
+    this.orthoTableData=[]
+    ortholist.forEach(item=>{
+      let hdbid=item.hdbId;
+      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+        console.log("gene res:",res);
+        item.ensemblGeneId=res.data.ensemblGeneId;
+        item.geneSymbol=res.data.geneSymbol
+        this.orthoTableData.push(item)
+        this.orthoLoading=false;
+      })
+    })
     
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
-    this.orthoTableData=ortholist;
+    // this.orthoTableData=ortholist;
     this.showSubTableBox=true;
     this.gwasLoading=true;
     // 左侧基因的接口数据
@@ -742,6 +754,7 @@ export default {
       }
       this.gwasInfoData=datalist; 
       this.gwasInfoData.topTrait=rowValue.traitName;
+      this.gwasLoading=false;
       
     })
     // 右侧基因数据
@@ -750,7 +763,7 @@ export default {
       let hdbid=item.hdbId;
       // let topTrait=item.traitName;
       console.log("item.hdbId:",item.hdbId);
-      this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
+      this.$axios.get("http://192.168.164.93:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
         console.log("res:",res);
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
@@ -775,7 +788,7 @@ export default {
       
     })
     
-    // this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbid': hdblist}}).then(res=>{
+    // this.$axios.get("http://192.168.164.93:9401/api/traits-gwas-info",{params:{'hdbid': hdblist}}).then(res=>{
     //     console.log("res:",res);
     // })
    },
@@ -802,7 +815,7 @@ export default {
       let hdbid=item.hdbId;
       // let topTrait=item.traitName;
       console.log("item.hdbId:",item.hdbId);
-      this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
+      this.$axios.get("http://192.168.164.93:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
         console.log("res:",res);
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
@@ -949,7 +962,7 @@ export default {
     // 根据动植物分开获取
     async getTraitData(traitId,classification,pagesize,pagenum,speciesName){
       console.log("params:",traitId,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': classification,'traitId':traitId,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
+      this.$axios.get("http://192.168.164.93:9401/api/traits",{params:{'classification': classification,'traitId':traitId,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -969,7 +982,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(speciesType){
-      this.$axios.get('http://localhost:9401/api/species-trait',{params: {speciesType: speciesType}})
+      this.$axios.get('http://192.168.164.93:9401/api/species-trait',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType==2){

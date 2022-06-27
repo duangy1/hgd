@@ -125,7 +125,7 @@ public class OrthoService {
                     orthoitem.setTax(tax2);
                     orthoitem.setSpecies(species2);
                     orthoitem.setTraitName(orthoitem.getTraitName2());
-
+                    orthoitem.setCommonName(orthoitem.getCommonName2());
                     orthoitem.setEnsemblId(orthoitem.getEnsemblId2());
                     orthoitem.setHdbId(orthoitem.getHdbId2());
                     orthoitem.setGwasId(orthoitem.getGwasId2());
@@ -136,7 +136,7 @@ public class OrthoService {
                     species1.setClassification(orthoitem.getClassification1());
                     orthoitem.setTax(tax1);
                     orthoitem.setSpecies(species1);
-
+                    orthoitem.setCommonName(orthoitem.getCommonName1());
                     orthoitem.setEnsemblId(orthoitem.getEnsemblId1());
                     orthoitem.setCommonName(orthoitem.getCommonName1());
                     orthoitem.setTraitName(orthoitem.getTraitName1());

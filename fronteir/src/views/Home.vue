@@ -201,7 +201,7 @@
     
     </div> -->
      <div class="section-title">
-        <a href="http://localhost:9405/species" style="text-decoration:none"><h5 class="full-list">...More</h5></a>
+        <a href="http://192.168.164.93:9405/species" style="text-decoration:none"><h5 class="full-list">...More</h5></a>
     </div>
     </div>
   
@@ -358,7 +358,7 @@
                               <div
                                 class="sppb-article-introtext">
                                 <div class="wraper-num">
-                                  <div id="num" class="speciesNum">{{speciesNum}}</div><div class="speciesNum1"><i class="fa fa-paw" style="font-size: 30px;"></i> SPECIES</div> 
+                                  <div id="num" class="speciesNum">{{speciesNum}}</div><div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> Species</div> 
                                 </div>
                                 <!-- <div class="wraper-num">
                                 <div id="num" class="speciesNum">{{speciesNum}}</div> <div class="speciesNum1">Plants  </div>
@@ -369,7 +369,7 @@
                                
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation"
+                                href="/documentation#item-pos-2"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -401,13 +401,13 @@
                               <div
                                 class="sppb-article-introtext">
 								<!-- <p>37 species</p> -->
-                <div class="wraper-num">
-                  <div id="num" class="speciesNum">{{ProteinNum}}</div><div class="speciesNum1"> <i class="fa fa-clipboard" style="font-size:30px"></i>  HOMOLOG PROTEIN PAIRS</div> 
-                </div>
+                            <div class="wraper-num">
+                              <div id="num" class="speciesNum">{{ProteinNum}}</div><div class="speciesNum1"> <i class="fa fa-clipboard numIcon"></i>  Homolog Protein Pairs</div> 
+                            </div>
                                 <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation"
+                                href="/documentation#item-pos-3"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -440,12 +440,18 @@
                                   Traits Associated with Homolog Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                <p>6 species</p>
-								<p>15 trait ontology term</p>
-								<p>13,209 homolog gene</p>
+								<!-- <p>15 trait ontology term</p>
+								<p>13,209 homolog gene</p> -->
+                                <div class="wraper-num">
+                                  <div id="num" class="speciesNum">{{traitNum}}</div>
+                                  <div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                  <!-- <div id="num" class="speciesNum">{{traitGeneNum}}</div>
+                                  <div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> homolog gene</div>  -->
+
+                                </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation"
+                                href="/documentation#item-pos-4"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -477,12 +483,15 @@
                                   itemprop="url">Variations Related with Homolog Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                <p>11 species</p>
-								<p>18 sequence ontology term</p>
-								<p>146,621 homolog gene</p>
+                                <!-- <p>11 species</p> -->
+								<!-- <p>18 sequence ontology term</p>
+								<p>146,621 homolog gene</p> -->
+                                <div class="wraper-num">
+                                  <div id="num" class="speciesNum">{{varNum}}</div><div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="javascript:;"
+                                href="/documentation#item-pos-5"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -515,12 +524,15 @@
                                   itemprop="url">Expression Related with Homolog Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                                <p>22 species</p>
+                                <!-- <p>22 species</p>
 								<p>55 expression ontology term</p>
-								<p>403,655 homolog gene</p>
+								<p>403,655 homolog gene</p> -->
+                                <div class="wraper-num">
+                                  <div id="num" class="speciesNum">{{expNum}}</div><div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation"
+                                href="/documentation#item-pos-6"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -549,12 +561,15 @@
                                   itemprop="url">Gene Ontology Related with Homolog Gene</a></h3>
                               <div
                                 class="sppb-article-introtext">
-                               <p>28 species</p>
+                               <!-- <p>28 species</p>
 								<p>58 gene ontology term</p>
-								<p>384,684 homolog gene</p>
+								<p>384,684 homolog gene</p> -->
+                                <div class="wraper-num">
+                                  <div id="num" class="speciesNum">{{goNum}}</div><div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                </div>
                               </div><a
-                                class="sppb-readmore"
-                                href="/documentation"
+                                class="sppb-readmore finalread"
+                                href="/documentation#item-pos-7"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -635,6 +650,11 @@ export default {
   speciesNum:0,
   speciesNumOther:0,
   ProteinNum:0,
+  traitGeneNum:0,
+  traitNum:0,
+  varNum:0,
+  expNum:0,
+  goNum:0,
 	searchForm:{
 		type:'',
 		keyword:''
@@ -665,8 +685,13 @@ export default {
     }
   },
   mounted(){
-    var yuanshu = 16//数据变化前的初始数值
+    var yuanshu = 37//数据变化前的初始数值
     let homoProteinNum=23399653
+    let traitGeneNum0=13209;
+    let traitNum0=13209;
+    let varNum0=146621;
+    let expNum0=403655;
+    let goNum0=384684;
     // const re = 50 //获取到的数据
     // let otherNum=5
     setInterval(()=>{
@@ -676,10 +701,35 @@ export default {
       // if(this.speciesNumOther<otherNum){
       //   this.speciesNumOther+=1
       // }
-       if(this.ProteinNum<homoProteinNum){
-        this.ProteinNum+=270006
+      if(this.ProteinNum<homoProteinNum){
+        this.ProteinNum+=430006
       }else{
         this.ProteinNum=homoProteinNum
+      }
+      if(this.traitNum<traitNum0){
+        this.traitNum+=303
+      }else{
+        this.traitNum=traitNum0
+      }
+      if(this.traitGeneNum<traitGeneNum0){
+        this.traitGeneNum+=10003
+      }else{
+        this.traitGeneNum=traitGeneNum0
+      }
+      if(this.varNum<varNum0){
+        this.varNum+=10003
+      }else{
+        this.varNum=varNum0
+      }
+      if(this.expNum<expNum0){
+        this.expNum+=10003
+      }else{
+        this.expNum=expNum0
+      }
+      if(this.goNum<goNum0){
+        this.goNum+=10003
+      }else{
+        this.goNum=goNum0
       }
     },30)
     

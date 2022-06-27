@@ -37,7 +37,6 @@ public class TraitController {
                                             @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                             @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
     ){
-        System.out.print("classification:"+classification);
         if(pageNo == 1){
             pageNo = start/length+1;
         }

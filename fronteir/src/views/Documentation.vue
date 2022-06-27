@@ -72,7 +72,7 @@
                                 1.What is Homolog Gene Database?
                             </div>
                             <div class="section-info">
-                                Homolog Gene Database (HGD) is an integrated homolog gene database from public homolog database for domestic animals, plants and model organisms. Currently, there are 16 domestic animals ,16 domestic plants and 5 model organisms, which housed 23,399,653 homolog protein pairs in all. The homolog gene information from 5 public data sources are housed including EggNog,Oma,Panther,Treefam,Hieranoid,Inparanoid. At the same time, gene annotated information are widely collected and integrated from NDGC databases including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HGD.
+                                Homolog Gene Database (HGD) is an integrated homolog gene database from public homolog database for domestic animals, plants and model organisms. Currently, there are 16 domestic animals ,16 domestic plants and 5 model organisms, which housed 23,399,653 homolog protein pairs in all. The homolog gene information from 5 public data sources are housed including EggNog,Panther,Treefam,Hieranoid,Inparanoid. At the same time, gene annotated information are widely collected and integrated from NDGC databases including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HGD.
                             </div>
                         </div>
                         <div class="section section-2" id="item-pos-2">
@@ -95,6 +95,7 @@
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-1.png" class="img"/>
+                                <div class="figure">Figure 1</div>
                             </div>
                         </div>
                         <div class="section section-1" id="item-pos-4">
@@ -109,6 +110,7 @@
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-2.png" class="img"/>
+                                <div class="figure">Figure 2</div>
                             </div>
                         </div>
                         <div class="section section-1" id="item-pos-5">
@@ -123,6 +125,7 @@
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-3.png" class="img"/>
+                                <div class="figure">Figure 3</div>
                             </div>
                         </div>
                         <div class="section section-1" id="item-pos-6">
@@ -137,6 +140,7 @@
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-3.png" class="img"/>
+                                <div class="figure">Figure 4</div>
                             </div>
                         </div>
                         <div class="section section-1">
@@ -151,6 +155,7 @@
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-4.png" class="img"/>
+                                <div class="figure">Figure 5</div>
                             </div>
                         </div>
                         <div class="section section-1">
@@ -158,9 +163,9 @@
                                 2.6 Gene Detail Information
                             </div>
                             <div class="section-info">
-                                The gene detail information contains 7 parts to describe a homolog gene including gene basic information, ortholog gene, GO annotation, Variants, Trait, Expression and Genome Browse (Figure 6).<br/><br/>
+                                The gene detail information contains 6 parts to describe a homolog gene including gene basic information, ortholog gene, GO annotation, Variants, Trait and Expression Informations(Figure 6).<br/><br/>
                                 The gene basic information mainly collected from Ensembl and Uniprot, which provides information including gene symbol, gene synonym, gene type, species name, position, gene description and external id from other database such as entrez id, refseq id and so on.<br/><br/>
-                                The ortholog gene list shows the ortholog genes in other organisms. The table column includes species, taxon id, ensembl id, gene symbol, protein, entrez id and the integrated homolog information from Pather, TreeFam, Eggnog, OMA, Inparanold, Haranold. Users can filter the organism from the search box.<br/><br/>
+                                The ortholog gene list shows the ortholog genes in other organisms. The table column includes species, taxon id, ensembl id, gene symbol, protein, entrez id and the integrated homolog information from Pather, TreeFam, Eggnog, Inparanold, Haranold. Users can filter the organism from the search box.<br/><br/>
                                 The gene ontology describes the GO annotated information for this gene by several colored squares under each GO term. The color is normalized by the GO annotated number. When hover on the square, the annotated GO term number will be shown. When click on, a table list including the annotated information will be shown. When check on the Compared Ortholog Gene, the GO annotated information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
                                 The variants describe the variation annotated information for this gene by several colored squares under each VEP term (Sequence Ontology). The color is normalized by the VEP annotated variation number. When hover on the square, the annotated variation number will be shown. When click on, a table list including the variation information will be shown. When check on the Compared Ortholog Gene, the variation annotated information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
                                 The trait describes the trait information for this gene by several colored squares under each trait term. The color is normalized by the trait number. When hover on the square, the trait number will be shown. When click on, a table list including the trait information will be shown. When check on the Compared Ortholog Gene, the trait information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
@@ -169,9 +174,11 @@
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-6.png" class="img"/>
+                                <!-- <div class="figure">Figure 6</div> -->
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-7.png" class="img"/>
+                                <div class="figure">Figure 6</div>
                             </div>
                         </div>
                          <div class="section section-1">
@@ -182,7 +189,8 @@
                                 User can search homolog gene by gene name, ensemble gene id, ensemble protein name, uniport protein name, Entrez id and so on (Figure7). A homolog gene list will be shown as below.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-4.png" class="img"/>
+                                <img src="../assets/img/document-8.png" class="img"/>
+                                <div class="figure">Figure 7</div>
                             </div>
                         </div>
                          <div class="section section-1">
@@ -193,7 +201,8 @@
                                 HGD provide the homolog protein, trait, variation, expression information for each organism to download (Figure 8).
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-4.png" class="img"/>
+                                <img src="../assets/img/document-9.png" class="img"/>
+                                <div class="figure">Figure 7</div>
                             </div>
                         </div>
                     </el-main>

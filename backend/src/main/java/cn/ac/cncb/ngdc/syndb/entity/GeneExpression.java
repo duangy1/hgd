@@ -22,6 +22,8 @@ public class GeneExpression {
 
     private String hdbId;
 
+    private int genOrgId;
+
     private String commonName;
 
     private String classification;

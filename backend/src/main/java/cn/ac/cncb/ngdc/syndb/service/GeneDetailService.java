@@ -308,31 +308,37 @@ public class GeneDetailService {
         List<GeneExpression> expressionInfoByGeneList =geneExpressionMapper.expressionInfoByGeneList(hdbId);
         List<ExpressionTerm> expressionList= expressionTermMapper.expressionInfoList(classification);
         Integer numSum=0;
+        Integer genOrgid;
         if(expressionInfoByGeneList.size()>0) {
+            genOrgid=expressionInfoByGeneList.get(0).getGenOrgId();
+            System.out.print("genOrgid:"+genOrgid);
             for (GeneExpression expressionInfoItem : expressionInfoByGeneList) {
                 String traitName = expressionInfoItem.getAnnotation();
                 String[] prjList = expressionInfoItem.getBioProjectId().split(",");
                 Integer gwasNum = prjList.length;
                 numSum += gwasNum;
+
                 ExpressionTerm expressionItem = expressionList.stream().filter(d -> d.getEoAnnotation().equals(traitName)).findFirst().get();
                 expressionItem.setPrjNum(gwasNum);
                 expressionItem.setPrjList(prjList);
                 expressionItem.setGeneId(expressionInfoItem.getGeneId());
                 expressionItem.setTaxonId(expressionInfoItem.getTaxonId());
             }
-            if(numSum>0) {
-                for (ExpressionTerm basicTerm : expressionList) {
-                    if (basicTerm.getPrjNum() != null) {
-                        float opaNum = (float) basicTerm.getPrjNum() / numSum;
-                        basicTerm.setOpacity(opaNum);
-                    } else {
-                        basicTerm.setOpacity(0);
-                    }
+//            if(numSum>0) {
+            for (ExpressionTerm basicTerm : expressionList) {
+                basicTerm.setGenOrgid(genOrgid);
+                if (basicTerm.getPrjNum() != null) {
+                    float opaNum = (float) basicTerm.getPrjNum() / numSum;
+                    basicTerm.setOpacity(opaNum);
+                } else {
+                    basicTerm.setOpacity(0);
                 }
-                return expressionList;
-            }else{
-                return null;
+
             }
+            return expressionList;
+//            }else{
+//                return null;
+//            }
 
         }else{
             return  null;

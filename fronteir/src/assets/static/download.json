@@ -8766,7 +8766,7 @@
       "data": [
         {
           "subid": 1,
-          "name": "Crab-eatingMacaque_Expression_Homolog.gz",
+          "name": "Cynomolgus_Expression_Homolog.gz",
           "filesize": "12.3M",
           "address": "https://download.cncb.ac.cn/hgd/expression/Crab-eatingMacaque_Expression_Homolog.gz"
         }
@@ -9056,7 +9056,7 @@
       "data": [
         {
           "subid": 1,
-          "name": "Crab-eatingMacaque_GeneOntology_Homolog.gz",
+          "name": "Cynomolgus_GeneOntology_Homolog.gz",
           "filesize": "12.3M",
           "address": "https://download.cncb.ac.cn/hgd/go/Crab-eatingMacaque_GeneOntology_Homolog.gz"
         }

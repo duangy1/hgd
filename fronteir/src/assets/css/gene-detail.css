@@ -259,3 +259,6 @@ margin-left: 1%;
 .filterBox{
     /* width: 99%; */
 }
+.draw-card{
+    overflow-x: scroll;
+}

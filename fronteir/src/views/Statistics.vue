@@ -26,7 +26,7 @@
               :data="statisticData.tableData"
               stripe
               border
-              style="width: 90%;margin: auto;"
+              style="width: 90%;margin: auto;font-size: 16px;"
               :header-row-style="{background:'dark-gray'}">
               <el-table-column
                 prop="dataclass"
@@ -47,7 +47,7 @@
               :data="statisticData.tableDataAnnotat"
               stripe
               border
-              style="width: 90%;margin: auto;">
+              style="width: 90%;margin: auto;font-size: 16px;">
               <el-table-column
                 prop="dataclass"
                 label="Data Item"
@@ -72,17 +72,17 @@
           <div>
             <h2 class="trait-title title-species font-title" >Traits Statistics</h2>
           </div>
-          <div id="chart-trait2homolog-0" class="chartsLayout section-titile"></div>
+          <div id="chart-trait2homolog-0" class="chartsLayout section-titile1"></div>
 
-          <div id="chart-trait2homolog-1" class="chartsLayout section-titile"></div>
+          <div id="chart-trait2homolog-1" class="chartsLayout section-titile2"></div>
 
         </div>
         <div>
           <div>
             <h2 class="trait-title title-species font-title">Variant Statistics</h2>
           </div>
-          <div id="chart-trait2homolog-2" class="chartsLayout section-titile"></div>
-          <div id="chart-trait2homolog-3" class="chartsLayout section-titile"></div>
+          <div id="chart-trait2homolog-2" class="chartsLayout section-titile3"></div>
+          <div id="chart-trait2homolog-3" class="chartsLayout section-titile4"></div>
         </div>
         <div>
           <div>
@@ -255,12 +255,12 @@ export default {
      trait2speciesBar(domid,data,height1){
       var chartDom = document.getElementById(domid);
       var myChart = this.$echarts.init(chartDom);
+      
       var option;
-
+      
       option = {
          title: {
           text: data.title,
-          subtext: 'The number of homolog gene on each trait ontology term'
         },
         xAxis: {
           type: 'category',
@@ -286,6 +286,7 @@ export default {
             type: 'bar',
             top:'10%',
             left:'center',
+            color:data.color
           }
           
         ],

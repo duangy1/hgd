@@ -29,6 +29,7 @@
     <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
       and species_common_name = #{speciesName}
     </if>
+    and hdb_gene_id !="" and hdb_gene_id is not null
   </select>
 
   <select id="voInfoOfGene" resultMap="BaseResultMap">
