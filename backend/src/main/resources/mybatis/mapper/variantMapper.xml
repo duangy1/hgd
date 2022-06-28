@@ -25,7 +25,7 @@
   </sql>
 
   <select id="initPageVariant" resultMap="BaseResultMap">
-    select gene_id,hdb_gene_id,var_id,var_name,species_common_name,taxon_id,classification,snp_id,(select data_source from species where taxon_id=variation_all.taxon_id) as data_source from variation_all where classification=#{classification} and var_name=#{varname}
+    select gene_id,hdb_gene_id,var_id,var_name,species_common_name,a.taxon_id,classification,gwas_orgid,snp_id from variation_all inner join (select data_source,gwas_orgid,taxon_id from species) as a on variation_all.taxon_id=a.taxon_id where classification=#{classification} and var_name=#{varname}
     <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
       and species_common_name = #{speciesName}
     </if>

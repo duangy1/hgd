@@ -12,7 +12,7 @@ import Downloads from '../views/Downloads.vue'
 import Documentation from '../views/Documentation.vue'
 import Expression from '../views/Expression.vue'
 import Go from '../views/Go.vue'
-
+import Contact from '../views/Contact.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -75,6 +75,11 @@ const routes = [
     path: '/documentation',
     name: 'Documentation',
     component: Documentation
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
   },
   // {
   //   path: '/about',

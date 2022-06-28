@@ -11,7 +11,7 @@ public interface GeneGoMapper {
 
     List<GeneGo> goInfoOfGene(String hdbId);
 
-    Page<GeneGo> initPageGo(String topGoid,String classification, String taxonid);
+    Page<GeneGo> initPageGo(String topGoid,String classification,String hdbId, String taxonid);
 
     List<GoBasicTerm> getGoByHdbTaxon(String hdbid);
 }

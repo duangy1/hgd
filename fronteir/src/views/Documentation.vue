@@ -24,45 +24,49 @@
                             @select="selectMenu">
                         <el-menu-item index="1">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Introduction</span>
+                            <span slot="title">1.Introduction</span>
                         </el-menu-item>
                         <el-menu-item index="2">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Data</span>
+                            <span slot="title">2.Data Browse</span>
                         </el-menu-item>
                         <el-menu-item index="3">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Homolog Gene</span>
+                            <span slot="title">2.1 Homolog Gene</span>
                         </el-menu-item>
                         
                         
                         <el-menu-item index="4">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Trait</span>
+                            <span slot="title">2.2 Trait</span>
                         </el-menu-item>
                         <el-menu-item index="5">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Variant</span>
+                            <span slot="title">2.3 Variant</span>
                         </el-menu-item>
                         <el-menu-item index="6">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Expression</span>
+                            <span slot="title">2.4 Expression</span>
                         </el-menu-item>
                         <el-menu-item index="7">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Gene Ontology</span>
+                            <span slot="title">2.5 Gene Ontology</span>
                         </el-menu-item>
                         <el-menu-item index="8">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Gene Detail Information</span>
+                            <span slot="title">2.6 Gene Detail Information</span>
                         </el-menu-item>
-                        <el-menu-item index="9">
+                         <el-menu-item index="9">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Search</span>
+                            <span slot="title">2.7 Species</span>
                         </el-menu-item>
                         <el-menu-item index="10">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">Download</span>
+                            <span slot="title">3. Search</span>
+                        </el-menu-item>
+                        <el-menu-item index="11">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">4. Download</span>
                         </el-menu-item>
                     </el-menu>
                     </el-aside>
@@ -80,7 +84,11 @@
                                 2.Data Browse
                             </div>
                             <div class="section-info">
-                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HGD.
+                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HGD.<br/><br/>
+                                The flow chart of data processing is showing below.
+                            </div>
+                            <div class="section-img0">
+                                <img src="../assets/img/document-0.png" class="img"/>
                             </div>
                         </div>
                         <div class="section section-1" id="item-pos-3">
@@ -170,7 +178,6 @@
                                 The variants describe the variation annotated information for this gene by several colored squares under each VEP term (Sequence Ontology). The color is normalized by the VEP annotated variation number. When hover on the square, the annotated variation number will be shown. When click on, a table list including the variation information will be shown. When check on the Compared Ortholog Gene, the variation annotated information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
                                 The trait describes the trait information for this gene by several colored squares under each trait term. The color is normalized by the trait number. When hover on the square, the trait number will be shown. When click on, a table list including the trait information will be shown. When check on the Compared Ortholog Gene, the trait information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
                                 The expression describes the expression information for this gene by several colored squares under each expression term. The color is normalized by the bioproject number. When hover on the square, the bioproject number will be shown. When click on, a table list including the expression value information in tissue will be shown. When check on the Compared Ortholog Gene, the expression information of the ortholog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
-                                The Genome Browse visualize the gene information of each organism.
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-6.png" class="img"/>
@@ -181,30 +188,48 @@
                                 <div class="figure">Figure 6</div>
                             </div>
                         </div>
-                         <div class="section section-1">
+                        <div class="section section-1">
                             <div class="section-titile" id="item-pos-9">
-                                3.Search
+                                2.7 Species
                             </div>
                             <div class="section-info">
-                                User can search homolog gene by gene name, ensemble gene id, ensemble protein name, uniport protein name, Entrez id and so on (Figure7). A homolog gene list will be shown as below.
+                                HGD provides two kinds of information including species list and homolog protein statistics for species. HGD houses homolog data of 37 species (16 animals, 16 plants and 5 others). When click the pie chart, the species list will be changed at the same time. Users can see various data types for annotated homolog gene of each species. Click the link will jump to the according data module.<br/><br/>
+                                The homolog protein pairs between all 37 species are counted and shown as a heat map. When mouse hover on the heat map, the number of homolog protein pairs will be shown. When click the heat map, a homolog gene list of the two selected species will be shown in Homolog Gene. By default, HGD uses the species of x axis as query species.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-8.png" class="img"/>
+                                <img src="../assets/img/document-10.png" class="img"/>
+                                <!-- <div class="figure">Figure 6</div> -->
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-11.png" class="img"/>
                                 <div class="figure">Figure 7</div>
                             </div>
                         </div>
                          <div class="section section-1">
                             <div class="section-titile" id="item-pos-10">
+                                3.Search
+                            </div>
+                            <div class="section-info">
+                                User can search homolog gene by gene name, ensemble gene id, ensemble protein name, uniport protein name, Entrez id and so on (Figure 8). A homolog gene list will be shown as below.
+                            </div>
+                            <div class="section-img">
+                                <img src="../assets/img/document-8.png" class="img"/>
+                                <div class="figure">Figure 8</div>
+                            </div>
+                        </div>
+                        <div class="section section-1">
+                            <div class="section-titile" id="item-pos-11">
                                 4.Download
                             </div>
                             <div class="section-info">
-                                HGD provide the homolog protein, trait, variation, expression information for each organism to download (Figure 8).
+                                HGD provide the homolog protein, trait, variation, expression information for each organism to download (Figure 9).
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-9.png" class="img"/>
-                                <div class="figure">Figure 7</div>
+                                <div class="figure">Figure 9</div>
                             </div>
                         </div>
+                        
                     </el-main>
                 </el-container>
             

@@ -21,10 +21,10 @@ public class GoService {
     @Resource
     private GoBasicTermMapper goBasicTermMapper;
 
-    public Page<GeneGo> initPageGo(String topGoid,String classification, int pageNo, int pageSize, String taxonid) {
+    public Page<GeneGo> initPageGo(String topGoid,String classification,String hdbId, int pageNo, int pageSize, String taxonId) {
 
         PageHelper.startPage(pageNo, pageSize,true); //line 1
-        Page<GeneGo> resultList=geneGoMapper.initPageGo(topGoid,classification,taxonid);
+        Page<GeneGo> resultList=geneGoMapper.initPageGo(topGoid,classification,hdbId,taxonId);
         return resultList;
     }
 

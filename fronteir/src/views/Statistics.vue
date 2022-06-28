@@ -262,6 +262,18 @@ export default {
          title: {
           text: data.title,
         },
+        tooltip: {
+          trigger: 'axis'
+        },
+         toolbox: {
+          show: true,
+          feature: {
+            dataView: { show: true, readOnly: false },
+            magicType: { show: true, type: ['line', 'bar'] },
+            restore: { show: true },
+            saveAsImage: { show: true }
+          }
+        },
         xAxis: {
           type: 'category',
           data: data.xaxis,

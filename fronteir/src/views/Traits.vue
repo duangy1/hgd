@@ -118,7 +118,7 @@
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_animal_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
                 <template slot-scope="scope" >
@@ -161,17 +161,17 @@
                     <img :src="orthoIcon"
                       style="margin-right: 6px;min-width=70px;height=70px;"
                       class="iconImg" />
-                      <div class="note-info">This icon represents the gene has homolog gene informations here.</div>
+                      <div class="note-info">exists homolog gene</div>
           </div>
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has same trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
           </div>
           
           </div>
@@ -197,7 +197,7 @@
       <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider class="divider"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detail Information</h2>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
       <!-- <div id="wrapper"> -->
@@ -338,7 +338,7 @@
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_plant_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
             <!-- <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
@@ -380,21 +380,21 @@
           </el-table>
         <div style="position: absolute;float: left;margin-top: 0.7%;padding-bottom: 1%;">
         <div style="display: flex;">
-                  <img :src="orthoIcon"
-                    style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" />
-                    <div class="note-info">This icon represents the gene has homolog gene informations here.</div>
-        </div>
-        <div style="display: flex;">
+                    <img :src="orthoIcon"
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" />
+                      <div class="note-info">exists homolog gene</div>
+          </div>
+          <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
           </div>
-        <div style="display: flex;">
-                  <img :src="sameTraitIcon"   
-                    style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" /><div class="note-info">This icon represents the gene's homolog gene here has a same trait annotation.</div>  
-        </div>
+          <div style="display: flex;">
+                    <img :src="sameTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+          </div>
         </div>
         <el-pagination
           class="trait-pag"
@@ -410,7 +410,7 @@
         <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider style="padding-top:5px"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detail Information</h2>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
     <!-- 同源表格 -->
@@ -745,7 +745,7 @@ export default {
     let taxid1=rowValue.gwasOrgid;
     
     // 左侧基因请求接口
-    this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10")
+    this.$axios.get("http://192.168.164.93:9500/hdb/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10")
     .then(response=>{
       console.log("gwas response:",response);
       let datalist=response.data;
@@ -768,7 +768,7 @@ export default {
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
           let taxid2=res.data.gwasOrgid;
-          this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
+          this.$axios.get("http://192.168.164.93:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
             .then(response=>{
               console.log("gwas response22:",response);
               let datalist=response.data;
@@ -820,7 +820,7 @@ export default {
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
           let taxid2=res.data.gwasOrgid;
-          this.$axios.get("http://192.168.164.15:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
+          this.$axios.get("http://192.168.164.93:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
             .then(response=>{
               console.log("gwas response22:",response);
               let datalist=response.data;

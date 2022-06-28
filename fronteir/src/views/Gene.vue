@@ -164,7 +164,7 @@
                         
                         
                         </div>
-                         <div style="padding-bottom:5px;font-size:14px;padding-top:10px;"><el-tag type="warning" size="small" v-if="item.traitCount >0"  ><a href="#">Trait {{item.traitCount}}</a></el-tag><el-tag type="success" size="small" v-if="item.goCount >0"><a href="#">GO {{item.goCount}}</a></el-tag><el-tag type="primary" size="small" v-if="item.varCount >0"><a href="#">Varation {{item.varCount}}</a></el-tag><el-tag type="danger" size="small" v-if="item.expCount >0"><a href="#">Expression {{item.expCount}}</a></el-tag></div>
+                         <div style="padding-bottom:5px;font-size:14px;padding-top:10px;"><el-tag type="warning" size="small" v-if="item.traitCount >0"  ><a href="" @click="toTrait(item.hdbGeneId,item.taxonId)">Trait {{item.traitCount}}</a></el-tag><el-tag type="success" size="small" v-if="item.goCount >0"><a href="" @click="toGo(item.hdbGeneId,item.taxonId)">GO {{item.goCount}}</a></el-tag><el-tag type="primary" size="small" v-if="item.varCount >0"><a href="" @click="toVariant(item.hdbGeneId,item.taxonId)">Varation {{item.varCount}}</a></el-tag><el-tag type="danger" size="small" v-if="item.expCount >0"><a href="" @click="toExpression(item.hdbGeneId,item.taxonId)">Expression {{item.expCount}}</a></el-tag></div>
                     </div>
                     <el-divider></el-divider>
                 </div>
@@ -1013,6 +1013,30 @@ export default {
       toDetailPage(hdbId,taxonId){
         this.$router.push({
           path: '/gene-detail',
+          query:{hdbId,taxonId}
+        })
+      },
+      toTrait(hdbId,taxonId){
+        this.$router.push({
+          path: '/traits',
+          query:{hdbId,taxonId}
+        })
+      },
+      toGo(hdbId,taxonId){
+        this.$router.push({
+          path: '/go',
+          query:{hdbId,taxonId}
+        })
+      },
+      toVariant(hdbId,taxonId){
+        this.$router.push({
+          path: '/variants',
+          query:{hdbId,taxonId}
+        })
+      },
+      toExpression(hdbId,taxonId){
+        this.$router.push({
+          path: '/expression',
           query:{hdbId,taxonId}
         })
       }

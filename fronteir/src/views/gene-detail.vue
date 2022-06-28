@@ -66,9 +66,14 @@
                 </div>
                 <el-card class="card-border">
                     <el-descriptions :column="3" class="descriptions" :size="size"  v-if="JSON.stringify(geneBasicInfo) !=='{}'">
-                        <el-descriptions-item label="Ensembl Gene Id"><a target="_blank" :href="'https://ensemblgenomes.org/search/?query='+geneBasicInfo.ensemblGeneId">{{geneBasicInfo.ensemblGeneId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
-                        <el-descriptions-item label="Entrez Gene Id"><a target="_blank" :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
-                        <el-descriptions-item label="Refseq Id"><a target="_blank" :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a><img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"></el-descriptions-item>
+                        <el-descriptions-item label="Ensembl Gene Id"><a target="_blank" :href="'https://ensemblgenomes.org/search/?query='+geneBasicInfo.ensemblGeneId">{{geneBasicInfo.ensemblGeneId}}</a></el-descriptions-item>
+                        <el-descriptions-item label="Entrez Gene Id"><a target="_blank" :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a>
+                        <!-- <img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"> -->
+                        </el-descriptions-item>
+                        <el-descriptions-item label="Refseq Id">
+                            <a v-if="geneBasicInfo.refseqId!=='-'" target="_blank" :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a>
+                            <div v-else>{{geneBasicInfo.refseqId}}</div>
+                        </el-descriptions-item>
                         <el-descriptions-item label="Gene Synonym">{{geneBasicInfo.geneSynonym}}</el-descriptions-item>
                         <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
                         <el-descriptions-item label="Gene Symbol">{{geneBasicInfo.geneSymbol}}</el-descriptions-item>
@@ -109,7 +114,7 @@
                 v-loading="loading"
                 :max-height="tableHeight"
                 :border="false"
-                :default-sort = "{prop: 'commonName', order: 'descending'}"
+                :default-sort = "{prop: 'commonName', order: 'ascending'}"
                 >
                 <!-- <el-table-column> -->
                     <!-- <template slot-scope="scope"> -->
@@ -186,11 +191,11 @@
             max-height="500px"
             v-if="showGoTable"
             >
-            <el-table-column prop="goId" label="Go Id" align="center" width="130px"></el-table-column>
-            <el-table-column prop="goAnnotations" label="Go Name" align="center"></el-table-column>
-            <el-table-column prop="topClass" label="Go classification" align="center" width="150px"></el-table-column>
-            <el-table-column prop="goList" label="Sub Go Id" align="center" ></el-table-column>
-            <el-table-column prop="definition" label="Go Definition" align="center"></el-table-column>
+            <el-table-column prop="goId" label="GO Id" align="center" width="130px"></el-table-column>
+            <el-table-column prop="goAnnotations" label="GO Name" align="center"></el-table-column>
+            <el-table-column prop="topClass" label="GO classification" align="center" width="150px"></el-table-column>
+            <el-table-column prop="goList" label="Sub GO Id" align="center" ></el-table-column>
+            <el-table-column prop="definition" label="GO Definition" align="center"></el-table-column>
             
                 
         </el-table>
@@ -229,11 +234,13 @@
                 v-if="showVarInfoTable"
             >
                 <el-table-column
-                    prop="gene.genename"
+                    prop="geneName"
                     label="Gene Id"
                     align="center"
-                    width="150px">
+                    width="150px"
+                    >
                 </el-table-column>
+                
                 <el-table-column
                     prop="rsnpId"
                     label="Var Id"
@@ -828,11 +835,20 @@ export default {
                             let pos=item.chrom+":"+item.position;
                             let allele=item.refallele+"/"+item.allele;
                             let maf=item.maf+":"+item.maffreq.slice(0,7);
-                            let classsnp=item.snpClassId=="7"?"SNP":"-"
+                            let classsnp="SNP";
                             item.position=pos;
                             item.allele=allele;
                             item.maf=maf;
                             item.snpClassId=classsnp;
+                            if(Array.isArray(item.gene)){
+                                let geneName=[]
+                                for(let geneitem of item.gene){
+                                    geneName.push(geneitem.genename)
+                                }
+                                item.geneName=geneName.join(",");
+                            }else{
+                                item.geneName=item.gene.genename
+                            }
                         }
                         this.varLoading=false;
                     })
@@ -904,18 +920,18 @@ export default {
     },
   },
   mounted:function () {
-    if(window.matchMedia("(max-width: 767px)").matches){
-        this.windowSize=1;
-       console.log("这是一个移动设备。");
+    // if(window.matchMedia("(max-width: 767px)").matches){
+    //     this.windowSize=1;
+    //    console.log("这是一个移动设备。");
 
-    }else if(window.matchMedia("(max-width: 992px)").matches){
-        this.windowSize=2;
-        console.log("这是平板电脑或台式电脑。");
+    // }else if(window.matchMedia("(max-width: 992px)").matches){
+    //     this.windowSize=2;
+    //     console.log("这是平板电脑或台式电脑。");
 
-    }else{
-        this.windowSize=3;
-        console.log("大屏");
-    }
+    // }else{
+    //     this.windowSize=3;
+    //     console.log("大屏");
+    // }
 
     // let loadingService = Loading.service({
     //     lock: true,
@@ -928,11 +944,6 @@ export default {
     // 查询go，var，trait需要ensembl gene id
     let taxonId=this.$route.query.taxonId;
     let ensemblGeneId;
-    // let geneSymbol;
-    //   跳转链接
-    //   http://www.treefam.org/family/TF328386
-
-    // let geneName="770642"
     this.$axios
     // 获取gene basic info的接口，目前是查询entrez id
     // 返回两个list数据，0是gbiinfo，1是ortholist

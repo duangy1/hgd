@@ -201,7 +201,7 @@
     
     </div> -->
      <div class="section-title">
-        <a href="http://192.168.164.93:9405/species" style="text-decoration:none"><h5 class="full-list">...More</h5></a>
+        <a href="http://192.168.164.93:9405/species" style="text-decoration:none"><h5 class="full-list">More...</h5></a>
     </div>
     </div>
   
@@ -299,21 +299,21 @@
 								<div class="service">
 									<i class="fa fa-clipboard"></i>
 									<h2>Multiple Resources</h2>
-									<p>Curated datas from inparanoid,hieranoid,OMA,eggNog,Treefam,Panther database.</p>
+									<p>Curated data from Inparanoid,Hieranoid,EggNog,Treefam and Panther database</p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="service">
 									<i class="fa fa-archive"></i>
 									<h2>Various Annotations</h2>
-									<p>Integrated NGDC multiple gene annotation data.</p>
+									<p>Integrate traits,variants,expression and gene ontology data</p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="service">
 									<i class="fa fa-users"></i>
 									<h2>User-Friendly</h2>
-									<p>Multiple GUI surface to facilitate your use.</p>
+									<p>Browse,search and download without limitation</p>
 								</div>
 							</div>
 						</div>
@@ -353,12 +353,12 @@
                                   class="sppb-meta-category">Species</span>
                               </div>
                               </a>
-                              <h3><a href="/species"
-                                  itemprop="url">Homolog Pairs Heatmap</a></h3>
+                              <!-- <h3><a href="/species"
+                                  itemprop="url">Homolog Pairs</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
                                 <div class="wraper-num">
-                                  <div id="num" class="speciesNum">{{speciesNum}}</div><div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> Species</div> 
+                                  <div id="num" ><a href="/species" class="speciesNum"> {{speciesNum}}</a></div><div class="speciesNum1">Species</div> 
                                 </div>
                                 <!-- <div class="wraper-num">
                                 <div id="num" class="speciesNum">{{speciesNum}}</div> <div class="speciesNum1">Plants  </div>
@@ -396,13 +396,13 @@
                                   class="sppb-meta-category">Gene</span>
                               </div>
                               </a>
-                              <h3><a href="/gene"
-                                  itemprop="url">Homolog Gene Browse</a></h3>
+                              <!-- <h3><a href="/gene"
+                                  itemprop="url">Homolog Gene</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
 								<!-- <p>37 species</p> -->
                             <div class="wraper-num">
-                              <div id="num" class="speciesNum">{{ProteinNum}}</div><div class="speciesNum1"> <i class="fa fa-clipboard numIcon"></i>  Homolog Protein Pairs</div> 
+                              <div id="num"><a href="/gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog Protein Pairs</div> 
                             </div>
                                 <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
@@ -435,16 +435,16 @@
                                   class="sppb-meta-category">Traits</span>
                               </div>
                               </a>
-                              <h3><a href="/traits"
+                              <!-- <h3><a href="/traits"
                                   itemprop="url">
-                                  Traits Associated with Homolog Gene</a></h3>
+                                  Homolog Genes with specific trait</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
 								<!-- <p>15 trait ontology term</p>
 								<p>13,209 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num" class="speciesNum">{{traitNum}}</div>
-                                  <div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                  <div id="num"><a href="/traits" class="speciesNum">{{traitNum}}</a></div>
+                                  <div class="speciesNum1"> Homolog Genes with specific trait</div> 
                                   <!-- <div id="num" class="speciesNum">{{traitGeneNum}}</div>
                                   <div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> homolog gene</div>  -->
 
@@ -479,15 +479,15 @@
                                   class="sppb-meta-category">Variation</span>
                               </div>
                               </a>
-                              <h3><a href="/variants"
-                                  itemprop="url">Variations Related with Homolog Gene</a></h3>
+                              <!-- <h3><a href="/variants"
+                                  itemprop="url">Number of homolog gene with variants</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
                                 <!-- <p>11 species</p> -->
 								<!-- <p>18 sequence ontology term</p>
 								<p>146,621 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num" class="speciesNum">{{varNum}}</div><div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                  <div id="num"><a href="/variants" class="speciesNum">{{varNum}}</a></div><div class="speciesNum1">Homolog genes with variants</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
@@ -520,15 +520,15 @@
                                
                               </div>
                                </a>
-                              <h3><a href="/expression"
-                                  itemprop="url">Expression Related with Homolog Gene</a></h3>
+                              <!-- <h3><a href="/expression"
+                                  itemprop="url">Expression Related with Homolog Gene</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
                                 <!-- <p>22 species</p>
 								<p>55 expression ontology term</p>
 								<p>403,655 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num" class="speciesNum">{{expNum}}</div><div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                  <div id="num"><a href="/expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> homolog genes with expression</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
@@ -557,15 +557,15 @@
                                   </span><span
                                   class="sppb-meta-category">Gene Ontology</span>
                               </div>
-                              <h3><a href="/go"
-                                  itemprop="url">Gene Ontology Related with Homolog Gene</a></h3>
+                              <!-- <h3><a href="/go"
+                                  itemprop="url">GO Related with Homolog Gene</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
                                <!-- <p>28 species</p>
 								<p>58 gene ontology term</p>
 								<p>384,684 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num" class="speciesNum">{{goNum}}</div><div class="speciesNum1"><i class="fa fa-clipboard numIcon" ></i> homolog gene</div> 
+                                  <div id="num"><a href="/species" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> homolog genes with gene ontology</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore finalread"
@@ -612,6 +612,33 @@
       </div>
     </el-backtop>
     </template>
+    <div class="link-wraper">
+      <!-- <el-divider></el-divider> -->
+      <div class="Main-section-titile">
+        <div style="margin-left:16%;line-height: 50px;vertical-align: middle;color:rgb(2, 73, 118);margin-top: 1.5%;"> Related Links<i class="fa fa-external-link-square" aria-hidden="true" style="font-size:20px;margin-left:10px"></i></div>
+        <div class="wraperbox">
+          <div class="section-titile">Gwas Atlas: <a class="link">https://ngdc.cncb.ac.cn/gwas/</a></div>
+          <div class="section-titile">Genome Variation Map: <a class="link">https://ngdc.cncb.ac.cn/gvm/</a></div>
+        </div>
+        <div class="wraperbox">
+          <div class="section-titile">Gene Expression Nebulas: <a class="link">https://ngdc.cncb.ac.cn/gen/</a></div>
+          <div class="section-titile">Ensembl: <a class="link">https://asia.ensembl.org/index.html</a></div>
+        </div>
+        <div class="wraperbox">
+          <div class="section-titile">Uniprot: <a class="link">https://www.uniprot.org/</a></div>
+          <div class="section-titile">Inparanoid: <a class="link">https://inparanoid.sbc.su.se/</a></div>
+        </div>
+        <div class="wraperbox">
+          <div class="section-titile">Hieranoid: <a class="link">https://hieranoid.sbc.su.se/</a></div>
+          <div class="section-titile">Panther: <a class="link">http://www.pantherdb.org/</a></div>
+        </div>
+        <div class="wraperbox">
+          <div class="section-titile">Treefam: <a class="link">http://www.treefam.org/</a></div>
+          <div class="section-titile final">EggNog: <a class="link">http://eggnog5.embl.de/</a></div>
+        </div>
+      
+      </div>
+    </div>
     <FooterBar />
   
   </div>
@@ -687,11 +714,17 @@ export default {
   mounted(){
     var yuanshu = 37//数据变化前的初始数值
     let homoProteinNum=23399653
+    let strhomoProteinNum="233,996,53"
     let traitGeneNum0=13209;
+    let strtraitGeneNum0="13,209"
     let traitNum0=13209;
+    let strtraitNum="13,209";
     let varNum0=146621;
+    let strvarNum0='146,621'
     let expNum0=403655;
+    let strexpNum0='403,655'
     let goNum0=384684;
+    let strgoNum0='384,684'
     // const re = 50 //获取到的数据
     // let otherNum=5
     setInterval(()=>{
@@ -704,32 +737,32 @@ export default {
       if(this.ProteinNum<homoProteinNum){
         this.ProteinNum+=430006
       }else{
-        this.ProteinNum=homoProteinNum
+        this.ProteinNum=strhomoProteinNum
       }
       if(this.traitNum<traitNum0){
         this.traitNum+=303
       }else{
-        this.traitNum=traitNum0
+        this.traitNum=strtraitNum
       }
       if(this.traitGeneNum<traitGeneNum0){
         this.traitGeneNum+=10003
       }else{
-        this.traitGeneNum=traitGeneNum0
+        this.traitGeneNum=strtraitGeneNum0
       }
       if(this.varNum<varNum0){
         this.varNum+=10003
       }else{
-        this.varNum=varNum0
+        this.varNum=strvarNum0
       }
       if(this.expNum<expNum0){
         this.expNum+=10003
       }else{
-        this.expNum=expNum0
+        this.expNum=strexpNum0
       }
       if(this.goNum<goNum0){
         this.goNum+=10003
       }else{
-        this.goNum=goNum0
+        this.goNum=strgoNum0
       }
     },30)
     

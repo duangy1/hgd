@@ -58,15 +58,11 @@
                 },{
                     "label":"Urinary system disease"
         }]
-        },{
-        "label": "Baseline",
-        "children": [{
-            "label":"Yes"
-        },{
-            "label":"No"
-            }]
         },
         {
+            "label": "Biological context",
+            "disabled":true,
+            "children": [{
         "label": "Baseline",
         "children": [{
                     "label":"Yes"
@@ -149,6 +145,6 @@
             },{
                 "label":"Time series"
             }]
-        }
+        }]}
     ]}
     

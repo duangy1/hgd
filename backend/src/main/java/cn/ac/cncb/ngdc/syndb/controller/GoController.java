@@ -21,7 +21,7 @@ public class GoController {
     GoService goService;
     @RequestMapping(value = "/api/godata", method = RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo initPageGo(String topGoid, String classification,String taxonid,
+    public DataTableResultInfo initPageGo(String topGoid, String classification,String taxonId,String hdbId,
                                                @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
                                                @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                                @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
@@ -29,8 +29,8 @@ public class GoController {
 //        if(pageNo == 1){
 //            pageNo = start/length+1;
 //        }
-        System.out.print("params:"+topGoid+","+classification+","+taxonid);
-        Page<GeneGo> pageInfo= goService.initPageGo(topGoid,classification,pageNo,length,taxonid);
+        System.out.print("params:"+hdbId+","+classification+","+taxonId);
+        Page<GeneGo> pageInfo= goService.initPageGo(topGoid,classification,hdbId,pageNo,length,taxonId);
         for(GeneGo godata : pageInfo){
             int taxon = godata.getTaxonId();
             String hdbid=godata.getHdbId();

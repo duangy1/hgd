@@ -103,7 +103,7 @@
             :header-cell-style="hiligtDbCols"
             v-loading="loading_animal"
           >
-            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression System" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
               <template slot-scope="scope">
                 <a :href="'/gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
@@ -113,7 +113,7 @@
             </el-table-column>
             <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_animal_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
                 <template slot-scope="scope" >
@@ -156,17 +156,17 @@
                     <img :src="orthoIcon"
                       style="margin-right: 6px;min-width=70px;height=70px;"
                       class="iconImg" />
-                      <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
+                      <div class="note-info">exists homolog gene</div>
           </div>
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has same trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
           </div>
           
           </div>
@@ -192,7 +192,7 @@
       <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider class="divider"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detai Information</h2>
+            <h2 class="trait-sub-title">Homolog Gene Detai Information</h2>
           </div>
       </div>
       <!-- <div id="wrapper"> -->
@@ -331,7 +331,7 @@
             </el-table-column>
             <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_plant_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
             <!-- <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
@@ -371,22 +371,22 @@
             </el-table-column>
           </el-table>
         <div style="position: absolute;float: left;padding-top: 0.7%;">
-        <div style="display: flex;">
-                  <img :src="orthoIcon"
-                    style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" />
-                    <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
-        </div>
-         <div style="display: flex;">
+       <div style="display: flex;">
+                    <img :src="orthoIcon"
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" />
+                      <div class="note-info">exists homolog gene</div>
+          </div>
+          <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
           </div>
-        <div style="display: flex;">
-                  <img :src="sameTraitIcon"   
-                    style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
-        </div>
+          <div style="display: flex;">
+                    <img :src="sameTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+          </div>
         </div>
         <el-pagination
           class="trait-pag"
@@ -402,7 +402,7 @@
         <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider style="padding-top:5px"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detai Information</h2>
+            <h2 class="trait-sub-title">Homolog Gene Detai Information</h2>
           </div>
       </div>
     <!-- 同源表格 -->

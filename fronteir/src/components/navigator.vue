@@ -34,10 +34,10 @@
         <i class="el-icon-setting"></i>
         <span slot="title">Statistics</span>
       </el-menu-item>
-      <!-- <el-menu-item index="6">
+      <el-menu-item index="contact">
         <i class="el-icon-document"></i>
         <span slot="title">Contact</span>
-      </el-menu-item> -->
+      </el-menu-item>
       </el-menu>
   </div>
 </template>

@@ -45,10 +45,30 @@
 			</el-table-column>
             <el-table-column prop="commonName" label="Common Name"></el-table-column>
             <el-table-column prop="taxonId" label="Ncbi Taxon Id"></el-table-column>
-            <el-table-column prop="traitGeneNum" label="#Trait"></el-table-column>
-            <el-table-column prop="varGeneNum" label="#Variant"></el-table-column>
-            <el-table-column prop="expGeneNum" label="#Expression"></el-table-column>
-            <el-table-column prop="goGeneNum" label="#GO"></el-table-column>
+            <el-table-column prop="traitGeneNum" label="#Trait">
+              <template slot-scope="scope" >
+                <div v-if="scope.row.traitGeneNum==0">-</div>
+                <div v-else>{{scope.row.traitGeneNum}}</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="varGeneNum" label="#Variant">
+              <template slot-scope="scope" >
+                <div v-if="scope.row.varGeneNum==0">-</div>
+                 <div v-else>{{scope.row.varGeneNum}}</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="expGeneNum" label="#Expression">
+              <template slot-scope="scope" >
+                <div v-if="scope.row.expGeneNum==0">-</div>
+                 <div v-else>{{scope.row.expGeneNum}}</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="goGeneNum" label="#GO">
+              <template slot-scope="scope" >
+                <div v-if="scope.row.goGeneNum==0">-</div>
+                <div v-else>{{scope.row.goGeneNum}}</div>
+              </template>
+            </el-table-column>
             </el-table>
 			<div style="text-align:left;padding-top:10px;font-size:14px;">Note: # represents the number of homolog gene</div>
         </el-card>
@@ -164,9 +184,9 @@ export default {
         currentPage:1,
         totalSize:0,
         pageSize:10,
-        speciesCount:[{ value: 16, name: 'Animals' },
+        speciesCount:[{ value: 19, name: 'Animals' },
         { value: 16, name: 'Plants' },
-        { value: 5, name: 'Others' }],
+        { value: 2, name: 'Others' }],
         speciesLoading:true
       }
      
@@ -264,7 +284,6 @@ export default {
       option = {
         title: {
           text: "Species Statistic",
-          subtext: 'The number of homolog gene on each trait ontology term'
         },
         tooltip: {
           trigger: 'item'

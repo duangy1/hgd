@@ -26,9 +26,15 @@
   </select>
 
   <select id="initPageGo" resultMap="BaseResultMap">
-    select * from gene_go_all where top_go_id=#{topGoid} and classification=#{classification}
+    select * from gene_go_all where top_go_id=#{topGoid}
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
       and taxon_id = #{taxonid}
+    </if>
+    <if test='classification != null and classification!="" and classification!="null"'>
+      and classification=#{classification}
+    </if>
+    <if test='hdb_gene_id != null and hdb_gene_id!="" and hdb_gene_id!="null"'>
+      and hdb_gene_id=#{hdbId}
     </if>
     and hdb_gene_id !="" and hdb_gene_id is not null
   </select>

@@ -113,7 +113,7 @@
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_animal_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
                 <template slot-scope="scope" >
@@ -157,17 +157,17 @@
                     <img :src="orthoIcon"
                       style="margin-right: 6px;min-width=70px;height=70px;"
                       class="iconImg" />
-                      <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
+                      <div class="note-info">exists homolog gene</div>
           </div>
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has same trait annotation.</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
           </div>
           
           </div>
@@ -193,7 +193,7 @@
       <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider class="divider"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detail Information</h2>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
       <!-- <div id="wrapper"> -->
@@ -258,24 +258,30 @@
                 :data="gwasInfoData"
                 id="subTable"
                 :row-style="{height: '0'}"
-                max-height="400"
+                max-height="500"
                 v-loading="gwasLoading"
               >
               <el-table-column
                     prop="gene.genename"
                     label="Gene Id"
                     align="center">
-                </el-table-column>
-                <el-table-column
-                    prop="rsnpId"
-                    label="Var Id"
-                    align="center">
-                    <template slot-scope="scope">
-                    <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.rsnpId+'&chrom='+scope.row.chrom+'&position='+scope.row.snpStart+'&orgId='+scope.row.gwasOrgId" target='_blank'>
-                      {{ scope.row.snpId }}
+                  <!-- <template slot-scope="scope">
+                    <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getGeneDetail?param1='+scope.row.genename+'&orgId'+scope.row.orgId" target='_blank'>
+                      {{ scope.row.genename }}
                     </a>
-                  </template>
-                </el-table-column>
+                  </template> -->
+
+              </el-table-column>
+              <el-table-column
+                  prop="rsnpId"
+                  label="Var Id"
+                  align="center">
+                  <!-- <template slot-scope="scope">
+                  <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.rsnpId+'&chrom='+scope.row.chrom+'&position='+scope.row.snpStart+'&orgId='+scope.row.gwasOrgId" target='_blank'>
+                    {{ scope.row.snpId }}
+                  </a>
+                </template> -->
+              </el-table-column>
                 <el-table-column
                     prop="position"
                     label="Position"
@@ -374,7 +380,7 @@
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Ortholog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_plant_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
             <!-- <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
@@ -415,16 +421,21 @@
           </el-table>
         <div style="position: absolute;float: left;padding-top: 0.7%;">
         <div style="display: flex;">
-                  <img :src="orthoIcon"
-                    style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" />
-                    <div class="note-info">This icon represent the gene has homolog gene informations here.</div>
-        </div>
-        <div style="display: flex;">
-                  <img :src="sameTraitIcon"   
-                    style="margin-right: 6px;min-width=70px;height=70px;"
-                    class="iconImg" /><div class="note-info">This icon represent the gene's homolog gene here has a same trait annotation.</div>  
-        </div>
+                    <img :src="orthoIcon"
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" />
+                      <div class="note-info">exists homolog gene</div>
+          </div>
+          <div style="display: flex;">
+                    <img :src="singleTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
+          </div>
+          <div style="display: flex;">
+                    <img :src="sameTraitIcon"   
+                      style="margin-right: 6px;min-width=70px;height=70px;"
+                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+          </div>
         </div>
         <el-pagination
           class="trait-pag"
@@ -440,7 +451,7 @@
         <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider style="padding-top:5px"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Ortholog Gene Detail Information</h2>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
     <!-- 同源表格 -->
@@ -778,7 +789,7 @@ export default {
         }).finally(
           ()=>{
             console.log("PATH:",PATH);
-              this.getVarData(PATH,gwasOrgId)
+            this.getVarData(PATH,gwasOrgId)
           }
         )
     }
@@ -788,6 +799,7 @@ export default {
     
    },
    getVarData(PATH,gwasOrgId){
+    console.log("gwasOrgIdaaaa:",gwasOrgId);
     this.$axios.get(PATH).then(response=>{
       this.gwasLoading=false;
       console.log("getvardata res:",response);
@@ -799,6 +811,9 @@ export default {
         // 返回是对象
         console.log("datas:",datas,gwasOrgId);
         // foe(let item of datas){item.orgId=orgId}
+        for(let item of datas){
+           item.orgId=gwasOrgId
+        }
         console.log("(response.data.snp.length111:",response.data.snp.length);
         this.gwasInfoData=this.gwasInfoData.concat(datas);
       }else{
@@ -814,7 +829,7 @@ export default {
           let pos=item.chrom+":"+item.position;
           let allele=item.refallele+"/"+item.allele;
           let maf=item.maf+":"+item.maffreq.slice(0,7);
-          let classsnp=item.snpClassId=="7"?"SNP":"-"
+          let classsnp="SNP";
           item.position=pos;
           item.allele=allele;
           item.maf=maf;
