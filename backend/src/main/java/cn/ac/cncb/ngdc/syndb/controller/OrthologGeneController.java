@@ -151,9 +151,9 @@ public class OrthologGeneController {
                 }
             }
             else{
-                System.out.println("orthtaxids --------"+orthtaxids);
                 orthtaxonlist.add(orthtaxids);
             }
+            System.out.println("orthtaxids --------"+orthtaxids);
         }
 
 
@@ -187,7 +187,13 @@ public class OrthologGeneController {
                 if(keyword != null && keyword.length() >0 ) {
                     param.put("symbol", keyword);
                 }
-            }else if(type==3){
+            }else if(type==9){//gene symbol
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("commonname", keyword);
+                }
+            }
+
+            else if(type==3){
                 if(keyword != null && keyword.length() >0 ) {
                     param.put("ensgene", keyword);
                 }
@@ -216,8 +222,9 @@ public class OrthologGeneController {
 
         }
 
-
-
+        if(orthtaxonlist!= null && orthtaxonlist.size() >0 ){
+            param.put("orthtaxonlist",orthtaxonlist);
+        }
 
         Page<GeneBasicInfo> pageInfo = orthologGeneService.filterHomologGene(pageNo,length,param);
         if(pageInfo != null && pageInfo.size()>0){

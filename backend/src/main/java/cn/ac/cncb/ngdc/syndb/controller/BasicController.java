@@ -243,7 +243,7 @@ public class BasicController {
              treeSelectBean = new TreeSelectBean();
              treeSelectBean.setId("modifier");
              treeSelectBean.setLabel("Modifier");
-             treeSelectBean.setChildren(treeSelectLow);
+             treeSelectBean.setChildren(treeSelectModifier);
              treeSelectBeans.add(treeSelectBean);
 
          }

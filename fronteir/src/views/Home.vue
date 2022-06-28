@@ -38,14 +38,14 @@
           <div class="egs">
             <a href="#" class="example-txt">e.g.&nbsp;</a>
             
-            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Gallus">Gallus;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Pig">Pig;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=2&keyword=GRK3">GRK3;</el-link>     
-            <el-link type="info" class="eg-ele" href="/gene?type=3&keyword=ENSGALG00000000011">ENSGALG00000000011;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=4&keyword=ENSGALP00000000096">ENSGALP00000000096;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=5&keyword=101750305">101750305;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=6&keyword=101750305">F1NMX3;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=7&keyword=101750305">protein_coding;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Bos">Bos;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=9&keyword=Pig">Pig;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=2&keyword=GCC1">GCC1;</el-link>  
+            <el-link type="info" class="eg-ele" href="/gene?type=3&keyword=ENSBTAG00000003102">ENSBTAG00000003102;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=4&keyword=ENSBTAP00000004036">ENSBTAP00000004036;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=5&keyword=539985">539985;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=6&keyword=E1BJZ4">E1BJZ4;</el-link>
+            <el-link type="info" class="eg-ele" href="/gene?type=7&keyword=protein_coding">protein_coding;</el-link>
           </div>
         </div>
       </div>
