@@ -26,47 +26,51 @@
                             <i class="el-icon-chat-line-square"></i>
                             <span slot="title">1.Introduction</span>
                         </el-menu-item>
-                        <el-menu-item index="2">
+                        <el-menu-item index="0">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.Data Browse</span>
+                            <span slot="title">2.Data Processing</span>
+                        </el-menu-item>
+                         <el-menu-item index="2">
+                            <i class="el-icon-chat-line-square"></i>
+                            <span slot="title">3.Data Browse</span>
                         </el-menu-item>
                         <el-menu-item index="3">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.1 Homolog Gene</span>
+                            <span slot="title">3.1 Homolog Gene</span>
                         </el-menu-item>
                         
                         
                         <el-menu-item index="4">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.2 Trait</span>
+                            <span slot="title">3.2 Trait</span>
                         </el-menu-item>
                         <el-menu-item index="5">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.3 Variant</span>
+                            <span slot="title">3.3 Variant</span>
                         </el-menu-item>
                         <el-menu-item index="6">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.4 Expression</span>
+                            <span slot="title">3.4 Expression</span>
                         </el-menu-item>
                         <el-menu-item index="7">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.5 Gene Ontology</span>
+                            <span slot="title">3.5 Gene Ontology</span>
                         </el-menu-item>
                         <el-menu-item index="8">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.6 Gene Detail Information</span>
+                            <span slot="title">3.6 Gene Detail Information</span>
                         </el-menu-item>
                          <el-menu-item index="9">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.7 Species</span>
+                            <span slot="title">3.7 Species</span>
                         </el-menu-item>
                         <el-menu-item index="10">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">3. Search</span>
+                            <span slot="title">4. Search</span>
                         </el-menu-item>
                         <el-menu-item index="11">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">4. Download</span>
+                            <span slot="title">5. Download</span>
                         </el-menu-item>
                     </el-menu>
                     </el-aside>
@@ -79,27 +83,34 @@
                                 Homolog Gene Database (HGD) is an integrated homolog gene database from public homolog database for domestic animals, plants and model organisms. Currently, there are 16 domestic animals ,16 domestic plants and 5 model organisms, which housed 23,399,653 homolog protein pairs in all. The homolog gene information from 5 public data sources are housed including EggNog,Panther,Treefam,Hieranoid,Inparanoid. At the same time, gene annotated information are widely collected and integrated from NDGC databases including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HGD.
                             </div>
                         </div>
-                        <div class="section section-2" id="item-pos-2">
+                        <div class="section section-2" id="item-pos-0">
                             <div class="section-titile">
-                                2.Data Browse
+                                2.Data Processing
                             </div>
                             <div class="section-info">
-                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HGD.<br/><br/>
                                 The flow chart of data processing is showing below.
                             </div>
                             <div class="section-img0">
                                 <img src="../assets/img/document-0.png" class="img"/>
                             </div>
                         </div>
+                        <div class="section section-2" id="item-pos-2">
+                            <div class="section-titile">
+                                2.Data Browse
+                            </div>
+                            <div class="section-info">
+                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HGD.<br/><br/>
+                            </div>
+                        </div>
                         <div class="section section-1" id="item-pos-3">
                             
                             <div class="section-titile">
-                                2.1 Homolog Gene Browse
+                                3.1 Homolog Gene Browse
                             </div>
                             <div class="section-info">
                                 Users can browse the whole homolog gene list in the homolog gene page (Figure 1). The basic information of homolog gene including gene name, organism, gene description, gene symbol, gene synonym, biotype and the ortholog gene list for other organisms of this gene. The statistics number of annotated information including trait, go are provided as well.<br/><br/>
                                 Users can filter the homolog gene list by species, trait and so on. Users can download the homolog gene by several formats including txt, csv.<br/><br/>
-                                Click the gene name will open a detail information which described in section 2.6.<br/><br/>
+                                Click the gene name will open a detail information which described in section 3.6.<br/><br/>
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-1.png" class="img"/>
@@ -108,7 +119,7 @@
                         </div>
                         <div class="section section-1" id="item-pos-4">
                             <div class="section-titile">
-                                2.2 Trait Browse
+                                3.2 Trait Browse
                             </div>
                             <div class="section-info">
                                 The trait information from GWAS database in NGDC are integrated. HGD collects 26,023 trait ontology with gene annotation of 6 animals and 5 plants from GWAS. After mapped to the homolog gene in HGD, user can browse the trait information for multiple organisms at the same time. <br /><br />
@@ -123,7 +134,7 @@
                         </div>
                         <div class="section section-1" id="item-pos-5">
                             <div class="section-titile">
-                                2.3 Variation Browse
+                                3.3 Variation Browse
                             </div>
                             <div class="section-info">
                                 The variation information from GVM database in NGDC are integrated. HGD collects 1,694,958 variations with ensembl VEP annotated information of 10 animals and 13 plants from GVM. After mapped to the homolog gene in HGD, user can browse the variation information with VEP annotated in gene for multiple organisms at the same time. <br/><br/>
@@ -132,13 +143,13 @@
                                 Users can filter the shown organism from the organism check list.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-3.png" class="img"/>
+                                <img src="../assets/img/document-5.png" class="img"/>
                                 <div class="figure">Figure 3</div>
                             </div>
                         </div>
                         <div class="section section-1" id="item-pos-6">
                             <div class="section-titile">
-                                2.4 Expression Browse
+                                3.4 Expression Browse
                             </div>
                             <div class="section-info">
                                 HGD integrates gene expression from GEN database in NGDC. HGD houses 8,541,271 gene with expression ontology of 25 organisms from GEN. After mapped to the homolog gene in HGD, user can browse the expression information for multiple organisms at the same time. <br/><br/>
@@ -153,7 +164,7 @@
                         </div>
                         <div class="section section-1">
                             <div class="section-titile" id="item-pos-7">
-                                2.5 Gene Ontology Browse
+                                3.5 Gene Ontology Browse
                             </div>
                             <div class="section-info">
                                 The gene ontology information from Ensembl are integrated. HGD collects 4,538,549 gene with gene ontology information for 37 organisms from Ensembl. After mapped to the homolog gene in HGD, user can browse the gene ontology information for multiple organisms at the same time. <br/><br/>
@@ -168,7 +179,7 @@
                         </div>
                         <div class="section section-1">
                             <div class="section-titile" id="item-pos-8">
-                                2.6 Gene Detail Information
+                                3.6 Gene Detail Information
                             </div>
                             <div class="section-info">
                                 The gene detail information contains 6 parts to describe a homolog gene including gene basic information, ortholog gene, GO annotation, Variants, Trait and Expression Informations(Figure 6).<br/><br/>
@@ -190,7 +201,7 @@
                         </div>
                         <div class="section section-1">
                             <div class="section-titile" id="item-pos-9">
-                                2.7 Species
+                                3.7 Species
                             </div>
                             <div class="section-info">
                                 HGD provides two kinds of information including species list and homolog protein statistics for species. HGD houses homolog data of 37 species (16 animals, 16 plants and 5 others). When click the pie chart, the species list will be changed at the same time. Users can see various data types for annotated homolog gene of each species. Click the link will jump to the according data module.<br/><br/>

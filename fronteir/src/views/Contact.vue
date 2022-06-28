@@ -11,14 +11,15 @@
           <div style="margin-left:5%"> 
           <div class="section-titile " style="margin-top:20px" >Contact Us</div>
           <div style="margin-top:1%">
-            <div style="text-align:left;" class="section-info">HGD is developed and maintained by The BIG Data Center at Beijing Institute of Genomics, Chinese Academy of Sciences.</div>
+            <div style="text-align:left;" class="section-info">HGD is developed and maintained by The National Genomics Data Center at China National Center for Bioinformation, Chinese Academy of Sciences.</div>
             <div class="section-1 wraper-info">
                 <div class="section-titile">
                     Postal Address
                 </div>
                 <div class="section-info">
                   Prof. WenMing Zhao<br />
-                  Beijing Institute of Genomics<br />
+                  National Genomics Data Center<br />
+                  China National Center for Bioinformation<br />
                   Chinese Academy of Sciences<br />
                   No.1 Beichen West Road<br />
                   Chaoyang District, Beijing 100101<br />
