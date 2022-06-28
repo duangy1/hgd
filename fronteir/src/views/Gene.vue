@@ -483,7 +483,7 @@ export default {
                 withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
               });
                 axiosInstance1
-                  .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                  .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                   .then(response => {
                       console.log(response)
                       this.tableData = response.data.data
@@ -570,7 +570,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -640,7 +640,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -724,7 +724,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -808,7 +808,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -909,7 +909,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword, 'length': val}})
+                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword, 'length': val}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -1015,7 +1015,7 @@ export default {
                                         withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                                       });
                                         axiosInstance1
-                                          .get('http://localhost:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword,  'pageNo': val}})
+                                          .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword,  'pageNo': val}})
                                           .then(response => {
                                               console.log(response)
                                               this.tableData = response.data.data
@@ -1145,7 +1145,7 @@ export default {
        })
        .finally(() => this.loading = false)
   axiosInstance
-                   .get('http://localhost:9401/gene/filterHomolog',{params: params})
+                   .get('http://192.168.164.93:9401/gene/filterHomolog',{params: params})
                    .then(response => {
                        console.log("this.tableData:",response)
                        this.tableData = response.data.data
@@ -1162,7 +1162,7 @@ export default {
                      })
 
   axiosInstance
-                   .get('http://localhost:9401/basic/getVoTerm')
+                   .get('http://192.168.164.93:9401/basic/getVoTerm')
                    .then(response => {
                        this.variantoptions= response.data
                      })
