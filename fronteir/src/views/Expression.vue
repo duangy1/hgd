@@ -161,12 +161,12 @@
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with expression annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same expression annotation</div>  
           </div>
           
           </div>
@@ -380,12 +380,12 @@
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with expression annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same expression annotation</div>  
           </div>
         </div>
         <el-pagination
@@ -654,7 +654,7 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -696,7 +696,7 @@ export default {
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
-      this.$axios.get("http://localhost:9401/api/expression-gene",{params:{'hdbId': hdbid}})
+      this.$axios.get("http://192.168.164.93:9401/api/expression-gene",{params:{'hdbId': hdbid}})
       .then(response=>{
         console.log("gwas response:",response);
         this.gwasInfoData=this.gwasInfoData.concat(response.data);
@@ -754,7 +754,7 @@ export default {
                   this.speciesList_plant_1.push(item.species);
                 }
                 varData.speciesListData.push(this.speciesList_plant.indexOf(speciesName));
-                if(item.annotation !== null){
+                if(item.annotation !== null & item.eoName!==null){
                   varData.traitListData2.push(this.speciesList_plant.indexOf(speciesName))
                   let varlist=item.eoName.split(',')
                   if(varlist.indexOf( varData.annotation)>-1){
@@ -805,7 +805,7 @@ export default {
     // 根据动植物分开获取
     async getTraitData(expName,classification,pagesize,pagenum,speciesName){
       console.log("params:",expName,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://localhost:9401/api/expression-data",{params:{'classification': classification,'expName':expName,'length':pagesize,'pageNo':pagenum,'taxonid':speciesName}})
+      this.$axios.get("http://192.168.164.93:9401/api/expression-data",{params:{'classification': classification,'expName':expName,'length':pagesize,'pageNo':pagenum,'taxonid':speciesName}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -823,7 +823,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(speciesType){
-      this.$axios.get('http://localhost:9401/api/species-exp',{params: {speciesType: speciesType}})
+      this.$axios.get('http://192.168.164.93:9401/api/species-exp',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType==2){

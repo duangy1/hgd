@@ -162,12 +162,12 @@
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with variant annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same variant annotation</div>  
           </div>
           
           </div>
@@ -377,6 +377,11 @@
           >
             <el-table-column align="center" class="titleCell" prop="varName" label="Consequence Type" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+               <template slot-scope="scope">
+                <a :href="'/gene-detail?hdbId='+scope.row.hdbid+'&taxonId='+scope.row.taxonId">
+                    {{ scope.row.geneId }}
+                </a>
+              </template>
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name" width="150px" fixed></el-table-column>
             <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
