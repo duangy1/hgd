@@ -113,11 +113,12 @@ public class OrthologGeneService {
         if(orthtaxonlist != null && orthtaxonlist.size() >0 ){
             other.put("taxonList",orthtaxonlist);
         }
-        TreeMap orthoMap = new TreeMap();
+        TreeMap<String,GeneBasicInfo> orthoMap = new TreeMap<String,GeneBasicInfo>();
+
         List<OrthologGeneInfo> orthologGeneInfoList = findOrthGeneByGivenGeneAndTaxonModify(other);
         if(orthologGeneInfoList != null && orthologGeneInfoList.size()>0 ){
             // System.out.println("----find ohtolog==="+ortho9031List.size());
-            orthoMap.put(showgene+"|"+taxonId,showgene+"|"+taxonId);
+            orthoMap.put(showgene+"|"+taxonId,new GeneBasicInfo());
             for(OrthologGeneInfo orthologGeneInfo: orthologGeneInfoList){
 
 
@@ -138,7 +139,7 @@ public class OrthologGeneService {
                     }else {
                         gene = geneBasicInfo.getHdbGeneId();
                     }
-                    if(gene .length() >0 && gene.equals(showgene) ==false){
+                    if(gene .length() >0 ){
                         String key = gene + "|" + orthologGeneInfo.getTaxId1();
                         orthoMap.put(key, geneBasicInfo);
                     }
@@ -165,7 +166,7 @@ public class OrthologGeneService {
                         gene = geneBasicInfo1.getHdbGeneId();
                     }
 
-                if(gene .length() >0 && gene.equals(showgene) ==false){
+                if(gene .length() >0 ){
                    String key = gene + "|" + orthologGeneInfo.getTaxId2();
                     orthoMap.put(key, geneBasicInfo1);
                 }
@@ -174,12 +175,17 @@ public class OrthologGeneService {
             orthoMap.remove(showgene+"|"+taxonId);
         }
 
+
+
         List orthoGeneBeanList = new ArrayList();
+        List<OrthoGeneBean> orthoGeneEmbedBeanList = new ArrayList<OrthoGeneBean>();
         if(orthoMap!=null && orthoMap.size()>0){
-            Set<Map.Entry> entries = orthoMap.entrySet();
-            List<OrthoGeneBean> orthoGeneEmbedBeanList = new ArrayList<OrthoGeneBean>();
+            Set<Map.Entry<String,GeneBasicInfo>> entries = orthoMap.entrySet();
+
             int i =0 ;
+            int index =0;
             for(Map.Entry entry: entries){
+                index ++;
                 String key = entry.getKey().toString();
                 //   System.out.println("key ==="+key);
                 GeneBasicInfo geneBasicInfo = (GeneBasicInfo) entry.getValue();
@@ -211,25 +217,45 @@ public class OrthologGeneService {
 
 
                         OrthoGeneBean orthoGeneBean = new OrthoGeneBean();
+                        orthoGeneBean.setOgId(index);
                         orthoGeneBean.setHdbGeneId(geneBasicInfo.getHdbGeneId());
                         orthoGeneBean.setGeneName(gene);
                         orthoGeneBean.setTaxonName(geneBasicInfo.getLatinName());
                         orthoGeneBean.setTaxonId(geneBasicInfo.getTaxonId());
 
                         orthoGeneEmbedBeanList.add(orthoGeneBean);
-                        int idex = i+1;
-                        if(idex >0 && idex %3 ==0 ){
-                            orthoGeneBeanList.add(orthoGeneEmbedBeanList);
-                            orthoGeneEmbedBeanList = new ArrayList<OrthoGeneBean>();
-                        }
-                        i++;
+
 
                     }
                 }
 
             }
-            if(orthoGeneEmbedBeanList.size()>0){
-                orthoGeneBeanList.add(orthoGeneEmbedBeanList);
+
+
+        }
+
+
+        Collections.sort(orthoGeneEmbedBeanList, new Comparator<OrthoGeneBean>() {
+            @Override
+            public int compare(OrthoGeneBean p1, OrthoGeneBean p2) {
+                return p2.getTaxonId() - p1.getTaxonId();
+            }
+        });
+
+        int idex = 1;
+        if(orthoGeneEmbedBeanList != null ){
+            List<OrthoGeneBean> orthE = new ArrayList<OrthoGeneBean>();
+            for(OrthoGeneBean  orthoGeneBean: orthoGeneEmbedBeanList){
+                orthE.add(orthoGeneBean);
+                if(idex >0 && idex %3 ==0 ){
+                    orthoGeneBeanList.add(orthE);
+                    orthE = new ArrayList<OrthoGeneBean>();
+                }
+                idex++;
+
+            }
+            if(orthE.size()>0){
+                orthoGeneBeanList.add(orthE);
             }
 
         }

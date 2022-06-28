@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class OrthoGeneBean {
+    private int ogId;
     private String geneName;
     private String taxonName;
     private String hdbGeneId;

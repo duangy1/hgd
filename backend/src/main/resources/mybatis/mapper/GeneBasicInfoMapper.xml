@@ -58,13 +58,16 @@
 
   <select id="filterHomologGene" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select a.gbi_id,a.uniprot_id,a.enspro_id,a.hdb_gene_id,a.ensembl_gene_id,a.entrez_gene_id,a.gene_synonym,a.gene_type,a.gene_symbol,a.taxon_id,
-    a.gene_description,a.gwas_gene_id,b.latin_name as taxon_name,b.species_type from gene_basic_info_1 a left join species b
-    on a.taxon_id=b.taxon_id where 1=1
+    a.gene_description,a.gwas_gene_id,a.taxon_name as taxon_name,a.species_type from gene_basic_info_1 a where 1=1
     <if test="species != null">
-      and ( (b.latin_name like concat('%',#{species},'%') ) or (b.common_name like concat('%',#{species},'%') )  )
+      and  a.taxon_name like concat('%',#{species},'%')
     </if>
+    <if test="commonname != null">
+      and a.species_common_name =#{commonname}
+    </if>
+
     <if test="symbol != null">
-      and ( (a.gene_symbol like concat('%',#{symbol},'%') ) or (a.gene_synonym like concat('%',#{symbol},'%') ) )
+      and ( (a.gene_symbol =#{symbol}) or (a.gene_synonym =#{symbol}) )
     </if>
     <if test="ensgene != null">
       and a.ensembl_gene_id like concat('%',#{ensgene},'%')
@@ -89,7 +92,7 @@
       or (a.enspro_id like concat('%',#{allfield},'%'))
       or (a.ensembl_gene_id like concat('%',#{allfield},'%'))
       or ((a.gene_symbol like concat('%',#{allfield},'%') ) or (a.gene_synonym like concat('%',#{allfield},'%') ) )
-      or ((b.latin_name like concat('%',#{allfield},'%') ) or (b.common_name like concat('%',#{allfield},'%') ) )
+      or ((a.taxon_name like concat('%',#{allfield},'%') ) or (a.species_common_name like concat('%',#{allfield},'%') ) )
       )
     </if>
 
@@ -106,7 +109,7 @@
       </foreach>
     </if>
     <if test="traitList != null ">
-      and a.hdb_gene_id in (select hdb_gene_id from trait_all_copy1 where trait_id in
+      and a.hdb_gene_id in (select hdb_gene_id from trait_all_1 where trait_id in
       <foreach item="trait" index="index" collection="traitList"  open="(" separator="," close=")">
         #{trait}
       </foreach>
@@ -134,6 +137,38 @@
         </foreach>
       )
     </if>
+
+    <!--<if test="orthtaxonlist != null ">
+         and a.hdb_gene_id in (
+            select hdb_gene_id from ortholog_all64_1 b where ((
+
+              b.tax_id1 in
+              <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+                #{taxon}
+              </foreach>
+              <if test="orthtaxonlist != null ">
+                and b.tax_id2 in
+                <foreach item="orthtaxon" index="index" collection="orthtaxonlist"  open="(" separator="," close=")">
+                  #{orthtaxon}
+                </foreach>
+              </if>
+              ) or (
+
+              b.tax_id2 in
+              <foreach item="taxon" index="index" collection="taxonList"  open="(" separator="," close=")">
+                #{taxon}
+              </foreach>
+              <if test="orthtaxonlist != null ">
+                and b.tax_id1 in
+                <foreach item="orthtaxon" index="index" collection="orthtaxonlist"  open="(" separator="," close=")">
+                  #{orthtaxon}
+                </foreach>
+
+              </if>
+              ))
+        )
+    </if>-->
+
     and a.is_homolog=1
   </select>
 

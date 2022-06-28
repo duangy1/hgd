@@ -141,7 +141,7 @@
 
 
                 <div style="clear:both;"></div>
-				<div style="text-align:left;padding-bottom:10px;"><el-tag v-for="tag in tags" :key="tag.name" closable :type="info" @close="closeTag(tag)"> {{tag.name}}</el-tag></div>
+				<div style="text-align:left;padding-bottom:10px;"><el-tag v-for="tag in tags" :key="tag.name" closable type="info" @close="closeTag(tag)"> {{tag.name}}</el-tag></div>
 				<div v-if="totalSize > 0">
                 <div align="left" style="padding-bottom:10px;"><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><b>Check All</b></el-checkbox></div> 
 				<el-checkbox-group  v-model="checkedHomolog" @change="handleCheckedHomologChange">
@@ -159,7 +159,7 @@
                         <div style="padding-bottom:5px;font-size:14px;">
                         
                                     <el-row :outer="20" v-for="orthgeneList in item.orthoGeneBeanList" :key="orthgeneList.index">
-                                        <el-col :span="8" style="font-size:14px;padding-left:10px;padding-top:5px;" v-for="orthgene in orthgeneList" :key="orthgene.hdbGeneId"><a href="" @click="toDetailPage(orthgene.hdbGeneId,orthgene.taxonId)">{{orthgene.geneName}}</a> (<i>{{orthgene.taxonName}}</i>)</el-col> 
+                                        <el-col :span="8" style="font-size:14px;padding-left:10px;padding-top:5px;" v-for="orthgene in orthgeneList" :key="orthgene.ogId"><a href="" @click="toDetailPage(orthgene.hdbGeneId,orthgene.taxonId)">{{orthgene.geneName}}</a> (<i>{{orthgene.taxonName}}</i>)</el-col> 
                                     </el-row>
                         
                         
@@ -208,7 +208,24 @@
 </template>
 <style src="../assets/css/gene-detail.css" scoped></style>
 <style scoped>
+
+.grid-content >>> a{
+    color: #037fec;
+    text-decoration: none;
+}
+
 .filterheader{
+    font-weight:bold;
+    padding:10px 10px;
+
+}
+
+.grid-content >>> .el-pagination__total{
+    font-weight: bold !important;
+    color: #985735 !important;
+}
+
+/*.filterheader{
     font-weight:bold;
     font-size: 14px;
     padding:10px 10px;
@@ -227,10 +244,7 @@
 }
 
 
-.grid-content >>> .el-pagination__total{
-    font-weight: bold !important;
-    color: #985735 !important;
-}
+
 .grid-content >>> span{
     font-size:14px !important;
 }
@@ -244,15 +258,15 @@
 .grid-content >>> .el-tag a{
     color: inherit;
 }
-
+*/
 
 /* .genefilter >>> .el-collapse-item__header.is-active{
 
 } */
->>> ul li span{
+/*>>> ul li span{
     font-size:14px !important;
-}
-.genefilter >>> span{
+}*/
+/*.genefilter >>> span{
     font-size:14px !important;
 }
 .genefilter >>> .el-collapse-item__header{
@@ -265,7 +279,7 @@
 .genefilter >>> label{
     font-size: 14px !important;
     font-weight: normal !important;
-}
+}*/
 </style>
 
 <script>
@@ -447,7 +461,7 @@ export default {
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
-                        var type= this.$route.query.taxid2;
+                        var type= this.$route.query.type;
 						if(type == null){
 							type=-1;
 						}
@@ -536,7 +550,7 @@ export default {
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
-						var type= this.$route.query.taxid2;
+						var type= this.$route.query.type;
 						if(type == null){
 							type=-1;
 						}
@@ -691,7 +705,7 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
                         
-						var type= this.$route.query.taxid2;
+						var type= this.$route.query.type;
 						if(type == null){
 							type=-1;
 						}
@@ -773,7 +787,7 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         }    
 
-						var type= this.$route.query.taxid2;
+						var type= this.$route.query.type;
 						if(type == null){
 							type=-1;
 						}
@@ -816,7 +830,10 @@ export default {
 			var orthtaxids="";
 			var taxonid2 = this.$route.query.taxid2;
 			if(taxonid2 != null && taxonid2.length >0 ){
-				orthtaxids=taxonid2;
+				orthtaxids=taxonid2;				
+				if(taxonid != null && taxonid.length >0 ){
+					orthtaxids += ","+taxonid;
+				}
 			}
 		
 		
@@ -873,7 +890,7 @@ export default {
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
                         }  
-						var type= this.$route.query.taxid2;
+						var type= this.$route.query.type;
 						if(type == null){
 							type=-1;
 						}
@@ -916,6 +933,9 @@ export default {
 			var taxonid2 = this.$route.query.taxid2;
 			if(taxonid2 != null && taxonid2.length >0 ){
 				orthtaxids=taxonid2;
+				if(taxonid != null && taxonid.length >0 ){
+					orthtaxids += ","+taxonid;
+				}
 			}
                                   
                                
@@ -975,7 +995,7 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         } 
               
-						var type= this.$route.query.taxid2;
+						var type= this.$route.query.type;
 						if(type == null){
 							type=-1;
 						}
@@ -1061,17 +1081,29 @@ export default {
 	if(taxonid != null && taxonid.length >0 ){
 		console.log(taxonid);
 		params['taxonids'] = taxonid;
-		this.tags.push({'name':taxonid});
+	}
+	
+	var name1=this.$route.query.name1;
+	if(name1 != null && name1.length >0 ){
+		this.tags.push({'name':name1});
 	}
 
 	var taxonid2 = this.$route.query.taxid2;
 	if(taxonid2 != null && taxonid2.length >0 ){
 		console.log(taxonid2);
-		params['orthtaxids'] = taxonid2;
-		this.tags.push({'name':taxonid2});
+		if(taxonid != null && taxonid.length >0 ){
+			params['orthtaxids'] = taxonid2+","+taxonid;		
+		}else{
+			params['orthtaxids'] = taxonid2;
+		}
+		
+	}
+	var name2=this.$route.query.name2;
+	if(name2 != null && name2.length >0 ){
+		this.tags.push({'name':name2});
 	}
 	
-	var type= this.$route.query.taxid2;
+	var type= this.$route.query.type;
 	if(type != null && type.length >0 ){
 		params['type'] = type;
 	}else{

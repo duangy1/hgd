@@ -351,14 +351,16 @@ export default {
 		
 		var index1 = paramclass.data[0];//x
 		var index2 = paramclass.data[1];//y
-		console.log(index1+","+index2);
+		
 	
 		console.log("paramclass:",paramclass);
 		var taxid1=this.heatmapData[1][index1].taxonId;
 		var taxid2=this.heatmapData[1][index2].taxonId;
+		var name1=this.heatmapData[1][index1].commonName;
+		var name2=this.heatmapData[1][index2].commonName;
 		this.$router.push({
           path: '/gene',
-          query:{taxid1,taxid2}
+          query:{taxid1,taxid2,name1,name2}
         })
     },
     handleCurrentChange(){
