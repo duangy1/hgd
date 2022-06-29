@@ -663,7 +663,7 @@ export default {
   return{
     showModule:false,
     dataClass:[
-		{value:'1',label:'Organism'},
+		{value:'10',label:'Organism'},
 		{value:'2',label:'Gene Symbol/Synonym'},
 		{value:'3',label:'Ensembl Gene'},
 		{value:'4',label:'Ensembl Protein'},

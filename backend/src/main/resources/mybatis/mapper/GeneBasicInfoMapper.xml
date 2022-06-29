@@ -62,7 +62,10 @@
     <if test="species != null">
       and  a.taxon_name like concat('%',#{species},'%')
     </if>
-    <if test="commonname != null">
+    <if test="commonandlatin != null">
+      and   ( a.taxon_name like concat('%',#{commonandlatin},'%') or (a.species_common_name like concat('%',#{commonandlatin},'%')))
+    </if>
+    <if test="commonname != null">commonandlatin
       and a.species_common_name =#{commonname}
     </if>
 
