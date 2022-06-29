@@ -283,19 +283,19 @@
                 </template> -->
               </el-table-column>
                 <el-table-column
-                    prop="position"
+                    prop="finalposition"
                     label="Position"
                     align="center">
                 </el-table-column>
                 <el-table-column
-                    prop="allele"
+                    prop="finalallele"
                     label="Allele"
                     align="center"
                 >
                 </el-table-column>
               
                 <el-table-column
-                    prop="maf"
+                    prop="finalmaf"
                     label="Maf"
                     align="center">
                 </el-table-column>
@@ -759,14 +759,18 @@ export default {
     // 左侧基因的接口数据
     let snpId1 = rowValue.snpId;
     let dataSource1=rowValue.dataSource
-    let BASEPATH;
+    let BASEPATH="";
     this.gwasInfoData=[];
-    if(dataSource1.length!==0){
+    if(dataSource1!= null && dataSource1.length!==0){
       if(dataSource1.indexOf("v2")>0){BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV2/v2/variants/getlist?dataSource="}
       else{BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV3/v2/variants/getlist?dataSource="}
       // let snpAll=i.snpList.join(',')
-      let PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
-      if(snpId1.length>0){
+      let PATH="";
+		if(BASEPATH.length>0)
+			PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
+		
+		console.log("PATH="+PATH);
+      if(snpId1.length>0 && PATH.length>0){
           this.getVarData(PATH)
       }
     }
@@ -778,23 +782,28 @@ export default {
     let hdbid=item.hdbId;
     let varName=item.varName;
     let gwasOrgId=item.gwasOrgId;
-    let PATH;
+    let PATH="";
     console.log("gwasOrgId:",gwasOrgId);
-    if(dataSource2.length>0){
+    if(dataSource2!= null && dataSource2.length>0){
       this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/var-snpid",{params:{'hdbId': hdbid,"varName":varName}}).then(res=>{
           console.log("res:",res);
-          if(res.data.length !==0){
-            let BASEPATH;
+          if(res !=null && res.data != null && res.data.length !==0){
+            let BASEPATH="";
             let snpId2=res.data;
             this.gwasLoading=true;
             if(dataSource2.indexOf("v2")>0){BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV2/v2/variants/getlist?dataSource="
             }else{BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV3/v2/variants/getlist?dataSource="}
+			if(BASEPATH.length>0)
             PATH=BASEPATH+dataSource2+"&snplist="+snpId2;
           }
         }).finally(
           ()=>{
             console.log("PATH:",PATH);
-            this.getVarData(PATH,gwasOrgId)
+			if(PATH.length>0){
+				
+				this.getVarData(PATH,gwasOrgId)
+			}
+
           }
         )
     }
@@ -808,8 +817,8 @@ export default {
     this.$axios.get(PATH).then(response=>{
       this.gwasLoading=false;
       console.log("getvardata res:",response);
-      
-      // this.gwasInfoData=response.data.snp;
+      this.gwasInfoData=[];
+      //this.gwasInfoData=response.data.snp;
       this.varLoading=false;
       let datas=response.data.snp
       if(datas.length>0){
@@ -835,9 +844,12 @@ export default {
           let allele=item.refallele+"/"+item.allele;
           let maf=item.maf+":"+item.maffreq.slice(0,7);
           let classsnp="SNP";
-          item.position=pos;
-          item.allele=allele;
-          item.maf=maf;
+			item.finalposition=pos;
+          //item.position=pos;
+          //item.allele=allele;
+          //item.maf=maf;
+			item.finalallele=allele;
+			item.finalmaf=maf;
           item.snpClassId=classsnp;
           if(item.gene.length>1){
             let name=[]

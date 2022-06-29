@@ -46,7 +46,15 @@
       and species_common_name = #{speciesName}
     </if>
   </select>
-  <select id="getSnpidByhdbid" resultType="java.lang.String">
-    select snp_id from variation_all where hdb_gene_id=#{hdbid} and var_name=#{varName}
+  <select id="getSnpidByhdbid"  resultType="java.lang.String">
+    select GROUP_CONCAT(snp_id) from variation_all where hdb_gene_id=#{hdbid}
+    <if test="varList != null">
+      and var_name in
+      <foreach item="variant" index="index" collection="varList"  open="(" separator="," close=")">
+        #{variant}
+      </foreach>
+
+
+    </if>
   </select>
 </mapper>

@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class VariantService {
@@ -26,6 +27,6 @@ public class VariantService {
         return variantMapper.getInfoByVarNameAndSpecies(varName,speciesName);
     }
 
-    public String getSnpidByhdbid(String hdbid,String varName){return variantMapper.getSnpidByhdbid(hdbid,varName);};
+    public String getSnpidByhdbid(String hdbid, List varList){return variantMapper.getSnpidByhdbid(hdbid,varList);};
 
 }

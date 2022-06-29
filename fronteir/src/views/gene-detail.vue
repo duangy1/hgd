@@ -248,13 +248,13 @@
                     align="center">
                 </el-table-column>
                 <el-table-column
-                    prop="position"
+                    prop="finalposition"
                     label="Position"
                     width="120px"
                     align="center">
                 </el-table-column>
                 <el-table-column
-                    prop="allele"
+                    prop="finalallele"
                     label="Allele"
                     width="80px"
                     align="center"
@@ -263,7 +263,7 @@
                
 
                 <el-table-column
-                    prop="maf"
+                    prop="finalmaf"
                     label="Maf"
                     width="120px"
                     align="center">
@@ -818,27 +818,35 @@ export default {
                 this.varLoading=true;
                 this.showVarInfoTable=true;
                 let dataSource=i.dataSource;
-                let BASEPATH;
-                if(dataSource.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
-                else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+                let BASEPATH="";
+				if(dataSource != null && dataSource.length >0 ){
+                if(dataSource.indexOf("v2")>0){BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV2/v2/variants/getlist?dataSource="}
+                else{BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV3/v2/variants/getlist?dataSource="}
+				
                 let snpAll=i.snpList.join(',')
+				if(BASEPATH.length>0){
                 let PATH=BASEPATH+dataSource+"&snplist="+snpAll;
                 if(i.snpList.length>0){
                     this.$axios.get(PATH).then(response=>{
                         console.log("var response:",response.data.snp);
                         // this.showVarInfoTable=true;
                         // var table绑定返回的snp数据
+						this.varList=[];
+						if(response.data != null){
                         this.varList=response.data.snp;
                         // for(let item of tresponse.data.snp){}
                         if(this.varList.length){this.varList=response.data.snp;}else{this.varList=[response.data.snp];}
                         for(let item of this.varList){
-                            let pos=item.chrom+":"+item.position;
-                            let allele=item.refallele+"/"+item.allele;
-                            let maf=item.maf+":"+item.maffreq.slice(0,7);
-                            let classsnp="SNP";
-                            item.position=pos;
-                            item.allele=allele;
-                            item.maf=maf;
+                                     let pos=item.chrom+":"+item.position;
+                                     let allele=item.refallele+"/"+item.allele;
+                                     let maf=item.maf+":"+item.maffreq.slice(0,7);
+                                     let classsnp="SNP";
+										item.finalposition=pos;
+          //item.position=pos;
+          //item.allele=allele;
+          //item.maf=maf;
+									item.finalallele=allele;
+									item.finalmaf=maf;
                             item.snpClassId=classsnp;
                             if(Array.isArray(item.gene)){
                                 let geneName=[]
@@ -851,8 +859,11 @@ export default {
                             }
                         }
                         this.varLoading=false;
+						}
                     })
                 }
+				}
+				}
             }else if(dataclass=="go"){
                 i.goList=i.goList.join(",")
                 this.goInfoData=[i]

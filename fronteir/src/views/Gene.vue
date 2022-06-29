@@ -142,7 +142,7 @@
 
                 <div style="clear:both;"></div>
 				<div style="text-align:left;padding-bottom:10px;"><el-tag v-for="tag in tags" :key="tag.name" closable type="info" @close="closeTag(tag)"> {{tag.name}}</el-tag></div>
-				<div v-if="totalSize > 0">
+				<div v-if="totalSize > 0" style="min-height:930px;">
                 <div align="left" style="padding-bottom:10px;"><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><b>Check All</b></el-checkbox></div> 
 				<el-checkbox-group  v-model="checkedHomolog" @change="handleCheckedHomologChange">
                 <div  v-for="item in tableData" :key="item.gbiId" style="text-align:left;">
@@ -171,7 +171,7 @@
 			</el-checkbox-group>
 			
 			</div>
-			<div v-else style="height:920px;text-align:left;">
+			<div v-else style="height:930px;text-align:left;">
 				<div style="padding-top:10px;padding-left:10px;">
 					No results.
 				</div>

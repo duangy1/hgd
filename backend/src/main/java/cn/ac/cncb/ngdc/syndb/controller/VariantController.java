@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -89,7 +90,24 @@ public class VariantController {
     @RequestMapping(value = "/api/var-snpid", method = RequestMethod.GET)
     @ResponseBody
     public String getGwasInfoByhdbid(String hdbId,String varName){
-        String hdbGwas = variantService.getSnpidByhdbid(hdbId,varName);
+        List variantlist = new ArrayList();
+        if(varName != null && varName.length()>0){
+            if(varName.indexOf(",")>-1){
+                String [] taxons = varName.split("\\,");
+                if(taxons != null && taxons.length>0){
+                    for(String str : taxons){
+                        variantlist.add(str);
+                    }
+                }
+            }
+            else{
+                System.out.println("variantlist --------"+varName);
+                variantlist.add(varName);
+            }
+
+            System.out.println(varName);
+        }
+        String hdbGwas = variantService.getSnpidByhdbid(hdbId,variantlist);
         return  hdbGwas;
     }
 }
