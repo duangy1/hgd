@@ -984,7 +984,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(traitID,speciesType){
-      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/species-trait',{params: {'traitID':traitID,speciesType: speciesType}})
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-trait',{params: {'traitID':traitID,speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType=='plant'){
