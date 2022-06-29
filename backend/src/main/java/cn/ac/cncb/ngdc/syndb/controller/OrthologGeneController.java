@@ -217,6 +217,10 @@ public class OrthologGeneController {
                 if(keyword != null && keyword.length() >0 ) {
                     param.put("allfield", keyword);
                 }
+            }else if(type==10){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("commonandlatin", keyword);
+                }
             }
 
 

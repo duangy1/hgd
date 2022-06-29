@@ -76,7 +76,7 @@
                                 1.What is Homolog Gene Database?
                             </div>
                             <div class="section-info">
-                                Homolog Gene Database (HGD) is an integrated homolog gene database for domestic animals, plants and model organisms. Currently, there are 16 domestic animals ,16 domestic plants and 5 model organisms which housed 23,399,653 homolog protein pairs in all. The homolog gene information integrated from 5 public data sources including EggNog,Panther,Treefam,Hieranoid,Inparanoid. At the same time, gene annotated information are widely collected and integrated from National Genomics Data Center (NGDC) resources including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HGD.
+                                Homolog Gene Database (HGD) is an integrated homolog gene database for domestic animals, plants and model organisms. Currently, there are 19 domestic animals ,16 domestic plants and 2 model organisms which housed 23,399,653 homolog protein pairs in all. The homolog gene information integrated from 5 public data sources including EggNog,Panther,Treefam,Hieranoid,Inparanoid. At the same time, gene annotated information are widely collected and integrated from National Genomics Data Center (NGDC) resources including GWAS, GVM, GEN and public data sources including Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HGD.
                             </div>
 
                             <div class="section-img0">
@@ -132,7 +132,7 @@
                                 Users can filter the shown organism from the organism check list.
                             </div>
                             <div class="section-img">
-                                <img src="/hgd/img/document-3.png" class="img"/>
+                                <img src="/hgd/img/document-5.png" class="img"/>
                                 <div class="figure">Figure 3</div>
                             </div>
                         </div>
