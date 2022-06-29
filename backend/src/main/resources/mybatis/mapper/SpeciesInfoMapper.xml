@@ -72,20 +72,21 @@
     select * from species_statistic
   </select>
 
-  <select id="speciesNameListforTrait" resultMap="BaseResultMap">
-    select * from species where species_type=#{speciesType} and gwas_orgid is not null order by common_name
+  <select id="speciesNameListforTrait" resultType="String">
+    select distinct(species_common_name) from trait_all_1 where trait_id=#{traitID} and classification=#{speciesType} order by species_common_name
   </select>
 
-  <select id="speciesNameListforVar" resultMap="BaseResultMap">
-    select * from species where species_type=#{speciesType} and data_source is not null order by common_name
+  <select id="speciesNameListforVar" resultType="String">
+    select distinct(species_common_name) from variation_all where var_name=#{traitID} and classification=#{speciesType} order by species_common_name
   </select>
 
   <select id="speciesNameListforGo" resultMap="BaseResultMap">
-    select * from species where species_type=#{speciesType} and has_go is not null order by common_name
+    select distinct(species_common_name) as common_name ,a.taxon_id,has_homolog from gene_go_all as a inner join species on a.taxon_id=species.taxon_id where top_go_id=#{topGoId}  and a.classification=#{speciesType} and has_homolog =1 order by species_common_name
   </select>
 
   <select id="speciesNameListforExp" resultMap="BaseResultMap">
-    select * from species where species_type=#{speciesType} and has_exp is not null order by common_name
+    select distinct(a.common_name),a.taxon_id,has_homolog from gene_expression as a inner join species on a.taxon_id=species.taxon_id where annotation=#{expName}  and a.classification=#{speciesType} and has_homolog =1 order by a.common_name
+
   </select>
 
 </mapper>

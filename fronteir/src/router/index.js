@@ -5,7 +5,7 @@ import Traits from '../views/Traits.vue'
 import Species from '../views/Species.vue'
 import Gene from '../views/Gene.vue'
 import GeneDetail from '../views/gene-detail.vue'
-import dbDetail from '../views/db-detail.vue'
+// import dbDetail from '../views/db-detail.vue'
 import Variants from '../views/Variant.vue'
 import Statistics from '../views/Statistics.vue'
 import Downloads from '../views/Downloads.vue'
@@ -17,67 +17,62 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/hgd',
     name: 'Home',
     component: Home
   },
   {
-    path: '/traits',
+    path: '/hgd/traits',
     name: 'Traits',
     component: Traits
   },
   {
-    path: '/species',
+    path: '/hgd/species',
     name: 'Species',
     component: Species
   },
   {
-    path: '/gene',
+    path: '/hgd/gene',
     name: 'Gene',
     component: Gene
   },
   {
-    path: '/gene-detail',
+    path: '/hgd/gene-detail',
     name: 'GeneDetail',
     component: GeneDetail
   },
   {
-    path: '/db-detail',
-    name: 'dbDetail',
-    component: dbDetail
-  },
-  {
-    path: '/variants',
+    path: '/hgd/variants',
     name: 'Variants',
     component: Variants
   },
   {
-    path: '/statistics',
+    path: '/hgd/statistics',
     name: 'Statistics',
     component: Statistics
   },
   {
-    path: '/downloads',
+    path: '/hgd/downloads',
     name: 'Downloads',
     component: Downloads
   },
   {
-    path: '/expression',
+    path: '/hgd/expression',
     name: 'Expression',
     component: Expression
   },
   {
-    path: '/go',
+    path: '/hgd/go',
     name: 'Go',
     component: Go
   },
   {
-    path: '/documentation',
+    path: '/hgd/documentation',
     name: 'Documentation',
     component: Documentation
   },
   {
-    path: '/contact',
+    path: '/hgd/contact',
     name: 'Contact',
     component: Contact
   },

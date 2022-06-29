@@ -39,17 +39,17 @@
                     Telephone
                 </div>
                 <div class="section-info">
-                  86-10-84097845<br />
+                  86-10-84097636<br />
                 </div>
             </div>
-            <div class="section-1 wraper-info">
+            <!-- <div class="section-1 wraper-info">
                 <div class="section-titile">
                     Fax
                 </div>
                 <div class="section-info">
                   86-10-84097298<br />
                 </div>
-            </div>
+            </div> -->
             <div class="section-1 wraper-info final">
                 <div class="section-titile">
                     Map

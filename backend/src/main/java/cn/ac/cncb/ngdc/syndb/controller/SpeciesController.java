@@ -40,26 +40,26 @@ public class SpeciesController {
 
     @RequestMapping(value = "/api/species-var", method = RequestMethod.GET)
     @ResponseBody
-    public List speciesNameListforVar(Integer speciesType){
-        List speciesNamelist=speciesService.speciesNameListforVar(speciesType);
+    public List speciesNameListforVar(String varName,String speciesType){
+        List speciesNamelist=speciesService.speciesNameListforVar(varName,speciesType);
         return speciesNamelist;
     }
     @RequestMapping(value = "/api/species-trait", method = RequestMethod.GET)
     @ResponseBody
-    public List speciesNameListforTrait(Integer speciesType){
-        List speciesNamelist=speciesService.speciesNameListforTrait(speciesType);
+    public List speciesNameListforTrait(int traitID,String speciesType){
+        List speciesNamelist=speciesService.speciesNameListforTrait(traitID,speciesType);
         return speciesNamelist;
     }
     @RequestMapping(value = "/api/species-go", method = RequestMethod.GET)
     @ResponseBody
-    public List speciesNameListforGo(Integer speciesType){
-        List speciesNamelist=speciesService.speciesNameListforGo(speciesType);
+    public List speciesNameListforGo(String topGoId,String speciesType){
+        List speciesNamelist=speciesService.speciesNameListforGo(topGoId,speciesType);
         return speciesNamelist;
     }
     @RequestMapping(value = "/api/species-exp", method = RequestMethod.GET)
     @ResponseBody
-    public List speciesNameListforExp(Integer speciesType){
-        List speciesNamelist=speciesService.speciesNameListforExp(speciesType);
+    public List speciesNameListforExp(String expName,String speciesType){
+        List speciesNamelist=speciesService.speciesNameListforExp(expName,speciesType);
         return speciesNamelist;
     }
 }
