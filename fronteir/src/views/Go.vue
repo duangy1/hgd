@@ -251,7 +251,7 @@
        
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" >
-          <h3 class="trait-sub-title">Go Detail Information</h3>
+          <h3 class="trait-sub-title">GO Detail Information</h3>
         </div>
         <div id="trait-info">
             <!-- <el-card shadow="none" class="gwasDetailCard"> -->
@@ -269,9 +269,9 @@
                     </a>
                   </template>
                 </el-table-column>
-                <el-table-column prop="goName" label="Go Name" align="center"></el-table-column>
-                <el-table-column prop="topGoId" label="Go Id" align="center"></el-table-column>
-                <el-table-column prop="goId" label="Sub Go Id" align="center"></el-table-column>
+                <el-table-column prop="goName" label="GO Name" align="center"></el-table-column>
+                <el-table-column prop="topGoId" label="GO Id" align="center"></el-table-column>
+                <el-table-column prop="goId" label="Sub GO Id" align="center"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species" align="center"></el-table-column>
                 <el-table-column prop="taxonId" label="Taxon Id" align="center"></el-table-column>
               </el-table>
@@ -475,9 +475,9 @@
                     </a>
                   </template>
                 </el-table-column>
-                <el-table-column prop="goName" label="Go Name"></el-table-column>
-                <el-table-column prop="topGoId" label="Go Id"></el-table-column>
-                <el-table-column prop="goId" label="Sub Go Id"></el-table-column>
+                <el-table-column prop="goName" label="GO Name"></el-table-column>
+                <el-table-column prop="topGoId" label="GO Id"></el-table-column>
+                <el-table-column prop="goId" label="Sub GO Id"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
                 <el-table-column prop="taxonId" label="Taxon Id"></el-table-column>
               </el-table>
