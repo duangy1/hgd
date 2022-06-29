@@ -613,29 +613,27 @@
     </el-backtop>
     </template>
     <div class="link-wraper">
-      <!-- <el-divider></el-divider> -->
+      <el-divider></el-divider>
       <div class="Main-section-titile">
-        <div> <h3 class="divider">Related Links</h3><i class="fa fa-external-link-square" aria-hidden="true" style="font-size:20px;margin-left:10px"></i></div>
-        <div class="wraperbox">
-          <div class="section-titile"><a class="link" href="https://ngdc.cncb.ac.cn/gwas/">Gwas Atlas:</a></div>
-          <div class="section-titile"><a class="link" href="https://ngdc.cncb.ac.cn/gvm/">Genome Variation Map</a></div>
+        <div class="divider">Related Links<i class="fa fa-external-link-square" aria-hidden="true" style="font-size:20px;margin-left:10px"></i></div>
+        <div class="wrapper-link">
+          <div class="section-titile"><a class="link" href="https://ngdc.cncb.ac.cn/gwas/" target="_blank">Gwas Atlas</a></div>
+          <div class="section-titile"><a class="link" href="https://ngdc.cncb.ac.cn/gvm/" target="_blank">GVM</a></div>
+        
+          <div class="section-titile"><a class="link" href="https://ngdc.cncb.ac.cn/gen/" target="_blank">GEN</a></div>
+          <div class="section-titile"><a class="link" href="https://asia.ensembl.org/index.html" target="_blank">Ensembl</a></div>
+        
+        
+          <div class="section-titile"><a class="link" href="https://www.uniprot.org/" target="_blank">Uniprot</a></div>
+          <div class="section-titile"> <a class="link" href="https://inparanoid.sbc.su.se/" target="_blank">Inparanoid</a></div>
+        
+          <div class="section-titile"><a class="link" href="https://hieranoid.sbc.su.se/" target="_blank">Hieranoid</a></div>
+          <div class="section-titile"><a class="link" href="http://www.pantherdb.org/" target="_blank">Panther</a></div>
+        
+          <div class="section-titile"><a class="link" href="http://www.treefam.org/" target="_blank">Treefam</a></div>
+          <div class="section-titile final"><a class="link" href="http://eggnog5.embl.de/" target="_blank">EggNog</a></div>
         </div>
-        <div class="wraperbox">
-          <div class="section-titile"><a class="link" href="https://ngdc.cncb.ac.cn/gen/">Gene Expression Nebulas</a></div>
-          <div class="section-titile"><a class="link" href="https://asia.ensembl.org/index.html">Ensembl</a></div>
-        </div>
-        <div class="wraperbox">
-          <div class="section-titile"><a class="link" href="https://www.uniprot.org/">Uniprot</a></div>
-          <div class="section-titile"> <a class="link" href="https://inparanoid.sbc.su.se/">Inparanoid</a></div>
-        </div>
-        <div class="wraperbox">
-          <div class="section-titile"><a class="link" href="https://hieranoid.sbc.su.se/">Hieranoid</a></div>
-          <div class="section-titile"><a class="link" href="http://www.pantherdb.org/">Panther</a></div>
-        </div>
-        <div class="wraperbox">
-          <div class="section-titile"><a class="link" href="http://www.treefam.org/">Treefam</a></div>
-          <div class="section-titile final"><a class="link" href="http://eggnog5.embl.de/">EggNog</a></div>
-        </div>
+       
       
       </div>
     </div>
