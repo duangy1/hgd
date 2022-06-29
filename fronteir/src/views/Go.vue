@@ -668,7 +668,6 @@ export default {
     },
     
   showOrthoInfoTable(rowdata,index){
-    // console.log("orthoList:",orthoList);
     this.showOrthoSubTable = true;
     this.showSubTableBox=false;
     this.orthoLoading=false;
@@ -692,7 +691,6 @@ export default {
       })
     })
     // this.orthoTableData=ortholist;
-    console.log("ortholist:",ortholist);
   },
  
   // 表格高度自适应
@@ -707,12 +705,7 @@ export default {
     this.drawer = true;
    },
   showGwasInfoTable(rowValue,index){
-    
-    // scope.row.gwasId,scope.row.taxonId,scope.row.orthoList[scope.row.speciesListData.indexOf(index)]
-    // let gwasid=rowValue.gwasId
-    // let taxid=rowValue.gwasOrgid
-    // let orthoList=rowValue.ortholist[rowValue.speciesListData.indexOf(index)]
-    // console.log(rowValue,index);
+
     let ortholist=[];
     let hdblist=[rowValue.hdbId]
     rowValue.speciesListData.forEach((id,idx)=>{
@@ -722,13 +715,11 @@ export default {
         hdblist.push(item.hdbId)
     }})
     this.orthoTableData=ortholist;
-    // console.log(rowValue,index,ortholist);
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
       this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-go",{params:{'hdbid': hdbid}})
         .then(response=>{
-          console.log("gwas response:",response);
           this.gwasInfoData=this.gwasInfoData.concat(response.data);
           this.gwasLoading=false;
         })
@@ -737,7 +728,6 @@ export default {
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
     this.orthoTableData=ortholist;
-    // console.log(ortholist);
    },
     hiligtDbCols({rowIndex}){
       if(rowIndex===1){
@@ -857,16 +847,16 @@ export default {
     },
     // 主要获取数据的方法
     // 根据动植物分开获取
-    async getGoData(goName,classification,pagesize,pagenum,speciesName,hdbId){
-      console.log("params:",goName,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/godata",{params:{'topGoid':goName,'classification':classification,'hdbId':hdbId,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
+    async getGoData(goName,classification,pagesize,pagenum,speciesName){
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/godata",{params:{'topGoid':goName,'classification':classification,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
       .then((response) => {
-        console.log("response:",response);
         if(classification=="animal"){
+          this.getSpecies(goName,'animal')
           this.totalSize_animal = response.data.recordsTotal;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_animal=res;this.loading_animal=false;});
         
         }else{
+          this.getSpecies(goName,'plant')
           this.totalSize_plant = response.data.recordsTotal;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_plant=res; this.loading_plant=false;});
         }
@@ -876,11 +866,11 @@ export default {
    
     },
     // 根据当前classification判断获取动物或植物列表
-    getSpecies(speciesType){
+    getSpecies(topGoId,speciesType){
       this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-go',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
-          if(speciesType==2){
+          if(speciesType=='plant'){
             this.querySpeciesList_plant=response.data;
           }else{
             this.querySpeciesList_animal=response.data;
@@ -895,10 +885,11 @@ export default {
     this.loading_animal = true;
     this.loading_plant=true;
 
-    let hdbId = this.$route.query.hdbId;
+    // let hdbId = this.$route.query.hdbId;
+
     // let taxonId=this.$route.query.taxonId;
-    this.getGoData(this.traitItem.traitId,"animal",this.pageSize,1,"",hdbId)
-    this.getGoData(this.traitItem.traitId,"plant",this.pageSize,1,"",hdbId)
+    this.getGoData(this.traitItem.traitId,"animal",this.pageSize,1,"")
+    this.getGoData(this.traitItem.traitId,"plant",this.pageSize,1,"")
     // async getGoData(traitId,classification,pagesize,pagenum,speciesName){
 
     window.addEventListener("scroll", this.watchScroll);
@@ -908,8 +899,8 @@ export default {
     // _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
     // }
    // 获取动植物名称列表，用于下拉选择框
-    this.getSpecies(2)
-    this.getSpecies(1)
+    this.getSpecies(this.traitItem.traitId,"animal")
+    this.getSpecies(this.traitItem.traitId,"plant")
     
      window.addEventListener("scroll", this.watchScroll);
       this.getTableMaxHeight(); 

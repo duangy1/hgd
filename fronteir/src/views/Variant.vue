@@ -59,9 +59,9 @@
                 <el-select v-model="form.querySpecies" class="filt-spe-select">
                     <el-option
                         v-for="(item,index) in querySpeciesList_animal"
-                        :key="index.id"
-                        :label="item.commonName"
-                        :value="item.commonName"
+                        :key="index"
+                        :label="item"
+                        :value="item"
                         >
                     </el-option>
                 </el-select>
@@ -335,9 +335,9 @@
             <el-select v-model="form.querySpecies" class="filt-spe-select">
                 <el-option
                     v-for="(item,index) in querySpeciesList_plant"
-                    :key="index.id"
-                    :label="item.commonName"
-                    :value="item.commonName"
+                    :key="index"
+                    :label="item"
+                    :value="item"
                     >
                 </el-option>
             </el-select>
@@ -743,7 +743,7 @@ export default {
     this.orthoTableData=[];
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
         this.orthoTableData.push(item)
@@ -979,11 +979,13 @@ export default {
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
+          this.getSpecies(varname,"animal")
           this.totalSize_animal = response.data.recordsTotal;
           // this.speciesList_animal=response.data.data[0].headerList;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_animal=res;this.loading_animal=false;});
         
         }else{
+          this.getSpecies(varname,"plant")
           this.totalSize_plant = response.data.recordsTotal;
           // this.speciesList_plant=response.data.data[0].headerList;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_plant=res; this.loading_plant=false;});
@@ -994,11 +996,11 @@ export default {
    
     },
     // 根据当前classification判断获取动物或植物列表
-    getSpecies(speciesType){
-      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-var',{params: {speciesType: speciesType}})
+    getSpecies(varName,speciesType){
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-var',{params: {"varName":varName,speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
-          if(speciesType==2){
+          if(speciesType=='plant'){
             this.querySpeciesList_plant=response.data;
           }else{
             this.querySpeciesList_animal=response.data;
@@ -1023,8 +1025,8 @@ export default {
     // _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
     // }
    // 获取动植物名称列表，用于下拉选择框
-    this.getSpecies(2)
-    this.getSpecies(1)
+    this.getSpecies(this.varItem.varName,"animal")
+    this.getSpecies(this.varItem.varName,"plant")
     
      window.addEventListener("scroll", this.watchScroll);
       this.getTableMaxHeight(); 

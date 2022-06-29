@@ -80,7 +80,8 @@
                             </div>
 
                             <div class="section-img0">
-                                <img src="/hgd/img/document-0.png" class="img"/>
+                                <img src="/hgd/img//document-0.png" class="img"/>
+                                <div class="figure">Flow chart of data processing</div>
                             </div>
                         </div>
                         <div class="section section-2" id="item-pos-2">

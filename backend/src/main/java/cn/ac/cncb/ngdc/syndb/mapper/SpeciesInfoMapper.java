@@ -25,13 +25,13 @@ public interface SpeciesInfoMapper {
     List<SpeciesInfo> selectAllSpecies();
 
 //    List<String> speciesNameList(String classification);
-    List<SpeciesInfo> speciesNameListforVar(Integer speciesType);
+    List<SpeciesInfo> speciesNameListforVar(String varName,String speciesType);
 
-    List<SpeciesInfo> speciesNameListforTrait(Integer speciesType);
+    List<SpeciesInfo> speciesNameListforTrait(int traitID,String speciesType);
 
-    List<SpeciesInfo> speciesNameListforGo(Integer speciesType);
+    List<SpeciesInfo> speciesNameListforGo(String topGoId,String speciesType);
 
-    List<SpeciesInfo> speciesNameListforExp(Integer speciesType);
+    List<SpeciesInfo> speciesNameListforExp(String expName,String speciesType);
 
     String getDataSource(Integer txonid);
 

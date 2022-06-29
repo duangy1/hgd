@@ -33,7 +33,7 @@
     <if test='classification != null and classification!="" and classification!="null"'>
       and classification=#{classification}
     </if>
-    <if test='hdb_gene_id != null and hdb_gene_id!="" and hdb_gene_id!="null"'>
+    <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
       and hdb_gene_id=#{hdbId}
     </if>
     and hdb_gene_id !="" and hdb_gene_id is not null

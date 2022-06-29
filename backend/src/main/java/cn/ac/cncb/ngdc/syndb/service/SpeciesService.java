@@ -57,19 +57,19 @@ public class SpeciesService {
     }
 
 //只返回有trait数据的物种
-    public List<SpeciesInfo> speciesNameListforVar(Integer speciesType){
-        return speciesInfoMapper.speciesNameListforVar(speciesType);
+    public List<SpeciesInfo> speciesNameListforVar(String varName,String speciesType){
+        return speciesInfoMapper.speciesNameListforVar(varName,speciesType);
 }
-    public List<SpeciesInfo> speciesNameListforTrait(Integer speciesType){
-        return speciesInfoMapper.speciesNameListforTrait(speciesType);
+    public List<SpeciesInfo> speciesNameListforTrait(int traitID,String speciesType){
+        return speciesInfoMapper.speciesNameListforTrait(traitID,speciesType);
     }
 
-    public List<SpeciesInfo> speciesNameListforGo(Integer speciesType){
-        return speciesInfoMapper.speciesNameListforGo(speciesType);
+    public List<SpeciesInfo> speciesNameListforGo(String topGoId,String speciesType){
+        return speciesInfoMapper.speciesNameListforGo(topGoId,speciesType);
     }
 
-    public List<SpeciesInfo> speciesNameListforExp(Integer speciesType){
-        return speciesInfoMapper.speciesNameListforExp(speciesType);
+    public List<SpeciesInfo> speciesNameListforExp(String expName,String speciesType){
+        return speciesInfoMapper.speciesNameListforExp(expName,speciesType);
     }
 
 
