@@ -361,7 +361,7 @@ export default {
             
              if(traitselect.length>0){
                 traitselect =traitselect.substring(0,traitselect.length-1);
-				window.location.href="http://192.168.164.93:9401/download/homolog/"+traitselect+"/1";
+				window.location.href="https://ngdc.cncb.ac.cn/hapi/download/homolog/"+traitselect+"/1";
             }else{
 				alert("You must at least choose one");
 			}
@@ -379,7 +379,7 @@ export default {
             
               if(traitselect.length>0){
                 traitselect =traitselect.substring(0,traitselect.length-1);
-				window.location.href="http://192.168.164.93:9401/download/homolog/"+traitselect+"/2";
+				window.location.href="https://ngdc.cncb.ac.cn/hapi/download/homolog/"+traitselect+"/2";
              }else{
 				alert("You must at least choose one");
 			}
@@ -483,7 +483,7 @@ export default {
                 withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
               });
                 axiosInstance1
-                  .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                  .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                   .then(response => {
                       console.log(response)
                       this.tableData = response.data.data
@@ -570,7 +570,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -640,7 +640,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -724,7 +724,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -808,7 +808,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -909,7 +909,7 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword, 'length': val}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword, 'length': val}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -1015,7 +1015,7 @@ export default {
                                         withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                                       });
                                         axiosInstance1
-                                          .get('http://192.168.164.93:9401/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword,  'pageNo': val}})
+                                          .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'orthtaxids':orthtaxids,'type':type,'keyword':keyword,  'pageNo': val}})
                                           .then(response => {
                                               console.log(response)
                                               this.tableData = response.data.data
@@ -1122,7 +1122,7 @@ export default {
 
   
     axiosInstance
-      .get('http://192.168.164.93:9401/basic/getSpeciesModify',{params: {speciesType: 1}})
+      .get('https://ngdc.cncb.ac.cn/hapi/basic/getSpeciesModify',{params: {speciesType: 1}})
       .then(response => {
           console.log(response)
           this.animalsItem = response.data
@@ -1135,7 +1135,7 @@ export default {
 
 
  axiosInstance
-       .get('http://192.168.164.93:9401/basic/getTraitName')
+       .get('https://ngdc.cncb.ac.cn/hapi/basic/getTraitName')
        .then(response => {
            this.traitAnimaloptions= response.data
          })
@@ -1145,7 +1145,7 @@ export default {
        })
        .finally(() => this.loading = false)
   axiosInstance
-                   .get('http://192.168.164.93:9401/gene/filterHomolog',{params: params})
+                   .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: params})
                    .then(response => {
                        console.log("this.tableData:",response)
                        this.tableData = response.data.data
@@ -1162,7 +1162,7 @@ export default {
                      })
 
   axiosInstance
-                   .get('http://192.168.164.93:9401/basic/getVoTerm')
+                   .get('https://ngdc.cncb.ac.cn/hapi/basic/getVoTerm')
                    .then(response => {
                        this.variantoptions= response.data
                      })
@@ -1176,7 +1176,7 @@ export default {
                     this.screenLoading=false;
                      })
 axiosInstance
-                   .get('http://192.168.164.93:9401/basic/getExpressionTerm')
+                   .get('https://ngdc.cncb.ac.cn/hapi/basic/getExpressionTerm')
                    .then(response => {
                        this.expoptions= response.data
                      })
@@ -1190,7 +1190,7 @@ axiosInstance
 					this.screenLoading=false;
                      })
 axiosInstance
-                   .get('http://192.168.164.93:9401/basic/getGOTerm')
+                   .get('https://ngdc.cncb.ac.cn/hapi/basic/getGOTerm')
                    .then(response => {
                        this.gooptions= response.data
                      })

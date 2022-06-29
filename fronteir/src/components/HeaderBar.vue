@@ -7,7 +7,7 @@
     <!-- <router-link to="https://www.cncb.ac.cn/"
                  target="_blank"
                  class="imgLayout">
-      <v-img src="@/assets/img/cncb-nav.png"
+      <v-img src="/hgd/img/cncb-nav.png"
              alt="China National Center for Bioinformation"
              position="center, center"
              height="90%"
@@ -17,7 +17,7 @@
     <router-link to="https://ngdc.cncb.ac.cn/"
                  target="_blank"
                  class="imgLayout">
-      <v-img src="@/assets/img/ngdc-nav.png"
+      <v-img src="/hgd/img/ngdc-nav.png"
              alt="National Genomics Data Center"
              position="center, center"
              height="90%"
@@ -54,10 +54,10 @@
             <span class='bigd-icon-bar'></span>
           </button>
           <a href="https://www.cncb.ac.cn/"
-             class='bigd-navbar-brand'><img src="@/assets/img/cncb-nav.png"
+             class='bigd-navbar-brand'><img src="/hgd/img/cncb-nav.png"
                  class='bigd-img-responsive' /></a>
           <a href="https://ngdc.cncb.ac.cn/"
-             class='bigd-navbar-brand'><img src="@/assets/img/ngdc-nav.png"
+             class='bigd-navbar-brand'><img src="/hgd/img/ngdc-nav.png"
                  class='bigd-img-responsive' /></a>
         </div>
         <div class='bigd-collapse bigd-navbar-collapse r-layout'

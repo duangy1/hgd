@@ -15,7 +15,7 @@
             <div class="wrapper-box">
                 <el-container>
                     <el-aside width="250px" style="overflow: hidden;">
-                        <!-- <img src="../assets/img/arrow1.png" style="width:100%;vertical-align:top;margin:10px 0;"> -->
+                        <!-- <img src="/hgd/img/arrow1.png" style="width:100%;vertical-align:top;margin:10px 0;"> -->
                         <el-menu
                             default-active="2"
                             style="text-align: left;"
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="section-img0">
-                                <img src="../assets/img/document-0.png" class="img"/>
+                                <img src="/hgd/img/document-0.png" class="img"/>
                             </div>
                         </div>
                         <div class="section section-2" id="item-pos-2">
@@ -101,7 +101,7 @@
                                 Click the gene name will open a detail information which described in section 2.6.<br/><br/>
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-1.png" class="img"/>
+                                <img src="/hgd/img/document-1.png" class="img"/>
                                 <div class="figure">Figure 1</div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                 Users can filter the shown organism from the organism check list.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-2.png" class="img"/>
+                                <img src="/hgd/img/document-2.png" class="img"/>
                                 <div class="figure">Figure 2</div>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                                 Users can filter the shown organism from the organism check list.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-3.png" class="img"/>
+                                <img src="/hgd/img/document-3.png" class="img"/>
                                 <div class="figure">Figure 3</div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                                 Users can filter the shown organism from the organism check list.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-3.png" class="img"/>
+                                <img src="/hgd/img/document-3.png" class="img"/>
                                 <div class="figure">Figure 4</div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                                 Users can filter the shown organism from the organism check list.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-4.png" class="img"/>
+                                <img src="/hgd/img/document-4.png" class="img"/>
                                 <div class="figure">Figure 5</div>
                             </div>
                         </div>
@@ -179,11 +179,11 @@
                                 The expression describes the expression information for this gene by several colored squares under each expression term. The color is normalized by the bioproject number. When hover on the square, the bioproject number will be shown. When click on, a table list including the average expression value information of tissue will be shown. When check on the Compared Homolog Gene, the expression information of the homolog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-6.png" class="img"/>
+                                <img src="/hgd/img/document-6.png" class="img"/>
                                 <!-- <div class="figure">Figure 6</div> -->
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-7.png" class="img"/>
+                                <img src="/hgd/img/document-7.png" class="img"/>
                                 <div class="figure">Figure 6</div>
                             </div>
                         </div>
@@ -196,11 +196,11 @@
                                 The homolog protein pairs between all 37 species are counted and shown as a heat map. When mouse hover on the heat map, the number of homolog protein pairs will be shown. When click the heat map, a homolog gene list of the two selected species will be shown in Homolog Gene. By default, HGD uses the species of x axis as query species.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-10.png" class="img"/>
+                                <img src="/hgd/img/document-10.png" class="img"/>
                                 <!-- <div class="figure">Figure 6</div> -->
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-11.png" class="img"/>
+                                <img src="/hgd/img/document-11.png" class="img"/>
                                 <div class="figure">Figure 7</div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                                 User can search homolog gene by gene name, ensemble gene id, ensemble protein name, uniport protein name, Entrez id and so on (Figure 8). A homolog gene list will be shown as below.
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-8.png" class="img"/>
+                                <img src="/hgd/img/document-8.png" class="img"/>
                                 <div class="figure">Figure 8</div>
                             </div>
                         </div>
@@ -224,7 +224,7 @@
                                 HGD provide the homolog protein, trait, variation, expression information for each organism to download (Figure 9).
                             </div>
                             <div class="section-img">
-                                <img src="../assets/img/document-9.png" class="img"/>
+                                <img src="/hgd/img/document-9.png" class="img"/>
                                 <div class="figure">Figure 9</div>
                             </div>
                         </div>
@@ -267,7 +267,7 @@
   </div>
 </template>
 
-<style src="../assets/css/documentation.css" scoped></style>
+<style src="@/assets/css/documentation.css" scoped></style>
 <script>
 // import Navigator from "@/components/navigator.vue";
 import Banner from "@/components/banner.vue";

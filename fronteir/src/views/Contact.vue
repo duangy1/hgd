@@ -64,7 +64,7 @@
     <FooterBar/>
 </div>
 </template>
-<style  src="../assets/css/documentation.css" scoped></style>
+<style  src="@/assets/css/documentation.css" scoped></style>
 <style scoped>
 .arrow-title{
     height: 24px;

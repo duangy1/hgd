@@ -683,7 +683,7 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -726,7 +726,7 @@ export default {
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
-      this.$axios.get("http://192.168.164.93:9401/api/gene-go",{params:{'hdbid': hdbid}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-go",{params:{'hdbid': hdbid}})
         .then(response=>{
           console.log("gwas response:",response);
           this.gwasInfoData=this.gwasInfoData.concat(response.data);
@@ -751,7 +751,7 @@ export default {
     },
    
     searchFilter(){
-      // this.$axios.get("http://192.168.164.93:9401/api/traits/ortho-data",{params:{"orthoSpecies":value.orthoSpecies,"querySpecies":value.querySpecies,"traitId":traitId}})
+      // this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits/ortho-data",{params:{"orthoSpecies":value.orthoSpecies,"querySpecies":value.querySpecies,"traitId":traitId}})
       // .then(response=>{
       //     console.log("searchFilter:",response);
       // })
@@ -859,7 +859,7 @@ export default {
     // 根据动植物分开获取
     async getGoData(goName,classification,pagesize,pagenum,speciesName,hdbId){
       console.log("params:",goName,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://192.168.164.93:9401/api/godata",{params:{'topGoid':goName,'classification':classification,'hdbId':hdbId,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/godata",{params:{'topGoid':goName,'classification':classification,'hdbId':hdbId,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -877,7 +877,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(speciesType){
-      this.$axios.get('http://192.168.164.93:9401/api/species-go',{params: {speciesType: speciesType}})
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-go',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType==2){

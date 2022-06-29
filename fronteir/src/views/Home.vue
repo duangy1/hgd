@@ -38,14 +38,14 @@
           <div class="egs">
             <a href="#" class="example-txt">e.g.&nbsp;</a>
             
-            <el-link type="info" class="eg-ele" href="/gene?type=1&keyword=Bos">Bos;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=9&keyword=Pig">Pig;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=2&keyword=GCC1">GCC1;</el-link>  
-            <el-link type="info" class="eg-ele" href="/gene?type=3&keyword=ENSBTAG00000003102">ENSBTAG00000003102;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=4&keyword=ENSBTAP00000004036">ENSBTAP00000004036;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=5&keyword=539985">539985;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=6&keyword=E1BJZ4">E1BJZ4;</el-link>
-            <el-link type="info" class="eg-ele" href="/gene?type=7&keyword=protein_coding">protein_coding;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=1&keyword=Bos">Bos;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=9&keyword=Pig">Pig;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=2&keyword=GCC1">GCC1;</el-link>  
+            <el-link type="info" class="eg-ele" href="./gene?type=3&keyword=ENSBTAG00000003102">ENSBTAG00000003102;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=4&keyword=ENSBTAP00000004036">ENSBTAP00000004036;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=5&keyword=539985">539985;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=6&keyword=E1BJZ4">E1BJZ4;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=7&keyword=protein_coding">protein_coding;</el-link>
           </div>
         </div>
       </div>
@@ -64,14 +64,14 @@
       <div class="engineer-slider owl-theme owl-carousel" style="padding-top:30px;">
 
       <!-- <div class="engineer-item">
-		<a href="/gene?taxonid=9606"> <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer">
+		<a href="/gene?taxonid=9606"> <img src="/hgd/img/species/Homo_sapiens.svg" alt="Engineer">
         <div class="engineer-bottom">
           <h4>Homo sapines</h4>
         </div>
 		</a>
       </div> -->
       <!-- <div class="engineer-item">
-      <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
+      <img src="/hgd/img/species/Danio_rerio.svg" alt="Engineer">
       <div class="engineer-bottom">
       <h4>Danio rerio</h4>
       </div>
@@ -79,14 +79,14 @@
 
 
       <div class="engineer-item">
-        <a href="/gene?taxid1=9913"><img src="../assets/img/species/cattle.svg" alt="Engineer" with="100" height="100">
+        <a href="./gene?taxid1=9913"><img src="/hgd/img/species/cattle.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
           <h4><i>Bos taurus</i></h4>
         </div></a>
       </div>
 
       <div class="engineer-item">
-       <a href="/gene?taxid1=9031"><img src="../assets/img/species/chicken.svg" alt="Engineer" with="100" height="100">
+       <a href="./gene?taxid1=9031"><img src="/hgd/img/species/chicken.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
           <h4><i>Gallus gallus</i></h4>
         </div>
@@ -115,27 +115,27 @@
       -->
       
       <div class="engineer-item">
-      <a href="/gene?taxid1=9823"><img src="../assets/img/species/pig.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=9823"><img src="/hgd/img/species/pig.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Sus scrofa</i></h4>
       </div></a>
       </div>
       
       <div class="engineer-item">
-      <a href="/gene?taxid1=4530"><img src="../assets/img/species/rice.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=4530"><img src="/hgd/img/species/rice.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Oryza sativa</i></h4>
       </div></a>
       </div>
       <div class="engineer-item">
-      <a href="/gene?taxid1=4577"><img src="../assets/img/species/maize.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=4577"><img src="/hgd/img/species/maize.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Zea mays</i></h4>
       </div></a>
       </div>
 
       <div class="engineer-item">
-      <a href="/gene?taxid1=3708"><img src="../assets/img/species/rapseed.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=3708"><img src="/hgd/img/species/rapseed.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Brassica napus</i></h4>
       </div></a>
@@ -336,15 +336,15 @@
                         <div class="sppb-col-md-4" id="left-mofule">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="/gene"
+                              href="./gene"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog1.jpg"
+                                src="/hgd/img/blog1.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="/species">
+                              <a href="./species">
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
@@ -358,7 +358,7 @@
                               <div
                                 class="sppb-article-introtext">
                                 <div class="wraper-num">
-                                  <div id="num" ><a href="/species" class="speciesNum"> {{speciesNum}}</a></div><div class="speciesNum1">Species</div> 
+                                  <div id="num" ><a href="./species" class="speciesNum"> {{speciesNum}}</a></div><div class="speciesNum1">Species</div> 
                                 </div>
                                 <!-- <div class="wraper-num">
                                 <div id="num" class="speciesNum">{{speciesNum}}</div> <div class="speciesNum1">Plants  </div>
@@ -369,7 +369,7 @@
                                
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation#item-pos-2"
+                                href="./documentation#item-pos-2"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -379,15 +379,15 @@
 						<div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="/gene"
+                              href="./gene"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog5.jpg"
+                                src="/hgd/img/blog5.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="/gene">
+                              <a href="./gene">
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
@@ -402,12 +402,12 @@
                                 class="sppb-article-introtext">
 								<!-- <p>37 species</p> -->
                             <div class="wraper-num">
-                              <div id="num"><a href="/gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog Protein Pairs</div> 
+                              <div id="num"><a href="./gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog Protein Pairs</div> 
                             </div>
                                 <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation#item-pos-3"
+                                href="./documentation#item-pos-3"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -418,15 +418,15 @@
                         <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="/traits"
+                              href="./traits"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog2.jpg"
+                                src="/hgd/img/blog2.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="/traits">
+                              <a href="./traits">
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
@@ -435,7 +435,7 @@
                                   class="sppb-meta-category">Traits</span>
                               </div>
                               </a>
-                              <!-- <h3><a href="/traits"
+                              <!-- <h3><a href="./traits"
                                   itemprop="url">
                                   Homolog Genes with specific trait</a></h3> -->
                               <div
@@ -443,7 +443,7 @@
 								<!-- <p>15 trait ontology term</p>
 								<p>13,209 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="/traits" class="speciesNum">{{traitNum}}</a></div>
+                                  <div id="num"><a href="./traits" class="speciesNum">{{traitNum}}</a></div>
                                   <div class="speciesNum1"> Homolog Genes with specific trait</div> 
                                   <!-- <div id="num" class="speciesNum">{{traitGeneNum}}</div>
                                   <div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> homolog gene</div>  -->
@@ -451,7 +451,7 @@
                                 </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation#item-pos-4"
+                                href="./documentation#item-pos-4"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -462,15 +462,15 @@
 						<div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="/variants"
+                              href="./variants"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog3.jpg"
+                                src="/hgd/img/blog3.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="/variants">
+                              <a href="./variants">
                               <div class="article-meta">
                                 <span
                                   class="sppb-meta-date"
@@ -479,7 +479,7 @@
                                   class="sppb-meta-category">Variation</span>
                               </div>
                               </a>
-                              <!-- <h3><a href="/variants"
+                              <!-- <h3><a href="./variants"
                                   itemprop="url">Number of homolog gene with variants</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
@@ -487,11 +487,11 @@
 								<!-- <p>18 sequence ontology term</p>
 								<p>146,621 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="/variants" class="speciesNum">{{varNum}}</a></div><div class="speciesNum1">Homolog genes with variants</div> 
+                                  <div id="num"><a href="./variants" class="speciesNum">{{varNum}}</a></div><div class="speciesNum1">Homolog genes with variants</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation#item-pos-5"
+                                href="./documentation#item-pos-5"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -500,15 +500,15 @@
                         <div class="sppb-col-md-4" id="left-mofule">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="/expression"
+                              href="./expression"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog4.jpg"
+                                src="/hgd/img/blog4.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
                               class="sppb-article-info-wrap">
-                              <a href="/expression">
+                              <a href="./expression">
                               <div class="article-meta">
                                 
                                 <span
@@ -528,11 +528,11 @@
 								<p>55 expression ontology term</p>
 								<p>403,655 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="/expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> homolog genes with expression</div> 
+                                  <div id="num"><a href="./expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> homolog genes with expression</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="/documentation#item-pos-6"
+                                href="./documentation#item-pos-6"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -542,10 +542,10 @@
                         <div class="sppb-col-md-4">
                           <div class="sppb-addon-article"><a
                               class="sppb-article-img-wrap"
-                              href="/go"
+                              href="./go"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="../assets/img/blog5.jpg"
+                                src="/hgd/img/blog5.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
@@ -557,7 +557,7 @@
                                   </span><span
                                   class="sppb-meta-category">Gene Ontology</span>
                               </div>
-                              <!-- <h3><a href="/go"
+                              <!-- <h3><a href="./go"
                                   itemprop="url">GO Related with Homolog Gene</a></h3> -->
                               <div
                                 class="sppb-article-introtext">
@@ -565,11 +565,11 @@
 								<p>58 gene ontology term</p>
 								<p>384,684 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="/species" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> homolog genes with gene ontology</div> 
+                                  <div id="num"><a href="./go" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> homolog genes with gene ontology</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore finalread"
-                                href="/documentation#item-pos-7"
+                                href="./documentation#item-pos-7"
                                 itemprop="url">Read
                                 More</a>
                             </div>
