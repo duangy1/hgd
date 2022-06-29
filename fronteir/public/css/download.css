@@ -1,0 +1,20 @@
+.container{
+    width: 100%;
+}
+.wrapper-box{
+    width: 100%;
+    margin: auto;
+}
+.arrow-title{
+    height: 24px;
+    vertical-align: middle;
+    padding-top: 15px;
+    padding-left: 15px;
+  }
+.div-speciesfile{
+    margin-top: 20px;
+}
+.filename:hover{
+    color: #55a1e9;
+    cursor: pointer;
+}

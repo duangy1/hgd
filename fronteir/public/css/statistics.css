@@ -1,0 +1,51 @@
+.wrapper-species-1{
+    width:92%;
+    margin: auto;
+    /* margin-top:2% */
+  }
+  .wrapper-species{
+    display: flex;
+    margin: auto;
+    margin-top:1%
+}
+.arrow-title{
+  height: 24px;
+  vertical-align: middle;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+.chartsLayout{
+  width: 100%;
+}
+#chart-trait2homolog-0{
+  margin: auto;
+  width: 100%;
+}
+#chart-trait2homolog-1{
+  margin: auto;
+  width: 100%;
+}
+#chart-trait2homolog-2{
+  margin: auto;
+  width: 100%;
+}
+#chart-trait2homolog-3{
+  margin: auto;
+  width: 100%;
+}
+#chart-trait2homolog-4{
+  margin: auto;
+  width: 100%;
+}
+#chart-trait2homolog-5{
+  margin: auto;
+  width: 100%;
+}
+#chart-trait2homolog-6{
+  margin: auto;
+  width: 100%;
+}
+#chart-trait2homolog-7{
+  margin: auto;
+  width: 100%;
+}
