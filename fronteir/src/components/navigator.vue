@@ -8,33 +8,33 @@
         text-color="white"
         style="font-size:18px;height: 50px;"
       >
-      <el-menu-item index="/hgd" >
+      <el-menu-item index="/" >
         <i class="el-icon-location"></i>
         <span slot="title">Home</span>
       </el-menu-item>
       <el-submenu index="2"  >
         <template slot="title"><i class="el-icon-menu"></i>Browse</template>
-        <el-menu-item index="/hgd/gene" class="submenu">Homolog Gene</el-menu-item>
+        <el-menu-item index="/gene" class="submenu">Homolog Gene</el-menu-item>
         <!-- <el-menu-item index="/gene-detail">Gene</el-menu-item> -->
-        <el-menu-item index="/hgd/traits" class="submenu">Traits</el-menu-item>
-        <el-menu-item index="/hgd/variants" class="submenu">Variants</el-menu-item>
-        <el-menu-item index="/hgd/expression" class="submenu">Expression</el-menu-item>
-        <el-menu-item index="/hgd/go" class="submenu">Gene Ontology</el-menu-item>
-        <el-menu-item index="/hgd/species" class="submenu">Species</el-menu-item>
+        <el-menu-item index="/traits" class="submenu">Traits</el-menu-item>
+        <el-menu-item index="/variants" class="submenu">Variants</el-menu-item>
+        <el-menu-item index="/expression" class="submenu">Expression</el-menu-item>
+        <el-menu-item index="/go" class="submenu">Gene Ontology</el-menu-item>
+        <el-menu-item index="/species" class="submenu">Species</el-menu-item>
       </el-submenu>
-      <el-menu-item index="/hgd/documentation">
+      <el-menu-item index="/documentation">
         <i class="el-icon-document"></i>
         <span slot="title">Documentation</span>
       </el-menu-item>
-      <el-menu-item index="/hgd/downloads">
+      <el-menu-item index="/downloads">
         <i class="el-icon-download"></i>
         <span slot="title">Downloads</span>
       </el-menu-item>
-      <el-menu-item index="/hgd/statistics">
+      <el-menu-item index="/statistics">
         <i class="el-icon-setting"></i>
         <span slot="title">Statistics</span>
       </el-menu-item>
-      <el-menu-item index="/hgd/contact">
+      <el-menu-item index="/contact">
         <i class="el-icon-document"></i>
         <span slot="title">Contact</span>
       </el-menu-item>

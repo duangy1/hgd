@@ -17,62 +17,62 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/hgd',
+    path: '/',
     name: 'Home',
     component: Home
   },
   {
-    path: '/hgd/traits',
+    path: '/traits',
     name: 'Traits',
     component: Traits
   },
   {
-    path: '/hgd/species',
+    path: '/species',
     name: 'Species',
     component: Species
   },
   {
-    path: '/hgd/gene',
+    path: '/gene',
     name: 'Gene',
     component: Gene
   },
   {
-    path: '/hgd/gene-detail',
+    path: '/gene-detail',
     name: 'GeneDetail',
     component: GeneDetail
   },
   {
-    path: '/hgd/variants',
+    path: '/variants',
     name: 'Variants',
     component: Variants
   },
   {
-    path: '/hgd/statistics',
+    path: '/statistics',
     name: 'Statistics',
     component: Statistics
   },
   {
-    path: '/hgd/downloads',
+    path: '/downloads',
     name: 'Downloads',
     component: Downloads
   },
   {
-    path: '/hgd/expression',
+    path: '/expression',
     name: 'Expression',
     component: Expression
   },
   {
-    path: '/hgd/go',
+    path: '/go',
     name: 'Go',
     component: Go
   },
   {
-    path: '/hgd/documentation',
+    path: '/documentation',
     name: 'Documentation',
     component: Documentation
   },
   {
-    path: '/hgd/contact',
+    path: '/contact',
     name: 'Contact',
     component: Contact
   }
