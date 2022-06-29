@@ -686,7 +686,7 @@ export default {
    this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -726,7 +726,7 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -745,7 +745,7 @@ export default {
     let taxid1=rowValue.gwasOrgid;
     
     // 左侧基因请求接口
-    this.$axios.get("http://192.168.164.93:9500/hdb/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10")
+    this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10")
     .then(response=>{
       console.log("gwas response:",response);
       let datalist=response.data;
@@ -763,12 +763,12 @@ export default {
       let hdbid=item.hdbId;
       // let topTrait=item.traitName;
       console.log("item.hdbId:",item.hdbId);
-      this.$axios.get("http://192.168.164.93:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
         console.log("res:",res);
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
           let taxid2=res.data.gwasOrgid;
-          this.$axios.get("http://192.168.164.93:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
+          this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
             .then(response=>{
               console.log("gwas response22:",response);
               let datalist=response.data;
@@ -788,7 +788,7 @@ export default {
       
     })
     
-    // this.$axios.get("http://192.168.164.93:9401/api/traits-gwas-info",{params:{'hdbid': hdblist}}).then(res=>{
+    // this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits-gwas-info",{params:{'hdbid': hdblist}}).then(res=>{
     //     console.log("res:",res);
     // })
    },
@@ -815,12 +815,12 @@ export default {
       let hdbid=item.hdbId;
       // let topTrait=item.traitName;
       console.log("item.hdbId:",item.hdbId);
-      this.$axios.get("http://192.168.164.93:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
         console.log("res:",res);
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
           let taxid2=res.data.gwasOrgid;
-          this.$axios.get("http://192.168.164.93:9500/hdb/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
+          this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
             .then(response=>{
               console.log("gwas response22:",response);
               let datalist=response.data;
@@ -962,7 +962,7 @@ export default {
     // 根据动植物分开获取
     async getTraitData(traitId,classification,pagesize,pagenum,speciesName){
       console.log("params:",traitId,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://192.168.164.93:9401/api/traits",{params:{'classification': classification,'traitId':traitId,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits",{params:{'classification': classification,'traitId':traitId,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -984,15 +984,13 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(traitID,speciesType){
-      this.$axios.get('http://192.168.164.93:9401/api/species-trait',{params: {'traitID':traitID,speciesType: speciesType}})
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/species-trait',{params: {'traitID':traitID,speciesType: speciesType}})
         .then(response=>{
-          console.log("species res:",response);
           // 2是植物，1是动物
           if(speciesType=='plant'){
             this.querySpeciesList_plant=response.data;
           }else{
             this.querySpeciesList_animal=response.data;
-            // for((intem,index) of )
           }
       })
     },

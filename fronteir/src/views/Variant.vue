@@ -707,7 +707,7 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -762,8 +762,8 @@ export default {
     let BASEPATH;
     this.gwasInfoData=[];
     if(dataSource1.length!==0){
-      if(dataSource1.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="}
-      else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+      if(dataSource1.indexOf("v2")>0){BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV2/v2/variants/getlist?dataSource="}
+      else{BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV3/v2/variants/getlist?dataSource="}
       // let snpAll=i.snpList.join(',')
       let PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
       if(snpId1.length>0){
@@ -781,14 +781,14 @@ export default {
     let PATH;
     console.log("gwasOrgId:",gwasOrgId);
     if(dataSource2.length>0){
-      this.$axios.get("http://192.168.164.93:9401/api/var-snpid",{params:{'hdbId': hdbid,"varName":varName}}).then(res=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/var-snpid",{params:{'hdbId': hdbid,"varName":varName}}).then(res=>{
           console.log("res:",res);
           if(res.data.length !==0){
             let BASEPATH;
             let snpId2=res.data;
             this.gwasLoading=true;
-            if(dataSource2.indexOf("v2")>0){BASEPATH="http://192.168.164.14:9042/gvmRESTV2/v2/variants/getlist?dataSource="
-            }else{BASEPATH="http://192.168.164.14:9201/gvmRESTV3/v2/variants/getlist?dataSource="}
+            if(dataSource2.indexOf("v2")>0){BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV2/v2/variants/getlist?dataSource="
+            }else{BASEPATH="https://ngdc.cncb.ac.cn/gvmRESTV3/v2/variants/getlist?dataSource="}
             PATH=BASEPATH+dataSource2+"&snplist="+snpId2;
           }
         }).finally(
@@ -975,7 +975,7 @@ export default {
     // 根据动植物分开获取
     async getTraitData(varname,classification,pagesize,pagenum,speciesName){
       console.log("params:",varname,classification,pagesize,pagenum,speciesName);
-      this.$axios.get("http://192.168.164.93:9401/api/variants",{params:{'classification': classification,'varname':varname,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/variants",{params:{'classification': classification,'varname':varname,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -997,7 +997,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(varName,speciesType){
-      this.$axios.get('http://192.168.164.93:9401/api/species-var',{params: {"varName":varName,speciesType: speciesType}})
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-var',{params: {"varName":varName,speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType=='plant'){

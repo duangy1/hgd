@@ -628,6 +628,7 @@ export default {
       this.getGoData(this.traitItem.traitId,this.classification,this.pageSize,1,this.form.querySpecies)
     },
     handleCurrentChange(val) {
+      console.log("this.classification:",this.classification);
       if(this.classification=="animal"){
         this.loading_animal=true;
       }else{
@@ -645,6 +646,7 @@ export default {
       return data.label.indexOf(value) !== -1;
     },
     getInfoByTrait(value, data) {
+      console.log("value, data:",value, data);
       this.traitItem.traitName=value.label;
       this.traitItem.traitId=value.goId;
       this.traitItem.definition=value.definition;
@@ -680,7 +682,8 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+        console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
         this.orthoTableData.push(item)
@@ -702,7 +705,7 @@ export default {
     this.drawer = true;
    },
   showGwasInfoTable(rowValue,index){
-    
+
     let ortholist=[];
     let hdblist=[rowValue.hdbId]
     rowValue.speciesListData.forEach((id,idx)=>{
@@ -715,7 +718,7 @@ export default {
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
-      this.$axios.get("http://192.168.164.93:9401/api/gene-go",{params:{'hdbid': hdbid}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-go",{params:{'hdbid': hdbid}})
         .then(response=>{
           this.gwasInfoData=this.gwasInfoData.concat(response.data);
           this.gwasLoading=false;
@@ -738,6 +741,10 @@ export default {
     },
    
     searchFilter(){
+      // this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits/ortho-data",{params:{"orthoSpecies":value.orthoSpecies,"querySpecies":value.querySpecies,"traitId":traitId}})
+      // .then(response=>{
+      //     console.log("searchFilter:",response);
+      // })
       if(this.classification=="animal"){
         this.loading_animal=true;
       }else{
@@ -841,7 +848,7 @@ export default {
     // 主要获取数据的方法
     // 根据动植物分开获取
     async getGoData(goName,classification,pagesize,pagenum,speciesName){
-      this.$axios.get("http://192.168.164.93:9401/api/godata",{params:{'topGoid':goName,'classification':classification,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/godata",{params:{'topGoid':goName,'classification':classification,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
       .then((response) => {
         if(classification=="animal"){
           this.getSpecies(goName,'animal')
@@ -860,7 +867,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(topGoId,speciesType){
-      this.$axios.get('http://192.168.164.93:9401/api/species-go',{params: {"topGoId":topGoId,speciesType: speciesType}})
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-go',{params: {speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType=='plant'){
@@ -879,7 +886,7 @@ export default {
     this.loading_plant=true;
 
     // let hdbId = this.$route.query.hdbId;
-    
+
     // let taxonId=this.$route.query.taxonId;
     this.getGoData(this.traitItem.traitId,"animal",this.pageSize,1,"")
     this.getGoData(this.traitItem.traitId,"plant",this.pageSize,1,"")

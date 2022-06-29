@@ -333,7 +333,7 @@ export default {
     });
     },
      getSpeciesByClass(paramclass){
-      this.$axios.get("http://192.168.164.93:9401/api/species-by-class",{params:{'classification' : paramclass}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-by-class",{params:{'classification' : paramclass}})
        .then(response=>{
           this.speciesData=response.data;
           this.totalSize=response.data.length;
@@ -341,7 +341,7 @@ export default {
       })
     },
     getHomologBetweenSpecies(paramclass){
-      // this.$axios.get("http://192.168.164.93:9401/api/species-by-class",{params:{'classification' : paramclass}})
+      // this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-by-class",{params:{'classification' : paramclass}})
       //  .then(response=>{
       //     console.log("species:",response);
       //     this.speciesData=response.data;
@@ -371,7 +371,7 @@ export default {
   },
   mounted(){
     // 获取上方物种饼图和表格的数据
-    this.$axios.get("http://192.168.164.93:9401/api/species-all").then(response=>{
+    this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-all").then(response=>{
       this.speciesData=response.data;
       this.totalSize=response.data.length;
       this.speciesTableData=this.speciesData.slice(0,this.pageSize)
@@ -379,7 +379,7 @@ export default {
       this.speciesLoading=false
     })
     // 接口获取heatmap数据
-    //  this.$axios.get("http://192.168.164.93:9401/api/speciesname-all").then(response=>{
+    //  this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/speciesname-all").then(response=>{
     //   console.log("species:",response);
     //   // 返回值data两个列表，一个是speciesName,一个是obj包含value等信息
       // this.heatmap.speciesName=response.data[0];

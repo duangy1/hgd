@@ -566,7 +566,7 @@ export default {
             let speciesName=orthoItem.commonName.slice(0,3)
             let params= {'hdbId': hdbId}
             if(key=="expression"){params= {'hdbId': hdbId,'classification':this.classification}}
-            this.$axios.get("http://192.168.164.93:9401/api/gene-detail-"+key,{params})
+            this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-"+key,{params})
             .then(response=>{
                 if(response.data.length>0){
                     num+=response.data.length;
@@ -947,7 +947,7 @@ export default {
     this.$axios
     // 获取gene basic info的接口，目前是查询entrez id
     // 返回两个list数据，0是gbiinfo，1是ortholist
-      .get('http://192.168.164.93:9401/api/gene-detail',{params: {'hdbId': hdbId, 'taxonid': taxonId}})
+      .get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail',{params: {'hdbId': hdbId, 'taxonid': taxonId}})
       .then(response => {
         this.loading=false;
         let genedetail = response.data[0];
@@ -1035,7 +1035,7 @@ export default {
         this.classification=this.geneBasicInfo.speciesName.classification;
 
         // console.log("classification:",classification);
-        this.$axios.get('http://192.168.164.93:9401/api/gene-detail-go-1',{params: {'hdbId': hdbId}}).then(response=>{
+        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-go-1',{params: {'hdbId': hdbId}}).then(response=>{
             if(response.data.length>0){
                 this.goloading=false;
                 // this.goList=response.data
@@ -1046,7 +1046,7 @@ export default {
                 }
             }
         })
-        this.$axios.get('http://192.168.164.93:9401/api/gene-detail-var-1',{params: {'hdbId': hdbId}}).then(response=>{
+        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-var-1',{params: {'hdbId': hdbId}}).then(response=>{
             console.log("var response:",response.data);
             if(response.data.length>0){
             let svgContainer = d3.select("#svg-container-var").append("svg").attr("width", "98%").attr("height", svg_height).attr('id', 'svgcontainer-var');
@@ -1055,18 +1055,18 @@ export default {
             }
         })
         // let traitGeneName="Os05g0556300"
-        this.$axios.get('http://192.168.164.93:9401/api/gene-detail-trait-1',{params: {'hdbId': hdbId}}).then(response=>{
+        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-trait-1',{params: {'hdbId': hdbId}}).then(response=>{
             let svgContainer = d3.select("#svg-container-trait").append("svg").attr("width", "98%").attr("height", svg_height).attr('id', 'svgcontainer-trait');
             console.log("trait:",response.data);
             if(response.data.length>0){
                 this.drawGoRectChart(response.data,svgContainer,"trait",specName,symbol)
             }
         })
-        this.$axios.get('http://192.168.164.93:9401/api/species-list',{params: {'taxonId': ""+taxonId}}).then(response=>{
+        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-list',{params: {'taxonId': ""+taxonId}}).then(response=>{
             console.log("species:",response.data);
             this.species=response.data
         })
-        this.$axios.get('http://192.168.164.93:9401/api/gene-detail-expression-1',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
+        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-expression-1',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
             let svgContainer = d3.select("#svg-container-expression").append("svg").attr("width", "1450px").attr("height", svg_height).attr('id', 'svgcontainer-expression');
             console.log("expression:",response.data);
             // this.species=response.data

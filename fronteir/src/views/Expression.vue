@@ -654,7 +654,7 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://192.168.164.93:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
         item.ensemblGeneId=res.data.ensemblGeneId;
         item.geneSymbol=res.data.geneSymbol
@@ -696,7 +696,7 @@ export default {
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
-      this.$axios.get("http://192.168.164.93:9401/api/expression-gene",{params:{'hdbId': hdbid}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/expression-gene",{params:{'hdbId': hdbid}})
       .then(response=>{
         console.log("gwas response:",response);
         this.gwasInfoData=this.gwasInfoData.concat(response.data);
@@ -805,8 +805,7 @@ export default {
     // 根据动植物分开获取
     async getTraitData(expName,classification,pagesize,pagenum,speciesName){
       console.log("params:",expName,classification,pagesize,pagenum,speciesName);
-      
-      this.$axios.get("http://192.168.164.93:9401/api/expression-data",{params:{'classification': classification,'expName':expName,'length':pagesize,'pageNo':pagenum,'taxonid':speciesName}})
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/expression-data",{params:{'classification': classification,'expName':expName,'length':pagesize,'pageNo':pagenum,'taxonid':speciesName}})
       .then((response) => {
         console.log("response:",response);
         if(classification=="animal"){
@@ -826,7 +825,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(expName,speciesType){
-      this.$axios.get('http://192.168.164.93:9401/api/species-exp',{params: {"expName":expName,speciesType: speciesType}})
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/species-exp',{params: {"expName":expName,speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType=='plant'){

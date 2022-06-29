@@ -75,7 +75,7 @@ const routes = [
     path: '/hgd/contact',
     name: 'Contact',
     component: Contact
-  },
+  }
   // {
   //   path: '/about',
   //   name: 'About',
@@ -88,7 +88,8 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  //base: process.env.BASE_URL,
+  base: '/hgd',
   routes
 })
 

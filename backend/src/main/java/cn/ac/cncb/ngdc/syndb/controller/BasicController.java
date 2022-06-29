@@ -31,6 +31,15 @@ public class BasicController {
     @Autowired
     private BasicService basicService;
 
+    @RequestMapping(value="/", method=RequestMethod.GET)
+    @ResponseBody
+    public String test(HttpServletRequest request){
+        System.out.println("hello");
+        String res = "hello";
+        return res;
+    }
+
+
     @RequestMapping(value="getSpecies", method=RequestMethod.GET)
     @ResponseBody
     public List<SpeciesInfo> getSpecies(Integer speciesType, HttpServletRequest request){
