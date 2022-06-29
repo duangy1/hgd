@@ -201,7 +201,7 @@
     
     </div> -->
      <div class="section-title">
-        <a href="http://192.168.164.93:9405/species" style="text-decoration:none"><h5 class="full-list">More...</h5></a>
+        <a href="https://ngdc.cncb.ac.cn/hgd/species" style="text-decoration:none"><h5 class="full-list">More...</h5></a>
     </div>
     </div>
   
