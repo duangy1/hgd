@@ -77,7 +77,7 @@
   </select>
 
   <select id="speciesNameListforVar" resultType="String">
-    select distinct(species_common_name) from variation_all where var_name=#{traitID} and classification=#{speciesType} and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
+    select distinct(species_common_name) from variation_all where var_name=#{varName} and classification=#{speciesType} and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
   </select>
 
   <select id="speciesNameListforGo" resultMap="BaseResultMap">
