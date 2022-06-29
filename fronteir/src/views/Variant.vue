@@ -434,12 +434,12 @@
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with variant annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same variant annotation</div>  
           </div>
         </div>
         <el-pagination
