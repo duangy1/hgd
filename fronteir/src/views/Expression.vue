@@ -691,8 +691,19 @@ export default {
         ortholist.push(item)
         hdblist.push(item.hdbId)
     }})
-    this.orthoTableData=ortholist;
-    this.orthoLoading=false;
+
+     ortholist.forEach(item=>{
+      let hdbid=item.hdbId;
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+        console.log("gene res:",res);
+        item.ensemblGeneId=res.data.ensemblGeneId;
+        item.geneSymbol=res.data.geneSymbol
+        this.orthoTableData.push(item)
+        this.orthoLoading=false;
+      })
+    })
+    // this.orthoTableData=ortholist;
+    // this.orthoLoading=false;
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
