@@ -402,7 +402,7 @@
                                 class="sppb-article-introtext">
 								<!-- <p>37 species</p> -->
                             <div class="wraper-num">
-                              <div id="num"><a href="./gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog Protein Pairs</div> 
+                              <div id="num"><a href="./gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog protein pairs</div> 
                             </div>
                                 <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
@@ -444,7 +444,7 @@
 								<p>13,209 homolog gene</p> -->
                                 <div class="wraper-num">
                                   <div id="num"><a href="./traits" class="speciesNum">{{traitNum}}</a></div>
-                                  <div class="speciesNum1"> Homolog Genes with specific trait</div> 
+                                  <div class="speciesNum1"> Homolog genes with specific trait</div> 
                                   <!-- <div id="num" class="speciesNum">{{traitGeneNum}}</div>
                                   <div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> homolog gene</div>  -->
 
@@ -528,7 +528,7 @@
 								<p>55 expression ontology term</p>
 								<p>403,655 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="./expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> homolog genes with expression</div> 
+                                  <div id="num"><a href="./expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> Homolog genes with expression</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
@@ -565,7 +565,7 @@
 								<p>58 gene ontology term</p>
 								<p>384,684 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="./go" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> homolog genes with gene ontology</div> 
+                                  <div id="num"><a href="./go" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> Homolog genes with gene ontology</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore finalread"
