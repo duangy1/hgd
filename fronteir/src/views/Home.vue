@@ -715,7 +715,7 @@ export default {
   mounted(){
     var yuanshu = 37//数据变化前的初始数值
     let homoProteinNum=23399653
-    let strhomoProteinNum="233,996,53"
+    let strhomoProteinNum="23,399,653"
     let traitGeneNum0=14637;
     let strtraitGeneNum0="14,637"
     let traitNum0=14637;
