@@ -106,7 +106,7 @@
             <el-table-column align="center" class="titleCell" prop="varName" label="Consequence Type" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
                <template slot-scope="scope">
-                <a :href="'/gene-detail?hdbId='+scope.row.hdbid+'&taxonId='+scope.row.taxonId">
+                <a :href="'./gene-detail?hdbId='+scope.row.hdbid+'&taxonId='+scope.row.taxonId">
                     {{ scope.row.geneId }}
                 </a>
               </template>
@@ -378,7 +378,7 @@
             <el-table-column align="center" class="titleCell" prop="varName" label="Consequence Type" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
                <template slot-scope="scope">
-                <a :href="'/gene-detail?hdbId='+scope.row.hdbid+'&taxonId='+scope.row.taxonId">
+                <a :href="'./gene-detail?hdbId='+scope.row.hdbid+'&taxonId='+scope.row.taxonId">
                     {{ scope.row.geneId }}
                 </a>
               </template>

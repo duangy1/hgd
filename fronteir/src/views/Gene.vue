@@ -337,7 +337,7 @@ export default {
 		closeTag(tag){
 			let index = this.tags.indexOf(tag);
 			this.tags.splice(index,1);
-			window.location.href="/gene";
+			window.location.href="./gene";
 		},
 		reset(){
 			this.checkSpAnimalList=[];
@@ -345,6 +345,7 @@ export default {
 			this.govalue=[];
 			this.variantvalue=[];
 			this.expvalue=[];
+			this.tags=[];
 			this.$router.push({
 				path: '/gene'
 			})

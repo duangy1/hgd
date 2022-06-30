@@ -864,6 +864,7 @@ export default {
                 }
 				}
 				}
+				this.varLoading=false;
             }else if(dataclass=="go"){
                 i.goList=i.goList.join(",")
                 this.goInfoData=[i]
