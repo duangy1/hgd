@@ -299,21 +299,21 @@
 								<div class="service">
 									<i class="fa fa-clipboard"></i>
 									<h2>Multiple Resources</h2>
-									<p>Curated data from Inparanoid,Hieranoid,EggNog,Treefam and Panther database</p>
+									<p>Curated data from Inparanoid, Hieranoid, EggNog, Treefam and Panther database</p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="service">
 									<i class="fa fa-archive"></i>
 									<h2>Various Annotations</h2>
-									<p>Integrate traits,variants,expression and gene ontology data</p>
+									<p>Integrate traits, variants, expression and gene ontology data</p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="service">
 									<i class="fa fa-users"></i>
 									<h2>User-Friendly</h2>
-									<p>Browse,search and download without limitation</p>
+									<p>Browse, search and download without limitation</p>
 								</div>
 							</div>
 						</div>
