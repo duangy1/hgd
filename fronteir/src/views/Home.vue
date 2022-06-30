@@ -299,21 +299,21 @@
 								<div class="service">
 									<i class="fa fa-clipboard"></i>
 									<h2>Multiple Resources</h2>
-									<p>Curated data from Inparanoid,Hieranoid,EggNog,Treefam and Panther database</p>
+									<p>Curated data from Inparanoid, Hieranoid, EggNog, Treefam and Panther database</p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="service">
 									<i class="fa fa-archive"></i>
 									<h2>Various Annotations</h2>
-									<p>Integrate traits,variants,expression and gene ontology data</p>
+									<p>Integrate traits, variants, expression and gene ontology data</p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="service">
 									<i class="fa fa-users"></i>
 									<h2>User-Friendly</h2>
-									<p>Browse,search and download without limitation</p>
+									<p>Browse, search and download without limitation</p>
 								</div>
 							</div>
 						</div>
@@ -402,7 +402,7 @@
                                 class="sppb-article-introtext">
 								<!-- <p>37 species</p> -->
                             <div class="wraper-num">
-                              <div id="num"><a href="./gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog Protein Pairs</div> 
+                              <div id="num"><a href="./gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog protein pairs</div> 
                             </div>
                                 <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
@@ -444,7 +444,7 @@
 								<p>13,209 homolog gene</p> -->
                                 <div class="wraper-num">
                                   <div id="num"><a href="./traits" class="speciesNum">{{traitNum}}</a></div>
-                                  <div class="speciesNum1"> Homolog Genes with specific trait</div> 
+                                  <div class="speciesNum1"> Homolog genes with specific trait</div> 
                                   <!-- <div id="num" class="speciesNum">{{traitGeneNum}}</div>
                                   <div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> homolog gene</div>  -->
 
@@ -528,7 +528,7 @@
 								<p>55 expression ontology term</p>
 								<p>403,655 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="./expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> homolog genes with expression</div> 
+                                  <div id="num"><a href="./expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> Homolog genes with expression</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
@@ -565,7 +565,7 @@
 								<p>58 gene ontology term</p>
 								<p>384,684 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="./go" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> homolog genes with gene ontology</div> 
+                                  <div id="num"><a href="./go" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> Homolog genes with gene ontology</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore finalread"
@@ -635,6 +635,9 @@
         </div>
        
       
+      </div>
+      <div style="display:none;width:200px;">
+        <div v-is="'script'" type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5uyqajk0hjt&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;br=5&amp;sx=0" async="async"></div>
       </div>
     </div>
     <FooterBar />
@@ -712,11 +715,11 @@ export default {
   mounted(){
     var yuanshu = 37//数据变化前的初始数值
     let homoProteinNum=23399653
-    let strhomoProteinNum="233,996,53"
-    let traitGeneNum0=13209;
-    let strtraitGeneNum0="13,209"
-    let traitNum0=13209;
-    let strtraitNum="13,209";
+    let strhomoProteinNum="23,399,653"
+    let traitGeneNum0=14637;
+    let strtraitGeneNum0="14,637"
+    let traitNum0=14637;
+    let strtraitNum="14,637";
     let varNum0=146621;
     let strvarNum0='146,621'
     let expNum0=403655;
