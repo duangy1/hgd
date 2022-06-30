@@ -8506,18 +8506,7 @@
         }
       ]
     },
-    {
-      "id": 2,
-      "name": "Goat",
-      "data": [
-        {
-          "subid": 1,
-          "name": "Goat_Trait_Homolog.gz",
-          "filesize": "12.3M",
-          "address": "https://download.cncb.ac.cn/hgd/trait/Goat_Trait_Homolog.gz"
-        }
-      ]
-    },
+   
     {
       "id": 3,
       "name": "Soybean",
@@ -8578,18 +8567,7 @@
         }
       ]
     },
-    {
-      "id": 8,
-      "name": "Sheep",
-      "data": [
-        {
-          "subid": 1,
-          "name": "Sheep_Trait_Homolog.gz",
-          "filesize": "12.3M",
-          "address": "https://download.cncb.ac.cn/hgd/trait/Sheep_Trait_Homolog.gz"
-        }
-      ]
-    },
+   
     {
       "id": 9,
       "name": "Rice",
@@ -8611,18 +8589,6 @@
           "name": "Maize_Trait_Homolog.gz",
           "filesize": "12.3M",
           "address": "https://download.cncb.ac.cn/hgd/trait/Maize_Trait_Homolog.gz"
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "name": "GiantPanda",
-      "data": [
-        {
-          "subid": 1,
-          "name": "GiantPanda_Trait_Homolog.gz",
-          "filesize": "12.3M",
-          "address": "https://download.cncb.ac.cn/hgd/trait/GiantPanda_Trait_Homolog.gz"
         }
       ]
     }

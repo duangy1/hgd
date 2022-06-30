@@ -636,6 +636,9 @@
        
       
       </div>
+      <div style="display:none;width:200px;">
+        <div v-is="'script'" type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5uyqajk0hjt&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;br=5&amp;sx=0" async="async"></div>
+      </div>
     </div>
     <FooterBar />
   
@@ -713,10 +716,10 @@ export default {
     var yuanshu = 37//数据变化前的初始数值
     let homoProteinNum=23399653
     let strhomoProteinNum="233,996,53"
-    let traitGeneNum0=13209;
-    let strtraitGeneNum0="13,209"
-    let traitNum0=13209;
-    let strtraitNum="13,209";
+    let traitGeneNum0=14637;
+    let strtraitGeneNum0="14,637"
+    let traitNum0=14637;
+    let strtraitNum="14,637";
     let varNum0=146621;
     let strvarNum0='146,621'
     let expNum0=403655;
