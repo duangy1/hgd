@@ -79,14 +79,14 @@
 
 
       <div class="engineer-item">
-        <a href="./gene?taxid1=9913"><img src="/hgd/img/species/cattle.svg" alt="Engineer" with="100" height="100">
+        <a href="./gene?taxid1=9913&name1=Cattle"><img src="/hgd/img/species/cattle.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
           <h4><i>Bos taurus</i></h4>
         </div></a>
       </div>
 
       <div class="engineer-item">
-       <a href="./gene?taxid1=9031"><img src="/hgd/img/species/chicken.svg" alt="Engineer" with="100" height="100">
+       <a href="./gene?taxid1=9031&name1=Chicken"><img src="/hgd/img/species/chicken.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
           <h4><i>Gallus gallus</i></h4>
         </div>
@@ -115,27 +115,27 @@
       -->
       
       <div class="engineer-item">
-      <a href="./gene?taxid1=9823"><img src="/hgd/img/species/pig.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=9823&name1=Pig"><img src="/hgd/img/species/pig.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Sus scrofa</i></h4>
       </div></a>
       </div>
       
       <div class="engineer-item">
-      <a href="./gene?taxid1=4530"><img src="/hgd/img/species/rice.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=4530&name1=Rice"><img src="/hgd/img/species/rice.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Oryza sativa</i></h4>
       </div></a>
       </div>
       <div class="engineer-item">
-      <a href="./gene?taxid1=4577"><img src="/hgd/img/species/maize.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=4577&name1=Maize"><img src="/hgd/img/species/maize.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Zea mays</i></h4>
       </div></a>
       </div>
 
       <div class="engineer-item">
-      <a href="./gene?taxid1=3708"><img src="/hgd/img/species/rapseed.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=3708&name1=Rapeseed"><img src="/hgd/img/species/rapseed.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Brassica napus</i></h4>
       </div></a>

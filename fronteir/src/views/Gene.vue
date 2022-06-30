@@ -634,14 +634,27 @@ export default {
                        if(expselect.length>0){
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
-                        
+                        var type= this.$route.query.type;
+						if(type == null){
+							type=-1;
+						}
+			
+			
+						var keyword=this.$route.query.keyword;
+						if(keyword != null && keyword.length >0 ){
+							
+							if(type == null){
+								type=8;
+
+							}
+						}	
 
                          const axiosInstance1 = this.$axios.create({
                             headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
@@ -1087,6 +1100,11 @@ export default {
 	var name1=this.$route.query.name1;
 	if(name1 != null && name1.length >0 ){
 		this.tags.push({'name':name1});
+	}else{
+		if(taxonid != null && taxonid.length >0 ){
+			this.tags.push({'name':taxonid});
+		}
+	
 	}
 
 	var taxonid2 = this.$route.query.taxid2;
