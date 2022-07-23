@@ -134,7 +134,7 @@
     </if>
 
     <if test="golist != null">
-        and a.hdb_gene_id in (select hdb_gene_id from gene_go_all where go_id in
+        and a.hdb_gene_id in (select hdb_gene_id from gene_go_all where top_go_id in
         <foreach item="gene" index="index" collection="golist"  open="(" separator="," close=")">
           #{gene}
         </foreach>

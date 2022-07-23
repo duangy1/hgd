@@ -463,7 +463,7 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
                         var type= this.$route.query.type;
-						if(type == null){
+						if(type == null || type.length==0){
 							type=-1;
 						}
 			
@@ -552,7 +552,7 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
 						var type= this.$route.query.type;
-						if(type == null){
+						if(type == null || type.length==0){
 							type=-1;
 						}
 			
@@ -635,7 +635,7 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         }                        
                         var type= this.$route.query.type;
-						if(type == null){
+						if(type == null || type.length==0){
 							type=-1;
 						}
 			
@@ -720,7 +720,7 @@ export default {
                         }                        
                         
 						var type= this.$route.query.type;
-						if(type == null){
+						if(type == null || type.length==0){
 							type=-1;
 						}
 			
@@ -802,7 +802,7 @@ export default {
                         }    
 
 						var type= this.$route.query.type;
-						if(type == null){
+						if(type == null || type.length==0){
 							type=-1;
 						}
 			
@@ -905,7 +905,7 @@ export default {
                              expselect =expselect.substring(0,expselect.length-1);
                         }  
 						var type= this.$route.query.type;
-						if(type == null){
+						if(type == null || type.length==0){
 							type=-1;
 						}
 			
@@ -1010,7 +1010,7 @@ export default {
                         } 
               
 						var type= this.$route.query.type;
-						if(type == null){
+						if(type == null || type.length==0){
 							type=-1;
 						}
 			

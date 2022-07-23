@@ -224,6 +224,11 @@ public class OrthologGeneController {
             }
 
 
+        }else if(type == -1){
+
+            if(keyword != null && keyword.length() >0 ) {
+                param.put("allfield", keyword);
+            }
         }
 
         if(orthtaxonlist!= null && orthtaxonlist.size() >0 ){
