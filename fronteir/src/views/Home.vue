@@ -64,14 +64,14 @@
       <div class="engineer-slider owl-theme owl-carousel" style="padding-top:30px;">
 
       <!-- <div class="engineer-item">
-		<a href="/gene?taxonid=9606"> <img src="/hgd/img/species/Homo_sapiens.svg" alt="Engineer">
+		<a href="/gene?taxonid=9606"> <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer">
         <div class="engineer-bottom">
           <h4>Homo sapines</h4>
         </div>
 		</a>
       </div> -->
       <!-- <div class="engineer-item">
-      <img src="/hgd/img/species/Danio_rerio.svg" alt="Engineer">
+      <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
       <div class="engineer-bottom">
       <h4>Danio rerio</h4>
       </div>
@@ -79,14 +79,14 @@
 
 
       <div class="engineer-item">
-        <a href="./gene?taxid1=9913&name1=Cattle"><img src="/hgd/img/species/cattle.svg" alt="Engineer" with="100" height="100">
+        <a href="./gene?taxid1=9913&name1=Cattle"><img src="../assets/img/species/cattle.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
           <h4><i>Bos taurus</i></h4>
         </div></a>
       </div>
 
       <div class="engineer-item">
-       <a href="./gene?taxid1=9031&name1=Chicken"><img src="/hgd/img/species/chicken.svg" alt="Engineer" with="100" height="100">
+       <a href="./gene?taxid1=9031&name1=Chicken"><img src="../assets/img/species/chicken.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
           <h4><i>Gallus gallus</i></h4>
         </div>
@@ -115,27 +115,27 @@
       -->
       
       <div class="engineer-item">
-      <a href="./gene?taxid1=9823&name1=Pig"><img src="/hgd/img/species/pig.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=9823&name1=Pig"><img src="../assets/img/species/pig.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Sus scrofa</i></h4>
       </div></a>
       </div>
       
       <div class="engineer-item">
-      <a href="./gene?taxid1=4530&name1=Rice"><img src="/hgd/img/species/rice.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=4530&name1=Rice"><img src="../assets/img/species/rice.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Oryza sativa</i></h4>
       </div></a>
       </div>
       <div class="engineer-item">
-      <a href="./gene?taxid1=4577&name1=Maize"><img src="/hgd/img/species/maize.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=4577&name1=Maize"><img src="../assets/img/species/maize.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Zea mays</i></h4>
       </div></a>
       </div>
 
       <div class="engineer-item">
-      <a href="./gene?taxid1=3708&name1=Rapeseed"><img src="/hgd/img/species/rapseed.svg" alt="Engineer" with="100" height="100">
+      <a href="./gene?taxid1=3708&name1=Rapeseed"><img src="../assets/img/species/rapseed.svg" alt="Engineer" with="100" height="100">
       <div class="engineer-bottom">
       <h4><i>Brassica napus</i></h4>
       </div></a>
@@ -201,7 +201,7 @@
     
     </div> -->
      <div class="section-title">
-        <a href="https://ngdc.cncb.ac.cn/hgd/species" style="text-decoration:none"><h5 class="full-list">More...</h5></a>
+        <a href="./species" style="text-decoration:none"><h5 class="full-list">More...</h5></a>
     </div>
     </div>
   
@@ -339,7 +339,7 @@
                               href="./gene"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="/hgd/img/blog1.jpg"
+                                src="../assets/img/blog1.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
@@ -382,7 +382,7 @@
                               href="./gene"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="/hgd/img/blog5.jpg"
+                                src="../assets/img/blog5.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
@@ -421,7 +421,7 @@
                               href="./traits"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="/hgd/img/blog2.jpg"
+                                src="../assets/img/blog2.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
@@ -465,7 +465,7 @@
                               href="./variants"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="/hgd/img/blog3.jpg"
+                                src="../assets/img/blog3.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
@@ -503,7 +503,7 @@
                               href="./expression"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="/hgd/img/blog4.jpg"
+                                src="../assets/img/blog4.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
@@ -545,7 +545,7 @@
                               href="./go"
                               itemprop="url"><img
                                 class="sppb-img-responsive"
-                                src="/hgd/img/blog5.jpg"
+                                src="../assets/img/blog5.jpg"
                                 itemprop="thumbnailUrl"
                                 loading="lazy"></a>
                             <div
