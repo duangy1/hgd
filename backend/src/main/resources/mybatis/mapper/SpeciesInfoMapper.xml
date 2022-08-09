@@ -73,7 +73,7 @@
   </select>
 
   <select id="speciesNameListforTrait" resultType="String">
-    select distinct(species_common_name) from trait_all_1 where trait_id=#{traitID} and classification=#{speciesType} and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
+    select distinct(species_common_name) from trait_all_copy1 where trait_id=#{traitID} and classification=#{speciesType} and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
   </select>
 
   <select id="speciesNameListforVar" resultType="String">

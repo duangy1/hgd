@@ -37,6 +37,7 @@ public class GeneDetailService {
         GeneBasicInfo geneInfo=geneList.get(0);
         SpeciesInfo speciesName=speciesInfoMapper.findSpeciesByTaxon(taxonid);
         geneInfo.setSpeciesName(speciesName);
+//        这里是画热图左侧显示基因id的选择，symbol->ensemblid->entrez id->hdb id
         String gene=new String();
         if(geneInfo != null ){
             if(geneInfo.getGeneSymbol() != null && geneInfo.getGeneSymbol().length()>0){
@@ -72,10 +73,7 @@ public class GeneDetailService {
 
     //获取绘制热图的go Ontology和基因注释信息
     public List selectBasicGo(String hdbId){
-//        if(classification.equals("others")){classification="animal";}
-//        String tableName="gene_go_"+classification;
         List<GeneGo> goGeneInfoList= geneGoMapper.goInfoOfGene(hdbId);
-
         List<GoBasicTerm> goBasicInfoList= geneGoInfoMapper.selectBasicGo();
         Integer numSum=0;
         if(goGeneInfoList.size() > 0) {
@@ -96,11 +94,10 @@ public class GeneDetailService {
                 }
             }
 
-        System.out.print("numSum:"+numSum+","+"hdbId:"+hdbId);
         if(numSum>0) {
             for (GoBasicTerm basicTerm : goBasicInfoList) {
                 if (basicTerm.getGoNum() != null) {
-                    float opaNum = (float) basicTerm.getGoNum() / numSum;
+                    float opaNum = (float) basicTerm.getGoNum() / 10;
                     basicTerm.setOpacity(opaNum);
                 } else {
                     basicTerm.setOpacity(0);
@@ -139,7 +136,7 @@ public class GeneDetailService {
                     //            根据species表得到查询vo具体条目的接口号
                     basicTerm.setDataSource(dataSource);
                     if (basicTerm.getSnpNum() != null) {
-                        float opaNum = (float) basicTerm.getSnpNum() / numSum;
+                        float opaNum = (float) basicTerm.getSnpNum() / 20;
                         basicTerm.setOpacity(opaNum);
                     } else {
                         basicTerm.setOpacity(0);
@@ -162,7 +159,7 @@ public class GeneDetailService {
         List<GeneGo> goGeneInfoList= geneGoMapper.goInfoOfGene(hdbId);
 
         List<GoBasicTerm> goBasicInfoList= geneGoInfoMapper.selectBasicGo();
-        Integer numSum=0;
+//        Integer numSum=0;
 
 //            循环查到的gene_go_info
         for (GeneGo goInfoItem : goGeneInfoList) {
@@ -170,18 +167,21 @@ public class GeneDetailService {
             String goId=goInfoItem.getGoId();
             String[] goIdList  = goId.split(",");
             Integer goSumNum=goInfoItem.getGoSumNum();
-            numSum += goSumNum;
-            GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
-            if(goItem==null){
-                System.out.print("goItem:"+goItem);
+//            numSum += goSumNum;
+            if(goBasicInfoList.size()>0) {
+                GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().orElse(null);
+                if(goItem==null){
+                    System.out.print("goItem:"+goItem);
+                }else {
+                    goItem.setGoNum(goSumNum);
+                    goItem.setGoList(goIdList);
+                }
             }
-            goItem.setGoNum(goSumNum);
-            goItem.setGoList(goIdList);
         }
 
         for (GoBasicTerm basicTerm : goBasicInfoList) {
             if (basicTerm.getGoNum() != null) {
-                float opaNum = (float) basicTerm.getGoNum() / numSum;
+                float opaNum = (float) basicTerm.getGoNum() / 20;
                 basicTerm.setOpacity(opaNum);
             } else {
                 basicTerm.setOpacity(0);
@@ -206,9 +206,11 @@ public class GeneDetailService {
             String[] snpList=varInfoItem.getSnpId().split(",");
             Integer snpNum=snpList.length;
             numSum += snpNum;
-            VOBasicTerm voItem=voInfoList.stream().filter(d->d.getVoAnnotaion().equals(varName)).findFirst().get();
-            voItem.setSnpNum(snpNum);
-            voItem.setSnpList(snpList);
+            VOBasicTerm voItem=voInfoList.stream().filter(d->d.getVoAnnotaion().equals(varName)).findFirst().orElse(null);
+            if(voItem != null) {
+                voItem.setSnpNum(snpNum);
+                voItem.setSnpList(snpList);
+            }
         }
 
         for (VOBasicTerm basicTerm : voInfoList) {
@@ -216,7 +218,7 @@ public class GeneDetailService {
             //            根据species表得到查询vo具体条目的接口号
             basicTerm.setDataSource(dataSource);
             if (basicTerm.getSnpNum() != null) {
-                float opaNum = (float) basicTerm.getSnpNum() / numSum;
+                float opaNum = (float) basicTerm.getSnpNum() / 20;
                 basicTerm.setOpacity(opaNum);
             } else {
                 basicTerm.setOpacity(0);
@@ -237,13 +239,15 @@ public class GeneDetailService {
             String[] gwasList=traitInfoItem.getGwasId().split(",");
             Integer gwasNum=gwasList.length;
             numSum += gwasNum;
-            TraitName traitItem=traitList.stream().filter(d->d.getTraitName().equals(traitName)).findFirst().get();
-            traitItem.setGwasNum(gwasNum);
-            traitItem.setGwasList(gwasList);
+            TraitName traitItem=traitList.stream().filter(d->d.getTraitName().equals(traitName)).findFirst().orElse(null);
+            if(traitItem!=null){
+                traitItem.setGwasNum(gwasNum);
+                traitItem.setGwasList(gwasList);
+            }
         }
         for(TraitName basicTerm:traitList){
             if(basicTerm.getGwasNum() != null){
-                float opaNum= (float)basicTerm.getGwasNum()/numSum;
+                float opaNum= (float)basicTerm.getGwasNum()/20;
                 basicTerm.setOpacity(opaNum);
             }else{
                 basicTerm.setOpacity(0);
@@ -262,14 +266,16 @@ public class GeneDetailService {
                 String[] gwasList = traitInfoItem.getGwasId().split(",");
                 Integer gwasNum = gwasList.length;
                 numSum += gwasNum;
-                TraitName traitItem = traitList.stream().filter(d -> d.getTraitName().equals(traitName)).findFirst().get();
-                traitItem.setGwasNum(gwasNum);
-                traitItem.setGwasList(gwasList);
+                TraitName traitItem = traitList.stream().filter(d -> d.getTraitName().equals(traitName)).findFirst().orElse(null);
+                if(traitItem!=null) {
+                    traitItem.setGwasNum(gwasNum);
+                    traitItem.setGwasList(gwasList);
+                }
             }
             if(numSum>0){
             for (TraitName basicTerm : traitList) {
                 if (basicTerm.getGwasNum() != null) {
-                    float opaNum = (float) basicTerm.getGwasNum() / numSum;
+                    float opaNum = (float) basicTerm.getGwasNum() / 20;
                     basicTerm.setOpacity(opaNum);
                 } else {
                     basicTerm.setOpacity(0);
@@ -307,28 +313,30 @@ public class GeneDetailService {
     public List<ExpressionTerm> expressionInfoList(String hdbId,String classification){
         List<GeneExpression> expressionInfoByGeneList =geneExpressionMapper.expressionInfoByGeneList(hdbId);
         List<ExpressionTerm> expressionList= expressionTermMapper.expressionInfoList(classification);
-        Integer numSum=0;
+//        Integer numSum=0;
         Integer genOrgid;
         if(expressionInfoByGeneList.size()>0) {
             genOrgid=expressionInfoByGeneList.get(0).getGenOrgId();
-            System.out.print("genOrgid:"+genOrgid);
+//            System.out.print("genOrgid:"+genOrgid);
             for (GeneExpression expressionInfoItem : expressionInfoByGeneList) {
                 String traitName = expressionInfoItem.getAnnotation();
                 String[] prjList = expressionInfoItem.getBioProjectId().split(",");
                 Integer gwasNum = prjList.length;
-                numSum += gwasNum;
+//                numSum += gwasNum;
 
-                ExpressionTerm expressionItem = expressionList.stream().filter(d -> d.getEoAnnotation().equals(traitName)).findFirst().get();
-                expressionItem.setPrjNum(gwasNum);
-                expressionItem.setPrjList(prjList);
-                expressionItem.setGeneId(expressionInfoItem.getGeneId());
-                expressionItem.setTaxonId(expressionInfoItem.getTaxonId());
+                ExpressionTerm expressionItem = expressionList.stream().filter(d -> d.getEoAnnotation().equals(traitName)).findFirst().orElse(null);
+                if(expressionItem!=null) {
+                    expressionItem.setPrjNum(gwasNum);
+                    expressionItem.setPrjList(prjList);
+                    expressionItem.setGeneId(expressionInfoItem.getGeneId());
+                    expressionItem.setTaxonId(expressionInfoItem.getTaxonId());
+                }
             }
 //            if(numSum>0) {
             for (ExpressionTerm basicTerm : expressionList) {
                 basicTerm.setGenOrgid(genOrgid);
                 if (basicTerm.getPrjNum() != null) {
-                    float opaNum = (float) basicTerm.getPrjNum() / numSum;
+                    float opaNum = (float) basicTerm.getPrjNum() / 20;
                     basicTerm.setOpacity(opaNum);
                 } else {
                     basicTerm.setOpacity(0);
@@ -349,21 +357,23 @@ public class GeneDetailService {
     public List<ExpressionTerm> expressionInfoList1(String hdbId,String classification){
         List<GeneExpression> expressionInfoByGeneList =geneExpressionMapper.expressionInfoByGeneList(hdbId);
         List<ExpressionTerm> expressionList= expressionTermMapper.expressionInfoList(classification);
-        Integer numSum=0;
+//        Integer numSum=0;
         for(GeneExpression expressionInfoItem : expressionInfoByGeneList){
             String traitName=expressionInfoItem.getAnnotation();
             String[] prjList=expressionInfoItem.getBioProjectId().split(",");
             Integer gwasNum=prjList.length;
-            numSum += gwasNum;
-            ExpressionTerm expressionItem=expressionList.stream().filter(d->d.getEoAnnotation().equals(traitName)).findFirst().get();
-            expressionItem.setPrjNum(gwasNum);
-            expressionItem.setPrjList(prjList);
-            expressionItem.setGeneId(expressionInfoItem.getGeneId());
-            expressionItem.setTaxonId(expressionInfoItem.getTaxonId());
+//            numSum += gwasNum;
+            ExpressionTerm expressionItem=expressionList.stream().filter(d->d.getEoAnnotation().equals(traitName)).findFirst().orElse(null);
+            if(expressionItem!=null) {
+                expressionItem.setPrjNum(gwasNum);
+                expressionItem.setPrjList(prjList);
+                expressionItem.setGeneId(expressionInfoItem.getGeneId());
+                expressionItem.setTaxonId(expressionInfoItem.getTaxonId());
+            }
         }
         for(ExpressionTerm basicTerm:expressionList){
             if(basicTerm.getPrjNum() != null){
-                float opaNum= (float)basicTerm.getPrjNum()/numSum;
+                float opaNum= (float)basicTerm.getPrjNum()/20;
                 basicTerm.setOpacity(opaNum);
             }else{
                 basicTerm.setOpacity(0);

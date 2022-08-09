@@ -180,6 +180,10 @@
   /* padding-left: 2%; */
   padding-top: 5px;
 }
+.gene-input{
+  float: left;
+  width: 15%;
+}
 .trait-title{
   border-left: 14px solid #6dafec;
   font-weight: 700;
@@ -187,6 +191,12 @@
   line-height: 1.2;
   margin-bottom: .5rem;
   font-size: 2rem;
+}
+.gene-info{
+  display: flex;
+}
+.el-descriptions__title{
+  font-size: 2rem !important;
 }
 .trait-sub-title{
   border-left: 14px solid #6dafec;
@@ -196,6 +206,17 @@
   margin-bottom: .5rem;
   font-size: 1.6rem;
   display: flex;
+}
+.gene-sub-title{
+  font-weight: 500;
+  padding: 0px 12px;
+  line-height: 1.2;
+  margin-bottom: .5rem;
+  font-size: 1.6rem;
+  display: flex;
+}
+#el-popover-512{
+  position: relative !important;
 }
 .trait-def{
   border-left:14px;
@@ -467,4 +488,5 @@ span{
 }
 .checkbox-box{
   display: grid !important;
+  grid-template-columns: 1fr 1fr;
 }

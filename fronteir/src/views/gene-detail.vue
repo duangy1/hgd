@@ -74,9 +74,15 @@
                             <a v-if="geneBasicInfo.refseqId!=='-'" target="_blank" :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a>
                             <div v-else>{{geneBasicInfo.refseqId}}</div>
                         </el-descriptions-item>
-                        <el-descriptions-item label="Gene Synonym">{{geneBasicInfo.geneSynonym}}</el-descriptions-item>
+                        <el-descriptions-item label="Gene Synonym">
+                            <div v-if="geneBasicInfo.geneSynonym!==''&& geneBasicInfo.geneSynonym">{{geneBasicInfo.geneSynonym}}</div>
+                            <div v-else>-</div>
+                        </el-descriptions-item>
                         <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
-                        <el-descriptions-item label="Gene Symbol">{{geneBasicInfo.geneSymbol}}</el-descriptions-item>
+                        <el-descriptions-item label="Gene Symbol">
+                            <div v-if="geneBasicInfo.geneSymbol!==''&& geneBasicInfo.geneSymbol">{{geneBasicInfo.geneSymbol}}</div>
+                            <div v-else>-</div>
+                        </el-descriptions-item>
                         <el-descriptions-item label="Species Name">{{geneBasicInfo.speciesName.commonName}}</el-descriptions-item>
                         <el-descriptions-item label="Chromosom">{{geneBasicInfo.chromosom}}</el-descriptions-item>
                         <el-descriptions-item label="Gene Start">{{geneBasicInfo.geneStart}}</el-descriptions-item>
@@ -120,7 +126,7 @@
                     <!-- <template slot-scope="scope"> -->
                     <el-table-column prop="commonName" label="Species" ></el-table-column>
                     <el-table-column prop="taxId" label="Taxon Id"></el-table-column>
-                    <el-table-column prop="ensembId" label="Ensembl Id"  ></el-table-column>
+                    <el-table-column prop="ensemblId" label="Ensembl Id"></el-table-column>
                     <el-table-column prop="entrezId" label="Entrez Id">
                         <template slot-scope="scope">
                             <a :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+scope.row.entrezId" target='_blank'  v-if="scope.row.entrezId!=='-'">
@@ -278,7 +284,7 @@
                 </el-table-column>
                
                 <el-table-column
-                    prop="gene.conseqtype"
+                    prop="conseqtype"
                     label="Consequence Type/Effect"
                     
                     align="center">
@@ -555,8 +561,8 @@ export default {
             if(orthoItem.geneSymbol!=="-" & orthoItem.geneSymbol!==""){
                 // symbol-ensemblgid-entrezid-hdbid
                 symbol =orthoItem.geneSymbol
-            }else if(orthoItem.ensembId!=="-" & orthoItem.ensembId!==""){
-                symbol=orthoItem.ensembId;
+            }else if(orthoItem.ensemblId!=="-" & orthoItem.ensembId!==""){
+                symbol=orthoItem.ensemblId;
             }else if(orthoItem.entrezId!=="-" & orthoItem.entrezId!==""){
                 symbol=orthoItem.entrezId;
             }else{
@@ -566,7 +572,7 @@ export default {
             let speciesName=orthoItem.commonName.slice(0,3)
             let params= {'hdbId': hdbId}
             if(key=="expression"){params= {'hdbId': hdbId,'classification':this.classification}}
-            this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-"+key,{params})
+            this.$axios.get("http://localhost:9401/api/gene-detail-"+key,{params})
             .then(response=>{
                 if(response.data.length>0){
                     num+=response.data.length;
@@ -713,6 +719,7 @@ export default {
     },
     // 封装绘制rect方法
     drawSubRectChart(value,svgContainer,dataclass,index,tooltip,speciesName,geneName){
+        console.log("value:",value);
         let rectHeight=18
         let rect_top=228;
         if(dataclass=="go"){rect_top+=60}
@@ -767,7 +774,7 @@ export default {
         .attr("y", rect_top )
         .attr("width", rectHeight )
         .attr("height", rectHeight )
-        .attr("fill", d=>"rgba(141,192,252,"+(d.opacity+0.03)+")")
+        .attr("fill", d=>d.opacity>0?"rgba(141,192,252,"+(d.opacity+0.2)+")":"rgba(141,192,252,0)")
         .attr('stroke',"darkgray")
         .attr('cursor',d=>d.opacity>0?'pointer':'')
         .on("mousemove", function(d, i){
@@ -788,7 +795,7 @@ export default {
 
             `
             }else if( dataclass =="expression"){
-                htmlInfo=`<div>Expression Number: ${i.prjNum>0?i.prjNum:"-"}</div>
+                htmlInfo=`<div>Expression Project Number: ${i.prjNum>0?i.prjNum:"-"}</div>
             <div>Bioproject List: ${i.prjList==null?"-":i.prjList.slice(0,2)}${i.prjList!==null&&i.prjList.length>2?"...":""}</div>
             <div>Expression Classification: ${i.eoClassification}</div>
             <div>Expression Annotation: ${i.eoAnnotation}</div>
@@ -800,13 +807,19 @@ export default {
             <div>Trait Name: ${i.traitName}</div>
             `
             }
+            let pos_x=d.pageX+20;
+            if(pos_x+width>d.clientX){
+                pos_x-=width
+            }
+            let pos_y=d.pageY+20;
+            let width=350
             tooltip.interrupt().style("display", "block").html(htmlInfo)
                 .style("opacity","0.8")
                 .style("border","none")
                 .style('text-align','left')
-                .style('top', d.pageY+20+"px")
-                .style('left',d.pageX+20+"px")
-                .style('width',350+"px")
+                .style('top', pos_x+"px")
+                .style('left',pos_y+"px")
+                .style('width',width+"px")
         })
         .on('mouseout', function () {
             tooltip.style('display', 'none')
@@ -837,25 +850,31 @@ export default {
                         // for(let item of tresponse.data.snp){}
                         if(this.varList.length){this.varList=response.data.snp;}else{this.varList=[response.data.snp];}
                         for(let item of this.varList){
-                                     let pos=item.chrom+":"+item.position;
-                                     let allele=item.refallele+"/"+item.allele;
-                                     let maf=item.maf+":"+item.maffreq.slice(0,7);
-                                     let classsnp="SNP";
-										item.finalposition=pos;
-          //item.position=pos;
-          //item.allele=allele;
-          //item.maf=maf;
-									item.finalallele=allele;
-									item.finalmaf=maf;
+                            let pos=item.chrom+":"+item.position;
+                            let allele=item.refallele+"/"+item.allele;
+                            let maf=item.maf+":"+item.maffreq.slice(0,7);
+                            let classsnp="SNP";
+                            item.finalposition=pos;
+                        //item.position=pos;
+                        //item.allele=allele;
+                        //item.maf=maf;
+                            item.finalallele=allele;
+                            item.finalmaf=maf;
                             item.snpClassId=classsnp;
                             if(Array.isArray(item.gene)){
                                 let geneName=[]
+                                let consequence_type=[]
                                 for(let geneitem of item.gene){
                                     geneName.push(geneitem.genename)
+                                    if(consequence_type.indexOf(geneitem.conseqtype)==-1){
+                                        consequence_type.push(geneitem.conseqtype)
+                                    }
                                 }
                                 item.geneName=geneName.join(",");
+                                item.conseqtype=consequence_type.join(",");
                             }else{
                                 item.geneName=item.gene.genename
+                                item.conseqtype=item.gene.conseqtype
                             }
                         }
                         this.varLoading=false;
@@ -959,7 +978,7 @@ export default {
     this.$axios
     // 获取gene basic info的接口，目前是查询entrez id
     // 返回两个list数据，0是gbiinfo，1是ortholist
-      .get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail',{params: {'hdbId': hdbId, 'taxonid': taxonId}})
+      .get('http://localhost:9401/api/gene-detail',{params: {'hdbId': hdbId, 'taxonid': taxonId}})
       .then(response => {
         this.loading=false;
         let genedetail = response.data[0];
@@ -979,7 +998,7 @@ export default {
         for(let item of  orthoList){
             if(item.orthoPosition==1){
                 let commonName = item.commonName1?item.commonName1:"-";
-                let ensembId = item.ensembId1?item.ensembId1:"-";
+                let ensemblId = item.ensemblId?item.ensemblId:"-";
                 let entrezId=item.entrezId1?item.entrezId1:"-";
                 let geneSymbol=item.geneSymbol1?item.geneSymbol1:"-";
                 let hdbGeneId=item.hdbGeneId1?item.hdbGeneId1:"-";
@@ -987,7 +1006,7 @@ export default {
                 let dbEvidence=item.dbEvidence
                 let orthoitem={
                     "commonName":commonName,
-                    "ensembId":ensembId,
+                    "ensemblId":ensemblId,
                     "entrezId":entrezId,
                     "geneSymbol":geneSymbol,
                     "hdbGeneId":hdbGeneId,
@@ -1001,7 +1020,7 @@ export default {
                 }
             }else{
                 let commonName = item.commonName2?item.commonName2:"-";
-                let ensembId = item.ensembId2?item.ensembId2:"-";
+                let ensemblId = item.ensemblId?item.ensemblId:"-";
                 let entrezId=item.entrezId2?item.entrezId2:"-";
                 let geneSymbol=item.geneSymbol2?item.geneSymbol2:"-";
                 let hdbGeneId=item.hdbGeneId2?item.hdbGeneId2:"-";
@@ -1009,7 +1028,7 @@ export default {
                 let dbEvidence=item.dbEvidence
                 let orthoitem={
                     "commonName":commonName,
-                    "ensembId":ensembId,
+                    "ensemblId":ensemblId,
                     "entrezId":entrezId,
                     "geneSymbol":geneSymbol,
                     "hdbGeneId":hdbGeneId,
@@ -1029,9 +1048,13 @@ export default {
             for(let j=1;j<= genedetail.length;j++){
                 let obj2=genedetail[j];
                 for(let key in obj2){
-                    if(obj[key] !== obj2[key]){
-                        obj[key] += ","+obj2[key]
-                }
+                    if(key !== "speciesName"){
+                        if(obj[key] !== obj2[key]){
+                            let newVal =obj[key]+ ","+obj2[key]
+                            console.log("key:",key,"newVal:",newVal);
+                            obj[key]=newVal
+                        }
+                    }
             }
         }
             this.geneBasicInfo=obj
@@ -1045,9 +1068,9 @@ export default {
         let specName=this.geneBasicInfo.speciesName.shortName;
         let symbol=this.geneBasicInfo.geneSymbol;
         this.classification=this.geneBasicInfo.speciesName.classification;
-
+        console.log("this.classification:",this.geneBasicInfo.classification);
         // console.log("classification:",classification);
-        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-go-1',{params: {'hdbId': hdbId}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-go-1',{params: {'hdbId': hdbId}}).then(response=>{
             if(response.data.length>0){
                 this.goloading=false;
                 // this.goList=response.data
@@ -1058,7 +1081,7 @@ export default {
                 }
             }
         })
-        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-var-1',{params: {'hdbId': hdbId}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-var-1',{params: {'hdbId': hdbId}}).then(response=>{
             console.log("var response:",response.data);
             if(response.data.length>0){
             let svgContainer = d3.select("#svg-container-var").append("svg").attr("width", "98%").attr("height", svg_height).attr('id', 'svgcontainer-var');
@@ -1067,18 +1090,18 @@ export default {
             }
         })
         // let traitGeneName="Os05g0556300"
-        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-trait-1',{params: {'hdbId': hdbId}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-trait-1',{params: {'hdbId': hdbId}}).then(response=>{
             let svgContainer = d3.select("#svg-container-trait").append("svg").attr("width", "98%").attr("height", svg_height).attr('id', 'svgcontainer-trait');
             console.log("trait:",response.data);
             if(response.data.length>0){
                 this.drawGoRectChart(response.data,svgContainer,"trait",specName,symbol)
             }
         })
-        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-list',{params: {'taxonId': ""+taxonId}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/species-list',{params: {'taxonId': ""+taxonId}}).then(response=>{
             console.log("species:",response.data);
             this.species=response.data
         })
-        this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/gene-detail-expression-1',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
+        this.$axios.get('http://localhost:9401/api/gene-detail-expression-1',{params: {'hdbId': hdbId,'classification':this.classification}}).then(response=>{
             let svgContainer = d3.select("#svg-container-expression").append("svg").attr("width", "1450px").attr("height", svg_height).attr('id', 'svgcontainer-expression');
             console.log("expression:",response.data);
             // this.species=response.data

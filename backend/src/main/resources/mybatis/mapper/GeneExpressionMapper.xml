@@ -39,6 +39,6 @@
     </if>
   </select>
   <select id="expressionGene" resultMap="BaseResultMap">
-      select * from gene_expression where hdb_gene_id=#{hdbid}
+      select * from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where hdb_gene_id=#{hdbid}
   </select>
 </mapper>

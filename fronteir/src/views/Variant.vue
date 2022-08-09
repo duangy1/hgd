@@ -71,7 +71,7 @@
 
                 <el-popover
                   placement="bottom-end"
-                  width="200"
+                  width="400"
                   trigger="manual"
                   class="popbox"
                   v-model="visible_1">
@@ -193,6 +193,23 @@
       <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider class="divider"></el-divider>
           <div class="title-box">
+            <template>
+              <el-descriptions title="Selected Gene" >
+                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
+                    {{ selectGene.geneId }}
+                </a></el-descriptions-item>
+                <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
+                <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
+                <el-descriptions-item label="Consequence type">
+                  <el-tag size="small">{{selectGene.varName}}</el-tag>
+                </el-descriptions-item>
+                <!-- <el-descriptions-item label="Address"
+                  >No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu
+                  Province</el-descriptions-item
+                > -->
+              </el-descriptions>
+            </template>
+            <el-divider></el-divider>
             <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
@@ -205,31 +222,32 @@
               v-if="showOrthoSubTable"
               :border="false"
               fixed
+              :header-cell-style="{background:'#F5F7FA'}"
           >
              <el-table-column
                   prop="commonName"
                   label="Species"
-                  align="center">
+                  >
               </el-table-column>
               <el-table-column
                   prop="tax"
-                  label="Taxon Id1"
-                  align="center">
+                  label="Taxon Id"
+                  >
               </el-table-column>
               <el-table-column
                   prop="ensemblGeneId"
                   label="Ensembl Id"
-                  align="center">
+                  >
               </el-table-column>
                <el-table-column
                 prop="geneSymbol"
                 label="Gene Symbol"
-                align="center">
+                >
               </el-table-column>
               <el-table-column
                   prop="hdbId"
                   label="Protein Id"
-                  align="center">
+                  >
                   <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
                 
                     <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
@@ -258,13 +276,14 @@
                 :data="gwasInfoData"
                 id="subTable"
                 :row-style="{height: '0'}"
-                max-height="500"
+                max-height="800"
                 v-loading="gwasLoading"
+                :header-cell-style="{background:'#F5F7FA'}"
               >
               <el-table-column
-                    prop="gene.genename"
-                    label="Gene Id"
-                    align="center">
+                prop="finalgenename"
+                label="Gene Id"
+              >
                   <!-- <template slot-scope="scope">
                     <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getGeneDetail?param1='+scope.row.genename+'&orgId'+scope.row.orgId" target='_blank'>
                       {{ scope.row.genename }}
@@ -275,48 +294,49 @@
               <el-table-column
                   prop="rsnpId"
                   label="Var Id"
-                  align="center">
-                  <!-- <template slot-scope="scope">
-                  <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.rsnpId+'&chrom='+scope.row.chrom+'&position='+scope.row.snpStart+'&orgId='+scope.row.gwasOrgId" target='_blank'>
-                    {{ scope.row.snpId }}
+                  >
+                  <template slot-scope="scope">
+                  <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.rsnpId+'&chrom='+scope.row.chrom+'&position='+scope.row.snpStart+'&orgId='+scope.row.orgId" target='_blank'>
+                    {{ scope.row.rsnpId }}
                   </a>
-                </template> -->
+                </template>
               </el-table-column>
                 <el-table-column
                     prop="finalposition"
                     label="Position"
-                    align="center">
+                    
+                    >
                 </el-table-column>
                 <el-table-column
                     prop="finalallele"
                     label="Allele"
-                    align="center"
+                   
                 >
                 </el-table-column>
               
                 <el-table-column
                     prop="finalmaf"
                     label="Maf"
-                    align="center">
+                >
                 </el-table-column>
               
                 <el-table-column
                     prop="snpClassId"
                     label="Class"
-                    width="80px"
-                    align="center">
+                    
+                >
                 </el-table-column>
                 <el-table-column
-                    prop="gene.conseqtype"
+                    prop="finalConseqtype"
                     label="Consequence Type/Effect"
-                    width="220px"
-                    align="center">
+                    width="330px"
+                >
                 </el-table-column>
                 <el-table-column
-                    prop="gene.genealias"
+                    prop="finalGenealias"
                     label="Gene Symbol"
-                    width="120px"
-                    align="center">
+                    
+                >
                 </el-table-column>
                 
               </el-table>
@@ -346,7 +366,7 @@
 
             <el-popover
               placement="bottom-end"
-              width="200"
+              width="400"
               trigger="manual"
               class="popbox"
               v-model="visible">
@@ -454,8 +474,25 @@
         >
         </el-pagination>
         <div class="sub-trait-box " v-if="showOrthoSubTable">
-      <el-divider style="padding-top:5px"></el-divider>
+        <el-divider class="divider"></el-divider>
           <div class="title-box">
+            <template>
+              <el-descriptions title="Selected Gene" >
+                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbid+'&taxonId='+selectGene.taxonId">
+                    {{ selectGene.geneId }}
+                </a></el-descriptions-item>
+                <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
+                <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
+                <el-descriptions-item label="Consequence type">
+                  <el-tag size="small">{{selectGene.varName}}</el-tag>
+                </el-descriptions-item>
+                <!-- <el-descriptions-item label="Address"
+                  >No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu
+                  Province</el-descriptions-item
+                > -->
+              </el-descriptions>
+            </template>
+          <el-divider></el-divider>
             <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
@@ -466,31 +503,32 @@
             v-loading="orthoLoading"
             v-if="showOrthoSubTable"
             :border="false"
+            :header-cell-style="{background:'#F5F7FA'}"
         >
             <el-table-column
                 prop="commonName"
                 label="Species"
-                align="center">
+                >
             </el-table-column>
             <el-table-column
                 prop="tax"
-                label="Taxon Id1"
-                align="center">
+                label="Taxon Id"
+                >
             </el-table-column>
             <el-table-column
                 prop="ensemblGeneId"
                 label="Ensembl Id"
-                align="center">
+                >
             </el-table-column>
               <el-table-column
               prop="geneSymbol"
               label="Gene Symbol"
-              align="center">
+            >
             </el-table-column>
             <el-table-column
                 prop="hdbId"
                 label="Protein Id"
-                align="center">
+                >
                 <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
               
                   <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
@@ -505,8 +543,8 @@
           <h3 class="trait-sub-title">Variants Detail Information</h3>
         </div>
         <div id="trait-info">
-            <el-card shadow="none" class="gwasDetailCard">
-              <el-table 
+            <!-- <el-card shadow="none" class="gwasDetailCard"> -->
+              <!-- <el-table 
                 :data="gwasInfoData"
                 style="width: 100%;margin-top:3%;"
                 id="subTable"
@@ -514,14 +552,83 @@
                 max-height="400"
                 v-loading="gwasLoading"
               >
-                <el-table-column align="center" prop="geneName" label="Gene Id"></el-table-column>
-                <el-table-column align="center" prop="varId" label="Var Id"></el-table-column>
-                <el-table-column align="center" prop="varName" label="Consequence Type"></el-table-column>
-                <el-table-column align="center" prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column align="center" prop="pmid" label="Pubmed Id"></el-table-column>
-                <el-table-column align="center" prop="pvalue" label="Pvalue"></el-table-column>
+                <el-table-column prop="geneName" label="Gene Id"></el-table-column>
+                <el-table-column prop="varId" label="Var Id"></el-table-column>
+                <el-table-column prop="varName" label="Consequence Type"></el-table-column>
+                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
+                <el-table-column prop="pmid" label="Pubmed Id"></el-table-column>
+                <el-table-column prop="pvalue" label="Pvalue"></el-table-column>
+              </el-table> -->
+               <el-table 
+                :data="gwasInfoData"
+                id="subTable"
+                :row-style="{height: '0'}"
+                max-height="800"
+                v-loading="gwasLoading"
+                :header-cell-style="{background:'#F5F7FA'}"
+              >
+              <el-table-column
+                prop="finalgenename"
+                label="Gene Id"
+                width="120"
+              >
+                  <!-- <template slot-scope="scope">
+                    <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getGeneDetail?param1='+scope.row.genename+'&orgId'+scope.row.orgId" target='_blank'>
+                      {{ scope.row.genename }}
+                    </a>
+                  </template> -->
+
+              </el-table-column>
+              <el-table-column
+                  prop="rsnpId"
+                  label="Var Id"
+                  >
+                  <template slot-scope="scope">
+                  <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.rsnpId+'&chrom='+scope.row.chrom+'&position='+scope.row.snpStart+'&orgId='+scope.row.orgId" target='_blank'>
+                    {{ scope.row.rsnpId }}
+                  </a>
+                </template>
+              </el-table-column>
+                <el-table-column
+                    prop="finalposition"
+                    label="Position"
+                   
+                    >
+                </el-table-column>
+                <el-table-column
+                    prop="finalallele"
+                    label="Allele"
+                   
+                >
+                </el-table-column>
+              
+                <el-table-column
+                    prop="finalmaf"
+                    label="Maf"
+                >
+                </el-table-column>
+              
+                <el-table-column
+                    prop="snpClassId"
+                    label="Class"
+                   
+                >
+                </el-table-column>
+                <el-table-column
+                    prop="finalConseqtype"
+                    label="Consequence Type/Effect"
+                    width="330px"
+                >
+                </el-table-column>
+                <el-table-column
+                    prop="finalGenealias"
+                    label="Gene Symbol"
+                    width="120px"
+                >
+                </el-table-column>
+                
               </el-table>
-            </el-card>
+            <!-- </el-card> -->
         </div>
       </div>
       </div>
@@ -639,6 +746,7 @@ export default {
       querySpeciesList_animal:[],
       querySpeciesList_plant:[],
       querySpeciesList:[],
+      selectGene:{},
     };
   },
 
@@ -648,7 +756,7 @@ export default {
         this.speciesList=[];
         this.showOrthoSubTable=false;
         this.showSubTableBox=false;
-        this.classification=tab.label;
+        this.classification=tab.name;
         this.$refs['table'].doLayout();
     },
 
@@ -693,14 +801,24 @@ export default {
       this.showSubTableBox=false;
       this.showOrthoSubTable=false;
     },
-    
+  showSelectedGene(rowData,index){
+      console.log("rowData,index:",rowData,index);
+      this.selectGene=rowData;
+  },
   showOrthoInfoTable(rowData,index){
-    console.log("rowData,index:",rowData,index);
-    // rowData.orthoList[rowData.speciesListData.indexOf(index)];
+    this.showSelectedGene(rowData,index)
     let ortholist=[];
+    // 通过hdbid筛选保留unique的同源值
+    let orthohdblist=[];
     rowData.speciesListData.forEach((id,idx)=>{
       if(id==index){
-        ortholist.push(rowData.orthoList[idx])
+        let item=rowData.orthoList[idx];
+        if(orthohdblist.indexOf(item.hdbId)==-1){
+          ortholist.push(item);
+          orthohdblist.push(item.hdbId);
+          console.log("item:",item);
+        }
+        // ortholist.push(rowData.orthoList[idx])
     }})
     this.showOrthoSubTable = true;
     this.orthoLoading=true;
@@ -709,9 +827,9 @@ export default {
       let hdbid=item.hdbId;
       this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
-        item.ensemblGeneId=res.data.ensemblGeneId;
-        item.geneSymbol=res.data.geneSymbol
-        this.orthoTableData.push(item)
+        item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
+        item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
+        this.orthoTableData.push(item);
         this.orthoLoading=false;
       })
     })
@@ -733,27 +851,34 @@ export default {
     this.drawer = true;
    },
   showGwasInfoTable(rowValue,index){
-    console.log("rowValue,index:",rowValue,index);
+    this.showSelectedGene(rowValue,index)
     let ortholist=[];
+    // 通过hdbid筛选保留unique的同源值
+    let orthohdblist=[];
     rowValue.speciesListData.forEach((id,idx)=>{
     if(id==index){
-        let item=rowValue.orthoList[idx]
-        ortholist.push(item)
+        let item=rowValue.orthoList[idx];
+        if(orthohdblist.indexOf(item.hdbId)==-1){
+          ortholist.push(item);
+          orthohdblist.push(item.hdbId);
+          console.log("item:",item);
+        }
     }})
     this.orthoTableData=[];
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
       this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
-        item.ensemblGeneId=res.data.ensemblGeneId;
-        item.geneSymbol=res.data.geneSymbol
-        this.orthoTableData.push(item)
+        item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
+        item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
+        if(this.orthoTableData.indexOf(item)==-1){
+          this.orthoTableData.push(item)
+        }
         this.orthoLoading=false;
       })
     })
     
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
-    // this.orthoTableData=ortholist;
     this.showSubTableBox=true;
 
     // 左侧基因的接口数据
@@ -769,7 +894,6 @@ export default {
 		if(BASEPATH.length>0)
 			PATH=BASEPATH+dataSource1+"&snplist="+snpId1;
 		
-		console.log("PATH="+PATH);
       if(snpId1.length>0 && PATH.length>0){
           this.getVarData(PATH)
       }
@@ -777,7 +901,7 @@ export default {
     // 右侧基因接口数据
     // 有问题，明天看看
     console.log("ortholist:",ortholist);
-   ortholist.forEach((item)=>{
+    ortholist.forEach((item)=>{
     let dataSource2=item.dataSource;
     let hdbid=item.hdbId;
     let varName=item.varName;
@@ -813,50 +937,57 @@ export default {
     
    },
    getVarData(PATH,gwasOrgId){
-    console.log("gwasOrgIdaaaa:",gwasOrgId);
+    console.log("PATH:",PATH);
     this.$axios.get(PATH).then(response=>{
       this.gwasLoading=false;
-      console.log("getvardata res:",response);
       this.gwasInfoData=[];
       //this.gwasInfoData=response.data.snp;
       this.varLoading=false;
       let datas=response.data.snp
+      console.log("Variants Detail Information:",datas);
       if(datas.length>0){
         // 返回是对象
-        console.log("datas:",datas,gwasOrgId);
-        // foe(let item of datas){item.orgId=orgId}
         for(let item of datas){
            item.orgId=gwasOrgId
         }
-        console.log("(response.data.snp.length111:",response.data.snp.length);
         this.gwasInfoData=this.gwasInfoData.concat(datas);
       }else{
         // 返回是对象
-        console.log("(response.data.snp.length222:",response.data.snp.length);
-        console.log("datas:",datas,gwasOrgId);
         datas.orgId=gwasOrgId
-        console.log("datas:",datas)
         this.gwasInfoData.push(datas);
       }
-      console.log("this.gwasInfoData:",this.gwasInfoData);
+      // 对返回数据进行格式处理
       for(let item of this.gwasInfoData){
           let pos=item.chrom+":"+item.position;
           let allele=item.refallele+"/"+item.allele;
           let maf=item.maf+":"+item.maffreq.slice(0,7);
           let classsnp="SNP";
-			item.finalposition=pos;
-          //item.position=pos;
-          //item.allele=allele;
-          //item.maf=maf;
-			item.finalallele=allele;
-			item.finalmaf=maf;
+					item.finalposition=pos;
+					item.finalallele=allele;
+					item.finalmaf=maf;
           item.snpClassId=classsnp;
           if(item.gene.length>1){
-            let name=[]
+            let name=[];
+            let conseqtype=[];
+            let allials=[];
             item.gene.forEach(item=>{
-              name.push(item.genename)
+              name.push(item.genename);
+              if(conseqtype.indexOf(item.conseqtype)==-1){
+                conseqtype.push(item.conseqtype);
+              }
+              if(allials.indexOf(item.genealias)==-1){
+                allials.push(item.genealias);
+              }
+              
             })
-            item.gene.genename=name.join(',')
+            item.finalgenename=name.join(',');
+            item.finalConseqtype=conseqtype.join(',');
+            item.finalGenealias=allials.join(',');
+            item.finalGenealias=item.finalGenealias.length>0?item.finalGenealias:"-";
+        }else{
+          item.finalgenename=item.gene.genename;
+          item.finalConseqtype=item.gene.conseqtype;
+          item.finalGenealias=item.gene.genealias;
         }
       }
       })
@@ -868,22 +999,14 @@ export default {
       
     },
     iconClass(data,index){
-      // if(data.speciesListData.indexOf(index)>-1){
         data.speciesListData.forEach((id,idx)=>{
-          // console.log("id,index:",id,index);
           if(id==index){
-            
             if( data.orthoList[idx].varName!=null ){
-              // console.log("data.orthoList[idx]:",data.orthoList[idx].varName,data.varName);
               let traitlist=data.orthoList[idx].varName.split(",")
               if(traitlist.indexOf(data.varName)>-1){
-                console.log(1,"idx:",idx,"species:",data.orthoList[idx],"trait data:",data.varName);
-                console.log("data.orthoList[idx]:",data.orthoList[idx].varName,data.varName);
                 return 1;
               }else{
-                console.log(2);
-                console.log("data.orthoList[idx]:",data.orthoList[idx],data.varName);
-              return 2;
+                return 2;
             }
           }else{
             return false

@@ -2,6 +2,7 @@ package cn.ac.cncb.ngdc.syndb.service;
 
 import cn.ac.cncb.ngdc.syndb.entity.HdbGwas;
 import cn.ac.cncb.ngdc.syndb.entity.TraitName;
+import cn.ac.cncb.ngdc.syndb.mapper.GeneBasicInfoMapper;
 import cn.ac.cncb.ngdc.syndb.mapper.Trait2gwasMapper;
 //import cn.ac.cncb.ngdc.syndb.mapper.gwasInfoMapper;
 //import cn.ac.cncb.ngdc.syndb.entity.gwasInfo;
@@ -11,7 +12,9 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 public class TraitService {
@@ -21,10 +24,17 @@ public class TraitService {
     @Resource
     private TraitNameMapper traitNameMapper;
 
-    public Page<Trait2gwas> biomedicalTrait(int traitId,String classification,int pageNo, int pageSize,String speciesName) {
+    @Resource
+    private GeneBasicInfoMapper geneBasicInfoMapper;
+
+    public Page<Trait2gwas> biomedicalTrait(int traitId, String classification, int pageNo, int pageSize, String speciesName, String geneid) {
 
         PageHelper.startPage(pageNo, pageSize,true); //line 1
-        return trait2gwasMapper.biomedicalTrait(traitId,classification,speciesName);
+        List<String> hdbid=new ArrayList();
+        if(geneid!=null && geneid.length() >0){
+            hdbid=geneBasicInfoMapper.getHdbIdByOtherId(geneid);
+        }
+        return trait2gwasMapper.biomedicalTrait(traitId,classification,speciesName,hdbid);
     }
 
 //    public Page<Trait2gwas> selectTraitBySpecies(int pageNo, int pageSize, String taxonid) {

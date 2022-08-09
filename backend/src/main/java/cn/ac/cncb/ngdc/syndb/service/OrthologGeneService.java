@@ -153,7 +153,7 @@ public class OrthologGeneService {
                     geneBasicInfo1.setTaxonId(orthologGeneInfo.getTaxId2());
                     geneBasicInfo1.setGeneSymbol(orthologGeneInfo.getGeneSymbol2());
                     geneBasicInfo1.setEntrezGene(orthologGeneInfo.getEntrezId2());
-                    geneBasicInfo1.setEnsemblGeneId(orthologGeneInfo.getEnsembId2());
+                    geneBasicInfo1.setEnsemblGeneId(orthologGeneInfo.getEnsemblId2());
                     geneBasicInfo1.setLatinName(orthologGeneInfo.getLatinName2());
                     geneBasicInfo1.setHdbGeneId(orthologGeneInfo.getHdbGeneId2());
                     if(geneBasicInfo1.getGeneSymbol() != null && geneBasicInfo1.getGeneSymbol().length()>0){

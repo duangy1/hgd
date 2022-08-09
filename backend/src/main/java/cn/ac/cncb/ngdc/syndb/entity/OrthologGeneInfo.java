@@ -13,13 +13,15 @@ public class OrthologGeneInfo {
 
     private String ensemblId1;
 
+    private String ensemblId;
+
     private String refseqId1;
 
     private Integer taxId2;
 
     private String uniprotId2;
 
-    private String ensembId2;
+    private String ensemblId2;
 
     private String refseqId2;
 

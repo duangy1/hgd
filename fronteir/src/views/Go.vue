@@ -72,7 +72,7 @@
 
                 <el-popover
                   placement="bottom-end"
-                  width="200"
+                  width="400"
                   trigger="manual"
                   class="popbox"
                   v-model="visible_1">
@@ -163,12 +163,12 @@
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with gene ontology annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with Gene Ontology annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same gene ontology annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same Gene Ontology annotation</div>  
           </div>
          
           </div>
@@ -177,7 +177,7 @@
             class="trait-pag"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page="currentPage4"
+            :current-page="currentPage4_a"
             :page-sizes="[10, 20, 50, 100]"
             :page-size="10"
             layout="total, sizes, prev, pager, next, jumper"
@@ -192,9 +192,26 @@
     <!-- <el-card shadow="none" class="sub-table-card"> -->
       
       <div class="sub-trait-box " v-if="showOrthoSubTable">
-      <el-divider></el-divider>
+      <el-divider class="divider"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Homolog Gene Detai Information</h2>
+            <template>
+              <el-descriptions title="Selected Gene" >
+                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
+                    {{ selectGene.geneId }}
+                </a></el-descriptions-item>
+                <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
+                <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
+                <el-descriptions-item label="Gene ontology">
+                  <el-tag size="small">{{selectGene.goName}}</el-tag>
+                </el-descriptions-item>
+                <!-- <el-descriptions-item label="Address"
+                  >No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu
+                  Province</el-descriptions-item
+                > -->
+              </el-descriptions>
+            </template>
+            <el-divider></el-divider>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
       <!-- <div id="wrapper"> -->
@@ -215,8 +232,13 @@
               </el-table-column>
               <el-table-column
                   prop="tax"
-                  label="Taxon Id1"
+                  label="Taxon Id"
                   align="center">
+                  <template slot-scope="scope">
+                    <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.tax+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                        {{ scope.row.tax }}
+                    </a>
+                  </template>
               </el-table-column>
               <el-table-column
                   prop="ensemblGeneId"
@@ -269,8 +291,18 @@
                     </a>
                   </template>
                 </el-table-column>
-                <el-table-column prop="goName" label="GO Name" align="center"></el-table-column>
-                <el-table-column prop="topGoId" label="GO Id" align="center"></el-table-column>
+                <el-table-column prop="goName" label="GO term" align="center">
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.goName!==''&& scope.row.goName">{{scope.row.goName}}</div>
+                    <div v-else>-</div>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="topGoId" label="GO Id" align="center">
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.topGoId!==''&& scope.row.topGoId">{{scope.row.topGoId}}</div>
+                    <div v-else>-</div>
+                  </template>
+                </el-table-column>
                 <el-table-column prop="goId" label="Sub GO Id" align="center"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species" align="center"></el-table-column>
                 <el-table-column prop="taxonId" label="Taxon Id" align="center"></el-table-column>
@@ -301,7 +333,7 @@
 
             <el-popover
               placement="bottom-end"
-              width="200"
+              width="400"
               trigger="manual"
               class="popbox"
               v-model="visible">
@@ -390,12 +422,12 @@
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with gene ontology annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with Gene Ontology annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same gene ontology annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homolog gene with same Gene Ontology annotation</div>  
           </div>
         
         </div>
@@ -403,7 +435,7 @@
           class="trait-pag"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="currentPage4"
+          :current-page="currentPage4_p"
           :page-sizes="[10, 20, 50, 100]"
           :page-size="10"
           layout="total, sizes, prev, pager, next, jumper"
@@ -411,9 +443,26 @@
         >
         </el-pagination>
         <div class="sub-trait-box " v-if="showOrthoSubTable">
-      <el-divider style="padding-top:5px"></el-divider>
+      <el-divider class="divider"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Homolog Gene Detai Information</h2>
+            <template>
+              <el-descriptions title="Selected Gene" >
+                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
+                    {{ selectGene.geneId }}
+                </a></el-descriptions-item>
+                <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
+                <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
+                <el-descriptions-item label=" Gene Ontology">
+                  <el-tag size="small">{{selectGene.goName}}</el-tag>
+                </el-descriptions-item>
+                <!-- <el-descriptions-item label="Address"
+                  >No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu
+                  Province</el-descriptions-item
+                > -->
+              </el-descriptions>
+            </template>
+            <el-divider></el-divider>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
     <!-- 同源表格 -->
@@ -431,7 +480,12 @@
               </el-table-column>
               <el-table-column
                   prop="tax"
-                  label="Taxon Id1">
+                  label="Taxon Id">
+                  <template slot-scope="scope">
+                    <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.tax+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                        {{ scope.row.tax }}
+                    </a>
+                  </template>
               </el-table-column>
               <el-table-column
                   prop="ensemblGeneId"
@@ -459,7 +513,7 @@
           <h3 class="trait-sub-title">GO Detail Information</h3>
         </div>
         <div id="trait-info">
-            <el-card shadow="none" class="gwasDetailCard">
+            <!-- <el-card shadow="none" class="gwasDetailCard"> -->
               <el-table 
                 :data="gwasInfoData"
                 style="width: 100%;margin-top:3%;"
@@ -475,13 +529,29 @@
                     </a>
                   </template>
                 </el-table-column>
-                <el-table-column prop="goName" label="GO Name"></el-table-column>
-                <el-table-column prop="topGoId" label="GO Id"></el-table-column>
+                <el-table-column prop="goName" label="GO term">
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.goName!==''&& scope.row.goName">{{scope.row.goName}}</div>
+                    <div v-else>-</div>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="topGoId" label="GO Id">
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.topGoId!==''&& scope.row.topGoId">{{scope.row.topGoId}}</div>
+                    <div v-else>-</div>
+                  </template>
+                </el-table-column>
                 <el-table-column prop="goId" label="Sub GO Id"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="taxonId" label="Taxon Id"></el-table-column>
+                <el-table-column prop="taxonId" label="Taxon Id">
+                  <template slot-scope="scope">
+                    <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                        {{ scope.row.taxonId }}
+                    </a>
+                  </template>
+                </el-table-column>
               </el-table>
-            </el-card>
+            <!-- </el-card> -->
         </div>
       </div>
       </div>
@@ -584,7 +654,8 @@ export default {
         definition:"The process of introducing a phosphate group on to a protein. [GOC:hb]",
         classification:"biological_process"
       },
-      currentPage4: 1,
+      currentPage4_a: 1,
+      currentPage4_p: 1,
       totalSize_animal: 0,
       totalSize_plant: 0,
       form: {
@@ -618,23 +689,26 @@ export default {
     },
 
     confirmbutton(){
-    this.visible_1 = false;
-    this.visible = false;
-    this.$refs.table.doLayout();
-   },
+      this.visible_1 = false;
+      this.visible = false;
+      this.$refs.table.doLayout();
+    },
     handleSizeChange(val){
       this.loading = true;
       this.pageSize = val;
+      if(this.classification=="animal"){this.loading_animal=true;}else{this.loading_plant=true}
       this.getGoData(this.traitItem.traitId,this.classification,this.pageSize,1,this.form.querySpecies)
     },
     handleCurrentChange(val) {
       console.log("this.classification:",this.classification);
       if(this.classification=="animal"){
         this.loading_animal=true;
-      }else{
-        this.loading_plant=true;}
-      this.currentPage4 = val;
+        this.currentPage4_a = val;
 
+      }else{
+        this.loading_plant=true;
+        this.currentPage4_p = val;
+      }
       this.getGoData(this.traitItem.traitId,this.classification,this.pageSize,val,this.form.querySpecies)
 
     },
@@ -660,18 +734,22 @@ export default {
         this.getGoData(value.goId,"plant",this.pageSize,1,this.form.querySpecies)
 
       // }
-      this.currentPage4=1;
+      this.currentPage4_p=1;
+      this.currentPage4_a=1;
       data.checked = true;
       this.showSubTableBox=false;
       this.showOrthoSubTable=false;
      
     },
-    
+  showSelectedGene(rowData,index){
+      console.log("rowData,index:",rowData,index);
+      this.selectGene=rowData;
+  },
   showOrthoInfoTable(rowdata,index){
+    this.showSelectedGene(rowdata,index)
     this.showOrthoSubTable = true;
     this.showSubTableBox=false;
     this.orthoLoading=false;
-    
 
     let ortholist=[];
     rowdata.speciesListData.forEach((id,idx)=>{
@@ -682,10 +760,10 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
-        item.ensemblGeneId=res.data.ensemblGeneId;
-        item.geneSymbol=res.data.geneSymbol
+        item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
+        item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
         this.orthoTableData.push(item)
         this.orthoLoading=false;
       })
@@ -704,8 +782,9 @@ export default {
   buttonFunction(){
     this.drawer = true;
    },
+   
   showGwasInfoTable(rowValue,index){
-
+    this.showSelectedGene(rowValue,index)
     let ortholist=[];
     let hdblist=[rowValue.hdbId]
     rowValue.speciesListData.forEach((id,idx)=>{
@@ -718,10 +797,10 @@ export default {
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
+      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
-        item.ensemblGeneId=res.data.ensemblGeneId;
-        item.geneSymbol=res.data.geneSymbol
+        item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
+        item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
         this.orthoTableData.push(item)
         this.orthoLoading=false;
       })
@@ -730,7 +809,7 @@ export default {
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
-      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-go",{params:{'hdbid': hdbid}})
+      this.$axios.get("http://localhost:9401/api/gene-go",{params:{'hdbid': hdbid}})
         .then(response=>{
           this.gwasInfoData=this.gwasInfoData.concat(response.data);
           this.gwasLoading=false;
@@ -753,7 +832,7 @@ export default {
     },
    
     searchFilter(){
-      // this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits/ortho-data",{params:{"orthoSpecies":value.orthoSpecies,"querySpecies":value.querySpecies,"traitId":traitId}})
+      // this.$axios.get("http://localhost:9401/api/traits/ortho-data",{params:{"orthoSpecies":value.orthoSpecies,"querySpecies":value.querySpecies,"traitId":traitId}})
       // .then(response=>{
       //     console.log("searchFilter:",response);
       // })
@@ -860,7 +939,7 @@ export default {
     // 主要获取数据的方法
     // 根据动植物分开获取
     async getGoData(goName,classification,pagesize,pagenum,speciesName){
-      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/godata",{params:{'topGoid':goName,'classification':classification,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
+      this.$axios.get("http://localhost:9401/api/godata",{params:{'topGoid':goName,'classification':classification,'taxonId':speciesName,'length':pagesize,'pageNo':pagenum}})
       .then((response) => {
         if(classification=="animal"){
           this.getSpecies(goName,'animal')
@@ -879,7 +958,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(topGoId,speciesType){
-      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-go',{params: {"topGoId":topGoId,speciesType: speciesType}})
+      this.$axios.get('http://localhost:9401/api/species-go',{params: {"topGoId":topGoId,speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType=='plant'){

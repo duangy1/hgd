@@ -36,19 +36,17 @@ public class GeneDetailController {
         Map param = new HashMap();
         param.put("geneId",hdbId);
         List<OrthologGeneInfo> orthoList=orthologGeneService.findOrthGeneByGivenGeneAndTaxonModify2(param);
-//        List<Ortho9031> orthoList=orthoService.selectGeneOrthoInfo(hdbId);
-//        if(geneList!=null) {
         for (OrthologGeneInfo orthoitem : orthoList) {
             int tax1 = orthoitem.getTaxId1();
-//            int tax2 = orthoitem.getTaxId2();
 //            查询的taxonid和第一位相同，则第二位是同源数据
             if (taxonid.equals("" + tax1)) {
                 orthoitem.setOrthoPosition(2);
+                orthoitem.setEnsemblId(orthoitem.getEnsemblId2());
             } else {
                 orthoitem.setOrthoPosition(1);
+                orthoitem.setEnsemblId(orthoitem.getEnsemblId1());
             }
         }
-//        }
         InfoList.add(geneList);
         InfoList.add(orthoList);
         return InfoList;

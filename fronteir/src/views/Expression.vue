@@ -44,7 +44,7 @@
   </div>
     <div class="trait-box trait-infoBox">
       <div style="padding-left:29px;margin-top: -15px;">
-        <h2 class="trait-title">Expression System : {{ expItem.expName }} </h2>
+        <h2 class="trait-title">Expression : {{ expItem.expName }} </h2>
       </div>
     </div>
     </div>
@@ -71,7 +71,7 @@
 
                 <el-popover
                   placement="bottom-end"
-                  width="200"
+                  width="400"
                   trigger="manual"
                   class="popbox"
                   v-model="visible_1">
@@ -103,7 +103,7 @@
             :header-cell-style="hiligtDbCols"
             v-loading="loading_animal"
           >
-            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression System" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
               <template slot-scope="scope">
                 <a :href="'./gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
@@ -112,7 +112,13 @@
               </template>
             </el-table-column>
             <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
-            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
+            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed>
+              <template slot-scope="scope">
+                <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                    {{ scope.row.taxonId }}
+                </a>
+              </template>
+            </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_animal_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
@@ -192,7 +198,24 @@
       <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider class="divider"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Homolog Gene Detai Information</h2>
+            <template>
+              <el-descriptions title="Selected Gene" >
+                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
+                    {{ selectGene.geneId }}
+                </a></el-descriptions-item>
+                <el-descriptions-item label="Species Name">{{selectGene.commonName}}</el-descriptions-item>
+                <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
+                <el-descriptions-item label="Expression">
+                  <el-tag size="small">{{selectGene.annotation}}</el-tag>
+                </el-descriptions-item>
+                <!-- <el-descriptions-item label="Address"
+                  >No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu
+                  Province</el-descriptions-item
+                > -->
+              </el-descriptions>
+            </template>
+            <el-divider></el-divider>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
       <!-- <div id="wrapper"> -->
@@ -204,31 +227,37 @@
               v-if="showOrthoSubTable"
               :border="false"
               fixed
+              :header-cell-style="{background:'#F5F7FA'}"
           >
               <el-table-column
                   prop="commonName"
                   label="Species"
-                  align="center">
+              >
               </el-table-column>
               <el-table-column
                   prop="tax"
-                  label="Taxon Id1"
-                  align="center">
+                  label="Taxon Id"
+              >
+              <template slot-scope="scope">
+                <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.tax+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                    {{ scope.row.tax }}
+                </a>
+              </template>
               </el-table-column>
               <el-table-column
                   prop="ensemblGeneId"
                   label="Ensembl Id"
-                  align="center">
+              >
               </el-table-column>
                <el-table-column
                 prop="geneSymbol"
                 label="Gene Symbol"
-                align="center">
+              >
               </el-table-column>
               <el-table-column
                   prop="hdbId"
                   label="Protein Id"
-                  align="center">
+                >
                   <template slot-scope="scope">
                     <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank' v-if="scope.row.hdbId.slice(0,2)!=='EN'">
                         {{ scope.row.hdbId }}
@@ -257,14 +286,68 @@
                 :data="gwasInfoData"
                 id="subTable"
                 :row-style="{height: '0'}"
-                max-height="400"
+                max-height="800"
                 v-loading="gwasLoading"
+                :header-cell-style="{background:'#F5F7FA'}"
               >
-                <el-table-column align="center" prop="geneId" label="Gene Id"></el-table-column>
-                <el-table-column align="center" prop="annotation" label="Expression Name"></el-table-column>
-                <el-table-column align="center" prop="bioProjectId" label="Bioproject Id"></el-table-column>
-                <el-table-column align="center" prop="commonName" label="Species"></el-table-column>
-                <el-table-column align="center" prop="taxonId" label="Taxon Id"></el-table-column>
+                <el-table-column prop="geneId" label="Gene Id">
+                  <template slot-scope="scope">
+                      <a :href="'https://ngdc.cncb.ac.cn/gen/gene/'+scope.row.genOrgId+'/'+scope.row.geneId" target='_blank'>
+                          {{ scope.row.geneId }}
+                      </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="annotation" label="Expression"></el-table-column>
+                <el-table-column prop="bioProjectIdList" label="Bioproject Id">
+                  <template slot-scope="scope">
+                    <div v-for="(item,index) of scope.row.bioProjectIdList" :key="index" style="display: flex;float:left">
+                      <a :href="'https://ngdc.cncb.ac.cn/gen/project/accession/'+item" target='_blank'>
+                          {{ item }}
+                      </a>
+                      <div v-if="index<scope.row.bioProjectIdList.length-1">,</div>
+                    </div>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="commonName" label="Species"></el-table-column>
+                <el-table-column prop="taxonId" label="Taxon Id">
+                  <template slot-scope="scope">
+                    <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                        {{ scope.row.taxonId }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column label="See detail">
+                  <template slot-scope="scope" >
+                    <el-popover
+                      placement="top"
+                      width="300"
+                      trigger="manual"
+                      class="popbox"
+                      v-model=scope.row.showpop
+                    >
+                    <div class="checkbox-box">
+                      <el-radio 
+                        v-for="item in scope.row.bioProjectIdList"
+                        :key="item.id"
+                        :label="item"
+                        v-model="scope.row.selectPrj">
+                      </el-radio >
+                    </div>
+                      <div class="botton-wrapper">
+                        <el-button size="mini" type="primary"  @click=showDetailExpression(scope.row) class="choose-col-button">confirm</el-button>
+                        <el-button size="mini" type="text" plain @click="scope.row.showpop = false" class="choose-col-button">cancel</el-button>
+                      </div>
+                    </el-popover>
+                    <img
+                      :src="detailIcon"
+                      min-width="25"
+                      height="25"
+                      style="cursor:pointer !important"
+                      @click="scope.row.showpop = true"
+                    />
+                  </template>
+                  
+                </el-table-column>
               </el-table>
             <!-- </el-card> -->
         </div>
@@ -292,7 +375,7 @@
 
             <el-popover
               placement="bottom-end"
-              width="200"
+              width="400"
               trigger="manual"
               class="popbox"
               v-model="visible">
@@ -321,7 +404,7 @@
             ref="table"
             :header-cell-style="hiligtDbCols"
           >
-            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression Name" fixed width="280px" style="background-color:white"></el-table-column>
+            <el-table-column align="center" class="titleCell" prop="annotation" label="Expression" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
               <template slot-scope="scope">
                 <a :href="'./gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
@@ -330,7 +413,13 @@
               </template>
             </el-table-column>
             <el-table-column align="center" prop="commonName" label="Species Name" width="150px" fixed></el-table-column>
-            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed></el-table-column>
+            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="160px" fixed>
+               <template slot-scope="scope">
+                <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                    {{ scope.row.taxonId }}
+                </a>
+              </template>
+            </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
             <template v-for="(item,index) in speciesList_plant_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
@@ -402,7 +491,24 @@
         <div class="sub-trait-box " v-if="showOrthoSubTable">
       <el-divider style="padding-top:5px"></el-divider>
           <div class="title-box">
-            <h2 class="trait-sub-title">Homolog Gene Detai Information</h2>
+            <template>
+              <el-descriptions title="Selected Gene" >
+                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
+                    {{ selectGene.geneId }}
+                </a></el-descriptions-item>
+                <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
+                <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
+                <el-descriptions-item label="Expression">
+                  <el-tag size="small">{{selectGene.annotation}}</el-tag>
+                </el-descriptions-item>
+                <!-- <el-descriptions-item label="Address"
+                  >No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu
+                  Province</el-descriptions-item
+                > -->
+              </el-descriptions>
+            </template>
+            <el-divider></el-divider>
+            <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
           </div>
       </div>
     <!-- 同源表格 -->
@@ -412,31 +518,37 @@
             v-loading="orthoLoading"
             v-if="showOrthoSubTable"
             :border="false"
+            :header-cell-style="{background:'#F5F7FA'}"
         >
             <el-table-column
                   prop="commonName"
                   label="Species"
-                  align="center">
+            >
               </el-table-column>
               <el-table-column
                   prop="tax"
-                  label="Taxon Id1"
-                  align="center">
+                  label="Taxon Id"
+            >
+             <template slot-scope="scope">
+                <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.tax+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                    {{ scope.row.tax }}
+                </a>
+              </template>
               </el-table-column>
               <el-table-column
                   prop="ensemblGeneId"
                   label="Ensembl Id"
-                  align="center">
+              >
               </el-table-column>
                <el-table-column
                 prop="geneSymbol"
                 label="Gene Symbol"
-                align="center">
+              >
               </el-table-column>
               <el-table-column
                   prop="hdbId"
                   label="Protein Id"
-                  align="center">
+              >
                   <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
                 
                     <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
@@ -448,25 +560,79 @@
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" style="padding-left:1.5%;margin-bottom:1.3%">
-          <h3 class="trait-sub-title">Expression Detai Information</h3>
+          <h3 class="trait-sub-title">Expression Detail Information</h3>
         </div>
         <div id="trait-info">
-            <el-card shadow="none" class="gwasDetailCard">
+            <!-- <el-card shadow="none" class="gwasDetailCard"> -->
               <el-table 
                 :data="gwasInfoData"
                 style="width: 100%;margin-top:3%;"
                 id="subTable"
                 :row-style="{height: '0'}"
-                max-height="400"
+                max-height="800"
                 v-loading="gwasLoading"
+                :header-cell-style="{background:'#F5F7FA'}"
               >
-                <el-table-column align="center" prop="geneId" label="Var Id"></el-table-column>
-                <el-table-column align="center" prop="annotation" label="Expression Name"></el-table-column>
-                <el-table-column align="center" prop="bioProjectId" label="Bioproject Id"></el-table-column>
-                <el-table-column align="center" prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column align="center" prop="taxonId" label="Taxon Id"></el-table-column>
+                <el-table-column prop="geneId" label="Gene Id">
+                  <template slot-scope="scope">
+                      <a :href="'https://ngdc.cncb.ac.cn/gen/gene/'+scope.row.genOrgId+'/'+scope.row.geneId" target='_blank'>
+                          {{ scope.row.geneId }}
+                      </a>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="annotation" label="Expression"></el-table-column>
+                <el-table-column prop="bioProjectIdList" label="Bioproject Id">
+                  <template slot-scope="scope">
+                    <div v-for="(item,index) of scope.row.bioProjectIdList" :key="index" style="display: flex;float:left">
+                      <a :href="'https://ngdc.cncb.ac.cn/gen/project/accession/'+item" target='_blank'>
+                          {{ item }}
+                      </a>
+                      <div v-if="index<scope.row.bioProjectIdList.length-1">,</div>
+                    </div>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
+                <el-table-column prop="taxonId" label="Taxon Id">
+                   <template slot-scope="scope">
+                    <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                        {{ scope.row.taxonId }}
+                    </a>
+                  </template>
+                </el-table-column>
+                <el-table-column label="See detail">
+                  <template slot-scope="scope" >
+                    <el-popover
+                      placement="top"
+                      width="300"
+                      trigger="manual"
+                      class="popbox"
+                      v-model=scope.row.showpop
+                    >
+                    <div class="checkbox-box">
+                      <el-radio 
+                        v-for="item in scope.row.bioProjectIdList"
+                        :key="item.id"
+                        :label="item"
+                        v-model="scope.row.selectPrj">
+                      </el-radio >
+                    </div>
+                      <div class="botton-wrapper">
+                        <el-button size="mini" type="primary"  @click=showDetailExpression(scope.row) class="choose-col-button">confirm</el-button>
+                        <el-button size="mini" type="text" plain @click="scope.row.showpop = false" class="choose-col-button">cancel</el-button>
+                      </div>
+                    </el-popover>
+                    <img
+                      :src="detailIcon"
+                      min-width="25"
+                      height="25"
+                      style="cursor:pointer !important"
+                      @click="scope.row.showpop = true"
+                    />
+                  </template>
+                  
+                </el-table-column>
               </el-table>
-            </el-card>
+            <!-- </el-card> -->
         </div>
       </div>
       </div>
@@ -509,7 +675,11 @@
 </template>
 
 <style src="../assets/css/traits.css" scoped></style>
-
+<style>
+.el-message-box{
+  width: auto !important;
+}
+</style>
 <script>
 // @ is an alias to /src
 // import Navigator from "@/components/navigator.vue";
@@ -520,6 +690,7 @@ import HeaderBar from "@/components/HeaderBar.vue";
 // import qs from "qs";
 // // icons
 import sameTraitIcon from "@/assets/img/icon/star.svg";
+import detailIcon from "@/assets/img/icon/details.svg";
 import orthoIcon from "@/assets/img/icon/huafu.svg";
 import singleTraitIcon from "@/assets/img/icon/orange.svg";
 // import "@/assets/css/traits.css";
@@ -540,6 +711,7 @@ export default {
   data() {
     return {
       sameTraitIcon,
+      detailIcon,
       orthoIcon,
       singleTraitIcon,
       visible:false,
@@ -582,6 +754,10 @@ export default {
       querySpeciesList_animal:[],
       querySpeciesList_plant:[],
       querySpeciesList:[],
+      selectGene:{},
+      exp_prjList:[],
+      project_val:"",
+      visible_2:false
     };
   },
 
@@ -598,6 +774,10 @@ export default {
     this.visible_1 = false;
     this.visible = false;
     this.$refs.table.doLayout();
+   },
+   confirmbutton2(){
+    this.visible_2 = false;
+    this.visible2 = false;
    },
     handleSizeChange(val){
       // this.loading = true;
@@ -636,8 +816,13 @@ export default {
       this.showSubTableBox=false;
       this.showOrthoSubTable=false;
     },
+    showSelectedGene(rowData,index){
+      console.log("rowData,index:",rowData,index);
+      this.selectGene=rowData;
+  },
     
   showOrthoInfoTable(rowData,index){
+     this.showSelectedGene(rowData,index)
     // console.log("rowData,index:",rowData,index);
     // rowData.orthoList[rowData.speciesListData.indexOf(index)];
     let ortholist=[];
@@ -656,8 +841,8 @@ export default {
       let hdbid=item.hdbId;
       this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
-        item.ensemblGeneId=res.data.ensemblGeneId;
-        item.geneSymbol=res.data.geneSymbol
+        item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
+        item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
         this.orthoTableData.push(item)
         this.orthoLoading=false;
       })
@@ -679,8 +864,147 @@ export default {
   buttonFunction(){
     this.drawer = true;
    },
+  drawBoxPlot(expTabledataTotal,index,nameList){
+    var chartDom = document.getElementById('main');
+    console.log("expTabledataTotal:",expTabledataTotal[index]);
+    var myChart = this.$echarts.init(chartDom);
+    var option;
+
+    option = {
+      title: [
+        {
+          text: 'Expression value detail in bioproject',
+          left: 'center'
+        },
+        
+      ],
+      dataset: [
+        {
+          // prettier-ignore
+          source: expTabledataTotal[index][0]
+        },
+        {
+          transform: {
+            type: 'boxplot',
+            config: { itemNameFormatter: function(params){
+                return nameList[index][params.value]
+            } }
+          }
+        },
+        {
+          fromDatasetIndex: 1,
+          fromTransformResult: 1
+        }
+      ],
+      tooltip: {
+        trigger: 'item',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      grid: {
+        left: '10%',
+        right: '10%',
+        bottom: '15%'
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        name: 'Tissue',
+        nameGap: 30,
+        splitArea: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        }
+      },
+      yAxis: {
+        type: 'value',
+        splitArea: {
+          show: true
+        }
+      },
+      series: [
+        {
+          name: 'boxplot',
+          type: 'boxplot',
+          datasetIndex: 1
+        },
+        {
+          name: 'outlier',
+          type: 'scatter',
+          datasetIndex: 2
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+
+   },
+  showDetailExpression(value){
+    if(value.selectPrj !==null && value.selectPrj!==undefined){
+    value.showpop=false;
+    console.log("selectPrj:",value.selectPrj);
+    this.visible_2 = !this.visible_2
+    console.log("exp value:",value);
+    let PATH="https://ngdc.cncb.ac.cn/gen/api/json/gene/expressions?taxonomyId="+value.taxonId+"&accession="+value.geneId+"&bioProjectId="+value.bioProjectId
+    // const h = this.$createElement;
+    this.$axios.get(PATH).then(response=>{
+        let expdata=response.data.result.expressionProfiles
+        console.log("expression response:",response.data.result.expressionProfiles);
+        this.exp_prjList=value.bioProjectId.split(',');
+        this.$alert(`
+          <div id="main" style="width:1300px;height:800px"></div>
+        `, {
+          dangerouslyUseHTMLString: true
+        })
+        let expTabledataTotal=[];
+        let nameList=[];
+        let prjListall=[];
+        for(let keyaa in expdata ){
+          if(prjListall.indexOf(keyaa)==-1){
+            prjListall.push(keyaa)
+          }
+            let expTabledata=[];
+            let prjList=expdata[keyaa]
+            let expNum=0;
+            // let sampleNum=0;
+            let tissue={};
+            let subnamelist=[];
+            for(let item of prjList){
+                // sampleNum += 1;
+                expNum += item.tpm;
+                let itemTissue=item.tissue
+                if(Object.keys(tissue).indexOf(itemTissue) == -1 ){
+                    tissue[itemTissue]=[expNum]
+                    subnamelist.push(itemTissue);
+                }else{
+                    tissue[itemTissue].push(expNum)
+                }
+            }
+            
+            for(let tissueName in tissue){
+                let valueList=tissue[tissueName];
+                console.log("valueList:",valueList,tissueName);
+                expTabledata.push(valueList);
+                
+            }
+            expTabledataTotal.push([expTabledata])
+            nameList.push(subnamelist)
+        }
+        console.log("nameList:",nameList);
+        let index=prjListall.indexOf(value.selectPrj)
+        setTimeout(() => {
+          this.drawBoxPlot(expTabledataTotal,index,nameList);
+        }, 100);
+    })
+    }else{
+       this.$message.error('Plese select a bioproject');
+    }
+  },
   showGwasInfoTable(rowValue,index){
-    console.log("rowValue,index:",rowValue,index);
+    this.showSelectedGene(rowValue,index)
 
     let ortholist=[];
     let hdblist=[rowValue.hdbId]
@@ -696,8 +1020,8 @@ export default {
       let hdbid=item.hdbId;
       this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         console.log("gene res:",res);
-        item.ensemblGeneId=res.data.ensemblGeneId;
-        item.geneSymbol=res.data.geneSymbol
+        item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
+        item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
         this.orthoTableData.push(item)
         this.orthoLoading=false;
       })
@@ -707,9 +1031,12 @@ export default {
     this.showSubTableBox=true;
     this.gwasInfoData=[];
     hdblist.forEach(hdbid=>{
-      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/expression-gene",{params:{'hdbId': hdbid}})
+      this.$axios.get("http://localhost:9401/api/expression-gene",{params:{'hdbId': hdbid}})
       .then(response=>{
         console.log("gwas response:",response);
+        for(let item of response.data){
+          item.bioProjectIdList=item.bioProjectId.split(",")
+        }
         this.gwasInfoData=this.gwasInfoData.concat(response.data);
         this.gwasLoading=false;
       })
