@@ -37,7 +37,7 @@ public interface GeneBasicInfoMapper {
 
     String getHdbIdByEnsId(String ensId);
 
-    List<String> getHdbIdByOtherId(String geneid);
+    List<String> getHdbIdByOtherId(String geneId);
 
     String geneDetailGeneOrthoInfo(String hdbId);
 

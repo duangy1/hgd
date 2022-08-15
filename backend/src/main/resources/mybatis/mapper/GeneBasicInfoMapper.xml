@@ -65,12 +65,15 @@
     <if test="commonandlatin != null">
       and   ( a.taxon_name like concat('%',#{commonandlatin},'%') or (a.species_common_name like concat('%',#{commonandlatin},'%')))
     </if>
-    <if test="commonname != null">commonandlatin
+    <if test="commonname != null">
       and a.species_common_name =#{commonname}
     </if>
 
     <if test="symbol != null">
-      and ( (a.gene_symbol =#{symbol}) or (a.gene_synonym =#{symbol}) )
+      and a.gene_symbol =#{symbol}
+    </if>
+    <if test="synonym != null">
+      and a.gene_synonym =#{synonym}
     </if>
     <if test="ensgene != null">
       and a.ensembl_gene_id like concat('%',#{ensgene},'%')
@@ -96,6 +99,9 @@
       or (a.ensembl_gene_id like concat('%',#{allfield},'%'))
       or ((a.gene_symbol like concat('%',#{allfield},'%') ) or (a.gene_synonym like concat('%',#{allfield},'%') ) )
       or ((a.taxon_name like concat('%',#{allfield},'%') ) or (a.species_common_name like concat('%',#{allfield},'%') ) )
+      or (a.gwas_gene_id like concat('%',#{allfield},'%'))
+      or (a.var_gene_id like concat('%',#{allfield},'%'))
+      or (a.exp_gene_id like concat('%',#{allfield},'%'))
       )
     </if>
 
@@ -198,7 +204,7 @@
   </select>
 
   <select id="getHdbIdByOtherId" resultType="java.lang.String">
-      select hdb_gene_id from gene_basic_info_1 where (ensembl_gene_id=#{geneid} or entrez_gene_id=#{geneid} or refseq_id=#{geneid} or uniprot_id=#{geneid} or gene_synonym=#{geneid} or gene_symbol=#{geneid} )
+      select hdb_gene_id from gene_basic_info_1 where (ensembl_gene_id=#{geneId} or entrez_gene_id=#{geneId} or refseq_id=#{geneId} or uniprot_id=#{geneId} or gene_symbol=#{geneId} or var_gene_id=#{geneId} or exp_gene_id=#{geneId} )
   </select>
 
   <select id="getEnsGidByEnspId" resultType="String">

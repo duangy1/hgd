@@ -25,11 +25,26 @@
   </sql>
 
   <select id="initPageVariant" resultMap="BaseResultMap">
-    select gene_id,hdb_gene_id,var_id,var_name,species_common_name,a.taxon_id,classification,gwas_orgid,snp_id from variation_all inner join (select data_source,gwas_orgid,taxon_id from species) as a on variation_all.taxon_id=a.taxon_id where classification=#{classification} and var_name=#{varname}
+    select gene_id,hdb_gene_id,var_id,var_name,species_common_name,a.taxon_id,classification,gwas_orgid,snp_id from variation_all inner join (select data_source,gwas_orgid,taxon_id from species) as a on variation_all.taxon_id=a.taxon_id where 1=1
+    <if test='classification != null and classification!="" and classification!="null"'>
+      and classification = #{classification}
+    </if>
+    <if test='varname != null and varname!="" and varname!="null"'>
+      and var_name = #{varname}
+    </if>
     <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
       and species_common_name = #{speciesName}
     </if>
-    and hdb_gene_id !="" and hdb_gene_id is not null
+    <if test='hdbidList != null and hdbidList.size()!=0'>
+      and hdb_gene_id in
+      <foreach item="hdbgene" index="index" collection="hdbidList"  open="(" separator="," close=")">
+        #{hdbgene}
+      </foreach>
+    </if>
+    <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
+      and hdb_gene_id = #{hdbId}
+    </if>
+    and hdb_gene_id !="" and hdb_gene_id is not null order by var_name
   </select>
 
   <select id="voInfoOfGene" resultMap="BaseResultMap">
@@ -46,6 +61,7 @@
       and species_common_name = #{speciesName}
     </if>
   </select>
+
   <select id="getSnpidByhdbid"  resultType="java.lang.String">
     select GROUP_CONCAT(snp_id) from variation_all where hdb_gene_id=#{hdbid}
     <if test="varList != null">
@@ -53,8 +69,7 @@
       <foreach item="variant" index="index" collection="varList"  open="(" separator="," close=")">
         #{variant}
       </foreach>
-
-
     </if>
   </select>
+
 </mapper>

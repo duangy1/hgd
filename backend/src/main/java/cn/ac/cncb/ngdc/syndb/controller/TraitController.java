@@ -32,7 +32,7 @@ public class TraitController {
     @RequestMapping(value = "/api/traits", method = RequestMethod.GET)
     @ResponseBody
 
-    public DataTableResultInfo getBiomedicalTrait(String classification,int traitId,String speciesName,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+    public DataTableResultInfo getBiomedicalTrait(String classification,String traitId,String speciesName,String geneId,String hdbId,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
                                             @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
                                             @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                             @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
@@ -40,8 +40,7 @@ public class TraitController {
         if(pageNo == 1){
             pageNo = start/length+1;
         }
-        Page<Trait2gwas> pageInfo = traitService.biomedicalTrait(traitId,classification,pageNo,length,speciesName);
-//        HashSet header = new HashSet();
+        Page<Trait2gwas> pageInfo = traitService.biomedicalTrait(traitId,classification,pageNo,length,speciesName,geneId,hdbId);
         for(Trait2gwas trait : pageInfo){
             int taxon = trait.getTaxonId();
             String hdbid = trait.getHdbId(); //拿到trait里使用的id，大多是ensemblid
@@ -50,7 +49,6 @@ public class TraitController {
                 ProductResultDTO resultList = orthoService.selectGeneTraitOrthoInfo(hdbid, "" + taxon);
                 List ortholist = resultList.getOrthoList();
 //            赋给gwas里的物种编号
-//            Integer gwasOrgId=traitService.findGwasOrgidByTaxonId(taxon);
                 trait.setOrthoList(ortholist);
             }
         }
@@ -80,5 +78,19 @@ public class TraitController {
     public HdbGwas getGwasInfoByhdbid(String hdbId){
         HdbGwas hdbGwas = traitService.getGwasInfoByhdbid(hdbId);
         return  hdbGwas;
+    }
+
+    @RequestMapping(value = "/api/species-gwasorg", method = RequestMethod.GET)
+    @ResponseBody
+    public HdbGwas getGwasorgIdByTaxon(String taxonId,String hdbId){
+        HdbGwas gwasorgId=traitService.getGwasorgIdByTaxon( taxonId, hdbId);
+        return gwasorgId;
+    }
+
+    @RequestMapping(value = "/api/species-gwasVar", method = RequestMethod.GET)
+    @ResponseBody
+    public HdbGwas getGwasVarIdByTaxon(String taxonId,String hdbId){
+        HdbGwas gwasorgId=traitService.getGwasVarIdByTaxon( taxonId, hdbId);
+        return gwasorgId;
     }
 }

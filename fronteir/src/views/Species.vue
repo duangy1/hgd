@@ -4,26 +4,22 @@
     <Banner />
     <!-- <Navigator />  -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
-      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
       <el-breadcrumb-item>Species</el-breadcrumb-item>
     </el-breadcrumb>
     <el-container style="border: 1px solid #eee;overflow: hidden;">
       <div class="wrapper-species-1">
-        <div>
+        <div style="display:flex;height:42px">
+        <div style="width:70%">
           <h2 class="trait-title title-species">Species List</h2>
+        </div>
+        <div style="width:30%">
+          <h2 class="trait-title title-species">Species Statistics</h2>
+        </div>
         </div>
         <div class="wrapper-species">
         <el-card style="width:70%;border-top: 2px solid rgb(64, 158, 255)!important;">
-          <el-pagination
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-              :current-page.sync="currentPage"
-              :page-sizes="[10, 30,100]"
-              :page-size="pageSize"
-              layout="sizes,total,pager,prev,next"
-              style="text-align: left;margin-left:6%"
-              :total="totalSize">
-          </el-pagination>
+          
             <el-table
             :data="speciesTableData"
             style="width:100%;margin:auto;"
@@ -70,7 +66,16 @@
               </template>
             </el-table-column>
             </el-table>
-			<div style="text-align:left;padding-top:10px;font-size:14px;">Note: # represents the number of homolog gene</div>
+            <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page.sync="currentPage"
+              :page-sizes="[10, 30,100]"
+              :page-size="pageSize"
+              layout="sizes,total,pager,prev,next"
+              :total="totalSize">
+          </el-pagination>
+			<div style="text-align:left;padding-top:10px;font-size:14px;">Note: # represents the number of homologous gene</div>
         </el-card>
         <el-card style="width:30%;border-top: 2px solid rgb(64, 158, 255)!important;margin-left:2%;">
           <div id="chart-div" style="width:300px;height:500px;"></div>
@@ -78,7 +83,7 @@
       </div>
       <div class="trait-box">
         <div>
-          <h2 class="trait-title title-species">Homolog Statistics Between Species</h2>
+          <h2 class="trait-title title-species">Homologous Statistics Between Species</h2>
         </div>
       
         <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;margin-top: 1%;">
@@ -221,7 +226,7 @@ export default {
           position: 'top',
           formatter:  (p)=> {
             // console.log("p:",p);
-            return speciesName[p.data[0]] + ' - ' + speciesName[p.data[1]]+' </br> ' +"Homolog Protein Pairs : "+p.data[2];
+            return speciesName[p.data[0]] + ' - ' + speciesName[p.data[1]]+' </br> ' +"Homologous Protein Pairs : "+p.data[2];
           }
         },
         grid: {
@@ -282,9 +287,7 @@ export default {
       var option;
 
       option = {
-        title: {
-          text: "Species Statistic",
-        },
+       
         tooltip: {
           trigger: 'item'
         },
@@ -372,6 +375,7 @@ export default {
   mounted(){
     // 获取上方物种饼图和表格的数据
     this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-all").then(response=>{
+      console.log("response:",response);
       this.speciesData=response.data;
       this.totalSize=response.data.length;
       this.speciesTableData=this.speciesData.slice(0,this.pageSize)

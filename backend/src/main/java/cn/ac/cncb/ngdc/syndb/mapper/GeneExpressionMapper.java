@@ -10,7 +10,7 @@ public interface GeneExpressionMapper {
 
     List<GeneExpression> expressionInfoByGeneList(String geneName);
 
-    Page<GeneExpression> initPageEo(String expName,String classification, String taxonid);
+    Page<GeneExpression> initPageEo(String expName,String classification, String taxonid,List hdbidList,String hdbId);
 
     List<GeneExpression> expressionGene(String hdbid);
 }

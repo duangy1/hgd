@@ -31,7 +31,7 @@
     </div>
     </el-drawer>
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
-      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/gene' }">Browse</el-breadcrumb-item>
       <el-breadcrumb-item>Traits</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 侧边栏按钮 -->
@@ -42,15 +42,22 @@
    <el-button @click="buttonFunction()" ref="button" id="button"></el-button>
    <!-- <div class="button-text">Trait Ontology</div> -->
   </div>
-    <div class="trait-box trait-infoBox">
-      <div style="padding-left:29px;margin-top: -15px;">
-        <h2 class="trait-title">Trait Name : {{ traitItem.traitName }} | ID: {{ traitItem.traitId }}</h2
-        >
-        <h2 class="trait-def trait-title" v-if="traitItem.traitDef != ''"
-          >Definition: {{ traitItem.definition }}</h2
-        >
+  <!-- 灰色title横幅 -->
+   <transition name="el-zoom-in-top">
+      <div class="trait-box trait-infoBox"  v-show="showTitle">
+        <div style="padding-left:29px;margin-top: -15px;">
+          <h2 class="trait-title">Selected Trait : {{ traitItem.traitName }} | ID: {{ traitItem.traitId }}</h2
+          >
+          <h2 class="trait-def trait-title" v-if="traitItem.traitDef != ''"
+            >Definition: {{ traitItem.definition }}</h2
+          >
+          
+        </div>
+         <el-button @click="clearTraitFilter" icon="el-icon-remove-outline" round class="remove-button">Remove filter</el-button>
       </div>
-    </div>
+      
+    </transition>
+   
     </div>
     <el-card shadow="none" class="border-card">
     <el-tabs v-model="classification" style="margin-top:10px;" @tab-click="changeClass">
@@ -73,6 +80,7 @@
                 <el-button icon="el-icon-search" type="success"  plain id="filter-search" @click="searchFilter()">Search</el-button>
                 <el-button icon="el-icon-delete" type="primary"  plain id="filter-search2" @click="clearFilter()">Clear</el-button>
 
+                <el-button type="primary" icon="el-icon-download" plain id="filterCol" @click="exportToExcel('animal')"></el-button>
 
                 <el-popover
                   placement="bottom-end"
@@ -84,8 +92,8 @@
                       <el-checkbox v-for="item of speciesList_animal_1" :key="item.commonName" :label="item.commonName" class="chooseColBox" ref="one" v-model="item.checked"></el-checkbox>
                     </div>
                     <div class="botton-wrapper">
-                      <el-button size="mini" type="primary"  @click="confirmbutton" class="choose-col-button">confirm</el-button>
-                      <el-button size="mini" type="text" plain @click="visible_1 = false" class="choose-col-button">cancel</el-button>
+                      <el-button size="mini" type="primary"  @click="confirmbutton" class="choose-col-button">Close</el-button>
+                      <!-- <el-button size="mini" type="text" plain @click="visible_1 = false" class="choose-col-button">cancel</el-button> -->
                     </div>
                   <el-button slot="reference" icon="el-icon-s-grid" type="primary" plain id="filterCol" @click="visible_1 = !visible_1" :disabled="speciesList_animal_1.length==0"></el-button>
                 </el-popover>
@@ -99,14 +107,16 @@
             
       <!-- 使用中的trait表格 -->
       <!-- <el-container style="width:100%;border: 1px solid darkgray;"> -->
-        
+        <!-- <table id="mytable"> -->
           <el-table
+            id="mytable"
             :data="traitData_animal"
             class="trait-table"
             row-key="id"
             ref="table"
             :header-cell-style="hiligtDbCols"
             v-loading="loading_animal"
+            border
           >
             <el-table-column align="center" class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
@@ -125,7 +135,7 @@
                 </a>
               </template>
             </el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homologous Species Name">
             <template v-for="(item,index) in speciesList_animal_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
                 <template slot-scope="scope" >
@@ -162,23 +172,23 @@
             </template>
             </el-table-column>
           </el-table>
-      
-          <div style="position: absolute;float: left;padding-top: 0.7%;">
+        <!-- </table> -->
+          <div style="position: absolute;float: left;">
           <div style="display: flex;">
                     <img :src="orthoIcon"
                       style="margin-right: 6px;min-width=70px;height=70px;"
                       class="iconImg" />
-                      <div class="note-info">exists homolog gene</div>
+                      <div class="note-info">exists homologous gene</div>
           </div>
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homologous gene with trait annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homologous gene with same trait annotation</div>  
           </div>
           
           </div>
@@ -187,9 +197,9 @@
             class="trait-pag"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page="currentPage4"
+            :current-page="currentPage4_a"
             :page-sizes="[10, 20, 50, 100]"
-            :page-size="10"
+            :page-size="pageSize"
             layout="total, sizes, prev, pager, next, jumper"
             :total="totalSize_animal"
           >
@@ -213,6 +223,9 @@
                 <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
                     {{ selectGene.geneId }}
                 </a></el-descriptions-item>
+                <el-descriptions-item label="Protein Id"><a :href="'https://www.uniprot.org/uniprot/'+selectGene.hdbId" target='_blank'>
+                    {{ selectGene.hdbId }}
+                </a></el-descriptions-item>
                 <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
                 <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
                 <el-descriptions-item label="Trait Ontology term">
@@ -225,7 +238,10 @@
               </el-descriptions>
             </template>
           <el-divider></el-divider>
-          <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
+          <div class="box-border">
+            <h2 class="trait-sub-title">Homologous Gene Detail Information</h2>
+            <el-button type="primary" icon="el-icon-download" plain id="filterCol1" @click="exportToSubOrthoTableExcel(orthoTableData)"></el-button>
+          </div>
       </div>
       </div>
       <!-- <div id="wrapper"> -->
@@ -270,7 +286,19 @@
                   </a>
                 </template>
             </el-table-column>
-              
+            <el-table-column  label="Data Source" align="center">
+                <template slot-scope="scope">
+                    <el-popover
+                        placement="top"
+                        title="Data Source"
+                        width="200"
+                        trigger="hover"
+                        :content="scope.row.dbEvidence">
+                        <i class="el-icon-s-order" slot="reference" width="30px"></i>
+                    </el-popover>
+                    
+                </template>
+            </el-table-column>
             </el-table>
           </div>
 
@@ -282,8 +310,11 @@
        
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box" >
-          <h3 class="trait-sub-title">Gwas Detail Information</h3>
+          <h3 class="trait-sub-title">GWAS Detail Information</h3>
+          <el-button type="primary" icon="el-icon-download" plain id="filterCol1" @click="exportToSubGwasTableExcel(gwasInfoData)"></el-button>
+
         </div>
+
         <div id="trait-info">
             <!-- <el-card shadow="none" class="gwasDetailCard"> -->
               <el-table 
@@ -295,6 +326,8 @@
                 v-loading="gwasLoading"
               >
                 <el-table-column prop="topTrait" label="Trait Name"></el-table-column>
+                <!-- <el-table-column prop="mapGeneId" label="Gene Id"></el-table-column> -->
+                <el-table-column prop="orthoGeneId" label="Gene Id"></el-table-column>
                 <el-table-column prop="varId" label="Var Id">
                   <template slot-scope="scope">
                     <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.varId+'&chrom='+scope.row.chrom+'&position='+scope.row.endPos+'&orgId='+scope.row.orgId" target='_blank'>
@@ -302,6 +335,7 @@
                     </a>
                   </template>
                 </el-table-column>
+                <!-- <el-table-column prop="orthoGeneId" label="Ensembl Gene Id"></el-table-column> -->
                 <el-table-column prop="traitName" label="Sub Trait Name"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
                 <el-table-column prop="pmid" label="Pubmed Id">
@@ -337,7 +371,7 @@
             </el-select>
             <el-button icon="el-icon-search" type="success" plain id="filter-search" @click="searchFilter()">Search</el-button>
             <el-button icon="el-icon-delete" type="primary" plain id="filter-search2" @click="clearFilter()">Clear</el-button>
-
+            <el-button type="primary" icon="el-icon-download" plain id="filterCol" @click="exportToExcel('plant')"></el-button>
             <el-popover
               placement="bottom-end"
               width="400"
@@ -349,8 +383,8 @@
                 <!-- <el-checkbox  class="chooseColBox" @change="chooseall" ref="all">Choose All</el-checkbox> -->
                 </div>
                 <div class="botton-wrapper">
-                  <el-button size="mini" type="primary"  @click="confirmbutton" class="choose-col-button">confirm</el-button>
-                  <el-button size="mini" type="text" plain @click="visible = false" class="choose-col-button">cancel</el-button>
+                  <el-button size="mini" type="primary"  @click="confirmbutton" class="choose-col-button">Close</el-button>
+                  <!-- <el-button size="mini" type="text" plain @click="visible = false" class="choose-col-button">cancel</el-button> -->
                 </div>
                 <el-button slot="reference" icon="el-icon-s-grid" type="primary" plain id="filterCol" @click="visible = !visible" :disabled="speciesList_plant_1.length==0"></el-button>
             </el-popover>
@@ -362,12 +396,12 @@
    <!-- 使用中的表格 -->
         <el-table
             :data="traitData_plant"
-            
             class="trait-table"
             row-key="id"
             v-loading="loading_plant"
             ref="table"
             :header-cell-style="hiligtDbCols"
+            border
           >
             <el-table-column align="center" class="titleCell" prop="traitName" label="Trait Name" fixed width="280px" style="background-color:white"></el-table-column>
             <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
@@ -386,7 +420,7 @@
                 </a>
               </template>
             </el-table-column>
-            <el-table-column align="center" prop="speciesCommonName" label="Homolog Species Name">
+            <el-table-column align="center" prop="speciesCommonName" label="Homologous Species Name">
             <template v-for="(item,index) in speciesList_plant_1">
               <el-table-column align="center" :label="item.commonName" :prop="item.commonName" v-if="item.checked" :key="item.commonName">
             <!-- <el-table-column :label="item" :show-overflow-tooltip="true" :prop="item" v-for="(item,index) in speciesList_plant" :key="index"
@@ -397,7 +431,7 @@
                       min-width="70"
                       height="70"
                       class="iconImg"
-                      v-if='!iconClass(scope.row,index) && scope.row.speciesListData.indexOf(index)>-1'
+                      v-if='scope.row.speciesListData.indexOf(index)>-1'
                       style="cursor:pointer"
                       @click=showOrthoInfoTable(scope.row,index)
                     />
@@ -416,7 +450,7 @@
                       min-width="70"
                       height="70"
                       class="iconImg"
-                      v-if='iconClass(scope.row,index)'
+                      v-if='scope.row.traitListData1.indexOf(index)>-1'
                       style="cursor:pointer"
                       @click=showGwasInfoTable(scope.row,index)
                     />
@@ -426,31 +460,31 @@
             </template>
             </el-table-column>
           </el-table>
-        <div style="position: absolute;float: left;padding-top: 0.7%;">
+        <div style="position: absolute;float: left;">
         <div style="display: flex;">
                     <img :src="orthoIcon"
                       style="margin-right: 6px;min-width=70px;height=70px;"
                       class="iconImg" />
-                      <div class="note-info">exists homolog gene</div>
+                      <div class="note-info">exists homologous gene</div>
           </div>
           <div style="display: flex;">
                     <img :src="singleTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homologous gene with trait annotation</div>  
           </div>
           <div style="display: flex;">
                     <img :src="sameTraitIcon"   
                       style="margin-right: 6px;min-width=70px;height=70px;"
-                      class="iconImg" /><div class="note-info">exists homolog gene with same trait annotation</div>  
+                      class="iconImg" /><div class="note-info">exists homologous gene with same trait annotation</div>  
           </div>
         </div>
         <el-pagination
           class="trait-pag"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="currentPage4"
+          :current-page="currentPage4_p"
           :page-sizes="[10, 20, 50, 100]"
-          :page-size="10"
+          :page-size="pageSize"
           layout="total, sizes, prev, pager, next, jumper"
           :total="totalSize_plant"
         >
@@ -463,6 +497,10 @@
                 <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
                     {{ selectGene.geneId }}
                 </a></el-descriptions-item>
+                <el-descriptions-item label="Protein Id"><a :href="'https://www.uniprot.org/uniprot/'+selectGene.hdbId" target='_blank'>
+                    {{ selectGene.hdbId }}
+                </a></el-descriptions-item>
+
                 <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
                 <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
                 <el-descriptions-item label="Trait Ontology term">
@@ -475,7 +513,10 @@
               </el-descriptions>
             </template>
           <el-divider></el-divider>
-          <h2 class="trait-sub-title">Homolog Gene Detail Information</h2>
+          <div class="box-border">
+            <h2 class="trait-sub-title">Homologous Gene Detail Information</h2>
+            <el-button type="primary" icon="el-icon-download" plain id="filterCol1" @click="exportToSubOrthoTableExcel(orthoTableData)"></el-button>
+          </div>
           </div>
       </div>
     <!-- 同源表格 -->
@@ -519,13 +560,27 @@
                   </a>
                 </template>
             </el-table-column>
-              
+            <el-table-column  label="Data Source" align="center">
+                <template slot-scope="scope">
+                    <el-popover
+                        placement="top"
+                        title="Data Source"
+                        width="200"
+                        trigger="hover"
+                        :content="scope.row.dbEvidence">
+                        <i class="el-icon-s-order" slot="reference"></i>
+                    </el-popover>
+                    
+                </template>
+            </el-table-column>
           </el-table>
     <!-- gwas detail info表格 -->
       <div class="sub-trait-box" v-if="showSubTableBox">
         <div  class="title-box">
-          <h3 class="trait-sub-title">Gwas Detail Information</h3>
+          <h3 class="trait-sub-title">GWAS Detail Information</h3>
         </div>
+        <el-button type="primary" icon="el-icon-download" plain id="filterCol1" @click="exportToSubGwasTableExcel(gwasInfoData)"></el-button>
+
         <div id="trait-info">
             <!-- <el-card shadow="none" class="gwasDetailCard"> -->
               <el-table 
@@ -537,6 +592,8 @@
                 v-loading="gwasLoading"
               >
                 <el-table-column prop="topTrait" label="Trait Name"></el-table-column>
+                <!-- <el-table-column prop="mapGeneId" label="Gene Id"></el-table-column> -->
+                <el-table-column prop="orthoGeneId" label="Gene Id"></el-table-column>
                 <el-table-column prop="varId" label="Var Id">
                   <template slot-scope="scope">
                     <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.varId+'&chrom='+scope.row.chrom+'&position='+scope.row.endPos+'&orgId='+scope.row.orgId" target='_blank'>
@@ -611,7 +668,11 @@ import HeaderBar from "@/components/HeaderBar.vue";
 import sameTraitIcon from "@/assets/img/icon/star.svg";
 import orthoIcon from "@/assets/img/icon/huafu.svg";
 import singleTraitIcon from "@/assets/img/icon/orange.svg";
+// import FileSaver from 'file-saver'
+// import XLSX from 'xlsx'
 // import "@/assets/css/traits.css";
+// import from '../../vendor/Blob'
+// import Export2Excel from '../../vendor/Export2Excel'
 export default {
   name: "Traits",
   components: {
@@ -657,7 +718,8 @@ export default {
         definition:"any measurable or observable characteristics related to animal growth and meat production quantity and quality",
         classification:"animal"
       },
-      currentPage4: 1,
+      currentPage4_a: 1,
+      currentPage4_p: 1,
       totalSize_animal: 0,
       totalSize_plant: 0,
       form: {
@@ -678,18 +740,21 @@ export default {
       querySpeciesList_plant:[],
       querySpeciesList:[],
       selectGene:{},
+      showTitle:true
       
     };
   },
 
   methods: {
    
-    changeClass(){
+    changeClass(tab){
         this.speciesList=[];
         this.showOrthoSubTable=false;
         this.showSubTableBox=false;
         this.$refs['table'].doLayout();
         this.form.querySpecies='';
+        this.form.gene='';
+        this.classification=tab.name
     },
 
     confirmbutton(){
@@ -698,21 +763,25 @@ export default {
     this.$refs.table.doLayout();
    },
     handleSizeChange(val){
-      // this.loading = true;
-      if(this.classification=="animal"){this.loading_animal=true;}else{this.loading_plant=true}
+      if(this.classification=="animal"){
+        this.currentPage4_a=1
+        this.loading_animal=true;
+      }else{
+        this.loading_plant=true
+        this.currentPage4_p=1
+      }
       this.pageSize = val;
-      this.getTraitData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,1,this.form.querySpecies)
+      this.getTraitData(this.traitItem.traitDefID,this.classification,this.hdbId)
     },
     handleCurrentChange(val) {
       if(this.classification=="animal"){
         this.loading_animal=true;
-        // traitId,classification,pagesize,pagenum,speciesName
-        this.getTraitData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,val,this.form.querySpecies)
+        this.currentPage4_a = val;
       }else{
         this.loading_plant=true;
-        this.getTraitData(this.traitItem.traitDefID,this.traitItem.classification,this.pageSize,val,this.form.querySpecies)
+        this.currentPage4_p = val;
       }
-      this.currentPage4 = val;
+      this.getTraitData(this.traitItem.traitDefID,this.classification,this.hdbId)
 
     },
     handleSelectionChange(val) {
@@ -723,6 +792,8 @@ export default {
       return data.label.indexOf(value) !== -1;
     },
     getInfoByTrait(value, data) {
+      this.hdbId="";
+      this.showTitle=true;
       // 先隐藏现实的detail表格
       this.showOrthoSubTable=false;
       this.showSubTableBox=false;
@@ -731,22 +802,29 @@ export default {
       this.traitItem.traitDefID=value.traitDefID;
       this.traitItem.definition=value.Definitions;
       this.traitItem.classification=value.classification;
-      if(value.classification=="animal"){
-        this.loading_animal=true;
-        this.getTraitData(value.traitDefID,value.classification,this.pageSize,1,this.form.querySpecies);
-
-      }else{
-        this.loading_plant=true;
-        this.getTraitData(value.traitDefID,value.classification,this.pageSize,1,this.form.querySpecies)
-
+      this.form= {
+        querySpecies:"",
+        gene:""
       }
-      this.currentPage4=1;
+      if(value.classification!==""&&value.classification!==null){
+        if(value.classification=="animal"){
+          this.classification="animal"
+        }else{
+          this.classification="plant"
+        }
+      }
+      this.loading_animal=true;
+      this.getTraitData(value.traitDefID,"animal");
+      this.loading_plant=true;
+      this.getTraitData(value.traitDefID,"plant")
+      this.currentPage4_p=1;
+      this.currentPage4_a=1;
+      
       data.checked = true;
       this.classification=value.classification;
 
     },
-  showSelectedGene(rowData,index){
-      console.log("rowData,index:",rowData,index);
+  showSelectedGene(rowData){
       this.selectGene=rowData;
   },
   showOrthoInfoTable(rowData,index){
@@ -757,8 +835,6 @@ export default {
       if(id==index){
         ortholist.push(rowData.orthoList[idx])
     }})
-    // console.log("index list:",ortholist);
-
     // rowData.
     this.showOrthoSubTable = true;
     this.showSubTableBox=false;
@@ -767,18 +843,13 @@ export default {
    this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
-        console.log("gene res:",res);
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
         item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
         this.orthoTableData.push(item)
         this.orthoLoading=false;
       })
     })
-
-    // this.orthoTableData=ortholist;
-    console.log(this.orthoTableData);
-    // 应该发送请求去genebasicinfo查具体的基因相关信息
 
   },
  
@@ -794,95 +865,98 @@ export default {
     this.drawer = true;
    },
   showGwasInfoTable(rowValue,index){
+    this.gwasLoading=true;
     this.showSelectedGene(rowValue,index)
     // 获取当前位置，两物种间同源数据
     let ortholist=[];
     rowValue.speciesListData.forEach((id,idx)=>{
     if(id==index){
         let item=rowValue.orthoList[idx]
-        console.log("item:",item);
         ortholist.push(item)
     }})
-    console.log("ortholist:",ortholist);
     this.orthoTableData=[]
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
-      this.$axios.get("http://localhost:9401/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
-        console.log("gene res:",res);
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
         item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
         item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
         this.orthoTableData.push(item)
         this.orthoLoading=false;
       })
     })
-    
     this.showOrthoSubTable = true;
     this.orthoLoading=false;
     // this.orthoTableData=ortholist;
     this.showSubTableBox=true;
-    this.gwasLoading=true;
+    
     // 左侧基因的接口数据
     let gwasid1=rowValue.gwasId
     let taxid1=rowValue.gwasOrgid;
-    
+    let gwasGeneId=rowValue.geneId;
+    // let varList=[];
+    let filtList=[]
     // 左侧基因请求接口
-    this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10")
+    this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid1+"&organismId="+taxid1+"&offset=0&pagesize=10&total=10&geneId="+gwasGeneId)
     .then(response=>{
-      console.log("gwas response:",response);
       let datalist=response.data;
+      
       for(let item of datalist){
         item.topTrait=rowValue.traitName;
+        item.orthoGeneId=rowValue.geneId;
+        // if(varList.indexOf(item.varId)==-1){
+        //   varList.push(item.varId)
+        filtList.push(item);
+        // }
       }
-      this.gwasInfoData=datalist; 
-      this.gwasInfoData.topTrait=rowValue.traitName;
-      this.gwasLoading=false;
+      // this.gwasInfoData=filtList; 
+      
+      // this.gwasLoading=false;
       
     })
     // 右侧基因数据
     // 循环当前同源数据，请求后端得到接口所需要的参数
     ortholist.forEach((item)=>{
       let hdbid=item.hdbId;
-      // let topTrait=item.traitName;
-      console.log("item.hdbId:",item.hdbId);
-      this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
-        console.log("res:",res);
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
           let taxid2=res.data.gwasOrgid;
+          let gwasGeneId=res.data.gwasGeneId;
           if(gwasid2 != gwasid1){
-            this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
+            this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10&geneId="+gwasGeneId)
               .then(response=>{
-                console.log("gwas response22:",response);
                 let datalist=response.data;
                 if(datalist.length>0){
                   for(let idata of datalist){
+                    // if(varList.indexOf(item.varId)==-1){
+                    //   varList.push(item.varId)
                     idata.topTrait=item.traitName;
+                    idata.orthoGeneId=item.ensemblGeneId;
+                    filtList.push(idata);
+                    // }
                   }
-                  // let data=response.data;
-                  // data.topTrait=item.traitName;
-                  this.gwasInfoData=this.gwasInfoData.concat(datalist)
-                  this.gwasLoading=false;
-                  console.log("this.gwasInfoData:",this.gwasInfoData);
+                 
                 }
+            }).finally(()=>{
+              this.gwasInfoData=filtList;
+              this.gwasInfoData.topTrait=rowValue.traitName;
+               setTimeout(() => {
+                  this.gwasLoading=false;
+              }, 100);
             })
           }
         }
       })
       
     })
-    
-    // this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbid': hdblist}}).then(res=>{
-    //     console.log("res:",res);
-    // })
+   
    },
    showSingleGwasInfoTable(rowValue,index){
-    console.log("rowValue,index:",rowValue,index);
     // 获取当前位置，两物种间同源数据
     let ortholist=[];
     rowValue.speciesListData.forEach((id,idx)=>{
     if(id==index){
         let item=rowValue.orthoList[idx]
-        console.log("item:",item);
         ortholist.push(item)
     }})
     
@@ -891,21 +965,18 @@ export default {
     this.orthoTableData=ortholist;
     this.showSubTableBox=true;
     this.gwasLoading=true;
-   this.gwasInfoData=[];
+    this.gwasInfoData=[];
     // 右侧基因数据
     // 循环当前同源数据，请求后端得到接口所需要的参数
     ortholist.forEach((item)=>{
       let hdbid=item.hdbId;
       // let topTrait=item.traitName;
-      console.log("item.hdbId:",item.hdbId);
-      this.$axios.get("http://localhost:9401/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
-        console.log("res:",res);
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits-gwas-info",{params:{'hdbId': hdbid}}).then(res=>{
         if(res.data.length !==0){
           let gwasid2=res.data.gwasId;
           let taxid2=res.data.gwasOrgid;
           this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwasid2+"&organismId="+taxid2+"&offset=0&pagesize=10&total=10")
             .then(response=>{
-              console.log("gwas response22:",response);
               let datalist=response.data;
               for(let idata of datalist){
                 idata.topTrait=item.traitName;
@@ -913,13 +984,13 @@ export default {
               // let data=response.data;
               // data.topTrait=item.traitName;
               this.gwasInfoData=this.gwasInfoData.concat(datalist)
-              this.gwasLoading=false;
-              console.log("this.gwasInfoData:",this.gwasInfoData);
           })
         }
       })
-      
     })
+    setTimeout(() => {
+      this.gwasLoading=false;
+    }, 100);
    },
     hiligtDbCols({rowIndex}){
       if(rowIndex===1){
@@ -929,21 +1000,16 @@ export default {
     },
     iconClass(data,index){
       // if(data.speciesListData.indexOf(index)>-1){
+        // 循环当前行的同源物种index
         data.speciesListData.forEach((id,idx)=>{
-          // console.log("id,index:",id,index);
           if(id==index){
-            
+            // 取出列index和同源index相等的列值
             if( data.orthoList[idx].traitName!=null ){
-              // console.log("data.orthoList[idx]:",data.orthoList[idx].traitName,data.traitName);
               let traitlist=data.orthoList[idx].traitName.split(",")
               if(traitlist.indexOf(data.traitName)>-1){
-                console.log(1,"idx:",idx,"species:",data.orthoList[idx],"trait data:",data.traitName);
-                console.log("data.orthoList[idx]:",data.orthoList[idx].traitName,data.traitName);
                 return 1;
               }else{
-                console.log(2);
-                console.log("data.orthoList[idx]:",data.orthoList[idx],data.traitName);
-              return 2;
+                return 2;
             }
           }else{
             return false
@@ -956,24 +1022,45 @@ export default {
     },
    
     searchFilter(){
-      if(this.classification=="animal"){
-        this.loading_animal=true;
+      if(this.form.querySpecies=="" && this.form.gene==""){
+        this.$message.error('Please enter query criteria');
       }else{
-        this.loading_plant=true;
+        if(this.classification=="animal"){
+          this.loading_animal=true;
+        }else{
+          this.loading_plant=true;
+        }
+        this.getTraitData(this.traitItem.traitDefID,this.classification)
+        setTimeout(() => {
+          this.messagError(this.classification)
+        }, 1000);
       }
-      this.getTraitData(this.traitItem.traitDefID,this.classification,this.pageSize,1,this.form.querySpecies,this.form.gene)
-
     }, 
-    clearFilter(){
-      if(this.classification=="animal"){
-        this.loading_animal=true;
+     messagError(type){
+      if(type=='plant'){
+        if(this.totalSize_plant==0){
+            this.$message.error('No data found');
+          }
       }else{
-        this.loading_plant=true;
+          if(this.totalSize_animal==0){
+            this.$message.error('No data found');
+        }
       }
-      this.getTraitData(this.traitItem.traitDefID,this.classification)
-      // this.getTraitData(this.traitItem.traitDefID,"plant")
-      this.form.querySpecies=""
-      this.form.gene=""
+    },
+    clearFilter(){
+      if(this.form.querySpecies!=="" || this.form.gene!==""){
+
+        if(this.classification=="animal"){
+          this.loading_animal=true;
+        }else{
+          this.loading_plant=true;
+        }
+        this.form.querySpecies=""
+        this.form.gene=""
+        this.getTraitData(this.traitItem.traitDefID,"animal")
+        this.getTraitData(this.traitItem.traitDefID,"plant")
+        
+      }
     },
     async showTableIcon(data,classss){
       
@@ -1010,7 +1097,6 @@ export default {
     }else{
       this.speciesList_animal=[];
       
-      console.log("this.speciesList_plant:",this.speciesList_plant);
       this.speciesList_animal_1=[];
         if(data.length>0){
           for(let varData of data){
@@ -1044,29 +1130,29 @@ export default {
     },
     // 主要获取数据的方法
     // 根据动植物分开获取
-    async getTraitData(traitId,classification,pagesize,pagenum,speciesName,gene){
-      if(gene!=='' && gene !==undefined){
-        gene=gene.trim()
+    async getTraitData(traitId,classification,hdbId){
+
+      if(this.form.gene!=='' && this.form.gene !==undefined){
+        this.form.gene=this.form.gene.trim()
       }
-      this.$axios.get("http://localhost:9401/api/traits",{params:{'classification': classification,'traitId':traitId,'length':pagesize,'pageNo':pagenum,'speciesName':speciesName,'geneid':gene}})
+      let pageNo;
+      if(classification=="animal"){pageNo=this.currentPage4_a}else if(classification=="plant"){
+        pageNo=this.currentPage4_p
+      }else{pageNo=1}
+      this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/traits",{params:{'classification': classification,'traitId':traitId,'length':this.pageSize,'pageNo':pageNo,'speciesName':this.form.querySpecies,'geneId':this.form.gene,"hdbId":hdbId}})
       .then((response) => {
         if(classification=="animal"){
           this.getSpecies(traitId,'animal')
-          console.log("response.data.recordsTotal:",response.data);
           this.totalSize_animal = response.data.recordsTotal;
           // this.speciesList_animal=response.data.data[0].headerList;
-          this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_animal=res;this.loading_animal=false;});
-          if(this.totalSize_animal==0){
-            this.$message.error('No data found');
-          }
+          this.showTableIcon(response.data.data,classification).then((res)=>{this.traitData_animal=res;this.loading_animal=false;});
+          
         }else{
           this.getSpecies(traitId,'plant')
           this.totalSize_plant = response.data.recordsTotal;
           // this.speciesList_plant=response.data.data[0].headerList;
           this.showTableIcon(response.data.data,classification).then((res)=>{ this.traitData_plant=res; this.loading_plant=false;});
-          if(this.totalSize_plant==0){
-            this.$message.error('No data found');
-          }
+         
         }
 
       })
@@ -1075,7 +1161,7 @@ export default {
     },
     // 根据当前classification判断获取动物或植物列表
     getSpecies(traitID,speciesType){
-      this.$axios.get('http://localhost:9401/api/species-trait',{params: {'traitID':traitID,speciesType: speciesType}})
+      this.$axios.get('https://ngdc.cncb.ac.cn/hapi/api/species-trait',{params: {'traitID':traitID,speciesType: speciesType}})
         .then(response=>{
           // 2是植物，1是动物
           if(speciesType=='plant'){
@@ -1085,31 +1171,145 @@ export default {
           }
       })
     },
-
+      // 导出数据
+//     exportToExcel () {
+//     let  XLSX=require('xlsx')
+//     let FileSaver=require('file-saver')
+//     let et = XLSX.utils.table_to_book(document.querySelector('#mytable')); //此处传入table的DOM节点
+//     let etout = XLSX.write(et, { 
+//      bookType: 'xlsx', 
+//      bookSST: true, 
+//      type: 'array' 
+//     });
+//     try {
+//       FileSaver.saveAs(new Blob([etout], { 
+//       type: 'application/octet-stream' 
+//         }), 'trade-publish.xlsx');   //trade-publish.xlsx 为导出的文件名
+//       }catch (e) {
+//           console.log(e, etout) ;
+//     }
+//     return etout;
+// },
+        // export2Excel() {
+        //     require.ensure([], () => {
+        //         const { export_json_to_excel } = require('../../vendor/Export2Excel.js');
+        //         const tHeader = ['序号', 'IMSI', 'MSISDN', '号码', '姓名'];
+        //         const filterVal = ['ID', 'imsi', 'msisdn', 'address', 'name'];
+        //         const list = this.traitData_animal;
+        //         const data = this.formatJson(filterVal, list);
+        //         export_json_to_excel(tHeader, data, '列表excel');
+        //     })
+        // },
+        // formatJson(filterVal, jsonData) {
+        //     return jsonData.map(v => filterVal.map(j => v[j]))
+        // },
+    exportToExcel(classs) {
+      let oriData;
+      if(classs=='animal'){oriData=this.traitData_animal}else{oriData=this.traitData_plant}
+      import('@/vendor/Export2Excel').then(excel => {
+        const tHeader = [ 'Trait Term',"Gene Id","Species Common Name","Taxon Id","Homologous Info Data"]
+        const filterVal = ['traitName','geneId','speciesCommonName','taxonId','orthoList']
+        const data = this.formatJson(filterVal, oriData)
+        excel.export_json_to_excel({
+          header: tHeader,
+          data,
+          filename:"public_outer"
+        })
+      })
+    },
+    exportToSubOrthoTableExcel(orthodata) {
+      import('@/vendor/Export2Excel').then(excel => {
+        const tHeader = [ 'Species',"Taxon Id","Ensembl Id ","Gene Symbol","Protein Id","DataSource"]
+        const filterVal = ['commonName','tax',"ensemblGeneId","geneSymbol",'hdbId',"dbEvidence"]
+        const data = this.formatJson(filterVal, orthodata)
+        excel.export_json_to_excel({
+          header: tHeader,
+          data,
+          filename:"Homolog_Outer"
+        })
+      })
+    },
+    exportToSubGwasTableExcel(gwasdata) {
+      import('@/vendor/Export2Excel').then(excel => {
+        const tHeader = [ 'Trait Name',"Gene Id","Var Id ",'Chromosom',"Var Position","Sub Trait Name","Species","Pubmed Id","Pvalue"]
+        const filterVal = ['topTrait','orthoGeneId','varId','chrom','startPos',"traitName",'speciesCommonName','pmid',"pvalue"]
+        const data = this.formatJson(filterVal, gwasdata)
+        excel.export_json_to_excel({
+          header: tHeader,
+          data,
+          filename:"Traits_Outer"
+        })
+      })
+    },
+    formatJson(filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => {
+        if(j=="orthoList"){
+            let orthoData=v[j];
+            let orthoList=[]
+            for(let item of orthoData){
+              let orthodataInfo={"Species Common Name":item.commonName,"Taxon Id":item.tax,"Trait Term":item.traitName,"Homologous Protein Id":item.hdbId,"Data Source":item.dbEvidence}
+              orthoList.push(JSON.stringify(orthodataInfo))
+            }
+            return orthoList
+        }else{
+         return  v[j]
+        }
+      }))
+    },
+    clearTraitFilter(){
+        this.traitItem={
+          traitName:"",
+          traitId:"",
+          traitDefID:"",
+          definition:"",
+          classification:""
+        }
+        if(this.classification=='animal'){this.loading_animal=true}else{this.loading_plant=true}
+        this.showTitle=false;
+        this.getTraitData("","animal");
+        this.getTraitData("","plant");
+      }
   },
   
 
   mounted() {
-    if(this.classification=='animal'){
-      this.loading_animal = true;
+   
+    let hdbId = this.$route.query.hdbId;
+    this.hdbId=hdbId;
+    // if(hdbId!=null && hdbId!=""){}
+    if(hdbId!=""&&hdbId!=null){
+      let classification;
+      if(this.$route.query.speciesType==1){
+        classification="animal";
+        this.classification="animal";
+        this.activeName="animal";
+      }else if(this.$route.query.speciesType==2){
+        classification="plant";
+        this.classification="plant";
+        this.activeName="plant";
+      }
+     
+      this.traitItem={
+          traitName:"",
+          traitId:"",
+          traitDefID:"",
+          definition:"",
+          classification:""
+        }
+        this.showTitle=false;
+        this.getTraitData("",classification,hdbId);
     }else{
-      this.loading_plant=true;
+      if(this.traitItem.classification=='animal'){
+        this.loading_animal = true;
+      }else{
+        this.loading_plant=true;
+      }
+      this.getTraitData(this.traitItem.traitDefID,this.traitItem.classification);
     }
- 
-    this.getTraitData(this.traitItem.traitDefID,this.classification);
-    // this.getTraitData(this.traitItem.traitDefID,"plant");
 
     window.addEventListener("scroll", this.watchScroll);
-    // this.getTableMaxHeight(); 
-    // let _this = this;
-    // window.onresize = function () {//用于使表格高度自适应的方法  
-    // _this.getTableMaxHeight();//获取容器当前高度，重设表格的最大高度
-    // }
-   // 获取动植物名称列表，用于下拉选择框
-    this.getSpecies(this.traitItem.traitDefID,this.classification)
-    // this.getSpecies(this.traitItem.traitDefID,'plant')
     
-     window.addEventListener("scroll", this.watchScroll);
+    window.addEventListener("scroll", this.watchScroll);
       this.getTableMaxHeight(); 
       let _this = this;
       window.onresize = function () {//用于使表格高度自适应的方法  

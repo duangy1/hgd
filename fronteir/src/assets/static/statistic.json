@@ -3,92 +3,73 @@
     "protein number": "959,181"
   },{
     "dataclass": "Total Homolog Protein Pairs",
-    "protein number": "23,399,653"
+    "protein number": "23,399,654"
   },{
     "dataclass": "Data Source",
     "protein number": "EggNog,Panther,Treefam,Hieranoid,Inparanoid,Ensembl,Uniprot,NCBI"
   }],
   "tableDataAnnotat":[{
     "dataclass": "Total Homolog Gene With Traits Annotaion",
-    "protein number": "14,637"
+    "protein number": "14,606"
   }, {
     "dataclass": "Total Homolog Gene With Variant Annotaion",
-    "protein number": "146,621"
-  }, {
-    "dataclass": "Total Homolog Gene With Gene Ontology Annotaion",
-    "protein number": "384,684"
+    "protein number": "193,466"
   }, {
     "dataclass": "Total Homolog Gene With Expression Annotaion",
-    "protein number": "403,655"
+    "protein number": "403,658"
+  }, {
+    "dataclass": "Total Homolog Gene With Gene Ontology Annotaion",
+    "protein number": "50,7153"
   }],
   "barData": {
 "trait2species":{
     "title":"The Number of Homolog Gene With Trait Annotation On Each Species",
-    "data":[233,383,5953,229,116,6171,670,882],
-    "xaxis":["Cattle","Chicken","Maize","Pig","Rapeseed","Rice","Sorghum","Soybean"],
+    "data":[238,217,104,7163,154,5333,1090,307],
+    "xaxis":["Cattle","Chicken","Pig","Maize","Rapeseed","Rice","Sorghum","Soybean"],
     "color":"#4e72b8"
 },
 "trait2homologGene":{
     "title":"The Number of Homolog Gene On Each Trait Annotation",
-    "data":[7767, 1630, 1396, 1327, 810, 757, 523, 497, 204, 174, 82, 54, 49, 30, 17],
-    "xaxis":["plant morphology trait","plant growth and development trait","stress trait","biochemical trait","plant vigor trait","biological process trait","plant quality trait","yield trait","animal welfare trait","mammary gland and milk production trait","animal health trait","reproduction trait","growth and meat production trait","sterility or fertility trait","nutrition trait"],
+    "data":[8284,1791,1753,1691,810,781,523,512,204,174,82,54,49,37,17],
+    "xaxis":["plant morphology trait","stress trait","plant growth and development trait","biochemical trait","plant vigor trait","biological process trait","plant quality trait","yield trait","animal welfare trait","mammary gland and milk production trait","animal health trait","reproduction trait","growth and meat production trait","sterility or fertility trait","nutrition trait"],
     "color":"#4e72b8"
 },
 "var2species":{
     "title":"The Number of Homolog Gene With Variant Annotation On Each Species",
-    "data":[13412, 11059 , 18269, 16747, 17437, 18903, 14618, 7205, 3153,49],
-    "xaxis":["Chicken","Giant panda","Cattle","Horse","Cat","Human","Pig","Rapeseed","Tomato","Grape"],
+    "data":[17437,18269,13412,11059,49,16747,18903,14618,25769,7205,21301,25544,3153],
+    "xaxis":["Cat","Cattle","Chicken","Giant panda","Grape","Horse","Human","Pig","Poplor","Rapeseed","Rice","Sorghum","Tomato"],
     "color":"#76becc"
 },
 "var2homologGene":{
     "title":"The Number of Homolog Gene On Each Variant Annotation",
-    "data":[110942,103363,69722,66409,52348,9662,5922,5669,4544,3468,2611,1965,1959,940,915,355,62],
-    "xaxis":["synonymous_variant","missense_variant","splice_region_variant","3_prime_UTR_variant","5_prime_UTR_variant","stop_gained","frameshift_variant","splice_donor_variant","splice_acceptor_variant","inframe_deletion","inframe_insertion","start_lost","coding_sequence_variant","stop_retained_variant","stop_lost","protein_altering_variant","incomplete_terminal_codon_variant"],
+    "data":[139615,133818,100397,95635,70668,38283,28631,28587,26326,25757,25660,25049,24184,24009,21512,17703,11893,9607,7802,5922,3468,2621,2235,1966,1490,1094,989,765,355],
+    "xaxis":["synonymous_variant","missense_variant","splice_region_variant","3_prime_UTR_variant","5_prime_UTR_variant","stop_gained","start_lost","intron_variant","upstream_gene_variant","incomplete_terminal_codon_variant","NMD_transcript_variant","non_coding_transcript_exon_variant","downstream_gene_variant","inframe_insertion","stop_lost","Coding Variant","2KB_upstream_gene_variant","splice_donor_variant","splice_acceptor_variant","frameshift_variant","inframe_deletion","intergenic_variant","stop_retained_variant","coding_sequence_variant","non_coding_transcript_variant","Non-coding Variant","genic Variant","Initiator Codon Variant","protein_altering_variant"],
     "color":"#76becc"
-},
-"go2species":{
-    "title":"The Number of Homolog Gene With Gene Ontology Annotation On Each Species",
-    "data":[33971,20300,15506,37453,22971,18212,23259,4145,19385,21944,23524,16718,49,25022,9679,10733,3747,10268,21120],
-    "xaxis":[
-    "Rapeseed",
-    "Pepper",
-    "Cucumber",
-    "Soybean",
-    "Cassava",
-    "Rice",
-    "Poplor",
-      "Tomato",
-    "Potato",
-    "Sorghum",
-    "Thale cress",
-    "Bread wheat",
-    "Grape",
-    "Maize",
-    "Roundworm",
-    "Fruit fly",
-    "Brewer yeast",
-    "Tropical clawed frog",
-    "Zebrafish"
-],
-"color":"#8CC7B5"
-},
-"go2homologGene":{
-    "title":"The Number of Homolog Gene On Each Gene Ontology Annotation",
-    "data":[138111,120831,82083,75020,74684,74104,59751,58525,52733,44368,37952,32482,31632,26538,20801,20226,19848,18687,17689,13949,12921,12502,12288,8488,7589,7190,6864,6631,6610,5270,3911,3794,3570,3431,3352,3216,2643,2343,1385,952,506,493,413,121,120,87,85,84,51,46,46,41,34,31,6,5,1,1,1],
-    "xaxis":["calcium ion binding","catalytic activity","metabolic process","membrane","nucleic acid binding","transferase activity","protein binding","nucleotide binding","hydrolase activity","intracellular membrane-bounded organelle","signal transduction","metal ion binding","protein-containing complex","regulation of transcription, DNA-templated","response to stimulus","kinase activity","DNA binding","oxidoreductase activity","ion transport","protein kinase activity","DNA-binding transcription factor activity","RNA binding","regulation of transcription by RNA polymerase II","plastid","integral component of membrane","carbohydrate metabolic process","protein transport","protein phosphorylation","lipid metabolic process","proteolysis","DNA-binding transcription factor activity, RNA polymerase II-specific","identical protein binding","cytoskeleton","protein serine/threonine kinase activity","intracellular protein transport","G protein-coupled receptor signaling pathway","cell adhesion","extracellular region","protein ubiquitination","intracellular signal transduction","cell differentiation","translation","multicellular organism development","cytoplasm","ribosome","phosphorylation","chromatin","endoplasmic reticulum","plasma membrane","sequence-specific DNA binding","endoplasmic reticulum membrane","transmembrane transport","positive regulation of transcription by RNA polymerase II","RNA polymerase II cis-regulatory region sequence-specific DNA binding","nucleus","integral component of plasma membrane","cytosol","Golgi apparatus","zinc ion binding"],
-    "color":"#8CC7B5"
 },
 "expression2species":{
     "title":"The Number of Homolog Gene With Expression Ontology Annotation On Each Species",
-    "data":[23469,197,20296,15171,49695,18851,11163,19753,15463,21628,18980,8384,20621,19062,21331,11170,13533,30195,24041,2403,15883,22366],
+    "data":[23469,197,20296,15171,49695,18851,11163,19753,15464,21628,18980,8384,20621,19062,21331,11170,13534,30196,24041,2403,15883,22366],
     "xaxis":["Bread wheat","Brewer's yeast","Cattle","Chicken","Cotton","Dog","Fruit fly","Human","Maize","Mouse","Pig","Rapeseed","Rat","Rhesus monkey","Rice","Roundworm","Sorghum","Soybean","Thale cress","Tomato","Tropical clawed frog","Zebrafish"],
     "color":"#4e72b8"
 },
 "expression2homologGene":{
     "title":"The Number of Homolog Gene On Each Expression Ontology Annotation",
     "data":[183443,19747,19747,197,84806,53769,19747,19753,41381,45372,185023,30916,21331,38604,19747,23469,96437,19753,100038,51526,30916,19747,36794,99909,19747,19747,19747,19753,74995,35467,38598,19753,97723,138798,55220,19747,181355,253,19745,19747,30195,79628,19753,53775,19753,80522,19747,143541,403458,38602,19628,330434,30195],
-    "xaxis":["Abiotic stress","Age","Aging","Biochemical trait","Biotic stress","Cardiovascular system","Cardiovascular system disease","Cell line","Cell type","Circadian","Development","Disease","Ecological exposure","Endocrine system","Endocrine system disease","Evolution","Gastrointestinal system","Gastrointestinal system disease","Gender","Growth and development trait","Hematopoietic system","Hematopoietic system disease","Hybridization and polyploidization","Immune system","Immune system disease","Infection","Integumentary system","Integumentary system disease","Isogenic population","Muscular system","Musculoskeletal system","Musculoskeletal system disease","Mutation","Natural variation","Nervous system","Nervous system disease","No","Organism","Organoid","Pain","Quality trait","Reproductive system","Reproductive system disease","Respiratory system","Respiratory system disease","Stress trait","Thoracic disease","Time series","Tissue","Urinary system","Urinary system disease","Yes","Yield trait"],
+    "xaxis":["Tissue","Development","Abiotic stress","Time series","Natural variation","Gender","Immune system","Mutation","Gastrointestinal system","Biotic stress","Stress trait","Reproductive system","Isogenic population","Nervous system","Respiratory system","Cardiovascular system","Growth and development trait","Circadian","Cell type","Endocrine system","Urinary system","Musculoskeletal system","Hybridization and polyploidization","Muscular system","Hematopoietic system","Disease","Quality trait","Yield trait","Evolution","Ecological exposure","Respiratory system disease","Cell line","Gastrointestinal system disease","Musculoskeletal system disease","Integumentary system disease","Reproductive system disease","Endocrine system disease","Age","Immune system disease","Cardiovascular system disease","Pain","Aging","Infection","Hematopoietic system disease","Nervous system disease","Integumentary system","Thoracic disease","Organoid","Urinary system disease","Biochemical trait","Organism"],
     "color":"#4e72b8"
+},
+"go2species":{
+    "title":"The Number of Homolog Gene With Gene Ontology Annotation On Each Species",
+    "data":[15134,3740,22033,16507,17524,12884,18943,14828,16266,10103,10378,49,16432,19032,24126,14296,19462,11182,22352,18604,32521,18309,16164,9216,4048,21102,36158,21852,3851,9878,10367,19812],
+    "xaxis":["Bread wheat","Brewer's yeast","Cassava","Cat","Cattle","Chicken","Chimpanzee","Cucumber","Dog","Fruit fly","Giant panda","Grape","Horse","Human","Maize","Mouse","Pepper","Pig","Poplor","Potato","Rapeseed","Rat","Rhesus monkey","Roundworm","Silkworm","Sorghum","Soybean","Thale cress","Tomato","Tropical clawed frog","Turkey","Zebrafish"     
+],
+"color":"#8CC7B5"
+},
+"go2homologGene":{
+    "title":"The Number of Homolog Gene On Each Gene Ontology Annotation",
+    "data":[192056,183685,174380,147902,134016,108910,88603,82140,79539,74124,68687,64595,60859,58247,57307,47951,47902,47288,31618,30290,30121,30021,29999,28645,28594,25146,24317,24078,22013,21806,19445,18617,18612,18290,17906,17740,17545,17068,16329,16209,15734,15053,14013,13699,13628,13382,13193,12792,11860,11517,11474,11381,11282,10452,10294,9800,9374,9099,8450,8327],
+    "xaxis":["catalytic activity","intracellular membrane-bounded organelle","membrane","protein binding","integral component of membrane","nucleus","nucleic acid binding","cytoplasm","transferase activity","metal ion binding","hydrolase activity","nucleotide binding","signal transduction","plasma membrane","regulation of transcription, DNA-templated","ATP binding","DNA binding","cytosol","oxidoreductase activity","nucleoplasm","kinase activity","regulation of transcription by RNA polymerase II","obsolete oxidation-reduction process","DNA-binding transcription factor activity","RNA binding","protein phosphorylation","protein kinase activity","mitochondrion","extracellular region","ion transport","phosphorylation","Golgi apparatus","endoplasmic reticulum","transmembrane transport","proteolysis","protein transport","identical protein binding","zinc ion binding","G protein-coupled receptor signaling pathway","protein serine/threonine kinase activity","lipid metabolic process","carbohydrate metabolic process","extracellular space","protein ubiquitination","positive regulation of transcription by RNA polymerase II","sequence-specific DNA binding","G protein-coupled receptor activity","cytoskeleton","intracellular protein transport","translation","calcium ion binding","integral component of plasma membrane","chloroplast","nucleolus","transcription, DNA-templated","endoplasmic reticulum membrane","chromatin","ribosome","positive regulation of transcription, DNA-templated","negative regulation of transcription by RNA polymerase II"],
+    "color":"#8CC7B5"
 }
 }
 }

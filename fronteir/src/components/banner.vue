@@ -5,8 +5,8 @@
       </div>
       
       <div class="wrapper">
-        <div class="module-title">Homolog Gene Database</div>
-        <div class="subtitle">A data portal of homolog genes across multiple species</div>
+        <div class="module-title">Homologous Gene Database</div>
+        <div class="subtitle">A data portal of homologous genes across multiple species</div>
       </div>
       <Navigator />
     </div>

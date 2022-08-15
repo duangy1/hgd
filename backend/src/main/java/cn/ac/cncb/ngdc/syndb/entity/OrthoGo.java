@@ -60,4 +60,6 @@ public class OrthoGo {
     private String goName;
 
     private String eoName;
+
+    private String dbEvidence;
 }

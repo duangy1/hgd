@@ -16,6 +16,8 @@ public interface SpeciesInfoMapper {
 
     public SpeciesInfo findSpeciesByTaxon (String taxonId);
 
+//    public String getGwasorgIdByTaxon (String taxonId);
+
     List<SpeciesInfo> speciesInfoList(String classification);
 
     List<String> speciesNameList();
@@ -27,7 +29,7 @@ public interface SpeciesInfoMapper {
 //    List<String> speciesNameList(String classification);
     List<SpeciesInfo> speciesNameListforVar(String varName,String speciesType);
 
-    List<SpeciesInfo> speciesNameListforTrait(int traitID,String speciesType);
+    List<SpeciesInfo> speciesNameListforTrait(String traitID,String speciesType);
 
     List<SpeciesInfo> speciesNameListforGo(String topGoId,String speciesType);
 

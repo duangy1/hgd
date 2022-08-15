@@ -10,10 +10,10 @@
     <result column="classification" jdbcType="VARCHAR" property="classification" />
     <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
     <result column="species_type" jdbcType="VARCHAR" property="speciesType" />
-    <result column="homo_gene_trait" jdbcType="INTEGER" property="traitGeneNum" />
-    <result column="homo_gene_variant" jdbcType="INTEGER" property="varGeneNum" />
-    <result column="homo_gene_exp" jdbcType="INTEGER" property="expGeneNum" />
-    <result column="homo_gene_go" jdbcType="INTEGER" property="goGeneNum" />
+    <result column="homo_gene_trait" jdbcType="VARCHAR" property="traitGeneNum" />
+    <result column="homo_gene_variant" jdbcType="VARCHAR" property="varGeneNum" />
+    <result column="homo_gene_exp" jdbcType="VARCHAR" property="expGeneNum" />
+    <result column="homo_gene_go" jdbcType="VARCHAR" property="goGeneNum" />
   </resultMap>
 
   <resultMap id="HeatmapResultMap" type="cn.ac.cncb.ngdc.syndb.entity.SpeciesHeatmap">
@@ -56,6 +56,7 @@
   <select id="getDataSource" resultType="String">
     select data_source from species where taxon_id=#{taxonid}
   </select>
+
   <select id="getDataSourceByName" resultType="String">
     select data_source from species where common_name=#{speciesName}
   </select>
@@ -73,20 +74,38 @@
   </select>
 
   <select id="speciesNameListforTrait" resultType="String">
-    select distinct(species_common_name) from trait_all_copy1 where trait_id=#{traitID} and classification=#{speciesType} and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
+    select distinct(species_common_name) from trait_all_copy1 where classification=#{speciesType}
+    <if test='traitID != null and traitID!="" and traitID!="null"'>
+      and trait_id=#{traitID}
+    </if>
+    and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
   </select>
 
+<!--  <select id="speciesNameListforVar" resultType="String">-->
+<!--    select distinct(species_common_name) from variation_all where var_name=#{varName} and classification=#{speciesType} and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name-->
+<!--  </select>-->
   <select id="speciesNameListforVar" resultType="String">
-    select distinct(species_common_name) from variation_all where var_name=#{varName} and classification=#{speciesType} and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
+    select distinct(species_common_name) from variation_all where classification=#{speciesType}
+    <if test='varName != null and varName!="" and varName!="null"'>
+      and var_name=#{varName}
+    </if>
+    and hdb_gene_id is not null and hdb_gene_id!='' order by species_common_name
   </select>
 
   <select id="speciesNameListforGo" resultMap="BaseResultMap">
-    select distinct(species_common_name) as common_name ,a.taxon_id,has_homolog from gene_go_all as a inner join species on a.taxon_id=species.taxon_id where top_go_id=#{topGoId}  and a.classification=#{speciesType} and has_homolog =1 order by species_common_name
+    select distinct(species_common_name) as common_name ,a.taxon_id,has_homolog from gene_go_all as a inner join species on a.taxon_id=species.taxon_id where a.classification=#{speciesType}
+    <if test='topGoId != null and topGoId!="" and topGoId!="null"'>
+      and top_go_id=#{topGoId}
+    </if>
+    and has_homolog =1 order by species_common_name
   </select>
 
   <select id="speciesNameListforExp" resultMap="BaseResultMap">
-    select distinct(a.common_name),a.taxon_id,has_homolog from gene_expression as a inner join species on a.taxon_id=species.taxon_id where annotation=#{expName}  and a.classification=#{speciesType} and has_homolog =1 order by a.common_name
-
+    select distinct(a.common_name),a.taxon_id,has_homolog from gene_expression as a inner join species on a.taxon_id=species.taxon_id where a.classification=#{speciesType}
+    <if test='expName != null and expName!="" and expName!="null"'>
+      and annotation=#{expName}
+    </if>
+    and has_homolog =1 order by a.common_name
   </select>
 
 </mapper>

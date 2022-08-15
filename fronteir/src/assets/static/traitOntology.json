@@ -74,7 +74,7 @@
       "traitDefID":"9168",
       "Name":"sterility or fertility trait",
       "Synonyms":"",
-      "Definitions":"",
+      "Definitions":"A plant trait (TO:0000387) which is a measure of either the fertility or sterility, contributed by nonfunctional male and or female plant parts or their incompatible interaction. This also includes traits on seed setting behavior in the fruit (caryopsis) of a grass plant that can be assayed in terms of spikelet sterility or fertility.",
       "SubClassOf":"flora trait",
       "classification":"plant"
   },{
@@ -84,7 +84,7 @@
       "traitDefID":"9169",
       "Name":"stress trait",
       "Synonyms":"stress susceptibility | stress resistance | crop damage | stress tolerance",
-      "Definitions":"",
+      "Definitions":"Response by the plant in terms of resistivity or sensitivity to either the biotic or the abiotic types of stress.",
       "SubClassOf":"flora trait",
       "classification":"plant"
   },{

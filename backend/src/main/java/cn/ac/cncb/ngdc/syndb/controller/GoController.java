@@ -21,7 +21,7 @@ public class GoController {
     GoService goService;
     @RequestMapping(value = "/api/godata", method = RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo initPageGo(String topGoid, String classification,String taxonId,String hdbId,
+    public DataTableResultInfo initPageGo(String topGoid, String classification,String taxonId,String geneid,String hdbId,
                                                @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
                                                @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                                @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
@@ -29,13 +29,12 @@ public class GoController {
 //        if(pageNo == 1){
 //            pageNo = start/length+1;
 //        }
-        System.out.print("params:"+hdbId+","+classification+","+taxonId);
-        Page<GeneGo> pageInfo= goService.initPageGo(topGoid,classification,hdbId,pageNo,length,taxonId);
+        Page<GeneGo> pageInfo= goService.initPageGo(topGoid,classification,pageNo,length,taxonId,geneid,hdbId);
         for(GeneGo godata : pageInfo){
             int taxon = godata.getTaxonId();
-            String hdbid=godata.getHdbId();
-            if(hdbid != null && !hdbid.trim().equals("")) {
-                List<OrthoGo> ortholist = orthoService.selectGeneGoOrthoInfo(hdbid, "" + taxon);
+            String hdbid11=godata.getHdbId();
+            if(hdbid11 != null && !hdbid11.trim().equals("")) {
+                List<OrthoGo> ortholist = orthoService.selectGeneGoOrthoInfo(hdbid11, "" + taxon);
                 godata.setOrtholist(ortholist);
             }
         }

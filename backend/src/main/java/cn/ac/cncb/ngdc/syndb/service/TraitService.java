@@ -27,14 +27,21 @@ public class TraitService {
     @Resource
     private GeneBasicInfoMapper geneBasicInfoMapper;
 
-    public Page<Trait2gwas> biomedicalTrait(int traitId, String classification, int pageNo, int pageSize, String speciesName, String geneid) {
+    public Page<Trait2gwas> biomedicalTrait(String traitId, String classification, int pageNo, int pageSize, String speciesName, String geneId,String hdbId) {
 
-        PageHelper.startPage(pageNo, pageSize,true); //line 1
-        List<String> hdbid=new ArrayList();
-        if(geneid!=null && geneid.length() >0){
-            hdbid=geneBasicInfoMapper.getHdbIdByOtherId(geneid);
+        List<String> hdbidList=new ArrayList();
+        Page<Trait2gwas> varList = new Page<>();
+        if(geneId!=null && geneId.length() >0){
+            hdbidList=geneBasicInfoMapper.getHdbIdByOtherId(geneId);
+            if(hdbidList.size()>0) {
+                PageHelper.startPage(pageNo, pageSize,true); //line 1
+                varList= trait2gwasMapper.biomedicalTrait(traitId,classification,speciesName,hdbidList,hdbId);
+            }
+        }else {
+            PageHelper.startPage(pageNo, pageSize, true); //line 1
+            varList = trait2gwasMapper.biomedicalTrait(traitId, classification, speciesName, hdbidList, hdbId);
         }
-        return trait2gwasMapper.biomedicalTrait(traitId,classification,speciesName,hdbid);
+        return varList;
     }
 
 //    public Page<Trait2gwas> selectTraitBySpecies(int pageNo, int pageSize, String taxonid) {
@@ -70,5 +77,13 @@ public class TraitService {
 
     public HdbGwas getGwasInfoByhdbid(String hdbId){
         return trait2gwasMapper.getGwasInfoByhdbid(hdbId);
+    };
+
+    public HdbGwas getGwasorgIdByTaxon(String taxonId,String hdbId){
+        return trait2gwasMapper.getGwasorgIdByTaxon(taxonId,hdbId);
+    };
+
+    public HdbGwas getGwasVarIdByTaxon(String taxonId,String hdbId){
+        return trait2gwasMapper.getGwasVarIdByTaxon(taxonId,hdbId);
     };
 }

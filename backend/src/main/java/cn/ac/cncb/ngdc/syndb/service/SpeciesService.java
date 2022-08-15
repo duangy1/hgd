@@ -19,6 +19,8 @@ public class SpeciesService {
         return speciesInfoMapper.selectAllAnimals();
     }
 
+//    public String getGwasorgIdByTaxon(String taxonid){return speciesInfoMapper.getGwasorgIdByTaxon(taxonid);}
+
     public List<SpeciesInfo> selectAllHomologOrganism(){
         return speciesInfoMapper.selectAllHomologOrganism(null);
     }
@@ -60,7 +62,7 @@ public class SpeciesService {
     public List<SpeciesInfo> speciesNameListforVar(String varName,String speciesType){
         return speciesInfoMapper.speciesNameListforVar(varName,speciesType);
 }
-    public List<SpeciesInfo> speciesNameListforTrait(int traitID,String speciesType){
+    public List<SpeciesInfo> speciesNameListforTrait(String traitID,String speciesType){
         return speciesInfoMapper.speciesNameListforTrait(traitID,speciesType);
     }
 

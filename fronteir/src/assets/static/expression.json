@@ -3,73 +3,91 @@
         "label": "Animal Tissue",
         "disabled":true,
         "children": [{
-                        "label":"Cardiovascular system"
+                        "label":"Cardiovascular system",
+                        "classification":"animal"
                     },{
-                        "label":"Endocrine system"
+                        "label":"Endocrine system",
+                        "classification":"animal"
                     },{
-                        "label":"Gastrointestinal system"
+                        "label":"Gastrointestinal system",
+                        "classification":"animal"
                     },{
-                        "label":"Hematopoietic system"
+                        "label":"Hematopoietic system",
+                        "classification":"animal"
                     },{
-                        "label":"Immune system"
+                        "label":"Immune system",
+                        "classification":"animal"
                     },{
-                        "label":"Integumentary system"
+                        "label":"Integumentary system",
+                        "classification":"animal"
                     },{
-                        "label":"Muscular system"
+                        "label":"Muscular system",
+                        "classification":"animal"
                     },{
-                        "label":"Musculoskeletal system"
+                        "label":"Musculoskeletal system",
+                        "classification":"animal"
                     },{
-                        "label":"Nervous system"
+                        "label":"Nervous system",
+                        "classification":"animal"
                     },{
-                        "label":"Reproductive system"
+                        "label":"Reproductive system",
+                        "classification":"animal"
                     },{
-                        "label":"Respiratory system"
+                        "label":"Respiratory system",
+                        "classification":"animal"
                     },{
-                        "label":"Urinary system"
+                        "label":"Urinary system",
+                        "classification":"animal"
                     },{
-                        "label":"Urogenital system"
+                        "label":"Urogenital system",
+                        "classification":"animal"
                     }
             
         ]
     },{
         "label": "Human Disease",
         "children": [ {
-                    "label":"Cardiovascular system disease"
+                    "label":"Cardiovascular system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Endocrine system disease"
+                    "label":"Endocrine system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Gastrointestinal system disease"
+                    "label":"Gastrointestinal system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Hematopoietic system disease"
+                    "label":"Hematopoietic system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Immune system disease"
+                    "label":"Immune system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Integumentary system disease"
+                    "label":"Integumentary system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Musculoskeletal system disease"
+                    "label":"Musculoskeletal system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Nervous system disease"
+                    "label":"Nervous system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Reproductive system disease"
+                    "label":"Reproductive system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Respiratory system disease"
+                    "label":"Respiratory system disease",
+                    "classification":"animal"
                 },{
-                    "label":"Thoracic disease"
+                    "label":"Thoracic disease",
+                    "classification":"animal"
                 },{
-                    "label":"Urinary system disease"
+                    "label":"Urinary system disease",
+                    "classification":"animal"
         }]
         },
         {
             "label": "Biological context",
             "disabled":true,
-            "children": [{
-        "label": "Baseline",
-        "children": [{
-                    "label":"Yes"
-                },{
-                    "label":"No"
-                }]
-        },
+            "children": [
         {
             "label": "Environmental",
             "children": [{
@@ -77,69 +95,87 @@
             },{
                 "label":"Biotic stress"
             },{
-                "label":"Ecological exposure"
+                "label":"Ecological exposure",
+                "classification":"plant"
             }]
         },
         {
             "label": "Genetic",
             "children": [{
-                "label":"Evolution"
+                "label":"Evolution",
+                "classification":"plant"
             },{
-                "label":"Hybridization and polyploidization"
+                "label":"Hybridization and polyploidization",
+                "classification":"plant"
             },{
-                "label":"Isogenic population"
-            },{
-                "label":"Micro-evolution"
+                "label":"Isogenic population",
+                "classification":"plant"
             },{
                 "label":"Mutation"
             },{
-                "label":"Natural variation"
+                "label":"Natural variation",
+                "classification":"plant"
             }]
         },
         {
             "label": "Phenotypic",
             "children": [{
-                "label":"Aging"
+                "label":"Aging",
+                "classification":"animal"
             },{
                 "label":"Biochemical trait"
             },{
-                "label":"Disease"
+                "label":"Disease",
+                "classification":"animal"
             },{
-                "label":"Gender"
+                "label":"Gender",
+                "classification":"animal"
             },{
-                "label":"Growth and development trait"
+                "label":"Growth and development trait",
+                "classification":"plant"
             },{
-                "label":"Infection"
+                "label":"Infection",
+                "classification":"animal"
             },{
-                "label":"Pain"
+                "label":"Pain",
+                "classification":"animal"
             },{
-                "label":"Quality trait"
+                "label":"Quality trait",
+                "classification":"plant"
             },{
-                "label":"Stress trait"
+                "label":"Stress trait",
+                "classification":"plant"
             },{
-                "label":"Yield trait"
+                "label":"Yield trait",
+                "classification":"plant"
             }]
         },
         {
             "label": "Spatial",
             "children": [{
-                "label":"Cell line"
+                "label":"Cell line",
+                "classification":"animal"
             },{
-                "label":"Cell type"
+                "label":"Cell type",
+                "classification":"animal"
             },{
                 "label":"Organism"
             },{
-                "label":"Organoid"
+                "label":"Organoid",
+                "classification":"animal"
             },{
-                "label":"Tissue"
+                "label":"Tissue",
+                "classification":"animal"
             }]
         },
         {
             "label": "Temporal",
             "children": [{
-                "label":"Age"
+                "label":"Age",
+                "classification":"animal"
             },{
-                "label":"Circadian"
+                "label":"Circadian",
+                "classification":"plant"
             },{
                 "label":"Development"
             },{

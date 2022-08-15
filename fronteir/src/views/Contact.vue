@@ -3,7 +3,7 @@
     <HeaderBar />
     <Banner />
      <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
-      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
       <el-breadcrumb-item>Contact</el-breadcrumb-item>
     </el-breadcrumb>
     <div>
@@ -17,7 +17,7 @@
                     Postal Address
                 </div>
                 <div class="section-info">
-                  Prof. WenMing Zhao<br />
+                  Prof. Wenming Zhao<br />
                   National Genomics Data Center<br />
                   China National Center for Bioinformation<br />
                   Chinese Academy of Sciences<br />

@@ -32,12 +32,30 @@
   <select id="expressionInfoByGeneList" resultMap="BaseResultMap">
     select gene_id,gen_orgid,annotation,gene_expression.taxon_id,bio_project_id,gene_expression.hdb_gene_id from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where hdb_gene_id=#{hdbId}
   </select>
+
   <select id="initPageEo" resultMap="BaseResultMap">
-    select * from gene_expression where annotation=#{expName} and classification=#{classification} and hdb_gene_id !="" and hdb_gene_id is not null
+    select * from gene_expression where 1=1
+    <if test='classification != null and classification!="" and classification!="null"'>
+      and classification=#{classification}
+    </if>
+    <if test='expName != null and expName!="" and expName!="null"'>
+      and annotation=#{expName}
+    </if>
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
       and taxon_id = #{taxonid}
     </if>
+    <if test='hdbidList != null and hdbidList.size()!=0'>
+      and hdb_gene_id in
+      <foreach item="hdbgene" index="index" collection="hdbidList"  open="(" separator="," close=")">
+        #{hdbgene}
+      </foreach>
+    </if>
+    <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
+      and hdb_gene_id = #{hdbId}
+    </if>
+    and hdb_gene_id !="" and hdb_gene_id is not null order by annotation
   </select>
+
   <select id="expressionGene" resultMap="BaseResultMap">
       select * from gene_expression inner join species on gene_expression.taxon_id=species.taxon_id where hdb_gene_id=#{hdbid}
   </select>

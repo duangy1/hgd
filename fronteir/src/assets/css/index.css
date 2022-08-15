@@ -508,8 +508,9 @@
 .engineer-item:hover
 .ptb-100{padding-top:100px;padding-bottom:100px}
 .engineer-item{text-align:center;z-index: 0;width: 170px;} 
-.engineer-item:hover .engineer-bottom{background-color:rgb(253, 241, 197);max-width:100%;opacity: 0.6;}
-.engineer-item:hover .engineer-bottom h4{color:#00000059;opacity: 1;}
+.engineer-item:hover .engineer-bottom{background-color:rgb(253, 241, 197);max-width:100%;opacity: 0.6;position: relative;text-align: center;}
+.engineer-item:hover .engineer-bottom h4{color:#00000059;opacity: 1;position: absolute;bottom: 0;width: 100%;}
+.engineer-item .engineer-bottom h4{color:#00000059;opacity: 1;position: absolute;bottom: 0;width: 100%;}
 .engineer-item:hover .engineer-bottom span{color:#00000059;opacity: 1;}
 .engineer-item .engineer-bottom{background-color:#fff;-webkit-box-shadow:0 0 20px 0 #37373759;box-shadow:0 0 20px 0 #37373759;padding:60px 0;height: 165px;max-width:230px;margin-right:auto;margin-top:-130px;z-index:11;-webkit-transition:.5s all ease;transition:.5s all ease;min-height: 100px;opacity: 0;color: #00000059;}/*
 .engineer-item .engineer-bottom h3{font-weight:600;font-size:20px;margin-bottom:6px;-webkit-transition:.5s all ease;transition:.5s all ease}.engineer-item .engineer-bottom span{display:block;font-size:14px;color:#808291;-webkit-transition:.5s all ease;transition:.5s all ease}

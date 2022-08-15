@@ -204,8 +204,8 @@ public class OrthoService {
         return orthoList;
     }
     //Go页面表格里取同源
-    public List<OrthoGo> selectGeneGoOrthoInfo(String hdbid,String taxonid) {
-        List<OrthoGo> orthoList = ortho9031Mapper.selectGeneGoOrthoInfo(hdbid);
+    public List<OrthoGo> selectGeneGoOrthoInfo(String hdbid11,String taxonid) {
+        List<OrthoGo> orthoList = ortho9031Mapper.selectGeneGoOrthoInfo(hdbid11);
         for (OrthoGo orthoitem : orthoList) {
             String tax2 = orthoitem.getTax2();
             String tax1 = orthoitem.getTax1();

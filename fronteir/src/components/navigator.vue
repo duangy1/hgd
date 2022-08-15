@@ -14,7 +14,7 @@
       </el-menu-item>
       <el-submenu index="2"  >
         <template slot="title"><i class="el-icon-menu"></i>Browse</template>
-        <el-menu-item index="/gene" class="submenu">Homolog Gene</el-menu-item>
+        <el-menu-item index="/gene" class="submenu">Homologous Gene</el-menu-item>
         <!-- <el-menu-item index="/gene-detail">Gene</el-menu-item> -->
         <el-menu-item index="/traits" class="submenu">Traits</el-menu-item>
         <el-menu-item index="/variants" class="submenu">Variants</el-menu-item>

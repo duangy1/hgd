@@ -4,7 +4,7 @@
     <Banner/>
     <!-- <Navigator/> -->
     <el-breadcrumb class="arrow-title" separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
       <el-breadcrumb-item>Downloads</el-breadcrumb-item>
     </el-breadcrumb>
     <el-container style="border: 1px solid #eee;overflow: hidden;">
@@ -26,21 +26,25 @@
                     @select="selectMenu">
                   <el-menu-item index="1"  @click="tableShow(1)">
                     <i class="el-icon-chat-line-square"></i>
-                    <span slot="title">Homolog Protein</span>
+                    <span slot="title">Homologous Protein</span>
                   </el-menu-item>
-                  <el-menu-item index="2"  @click="tableShow(2)">
+                  <el-menu-item index="2"  @click="tableShow(6)">
+                    <i class="el-icon-chat-line-square"></i>
+                    <span slot="title">Homologous Gene</span>
+                  </el-menu-item>
+                  <el-menu-item index="3"  @click="tableShow(2)">
                     <i class="el-icon-chat-line-square"></i>
                     <span slot="title">Trait Files</span>
                   </el-menu-item>
-                  <el-menu-item index="3"  @click="tableShow(3)">
+                  <el-menu-item index="4"  @click="tableShow(3)">
                     <i class="el-icon-chat-line-square"></i>
                     <span slot="title">Variation Gene</span>
                   </el-menu-item>
-                  <el-menu-item index="4"  @click="tableShow(4)">
+                  <el-menu-item index="5"  @click="tableShow(4)">
                     <i class="el-icon-chat-line-square"></i>
                     <span slot="title">Gene Ontology</span>
                   </el-menu-item>
-                  <el-menu-item index="5"  @click="tableShow(5)">
+                  <el-menu-item index="6"  @click="tableShow(5)">
                     <i class="el-icon-chat-line-square"></i>
                     <span slot="title">Expression</span>
                   </el-menu-item>
@@ -63,7 +67,22 @@
                   </el-descriptions>
                 </div>
 
-                <div v-for="item of traitData" v-show="show.b" id="section-2" :key="item.id"
+                <div v-for="item of geneData" v-show="show.f" id="section-2" :key="item.id"
+                     class="div-speciesfile" >
+                  <el-descriptions :column="3" :size="size" :title=item.name border class="margin-top">
+                    <!-- <template slot="extra">
+                       <el-button type="primary" size="small">操作</el-button>
+                     </template> -->
+                    <el-descriptions-item v-for="item of item.data" :key="item.subid"
+                                          style="text-align:center !important;">
+                      <a class="filename download" v-bind:href="item.address"> {{ item.name }}</a>
+                    </el-descriptions-item>
+
+                  </el-descriptions>
+                </div>
+
+
+                <div v-for="item of traitData" v-show="show.b" id="section-3" :key="item.id"
                      class="div-speciesfile Filelayout" >
                   <el-descriptions :column="3" :size="size"  border class="margin-top">
                     <!-- <template slot="extra">
@@ -76,7 +95,7 @@
 
                   </el-descriptions>
                 </div>
-                <div v-for="item of varData" v-show="show.c" id="section-3" :key="item.id"
+                <div v-for="item of varData" v-show="show.c" id="section-4" :key="item.id"
                      class="div-speciesfile Filelayout">
                   <el-descriptions :column="3" :size="size" border class="margin-top">
                     <!-- <template slot="extra">
@@ -89,7 +108,7 @@
 
                   </el-descriptions>
                 </div>
-                <div v-for="item of goData" v-show="show.d" id="section-4" :key="item.id"
+                <div v-for="item of goData" v-show="show.d" id="section-5" :key="item.id"
                      class="div-speciesfile Filelayout">
                   <el-descriptions :size="size"  :column="3"  border >
                     <!-- <template slot="extra">
@@ -102,7 +121,7 @@
 
                   </el-descriptions>
                 </div>
-                <div v-for="item of expData" v-show="show.e" id="section-5" :key="item.id"
+                <div v-for="item of expData" v-show="show.e" id="section-6" :key="item.id"
                      class="div-speciesfile Filelayout">
                   <el-descriptions :column="3" :size="size" border class="margin-top">
                     <!-- <template slot="extra">
@@ -115,6 +134,7 @@
 
                   </el-descriptions>
                 </div>
+
               </el-main>
 
 
@@ -192,6 +212,7 @@ export default {
       varData: fileInfo.varData,
       goData: fileInfo.goData,
       expData: fileInfo.expData,
+      geneData: fileInfo.geneData,
       tabPosition: 'left',
       size:"",
       size2:"medium",
@@ -200,7 +221,8 @@ export default {
         b: false,
         c: false,
         d: false,
-        e: false
+        e: false,
+        f:false
       }
     }
 
@@ -221,33 +243,45 @@ export default {
         this.show.b = false;
         this.show.c = false;
         this.show.d = false;
-        this.show.e = false
+        this.show.e = false;
+        this.show.f = false;
       } else if (key == 2) {
         this.show.a = false;
         this.show.b = true;
         this.show.c = false;
         this.show.d = false;
-        this.show.e = false
+        this.show.e = false;
+        this.show.f = false;
       } else if (key == 3) {
         this.show.a = false;
         this.show.b = false;
         this.show.c = true;
         this.show.d = false;
-        this.show.e = false
+        this.show.e = false;
+        this.show.f = false;
       } else if (key == 4) {
         this.show.a = false;
         this.show.b = false;
         this.show.c = false;
         this.show.d = true;
-        this.show.e = false
+        this.show.e = false;
+        this.show.f = false;
       } else if (key == 5) {
         this.show.a = false;
         this.show.b = false;
         this.show.c = false;
         this.show.d = false;
-        this.show.e = true
+        this.show.e = true;
+        this.show.f = false;
       }
-
+    else if (key == 6) {
+          this.show.a = false;
+          this.show.b = false;
+          this.show.c = false;
+          this.show.d = false;
+          this.show.e = false;
+          this.show.f = true;
+        }
     }
   }
 

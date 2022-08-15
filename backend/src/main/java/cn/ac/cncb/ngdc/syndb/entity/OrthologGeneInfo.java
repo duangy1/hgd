@@ -41,6 +41,7 @@ public class OrthologGeneInfo {
 
     private String entrezId2;
 
+    private String geneSymbol;
     private String geneSymbol1;
     private String geneSymbol2;
 
@@ -49,6 +50,9 @@ public class OrthologGeneInfo {
 
     private String commonName1;
     private String commonName2;
+
+    private String shortName1;
+    private String shortName2;
 
     private int orthoPosition;
 

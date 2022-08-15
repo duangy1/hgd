@@ -85,7 +85,7 @@ public class GeneDetailService {
                     String[] goIdList  = goId.split(",");
                     Integer goSumNum=goInfoItem.getGoSumNum();
                     numSum += goSumNum;
-                    GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().get();
+                    GoBasicTerm goItem = goBasicInfoList.stream().filter(d -> d.getGoId().equals(topGoId)).findFirst().orElse(null);
                     if(goItem==null){
                         System.out.print("goItem:"+goItem);
                     }
@@ -116,7 +116,7 @@ public class GeneDetailService {
     public List voInfoList(String hdbId){
         List<Variant> varInfoListOfGene= variantMapper.voInfoOfGene(hdbId);
         List<VOBasicTerm> voInfoList= VOBasicTermMapper.voInfoList();
-        Integer numSum=0;
+//        Integer numSum=0;
         if(varInfoListOfGene.size()>0){
             String speciesName=varInfoListOfGene.get(0).getSpeciesCommonName();
             String dataSource = varInfoListOfGene.get(0).getDataSource();
@@ -125,12 +125,15 @@ public class GeneDetailService {
                 String varName=varInfoItem.getVarName();
                 String[] snpList=varInfoItem.getSnpId().split(",");
                 Integer snpNum=snpList.length;
-                numSum += snpNum;
-                VOBasicTerm voItem=voInfoList.stream().filter(d->d.getVoAnnotaion().equals(varName)).findFirst().get();
-                voItem.setSnpNum(snpNum);
-                voItem.setSnpList(snpList);
+//                numSum += snpNum;
+                VOBasicTerm voItem=voInfoList.stream().filter(d->d.getVoAnnotaion().equals(varName)).findFirst().orElse(null);
+                if(voItem!=null){
+                    voItem.setSnpNum(snpNum);
+                    voItem.setSnpList(snpList);
+                }
+
             }
-            if(numSum>0) {
+//            if(numSum>0) {
                 for (VOBasicTerm basicTerm : voInfoList) {
                     basicTerm.setSpecies(speciesName);
                     //            根据species表得到查询vo具体条目的接口号
@@ -147,9 +150,9 @@ public class GeneDetailService {
                 return  null;
             }
 
-        }else{
-            return  null;
-        }
+//        }else{
+//            return  null;
+//        }
     }
 
     //获取绘制热图的go Ontology和基因注释信息

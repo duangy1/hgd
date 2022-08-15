@@ -19,7 +19,7 @@ public interface VariantMapper {
 
     int updateByPrimaryKey(Variant record);
 
-    Page<Variant> initPageVariant(String varname,String classification,String speciesName);
+    Page<Variant> initPageVariant(String varname,String classification,String speciesName,List hdbidList,String hdbId);
 
     List<Variant> voInfoOfGene(String hdbId);
 

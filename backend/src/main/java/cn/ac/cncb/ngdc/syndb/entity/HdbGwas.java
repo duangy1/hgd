@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class HdbGwas {
     private String gwasId;
+    private String gwasGeneId;
     private Integer gwasOrgid;
 }

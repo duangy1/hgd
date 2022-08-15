@@ -24,11 +24,11 @@ public class SpeciesInfo {
 
     private int speciesType;
 
-    private int traitGeneNum;
+    private String traitGeneNum;
 
-    private int varGeneNum;
+    private String varGeneNum;
 
-    private int expGeneNum;
+    private String expGeneNum;
 
-    private int goGeneNum;
+    private String goGeneNum;
 }

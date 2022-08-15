@@ -23,6 +23,7 @@
 
   <resultMap id="hdbGwasResultMap" type="cn.ac.cncb.ngdc.syndb.entity.HdbGwas">
     <result column="gwas_id" jdbcType="VARCHAR" property="gwasId" />
+    <result column="gene_id" jdbcType="VARCHAR" property="gwasGeneId" />
     <result column="gwas_orgid" jdbcType="VARCHAR" property="gwasOrgid" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -42,18 +43,27 @@
   </select>
 
   <select id="biomedicalTrait" resultMap="BaseResultMap">
-    select gene_id,hdb_gene_id,trait_id,entrez_id,trait_name,species_common_name,taxon_id,classification,gwas_id,(select gwas_orgid from species where taxon_id=trait_all_copy1.taxon_id) as gwas_orgid from trait_all_copy1 where classification=#{classification} and trait_id=#{traitId}
+    select gene_id,hdb_gene_id,trait_id,entrez_id,trait_name,species_common_name,taxon_id,classification,gwas_id,(select gwas_orgid from species where taxon_id=trait_all_copy1.taxon_id) as gwas_orgid from trait_all_copy1 where 1=1
+    <if test='classification != null and classification!="" and classification!="null"'  >
+      and classification=#{classification}
+    </if>
+    <if test='traitId != null and traitId!="" and traitId!="null"'  >
+      and trait_id=#{traitId}
+    </if>
     <if test='speciesName != null and speciesName!="" and speciesName!="null"'>
       and species_common_name = #{speciesName}
     </if>
 
-    <if test='hdbid != null and hdbid.size()!=0'>
+    <if test='hdbidList != null and hdbidList.size()!=0'>
       and hdb_gene_id in
-      <foreach item="hdbgene" index="index" collection="hdbid"  open="(" separator="," close=")">
+      <foreach item="hdbgene" index="index" collection="hdbidList"  open="(" separator="," close=")">
         #{hdbgene}
       </foreach>
     </if>
-    and hdb_gene_id !="" and hdb_gene_id is not null
+    <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
+      and hdb_gene_id = #{hdbId}
+    </if>
+    and hdb_gene_id !="" and hdb_gene_id is not null order by trait_name
   </select>
 
   <select id="getInfoByTraitName" resultMap="BaseResultMap">
@@ -76,7 +86,15 @@
   </select>
 
   <select id="getGwasInfoByhdbid" resultMap="hdbGwasResultMap">
-    select GROUP_CONCAT(a.gwas_id) as gwas_id,b.gwas_orgid from trait_all_copy1 a inner join species b on a.taxon_id = b.taxon_id where a.hdb_gene_id =#{hdbId}
+    select GROUP_CONCAT(a.gwas_id) as gwas_id,b.gwas_orgid,a.gene_id from trait_all_copy1 a inner join species b on a.taxon_id = b.taxon_id where a.hdb_gene_id =#{hdbId}
+  </select>
+
+  <select id="getGwasorgIdByTaxon" resultMap="hdbGwasResultMap">
+    select gwas_orgid,gene_id from species a  inner join trait_all_copy1 b on a.taxon_id=b.taxon_id where b.taxon_id=#{taxonId} and b.hdb_gene_id=#{hdbId}
+  </select>
+
+  <select id="getGwasVarIdByTaxon" resultMap="hdbGwasResultMap">
+    select DISTINCT gwas_orgid,gene_id from species a  inner join variation_all b on a.taxon_id=b.taxon_id where b.taxon_id=#{taxonId} and b.hdb_gene_id=#{hdbId}
   </select>
 
 </mapper>

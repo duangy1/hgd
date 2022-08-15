@@ -23,7 +23,7 @@ public class ExpressionController {
 
     @RequestMapping(value = "/api/expression-data", method = RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo initPageEo(String expName, String classification, String taxonid,
+    public DataTableResultInfo initPageEo(String expName, String classification, String taxonid,String geneid,String hdbId,
                                           @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
                                           @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                           @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
@@ -31,14 +31,12 @@ public class ExpressionController {
 //        if(pageNo == 1){
 //            pageNo = start/length+1;
 //        }
-        System.out.print("params:"+expName+","+classification+","+taxonid);
-        Page<GeneExpression> pageInfo= eoService.initPageEo(expName,classification,pageNo,length,taxonid);
-        System.out.print("pageInfo:"+pageInfo);
+        Page<GeneExpression> pageInfo= eoService.initPageEo(expName,classification,pageNo,length,taxonid,geneid,hdbId);
         for(GeneExpression eodata : pageInfo){
             int taxon = eodata.getTaxonId();
-            String hdbId=eodata.getHdbId();
-            if(hdbId != null && !hdbId.trim().equals("")) {
-                List<OrthoGo> ortholist = orthoService.selectGeneEoOrthoInfo(hdbId, "" + taxon, expName);
+            String hdbid11=eodata.getHdbId();
+            if(hdbid11 != null && !hdbid11.trim().equals("")) {
+                List<OrthoGo> ortholist = orthoService.selectGeneEoOrthoInfo(hdbid11, "" + taxon, expName);
                 eodata.setOrtholist(ortholist);
             }
         }

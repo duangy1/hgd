@@ -26,18 +26,28 @@
   </select>
 
   <select id="initPageGo" resultMap="BaseResultMap">
-    select * from gene_go_all where top_go_id=#{topGoid}
+    select * from gene_go_all where 1=1
+    <if test='topGoid != null and topGoid!="" and topGoid!="null"'>
+      and top_go_id=#{topGoid}
+    </if>
     <if test='taxonid != null and taxonid!="" and taxonid!="null"'>
       and taxon_id = #{taxonid}
     </if>
     <if test='classification != null and classification!="" and classification!="null"'>
       and classification=#{classification}
     </if>
-    <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
-      and hdb_gene_id=#{hdbId}
+    <if test='hdbIdList != null and hdbIdList.size()!=0'>
+      and hdb_gene_id in
+      <foreach item="hdbgene" index="index" collection="hdbIdList"  open="(" separator="," close=")">
+        #{hdbgene}
+      </foreach>
     </if>
-    and hdb_gene_id !="" and hdb_gene_id is not null
+    <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
+      and hdb_gene_id = #{hdbId}
+    </if>
+    and hdb_gene_id !="" and hdb_gene_id is not null order by go_annotation
   </select>
+
   <select id="getGoByHdbTaxon" resultMap="BaseResultMap">
     select * from gene_go_all where hdb_gene_id=#{hdbid}
   </select>

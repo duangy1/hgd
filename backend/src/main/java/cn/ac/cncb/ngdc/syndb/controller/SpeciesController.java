@@ -46,7 +46,7 @@ public class SpeciesController {
     }
     @RequestMapping(value = "/api/species-trait", method = RequestMethod.GET)
     @ResponseBody
-    public List speciesNameListforTrait(int traitID,String speciesType){
+    public List speciesNameListforTrait(String traitID,String speciesType){
         List speciesNamelist=speciesService.speciesNameListforTrait(traitID,speciesType);
         return speciesNamelist;
     }
@@ -62,4 +62,6 @@ public class SpeciesController {
         List speciesNamelist=speciesService.speciesNameListforExp(expName,speciesType);
         return speciesNamelist;
     }
+
+
 }

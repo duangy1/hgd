@@ -37,12 +37,11 @@
 		</el-form>
           <div class="egs">
             <a href="#" class="example-txt">e.g.&nbsp;</a>
-            
-            <el-link type="info" class="eg-ele" href="./gene?type=1&keyword=Bos">Bos;</el-link>
+            <el-link type="info" class="eg-ele" href="./gene?type=2&keyword=EP2">EP2;</el-link> 
+            <el-link type="info" class="eg-ele" href="./gene?type=1&keyword=Bos">Bos taurus;</el-link>
             <el-link type="info" class="eg-ele" href="./gene?type=9&keyword=Pig">Pig;</el-link>
-            <el-link type="info" class="eg-ele" href="./gene?type=2&keyword=GCC1">GCC1;</el-link>  
             <el-link type="info" class="eg-ele" href="./gene?type=3&keyword=ENSBTAG00000003102">ENSBTAG00000003102;</el-link>
-            <el-link type="info" class="eg-ele" href="./gene?type=4&keyword=ENSBTAP00000004036">ENSBTAP00000004036;</el-link>
+            <!-- <el-link type="info" class="eg-ele" href="./gene?type=4&keyword=ENSBTAP00000004036">ENSBTAP00000004036;</el-link> -->
             <el-link type="info" class="eg-ele" href="./gene?type=5&keyword=539985">539985;</el-link>
             <el-link type="info" class="eg-ele" href="./gene?type=6&keyword=E1BJZ4">E1BJZ4;</el-link>
             <el-link type="info" class="eg-ele" href="./gene?type=7&keyword=protein_coding">protein_coding;</el-link>
@@ -299,14 +298,14 @@
 								<div class="service">
 									<i class="fa fa-clipboard"></i>
 									<h2>Multiple Resources</h2>
-									<p>Curated data from Inparanoid, Hieranoid, EggNog, Treefam and Panther database</p>
+									<p>Curated data from Inparanoid, Hieranoid, eggNOG, TreeFam and Panther database</p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="service">
 									<i class="fa fa-archive"></i>
 									<h2>Various Annotations</h2>
-									<p>Integrate traits, variants, expression and gene ontology data</p>
+									<p>Integrate traits, variants, expression and Gene Ontology data</p>
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -402,7 +401,7 @@
                                 class="sppb-article-introtext">
 								<!-- <p>37 species</p> -->
                             <div class="wraper-num">
-                              <div id="num"><a href="./gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homolog protein pairs</div> 
+                              <div id="num"><a href="./gene" class="speciesNum">{{ProteinNum}}</a></div><div class="speciesNum1"> Homologous protein pairs</div> 
                             </div>
                                 <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
@@ -444,7 +443,7 @@
 								<p>13,209 homolog gene</p> -->
                                 <div class="wraper-num">
                                   <div id="num"><a href="./traits" class="speciesNum">{{traitNum}}</a></div>
-                                  <div class="speciesNum1"> Homolog genes with specific trait</div> 
+                                  <div class="speciesNum1"> Homologous genes with specific trait</div> 
                                   <!-- <div id="num" class="speciesNum">{{traitGeneNum}}</div>
                                   <div class="speciesNum1"><i class="fa fa-paw numIcon" ></i> homolog gene</div>  -->
 
@@ -487,7 +486,7 @@
 								<!-- <p>18 sequence ontology term</p>
 								<p>146,621 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="./variants" class="speciesNum">{{varNum}}</a></div><div class="speciesNum1">Homolog genes with variants</div> 
+                                  <div id="num"><a href="./variants" class="speciesNum">{{varNum}}</a></div><div class="speciesNum1">Homologous genes with variants</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
@@ -528,7 +527,7 @@
 								<p>55 expression ontology term</p>
 								<p>403,655 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="./expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> Homolog genes with expression</div> 
+                                  <div id="num"><a href="./expression" class="speciesNum">{{expNum}}</a></div><div class="speciesNum1"> Homologous genes with expression</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore"
@@ -565,7 +564,7 @@
 								<p>58 gene ontology term</p>
 								<p>384,684 homolog gene</p> -->
                                 <div class="wraper-num">
-                                  <div id="num"><a href="./go" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> Homolog genes with gene ontology</div> 
+                                  <div id="num"><a href="./go" class="speciesNum">{{goNum}}</a></div><div class="speciesNum1"> Homologous genes with Gene Ontology</div> 
                                 </div>
                               </div><a
                                 class="sppb-readmore finalread"
@@ -630,8 +629,8 @@
           <div class="section-titile"><a class="link" href="https://hieranoid.sbc.su.se/" target="_blank">Hieranoid</a></div>
           <div class="section-titile"><a class="link" href="http://www.pantherdb.org/" target="_blank">Panther</a></div>
         
-          <div class="section-titile"><a class="link" href="http://www.treefam.org/" target="_blank">Treefam</a></div>
-          <div class="section-titile final"><a class="link" href="http://eggnog5.embl.de/" target="_blank">EggNog</a></div>
+          <div class="section-titile"><a class="link" href="http://www.treefam.org/" target="_blank">TreeFam</a></div>
+          <div class="section-titile final"><a class="link" href="http://eggnog5.embl.de/" target="_blank">eggNOG</a></div>
         </div>
        
       
@@ -667,7 +666,8 @@ export default {
     showModule:false,
     dataClass:[
 		{value:'10',label:'Organism'},
-		{value:'2',label:'Gene Symbol/Synonym'},
+		{value:'2',label:'Gene Symbol'},
+    {value:'11',label:'Gene Synonym'},
 		{value:'3',label:'Ensembl Gene'},
 		{value:'4',label:'Ensembl Protein'},
 		{value:'5',label:'Entrez Gene'},

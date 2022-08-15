@@ -39,27 +39,24 @@ public class OrthologGeneController {
     public DataTableResultInfo browseOrthologGene(int type,String keyword,String taxonids, String traitids,String goids,String variantids,String expids,String orthtaxids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
                                                   @RequestParam(value = "length", required = false, defaultValue = "5") Integer length,
                                                   @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
-                                                  @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo){
-        if(pageNo == 1){
-            pageNo = start/length+1;
+                                                  @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo) {
+        if (pageNo == 1) {
+            pageNo = start / length + 1;
         }
         DataTableResultInfo result = null;
 
 
-
-
         ArrayList talist = new ArrayList();
-        if(taxonids != null && taxonids.length()>0){
-            if(taxonids.indexOf(",")>-1){
-                String [] taxons = taxonids.split("\\,");
-                if(taxons != null && taxons.length>0){
-                    for(String str : taxons){
+        if (taxonids != null && taxonids.length() > 0) {
+            if (taxonids.indexOf(",") > -1) {
+                String[] taxons = taxonids.split("\\,");
+                if (taxons != null && taxons.length > 0) {
+                    for (String str : taxons) {
                         talist.add(Integer.parseInt(str));
                     }
                 }
-            }
-            else {
-                System.out.println("taxon------------"+taxonids);
+            } else {
+                System.out.println("taxon------------" + taxonids);
                 talist.add(Integer.parseInt(taxonids));
 
             }
@@ -68,17 +65,16 @@ public class OrthologGeneController {
 
 
         ArrayList traitlist = new ArrayList();
-        if(traitids != null && traitids.length()>0){
-            if(traitids.indexOf(",")>-1){
-                String [] taxons = traitids.split("\\,");
-                if(taxons != null && taxons.length>0){
-                    for(String str : taxons){
+        if (traitids != null && traitids.length() > 0) {
+            if (traitids.indexOf(",") > -1) {
+                String[] taxons = traitids.split("\\,");
+                if (taxons != null && taxons.length > 0) {
+                    for (String str : taxons) {
                         traitlist.add(Integer.parseInt(str));
                     }
                 }
-            }
-            else{
-                System.out.println("traitids --------"+traitids);
+            } else {
+                System.out.println("traitids --------" + traitids);
                 traitlist.add(Integer.parseInt(traitids));
             }
 
@@ -86,17 +82,16 @@ public class OrthologGeneController {
         }
 
         ArrayList variantlist = new ArrayList();
-        if(variantids != null && variantids.length()>0){
-            if(variantids.indexOf(",")>-1){
-                String [] taxons = variantids.split("\\,");
-                if(taxons != null && taxons.length>0){
-                    for(String str : taxons){
+        if (variantids != null && variantids.length() > 0) {
+            if (variantids.indexOf(",") > -1) {
+                String[] taxons = variantids.split("\\,");
+                if (taxons != null && taxons.length > 0) {
+                    for (String str : taxons) {
                         variantlist.add(str);
                     }
                 }
-            }
-            else{
-                System.out.println("variantlist --------"+variantids);
+            } else {
+                System.out.println("variantlist --------" + variantids);
                 variantlist.add(variantids);
             }
 
@@ -104,17 +99,16 @@ public class OrthologGeneController {
         }
 
         ArrayList explist = new ArrayList();
-        if(expids != null && expids.length()>0){
-            if(expids.indexOf(",")>-1){
-                String [] taxons = expids.split("\\,");
-                if(taxons != null && taxons.length>0){
-                    for(String str : taxons){
+        if (expids != null && expids.length() > 0) {
+            if (expids.indexOf(",") > -1) {
+                String[] taxons = expids.split("\\,");
+                if (taxons != null && taxons.length > 0) {
+                    for (String str : taxons) {
                         explist.add(str);
                     }
                 }
-            }
-            else{
-                System.out.println("expids --------"+expids);
+            } else {
+                System.out.println("expids --------" + expids);
                 explist.add(expids);
             }
 
@@ -122,17 +116,16 @@ public class OrthologGeneController {
         }
 
         ArrayList golist = new ArrayList();
-        if(goids != null && goids.length()>0){
-            if(goids.indexOf(",")>-1){
-                String [] taxons = goids.split("\\,");
-                if(taxons != null && taxons.length>0){
-                    for(String str : taxons){
+        if (goids != null && goids.length() > 0) {
+            if (goids.indexOf(",") > -1) {
+                String[] taxons = goids.split("\\,");
+                if (taxons != null && taxons.length > 0) {
+                    for (String str : taxons) {
                         golist.add(str);
                     }
                 }
-            }
-            else{
-                System.out.println("goids --------"+goids);
+            } else {
+                System.out.println("goids --------" + goids);
                 golist.add(goids);
             }
 
@@ -141,44 +134,47 @@ public class OrthologGeneController {
 
 
         List orthtaxonlist = new ArrayList();
-        if(orthtaxids != null && orthtaxids.length() >0 ){
-            if(orthtaxids.indexOf(",")>-1){
-                String [] taxons = orthtaxids.split("\\,");
-                if(taxons != null && taxons.length>0){
-                    for(String str : taxons){
+        if (orthtaxids != null && orthtaxids.length() > 0) {
+            if (orthtaxids.indexOf(",") > -1) {
+                String[] taxons = orthtaxids.split("\\,");
+                if (taxons != null && taxons.length > 0) {
+                    for (String str : taxons) {
                         orthtaxonlist.add(str);
                     }
                 }
-            }
-            else{
+            } else {
                 orthtaxonlist.add(orthtaxids);
             }
-            System.out.println("orthtaxids --------"+orthtaxids);
+            System.out.println("orthtaxids --------" + orthtaxids);
         }
 
 
         Map param = new HashMap();
-        if(talist.size()>0){
-            param.put("taxonList",talist);
+        if (talist.size() > 0) {
+            param.put("taxonList", talist);
         }
 
-        if(traitlist.size()>0){
-            param.put("traitList",traitlist);
+        if (traitlist.size() > 0) {
+            param.put("traitList", traitlist);
         }
 
-        if(variantlist.size() > 0 ){
-            param.put("variantlist",variantlist);
+        if (variantlist.size() > 0) {
+            param.put("variantlist", variantlist);
         }
 
-        if(explist.size() >0 ){
-            param.put("explist",explist);
+        if (explist.size() > 0) {
+            param.put("explist", explist);
         }
 
-        if(golist.size() >0 ){
-            param.put("golist",golist);
+        if (golist.size() > 0) {
+            param.put("golist", golist);
         }
-        System.out.println("=====type======="+type);
+        System.out.println("=====type=======" + type);
+        if (keyword != null && keyword.length() > 0){
+            keyword = keyword.trim();
+        }
         if(type>0){
+
             if(type==1){
                 if(keyword != null && keyword.length() >0 ) {
                     param.put("species", keyword);
@@ -220,6 +216,10 @@ public class OrthologGeneController {
             }else if(type==10){
                 if(keyword != null && keyword.length() >0 ) {
                     param.put("commonandlatin", keyword);
+                }
+            }else if(type==11){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("synonym", keyword);
                 }
             }
 

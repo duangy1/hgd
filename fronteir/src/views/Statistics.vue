@@ -4,7 +4,7 @@
     <Banner />
     <!-- <Navigator />  -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
-      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
       <el-breadcrumb-item>Statistics</el-breadcrumb-item>
     </el-breadcrumb>
     <el-container style="border: 1px solid #eee;overflow: hidden;">
@@ -21,7 +21,7 @@
     <div style="width:100%;">
         
         <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;">
-          <h2 class="trait-title title-species">Homolog Data Integration</h2>
+          <h2 class="trait-title title-species">Homologous Data Integration</h2>
             <el-table
               :data="statisticData.tableData"
               stripe
@@ -42,7 +42,7 @@
               </el-table-column>
               
             </el-table>
-            <h2 class="trait-title title-species">Homolog Data Annotation Integration</h2>
+            <h2 class="trait-title title-species">Homologous Data Annotation Integration</h2>
             <el-table
               :data="statisticData.tableDataAnnotat"
               stripe
@@ -84,21 +84,21 @@
           <div id="chart-trait2homolog-2" class="chartsLayout section-titile3"></div>
           <div id="chart-trait2homolog-3" class="chartsLayout section-titile4"></div>
         </div>
-        <div>
-          <div>
-            <h2 class="trait-title title-species font-title">Gene Ontology Statistics</h2>
-          </div>
-          <div id="chart-trait2homolog-4" class="chartsLayout section-titile"></div>
-          <div id="chart-trait2homolog-5" class="chartsLayout section-titile"></div>
-        </div>
+       
         <div>
           <div>
             <h2 class="trait-title title-species font-title">Expression Statistics</h2>
           </div>
-          <div id="chart-trait2homolog-6" class="chartsLayout section-titile" ></div>
+          <div id="chart-trait2homolog-4" class="chartsLayout section-titile" ></div>
+          <div id="chart-trait2homolog-5" class="chartsLayout section-titile"></div>
+        </div>
+         <div>
+          <div>
+            <h2 class="trait-title title-species font-title">Gene Ontology Statistics</h2>
+          </div>
+          <div id="chart-trait2homolog-6" class="chartsLayout section-titile"></div>
           <div id="chart-trait2homolog-7" class="chartsLayout section-titile"></div>
         </div>
-
         <!-- <div>
           <div>
             <h2 class="trait-title title-species">Traits Statistics</h2>
@@ -321,8 +321,8 @@ export default {
 
       option = {
          title: {
-          text: 'Traits annotat on Homolog gene',
-          subtext: 'The number of homolog gene on each trait ontology term'
+          text: 'Traits annotat on Homologous gene',
+          subtext: 'The number of homologous gene on each trait ontology term'
         },
         xAxis: {
           type: 'category',
@@ -394,7 +394,7 @@ export default {
       option = {
          title: {
           text: title,
-          subtext: 'The number of homolog gene on each trait ontology term'
+          subtext: 'The number of homologous gene on each trait ontology term'
         },
         xAxis: {
           type: 'category',

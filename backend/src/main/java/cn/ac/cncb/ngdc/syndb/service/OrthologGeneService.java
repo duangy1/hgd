@@ -51,7 +51,9 @@ public class OrthologGeneService {
     }
 
     public List<OrthologGeneInfo> findOrthGeneByGivenGeneAndTaxonModify2(Map param){
-        return orthologGeneInfoMapper.findOrthGeneByGivenGeneAndTaxonModify2(param);
+        List<OrthologGeneInfo> list= orthologGeneInfoMapper.findOrthGeneByGivenGeneAndTaxonModify2(param);
+        System.out.print("list:"+list);
+        return  list;
     }
 
     public List<Ortho9031> findOrthGeneByGivenGeneAndTaxon(Map param){

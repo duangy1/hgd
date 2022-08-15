@@ -4,7 +4,7 @@
     <Banner />
     <!-- <Navigator /> -->
     <el-breadcrumb separator-class="el-icon-arrow-right" class="arrow-title">
-      <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
       <el-breadcrumb-item>Documentation</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card style="width:92%;border-top: 2px solid rgb(64, 158, 255)!important;margin: auto;">
@@ -32,7 +32,7 @@
                         </el-menu-item>
                         <el-menu-item index="3">
                             <i class="el-icon-chat-line-square"></i>
-                            <span slot="title">2.1 Homolog Gene</span>
+                            <span slot="title">2.1 Homologous Gene</span>
                         </el-menu-item>
                         
                         
@@ -73,10 +73,10 @@
                     <el-main>
                         <div class="section-1" id="item-pos-1">
                             <div class="section-titile">
-                                1.What is Homolog Gene Database?
+                                1.What is Homologous Gene Database?
                             </div>
                             <div class="section-info">
-                                Homolog Gene Database (HGD) is an integrated homolog gene database for domestic animals, plants and model organisms. Currently, there are 19 domestic animals ,16 domestic plants and 2 model organisms which houses 23,399,653 homolog protein pairs in all. The homolog gene information integrated from 5 public data sources including EggNog,Panther,Treefam,Hieranoid,Inparanoid. At the same time, gene annotated information are widely collected and integrated from  public data resources including GWAS, GVM, GEN ,Gene Ontology, Ensembl, Uniprot. Users can browse, search and download all these information from HGD.
+                                Homologous Gene Database (HGD) is a comprehensive database that integrates homologous genes from domestic animals, plants and model organisms. Currently, there are 19 species of domestic animals ,16 species of domestic plants and 2 species of model organisms, with a total of 23,399,653 Homologous protein pairs. The Homologous gene information is integrated from 5 public data sources including EggNog, Panther, Treefam, Hieranoid and Inparanoid. Gene annotated information is also collected and integrated from a wide range of public data resources such as GWAS, GVM, GEN ,Gene Ontology, Ensembl and Uniprot. Users can browse, search and download all the information mentioned above from HGD.
                             </div>
 
                             <div class="section-img0">
@@ -89,7 +89,7 @@
                                 2.Data Browse
                             </div>
                             <div class="section-info">
-                                Users can browse homolog gene, trait, variation, expression and gene ontology information in HGD.
+                                Users can browse homolog genes, traits, variation, expression and gene ontology information in HGD.
                             </div>
                         </div>
                         <div class="section section-1" id="item-pos-3">                          
@@ -97,9 +97,9 @@
                                 2.1 Homolog Gene Browse
                             </div>
                             <div class="section-info">
-                                Users can browse the whole homolog gene list in the homolog gene page (Figure 1). The basic information of homolog gene including gene name, organism, gene description, uniprot id, ensembl protein, gene symbol, gene synonym, biotype and the homolog gene list for available organisms of this gene. The statistics number of annotated information including trait, go are provided as well.<br/><br/>
-                                Users can filter the homolog gene list by species, trait and so on. Users can download the homolog gene by several formats including txt, csv.<br/><br/>
-                                Click the gene name will open a detail information which described in section 2.6.<br/><br/>
+                                Users can browse the entire homologous genes list on the homologous gene page (Figure 1). Basic information of homologous genes includes gene name, organism, gene description, Uniprot id, ensembl protein, gene symbol, gene synonym, biotype and a list of homologous genes of the organisms available for the gene. Statistical quantities of annotation information, including trait and GO, are also provided.<br/><br/>
+                                Users can filter the list of homologous genes by species, trait and so on. Downloads are available in several formats including txt and csv.<br/><br/>
+                                Clicking on a gene name will open the details described in section 2.6.<br/><br/>
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-1.png" class="img"/>
@@ -111,10 +111,10 @@
                                 2.2 Trait Browse
                             </div>
                             <div class="section-info">
-                                The trait information integrated from GWAS database in NGDC. HGD collects 26,023 trait records (6 animals and 5 plants) from GWAS. After mapped to the homolog gene, we got 14,637 homolog gene with traits in total. User can browse the trait information for multiple organisms at the same time. <br /><br />
-                                Users can choose the trait term from the trait ontology on the left panel. Then a homolog gene list including trait name, species common name, taxon id and common name of multiple organisms for the chosen trait will be shown as follows (Figure2). The blue square in the organism’s column means this organism has homolog gene with query gene of given trait. The green square means this organism has homolog gene with the same trait of the query gene of given trait. <br /><br />
-                                Click the colored square, two more detailed tables with homolog gene and GWAS trait information will be shown separately.<br /><br />
-                                Users can filter the shown organism from the organism check list.
+                                Trait information is integrated from GWAS database in NGDC. HGD collects 26,023 trait records (6 animals and 5 plants) from GWAS. After mapping to homolog genes, a total of 14,637 homolog genes with traits are obtained. User can browse the trait information for multiple organisms at the same time. <br /><br />
+                                Users can select a trait term from the trait ontology in the left-hand panel. A list of homologous genes will then be displayed (Figure2), with detailed information including trait name, species common name, taxon ID and the common name of multiple organisms for the selected trait. The blue square in the organism column indicates that the organism has homolog genes with the inquired gene of the given trait. The green square indicates that the organism has homolog genes matching the same trait of the inquired gene. <br /><br />
+                                Click on the colored square and two more detailed tables of homologous genes and GWAS trait information will be presented respectively.<br /><br />
+                                Users can filter the displayed organism from the organism checklist.
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-2.png" class="img"/>
@@ -126,10 +126,10 @@
                                 2.3 Variation Browse
                             </div>
                             <div class="section-info">
-                                The variation information integrated from GVM database in NGDC. HGD collects 1,694,958 variations with ensembl VEP annotated information (10 animals and 13 plants) from GVM. After mapped to the homolog gene in HGD,we got 146,621 homolog gene with variant annotaion in total. User can browse variation annotated information for multiple organisms at the same time. <br/><br/>
-                                Users can choose the term from the variation ontology on the left panel. Then a homolog gene list including VEP annotated consequence type, species common name, taxon id and common name of multiple organisms for the chosen ontology term will be shown as follows (Figure3). The blue square in organism’s column means this organism has homolog gene with query gene of given consequence type. The green square means this organism has homolog gene with the same consequence type of the query gene of given term.<br/><br/> 
-                                Click the colored square, two more detailed tables with homolog gene and GVM variation information will be shown separately.<br/><br/>
-                                Users can filter the shown organism from the organism check list.
+                                Variation information is integrated from GVM database in NGDC. HGD collects 1,694,958 variations from GVM with ensembl VEP annotation information (10 animals and 13 plants). After mapping to the homologous gene in HGD, a total of 146,621 homologous genes with variant annotaions are obtained. User can browse variation annotated information for multiple organisms at the same time.<br/><br/>
+                                Users can select the term from the variation ontology in the left-hand panel. A list of homologous genes will then be presented (Figure3), including VEP annotated consequence types, species common names, taxon IDs and common names of multiple organisms for the selected ontology term. The blue square in the organism column indicates that the organism has homologous genes with the inquired gene of the given consequence type. The green square indicates that the organism has homologous genes matching the same consequence type of the inquired gene.<br/><br/> 
+                                Click on the colored square and two more detailed tables of homologous genes and GVM variation information will be presented respectively.<br/><br/>
+                                Users can filter the displayed organism from the organism checklist.
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-5.png" class="img"/>
@@ -141,10 +141,10 @@
                                 2.4 Expression Browse
                             </div>
                             <div class="section-info">
-                                HGD integrates gene expression from GEN database in NGDC. HGD collects 8,541,271 gene with expression ontology of 25 organisms from GEN. After mapped to the homolog gene in HGD, we got 403,655 homolog gene with expression in total. User can browse the expression information for multiple organisms at the same time. <br/><br/>
-                                Users can choose the expression term which defined by GEN from the left panel. Then a homolog gene list including expression term, species common name, taxon id and common name of multiple organisms for the chosen expression term will be shown as follows (Figure4). The blue square in organism’s column means this organism has homolog gene with query gene of given expression term. The green square means this organism has homolog gene with the same expression term of the query gene of given expression term.<br/><br/> 
-                                Click the colored square, two more detailed tables with homolog gene and GEN expression profile information will be shown separately.<br/><br/>
-                                Users can filter the shown organism from the organism check list.
+                                Gene expression data is integrated from GEN database in NGDC. HGD collects 8,541,271 genes from GEN with expression ontology of 25 organisms. After mapping to the homolog genes in HGD, a total of 403,655 homolog genes with expression were obtained. Users can browse the expression information of multiple organisms at the same time. <br/><br/>
+                                Users can select the expression term defined by GEN in the left-hand panel. A list of homolog genes will then be presented (Figure4), including expression term, the species common name, the taxon ID and the common name of the multiple organisms for the selected expression term. The blue square in the organism column indicates that the organism has homolog genes with the inquired gene of the given expression term. The green square indicates that the organism has homolog genes matching the same expression term of the inquired gene.<br/><br/> 
+                                Click on the colored square and two more detailed tables of homologous genes and GEN expression profile information will be presented respectively.<br/><br/>
+                                Users can filter the displayed organism from the organism checklist.
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-3.png" class="img"/>
@@ -156,10 +156,10 @@
                                 2.5 Gene Ontology Browse
                             </div>
                             <div class="section-info">
-                                The gene ontology information from Ensembl are integrated. HGD collects 4,538,549 gene with gene ontology information for 37 organisms from Ensembl. After mapped to the homolog gene in HGD,we got 384,684 homolog gene with GO annotation in total. User can browse the gene ontology information for multiple organisms at the same time. <br/><br/>
-                                Users can choose the GO term from the ontology on the left panel. Then a gene list including GO name, species common name, taxon id and common name of multiple organism for the chosen GO term will be shown as follows (Figure5). The blue square in organism’s column means this organism has homolog gene with query gene of given GO term. The green square means this organism has homolog gene with the same GO term of the query gene of given GO term. <br/><br/>
-                                Click the colored square, two more detailed tables with homolog gene and GO information will be shown separately.<br/><br/>
-                                Users can filter the shown organism from the organism check list.
+                                Gene ontology data is integrated from Ensembl. HGD collects 4,538,549 genes from Ensembl with gene ontology information of 37 organisms. After mapping to the homolog genes in HGD, a total of 384,684 homolog genes with GO annotation were obtained. Users can browse the gene ontology information of multiple organisms at the same time. <br/><br/>
+                                Users can select the GO term from the ontology in the left-hand panel. A gene list will then be presented (Figure5), including GO name, the species common name, taxon ID and the common name of the multiple organisms for the selected GO term. The blue square in the organism column indicates that the organism has homolog genes with the inquired gene of the given GO term. The green square indicates that the organism has homolog genes matching the same GO term of the inquired gene. <br/><br/>
+                                Click on the colored square and two more detailed tables of homologous genes and GO information will be presented respectively.<br/><br/>
+                                Users can filter the displayed organism from the organism check list.
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-4.png" class="img"/>
@@ -171,13 +171,13 @@
                                 2.6 Gene Detail Information
                             </div>
                             <div class="section-info">
-                                The gene detail information contains 6 parts to describe a homolog gene including gene basic information, homolog gene, GO annotation, Variants, Trait and Expression Informations (Figure 6).<br/><br/>
-                                The gene basic information mainly collected from Ensembl and Uniprot, which provides information including gene symbol, gene synonym, gene type, species name, position, gene description and external id from other database such as entrez id, refseq id and so on.<br/><br/>
-                                The homolog gene list shows the homolog genes in other organisms. The table column includes species, taxon id, ensembl id, gene symbol, protein, entrez id and the integrated homolog information from Pather, TreeFam, Eggnog, Inparanold, Haranold. Users can filter the organisms from the search box.<br/><br/>
-                                The gene ontology describes the GO annotated information for this gene by several colored squares under each GO term. The color is normalized by the GO annotated number. When hover on the square, the annotated GO term number will be shown. When click on, a table list including the annotated information will be shown. When check on the Compared Homolog Gene, the GO annotated information of the homolog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
-                                The variants describes the variation annotated information for this gene by several colored squares under each VEP term (Sequence Ontology). The color is normalized by the VEP annotated variation number. When hover on the square, the annotated variation number will be shown. When click on, a table list including the variation information will be shown. When check on the Compared Homolog Gene, the variation annotated information of the homolog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
-                                The trait describes the trait information for this gene by several colored squares under each trait term. The color is normalized by the trait number. When hover on the square, the trait number will be shown. When click on, a table list including the trait information will be shown. When check on the Compared Homolog Gene, the trait information of the homolog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
-                                The expression describes the expression information for this gene by several colored squares under each expression term. The color is normalized by the bioproject number. When hover on the square, the bioproject number will be shown. When click on, a table list including the average expression value information of tissue will be shown. When check on the Compared Homolog Gene, the expression information of the homolog gene will be shown as below. Users can filter the organism from the search box.<br/><br/>
+                                Gene detail information contains 6 sections to describe homologous genes, including Gene Basic Information, Homologous Genes, GO annotations, Variants, Traits and Expression Information (Figure 6).<br/><br/>
+                                Gene basic information is mainly collected from Ensembl and Uniprot and provides information including gene symbols, gene synonyms, gene types, species names, positions, gene descriptions and external IDs from other databases such as Entrez ID, Refseq ID and so on.<br/><br/>
+                                The homologous gene list shows the homologous genes from other organisms. The table columns include species, taxon ID, Ensembl ID, gene symbol, protein, Entrez ID and integrated homologous information from Pather, TreeFam, Eggnog, Inparanold and Haranold. Users can filter the organisms by search box.<br/><br/>
+                                Gene ontology describes the GO annotation information for the gene by several colored squares under each GO term. The colors are normalized by the GO annotation numbers. If users hover over the square, the annotated GO term number will be presented. Click and a list of tables containing the annotation information will be presented. When the Compared Homolog Gene is ticked, the GO annotation information of the homolog gene will be displayed as below. Users can filter the organisms by search box.<br/><br/>
+                                Variants describes the variant annotation information for the gene by several colored squares under each VEP term (Sequence Ontology). The colors are normalized by the VEP annotated variation numbers. If users hover over the square, the annotated variation number will be presented. Click and a list of tables containing the variation information will be presented. When the Compared Homolog Gene is ticked, the variation annotated information of the homolog gene will be displayed as below. Users can filter the organisms by search box.<br/><br/>
+                                Traits describes the trait information for the gene by several colored squares under each trait term. The colors are normalized by the trait numbers. If users hover over the square, the trait number will be presented. Click and a list of tables containing the trait information will be presented. When the Compared Homologous Gene is ticked, the trait information of the homologous gene will be displayed as below. Users can filter the organisms by search box.<br/><br/>
+                                Expression describes the expression information for the gene by several colored squares under each expression term. The colors are normalized by the bioproject numbers. If users hover over the square, the bioproject number will be presented. Click and a list of tables containing the average expression value information of tissues will be presented. When the Compared Homologous Gene is ticked, the expression information of the homologous gene will be displayed as below. Users can filter the organism by search box.<br/><br/>
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-6.png" class="img"/>
@@ -193,8 +193,8 @@
                                 2.7 Species
                             </div>
                             <div class="section-info">
-                                HGD provides two kinds of information including species list and homolog protein statistics for species. HGD houses homolog data of 37 species (19 animals, 16 plants and 2 model organisms). When click on the pie chart, the species list will be changed at the same time. Users can see various data types for annotated homolog gene of each species. Click the link will jump to the according data module.<br/><br/>
-                                The homolog protein pairs between all 37 species are counted and shown as a heat map. When mouse hover on the heat map, the number of homolog protein pairs will be shown. When click the heat map, a homolog gene list of the two selected species will be shown in Homolog Gene. By default, HGD uses the species of x axis as query species.
+                                HGD provides both species list and species homologous protein statistics, housing homologous data of 37 species (19 animals, 16 plants and 2 model organisms). When the pie chart is clicked, the species list will change simultaneously. Users can view the various data types for annotated homolog genes of each species. Clicking on a link will jump to the corresponding data module.<br/><br/>
+                                Homolog protein pairs between all 37 species are calculated and displayed as a heat map. If users hover over the heat map, the number of homologous protein pairs will be shown. When clicking on the heat map, a list of homologous genes of the two selected species will be displayed in Homologous Gene. By default, HGD uses the species on the x-axis as the query species.
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-10.png" class="img"/>
@@ -210,7 +210,7 @@
                                 3.Search
                             </div>
                             <div class="section-info">
-                                User can search homolog gene by gene name, ensemble gene id, ensemble protein name, uniport protein name, Entrez id and so on (Figure 8). A homolog gene list will be shown as below.
+                                Users can search for homolog genes by gene name, Ensemble gene ID, Ensemble protein name, Uniport protein name, Entrez ID and so on (Figure 8). A homologous gene list will be displayed as below.
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-8.png" class="img"/>
@@ -222,7 +222,7 @@
                                 4.Download
                             </div>
                             <div class="section-info">
-                                HGD provides the homolog protein, trait, variation, expression information for each species to download (Figure 9).
+                                HGD provides homolog proteins, traits, variations, expression information of each species for download (Figure 9).
                             </div>
                             <div class="section-img">
                                 <img src="../assets/img/document-9.png" class="img"/>

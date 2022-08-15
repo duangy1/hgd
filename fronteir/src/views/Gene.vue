@@ -5,8 +5,8 @@
     <!-- <Navigator /> -->
   
      <el-breadcrumb separator-class="el-icon-arrow-right"  class="arrow-title">
-            <el-breadcrumb-item :to="{ path: '/' }">Browse</el-breadcrumb-item>
-            <el-breadcrumb-item>Homolog Gene</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/gene' }">Browse</el-breadcrumb-item>
+            <el-breadcrumb-item>Homologous Gene</el-breadcrumb-item>
       </el-breadcrumb>
 
     <el-container style="border: 1px solid #eee;margin-top: 15px;">
@@ -155,7 +155,7 @@
                         <div style="padding-bottom:5px;font-size:14px;" v-if="item.geneSynonym != null"><b>Synonym:</b> {{item.geneSynonym}} </div>
                         <div style="padding-bottom:5px;font-size:14px;"><b>BioType:</b> {{item.geneType}} </div>
 						
-                        <div style="padding-bottom:5px;font-size:14px;"><b>Homolog Gene:</b></div>
+                        <div style="padding-bottom:5px;font-size:14px;"><b>Homologous Gene(s) :</b></div>
                         <div style="padding-bottom:5px;font-size:14px;">
                         
                                     <el-row :outer="20" v-for="orthgeneList in item.orthoGeneBeanList" :key="orthgeneList.index">
@@ -164,7 +164,7 @@
                         
                         
                         </div>
-                         <div style="padding-bottom:5px;font-size:14px;padding-top:10px;"><el-tag type="warning" size="small" v-if="item.traitCount >0"  ><a href="">Trait {{item.traitCount}}</a></el-tag><el-tag type="success" size="small" v-if="item.goCount >0"><a href="" >GO {{item.goCount}}</a></el-tag><el-tag type="primary" size="small" v-if="item.varCount >0"><a href="" >Varation {{item.varCount}}</a></el-tag><el-tag type="danger" size="small" v-if="item.expCount >0"><a href="" >Expression {{item.expCount}}</a></el-tag></div>
+                         <div style="padding-bottom:5px;font-size:14px;padding-top:10px;"><el-tag type="warning" size="small" v-if="item.traitCount >0"  ><a :href="'/hgd/traits?hdbId='+item.hdbGeneId+'&speciesType='+item.speciesType ">Trait {{item.traitCount}}</a></el-tag><el-tag type="success" size="small" v-if="item.goCount >0"><a :href="'/hgd/go?hdbId='+item.hdbGeneId+'&speciesType='+item.speciesType ">GO {{item.goCount}}</a></el-tag><el-tag type="primary" size="small" v-if="item.varCount >0"><a :href="'/hgd/variants?hdbId='+item.hdbGeneId+'&speciesType='+item.speciesType " >Varation {{item.varCount}}</a></el-tag><el-tag type="danger" size="small" v-if="item.expCount >0"><a :href="'/hgd/expression?hdbId='+item.hdbGeneId+'&speciesType='+item.speciesType " >Expression {{item.expCount}}</a></el-tag></div>
                     </div>
                     <el-divider></el-divider>
                 </div>
@@ -486,7 +486,7 @@ export default {
                 axiosInstance1
                   .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                   .then(response => {
-                      console.log(response)
+                      console.log("this.tableData:",response.data.data)
                       this.tableData = response.data.data
                       this.totalSize = response.data.recordsTotal
                     })

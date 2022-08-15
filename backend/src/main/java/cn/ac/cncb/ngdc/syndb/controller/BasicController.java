@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -188,7 +189,7 @@ public class BasicController {
 
     @RequestMapping(value="getVoTerm", method=RequestMethod.GET)
     @ResponseBody
-    public List<TreeSelectBean> getAllVariationTerm(HttpServletRequest request){
+    public List<TreeSelectBean> getAllVarfilterHomologiationTerm(HttpServletRequest request){
         List<TreeSelectBean> treeSelectBeans = null;
         treeSelectBeans = new ArrayList<TreeSelectBean>();
 
@@ -345,6 +346,5 @@ public class BasicController {
 
         return treeSelectBeans;
     }
-
 
 }

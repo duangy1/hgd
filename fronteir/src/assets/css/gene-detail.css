@@ -262,3 +262,7 @@ margin-left: 1%;
 .draw-card{
     overflow-x: scroll;
 }
+.filter-box{
+    display: flex;
+    float: right;
+}

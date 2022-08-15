@@ -29,17 +29,19 @@ public class VariantController {
     OrthoService orthoService;
     @RequestMapping(value = "/api/variants", method = RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo initPageVariant(String varname,String classification,String speciesName,
-    @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
-    @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
-    @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
+    public DataTableResultInfo initPageVariant(String varname,String classification,String speciesName,String geneid,String hdbId,
+            @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
+            @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
+            @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
     ){
-        Page<Variant> pageInfo=variantService.initPageVariant(varname,classification,pageNo,length,speciesName);
-        for(Variant variant : pageInfo){
-            int taxon = variant.getTaxonId();
-            String hdbId=variant.getHdbid();
-            List<Ortho9031> ortholist =orthoService.selectGeneVarOrthoInfo(hdbId,""+taxon);
-            variant.setOrthoList(ortholist);
+        Page<Variant> pageInfo=variantService.initPageVariant(varname,classification,pageNo,length,speciesName,geneid,hdbId);
+        if(pageInfo.size()>0) {
+            for (Variant variant : pageInfo) {
+                int taxon = variant.getTaxonId();
+                String hdbId1 = variant.getHdbid();
+                List<Ortho9031> ortholist = orthoService.selectGeneVarOrthoInfo(hdbId1, "" + taxon);
+                variant.setOrthoList(ortholist);
+            }
         }
         DataTableResultInfo dataTableResultInfo = new DataTableResultInfo();
         dataTableResultInfo.setData(pageInfo);

@@ -42,7 +42,9 @@ public class GeneDetailController {
             if (taxonid.equals("" + tax1)) {
                 orthoitem.setOrthoPosition(2);
                 orthoitem.setEnsemblId(orthoitem.getEnsemblId2());
+                orthoitem.setGeneSymbol(orthoitem.getGeneSymbol2());
             } else {
+                orthoitem.setGeneSymbol(orthoitem.getGeneSymbol1());
                 orthoitem.setOrthoPosition(1);
                 orthoitem.setEnsemblId(orthoitem.getEnsemblId1());
             }
