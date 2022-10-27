@@ -1,0 +1,53 @@
+:scope
+.el-table {
+    margin-top: 3%;
+}
+.tabContainer > .el-tabs>.el-tabs__item {
+    height: 60px !important;
+}
+.el-select {
+    display: inline !important;
+}
+/* .el-input__inner {
+    width:80% !important
+} */
+.chooseSpe{
+    display: flex;
+    padding:40px 40px 0px 40px;
+}
+.sub-table{
+    margin: 2% 0 !important;
+}
+.pagination{
+    padding: 20px 0;
+}
+
+.wrap-card{
+    width: 90%;
+    margin: auto;
+}
+.decorate-bar{
+    width: 90%;
+    height: 25px;
+    margin: auto;
+    background-color: rgb(114, 169, 240);
+    color: white;
+    text-align: left;
+    vertical-align: middle;
+    /* padding-left: 3%; */
+    font-weight: 700;
+}
+.select-species{
+    width: 70%;
+    margin: auto;
+}
+.input-box{
+    display: flex;
+    margin-top: 4%;
+    width: 100%;
+}
+.input-filter{
+    width: 50%;
+    margin-left: 3%;
+    margin-right: 3%;
+}

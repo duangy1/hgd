@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- <link rel="icon" href="<%= BASE_URL %>logo.png"> -->
     <title>HGD</title>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?537c3ea1fc3beb56f7a3db743ac610f8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    
     <!-- built files will be auto injected -->
   </body>
 </html>

@@ -40,28 +40,34 @@
 			</template> 
 			</el-table-column>
             <el-table-column prop="commonName" label="Common Name"></el-table-column>
-            <el-table-column prop="taxonId" label="Ncbi Taxon Id"></el-table-column>
+            <el-table-column prop="taxonId" label="NCBI Taxon ID">
+              <template slot-scope="scope">
+                <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'" target='_blank'>
+                    {{ scope.row.taxonId }}
+                </a>
+              </template>
+            </el-table-column>
             <el-table-column prop="traitGeneNum" label="#Trait">
               <template slot-scope="scope" >
-                <div v-if="scope.row.traitGeneNum==0">-</div>
-                <div v-else>{{scope.row.traitGeneNum}}</div>
+                <a v-if="scope.row.traitGeneNum!=='-'&&scope.row.speciesType!==0" :href="'/hgd/traits?taxonId='+scope.row.taxonId+'&commonName='+scope.row.commonName+'&speciesType='+scope.row.speciesType"> {{scope.row.traitGeneNum}}</a>
+                <div v-else >{{scope.row.traitGeneNum}}</div>
               </template>
             </el-table-column>
             <el-table-column prop="varGeneNum" label="#Variant">
               <template slot-scope="scope" >
-                <div v-if="scope.row.varGeneNum==0">-</div>
-                 <div v-else>{{scope.row.varGeneNum}}</div>
+                <a v-if="scope.row.varGeneNum!=='-'&&scope.row.speciesType!==0" :href="'/hgd/variants?taxonId='+scope.row.taxonId+'&commonName='+scope.row.commonName+'&speciesType='+scope.row.speciesType"> {{scope.row.varGeneNum}}</a>
+                <div v-else>{{scope.row.varGeneNum}}</div>
               </template>
             </el-table-column>
             <el-table-column prop="expGeneNum" label="#Expression">
               <template slot-scope="scope" >
-                <div v-if="scope.row.expGeneNum==0">-</div>
-                 <div v-else>{{scope.row.expGeneNum}}</div>
+                <a v-if="scope.row.expGeneNum!=='-'&&scope.row.speciesType!==0" :href="'/hgd/expression?taxonId='+scope.row.taxonId+'&speciesType='+scope.row.speciesType"> {{scope.row.expGeneNum}}</a>
+                <div v-else>{{scope.row.expGeneNum}}</div>
               </template>
             </el-table-column>
             <el-table-column prop="goGeneNum" label="#GO">
               <template slot-scope="scope" >
-                <div v-if="scope.row.goGeneNum==0">-</div>
+                <a v-if="scope.row.goGeneNum!=='-'&&scope.row.speciesType!==0" :href="'/hgd/go?taxonId='+scope.row.taxonId+'&speciesType='+scope.row.speciesType"> {{scope.row.goGeneNum}}</a>
                 <div v-else>{{scope.row.goGeneNum}}</div>
               </template>
             </el-table-column>
@@ -75,16 +81,16 @@
               layout="sizes,total,pager,prev,next"
               :total="totalSize">
           </el-pagination>
-			<div style="text-align:left;padding-top:10px;font-size:14px;">Note: # represents the number of homologous gene</div>
-        </el-card>
-        <el-card style="width:30%;border-top: 2px solid rgb(64, 158, 255)!important;margin-left:2%;">
-          <div id="chart-div" style="width:300px;height:500px;"></div>
-        </el-card>
-      </div>
-      <div class="trait-box">
-        <div>
-          <h2 class="trait-title title-species">Homologous Statistics Between Species</h2>
+        <div style="text-align:left;padding-top:10px;font-size:14px;">Note: # represents the number of homologous gene</div>
+          </el-card>
+          <el-card style="width:30%;border-top: 2px solid rgb(64, 158, 255)!important;margin-left:2%;">
+            <div id="chart-div" style="width:300px;height:500px;"></div>
+          </el-card>
         </div>
+        <div class="trait-box">
+          <div>
+            <h2 class="trait-title title-species">Homologous Statistics Between Species</h2>
+          </div>
       
         <el-card style="width:100%;border-top: 2px solid rgb(64, 158, 255)!important;margin-top: 1%;">
           <div id="chart-heatmap" style="width:100%;height:800px"></div>
@@ -104,11 +110,11 @@
             </el-table-column>
             <el-table-column
                 prop="species1.taxonId"
-                label="Taxon Id1">
+                label="Taxon ID1">
             </el-table-column>
             <el-table-column
                 prop="ensemblId1"
-                label="Ensembl Id">
+                label="Ensembl ID">
             </el-table-column>
             
             <el-table-column
@@ -121,7 +127,7 @@
             </el-table-column>
             <el-table-column
                 prop="species2.taxonId"
-                label="Taxon Id2">
+                label="Taxon ID2">
             </el-table-column>
             <el-table-column
                 prop="protein2"
@@ -129,7 +135,7 @@
             </el-table-column>
             <el-table-column
             prop="entrezId"
-            label="Entrez Id">
+            label="Entrez ID">
             </el-table-column>
         </el-table> -->
       </div>
@@ -250,7 +256,7 @@ export default {
         },
         visualMap: {
           min: 0,
-          max: 80000,
+          max: 320000,
           calculable: true,
           orient: 'vertical',
           left: "93%",

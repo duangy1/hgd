@@ -63,6 +63,9 @@
     <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
       and hdb_gene_id = #{hdbId}
     </if>
+    <if test='taxonId != null and taxonId!="" and taxonId!="null"'>
+      and taxon_id = #{taxonId}
+    </if>
     and hdb_gene_id !="" and hdb_gene_id is not null order by trait_name
   </select>
 

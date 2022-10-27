@@ -29,12 +29,12 @@ public class VariantController {
     OrthoService orthoService;
     @RequestMapping(value = "/api/variants", method = RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo initPageVariant(String varname,String classification,String speciesName,String geneid,String hdbId,
+    public DataTableResultInfo initPageVariant(String varname,String classification,String speciesName,String geneid,String hdbId,String taxonId,
             @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
             @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
             @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
     ){
-        Page<Variant> pageInfo=variantService.initPageVariant(varname,classification,pageNo,length,speciesName,geneid,hdbId);
+        Page<Variant> pageInfo=variantService.initPageVariant(varname,classification,pageNo,length,speciesName,geneid,hdbId,taxonId);
         if(pageInfo.size()>0) {
             for (Variant variant : pageInfo) {
                 int taxon = variant.getTaxonId();

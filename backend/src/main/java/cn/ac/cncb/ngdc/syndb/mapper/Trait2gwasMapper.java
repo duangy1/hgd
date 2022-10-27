@@ -13,7 +13,7 @@ public interface Trait2gwasMapper {
 
     int insertSelective(Trait2gwas record);
 
-    Page<Trait2gwas> biomedicalTrait(String traitId,String classification,String speciesName,List hdbidList,String hdbId);
+    Page<Trait2gwas> biomedicalTrait(String traitId,String classification,String speciesName,List hdbidList,String hdbId,String taxonId);
 
     Trait2gwas selectByPrimaryKey(Integer id);
 

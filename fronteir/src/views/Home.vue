@@ -62,13 +62,13 @@
     <div class="container">
       <div class="engineer-slider owl-theme owl-carousel" style="padding-top:30px;">
 
-      <!-- <div class="engineer-item">
-		<a href="/gene?taxonid=9606"> <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer">
+      <div class="engineer-item">
+		<a href="./gene?taxonid=9606&name1=Human"> <img src="../assets/img/species/Homo_sapiens.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
-          <h4>Homo sapines</h4>
+          <h4><i>Homo sapines</i></h4>
         </div>
 		</a>
-      </div> -->
+      </div>
       <!-- <div class="engineer-item">
       <img src="../assets/img/species/Danio_rerio.svg" alt="Engineer">
       <div class="engineer-bottom">
@@ -84,13 +84,13 @@
         </div></a>
       </div>
 
-      <div class="engineer-item">
+      <!-- <div class="engineer-item">
        <a href="./gene?taxid1=9031&name1=Chicken"><img src="../assets/img/species/chicken.svg" alt="Engineer" with="100" height="100">
         <div class="engineer-bottom">
           <h4><i>Gallus gallus</i></h4>
         </div>
 		</a>
-      </div>
+      </div> -->
 
       <!-- <div class="engineer-item">
       <img src="../assets/img/species/Canis_lupus_familiaris.svg" alt="Engineer">
@@ -368,7 +368,7 @@
                                
                               </div><a
                                 class="sppb-readmore"
-                                href="./documentation#item-pos-2"
+                                href="./documentation#item-pos-12"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -406,7 +406,7 @@
                                 <!-- <p>23,399,653 Homolog Protein Pairs</p> -->
                               </div><a
                                 class="sppb-readmore"
-                                href="./documentation#item-pos-3"
+                                href="./documentation#item-pos-13"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -450,7 +450,7 @@
                                 </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="./documentation#item-pos-4"
+                                href="./documentation#item-pos-11"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -490,7 +490,7 @@
                                 </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="./documentation#item-pos-5"
+                                href="./documentation#item-pos-11"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -531,7 +531,7 @@
                                 </div>
                               </div><a
                                 class="sppb-readmore"
-                                href="./documentation#item-pos-6"
+                                href="./documentation#item-pos-11"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -568,7 +568,7 @@
                                 </div>
                               </div><a
                                 class="sppb-readmore finalread"
-                                href="./documentation#item-pos-7"
+                                href="./documentation#item-pos-11"
                                 itemprop="url">Read
                                 More</a>
                             </div>
@@ -671,8 +671,10 @@ export default {
 		{value:'3',label:'Ensembl Gene'},
 		{value:'4',label:'Ensembl Protein'},
 		{value:'5',label:'Entrez Gene'},
-		{value:'6',label:'Uniprot Id'},
+		{value:'6',label:'Uniprot ID'},
 		{value:'7',label:'BioType'},
+    {value:'12',label:'Gene Description'},
+    {value:'13',label:'Protein Description'},
 		{value:'8',label:'All Fields'}
     ],
   speciesNum:0,
@@ -714,18 +716,18 @@ export default {
   },
   mounted(){
     var yuanshu = 37//数据变化前的初始数值
-    let homoProteinNum=23399653
-    let strhomoProteinNum="23,399,653"
-    let traitGeneNum0=14637;
-    let strtraitGeneNum0="14,637"
-    let traitNum0=14637;
-    let strtraitNum="14,637";
-    let varNum0=146621;
-    let strvarNum0='146,621'
-    let expNum0=403655;
-    let strexpNum0='403,655'
-    let goNum0=384684;
-    let strgoNum0='384,684'
+    let homoProteinNum=112383644
+    let strhomoProteinNum="112,383,644"
+    let traitGeneNum0=16909;
+    let strtraitGeneNum0="16,909"
+    let traitNum0=16909;
+    let strtraitNum="16,909";
+    let varNum0=276670;
+    let strvarNum0='276,670'
+    let expNum0=398573;
+    let strexpNum0='398,573'
+    let goNum0=536852;
+    let strgoNum0='536,852'
     // const re = 50 //获取到的数据
     // let otherNum=5
     setInterval(()=>{
@@ -736,7 +738,7 @@ export default {
       //   this.speciesNumOther+=1
       // }
       if(this.ProteinNum<homoProteinNum){
-        this.ProteinNum+=430006
+        this.ProteinNum+=1030006
       }else{
         this.ProteinNum=strhomoProteinNum
       }

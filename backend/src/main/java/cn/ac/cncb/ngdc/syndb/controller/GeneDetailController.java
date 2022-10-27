@@ -37,9 +37,9 @@ public class GeneDetailController {
         param.put("geneId",hdbId);
         List<OrthologGeneInfo> orthoList=orthologGeneService.findOrthGeneByGivenGeneAndTaxonModify2(param);
         for (OrthologGeneInfo orthoitem : orthoList) {
-            int tax1 = orthoitem.getTaxId1();
+            String hdbID1 = orthoitem.getHdbGeneId1();
 //            查询的taxonid和第一位相同，则第二位是同源数据
-            if (taxonid.equals("" + tax1)) {
+            if (hdbId.equals("" + hdbID1)) {
                 orthoitem.setOrthoPosition(2);
                 orthoitem.setEnsemblId(orthoitem.getEnsemblId2());
                 orthoitem.setGeneSymbol(orthoitem.getGeneSymbol2());

@@ -1,0 +1,254 @@
+2022-03-24 09:34:05.493 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 20248 (F:\hdb\backend\target\classes started by 光亚 in F:\hdb\backend)
+2022-03-24 09:34:05.499 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-03-24 09:34:09.393 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 5.812 seconds (JVM running for 13.572)
+2022-03-24 14:57:56.702 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 38336 (F:\hdb\backend\target\classes started by 光亚 in F:\hdb\backend)
+2022-03-24 14:57:56.707 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
+2022-03-24 14:57:58.921 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 2.942 seconds (JVM running for 5.654)
+2022-03-24 15:13:37.504 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Trait2gwasMapper.biomedicalTrait_COUNT - ==>  Preparing: SELECT count(0) FROM trait_all 
+2022-03-24 15:13:37.545 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Trait2gwasMapper.biomedicalTrait_COUNT - ==> Parameters: 
+2022-03-24 15:13:37.581 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Trait2gwasMapper.biomedicalTrait_COUNT - <==      Total: 1
+2022-03-24 15:13:37.585 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.mapper.Trait2gwasMapper.biomedicalTrait - ==>  Preparing: select * from trait_all LIMIT ? 
+2022-03-24 15:13:37.586 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.mapper.Trait2gwasMapper.biomedicalTrait - ==> Parameters: 10(Integer)
+2022-03-24 15:13:37.599 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.mapper.Trait2gwasMapper.biomedicalTrait - <==      Total: 10
+2022-03-24 15:13:37.601 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.602 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: CotAD_32480(String), 3635(Integer)
+2022-03-24 15:13:37.606 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 0
+2022-03-24 15:13:37.608 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.608 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 3635(Integer)
+2022-03-24 15:13:37.627 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.629 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.629 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: CotAD_32479(String), 3635(Integer)
+2022-03-24 15:13:37.633 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 0
+2022-03-24 15:13:37.634 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.634 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 3635(Integer)
+2022-03-24 15:13:37.637 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.638 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.639 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: Zm00001d017703(String), 4577(Integer)
+2022-03-24 15:13:37.645 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 3
+2022-03-24 15:13:37.646 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.647 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.650 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.651 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.651 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.654 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.655 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.655 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.657 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.658 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.659 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:37.667 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.667 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.668 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: Zm00001d017704(String), 4577(Integer)
+2022-03-24 15:13:37.677 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 7
+2022-03-24 15:13:37.678 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.678 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.682 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.683 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.683 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.686 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.688 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.688 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.698 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.699 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.700 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.704 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.706 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.707 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.710 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.712 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.712 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.714 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.715 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.715 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.719 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.720 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.721 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:37.727 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.729 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.729 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: Zm00001d034163(String), 4577(Integer)
+2022-03-24 15:13:37.741 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 16
+2022-03-24 15:13:37.742 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.742 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.746 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.747 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.747 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.749 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.750 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.750 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.754 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.754 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.755 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.758 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.759 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.759 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.762 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.762 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.763 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.766 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.767 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.767 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.772 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.772 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.773 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.778 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.778 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.779 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.783 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.783 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.784 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.786 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.786 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.786 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.789 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.791 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.791 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.798 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.798 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.799 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.802 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.802 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.803 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.805 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.806 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.806 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.809 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.809 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.809 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.812 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.813 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.814 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:37.816 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.817 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.817 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: Zm00001d039618(String), 4577(Integer)
+2022-03-24 15:13:37.823 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 3
+2022-03-24 15:13:37.824 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.824 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.827 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.828 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.828 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.830 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.831 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.831 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.835 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.836 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.836 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:37.838 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.839 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.839 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: ENSRNA049474580(String), 4577(Integer)
+2022-03-24 15:13:37.843 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 0
+2022-03-24 15:13:37.844 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.844 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:37.847 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.848 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.848 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: Zm00001d017820(String), 4577(Integer)
+2022-03-24 15:13:37.854 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 7
+2022-03-24 15:13:37.855 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.856 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.858 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.859 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.859 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.863 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.864 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.864 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.880 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.881 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.882 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.885 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.885 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.885 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.888 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.889 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.889 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.894 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.895 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.895 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.899 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.900 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:37.900 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:37.903 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:37.904 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:37.904 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: Zm00001d014796(String), 4577(Integer)
+2022-03-24 15:13:37.911 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 17
+2022-03-24 15:13:37.912 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.912 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.916 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.916 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.917 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.919 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.919 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.920 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.922 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.923 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.924 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.933 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.933 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.934 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.938 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.939 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.939 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.942 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.942 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.942 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.946 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.947 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.947 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.951 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.952 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.952 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.964 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.965 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.965 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.968 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.969 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.969 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.972 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.972 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.973 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.975 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.976 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.976 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.981 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.981 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.982 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:37.985 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:37.986 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:37.986 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.000 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.001 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.001 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.015 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.017 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.017 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.020 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.021 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:38.021 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:38.023 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:13:38.024 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==>  Preparing: select * from ortholog_id_mapping oim, ortholog_all64 oall where (( oim.uniprot_id=oall.uniprot_id1 and oall.tax_id2 in (3635,102107,4577,3708,4530,4558)) or (oim.uniprot_id=oall.uniprot_id2 and oall.tax_id1 in (3635,102107,4577,3708,4530,4558))) and oim.ensembl_gene_id=? and oim.taxon_id=? 
+2022-03-24 15:13:38.024 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - ==> Parameters: Zm00001d014674(String), 4577(Integer)
+2022-03-24 15:13:38.031 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findOrthByTaxonAndGene - <==      Total: 7
+2022-03-24 15:13:38.031 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.031 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.033 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.034 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.034 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.036 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.037 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.037 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.042 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.043 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.043 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.047 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.048 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.048 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.060 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.061 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.061 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.065 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.065 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==>  Preparing: select trait_name from trait_all where gene_id=? 
+2022-03-24 15:13:38.065 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - ==> Parameters: null
+2022-03-24 15:13:38.070 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.Ortho9031Mapper.findTraitNameByGene - <==      Total: 0
+2022-03-24 15:13:38.071 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==>  Preparing: select gwas_orgid from species where taxon_id=? 
+2022-03-24 15:13:38.071 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - ==> Parameters: 4577(Integer)
+2022-03-24 15:13:38.075 [http-nio-9401-exec-10] DEBUG c.a.c.n.s.m.T.findGwasOrgidByTaxonId - <==      Total: 1
+2022-03-24 15:17:26.660 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 11384 (F:\hdb\backend\target\classes started by 光亚 in F:\hdb\backend)
+2022-03-24 15:17:26.665 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default

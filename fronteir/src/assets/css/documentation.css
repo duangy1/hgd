@@ -21,7 +21,7 @@
 .section-titile{
     text-align: left;
     color: #00b5ad;
-    font-size: 1.28571429em;
+    font-size: 22px;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     font-weight: 700;
 }
@@ -71,5 +71,4 @@
 .figure{
     color: darkgray;
     margin-top: 10px;
-    font-style:italic;
 }

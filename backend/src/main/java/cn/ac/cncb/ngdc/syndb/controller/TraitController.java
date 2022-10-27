@@ -32,7 +32,7 @@ public class TraitController {
     @RequestMapping(value = "/api/traits", method = RequestMethod.GET)
     @ResponseBody
 
-    public DataTableResultInfo getBiomedicalTrait(String classification,String traitId,String speciesName,String geneId,String hdbId,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+    public DataTableResultInfo getBiomedicalTrait(String classification,String traitId,String speciesName,String geneId,String hdbId,String taxonId,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
                                             @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
                                             @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                             @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
@@ -40,7 +40,7 @@ public class TraitController {
         if(pageNo == 1){
             pageNo = start/length+1;
         }
-        Page<Trait2gwas> pageInfo = traitService.biomedicalTrait(traitId,classification,pageNo,length,speciesName,geneId,hdbId);
+        Page<Trait2gwas> pageInfo = traitService.biomedicalTrait(traitId,classification,pageNo,length,speciesName,geneId,hdbId,taxonId);
         for(Trait2gwas trait : pageInfo){
             int taxon = trait.getTaxonId();
             String hdbid = trait.getHdbId(); //拿到trait里使用的id，大多是ensemblid

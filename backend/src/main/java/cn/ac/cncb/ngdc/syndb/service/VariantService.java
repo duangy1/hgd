@@ -19,7 +19,7 @@ public class VariantService {
     @Resource
     private GeneBasicInfoMapper geneBasicInfoMapper;
 
-    public Page<Variant> initPageVariant(String varname,String classification, int pageNo, int pageSize,String speciesName,String geneid,String hdbId) {
+    public Page<Variant> initPageVariant(String varname,String classification, int pageNo, int pageSize,String speciesName,String geneid,String hdbId,String taxonId) {
         List<String> hdbidList=new ArrayList();
         Page<Variant> varList = new Page<>();
         if(geneid!=null && geneid.length() >0){
@@ -27,12 +27,12 @@ public class VariantService {
             hdbidList=geneBasicInfoMapper.getHdbIdByOtherId(geneid);
             if(hdbidList.size()>0) {
                 PageHelper.startPage(pageNo, pageSize, true); //line 1
-                varList = variantMapper.initPageVariant(varname, classification, speciesName, hdbidList,hdbId);
+                varList = variantMapper.initPageVariant(varname, classification, speciesName, hdbidList,hdbId,taxonId);
             }
         }else{
 //            如果没传入geneid，直接查询
             PageHelper.startPage(pageNo, pageSize, true); //line 1
-            varList = variantMapper.initPageVariant(varname, classification, speciesName, hdbidList,hdbId);
+            varList = variantMapper.initPageVariant(varname, classification, speciesName, hdbidList,hdbId,taxonId);
         }
         return varList;
     }

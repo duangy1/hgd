@@ -250,7 +250,7 @@ public class GeneDetailService {
         }
         for(TraitName basicTerm:traitList){
             if(basicTerm.getGwasNum() != null){
-                float opaNum= (float)basicTerm.getGwasNum()/20;
+                float opaNum= (float)basicTerm.getGwasNum()/5;
                 basicTerm.setOpacity(opaNum);
             }else{
                 basicTerm.setOpacity(0);
@@ -278,7 +278,7 @@ public class GeneDetailService {
             if(numSum>0){
             for (TraitName basicTerm : traitList) {
                 if (basicTerm.getGwasNum() != null) {
-                    float opaNum = (float) basicTerm.getGwasNum() / 20;
+                    float opaNum = (float) basicTerm.getGwasNum() / 5;
                     basicTerm.setOpacity(opaNum);
                 } else {
                     basicTerm.setOpacity(0);
@@ -361,6 +361,12 @@ public class GeneDetailService {
         List<GeneExpression> expressionInfoByGeneList =geneExpressionMapper.expressionInfoByGeneList(hdbId);
         List<ExpressionTerm> expressionList= expressionTermMapper.expressionInfoList(classification);
 //        Integer numSum=0;
+        Integer genOrgid;
+        if(expressionInfoByGeneList.size()>0) {
+            genOrgid = expressionInfoByGeneList.get(0).getGenOrgId();
+        }else{
+            genOrgid=0;
+        }
         for(GeneExpression expressionInfoItem : expressionInfoByGeneList){
             String traitName=expressionInfoItem.getAnnotation();
             String[] prjList=expressionInfoItem.getBioProjectId().split(",");
@@ -375,6 +381,7 @@ public class GeneDetailService {
             }
         }
         for(ExpressionTerm basicTerm:expressionList){
+            basicTerm.setGenOrgid(genOrgid);
             if(basicTerm.getPrjNum() != null){
                 float opaNum= (float)basicTerm.getPrjNum()/20;
                 basicTerm.setOpacity(opaNum);

@@ -113,8 +113,8 @@
             border
           >
             <el-table-column align="center" class="titleCell" prop="goName" label="Gene Ontology" fixed width="250px"></el-table-column>
-            <el-table-column align="center" class="titleCell" prop="topGoId" label="GO Id" fixed width="120px"></el-table-column>
-            <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+            <el-table-column align="center" class="titleCell" prop="topGoId" label="GO ID" fixed width="120px"></el-table-column>
+            <el-table-column align="center" prop="geneId" label="Gene ID" width="220px" fixed>
               <template slot-scope="scope">
                 <a :href="'./gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
                     {{ scope.row.geneId }}
@@ -122,7 +122,7 @@
               </template>
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name"  fixed width="150px" ></el-table-column>
-            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="100px" fixed>
+            <el-table-column align="center" prop="taxonId" label="Taxon ID" width="100px" fixed>
               <template slot-scope="scope">
                 <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
                     {{ scope.row.taxonId }}
@@ -210,12 +210,20 @@
           <div class="title-box">
             <template>
               <el-descriptions title="Selected Gene" >
-                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
+                <el-descriptions-item label="Gene ID"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
                     {{ selectGene.geneId }}
                 </a></el-descriptions-item>
-                <el-descriptions-item label="Protein Id"><a :href="'https://www.uniprot.org/uniprot/'+selectGene.hdbId" target='_blank'>
-                    {{ selectGene.hdbId }}
+                <el-descriptions-item label="Uniprot ID"><a :href="'https://www.uniprot.org/uniprot/'+selectGene.uniprotId" target='_blank'>
+                    {{ selectGene.uniprotId }}
                 </a></el-descriptions-item>
+                <el-descriptions-item label="Ensembl Protein ID">
+                  <!-- <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+selectGene.ensemblId+';site=ensembl'" target='_blank'>
+                    {{ selectGene.ensemblId }}
+                </a> -->
+                <a target="_blank" v-if="tax_Plant.indexOf(String(selectGene.taxonId))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+selectGene.ensemblId+';site=ensembl'">{{selectGene.ensemblId}}</a>
+                <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+selectGene.ensemblId+';site=ensembl'">{{selectGene.ensemblId}}</a>
+
+                </el-descriptions-item>
                 <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
                 <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
                 <el-descriptions-item label="Gene ontology">
@@ -250,7 +258,7 @@
               </el-table-column>
               <el-table-column
                   prop="tax"
-                  label="Taxon Id"
+                  label="Taxon ID"
                   align="center">
                   <template slot-scope="scope">
                     <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.tax+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
@@ -260,13 +268,17 @@
               </el-table-column>
               <el-table-column
                   prop="ensemblGeneId"
-                  label="Ensembl Id"
+                  label="Ensembl ID"
                   align="center">
                   <template slot-scope="scope">
-                    <a :href="'https://ensemblgenomes.org/search/?query='+scope.row.ensemblGeneId" target="_blank">
-                        {{ scope.row.ensemblGeneId }}
-                    </a>
-                  </template>
+                    <!-- <a v-if="scope.row.ensemblGeneId!=='-'" target="_blank" :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                    <div v-else>{{scope.row.ensemblGeneId}}</div> -->
+                    <div v-if="scope.row.ensemblGeneId!=='-'">
+                      <a target="_blank" v-if="tax_Plant.indexOf(String(scope.row.tax))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                      <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                    </div>
+                    <div v-else>{{scope.row.ensemblGeneId}}</div>
+                </template>
               </el-table-column>
                <el-table-column
                 prop="geneSymbol"
@@ -274,15 +286,37 @@
                 align="center">
               </el-table-column>
               <el-table-column
-                  prop="hdbId"
-                  label="Protein Id"
-                  align="center">
-                  <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
-                
-                    <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
-                        {{ scope.row.hdbId }}
-                    </a>
-                  </template>
+                prop="protein"
+                label="Uniprot ID">
+                <template slot-scope="scope">
+              
+                  <a :href="'https://www.uniprot.org/uniprot/'+scope.row.protein" target='_blank'>
+                      {{ scope.row.protein }}
+                  </a>
+                </template>
+            </el-table-column>
+            <el-table-column
+                prop="ensemblId"
+                label="Ensembl Protein ID">
+                <template slot-scope="scope">
+              
+                  <!-- <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'" target='_blank'>
+                      {{ scope.row.ensemblId }}
+                  </a> -->
+                  <a target="_blank" v-if="tax_Plant.indexOf(String(scope.row.tax))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'">{{scope.row.ensemblId}}</a>
+                  <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'">{{scope.row.ensemblId}}</a>
+
+                </template>
+            </el-table-column>
+            <el-table-column label="Data Source Count "  width="150px">
+                <template slot-scope="scope">
+                    <el-rate
+                        v-model="scope.row.dbEvidence.split(',').length"
+                        disabled
+                        text-color="#ff9900"
+                        score-template="{value}">
+                    </el-rate>
+                </template>
               </el-table-column>
               <el-table-column  label="Data Source" align="center">
                 <template slot-scope="scope">
@@ -290,9 +324,29 @@
                         placement="top"
                         title="Data Source"
                         width="200"
-                        trigger="hover"
+                        trigger="click"
                         :content="scope.row.dbEvidence">
-                        <i class="el-icon-s-order" slot="reference" width="30px"></i>
+                        <!-- <i class="el-icon-s-order" slot="reference" width="30px"></i> -->
+                        <template #reference>
+                            <i class="el-icon-s-order" slot="reference"></i>
+                        </template>
+                        <template #default>
+                          <div>{{scope.row.dbEvidence}}</div>
+                            <div v-for="(item,index) of scope.row.dbContent" :key="index">
+                                <div v-if="item.split(':')[0]=='Panther'">
+                                    Panther:<a target="_blank" :href="'http://www.pantherdb.org/panther/family.do?clsAccession='+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                </div>
+                                <div v-if="item.split(':')[0]=='TreeFam'">
+                                    TreeFam:<a target="_blank" :href="'http://www.treefam.org/family/'+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                </div>
+                                <div v-if="item.split(':')[0]=='eggNOG'">
+                                    eggNOG:<a target="_blank" :href="'http://eggnog5.embl.de/#/app/results?seqid='+scope.row.protein+'&target_nogs=ENOG50'+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                </div> 
+                                <div v-if="item.split(':')[0]=='Inparanoid'">
+                                  Inparanoid:<a target="_blank" :href="'https://inparanoid.sbc.su.se/cgi-bin/efasta.cgi?cluster='+item.split(':')[1].split(' ')[1]+'&species1='+scope.row.inparanoidID1+'&species2='+scope.row.inparanoidID2+'&java=0'">{{item.split(':')[1]}}</a>
+                                </div> 
+                            </div>
+                        </template>
                     </el-popover>
                     
                 </template>
@@ -322,7 +376,7 @@
                 v-loading="gwasLoading"
                 max-height="500px"
               >
-                <el-table-column prop="geneId" label="Gene Id" align="center">
+                <el-table-column prop="geneId" label="Gene ID" align="center">
                   <template slot-scope="scope">
                     <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.geneId+';site=ensembl'" target='_blank' >
                         {{ scope.row.geneId }}
@@ -335,15 +389,15 @@
                     <div v-else>-</div>
                   </template>
                 </el-table-column>
-                <el-table-column prop="topGoId" label="GO Id" align="center">
+                <el-table-column prop="topGoId" label="GO ID" align="center">
                   <template slot-scope="scope">
                     <div v-if="scope.row.topGoId!==''&& scope.row.topGoId">{{scope.row.topGoId}}</div>
                     <div v-else>-</div>
                   </template>
                 </el-table-column>
-                <el-table-column prop="goId" label="Sub GO Id" align="center"></el-table-column>
+                <el-table-column prop="goId" label="Sub GO ID" align="center"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species" align="center"></el-table-column>
-                <el-table-column prop="taxonId" label="Taxon Id" align="center">
+                <el-table-column prop="taxonId" label="Taxon ID" align="center">
                   <template slot-scope="scope">
                     <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
                         {{ scope.row.taxonId }}
@@ -408,8 +462,8 @@
             border
           >
            <el-table-column align="center" class="titleCell" prop="goName" label="Gene Ontology" fixed width="250px"></el-table-column>
-            <el-table-column align="center" class="titleCell" prop="topGoId" label="GO Id" fixed width="120px"></el-table-column>
-            <el-table-column align="center" prop="geneId" label="Gene Id" width="220px" fixed>
+            <el-table-column align="center" class="titleCell" prop="topGoId" label="GO ID" fixed width="120px"></el-table-column>
+            <el-table-column align="center" prop="geneId" label="Gene ID" width="220px" fixed>
               <template slot-scope="scope">
                 <a :href="'./gene-detail?hdbId='+scope.row.hdbId+'&taxonId='+scope.row.taxonId">
                     {{ scope.row.geneId }}
@@ -417,7 +471,7 @@
               </template>
             </el-table-column>
             <el-table-column align="center" prop="speciesCommonName" label="Species Name"  fixed width="150px" ></el-table-column>
-            <el-table-column align="center" prop="taxonId" label="Taxon Id" width="100px" fixed>
+            <el-table-column align="center" prop="taxonId" label="Taxon ID" width="100px" fixed>
               <template slot-scope="scope">
                 <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
                     {{ scope.row.taxonId }}
@@ -498,12 +552,20 @@
           <div class="title-box">
             <template>
               <el-descriptions title="Selected Gene" >
-                <el-descriptions-item label="Gene Id"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
+                <el-descriptions-item label="Gene ID"><a :href="'./gene-detail?hdbId='+selectGene.hdbId+'&taxonId='+selectGene.taxonId">
                     {{ selectGene.geneId }}
                 </a></el-descriptions-item>
-                <el-descriptions-item label="Protein Id"><a :href="'https://www.uniprot.org/uniprot/'+selectGene.hdbId" target='_blank'>
-                    {{ selectGene.hdbId }}
+                <el-descriptions-item label="Uniprot ID"><a :href="'https://www.uniprot.org/uniprot/'+selectGene.uniprotId" target='_blank'>
+                    {{ selectGene.uniprotId }}
                 </a></el-descriptions-item>
+                <el-descriptions-item label="Ensembl Protein ID">
+                  <!-- <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+selectGene.ensemblId+';site=ensembl'" target='_blank'>
+                    {{ selectGene.ensemblId }}
+                  </a> -->
+                <a target="_blank" v-if="tax_Plant.indexOf(String(selectGene.taxonId))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+selectGene.ensemblId+';site=ensembl'">{{selectGene.ensemblId}}</a>
+                <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+selectGene.ensemblId+';site=ensembl'">{{selectGene.ensemblId}}</a>
+
+                </el-descriptions-item>
                 <el-descriptions-item label="Species Name">{{selectGene.speciesCommonName}}</el-descriptions-item>
                 <el-descriptions-item label="Classification">{{selectGene.classification}}</el-descriptions-item>
                 <el-descriptions-item label=" Gene Ontology">
@@ -535,7 +597,7 @@
               </el-table-column>
               <el-table-column
                   prop="tax"
-                  label="Taxon Id">
+                  label="Taxon ID">
                   <template slot-scope="scope">
                     <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.tax+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
                         {{ scope.row.tax }}
@@ -544,26 +606,53 @@
               </el-table-column>
               <el-table-column
                   prop="ensemblGeneId"
-                  label="Ensembl Id">
+                  label="Ensembl ID">
                   <template slot-scope="scope">
-                    <a :href="'https://ensemblgenomes.org/search/?query='+scope.row.ensemblGeneId" target="_blank">
-                        {{ scope.row.ensemblGeneId }}
-                    </a>
-                  </template>
+                    <!-- <a v-if="scope.row.ensemblGeneId!=='-'" target="_blank" :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                    <div v-else>{{scope.row.ensemblGeneId}}</div> -->
+                    <div v-if="scope.row.ensemblGeneId!=='-'">
+                      <a target="_blank" v-if="tax_Plant.indexOf(String(scope.row.tax))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                      <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                    </div>
+                    <div v-else>{{scope.row.ensemblGeneId}}</div>
+                </template>
               </el-table-column>
                <el-table-column
                 prop="geneSymbol"
                 label="Gene Symbol">
               </el-table-column>
               <el-table-column
-                  prop="hdbId"
-                  label="Protein Id">
-                  <template slot-scope="scope" v-if="scope.row.hdbId.slice(0,2)!=='EN'">
-                
-                    <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbId" target='_blank'>
-                        {{ scope.row.hdbId }}
-                    </a>
-                  </template>
+                prop="protein"
+                label="Uniprot ID">
+                <template slot-scope="scope">
+              
+                  <a :href="'https://www.uniprot.org/uniprot/'+scope.row.protein" target='_blank'>
+                      {{ scope.row.protein }}
+                  </a>
+                </template>
+            </el-table-column>
+            <el-table-column
+                prop="ensemblId"
+                label="Ensembl Protein ID">
+                <template slot-scope="scope">
+              
+                  <!-- <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'" target='_blank'>
+                      {{ scope.row.ensemblId }}
+                  </a> -->
+                  <a target="_blank" v-if="tax_Plant.indexOf(String(scope.row.tax))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'">{{scope.row.ensemblId}}</a>
+                  <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'">{{scope.row.ensemblId}}</a>
+
+                </template>
+            </el-table-column>
+            <el-table-column label="Data Source Count "  width="150px">
+                <template slot-scope="scope">
+                    <el-rate
+                        v-model="scope.row.dbEvidence.split(',').length"
+                        disabled
+                        text-color="#ff9900"
+                        score-template="{value}">
+                    </el-rate>
+                </template>
               </el-table-column>
               <el-table-column  label="Data Source" align="center">
                 <template slot-scope="scope">
@@ -571,9 +660,29 @@
                         placement="top"
                         title="Data Source"
                         width="200"
-                        trigger="hover"
+                        trigger="click"
                         :content="scope.row.dbEvidence">
-                        <i class="el-icon-s-order" slot="reference" width="30px"></i>
+                        <!-- <i class="el-icon-s-order" slot="reference" width="30px"></i> -->
+                        <template #reference>
+                            <i class="el-icon-s-order" slot="reference"></i>
+                        </template>
+                        <template #default>
+                          <div>{{scope.row.dbEvidence}}</div>
+                            <div v-for="(item,index) of scope.row.dbContent" :key="index">
+                                <div v-if="item.split(':')[0]=='Panther'">
+                                    Panther:<a target="_blank" :href="'http://www.pantherdb.org/panther/family.do?clsAccession='+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                </div>
+                                <div v-if="item.split(':')[0]=='TreeFam'">
+                                    TreeFam:<a target="_blank" :href="'http://www.treefam.org/family/'+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                </div>
+                                <div v-if="item.split(':')[0]=='eggNOG'">
+                                    eggNOG:<a target="_blank" :href="'http://eggnog5.embl.de/#/app/results?seqid='+scope.row.protein+'&target_nogs=ENOG50'+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                </div> 
+                                <div v-if="item.split(':')[0]=='Inparanoid'">
+                                  Inparanoid:<a target="_blank" :href="'https://inparanoid.sbc.su.se/cgi-bin/efasta.cgi?cluster='+item.split(':')[1].split(' ')[1]+'&species1='+scope.row.inparanoidID1+'&species2='+scope.row.inparanoidID2+'&java=0'">{{item.split(':')[1]}}</a>
+                                </div> 
+                            </div>
+                        </template>
                     </el-popover>
                     
                 </template>
@@ -596,7 +705,7 @@
                 v-loading="gwasLoading"
                 max-height="500px"
               >
-                <el-table-column prop="geneId" label="Gene Id">
+                <el-table-column prop="geneId" label="Gene ID">
                   <template slot-scope="scope">
                     <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+scope.row.geneId+';site=ensembl'" target='_blank' >
                         {{ scope.row.geneId }}
@@ -609,15 +718,15 @@
                     <div v-else>-</div>
                   </template>
                 </el-table-column>
-                <el-table-column prop="topGoId" label="GO Id">
+                <el-table-column prop="topGoId" label="GO ID">
                   <template slot-scope="scope">
                     <div v-if="scope.row.topGoId!==''&& scope.row.topGoId">{{scope.row.topGoId}}</div>
                     <div v-else>-</div>
                   </template>
                 </el-table-column>
-                <el-table-column prop="goId" label="Sub GO Id"></el-table-column>
+                <el-table-column prop="goId" label="Sub GO ID"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species"></el-table-column>
-                <el-table-column prop="taxonId" label="Taxon Id">
+                <el-table-column prop="taxonId" label="Taxon ID">
                   <template slot-scope="scope">
                     <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxonId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
                         {{ scope.row.taxonId }}
@@ -749,7 +858,9 @@ export default {
       querySpeciesList_animal:[],
       querySpeciesList_plant:[],
       querySpeciesList:[],
-      showTitle:true
+      showTitle:true,
+      tax_Plant:["3702","3708","4072","3659","3635","3983","4530","3847","42345","3694","4081","4558","4565","29760","4577","4113"]
+
     };
   },
 
@@ -826,6 +937,8 @@ export default {
     },
   showSelectedGene(rowData){
       this.selectGene=rowData;
+      this.selectGene.uniprotId=rowData.hdbId.split("_")[0];
+      this.selectGene.ensemblId=rowData.hdbId.split("_")[1];
   },
   showOrthoInfoTable(rowdata,index){
     this.showSelectedGene(rowdata,index)
@@ -843,9 +956,16 @@ export default {
     ortholist.forEach(item=>{
       let hdbid=item.hdbId;
       this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-ortho",{params:{"hdbId":hdbid}}).then((res)=>{
-        item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
-        item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
-        this.orthoTableData.push(item)
+        if(res.data!==""){
+          item.ensemblGeneId=res.data.ensemblGeneId.length>0?res.data.ensemblGeneId:"-";
+          item.geneSymbol=res.data.geneSymbol.length>0?res.data.geneSymbol:"-";
+        }else{
+          item.ensemblGeneId="-";
+          item.geneSymbol="-";
+        }
+        let dbContent=item.fromdb.split(',');
+        item.dbContent=dbContent;
+        this.orthoTableData.push(item);
         this.orthoLoading=false;
       })
     })
@@ -1092,7 +1212,7 @@ export default {
       let oriData;
       if(classs=='animal'){oriData=this.traitData_animal}else{oriData=this.traitData_plant}
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = [ 'GO Term',"Gene Id","Species Common Name","Taxon Id","Homolog Info Data"]
+        const tHeader = [ 'GO Term',"Gene ID","Species Common Name","Taxon ID","Homologous Info Data"]
         const filterVal = ['goName','geneId','speciesCommonName','taxonId','ortholist']
         const data = this.formatJson(filterVal, oriData)
         excel.export_json_to_excel({
@@ -1104,7 +1224,7 @@ export default {
     },
     exportToSubOrthoTableExcel(orthodata) {
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = [ 'Species',"Taxon Id","Ensembl Id",'Gene Symbol',"Protein Id","DataSource"]
+        const tHeader = [ 'Species',"Taxon ID","Ensembl ID",'Gene Symbol',"Protein ID","DataSource"]
         const filterVal = ['commonName','tax','ensemblGeneId','geneSymbol',"hdbId","dbEvidence"]
         const data = this.formatJson(filterVal, orthodata)
         excel.export_json_to_excel({
@@ -1116,7 +1236,7 @@ export default {
     },
     exportToSubGwasTableExcel(gwasdata) {
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = [ 'Gene Id',"GO term","GO Id",'Sub GO Id',"Taxon Id"]
+        const tHeader = [ 'Gene ID',"GO term","GO ID",'Sub GO ID',"Taxon ID"]
         const filterVal = ['geneId','goName','topGoId','goId','taxonId']
         const data = this.formatJson(filterVal, gwasdata)
         excel.export_json_to_excel({
@@ -1132,7 +1252,7 @@ export default {
             let orthoData=v[j];
             let orthoList=[]
             for(let item of orthoData){
-              let orthodataInfo={"Species Common Name":item.commonName,"Taxon Id":item.tax,"GO Term":item.goName,"Homologous Protein Id":item.hdbId,"Data Source":item.dbEvidence}
+              let orthodataInfo={"Species Common Name":item.commonName,"Taxon ID":item.tax,"GO Term":item.goName,"Homologous Protein ID":item.hdbId,"Data Source":item.dbEvidence}
               orthoList.push(JSON.stringify(orthodataInfo))
             }
             return orthoList
@@ -1156,14 +1276,20 @@ export default {
     
     let hdbId = this.$route.query.hdbId;
     this.hdbId=hdbId;
-    if(hdbId!=""&&hdbId!=null){
+    let taxonId=this.$route.query.taxonId;
+    if(taxonId!==''&&taxonId!=null){
+      this.form.querySpecies=taxonId;
+    }
+    if(hdbId!=""&&hdbId!=null||(taxonId!==''&&taxonId!=null)){
       let classification;
       if(this.$route.query.speciesType==1){
         classification="animal";
         this.classification="animal";
+        this.loading_animal = true;
       }else if(this.$route.query.speciesType==2){
         classification="plant";
         this.classification="plant";
+        this.loading_plant = true;
       }
      
       this.traitItem={
@@ -1179,8 +1305,8 @@ export default {
     }else{
       this.loading_animal = true;
       this.loading_plant=true;
-      this.getGoData(this.traitItem.traitId,"animal")
-      this.getGoData(this.traitItem.traitId,"plant")
+      this.getGoData(this.traitItem.traitId,"animal",hdbId)
+      this.getGoData(this.traitItem.traitId,"plant",hdbId)
     }
    
    

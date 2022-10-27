@@ -127,6 +127,7 @@ public class OrthoService {
                     orthoitem.setTraitName(orthoitem.getTraitName2());
                     orthoitem.setCommonName(orthoitem.getCommonName2());
                     orthoitem.setEnsemblId(orthoitem.getEnsemblId2());
+                    orthoitem.setProtein(orthoitem.getProtein2());
                     orthoitem.setHdbId(orthoitem.getHdbId2());
                     orthoitem.setGwasId(orthoitem.getGwasId2());
                 } else {
@@ -136,6 +137,7 @@ public class OrthoService {
                     species1.setClassification(orthoitem.getClassification1());
                     orthoitem.setTax(tax1);
                     orthoitem.setSpecies(species1);
+                    orthoitem.setProtein(orthoitem.getProtein1());
                     orthoitem.setCommonName(orthoitem.getCommonName1());
                     orthoitem.setEnsemblId(orthoitem.getEnsemblId1());
                     orthoitem.setCommonName(orthoitem.getCommonName1());
@@ -172,6 +174,7 @@ public class OrthoService {
                 orthoitem.setVarName(orthoitem.getVarName2());
                 orthoitem.setGwasOrgId(orthoitem.getGwasOrgId2());
                 orthoitem.setSpecies(species2);
+                orthoitem.setProtein(orthoitem.getProtein2());
                 orthoitem.setCommonName(orthoitem.getCommonName2());
                 orthoitem.setHdbId(orthoitem.getHdbId2());
                 orthoitem.setEnsemblId(orthoitem.getEnsemblId2());
@@ -183,6 +186,7 @@ public class OrthoService {
                 species1.setDataSource(orthoitem.getDataSource1());
                 species1.setClassification(orthoitem.getClassification1());
                 orthoitem.setTax(tax1);
+                orthoitem.setProtein(orthoitem.getProtein1());
                 orthoitem.setCommonName(orthoitem.getCommonName1());
                 orthoitem.setGwasOrgId(orthoitem.getGwasOrgId1());
                 orthoitem.setVarName(orthoitem.getVarName1());
@@ -216,6 +220,7 @@ public class OrthoService {
                 species2.setClassification(orthoitem.getClassification2());
                 orthoitem.setTax(tax2);
                 orthoitem.setHdbId(orthoitem.getHdbId2());
+                orthoitem.setProtein(orthoitem.getProtein2());
                 orthoitem.setCommonName(orthoitem.getCommonName2());
                 orthoitem.setGoName(orthoitem.getGoName2());
                 orthoitem.setSpecies(species2);
@@ -229,6 +234,7 @@ public class OrthoService {
                 orthoitem.setHdbId(orthoitem.getHdbId1());
                 orthoitem.setCommonName(orthoitem.getCommonName1());
                 orthoitem.setGoName(orthoitem.getGoName1());
+                orthoitem.setProtein(orthoitem.getProtein1());
                 orthoitem.setSpecies(species1);
                 orthoitem.setEnsemblId(orthoitem.getEnsemblId1());
             }
@@ -261,6 +267,7 @@ public class OrthoService {
                 orthoitem.setEoName(orthoitem.getEoName2());
                 orthoitem.setSpecies(species2);
                 orthoitem.setHdbId(orthoitem.getHdbId2());
+                orthoitem.setProtein(orthoitem.getProtein2());
                 orthoitem.setEnsemblId(orthoitem.getEnsemblId2());
             } else {
 
@@ -272,6 +279,7 @@ public class OrthoService {
                 orthoitem.setEoName(orthoitem.getEoName1());
                 orthoitem.setSpecies(species1);
                 orthoitem.setHdbId(orthoitem.getHdbId1());
+                orthoitem.setProtein(orthoitem.getProtein1());
                 orthoitem.setEnsemblId(orthoitem.getEnsemblId1());
             }
 //            String enspid=orthoitem.getEnsemblId();

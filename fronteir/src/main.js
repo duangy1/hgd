@@ -21,22 +21,17 @@ Vue.prototype.$echarts = echarts;
 // Vue.prototype.$fileSaver = FileSaver;
 // Vue.prototype.$xlsx = XLSX;
 
+
+router.beforeEach(async (to, from, next) => {
+    if (to.path) {
+      if (window._hmt) {
+    // eslint-disable-next-line
+    window._hmt.push(['_trackPageview', to.fullPath]);
+  }
+}
+next();
+  });
 new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
-router.afterEach( ( ) => {
-  setTimeout(()=>{
-          //百度统计
-          var _hmt = _hmt || [];
-          (function() {
-              //每次执行前，先移除上次插入的代码
-              document.getElementById('baidu_tj') && document.getElementById('baidu_tj').remove();
-              var hm = document.createElement("script");
-              hm.src = "https://hm.baidu.com/hm.js?xxxx";
-              hm.id = "baidu_tj"
-              var s = document.getElementsByTagName("script")[0];
-              s.parentNode.insertBefore(hm, s);
-          })();
-  },0);
-} );

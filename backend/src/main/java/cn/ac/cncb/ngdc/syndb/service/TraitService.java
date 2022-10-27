@@ -27,7 +27,7 @@ public class TraitService {
     @Resource
     private GeneBasicInfoMapper geneBasicInfoMapper;
 
-    public Page<Trait2gwas> biomedicalTrait(String traitId, String classification, int pageNo, int pageSize, String speciesName, String geneId,String hdbId) {
+    public Page<Trait2gwas> biomedicalTrait(String traitId, String classification, int pageNo, int pageSize, String speciesName, String geneId,String hdbId,String taxonId) {
 
         List<String> hdbidList=new ArrayList();
         Page<Trait2gwas> varList = new Page<>();
@@ -35,11 +35,11 @@ public class TraitService {
             hdbidList=geneBasicInfoMapper.getHdbIdByOtherId(geneId);
             if(hdbidList.size()>0) {
                 PageHelper.startPage(pageNo, pageSize,true); //line 1
-                varList= trait2gwasMapper.biomedicalTrait(traitId,classification,speciesName,hdbidList,hdbId);
+                varList= trait2gwasMapper.biomedicalTrait(traitId,classification,speciesName,hdbidList,hdbId,taxonId);
             }
         }else {
             PageHelper.startPage(pageNo, pageSize, true); //line 1
-            varList = trait2gwasMapper.biomedicalTrait(traitId, classification, speciesName, hdbidList, hdbId);
+            varList = trait2gwasMapper.biomedicalTrait(traitId, classification, speciesName, hdbidList, hdbId,taxonId);
         }
         return varList;
     }

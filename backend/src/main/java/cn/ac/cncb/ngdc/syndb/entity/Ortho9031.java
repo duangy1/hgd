@@ -110,4 +110,7 @@ public class Ortho9031 {
     private List orthoTraitName;
 
     private List orthoVarName;
+    private String inparanoidID1;
+
+    private String inparanoidID2;
 }

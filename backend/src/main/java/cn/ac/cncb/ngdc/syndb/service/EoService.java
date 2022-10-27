@@ -23,7 +23,7 @@ public class EoService {
     @Resource
     private GeneBasicInfoMapper geneBasicInfoMapper;
 
-    public Page<GeneExpression> initPageEo(String expName,String classification, int pageNo, int pageSize, String taxonid,String geneid,String hdbId) {
+    public Page<GeneExpression> initPageEo(String expName,String classification, int pageNo, int pageSize, String taxonid,String geneid,String hdbId,String taxonId) {
 
         List<String> hdbidList=new ArrayList();
         Page<GeneExpression> varList = new Page<>();
@@ -32,12 +32,12 @@ public class EoService {
             hdbidList=geneBasicInfoMapper.getHdbIdByOtherId(geneid);
             if(hdbidList.size()>0) {
                 PageHelper.startPage(pageNo, pageSize, true); //line 1
-                varList = geneExpressionMapper.initPageEo(expName, classification, taxonid, hdbidList,hdbId);
+                varList = geneExpressionMapper.initPageEo(expName, classification, taxonid, hdbidList,hdbId,taxonId);
             }
         }else{
 //            如果没传入geneid，直接查询
             PageHelper.startPage(pageNo, pageSize, true); //line 1
-            varList = geneExpressionMapper.initPageEo(expName, classification, taxonid, hdbidList,hdbId);
+            varList = geneExpressionMapper.initPageEo(expName, classification, taxonid, hdbidList,hdbId,taxonId);
         }
         return varList;
 

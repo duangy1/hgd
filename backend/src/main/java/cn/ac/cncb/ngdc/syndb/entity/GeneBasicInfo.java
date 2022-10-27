@@ -72,5 +72,10 @@ public class GeneBasicInfo {
     private int varCount;
     private int expCount;
 
+    private String uniprotDescription;
+
+    private String ensemblLink;
+
+
 
 }

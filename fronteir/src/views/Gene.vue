@@ -13,14 +13,15 @@
     
 <!--	<el-row :gutter="20" style="padding-top:20px;padding-bottom:20px; "> -->
  <!--     <el-col :span="4"  style="background-color: aliceblue;"> -->         
-           <div class=" left" style="background-color: aliceblue;width:250px !important;">
+           <div class=" left" style="background-color: aliceblue;width:270px !important;min-height: 1450px;">
   
-                     <div class="genefilter" style=" padding-bottom:10px;width:250px !important;" align="left">
+                     <div class="genefilter" style=" padding-bottom:10px;width:270px !important;" align="left">
                        
                        <el-form ref="form" size="small" align="left">
                                
 								
 							<div style="padding-top:10px;padding-left:10px;padding-botton:10px;"><el-button type="primary" size="small" @click="reset()">Clear</el-button></div>
+              <div class="filtSpecies">
 							<div class="filterheader"><i class="el-icon-caret-right"></i> Filter by Species</div>
                                <div class="filtercontent">
                                
@@ -37,7 +38,18 @@
                                  </div>
                               </div>
                              
-                             <div class="filterheader" style="padding-top:20px;"><i class="el-icon-caret-right"></i> Filter by Trait</div>
+                             <div class="filterheader" >
+                              <div style="display:flex;padding-bottom: 10px;">
+                              Filter by condition
+                              <div class="switchButton">
+                                AND
+                                <el-switch  v-model="TraitMode" inactive-color="#13ce66" active-value=1 inactive-value=0></el-switch>
+                                OR
+                              </div>
+                            </div>
+                              <i class="el-icon-caret-right"></i> Filter by Trait
+                              
+                              </div>
                              <div class="filtercontent" >
                               <treeselect 
                                 :multiple="true"
@@ -51,43 +63,65 @@
                                 :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
                                  v-model="traitAnimalvalue"
+                                 :max-height="235"
+                                 :isDefaultExpanded="true"
                                 /> 
                                
                               </div>
-                             
-                             <div class="filterheader" style="padding-top:90px;"><i class="el-icon-caret-right"></i> Filter by GO</div>
+                        </div>
+                        <div class="filterbyGo">
+                             <div class="filterheader" style="padding-top:250px;">
+                              
+                              <i class="el-icon-caret-right"></i> Filter by GO
+                              
+                            </div>
                              <div class="filtercontent" >
                                 <treeselect 
                                 :multiple="true"
                                 :options="gooptions"
                                 :disable-branch-nodes="true"
                                 :open-on-click="true"
-                                :always-open="true"
+                                :alwaysOpen="true"
                                 :flat="true"
-								:zIndex="1"
-								openDirection="bottom"
+                                :zIndex="1"
+                                openDirection="bottom"
                                 :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
-                                 v-model="govalue"
+                                v-model="govalue"
+                                :max-height="235"
+                                :isDefaultExpanded="true"
                                 /> 
                              </div>
-
-                            <div class="filterheader" style="padding-top:330px;"><i class="el-icon-caret-right"></i> Filter by Varation</div>
+                        </div>
+                        <div>
+                            <div class="filterheader" style="padding-top:250px;">
+                              
+                              <i class="el-icon-caret-right"></i> Filter by Varation
+                             
+                            </div>
                              <div class="filtercontent" >
                                 <treeselect 
                                 :multiple="true"
                                 :options="variantoptions"
                                 :disable-branch-nodes="true"
                                 :open-on-click="true"
-                                :always-open="true"
+                                :alwaysOpen="true"
                                 :flat="true"
 								openDirection="bottom"
                                 :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
                                  v-model="variantvalue"
+                                 :max-height="235"
+                                 :isDefaultExpanded="true"
                                 /> 
                              </div>
-                             <div class="filterheader" style="padding-top:150px;"><i class="el-icon-caret-right"></i> Filter by Expression</div>
+                        </div>
+                        <div>
+                            <div class="filterheader" style="padding-top:250px;">
+                              
+                              <i class="el-icon-caret-right"></i> Filter by Expression
+                             
+                            </div>
                              <div class="filtercontent" >
                                 <treeselect 
                                 :multiple="true"
@@ -96,12 +130,15 @@
                                 :open-on-click="true"
                                 :always-open="true"
                                 :flat="true"
-								openDirection="bottom"
+                                openDirection="bottom"
                                 :append-to-body="true"
                                 placeholder="Select your favourite(s)..."
                                  v-model="expvalue"
+                                 :max-height="235"
+                                 :isDefaultExpanded="true"
                                 /> 
                              </div>
+                        </div>
                        </el-form>
 
                       </div>
@@ -110,7 +147,7 @@
 
      <!-- </el-col> -->
     <!--  <el-col :span="19" style="margin-left:0px; text-align:left;"> -->
-        <div class="grid-content right tables" style="width: 98%; margin-left: 5%; margin-right:5%;" v-loading="screenLoading">
+        <div class="grid-content right tables" style="width: 98%;margin: 0; margin-left: 5%; margin-right:5%;" v-loading="screenLoading">
 
                 <div style="padding-top:10px;" >
                       <div style="margin-top:10px; margin-left:0px;padding-bottom:10px;float:left;">
@@ -142,7 +179,7 @@
 
                 <div style="clear:both;"></div>
 				<div style="text-align:left;padding-bottom:10px;"><el-tag v-for="tag in tags" :key="tag.name" closable type="info" @close="closeTag(tag)"> {{tag.name}}</el-tag></div>
-				<div v-if="totalSize > 0" style="min-height:930px;">
+				<div v-if="totalSize > 0" >
                 <div align="left" style="padding-bottom:10px;"><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><b>Check All</b></el-checkbox></div> 
 				<el-checkbox-group  v-model="checkedHomolog" @change="handleCheckedHomologChange">
                 <div  v-for="item in tableData" :key="item.gbiId" style="text-align:left;">
@@ -151,7 +188,12 @@
                         <div style="padding-bottom:5px;font-size:14px;padding-top:5px;">{{item.geneDescription}}</div>
                         <div style="padding-bottom:5px;font-size:14px;padding-top:5px;" v-if="item.geneSymbol !=null"><b>Symobl:</b> {{item.geneSymbol}} </div>
 						<div style="padding-bottom:5px;font-size:14px;padding-top:5px;" v-if="item.uniprotId"><b>Uniprot:</b> <a :href="'https://www.uniprot.org/uniprot/'+item.uniprotId"  target="_blank">{{item.uniprotId}}</a></div>
-						<div style="padding-bottom:5px;font-size:14px;padding-top:5px;" v-if="item.ensemblProteinId"><b>Ensembl Protein:</b> <a :href="'https://asia.ensembl.org/Multi/Search/Results?q='+item.ensemblProteinId+';site=ensembl'" target="_blank">{{item.ensemblProteinId}}</a> </div>
+						<div style="padding-bottom:5px;font-size:14px;padding-top:5px;" v-if="item.ensemblProteinId"><b>Ensembl Protein:</b> 
+              <!-- <a :href="'https://ensembl.org/Multi/Search/Results?q='+item.ensemblProteinId+';site=ensembl'" target="_blank">{{item.ensemblProteinId}}</a>  -->
+              <a target="_blank" v-if="tax_Plant.indexOf(String(item.taxonId))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+item.ensemblProteinId+';site=ensembl'">{{item.ensemblProteinId}}</a>
+              <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+item.ensemblProteinId+';site=ensembl'">{{item.ensemblProteinId}}</a>
+
+            </div>
                         <div style="padding-bottom:5px;font-size:14px;" v-if="item.geneSynonym != null"><b>Synonym:</b> {{item.geneSynonym}} </div>
                         <div style="padding-bottom:5px;font-size:14px;"><b>BioType:</b> {{item.geneType}} </div>
 						
@@ -204,6 +246,30 @@
 
     
     <FooterBar/>
+    <template>
+     <el-backtop
+      :bottom="100"
+      style="z-index: 999;"
+      class="backTop"
+    >
+      <div
+        style="
+           {
+            height: 100%;
+            width: 100%;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            line-height: 40px;
+            color: #1989fa;
+            border-radius: 50%;
+            background-color: white;
+          }
+        "
+      >
+      <i class="el-icon-caret-top"></i>
+      </div>
+    </el-backtop>
+    </template>
 </div>
 </template>
 <style src="../assets/css/gene-detail.css" scoped></style>
@@ -217,7 +283,12 @@
 .filterheader{
     font-weight:bold;
     padding:10px 10px;
-
+    padding-top:20px;
+    /* display: flex; */
+}
+.switchButton{
+  font-size:8px;
+  padding-left: 10px;
 }
 
 .grid-content >>> .el-pagination__total{
@@ -324,7 +395,10 @@ export default {
         tabPosition: 'right',
         loading:true,
         screenLoading:true,
-		isIndeterminate:false
+		isIndeterminate:false,
+    TraitMode:false,
+    tax_Plant:["3702","3708","4072","3659","3635","3983","4530","3847","42345","3694","4081","4558","4565","29760","4577","4113"]
+
       }
     },
     watch:{
@@ -351,7 +425,6 @@ export default {
 			})
 		},
 		downloadTxt(){
-			console.log("download txt");
 			let traitselect="";
            
             if(this.checkedHomolog != null && this.checkedHomolog.length>0){
@@ -369,7 +442,6 @@ export default {
 			
 		},
 		downloadCsv(){
-			console.log("download csv");
 			let traitselect="";
            
             if(this.checkedHomolog != null && this.checkedHomolog.length>0){
@@ -387,12 +459,10 @@ export default {
 			
 		},
 		handleCheckAllChange(val){
-			console.log("handleCheckAllChange="+val);
 			if(val){
 				for(var i =0 ; i< this.tableData.length;i++){
 					var homologgene = this.tableData[i];
 					if(homologgene != null ){
-						console.log(homologgene.hdbGeneId);
 						this.checkedHomolog.push(homologgene.hdbGeneId);
 					}
 					
@@ -403,7 +473,6 @@ export default {
 			this.isIndeterminate = false;
 		},
 		handleCheckedHomologChange(value){
-			console.log("handleCheckedHomologChange="+value);
 			let checkedCount = value.length;
 			this.checkAll = checkedCount === this.tableData.length;
 			this.isIndeterminate = checkedCount > 0 && checkedCount < this.tableData.length;
@@ -486,7 +555,6 @@ export default {
                 axiosInstance1
                   .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect,'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
                   .then(response => {
-                      console.log("this.tableData:",response.data.data)
                       this.tableData = response.data.data
                       this.totalSize = response.data.recordsTotal
                     })
@@ -501,7 +569,11 @@ export default {
         },
 
         selectTraitFunc(value){
-                       
+                       const fullLoading= this.$loading({
+                          lock: true,
+                          text: 'Loading',
+                          spinner: 'el-icon-loading',
+                        });
                         let animalselect = "";
                         if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                             for( var i =0 ; i<this.checkSpAnimalList.length;i++){
@@ -566,25 +638,32 @@ export default {
 							}
 						}		
 
-                         const axiosInstance1 = this.$axios.create({
-                            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
-                            withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
-                          });
-                            axiosInstance1
-                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
-                              .then(response => {
-                                  console.log(response)
-                                  this.tableData = response.data.data
-                                  this.totalSize = response.data.recordsTotal
-                                })
-                              .catch(error => {
-                                console.log(error)
-                                this.errored = true
-                              })
-                              .finally(() => this.loading = false)
+            const axiosInstance1 = this.$axios.create({
+              headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},// 设置传输内容的类型和编码
+              withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
+            });
+              axiosInstance1
+                .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword,'isAll':this.TraitMode}})
+                .then(response => {
+                    this.tableData = response.data.data
+                    this.totalSize = response.data.recordsTotal
+                    fullLoading.close()
+                  })
+                .catch(error => {
+                  console.log(error)
+                  this.errored = true
+                })
+                .finally(() => {
+                  
+                  this.loading = false})
 
         },
         selectGoFunc(value){
+          const fullLoading= this.$loading({
+            lock: true,
+            text: 'Loading',
+            spinner: 'el-icon-loading',
+          });
                         let animalselect = "";
                         if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                             for( var i =0 ; i<this.checkSpAnimalList.length;i++){
@@ -654,11 +733,11 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword,'isAll':this.TraitMode}})
                               .then(response => {
-                                  console.log(response)
                                   this.tableData = response.data.data
-                                  this.totalSize = response.data.recordsTotal
+                                  this.totalSize = response.data.recordsTotal;
+                                  fullLoading.close();
                                 })
                               .catch(error => {
                                 console.log(error)
@@ -669,6 +748,11 @@ export default {
               
         },
         selectVariantFunc(value){
+          const fullLoading= this.$loading({
+            lock: true,
+            text: 'Loading',
+            spinner: 'el-icon-loading',
+          });
                         let animalselect = "";
                         if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                             for( var i =0 ; i<this.checkSpAnimalList.length;i++){
@@ -738,11 +822,12 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword,'isAll':this.TraitMode}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
-                                  this.totalSize = response.data.recordsTotal
+                                  this.totalSize = response.data.recordsTotal;
+                                  fullLoading.close();
                                 })
                               .catch(error => {
                                 console.log(error)
@@ -751,6 +836,11 @@ export default {
                               .finally(() => this.loading = false)
         },
         selectExpFunc(value){
+          const fullLoading= this.$loading({
+            lock: true,
+            text: 'Loading',
+            spinner: 'el-icon-loading',
+          });
                         let animalselect = "";
                         if(this.checkSpAnimalList != null && this.checkSpAnimalList.length>0){
                             for( var i =0 ; i<this.checkSpAnimalList.length;i++){
@@ -822,11 +912,12 @@ export default {
                             withCredentials: true,// 指定某个请求应该发送凭据。允许客户端携带跨域cookie，也需要此配置
                           });
                             axiosInstance1
-                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword}})
+                              .get('https://ngdc.cncb.ac.cn/hapi/gene/filterHomolog',{params: {'taxonids': animalselect, 'traitids': traitselect, 'goids':goselect, 'variantids':varselect,'expids':expselect,'type':type,'keyword':keyword,'isAll':this.TraitMode}})
                               .then(response => {
                                   console.log(response)
                                   this.tableData = response.data.data
-                                  this.totalSize = response.data.recordsTotal
+                                  this.totalSize = response.data.recordsTotal;
+                                  fullLoading.close();
                                 })
                               .catch(error => {
                                 console.log(error)
@@ -1157,6 +1248,9 @@ export default {
        .get('https://ngdc.cncb.ac.cn/hapi/basic/getTraitName')
        .then(response => {
            this.traitAnimaloptions= response.data
+           for(let items of this.traitAnimaloptions){
+            items.isDefaultExpanded=true;
+          }
          })
        .catch(error => {
          console.log(error)
@@ -1184,6 +1278,9 @@ export default {
                    .get('https://ngdc.cncb.ac.cn/hapi/basic/getVoTerm')
                    .then(response => {
                        this.variantoptions= response.data
+                       for(let items of this.variantoptions){
+                        items.isDefaultExpanded=true;
+                       }
                      })
                    .catch(error => {
                      console.log(error)
@@ -1198,6 +1295,9 @@ axiosInstance
                    .get('https://ngdc.cncb.ac.cn/hapi/basic/getExpressionTerm')
                    .then(response => {
                        this.expoptions= response.data
+                       for(let items of this.expoptions){
+                        items.isDefaultExpanded=true;
+                       }
                      })
                    .catch(error => {
                      console.log(error)

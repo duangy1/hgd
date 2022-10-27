@@ -27,11 +27,11 @@
             </el-menu-item>
             <el-menu-item index="2">
                 <i class="el-icon-chat-line-square"></i>
-                <span slot="title">Ortholog Genes</span>
+                <span slot="title">Homologous Gene</span>
             </el-menu-item>
             <el-menu-item index="3">
                 <i class="el-icon-chat-line-square"></i>
-                <span slot="title">GO Annotations</span>
+                <span slot="title">Gene Ontology</span>
             </el-menu-item>
 
 
@@ -41,7 +41,7 @@
             </el-menu-item>
             <el-menu-item index="5">
                 <i class="el-icon-chat-line-square"></i>
-                <span slot="title">Traits Informations</span>
+                <span slot="title">Traits</span>
             </el-menu-item>
             <el-menu-item index="6">
                 <i class="el-icon-chat-line-square"></i>
@@ -66,29 +66,46 @@
                 </div>
                 <el-card class="card-border">
                     <el-descriptions :column="3" class="descriptions" :size="size"  v-if="JSON.stringify(geneBasicInfo) !=='{}'">
-                        <el-descriptions-item label="Ensembl Gene Id"><a target="_blank" :href="'https://www.ensembl.org/id/'+geneBasicInfo.ensemblGeneId">{{geneBasicInfo.ensemblGeneId}}</a></el-descriptions-item>
-                        <el-descriptions-item label="Entrez Gene Id"><a target="_blank" :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a>
+                        <el-descriptions-item label="Ensembl Gene ID">
+                            <div>
+                                <div v-if='geneBasicInfo.ensemblGeneId!=="-"'>
+                                    <a target="_blank" v-if="tax_Plant.indexOf(String(geneBasicInfo.taxonId))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+geneBasicInfo.ensemblGeneId+';site=ensembl'">{{geneBasicInfo.ensemblGeneId}}</a>
+                                    <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+geneBasicInfo.ensemblGeneId+';site=ensembl'">{{geneBasicInfo.ensemblGeneId}}</a>
+                                </div>
+                                <div v-if='geneBasicInfo.ensemblGeneId=="-"' >-</div>
+                            </div>
+                        </el-descriptions-item>
+                        <el-descriptions-item label="Entrez Gene ID"><a target="_blank" :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+geneBasicInfo.entrezGene">{{geneBasicInfo.entrezGene}}</a>
                         <!-- <img :src="linkIcon" style="width:18px;height:18px;margin-left:5px"> -->
                         </el-descriptions-item>
-                        <el-descriptions-item label="Refseq Id">
+                        <el-descriptions-item label="Refseq ID">
                             <a v-if="geneBasicInfo.refseqId!=='-'" target="_blank" :href="'https://www.ncbi.nlm.nih.gov/nuccore/'+geneBasicInfo.refseqId">{{geneBasicInfo.refseqId}}</a>
                             <div v-else>{{geneBasicInfo.refseqId}}</div>
                         </el-descriptions-item>
-                        <el-descriptions-item label="Protein Id">
-                            <a :href="'https://www.uniprot.org/uniprot/'+geneBasicInfo.hdbId" target='_blank'>{{geneBasicInfo.hdbId}}</a>
+                        <el-descriptions-item label="Uniprot ID">
+                            <a :href="'https://www.uniprot.org/uniprot/'+geneBasicInfo.uniprotId" target='_blank'>{{geneBasicInfo.uniprotId}}</a>
+                        </el-descriptions-item>
+                        <el-descriptions-item label="Ensembl Protein ID">
+                            <div>
+                                <div v-if='geneBasicInfo.ensemblProteinId!=="-"'>
+                                    <a target="_blank" v-if="tax_Plant.indexOf(String(geneBasicInfo.taxonId))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+geneBasicInfo.ensemblProteinId+';site=ensembl'">{{geneBasicInfo.ensemblProteinId}}</a>
+                                    <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+geneBasicInfo.ensemblProteinId+';site=ensembl'">{{geneBasicInfo.ensemblProteinId}}</a>
+                                </div>
+                                <div v-if='geneBasicInfo.ensemblProteinId=="-"' >-</div>
+                            </div>
                         </el-descriptions-item>
                         <el-descriptions-item label="Gene Synonym">
                             <div v-if="geneBasicInfo.geneSynonym!==''&& geneBasicInfo.geneSynonym">{{geneBasicInfo.geneSynonym}}</div>
                             <div v-else>-</div>
                         </el-descriptions-item>
-                        <el-descriptions-item label="Gene Symbol">
+                        <el-descriptions-item label="Gene Symbol" width="50px">
                             <div v-if="geneBasicInfo.geneSymbol!==''&& geneBasicInfo.geneSymbol">{{geneBasicInfo.geneSymbol}}</div>
                             <div v-else>-</div>
                         </el-descriptions-item>
                         <el-descriptions-item label="Gene Type">{{geneBasicInfo.geneType}}</el-descriptions-item>
                         <el-descriptions-item label="Latin Name">{{geneBasicInfo.speciesName.latinName}}</el-descriptions-item>
                         <el-descriptions-item label="Species Common Name">{{geneBasicInfo.speciesName.commonName}}</el-descriptions-item>
-                        <el-descriptions-item label="Taxon Id">{{geneBasicInfo.speciesName.taxonId}}</el-descriptions-item>
+                        <el-descriptions-item label="Taxon ID">{{geneBasicInfo.speciesName.taxonId}}</el-descriptions-item>
                         <el-descriptions-item label="Chromosom">{{geneBasicInfo.chromosom}}</el-descriptions-item>
                         <el-descriptions-item label="Gene Start">{{geneBasicInfo.geneStart}}</el-descriptions-item>
                         <el-descriptions-item label="Gene End">{{geneBasicInfo.geneEnd}}</el-descriptions-item>
@@ -129,20 +146,27 @@
                 >
                 <!-- <el-table-column> -->
                     <!-- <template slot-scope="scope"> -->
-                    <el-table-column prop="commonName" label="Species" ></el-table-column>
-                    <el-table-column prop="taxId" label="Taxon Id">
+                    <el-table-column prop="commonName" label="Species" width="80px"></el-table-column>
+                    <el-table-column prop="taxId" label="Taxon ID" width="80px">
                         <template slot-scope="scope">
-                            <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'">
+                            <a :href="'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id='+scope.row.taxId+'&lvl=3&lin=f&keep=1&srchmode=1&unlock'" target="_blank" >
                                 {{ scope.row.taxId }}
                             </a>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="ensemblId" label="Ensembl Id">
+                    <el-table-column prop="geneSymbol" label="Gene Symbol"></el-table-column>
+                    <el-table-column prop="ensemblGeneId" label="Ensembl ID">
                         <template slot-scope="scope">
-                            <a target="_blank" :href="'https://www.ensembl.org/id/'+scope.row.ensemblId">{{scope.row.ensemblId}}</a>
+                            <div>
+                                <div v-if='scope.row.ensemblGeneId!=="-"'>
+                                    <a target="_blank" v-if="tax_Plant.indexOf(String(scope.row.taxId))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                                    <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblGeneId+';site=ensembl'">{{scope.row.ensemblGeneId}}</a>
+                                </div>
+                                <div v-if='scope.row.ensemblGeneId=="-"' >{{scope.row.ensemblGeneId}}</div>
+                            </div>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="entrezId" label="Entrez Id">
+                    <el-table-column prop="entrezId" label="Entrez ID">
                         <template slot-scope="scope">
                             <a :href="'https://www.ncbi.nlm.nih.gov/gene/?term='+scope.row.entrezId" target='_blank'  v-if="scope.row.entrezId!=='-'">
                                 {{ scope.row.entrezId }}
@@ -151,14 +175,33 @@
                         </template>
                     </el-table-column>
                     <!-- <el-table-column prop="geneSymbol" label="Gene Symbol"></el-table-column> -->
-                    <el-table-column prop="hdbGeneId" label="Protein">
-                        <template slot-scope="scope" >
-                            <a :href="'https://www.uniprot.org/uniprot/'+scope.row.hdbGeneId" target='_blank' v-if="scope.row.hdbGeneId.slice(0,2)!=='EN'">
-                                {{ scope.row.hdbGeneId }}
+                    <el-table-column prop="uniprotId" label="Uniprot ID">
+                        <template slot-scope="scope">
+                            <a :href="'https://www.uniprot.org/uniprot/'+scope.row.uniprotId" target='_blank'  v-if="scope.row.uniprotId!=='-'">
+                                {{ scope.row.uniprotId }}
                             </a>
-                            <a :href="'https://www.ensembl.org/id/'+scope.row.hdbGeneId+';site=ensembl'" target='_blank' v-if="scope.row.hdbGeneId.slice(0,2)=='EN'">
-                                {{ scope.row.hdbGeneId }}
-                            </a>
+                            <div  v-if="scope.row.uniprotId=='-'">{{ scope.row.uniprotId }}</div>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="ensemblId" label="Ensembl Protein ID" >
+                        <template slot-scope="scope">
+                            <div>
+                                <div v-if='scope.row.ensemblGeneId!=="-"'>
+                                    <a target="_blank" v-if="tax_Plant.indexOf(String(scope.row.taxId))==-1" :href="'https://ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'">{{scope.row.ensemblId}}</a>
+                                    <a target="_blank" v-else :href="'https://plants.ensembl.org/Multi/Search/Results?q='+scope.row.ensemblId+';site=ensembl'">{{scope.row.ensemblId}}</a>
+                                </div>
+                                <div  v-if="scope.row.ensemblId=='-'">{{ scope.row.ensemblId }}</div>  
+                            </div>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="Data Source Count "  width="150px">
+                        <template slot-scope="scope">
+                            <el-rate
+                                v-model="scope.row.dbEvidence.split(',').length"
+                                disabled
+                                text-color="#ff9900"
+                                score-template="{value}">
+                            </el-rate>
                         </template>
                     </el-table-column>
                     <el-table-column  label="Data Source" align="center">
@@ -167,9 +210,29 @@
                                 placement="top"
                                 title="Data Source"
                                 width="200"
-                                trigger="hover"
-                                :content="scope.row.dbEvidence">
-                                <i class="el-icon-s-order" slot="reference"></i>
+                                trigger="click"
+                                :content="scope.row.dbContent"
+                                >
+                                <template #reference>
+                                    <i class="el-icon-s-order" slot="reference"></i>
+                                </template>
+                                <template #default>
+                                    <div>{{scope.row.dbEvidence}}</div>
+                                    <div v-for="(item,index) of scope.row.dbContent" :key="index">
+                                        <div v-if="item.split(':')[0]=='Panther'">
+                                            Panther:<a target="_blank" :href="'http://www.pantherdb.org/panther/family.do?clsAccession='+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                        </div>
+                                        <div v-if="item.split(':')[0]=='TreeFam'">
+                                            TreeFam:<a target="_blank" :href="'http://www.treefam.org/family/'+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                        </div>
+                                        <div v-if="item.split(':')[0]=='eggNOG'">
+                                            eggNOG:<a target="_blank" :href="'http://eggnog5.embl.de/#/app/results?seqid='+scope.row.uniprotId+'&target_nogs=ENOG50'+item.split(':')[1]" >{{item.split(':')[1]}}</a>
+                                        </div> 
+                                        <div v-if="item.split(':')[0]=='Inparanoid'">
+                                            Inparanoid:<a target="_blank" :href="'https://inparanoid.sbc.su.se/cgi-bin/efasta.cgi?cluster='+item.split(':')[1].split(' ')[1]+'&species1='+scope.row.inparanoidID1+'&species2='+scope.row.inparanoidID2+'&java=0'">{{item.split(':')[1]}}</a>
+                                        </div> 
+                                    </div>
+                                </template>
                             </el-popover>
                             
                         </template>
@@ -212,10 +275,10 @@
             max-height="500px"
             v-if="showGoTable"
             >
-            <el-table-column prop="goId" label="GO Id" align="center" width="130px"></el-table-column>
+            <el-table-column prop="goId" label="GO ID" align="center" width="130px"></el-table-column>
             <el-table-column prop="goAnnotations" label="GO Name" align="center"></el-table-column>
             <el-table-column prop="topClass" label="GO classification" align="center" width="150px"></el-table-column>
-            <el-table-column prop="goList" label="Sub GO Id" align="center" ></el-table-column>
+            <el-table-column prop="goList" label="Sub GO ID" align="center" ></el-table-column>
             <el-table-column prop="definition" label="GO Definition" align="center"></el-table-column>
             
                 
@@ -257,7 +320,7 @@
             >
                 <el-table-column
                     prop="geneName"
-                    label="Gene Id"
+                    label="Gene ID"
                     align="center"
                     >
                 </el-table-column>
@@ -273,7 +336,7 @@
                 </el-table-column>
                 <el-table-column
                     prop="rsnpId"
-                    label="Var Id"
+                    label="Var ID"
                     align="center">
                     <template slot-scope="scope">
                         <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.rsnpId+'&chrom='+scope.row.chrom+'&position='+scope.row.position+'&orgId='+scope.row.gwasid" target='_blank'>
@@ -317,22 +380,39 @@
                     prop="gene.cdnaPosition"
                     label="cDNA Position"
                     align="center">
+                    <template slot-scope="scope" >
+                        <div v-if="scope.row.gene.cdnaPosition=='0'||scope.row.gene.cdnaPosition=='-1'">-</div>
+                        <div v-else >{{scope.row.gene.cdnaPosition}}</div>
+                    </template>
                 </el-table-column>
                 
                 <el-table-column
                     prop="alleleChange"
                     label="Allele Change"
                     align="center">
+                    <template slot-scope="scope" >
+                        <div v-if="scope.row.alleleChange=='-=>-'">-</div>
+                        <div v-else >{{scope.row.alleleChange}}</div>
+                    </template>
                 </el-table-column>
+                    
                 <el-table-column
                     prop="gene.proteinpos"
                     label="Protein Position"
                     align="center">
+                    <template slot-scope="scope" >
+                        <div v-if="scope.row.gene.proteinpos=='0'||scope.row.gene.proteinpos=='-1'">-</div>
+                        <div v-else >{{scope.row.gene.proteinpos}}</div>
+                    </template>
                 </el-table-column>
                 <el-table-column
                     prop="residueChange"
                     label="Residue Change"
                     align="center">
+                    <template slot-scope="scope" >
+                        <div v-if="scope.row.residueChange=='-=>-'">-</div>
+                        <div v-else >{{scope.row.residueChange}}</div>
+                    </template>
                 </el-table-column>
                 
                 
@@ -369,9 +449,9 @@
             <div id="svg-container-trait"></div>
             <!-- <el-table :data="traitData" class="info-table"  v-loading="goloading" :border="false" v-if="showTraitTable">
                 <el-table-column  prop="traitName" label="Trait Name" align="center"></el-table-column>
-                <el-table-column  prop="traitId" label="Trait Id" width="80px" align="center"></el-table-column>
+                <el-table-column  prop="traitId" label="Trait ID" width="80px" align="center"></el-table-column>
                 <el-table-column  prop="definition" label="Trait Definition" align="center"></el-table-column>
-                <el-table-column  prop="gwasList" label="Gwas Id" align="center"></el-table-column>
+                <el-table-column  prop="gwasList" label="Gwas ID" align="center"></el-table-column>
                 
             </el-table> -->
             <el-table 
@@ -384,8 +464,8 @@
               >
                 
                 <el-table-column prop="toptraitName" label="Trait Name" align="center"></el-table-column>
-                <el-table-column prop="gwasGeneId" label="Gene Id" align="center"></el-table-column>
-                <el-table-column prop="varId" label="Var Id" align="center">
+                <el-table-column prop="gwasGeneId" label="Gene ID" align="center"></el-table-column>
+                <el-table-column prop="varId" label="Var ID" align="center">
                   <template slot-scope="scope">
                     <a v-bind:href="'https://ngdc.cncb.ac.cn/gvm/snp/getSNPDetail?snpname='+scope.row.varId+'&chrom='+scope.row.chrom+'&position='+scope.row.endPos+'&orgId='+scope.row.orgId" target='_blank'>
                       {{ scope.row.varId }}
@@ -395,7 +475,7 @@
                 
                 <el-table-column prop="traitName" label="Sub Trait Name" align="center"></el-table-column>
                 <el-table-column prop="speciesCommonName" label="Species" align="center"></el-table-column>
-                <el-table-column prop="pmid" label="Pubmed Id" align="center">
+                <el-table-column prop="pmid" label="Pubmed ID" align="center">
                   <template slot-scope="scope">
                     <a v-bind:href="'https://pubmed.ncbi.nlm.nih.gov/'+scope.row.pmid" target='_blank'>
                       {{ scope.row.pmid }}
@@ -434,14 +514,14 @@
                 <div id="svg-container-expression"></div>
                 <div class="filter-box" v-if="showExpInfoTable"> <div style="line-height:32px">Filter TPM value > </div><el-input v-model="filterValue" size="small"  style="width:100px;" @change=filterExpDara clearable></el-input></div>
                 <el-table :data="expTabledata"  class="info-table"  v-loading="exploading" :border="false" v-if="showExpInfoTable" >
-                    <el-table-column  prop="geneId" label="Gene Id" align="center">
+                    <el-table-column  prop="geneId" label="Gene ID" align="center">
                         <template slot-scope="scope">
                             <a :href="'https://ngdc.cncb.ac.cn/gen/gene/'+scope.row.genOrgId+'/'+scope.row.geneId" target='_blank'>
                                 {{ scope.row.geneId }}
                             </a>
                         </template>
                     </el-table-column>
-                    <el-table-column  prop="projectId" label="Bioproject Id" align="center">
+                    <el-table-column  prop="projectId" label="Bioproject ID" align="center">
                         <template slot-scope="scope">
                             <a :href="'https://ngdc.cncb.ac.cn/gen/project/accession/'+scope.row.projectId" target='_blank'>
                                 {{ scope.row.projectId }}
@@ -450,6 +530,19 @@
                     </el-table-column>
                     <el-table-column  prop="tissue" label="Tissue" align="center"></el-table-column>
                     <el-table-column  prop="expAvg" label="Average TPM" align="center" sortable></el-table-column>
+                    <el-table-column label="Bar-plot" align="center" > 
+                       <template slot-scope="scope">
+                            <img
+                            :src="barplotIcon"
+                            min-width="25"
+                            height="25"
+                            style="cursor:pointer !important"
+                            slot="reference"
+                            @click=showDetailExpression(scope.row)
+                            />
+                        </template>
+                  
+                    </el-table-column>
                 </el-table>
             </el-card>
         </div>
@@ -492,6 +585,8 @@ import HeaderBar from '@/components/HeaderBar.vue';
 import FooterBar from '@/components/FooterBar.vue';
 import Banner from "@/components/banner.vue";
 import linkIcon from "@/assets/img/icon/link-icon-4.svg";
+import barplotIcon from "@/assets/img/icon/chart-bar.svg";
+// import circle from "@/assets/img/icon/circle.svg";
 import * as d3 from 'd3';
 // import { Loading } from 'element-ui';
 export default {
@@ -506,6 +601,7 @@ export default {
   data(){
       return {
         tableData: [],
+        barplotIcon,
         tabPosition:"left",
         size:"medium",
         geneBasicInfo:{},
@@ -536,7 +632,18 @@ export default {
         exploading:false,
         traitData:[],
         showTraitTable:false,
-        filterValue:""
+        filterValue:"",
+        varLoading:false,
+        formerRect_var:"",
+        rectData_var:{},
+        formerRect_trait:"",
+        rectData_trait:{},
+        formerRect_go:"",
+        rectData_go:{},
+        formerRect_exp:"",
+        rectData_exp:{},
+        dbContent:'',
+        tax_Plant:["3702","3708","4072","3659","3635","3983","4530","3847","42345","3694","4081","4558","4565","29760","4577","4113"]
         }
     },
 
@@ -549,24 +656,29 @@ export default {
         window.scrollTo(0, target.offsetTop)
       },
       searchFilter(key){
+        if(key.length>0){
           let filterOrtho=this.tableOrthoList.filter(item=>{
               return  key.indexOf(""+item.taxId) >-1
           })
-          this.tableOrthoList=filterOrtho
+          this.tableOrthoList=filterOrtho;
+        }
 
       },
       clearFilter(){
-          this.tableOrthoList=this.orthoInfo
+        this.form.species.ortho=[];
+        this.tableOrthoList=this.orthoInfo
       },
       compareOrthoGo(filtSpecies){
-        this.clearOrthoGo()
+        this.clearOrthoGo();
+        this.form.species.go=filtSpecies;
         this.compareFuntion("go",filtSpecies)
       },
       clearOrthoGo(){
         this.cleatFunction('go')
       },
       compareOrthoVar(filtSpecies){
-        this.clearOrthoVar()
+        this.clearOrthoVar();
+        this.form.species.var=filtSpecies;
         this.compareFuntion('var',filtSpecies)
 
       },
@@ -574,14 +686,16 @@ export default {
         this.cleatFunction('var')
       },
       compareOrthoTrait(filtSpecies){
-        this.clearOrthoTrait()
+        this.clearOrthoTrait();
+        this.form.species.trait=filtSpecies;
         this.compareFuntion("trait",filtSpecies)
       },
       clearOrthoTrait(){
         this.cleatFunction('trait')
       },
       compareOrthoExpre(filtSpecies){
-        this.clearOrthoExpre()
+        this.clearOrthoExpre();
+        this.form.species.expression=filtSpecies;
         this.compareFuntion("expression",filtSpecies)
       },
       clearOrthoExpre(){
@@ -642,7 +756,6 @@ export default {
            let taxonid=orthoItem.taxId
             // let speciesName=orthoItem.commonName.slice(0,3)
             let params= {'hdbId': hdbId}
-            console.log("orthoItem.shortName:",orthoItem);
             if(key=="expression"){params= {'hdbId': hdbId,'classification':this.classification}}
             this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/gene-detail-"+key,{params:params})
             .then(response=>{
@@ -651,7 +764,6 @@ export default {
                     index += 1;
                     let svgContainer=d3.select("#svgcontainer-"+key)
                     let tooltip=d3.select("#tooltip")
-                    console.log("orthoItem:",orthoItem);
                     this.drawSubRectChart(response.data,svgContainer,key,index,tooltip,orthoItem.shortName,orthoItem.latinName,orthoItem.commonName, symbol,taxonid,orthoItem.hdbGeneId)
                 }
                 
@@ -686,6 +798,209 @@ export default {
         this.navBarFixed = false;
       }
     },
+showDetailExpression(value){
+    let prjId=value.projectId;
+    let taxonId=value.taxonId;
+    let geneId1=value.geneId;
+    // 仅从同源数据筛选会漏掉第一条数据，所以自己造一个第一条数据
+    let oriItem={
+        "commonName":this.geneBasicInfo.speciesName.commonName,
+        "ensemblId":this.geneBasicInfo.ensemblGeneId,
+        "entrezId":this.geneBasicInfo.entrezGene,
+        "geneSymbol":this.geneBasicInfo.geneSymbol,
+        "hdbGeneId":this.geneBasicInfo.hdbId,
+        "latinName":this.geneBasicInfo.speciesName.latinName,
+        "taxId":this.geneBasicInfo.speciesName.taxonId,
+    }
+    // 深拷贝，不改变原数据
+    let OrthoData1=JSON.parse(   JSON.stringify(this.tableOrthoList)   ) ;
+    
+    // 判断当前表格里的同源数据没有这一条，则加入
+    if((Object.keys(OrthoData1).indexOf(oriItem.ensemblId)==-1)&&taxonId==oriItem.taxId){OrthoData1.push(oriItem);}
+    let orthoData2=OrthoData1.filter(item=>{
+        if(item.taxId==taxonId && item.ensemblId!==geneId1 && item.geneSymbol !==geneId1){
+            return item
+        }
+    })
+    let orthoPlotDataList=[];
+    if(orthoData2.length>0){
+        for(let orthoGene of orthoData2){
+            // let geneId=orthoGene.ensemblId;
+            let expGeneId=orthoGene.expGeneId;
+            let geneName=orthoGene.ensemblId+" ("+orthoGene.geneSymbol+")";
+            let PATH="https://ngdc.cncb.ac.cn/gen/api/json/gene/expressions?taxonomyId="+taxonId+"&accession="+expGeneId+"&bioProjectId="+prjId
+            this.$axios.get(PATH).then(response=>{
+                let orthoPlotData={};
+                let expdata=response.data.result.expressionProfiles;
+                // 这里肯定是单个project
+                for(let keyaa in expdata ){
+                    let prjList=expdata[keyaa]
+                    let expNum=0;
+                    // let sampleNum=0;
+                    // 用于存储当前project有哪些tissue
+                    let tissue={};
+                    let plotData=[];
+                    let plptTissue=[];
+                    // 循环project里面的值，分tissue计算平均值
+                    for(let item of prjList){
+                        // sampleNum += 1;
+                        expNum += item.tpm;
+                        let itemTissue=item.tissue;
+                        if(Object.keys(tissue).indexOf(itemTissue) == -1 ){
+                            tissue[itemTissue]=[expNum]
+                            plptTissue.push(itemTissue)
+                        }else{
+                            tissue[itemTissue].push(expNum)
+                        }
+                    }
+                    for(let tissueName in tissue){
+                        let valueList=tissue[tissueName]
+                        let valsum=eval(valueList.join("+"))
+                        let expAvg=(valsum/valueList.length).toFixed(4)
+                        plotData.push(expAvg);
+                    }
+                    orthoPlotData.geneId=geneName;
+                    orthoPlotData.ensemblId=orthoGene.ensemblId;
+                    orthoPlotData.geneSymbol=orthoGene.geneSymbol;
+                    orthoPlotData.plotData=plotData;
+                    orthoPlotData.plptTissue=plptTissue;
+                    orthoPlotDataList.push(orthoPlotData)
+                }
+                
+            })
+        }
+
+        
+    }
+    this.$alert(`
+        <div id="main" style="width:1200px;height:550px"></div>
+    `, {
+        dangerouslyUseHTMLString: true
+    })
+    setTimeout(() => {
+        this.drawBoxPlot(value,orthoPlotDataList)
+    }, 200);
+  },
+drawBoxPlot(value,orthoValueList){
+    console.log("value:",value);
+    let species=value.speciesName;
+    let xaxis=value.plptTissue;
+    let plotData=value.plotData;
+    let prjId=value.projectId;
+    let geneId=value.geneName;
+    let seriesData= [
+        {
+            name: geneId,
+            type: 'bar',
+            data: plotData,
+            barMaxWidth:'15%',
+            markPoint: {
+                data: [
+                { type: 'max', name: 'Max' },
+                { type: 'min', name: 'Min' }
+                ]
+            },
+        }
+    ]
+    let legentData={
+        data: [geneId],
+        top: '-1%',
+        left: '50%'
+    }
+    
+    let symbolList=[];
+    if(value.geneSymbol!=="-"){symbolList.push(value.geneSymbol)}
+    if(value.geneId!=="-"){symbolList.push(value.geneId)}
+    // let ensIDList=[value.geneId]
+    if(orthoValueList.length>0){
+        for(let orthoValue of  orthoValueList){
+            let s2Data=orthoValue.plotData;
+            let s2Gene=orthoValue.geneId;
+            let geneSymbol=orthoValue.geneSymbol;
+            let ensemblId=orthoValue.ensemblId;
+            if(symbolList.indexOf(geneSymbol)==-1 && symbolList.indexOf(ensemblId)==-1){
+                if(geneSymbol!=="-"){
+                    symbolList.push(geneSymbol);
+                }
+                // ensIDList.push(ensemblId);
+                let seriesItem= {
+                    name: s2Gene,
+                    type: 'bar',
+                    data: s2Data,
+                    barMaxWidth:'15%',
+                    markPoint: {
+                        data: [
+                        { type: 'max', name: 'Max' },
+                        { type: 'min', name: 'Min' }
+                        ]
+                    },
+                }
+                legentData.data.push(s2Gene)
+                seriesData.push(seriesItem)
+        }
+        }
+    }
+    let title="Expression of homologous gene in BioProject "+prjId;
+    let subTitle="Species: "+species;
+    let chartDom = document.getElementById('main');
+    let myChart = this.$echarts.init(chartDom);
+    let option;
+
+    option = {
+        title: {
+            text: title,
+            subtext:subTitle
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '10%',
+            right: '10%',
+            top: '15%',
+            bottom:"15%"
+        },
+        legend: legentData,
+        toolbox: {
+            show: true,
+            feature: {
+            
+            saveAsImage: { show: true }
+            }
+        },
+        calculable: true,
+        xAxis: [
+            {
+            type: 'category',
+            // prettier-ignore
+            data: xaxis,
+            name: 'Tissue',
+            nameGap: 30,
+            axisLabel: { //设置x轴的字
+                show:true,
+                interval:0,//使x轴横坐标全部显示
+                textStyle: {//x轴字体样式
+                    // color: "rgba(219,225,255,1)",
+                    margin: 0
+                },
+                rotate:15,
+                },
+            
+        }
+        ],
+        yAxis: [
+            {
+            type: 'value',
+            name: 'Average TPM value',
+            }
+        ],
+        series: seriesData
+    };
+    myChart.clear()
+    setTimeout(() => {
+        option && myChart.setOption(option);
+    }, 200); 
+  },
 drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,geneName,taxonid,hdbid){
     let rectHeight=18;
     // 绘制文字部分
@@ -789,7 +1104,6 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
     },
     // 封装绘制rect方法
     drawSubRectChart(value,svgContainer,dataclass,index,tooltip,shortName,latinName,commonName,geneName,taxonid12,hdbid){
-        console.log("value:",value);
         // geneName=geneName.length>10?geneName.slice(0,10)+"..":geneName;
         let rectHeight=18
         let rect_top=228;
@@ -821,6 +1135,9 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
         let top_class;
         let class_count=0;
         let class_PADDING=30;
+        var _this=this;
+        _this.$axios=this.$axios;
+        
         if(dataclass=="var"){top_class=value[0].voClassification;}else if(dataclass=="go"){
             top_class=value[0].topClass;
         }else if(dataclass=="expression"){top_class=value[0].eoClassification}
@@ -851,18 +1168,18 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
             let htmlInfo;
             if( dataclass =="go"){
                 htmlInfo=`
-            <div><strong>Gene Id: </strong>${geneName}</div>
+            <div><strong>Gene ID: </strong>${geneName}</div>
             <div><strong>Species: </strong>${latinName} (${commonName})</div>
             <div><strong>GO Annotation Number: </strong>${i.goNum>0?i.goNum:"-"}</div>
-            <div><strong>GO Id: </strong>${i.goId}</div>
-            <div><strong>Annotate Subclass GO Id: </strong>${i.goList==null?"-":i.goList.slice(0,2)}${i.goList!==null&&i.goList.length>2?"...":""}</div>
+            <div><strong>GO ID: </strong>${i.goId}</div>
+            <div><strong>Annotate Subclass GO ID: </strong>${i.goList==null?"-":i.goList.slice(0,2)}${i.goList!==null&&i.goList.length>2?"...":""}</div>
             <div><strong>Go Term: </strong>${i.goAnnotations}</div>
             <div><strong>Go Classification: </strong>${i.topClass}</div>
             <div><strong>Go Definition: </strong>${i.definition}</div>
             `
             }else if( dataclass =="var"){
                  htmlInfo=`
-            <div><strong>Gene Id: </strong>${geneName}</div>
+            <div><strong>Gene ID: </strong>${geneName}</div>
             <div><strong>Species: </strong>${latinName} (${commonName})</div>
             <div>Variant Number: ${i.snpNum>0?i.snpNum:"-"}</div>
             <div>Variant List: ${i.snpList==null?"-":i.snpList.slice(0,2)}${i.snpList!==null&&i.snpList.length>2?"...":""}</div>
@@ -872,7 +1189,7 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
             `
             }else if( dataclass =="expression"){
                 htmlInfo=`
-            <div><strong>Gene Id: </strong>${geneName}</div>
+            <div><strong>Gene ID: </strong>${geneName}</div>
             <div><strong>Species: </strong>${latinName} (${commonName})</div>
             <div>Expression Project Number: ${i.prjNum>0?i.prjNum:"-"}</div>
             <div>Bioproject List: ${i.prjList==null?"-":i.prjList.slice(0,2)}${i.prjList!==null&&i.prjList.length>2?"...":""}</div>
@@ -881,11 +1198,11 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
             `
             }else {
                 htmlInfo=`
-            <div><strong>Gene Id: </strong>${geneName}</div>
+            <div><strong>Gene ID: </strong>${geneName}</div>
             <div><strong>Species: </strong>${latinName} (${commonName})</div>
             <div>Gwas Number: ${i.gwasNum>0?i.gwasNum:"-"}</div>
             <div>Gwas List: ${i.gwasList==null?"-":i.gwasList.slice(0,2)}${i.gwasList!==null&&i.gwasList.length>2?"...":""}</div>
-            <div>Trait Id: ${i.traitId}</div>
+            <div>Trait ID: ${i.traitId}</div>
             <div>Trait Name: ${i.traitName}</div>
             `
             }
@@ -907,16 +1224,28 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
         .on('mouseout', function () {
             tooltip.style('display', 'none')
         })
-        .on("click", (d,i)=>{
+        
+        .on("click", function(d,i){
+            
+            // 改变当前节点的颜色
             // let classification=this.geneBasicInfo.speciesName.classification;
-            console.log("d,i:",d,i);
             if(dataclass=="var"){
+                // 恢复上一次点击的节点颜色
+                
                 if(i.snpList.length>0){
-                    this.varLoading=true;
-                    this.showVarInfoTable=true;
-                    let dataSource=i.dataSource;
+                    if(i.opacity>0){
+                        if(Object.keys(_this.rectData_var).indexOf("opacity")>-1){
+                            d3.select(_this.formerRect_var).style("fill","rgba(141,192,252,"+(_this.rectData_var.opacity+0.2)+")");
+                        }
+                    // 更新上次节点为本次点击的节点及数据
+                        _this.formerRect_var=this;
+                        _this.rectData_var=i;
+                        d3.select(this).style("fill", "#3CB371");
+                        _this.varLoading=true;
+                        _this.showVarInfoTable=true;
+                        let dataSource=i.dataSource;
 
-                    this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-gwasVar",{params:{'taxonId': taxonid12,"hdbId":hdbid}}).then(response=>{
+                    _this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-gwasVar",{params:{'taxonId': taxonid12,"hdbId":hdbid}}).then(response=>{
                         // gwasid是用来加链接的，varid加到gvm的链接
                         let gwasid=response.data.gwasOrgid;
                         let gwasGeneId=response.data.gwasGeneId;
@@ -930,17 +1259,15 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
                         if(BASEPATH.length>0){
                         let PATH=BASEPATH+dataSource+"&snplist="+snpAll+"&geneId="+gwasGeneId;
                         if(i.snpList.length>0){
-                            this.$axios.get(PATH).then(response=>{
+                            _this.$axios.get(PATH).then(response=>{
                                 // this.showVarInfoTable=true;
                                 // var table绑定返回的snp数据
-                                console.log("response:",response.data);
-                                this.varList=[];
+                                _this.varList=[];
                                 if(response.data != null){
-                                this.varList=response.data.snp;
-                                console.log("this.rsnpId:",this.varList);
+                                    _this.varList=response.data.snp;
                                 // for(let item of tresponse.data.snp){}
-                                if(this.varList.length){this.varList=response.data.snp;}else{this.varList=[response.data.snp];}
-                                for(let item of this.varList){
+                                if(_this.varList.length){_this.varList=response.data.snp;}else{_this.varList=[response.data.snp];}
+                                for(let item of _this.varList){
                                     let pos=item.chrom+":"+item.position;
                                     let allele=item.refallele+"/"+item.allele;
                                     let maf=item.maf+":"+item.maffreq.slice(0,7);
@@ -971,43 +1298,63 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
                                         item.conseqtype=item.gene.conseqtype
                                     }
                                 }
-                                this.varLoading=false;
+                                
                                 }
+                                _this.varLoading=false;
                             })
                         }
                         }
                         }
-                        this.varLoading=false;
                     })
                 }
-            }else if(dataclass=="go"){
+            }}else if(dataclass=="go"){
                 if(i.goList.length>0){
-                    i.goList=i.goList.join(",")
-                    this.goInfoData=[i]
+                    if(Object.keys(_this.rectData_go).indexOf("opacity")>-1){
+                        d3.select(_this.formerRect_go).style("fill","rgba(141,192,252,"+(_this.rectData_go.opacity+0.2)+")");
+                    }
+                    // 更新上次节点为本次点击的节点及数据
+                    _this.formerRect_go=this;
+                    _this.rectData_go=i;
+                    d3.select(this).style("fill", "#3CB371");
+                    if(typeof i.goList == "string"){
+                        _this.goInfoData=[i]
+                    }else{
+                        let list=i.goList.join(",")
+                        i.goList=list;
+                        _this.goInfoData=[i]
+                    }
+                    
                     // this.goInfoData.goList=listgo
-                    this.showGoTable=true;
+                    _this.showGoTable=true;
                 }
             }else if(dataclass=="trait"){
                 if(i.gwasList.length>0){
-                    this.goloading=true;
-                    this.showTraitTable=true;
+                    if(Object.keys(_this.rectData_trait).indexOf("opacity")>-1){
+                        d3.select(_this.formerRect_trait).style("fill","rgba(141,192,252,"+(_this.rectData_trait.opacity+0.2)+")");
+                    }
+                    // 更新上次节点为本次点击的节点及数据
+                    _this.formerRect_trait=this;
+                    _this.rectData_trait=i;
+                    d3.select(this).style("fill", "#3CB371");
+
+                    _this.goloading=true;
+                    _this.showTraitTable=true;
                     let gwaslist=i.gwasList.join(",")
                     // this.traitData=[i]
-                    this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-gwasorg",{params:{'taxonId': taxonid12,"hdbId":hdbid}}).then(response=>{
+                    _this.$axios.get("https://ngdc.cncb.ac.cn/hapi/api/species-gwasorg",{params:{'taxonId': taxonid12,"hdbId":hdbid}}).then(response=>{
                         let gwasid=response.data.gwasOrgid;
                         let gwasGeneId=response.data.gwasGeneId;
-                        this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwaslist+"&organismId="+gwasid+"&offset=0&pagesize=10&total=10&geneId="+gwasGeneId)
+                        _this.$axios.get("https://ngdc.cncb.ac.cn/gapi/gwas/gwasids?gwasId="+gwaslist+"&organismId="+gwasid+"&offset=0&pagesize=10&total=10&geneId="+gwasGeneId)
                         .then(response=>{
                             let resDara=response.data
                             for(let item of resDara){
                                 item.gwasGeneId=gwasGeneId;
                                 item.toptraitName=i.traitName;
                             }
-                            this.traitData=resDara;
-                            // console.log("this.traitData:",this.traitData);
+                            _this.traitData=resDara;
                         }).finally(()=>{
                             setTimeout(() => {
-                            this.goloading=false;
+                            _this.goloading=false;
                         }, 100);
                     })
                         
@@ -1016,24 +1363,39 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
                 }
             }else if(dataclass=="expression"){
                 if(i.prjList.length>0){
-                    this.showExpInfoTable=true;
-                    this.exploading=true;
+                    if(Object.keys(_this.rectData_exp).indexOf("opacity")>-1){
+                        d3.select(_this.formerRect_exp).style("fill","rgba(141,192,252,"+(_this.rectData_exp.opacity+0.2)+")");
+                    }
+                    // 更新上次节点为本次点击的节点及数据
+                    _this.formerRect_exp=this;
+                    _this.rectData_exp=i;
+                    d3.select(this).style("fill", "#3CB371");
+                    
+                    _this.showExpInfoTable=true;
+                    _this.exploading=true;
                     let prjlist=i.prjList.join(',')
                     let PATH="https://ngdc.cncb.ac.cn/gen/api/json/gene/expressions?taxonomyId="+i.taxonId+"&accession="+i.geneId+"&bioProjectId="+prjlist
-                    this.$axios.get(PATH).then(response=>{
+                    _this.$axios.get(PATH).then(response=>{
                         let expdata=response.data.result.expressionProfiles;
-                        let expTabledata=[];
+                        let AllexpTabledata=[];
+                       // 循环project，每个project算tissue平均值
                         for(let keyaa in expdata ){
+                            let expTabledata=[];
                             let prjList=expdata[keyaa]
                             let expNum=0;
                             // let sampleNum=0;
+                            // 用于存储当前project有哪些tissue
                             let tissue={};
+                            let plotData=[];
+                            let plptTissue=[];
+                            // 循环project里面的值，分tissue计算平均值
                             for(let item of prjList){
                                 // sampleNum += 1;
                                 expNum += item.tpm;
-                                let itemTissue=item.tissue
+                                let itemTissue=item.tissue;
                                 if(Object.keys(tissue).indexOf(itemTissue) == -1 ){
                                     tissue[itemTissue]=[expNum]
+                                    plptTissue.push(itemTissue)
                                 }else{
                                     tissue[itemTissue].push(expNum)
                                 }
@@ -1047,28 +1409,36 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
                                     "tissue":tissueName,
                                     "expAvg":Number(expAvg),
                                     "geneId":i.geneId,
-                                    "genOrgId":i.genOrgid
+                                    "geneName":i.geneId+ " ("+geneName+")",
+                                    "geneSymbol":geneName,
+                                    "genOrgId":i.genOrgid,
+                                    "taxonId":i.taxonId,
+                                    "speciesName":latinName+ " ("+commonName+")"
                                 }
+                                plotData.push(expAvg);
                                 expTabledata.push(item)
-                                
                             }
+                            for(let item of expTabledata){
+                                item.plotData=plotData;
+                                item.plptTissue=plptTissue;
+                            }
+                            AllexpTabledata=AllexpTabledata.concat(expTabledata)
                         }
-                        this.exploading=false;
-                        this.oriexpTabledata=expTabledata;
-                        this.expTabledata=expTabledata;
-                        
+                        _this.exploading=false;
+                        _this.oriexpTabledata=AllexpTabledata;
+                        _this.expTabledata=AllexpTabledata;
                     })
                 }
-    }
-    })},
+            }
+    
+    })
+},
     hiligtDbCols({rowIndex, columnIndex}){
         if(rowIndex===0 && columnIndex>=6){
             return "color: #fff;background-color:rgba(92,165,214,0.7) !important"
         }
     },
     filterExpDara(){
-        console.log("filterExpDara:",this.filterValue);
-        console.log("expTabledata:",this.expTabledata);
         this.expTabledata= this.oriexpTabledata.filter(item=>{
             return Number(item.expAvg)>Number(this.filterValue)
         })
@@ -1112,7 +1482,6 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
         this.geneBasicInfo=genedetail[0];
         // ensemblGeneId=this.geneBasicInfo.ensemblGeneId;
         let orthoList = response.data[1];
-        console.log("orthoList:",orthoList);
         // this.goBsicList=response.data[2];
         // 绘制初始热图
     //    geneSymbol=genedetail[0].geneSymbol;
@@ -1122,62 +1491,129 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
         
         let ortho=[]
         let hdblist=[]
+        console.log("orthoList:",orthoList);
         for(let item of  orthoList){
-            console.log("item:",item);
             if(item.orthoPosition==1){
                 let commonName = item.commonName1?item.commonName1:"-";
-                let ensemblId = item.ensemblId?item.ensemblId:"-";
+                let ensemblId = item.ensemblId1?item.ensemblId1:"-";
+                let uniprotId= item.uniprotId1?item.uniprotId1:"-";
+                let ensemblGeneId = item.ensmeblGeneId1?item.ensmeblGeneId1:"-";
                 let entrezId=item.entrezId1?item.entrezId1:"-";
-                let geneSymbol=item.geneSymbol?item.geneSymbol:"-";
+                let geneSymbol=item.geneSymbol1?item.geneSymbol1:"-";
                 let hdbGeneId=item.hdbGeneId1?item.hdbGeneId1:"-";
                 let taxId=item.taxId1?item.taxId1:"-";
+                let expGeneId=item.expGeneId1;
                 let shortName=item.shortName1;
                 let dbEvidence=item.dbEvidence;
+                let fromDb=item.fromDb;
                 let latinName=item.latinName1
                 let orthoitem={
                     "commonName":commonName,
                     "ensemblId":ensemblId,
+                    "uniprotId":uniprotId,
                     "entrezId":entrezId,
                     "geneSymbol":geneSymbol,
                     "hdbGeneId":hdbGeneId,
                     "taxId":taxId,
                     "dbEvidence":dbEvidence,
+                    "fromDb":fromDb,
                     "shortName":shortName,
-                    "latinName":latinName
+                    "latinName":latinName,
+                    "expGeneId":expGeneId,
+                    "ensemblGeneId":ensemblGeneId,
+                    "inparanoidID1":item.inparanoidID1,
+                    "inparanoidID2":item.inparanoidID2,
                 }
+
+                // let dbContent=[];
+                let dbContent=fromDb.split(',')
+                // let treefamlink="http://www.treefam.org/family/"
+                // let egglink="http://eggnog5.embl.de/#/app/results#ENOG501"
+                // let pantherlink="http://www.pantherdb.org/panther/family.do?clsAccession="
+                // let inparalink="https://inparanoid.sbc.su.se/cgi-bin/efasta.cgi?cluster="
+                // dblist.forEach(element => {
+                //     let dbName=element.split(':')[0];
+                //     let dbVal=element.split(':')[1];
+                //     if(dbName=="TreeFam"){
+                //         dbContent+='<a target="_blank" :href="'+treefamlink+dbVal+'">'+dbVal+'</a>'
+                //     }else  if(dbName=="eggNOG"){
+                //         dbContent+='<a target="_blank" :href="'+egglink+dbVal+"_datamenu"+'">'+dbVal+'</a>'
+                //     }else if(dbName=="Panther"){
+                //         dbContent+='<a target="_blank" :href="'+pantherlink+dbVal+'">'+dbVal+'</a>'
+                //     }else if(dbName=="Inparanoid"){
+                //         dbContent+='<a target="_blank" :href="'+inparalink+dbVal+"&species1=240&species2=4&java=0"+'">'+dbVal+'</a>'
+                //     }
+                // });
+                orthoitem.dbContent=dbContent;
                 // 去重，保存唯一的hdbid
                 if(hdblist.indexOf(hdbGeneId)==-1){
                     ortho.push(orthoitem)
                     hdblist.push(hdbGeneId)
                 }
+
             }else{
                 let commonName = item.commonName2?item.commonName2:"-";
-                let ensemblId = item.ensemblId?item.ensemblId:"-";
+                let ensemblId = item.ensemblId2?item.ensemblId2:"-";
+                let uniprotId= item.uniprotId2?item.uniprotId2:"-";
+                let ensemblGeneId = item.ensmeblGeneId2?item.ensmeblGeneId2:"-";
                 let entrezId=item.entrezId2?item.entrezId2:"-";
                 let geneSymbol=item.geneSymbol2?item.geneSymbol2:"-";
                 let hdbGeneId=item.hdbGeneId2?item.hdbGeneId2:"-";
                 let taxId=item.taxId2?item.taxId2:"-"
                 let dbEvidence=item.dbEvidence;
+                let fromDb=item.fromDb;
                 let shortName=item.shortName2;
+                let expGeneId=item.expGeneId2;
                 let latinName=item.latinName2;
+
+                let dbContent=fromDb.split(',')
+                // let dblist=fromDb.split(',')
+                // let treefamlink="http://www.treefam.org/family/"
+                // let egglink="http://eggnog5.embl.de/#/app/results#ENOG501"
+                // let pantherlink="http://www.pantherdb.org/panther/family.do?clsAccession="
+                // let inparalink="https://inparanoid.sbc.su.se/cgi-bin/efasta.cgi?cluster="
+                // dblist.forEach(element => {
+                //     let dbName=element.split(':')[0];
+                //     let dbVal=element.split(':')[1];
+                //     if(dbName=="TreeFam"){
+                //         dbContent+='<a target="_blank" :href="'+treefamlink+dbVal+'">'+dbVal+'</a>'
+                //     }else  if(dbName=="eggNOG"){
+                //         dbContent+='<a target="_blank" :href="'+egglink+dbVal+"_datamenu"+'">'+dbVal+'</a>'
+                //     }else if(dbName=="Panther"){
+                //         dbContent+='<a target="_blank" :href="'+pantherlink+dbVal+'">'+dbVal+'</a>'
+                //     }else if(dbName=="Inparanoid"){
+                //         dbContent+='<a target="_blank" :href="'+inparalink+dbVal+"&species1=240&species2=4&java=0"+'">'+dbVal+'</a>'
+                //     }
+                // });
+                // item.dbContent=dbContent;
                 let orthoitem={
                     "commonName":commonName,
                     "ensemblId":ensemblId,
+                    "uniprotId":uniprotId,
                     "entrezId":entrezId,
                     "geneSymbol":geneSymbol,
                     "hdbGeneId":hdbGeneId,
                     "taxId":taxId,
                     "dbEvidence":dbEvidence,
+                    "fromDb":fromDb,
                     "shortName":shortName,
-                    "latinName":latinName
+                    "latinName":latinName,
+                    "expGeneId":expGeneId,
+                    "ensemblGeneId":ensemblGeneId,
+                    'dbContent':dbContent,
+                    "inparanoidID1":item.inparanoidID1,
+                    "inparanoidID2":item.inparanoidID2,
                 }
+                // orthoitem.dbContent=dbContent;
                 if(hdblist.indexOf(hdbGeneId)==-1){
                     ortho.push(orthoitem)
                     hdblist.push(hdbGeneId)
                 }
             }
+            
         }
         this.tableOrthoList=ortho;
+        console.log("this.tableOrthoList:",this.tableOrthoList);
         this.orthoInfo=ortho;
         //   将多个结果合并成一个
         if(genedetail.length>1){
@@ -1193,10 +1629,10 @@ drawGoRectChart(value,svgContainer,dataclass,shortName,latinName,commonName,gene
                     }
             }
         }
-            this.geneBasicInfo=obj
+            this.geneBasicInfo=obj;
+            
         }
-            console.log("this.geneBasicInfo:",this.geneBasicInfo);
-
+        console.log("this.geneBasicInfo:",this.geneBasicInfo);
     }).finally(()=>{
         this.fullLoading=false;
         let svg_height=480;

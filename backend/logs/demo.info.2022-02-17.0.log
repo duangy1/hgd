@@ -1,6 +1,0 @@
-2022-02-17 09:27:17.808 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 13200 (F:\syndb\target\classes started by 光亚 in F:\syndb)
-2022-02-17 09:27:17.827 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
-2022-02-17 09:27:21.348 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 5.135 seconds (JVM running for 9.909)
-2022-02-17 14:16:49.114 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Starting SyndbApplication using Java 1.8.0_211 on LAPTOP-1VEOTUUA with PID 19628 (F:\syndb\target\classes started by 光亚 in F:\syndb)
-2022-02-17 14:16:49.119 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - No active profile set, falling back to default profiles: default
-2022-02-17 14:16:52.243 [restartedMain] INFO  cn.ac.cncb.ngdc.syndb.SyndbApplication - Started SyndbApplication in 3.982 seconds (JVM running for 6.759)

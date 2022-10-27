@@ -38,7 +38,7 @@
                   </el-menu-item>
                   <el-menu-item index="4"  @click="tableShow(3)">
                     <i class="el-icon-chat-line-square"></i>
-                    <span slot="title">Variation Gene</span>
+                    <span slot="title">Variation</span>
                   </el-menu-item>
                   <el-menu-item index="5"  @click="tableShow(4)">
                     <i class="el-icon-chat-line-square"></i>

@@ -62,4 +62,10 @@ public class OrthoGo {
     private String eoName;
 
     private String dbEvidence;
+
+    private String fromdb;
+
+    private String inparanoidID1;
+
+    private String inparanoidID2;
 }

@@ -26,8 +26,8 @@
     <result column="var_gene_id"  property="varGeneId" />
     <result column="exp_gene_id"  property="expGeneId" />
     <result column="hdb_gene_id"  property="hdbId" />
-
-
+    <result column="uniprot_description"  property="uniprotDescription" />
+    <result column="ensembl_link"  property="ensemblLink" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.ac.cncb.ngdc.syndb.entity.GeneBasicInfo">
     <result column="gene_description" jdbcType="LONGVARCHAR" property="geneDescription" />
@@ -90,6 +90,12 @@
     <if test="biotype != null">
       and a.gene_type like concat('%',#{biotype},'%')
     </if>
+    <if test="geneDescription != null">
+      and a.gene_description like concat('%',#{geneDescription},'%')
+    </if>
+    <if test="proteinDescription != null">
+      and a.uniprot_description like concat('%',#{proteinDescription},'%')
+    </if>
     <if test="allfield != null">
       and ( (a.gene_type like concat('%',#{allfield},'%'))
       or (a.gene_type like concat('%',#{allfield},'%'))
@@ -102,6 +108,8 @@
       or (a.gwas_gene_id like concat('%',#{allfield},'%'))
       or (a.var_gene_id like concat('%',#{allfield},'%'))
       or (a.exp_gene_id like concat('%',#{allfield},'%'))
+      or (a.uniprot_description like concat('%',#{allfield},'%'))
+      or (a.gene_description like concat('%',#{allfield},'%'))
       )
     </if>
 
@@ -117,33 +125,80 @@
         #{taxon}
       </foreach>
     </if>
-    <if test="traitList != null ">
+    <if test="traitList != null and isAll == 1">
       and a.hdb_gene_id in (select hdb_gene_id from trait_all_copy1 where trait_id in
       <foreach item="trait" index="index" collection="traitList"  open="(" separator="," close=")">
         #{trait}
       </foreach>
       )
     </if>
-    <if test="variantlist != null">
+    <if test="traitList != null and isAll == 0">
+      and a.hdb_gene_id in (
+      SELECT hdb_gene_id
+      FROM
+      <foreach collection="traitList" item="trait" index="index" separator="inner join">
+        (SELECT DISTINCT hdb_gene_id FROM trait_all_copy1 WHERE trait_id = #{trait}) AS t#{index}
+        <if test="index > 0">
+          USING (hdb_gene_id)
+        </if>
+      </foreach>
+      )
+    </if>
+    <if test="variantlist != null and isAll == 1">
         and a.hdb_gene_id in (select hdb_gene_id from variation_all where var_name in
         <foreach item="variant" index="index" collection="variantlist"  open="(" separator="," close=")">
           #{variant}
         </foreach>
         )
     </if>
-    <if test="explist != null">
+    <if test="variantlist != null and isAll == 0">
+      and a.hdb_gene_id in (
+      SELECT hdb_gene_id
+      FROM
+      <foreach collection="variantlist" item="variant" index="index" separator="inner join">
+        (SELECT DISTINCT hdb_gene_id FROM variation_all WHERE var_name = #{variant}) AS t#{index}
+        <if test="index > 0">
+          USING (hdb_gene_id)
+        </if>
+      </foreach>
+      )
+    </if>
+    <if test="explist != null and isAll == 1">
       and a.hdb_gene_id in (select hdb_gene_id from gene_expression where annotation in
       <foreach item="expression" index="index" collection="explist"  open="(" separator="," close=")">
         #{expression}
       </foreach>
       )
     </if>
-
-    <if test="golist != null">
+    <if test="explist != null and isAll == 0">
+      and a.hdb_gene_id in (
+      SELECT hdb_gene_id
+      FROM
+      <foreach collection="explist" item="expression" index="index" separator="inner join">
+        (SELECT DISTINCT hdb_gene_id FROM gene_expression WHERE annotation = #{expression}) AS t#{index}
+        <if test="index > 0">
+          USING (hdb_gene_id)
+        </if>
+      </foreach>
+      )
+    </if>
+    <if test="golist != null and isAll == 1">
         and a.hdb_gene_id in (select hdb_gene_id from gene_go_all where top_go_id in
         <foreach item="gene" index="index" collection="golist"  open="(" separator="," close=")">
           #{gene}
         </foreach>
+      )
+    </if>
+    <if test="golist != null and isAll == 0">
+      and a.hdb_gene_id in (
+      SELECT hdb_gene_id
+      FROM
+      <foreach collection="golist" item="gene" index="index" separator="inner join">
+        (SELECT DISTINCT hdb_gene_id FROM gene_go_all WHERE top_go_id = #{gene}) AS t#{index}
+        <if test="index > 0">
+          USING (hdb_gene_id)
+        </if>
+      </foreach>
       )
     </if>
 

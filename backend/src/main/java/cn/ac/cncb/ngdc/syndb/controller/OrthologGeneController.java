@@ -36,7 +36,7 @@ public class OrthologGeneController {
 
     @RequestMapping(value="filterHomolog", method= RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo browseOrthologGene(int type,String keyword,String taxonids, String traitids,String goids,String variantids,String expids,String orthtaxids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
+    public DataTableResultInfo browseOrthologGene(int type,String isAll,String keyword,String taxonids, String traitids,String goids,String variantids,String expids,String orthtaxids, HttpServletRequest request,@RequestParam(value = "start", required = false, defaultValue = "0") Integer start,
                                                   @RequestParam(value = "length", required = false, defaultValue = "5") Integer length,
                                                   @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                                   @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo) {
@@ -150,6 +150,8 @@ public class OrthologGeneController {
 
 
         Map param = new HashMap();
+        param.put("isAll", isAll);
+        System.out.print("isAll:"+isAll);
         if (talist.size() > 0) {
             param.put("taxonList", talist);
         }
@@ -220,6 +222,14 @@ public class OrthologGeneController {
             }else if(type==11){
                 if(keyword != null && keyword.length() >0 ) {
                     param.put("synonym", keyword);
+                }
+            }else if(type==12){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("geneDescription", keyword);
+                }
+            }else if(type==13){
+                if(keyword != null && keyword.length() >0 ) {
+                    param.put("proteinDescription", keyword);
                 }
             }
 

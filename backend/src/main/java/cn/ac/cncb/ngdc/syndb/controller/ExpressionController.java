@@ -23,7 +23,7 @@ public class ExpressionController {
 
     @RequestMapping(value = "/api/expression-data", method = RequestMethod.GET)
     @ResponseBody
-    public DataTableResultInfo initPageEo(String expName, String classification, String taxonid,String geneid,String hdbId,
+    public DataTableResultInfo initPageEo(String expName, String classification, String taxonid,String geneid,String hdbId,String taxonId,
                                           @RequestParam(value = "length", required = false, defaultValue = "10") Integer length,
                                           @RequestParam(value = "draw", required = false, defaultValue = "0") Integer draw,
                                           @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo
@@ -31,7 +31,7 @@ public class ExpressionController {
 //        if(pageNo == 1){
 //            pageNo = start/length+1;
 //        }
-        Page<GeneExpression> pageInfo= eoService.initPageEo(expName,classification,pageNo,length,taxonid,geneid,hdbId);
+        Page<GeneExpression> pageInfo= eoService.initPageEo(expName,classification,pageNo,length,taxonid,geneid,hdbId,taxonId);
         for(GeneExpression eodata : pageInfo){
             int taxon = eodata.getTaxonId();
             String hdbid11=eodata.getHdbId();

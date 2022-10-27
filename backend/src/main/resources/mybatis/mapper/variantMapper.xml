@@ -44,6 +44,9 @@
     <if test='hdbId != null and hdbId!="" and hdbId!="null"'>
       and hdb_gene_id = #{hdbId}
     </if>
+    <if test='taxonId != null and taxonId!="" and taxonId!="null"'>
+      and a.taxon_id = #{taxonId}
+    </if>
     and hdb_gene_id !="" and hdb_gene_id is not null order by var_name
   </select>
 
